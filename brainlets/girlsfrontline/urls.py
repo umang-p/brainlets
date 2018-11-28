@@ -6,4 +6,5 @@ app_name = 'girlsfrontline'
 urlpatterns = [
 	path('', views.coming_soon, name='home'),
 	path('batterycalc/', views.coming_soon, name='batterycalc'),
+	path('dailies/', views.coming_soon, name='dailies'),
 ]
