@@ -3,17 +3,18 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 		<title>brainlets.moe</title>
 	</head>
 
 	<body>
 		<p>Under Construction</p>
-		<a href="{% url 'girlsfrontline:home' %}">Girls' Frontline</a>
-		<br>
 		{% load static %}
-		<img src="{% static 'brainlets/test.gif' %}" alt="test img"></img>
+		<a href={% url 'girlsfrontline:home' %}><img src={% static 'girlsfrontline/brainletsfrontline_logo.png' %} alt="gf"></img></a>
 		<br>
-		<a href="{% url 'about' %}">About</a>
+		<a href={% url 'finalfantasyxiv:home' %}><img src={% static 'finalfantasyxiv/brainletsfantasyxiv_logo.jpg' %} alt="ffxiv"></img></a>
+		<br>
+		<a href={% url 'about' %}>About</a>
 	</body>
 </html>
