@@ -1,20 +1,12 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+{% extends "brainlets/base.html" %}
 
-		<title>brainlets.moe</title>
-	</head>
+{% block title %}Index - brainlets.moe{% endblock %}
 
-	<body>
-		<p>Under Construction</p>
-		{% load static %}
-		<a href={% url 'girlsfrontline:home' %}><img src={% static 'girlsfrontline/brainletsfrontline_logo.png' %} alt="gf"></img></a>
-		<br>
-		<a href={% url 'finalfantasyxiv:home' %}><img src={% static 'finalfantasyxiv/brainletsfantasyxiv_logo.jpg' %} alt="ffxiv"></img></a>
-		<br>
-		<a href={% url 'about' %}>About</a>
-	</body>
-</html>
+{% block main %}
+<div class="jumbotron">
+  <h1 class="display-4">brainlets.moe</h1>
+  <p class="lead">A site made for a brainlet (you), by a brainlet (me).</p>
+  <hr class="my-4">
+  <p>Here at brainlets.moe you can find tips and guides for some games written in a brainlet-friendly manner. Remember, its okay to be a brainlet.</p>
+</div>
+{% endblock %}
