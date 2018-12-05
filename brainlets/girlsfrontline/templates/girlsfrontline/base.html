@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+		<title>{% block title %}brainlets.moe{% endblock %}</title>
+	</head>
+
+	<body class="bg-secondary text-light">
+    <nav class="container navbar navbar-expand-sm navbar-dark bg-secondary mb-3">
+      <a class="navbar-brand" href="{% url 'index' %}">brainlets.moe</a>
+      <div class="navbar-nav">
+        <a class="nav-link" href="{% url 'girlsfrontline:home' %}">Home</a>
+        <a class="nav-link" href="{% url 'girlsfrontline:batterycalculator' %}">Battery Calculator</a>
+        <a class="nav-link" href="{% url 'girlsfrontline:dailies' %}">Dailies</a>
+      </div>
+    </nav>
+    <main class="container">
+      {% block main %}
+      {% endblock %}
+    </main>
+    <footer class="container mt-3">
+      <p class="font-weight-light text-center"><small>Girls' Frontline is Copyright SUNBORN Network Technology Co., Ltd. All images and names owned and trademarked by SUNBORN Network Technology Co., Ltd. are property of SUNBORN Network Technology Co., Ltd.</small></p>
+    </footer>
+	</body>
+</html>
