@@ -1,0 +1,44 @@
+{% extends "girlsfrontline/base.html" %}
+
+{% block title %}Battery Calculator - brainlets.moe{% endblock %}
+
+{% block main %}
+<div class="row text-center">
+  <div class="col-sm">
+    <label for="numDorms">Number of Dorms:</label>
+    <select id="numDorms" class="form-control" onchange="changeDormCount()">
+      <option selected>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+    </select>
+  </div>
+  <div id="comfort" class="col-sm">
+    <label>Comfort:</label>
+    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 1">
+    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 2">
+    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 3" hidden>
+    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 4" hidden>
+    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 5" hidden>
+    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 6" hidden>
+    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 7" hidden>
+    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 8" hidden>
+    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 9" hidden>
+    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 10" hidden>
+  </div>
+  <div class="col-sm">
+    <label for="batteries">Batteries per day:</label>
+    <p id="batteries" class="h1">50</p>
+  </div>
+</div>
+{% load static %}
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{% static 'girlsfrontline/js/batterycalculator.js' %}"></script>
+{% endblock %}
