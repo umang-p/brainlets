@@ -19,6 +19,13 @@ function filterDolls() {
   }
 }
 
+function focusMinutes() {
+  if(event.keyCode == 16 || event.keyCode == 9)
+    return;
+  if($.isNumeric($("#hours").val()))
+    $("#minutes").focus().select();
+}
+
 $(function() {
   $("#hours").focus();
 });

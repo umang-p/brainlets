@@ -5,7 +5,7 @@
 {% block main %}
 <p class="h4 text-center">Equipment Construction Timers:</p>
 <div id="timer_input" class="row justify-content-center text-center input-group mb-2">
-    <input id="hours" type="number" class="form-control col-2" oninput="filterDolls()" placeholder="00">
+    <input id="hours" type="number" class="form-control col-2" oninput="filterDolls()" onkeyup="focusMinutes()" placeholder="00">
     <span class="h4"> : </span>
     <input id="minutes" type="number" class="form-control col-2" oninput="filterDolls()" placeholder="00">
 </div>
