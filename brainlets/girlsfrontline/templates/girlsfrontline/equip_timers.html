@@ -1,0 +1,43 @@
+{% extends "girlsfrontline/base.html" %}
+
+{% block title %}Battery Calculator - brainlets.moe{% endblock %}
+
+{% block main %}
+<p class="h4 text-center">Equipment Construction Timers:</p>
+<div id="timer_input" class="row justify-content-center text-center input-group mb-2">
+    <input id="hours" type="number" class="form-control col-2" oninput="filterDolls()" placeholder="00">
+    <span class="h4"> : </span>
+    <input id="minutes" type="number" class="form-control col-2" oninput="filterDolls()" placeholder="00">
+</div>
+<div class="table-responsive bg-light text-dark">
+  <table id="equiptable" class="table">
+    <thead class="thead">
+      <tr>
+        <th scope="col">Time</th>
+        <th scope="col">Rarity</th>
+        <th scope="col">Equip</th>
+        <th scope="col">Effects</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for equip in equip_list %}
+        <tr>
+          <td>{{equip.hours}}:{{equip.minutes}}</td>
+          <td>{{equip.rarity }}</td>
+          <td>{{equip.type}}</td>
+          <td><p class="text-success">{{equip.poseffect}}</p>
+            {% if equip.negeffect != 'none' %}
+            <p class="text-danger">{{equip.negeffect}}</p>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% load static %}
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{% static 'girlsfrontline/js/equiptimers.js' %}"></script>
+{% endblock %}
