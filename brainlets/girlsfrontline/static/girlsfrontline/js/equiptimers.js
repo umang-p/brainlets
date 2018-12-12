@@ -1,4 +1,4 @@
-function filterDolls() {
+function filterEquips() {
   var hours = parseInt($("#hours").val()) || 0;
   var minutes = parseInt($("#minutes").val()) || 0;
   var equips = $("tbody").children();
