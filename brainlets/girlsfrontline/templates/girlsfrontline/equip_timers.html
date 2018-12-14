@@ -2,6 +2,12 @@
 
 {% block title %}Equip Build Timers - brainlets.moe{% endblock %}
 
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'girlsfrontline/css/equiptimers.css' %}">
+{% endblock %}
+
 {% block main %}
 <p class="h4 text-center">Equipment Construction Timers:</p>
 <div id="timer_input" class="row justify-content-center text-center input-group mb-2">
@@ -9,12 +15,11 @@
     <span class="h4"> : </span>
     <input id="minutes" type="number" class="form-control col-2" oninput="filterEquips()" placeholder="00">
 </div>
-<div class="table-responsive bg-light text-dark">
-  <table id="equiptable" class="table">
+<div class="table-responsive bg-light text-dark text-center">
+  <table id="equiptable" class="table table-sm">
     <thead class="thead">
       <tr>
         <th scope="col">Time</th>
-        <th scope="col">Rarity</th>
         <th scope="col">Equip</th>
         <th scope="col">Effects</th>
       </tr>
@@ -22,10 +27,9 @@
     <tbody>
       {% for equip in equip_list %}
         <tr>
-          <td>{{equip.hours}}:{{equip.minutes}}</td>
-          <td>{{equip.rarity }}</td>
-          <td>{{equip.type}}</td>
-          <td><p class="text-success">{{equip.poseffect}}</p>
+          <td class="align-middle">{{equip.hours}}:{{equip.minutes}}</td>
+          <td class="stars{{equip.rarity}}"><img class="img-fluid" src="{% static 'girlsfrontline/'|add:equip.type|add:'.png' %}"></img></td>
+          <td class="align-middle"><p class="text-success">{{equip.poseffect}}</p>
             {% if equip.negeffect != 'none' %}
             <p class="text-danger">{{equip.negeffect}}</p>
             {% endif %}
@@ -35,6 +39,5 @@
     </tbody>
   </table>
 </div>
-{% load static %}
 <script src="{% static 'girlsfrontline/js/equiptimers.js' %}"></script>
 {% endblock %}
