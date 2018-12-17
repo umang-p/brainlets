@@ -40,13 +40,13 @@ def doll_timers(request):
             info = {}
             info['hours'] = '{0:0>2.0f}'.format(int(doll['develop_duration']) / 60 // 60)
             info['minutes'] = '{0:0>2.0f}'.format(int(doll['develop_duration']) / 60 % 60)
-            info['rarity'] = '\u2605' * int(doll['rank'])
+            info['rarity'] = int(doll['rank'])
             info['name'] = doll['en_name']
             info['type'] = __get_doll_type(doll['type'])
             doll_list.append(info)
 
     doll_list = sorted(doll_list, key=itemgetter('hours','minutes'))
-    #print(doll_list)
+
     return render(request, 'girlsfrontline/doll_timers.html', {"doll_list" : doll_list})
 
 def __get_doll_type(doll_type):

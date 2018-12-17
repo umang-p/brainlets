@@ -2,6 +2,12 @@
 
 {% block title %}Doll Build Timers - brainlets.moe{% endblock %}
 
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'girlsfrontline/css/dolltimers.css' %}">
+{% endblock %}
+
 {% block main %}
 <p class="h4 text-center">T-doll Construction Timers:</p>
 <div id="timer_input" class="row justify-content-center text-center input-group mb-2">
@@ -23,7 +29,7 @@
         <tr>
           <td>{{doll.hours}}:{{doll.minutes}}</td>
           <td class="stars{{doll.rarity}}">{{doll.name}}</td>
-          <td>{{doll.type}}<br>{{doll.rarity}}</td>
+          <td>{{doll.type}}</td>
         </tr>
       {% endfor %}
     </tbody>
