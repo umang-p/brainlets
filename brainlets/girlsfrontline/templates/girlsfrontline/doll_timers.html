@@ -28,8 +28,8 @@
       {% for doll in doll_list %}
         <tr>
           <td>{{doll.hours}}:{{doll.minutes}}</td>
-          <td class="stars{{doll.rarity}}">{{doll.name}}</td>
-          <td>{{doll.type}}</td>
+          <td>{{doll.name}}</td>
+          <td class="stars{{doll.rarity}}">{{doll.type}}</td>
         </tr>
       {% endfor %}
     </tbody>

@@ -34,9 +34,13 @@ def doll_timers(request):
     with open(settings.STATIC_ROOT+'/girlsfrontline/doll_info.json', mode='r') as data:
         doll_info = json.load(data)
 
+    UNRELEASED_IN_EN = ['K5', 'Px4 Storm', 'NZ75', 'F1', 'Z-62', 'PP1901', 'C-MS', 'ARX-160', 'XM8', 'SAR-21', 'OTs-44', 'K2', 'MDR', 'AN94', 'K11', 'AK12', 'SPR A3G', 'PSG-1', 'G28', 'PzB39', 'Carcano M1891', 'Carcano M91/38', '80type', 'Type88', 'M1014', 'M1897', 'SPAS-12', 'Saiga-12', 'FP-6', 'AA-12']
+    
     doll_list = []
     for doll in doll_info:
         if doll['id'] < 1000 and (doll['obtain_ids'] == '1' or doll['obtain_ids'] == '2' or '1' in doll['obtain_ids'].split(',') or '2' in doll['obtain_ids'].split(',')):
+            if doll['en_name'] in UNRELEASED_IN_EN:
+                continue
             info = {}
             info['hours'] = '{0:0>2.0f}'.format(int(doll['develop_duration']) / 60 // 60)
             info['minutes'] = '{0:0>2.0f}'.format(int(doll['develop_duration']) / 60 % 60)
