@@ -35,7 +35,8 @@ def doll_timers(request):
         doll_info = json.load(data)
 
     UNRELEASED_IN_EN = ['K5', 'Px4 Storm', 'NZ75', 'F1', 'Z-62', 'PP1901', 'C-MS', 'ARX-160', 'XM8', 'SAR-21', 'OTs-44', 'K2', 'MDR', 'AN94', 'K11', 'AK12', 'SPR A3G', 'PSG-1', 'G28', 'PzB39', 'Carcano M1891', 'Carcano M91/38', '80type', 'Type88', 'M1014', 'M1897', 'SPAS-12', 'Saiga-12', 'FP-6', 'AA-12']
-    
+    ALIASES = {'FNP-9':'FF FNP9', 'USP Compact':'Gr USPCompact', 'Type 92':'Type92', 'PM':'Makarov', '357':'Astra', 'TT33':'Tokarev', 'M1873':'SAA Colt Revolver', 'Mk23':'Gr Mk23', 'APS':'Stechkin', 'Type 64':'Type64', 'MAB 38':'M38', 'Sten Mk II':'STEN MkII', 'MAC-10':'Ingram', 'Vz. 61':'Skorpion', 'MP5':'Gr MP5', 'KP/-31':'Suomi', 'M1928A1':'Thompson', 'G36C':'Gr G36c', 'Type 79':'Type79', 'AR':'Galil', 'F2000':'FF F2000', 'Type 63':'Type63', 'G3':'Gr G3', 'FN-49':'FF FN49', 'BM59':'VM59', 'FNC':'FF FNC', 'Type 56-1 A':'Type56-1', 'FAMAS':'Fr FAMAS', 'G36':'Gr G36', 'Ribeyrolles1918':'Ribeyrolles', 'Type 88':'Type88', 'Type 95':'Type95', 'Type 97':'Type97', 'HK416':'416', 'RFB':'Am RFB', 'M1':'M1 Garand', 'G11':'Gr G11', 'G41':'Gr G41', 'Zastava M21':'Zas M21', 'M1891':'Mosin-Nagant', 'M1903':'Springfield', 'MLE Mk I':'Lee Enfield', 'Bren MK I':'Bren', 'NEGEV':'Negev', 'MG4':'Gr MG4', 'MG5':'Gr MG5', 'Pecheneg':'PKP', 'USAS12':'USAS-12', 'KSG':'Am KSG', 'SAT8':'S.A.T.8'}
+
     doll_list = []
     for doll in doll_info:
         if doll['id'] < 1000 and (doll['obtain_ids'] == '1' or doll['obtain_ids'] == '2' or '1' in doll['obtain_ids'].split(',') or '2' in doll['obtain_ids'].split(',')):
@@ -45,7 +46,10 @@ def doll_timers(request):
             info['hours'] = '{0:0>2.0f}'.format(int(doll['develop_duration']) / 60 // 60)
             info['minutes'] = '{0:0>2.0f}'.format(int(doll['develop_duration']) / 60 % 60)
             info['rarity'] = int(doll['rank'])
-            info['name'] = doll['en_name']
+            if doll['en_name'] in ALIASES.keys():
+                info['name'] = ALIASES[doll['en_name']]
+            else:
+                info['name'] = doll['en_name']
             info['type'] = __get_doll_type(doll['type'])
             doll_list.append(info)
 
