@@ -1,0 +1,29 @@
+{% extends "girlsfrontline/base.html" %}
+
+{% block title %}Home - Girls Frontline - brainlets.moe{% endblock %}
+
+{% block main %}
+{% load static %}
+<div id="splashcarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#splashcarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#splashcarousel" data-slide-to="1" class="active"></li>
+    <li data-target="#splashcarousel" data-slide-to="3" class="active"></li>
+    <li data-target="#splashcarousel" data-slide-to="4" class="active"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'girlsfrontline/BG - 2nd Anniversary.png' %}" class="img-fluid" alt="2nd anniversary"></img>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'girlsfrontline/BG - Halloween 2016.png' %}" class="img-fluid" alt="halloween 2016"></img>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'girlsfrontline/BG - Halloween 2018.png' %}" class="img-fluid" alt="halloween 2018"></img>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'girlsfrontline/BG - Christmas 2016.png' %}" class="img-fluid" alt="christmas 2016"></img>
+    </div>
+  </div>
+</div>
+{% endblock %}

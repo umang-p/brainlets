@@ -10,6 +10,9 @@ def coming_soon(request):
 def battery_calculator(request):
     return render(request, 'girlsfrontline/battery_calculator.html')
 
+def home(request):
+    return render(request, 'girlsfrontline/home.html')
+
 def equip_timers(request):
     with open(settings.STATIC_ROOT+'/girlsfrontline/equip_info.json', mode='r') as data:
         equip_info = json.load(data)
