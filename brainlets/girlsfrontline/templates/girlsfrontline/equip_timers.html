@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block main %}
+<main class="container">
 <p class="h4 text-center">Equipment Construction Timers:</p>
 <div id="timer_input" class="row justify-content-center text-center input-group mb-2">
     <input id="hours" type="number" class="form-control col-2" oninput="filterEquips()" onkeyup="focusMinutes()" placeholder="00">
@@ -40,4 +41,5 @@
   </table>
 </div>
 <script src="{% static 'girlsfrontline/js/equiptimers.js' %}"></script>
+</main>
 {% endblock %}
