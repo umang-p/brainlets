@@ -1,0 +1,15 @@
+.stars5 button, img.stars5 {
+  background-color: rgb(255, 219, 0);
+}
+.stars4 button, img.stars4 {
+  background-color: rgb(137, 191, 23);
+}
+.stars3 button, img.stars3 {
+  background-color: rgb(90, 182, 222);
+}
+.stars2 button, img.stars2 {
+  background-color: rgb(222, 223, 222);
+}
+.stars1 button, img.stars1 {
+  background-color: rgb(222, 182, 255);
+}

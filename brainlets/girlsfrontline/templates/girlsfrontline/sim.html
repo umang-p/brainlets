@@ -1,0 +1,699 @@
+{% extends "girlsfrontline/base.html" %}
+
+{% block title %}Damage Sim - Girls Frontline - brainlets.moe{% endblock %}
+
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'girlsfrontline/css/sim.css' %}">
+{% endblock %}
+
+{% block main %}
+<main class="container-fluid clearfix">
+<div class="float-left mr-4 ml-2" style="width:570px">
+  <div class="row">
+    <p class="h5 col">
+      Total DMG 8s: <span>000</span>
+      <br>
+      Total DMG 20s: <span>0000</span>
+    </p>
+  </div>
+  <div class="row no-gutters" style="height:160px">
+    <div id="pos7" class="col border" draggable="">
+      <img src="{% static 'girlsfrontline/sim/grizzly.png' %}" class="img-fluid position-absolute"></img>
+      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" title="test" style="right:0">
+        <div class="row no-gutters" style="width:36px">
+          <div class="col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          </div>
+          <div class="col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          </div>
+          <div class="col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
+          </div>
+        </div>
+        <div class="row no-gutters" style="width:36px">
+          <div class="col border-left border-right border-dark" style="height:12px;background-color:rgb(107,105,107);">
+          </div>
+          <div class="col" style="height:12px;background-color:rgb(255,255,255);">
+          </div>
+          <div class="col border-left border-right border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          </div>
+        </div>
+        <div class="row no-gutters" style="width:36px">
+          <div class="col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          </div>
+          <div class="col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          </div>
+          <div class="col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
+          </div>
+        </div>
+      </div>
+      <div class="d-inline-flex flex-wrap flex-row align-content-end position-absolute" style="bottom:0">
+        <div class="fp bg-dark ml-1">
+          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <small>100%</small>
+        </div>
+        <div class="armor bg-dark ml-1">
+          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <small>100%</small>
+        </div>
+        <div class="rof bg-dark ml-1">
+          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <small>100%</small>
+        </div>
+        <div class="acc bg-dark ml-1">
+          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <small>100%</small>
+        </div>
+        <div class="eva bg-dark ml-1">
+          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <small>100%</small>
+        </div>
+        <div class="crit bg-dark ml-1">
+          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <small>100%</small>
+        </div>
+        <div class="skillcd bg-dark ml-1">
+          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <small>100%</small>
+        </div>
+      </div>
+    </div>
+    <div class="col border-top border-bottom">
+      8
+    </div>
+    <div class="col border">
+      9
+    </div>
+  </div>
+  <div class="row no-gutters" style="height:160px">
+    <div class="col border-left border-right">
+      4
+    </div>
+    <div class="col">
+      5
+    </div>
+    <div class="col border-left border-right">
+      6
+    </div>
+  </div>
+  <div class="row no-gutters" style="height:160px">
+    <div class="col border">
+      1
+    </div>
+    <div class="col border-top border-bottom">
+      2
+    </div>
+    <div class="col border">
+      3
+    </div>
+  </div>
+  <div class="row no-gutters mt-2">
+    <div class="col">
+      <label for="enemy_eva">Enemy EVA:</label>
+      <input id="enemy_eva" type="number" style="width:50px">
+    </div>
+    <div class="col">
+      <label for="enemy_armor">Enemy Armor:</label>
+      <input id="enemy_armor" type="number" style="width:50px">
+    </div>
+    <div class="col">
+      <label for="enemy_count">Enemy Count:</label>
+      <input id="enemy_count" type="number" style="width:50px">
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="btn-group mx-auto">
+      <button type="button" class="btn btn-success"><img src="{% static 'girlsfrontline/sim/day.png' %}" class="img-fluid" style="width:25px;height:25px"></img></button>
+      <button type="button" class="btn"><img src="{% static 'girlsfrontline/sim/night.png' %}" class="img-fluid" style="width:25px;height:25px"></img></button>
+    </div>
+    <button type="button" class="btn btn-success mx-auto">Boss</button>
+    <button type="button" class="btn btn-default mx-auto">Help</button>
+  </div>
+</div>
+
+<div class="float-left ml-3">
+  <div class="row">
+    <div class="card bg-secondary text-center">
+      <div class="card-body">
+        <h5 class="card-title">Doll1</h5>
+        <h6 class="card-subtitle mb-2">Doll Type</h6>
+        <div class="doll1 affection float-left mr-2">
+          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid" style="width:40px;height:40px"></img>
+          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+        </div>
+        <label>Level:</label>
+        <select class="">
+          <option>100</option>
+        </select>
+        <br>
+        <label>Skill:</label>
+        <select class="">
+          <option>10</option>
+        </select>
+        <table class="table table-sm table-borderless">
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">-</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">0</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">00</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+        </table>
+        <a href="#equipSelect" data-toggle="modal"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid rounded stars5" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <a href="#"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <a href="#"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <a href="#dollSelect" data-toggle="modal"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2" style="width:50px"></img></a>
+        <a href="#"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2" style="width:50px"></img></a>
+      </div>
+    </div>
+    <div class="card bg-secondary text-center">
+      <div class="card-body">
+        <h5 class="card-title">Doll1</h5>
+        <h6 class="card-subtitle mb-2">Doll Type</h6>
+        <div class="doll1 affection float-left mr-2">
+          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid" style="width:40px;height:40px"></img>
+          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+        </div>
+        <label>Level:</label>
+        <select class="">
+          <option>100</option>
+        </select>
+        <br>
+        <label>Skill:</label>
+        <select class="">
+          <option>10</option>
+        </select>
+        <table class="table table-sm table-borderless">
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">1000</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">0</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">00</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+        </table>
+        <a href="#"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <a href="#"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <a href="#"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2" style="width:50px"></img>
+        <img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2" style="width:50px"></img>
+      </div>
+    </div>
+    <div class="card bg-secondary text-center">
+      <div class="card-body">
+        <h5 class="card-title">Doll1</h5>
+        <h6 class="card-subtitle mb-2">Doll Type</h6>
+        <div class="doll1 affection float-left mr-2">
+          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid" style="width:40px;height:40px"></img>
+          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+        </div>
+        <label>Level:</label>
+        <select class="">
+          <option>100</option>
+        </select>
+        <br>
+        <label>Skill:</label>
+        <select class="">
+          <option>10</option>
+        </select>
+        <table class="table table-sm table-borderless">
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">1000</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">0</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">00</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+        </table>
+        <a href="#"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <a href="#"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <a href="#"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <button type="button" class="mt-2 btn btn-success">+</button>
+      </div>
+    </div>
+    <div class="card bg-secondary text-center">
+      <div class="card-body">
+        <h5 class="card-title">Doll1</h5>
+        <h6 class="card-subtitle mb-2">Doll Type</h6>
+        <div class="doll1 affection float-left mr-2">
+          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid" style="width:40px;height:40px"></img>
+          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+        </div>
+        <label>Level:</label>
+        <select class="">
+          <option>100</option>
+        </select>
+        <br>
+        <label>Skill:</label>
+        <select class="">
+          <option>10</option>
+        </select>
+        <table class="table table-sm table-borderless">
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">1000</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">0</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">00</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+        </table>
+        <a href="#"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <a href="#"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <a href="#"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <button type="button" class="mt-2 btn btn-success">+</button>
+      </div>
+    </div>
+    <div class="card bg-secondary text-center">
+      <div class="card-body">
+        <h5 class="card-title">Doll1</h5>
+        <h6 class="card-subtitle mb-2">Doll Type</h6>
+        <div class="doll1 affection float-left mr-2">
+          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid" style="width:40px;height:40px"></img>
+          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+        </div>
+        <label>Level:</label>
+        <select class="">
+          <option>100</option>
+        </select>
+        <br>
+        <label>Skill:</label>
+        <select class="">
+          <option>10</option>
+        </select>
+        <table class="table table-sm table-borderless">
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">1000</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">0</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">00</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+        </table>
+        <a href="#"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <a href="#"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <a href="#"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <select>
+          <option>10</option>
+        </select>
+        <br>
+        <button type="button" class="mt-2 btn btn-success">+</button>
+      </div>
+    </div>
+    <div class="card bg-secondary text-center">
+      <div class="card-body">
+        <h5 class="card-title">Fairy</h5>
+        <h6 class="card-subtitle mb-2">Fairy Type</h6>
+        <table class="table table-sm table-borderless">
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">-</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">-</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">00</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+          <tr>
+            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+            <td class="align-middle">100</td>
+          </tr>
+        </table>
+        <button type="button" class="btn btn-danger">Remove</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="dollSelect" class="modal fade" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-secondary text-light">
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="accordion">
+            <div class="card bg-secondary text-light">
+              <div class="card-header">
+                <a class="btn" data-toggle="collapse" data-target="#HGlist">
+                  <img src="{% static 'girlsfrontline/sim/HG.png' %}" class="img-fluid"></img>
+                </a>
+              </div>
+              <div id="HGlist" class="collapse">
+                <div class="card-body">
+                  <div class="flex-row mb-3 stars5">
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                  </div>
+                  <div class="flex-row mb-3 stars4">
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                  </div>
+                  <div class="flex-row mb-3 stars3">
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                  </div>
+                  <div class="flex-row mb-3 stars2">
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                  </div>
+                  <div class="flex-row mb-3 stars1">
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                    <button type="button" class="btn mb-1">Grizzly!</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card bg-secondary text-light">
+              <div class="card-header">
+                <a class="btn" data-toggle="collapse" data-target="#RFlist">
+                  <img src="{% static 'girlsfrontline/sim/RF.png' %}" class="img-fluid"></img>
+                </a>
+              </div>
+              <div id="RFlist" class="collapse">
+                <div class="card-body">
+                  RF list
+                </div>
+              </div>
+            </div>
+            <div class="card bg-secondary text-light">
+              <div class="card-header">
+                <a class="btn" data-toggle="collapse" data-target="#SMGlist">
+                  <img src="{% static 'girlsfrontline/sim/SMG.png' %}" class="img-fluid"></img>
+                </a>
+              </div>
+              <div id="SMGlist" class="collapse">
+                <div class="card-body">
+                  SMG list
+                </div>
+              </div>
+            </div>
+            <div class="card bg-secondary text-light">
+              <div class="card-header">
+                <a class="btn" data-toggle="collapse" data-target="#ARlist">
+                  <img src="{% static 'girlsfrontline/sim/AR.png' %}" class="img-fluid"></img>
+                </a>
+              </div>
+              <div id="ARlist" class="collapse">
+                <div class="card-body">
+                  AR list
+                </div>
+              </div>
+            </div>
+            <div class="card bg-secondary text-light">
+              <div class="card-header">
+                <a class="btn" data-toggle="collapse" data-target="#SGlist">
+                  <img src="{% static 'girlsfrontline/sim/SG.png' %}" class="img-fluid"></img>
+                </a>
+              </div>
+              <div id="SGlist" class="collapse">
+                <div class="card-body">
+                  SG list
+                </div>
+              </div>
+            </div>
+            <div class="card bg-secondary text-light">
+              <div class="card-header">
+                <a class="btn" data-toggle="collapse" data-target="#MGlist">
+                  <img src="{% static 'girlsfrontline/sim/MG.png' %}" class="img-fluid"></img>
+                </a>
+              </div>
+              <div id="MGlist" class="collapse">
+                <div class="card-body">
+                  MG list
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="equipSelect" class="modal fade" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-secondary text-light">
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="flex-row mb-3 stars5">
+            <button type="button" class="btn mb-1" value="equipid"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1" data-toggle="tooltip" data-placement="top" data-original-title="scope"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+          </div>
+          <div class="flex-row mb-3 stars4">
+            <button type="button" class="btn mb-1" data-toggle="tooltip" data-placement="top" data-original-title="scope" disabled><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1" disabled><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+          </div>
+          <div class="flex-row mb-3 stars3">
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+          </div>
+          <div class="flex-row mb-3 stars2">
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'girlsfrontline/js/sim.js' %}"></script>
+</main>
+{% endblock %}
