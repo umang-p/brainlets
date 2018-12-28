@@ -1,7 +1,6 @@
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 });
-$(".tilegrid").attr('data-original-title',"grizzly");
 
 //$(".modal").modal();
 // $(".modal").modal('show');

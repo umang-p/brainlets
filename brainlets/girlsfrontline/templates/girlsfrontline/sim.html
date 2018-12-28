@@ -9,7 +9,7 @@
 
 {% block main %}
 <main class="container-fluid clearfix">
-<div class="float-left mr-4 ml-2" style="width:570px">
+<div id="sim-controls" class="float-left mr-4 ml-2">
   <div class="row">
     <p class="h6 col">
       Total DMG 8s: <span id="dmg-8s">-</span>
@@ -29,538 +29,538 @@
       <br>
       <span id="name5"></span> DPS: <span id="doll5-dps">-</span>
   </div>
-  <div class="row no-gutters" style="height:160px">
+  <div class="formation-row row no-gutters">
     <div id="pos7" class="col border" draggable="">
       <img src="{% static 'girlsfrontline/sim/grizzly.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" title="test" style="right:0">
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile7 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile7 tilegrid-col tilegrid-target col border border-dark">
           </div>
-          <div class="tile8 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile8 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
           </div>
-          <div class="tile9 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-        </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile4 col border-left border-right border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-          <div class="tile5 col" style="height:12px;background-color:rgb(255,255,255);">
-          </div>
-          <div class="tile6 col border-left border-right border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile9 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile1 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile4 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
           </div>
-          <div class="tile2 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile5 tilegrid-col tilegrid-self col">
           </div>
-          <div class="tile3 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
+          <div class="tile6 tilegrid-col tilegrid-target col border-left border-right border-dark">
+          </div>
+        </div>
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile1 tilegrid-col tilegrid-target col border border-dark">
+          </div>
+          <div class="tile2 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          </div>
+          <div class="tile3 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
       </div>
-      <div class="d-inline-flex flex-wrap flex-row align-content-end position-absolute" style="bottom:0">
+      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
         <div class="fp bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="armor bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="rof bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="acc bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="eva bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="crit bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="skillcd bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
       </div>
     </div>
     <div id="pos8" class="col border-top border-bottom">
       <img src="{% static 'girlsfrontline/sim/grizzly.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" title="test" style="right:0">
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile7 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile7 tilegrid-col tilegrid-target col border border-dark">
           </div>
-          <div class="tile8 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile8 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
           </div>
-          <div class="tile9 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-        </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile4 col border-left border-right border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-          <div class="tile5 col" style="height:12px;background-color:rgb(255,255,255);">
-          </div>
-          <div class="tile6 col border-left border-right border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile9 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile1 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile4 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
           </div>
-          <div class="tile2 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile5 tilegrid-col tilegrid-self col">
           </div>
-          <div class="tile3 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
+          <div class="tile6 tilegrid-col tilegrid-target col border-left border-right border-dark">
+          </div>
+        </div>
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile1 tilegrid-col tilegrid-target col border border-dark">
+          </div>
+          <div class="tile2 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          </div>
+          <div class="tile3 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
       </div>
-      <div class="d-inline-flex flex-wrap flex-row align-content-end position-absolute" style="bottom:0">
+      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
         <div class="fp bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="armor bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="rof bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="acc bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="eva bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="crit bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="skillcd bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
       </div>
     </div>
     <div id="pos9" class="col border">
       <img src="{% static 'girlsfrontline/sim/grizzly.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" title="test" style="right:0">
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile7 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile7 tilegrid-col tilegrid-target col border border-dark">
           </div>
-          <div class="tile8 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile8 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
           </div>
-          <div class="tile9 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-        </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile4 col border-left border-right border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-          <div class="tile5 col" style="height:12px;background-color:rgb(255,255,255);">
-          </div>
-          <div class="tile6 col border-left border-right border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile9 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile1 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile4 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
           </div>
-          <div class="tile2 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile5 tilegrid-col tilegrid-self col">
           </div>
-          <div class="tile3 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
+          <div class="tile6 tilegrid-col tilegrid-target col border-left border-right border-dark">
+          </div>
+        </div>
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile1 tilegrid-col tilegrid-target col border border-dark">
+          </div>
+          <div class="tile2 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          </div>
+          <div class="tile3 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
       </div>
-      <div class="d-inline-flex flex-wrap flex-row align-content-end position-absolute" style="bottom:0">
+      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
         <div class="fp bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="armor bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="rof bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="acc bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="eva bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="crit bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="skillcd bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
       </div>
     </div>
   </div>
-  <div class="row no-gutters" style="height:160px">
+  <div class=" formation-row row no-gutters">
     <div id="pos4" class="col border-left border-right">
       <img src="{% static 'girlsfrontline/sim/grizzly.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" title="test" style="right:0">
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile7 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile7 tilegrid-col tilegrid-target col border border-dark">
           </div>
-          <div class="tile8 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile8 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
           </div>
-          <div class="tile9 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-        </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile4 col border-left border-right border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-          <div class="tile5 col" style="height:12px;background-color:rgb(255,255,255);">
-          </div>
-          <div class="tile6 col border-left border-right border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile9 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile1 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile4 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
           </div>
-          <div class="tile2 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile5 tilegrid-col tilegrid-self col">
           </div>
-          <div class="tile3 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
+          <div class="tile6 tilegrid-col tilegrid-target col border-left border-right border-dark">
+          </div>
+        </div>
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile1 tilegrid-col tilegrid-target col border border-dark">
+          </div>
+          <div class="tile2 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          </div>
+          <div class="tile3 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
       </div>
-      <div class="d-inline-flex flex-wrap flex-row align-content-end position-absolute" style="bottom:0">
+      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
         <div class="fp bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="armor bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="rof bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="acc bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="eva bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="crit bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="skillcd bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
       </div>
     </div>
     <div id="pos5" class="col">
       <img src="{% static 'girlsfrontline/sim/grizzly.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" title="test" style="right:0">
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile7 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile7 tilegrid-col tilegrid-target col border border-dark">
           </div>
-          <div class="tile8 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile8 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
           </div>
-          <div class="tile9 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-        </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile4 col border-left border-right border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-          <div class="tile5 col" style="height:12px;background-color:rgb(255,255,255);">
-          </div>
-          <div class="tile6 col border-left border-right border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile9 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile1 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile4 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
           </div>
-          <div class="tile2 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile5 tilegrid-col tilegrid-self col">
           </div>
-          <div class="tile3 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
+          <div class="tile6 tilegrid-col tilegrid-target col border-left border-right border-dark">
+          </div>
+        </div>
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile1 tilegrid-col tilegrid-target col border border-dark">
+          </div>
+          <div class="tile2 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          </div>
+          <div class="tile3 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
       </div>
-      <div class="d-inline-flex flex-wrap flex-row align-content-end position-absolute" style="bottom:0">
+      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
         <div class="fp bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="armor bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="rof bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="acc bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="eva bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="crit bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="skillcd bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
       </div>
     </div>
     <div id="pos6" class="col border-left border-right">
       <img src="{% static 'girlsfrontline/sim/grizzly.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" title="test" style="right:0">
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile7 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile7 tilegrid-col tilegrid-target col border border-dark">
           </div>
-          <div class="tile8 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile8 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
           </div>
-          <div class="tile9 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-        </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile4 col border-left border-right border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-          <div class="tile5 col" style="height:12px;background-color:rgb(255,255,255);">
-          </div>
-          <div class="tile6 col border-left border-right border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile9 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile1 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile4 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
           </div>
-          <div class="tile2 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile5 tilegrid-col tilegrid-self col">
           </div>
-          <div class="tile3 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
+          <div class="tile6 tilegrid-col tilegrid-target col border-left border-right border-dark">
+          </div>
+        </div>
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile1 tilegrid-col tilegrid-target col border border-dark">
+          </div>
+          <div class="tile2 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          </div>
+          <div class="tile3 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
       </div>
-      <div class="d-inline-flex flex-wrap flex-row align-content-end position-absolute" style="bottom:0">
+      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
         <div class="fp bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="armor bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="rof bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="acc bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="eva bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="crit bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="skillcd bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
       </div>
     </div>
   </div>
-  <div class="row no-gutters" style="height:160px">
+  <div class=" formation-row row no-gutters">
     <div id="pos1" class="col border">
       <img src="{% static 'girlsfrontline/sim/grizzly.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" title="test" style="right:0">
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile7 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile7 tilegrid-col tilegrid-target col border border-dark">
           </div>
-          <div class="tile8 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile8 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
           </div>
-          <div class="tile9 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-        </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile4 col border-left border-right border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-          <div class="tile5 col" style="height:12px;background-color:rgb(255,255,255);">
-          </div>
-          <div class="tile6 col border-left border-right border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile9 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile1 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile4 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
           </div>
-          <div class="tile2 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile5 tilegrid-col tilegrid-self col">
           </div>
-          <div class="tile3 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
+          <div class="tile6 tilegrid-col tilegrid-target col border-left border-right border-dark">
+          </div>
+        </div>
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile1 tilegrid-col tilegrid-target col border border-dark">
+          </div>
+          <div class="tile2 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          </div>
+          <div class="tile3 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
       </div>
-      <div class="d-inline-flex flex-wrap flex-row align-content-end position-absolute" style="bottom:0">
+      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
         <div class="fp bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="armor bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="rof bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="acc bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="eva bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="crit bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="skillcd bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
       </div>
     </div>
     <div id="pos2" class="col border-top border-bottom">
       <img src="{% static 'girlsfrontline/sim/grizzly.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" title="test" style="right:0">
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile7 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile7 tilegrid-col tilegrid-target col border border-dark">
           </div>
-          <div class="tile8 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile8 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
           </div>
-          <div class="tile9 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-        </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile4 col border-left border-right border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-          <div class="tile5 col" style="height:12px;background-color:rgb(255,255,255);">
-          </div>
-          <div class="tile6 col border-left border-right border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile9 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile1 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile4 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
           </div>
-          <div class="tile2 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile5 tilegrid-col tilegrid-self col">
           </div>
-          <div class="tile3 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
+          <div class="tile6 tilegrid-col tilegrid-target col border-left border-right border-dark">
+          </div>
+        </div>
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile1 tilegrid-col tilegrid-target col border border-dark">
+          </div>
+          <div class="tile2 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          </div>
+          <div class="tile3 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
       </div>
-      <div class="d-inline-flex flex-wrap flex-row align-content-end position-absolute" style="bottom:0">
+      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
         <div class="fp bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="armor bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="rof bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="acc bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="eva bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="crit bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="skillcd bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
       </div>
     </div>
     <div id="pos3" class="col border">
       <img src="{% static 'girlsfrontline/sim/grizzly.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" title="test" style="right:0">
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile7 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile7 tilegrid-col tilegrid-target col border border-dark">
           </div>
-          <div class="tile8 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile8 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
           </div>
-          <div class="tile9 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-        </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile4 col border-left border-right border-dark" style="height:12px;background-color:rgb(107,105,107);">
-          </div>
-          <div class="tile5 col" style="height:12px;background-color:rgb(255,255,255);">
-          </div>
-          <div class="tile6 col border-left border-right border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile9 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
-        <div class="row no-gutters" style="width:36px">
-          <div class="tile1 col border border-dark" style="height:12px;background-color:rgb(0,255,252);">
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile4 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
           </div>
-          <div class="tile2 col border-top border-bottom border-dark" style="height:12px;background-color:rgb(0,255,252);">
+          <div class="tile5 tilegrid-col tilegrid-self col">
           </div>
-          <div class="tile3 col border border-dark" style="height:12px;background-color:rgb(107,105,107);">
+          <div class="tile6 tilegrid-col tilegrid-target col border-left border-right border-dark">
+          </div>
+        </div>
+        <div class="tilegrid-row row no-gutters">
+          <div class="tile1 tilegrid-col tilegrid-target col border border-dark">
+          </div>
+          <div class="tile2 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          </div>
+          <div class="tile3 tilegrid-col tilegrid-neutral col border border-dark">
           </div>
         </div>
       </div>
-      <div class="d-inline-flex flex-wrap flex-row align-content-end position-absolute" style="bottom:0">
+      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
         <div class="fp bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="armor bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="rof bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="acc bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="eva bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="crit bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
         <div class="skillcd bg-dark ml-1">
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid" style="height:20px;width:20px;background-color:black"></img>
+          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
           <small>100%</small>
         </div>
       </div>
@@ -568,22 +568,22 @@
   </div>
   <div class="row no-gutters mt-2">
     <div class="col">
-      <label for="enemy_eva">Enemy EVA:</label>
-      <input id="enemy_eva" type="number" style="width:50px">
+      <label for="enemy-eva">Enemy EVA:</label>
+      <input id="enemy-eva" type="number">
     </div>
     <div class="col">
-      <label for="enemy_armor">Enemy Armor:</label>
-      <input id="enemy_armor" type="number" style="width:50px">
+      <label for="enemy-armor">Enemy Armor:</label>
+      <input id="enemy-armor" type="number">
     </div>
     <div class="col">
-      <label for="enemy_count">Enemy Count:</label>
-      <input id="enemy_count" type="number" style="width:50px">
+      <label for="enemy-count">Enemy Count:</label>
+      <input id="enemy-count" type="number">
     </div>
   </div>
   <div class="row mt-2">
     <div class="btn-group mx-auto">
-      <button id="day-btn" type="button" class="btn btn-success"><img src="{% static 'girlsfrontline/sim/day.png' %}" class="img-fluid" style="width:25px;height:25px"></img></button>
-      <button id="night-btn" type="button" class="btn"><img src="{% static 'girlsfrontline/sim/night.png' %}" class="img-fluid" style="width:25px;height:25px"></img></button>
+      <button id="day-btn" type="button" class="btn btn-success"><img src="{% static 'girlsfrontline/sim/day.png' %}" class="img-fluid"></img></button>
+      <button id="night-btn" type="button" class="btn"><img src="{% static 'girlsfrontline/sim/night.png' %}" class="img-fluid"></img></button>
     </div>
     <button id="boss-toggle" type="button" class="btn btn-success mx-auto">Boss</button>
     <button type="button" class="btn btn-default mx-auto">Help</button>
@@ -596,10 +596,10 @@
       <div class="card-body">
         <h5 id="doll1-name" class="card-title">Doll1</h5>
         <div class="affection float-left mr-2">
-          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
-          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
-          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid" style="width:40px;height:40px"></img>
-          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
+          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
         </div>
         <label>Level:</label>
         <select class="doll-level-select">
@@ -631,44 +631,44 @@
           <option>1</option>
         </select>
         <table class="table table-sm table-borderless">
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="fp align-middle">-</td>
+          <tr class="fp">
+            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="acc align-middle">-</td>
+          <tr class="acc">
+            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="eva align-middle">-</td>
+          <tr class="eva">
+            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="rof align-middle">-</td>
+          <tr class="rof">
+            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="crit align-middle">-</td>
+          <tr class="crit">
+            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="critdmg align-middle">-</td>
+          <tr class="critdmg">
+            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="rounds align-middle">-</td>
+          <tr class="rounds">
+            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="armor align-middle">-</td>
+          <tr class="armor">
+            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="ap align-middle">-</td>
+          <tr class="ap">
+            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
         </table>
-        <a href="#equip-select" data-toggle="modal"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid rounded stars5" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="{% static 'girlsfrontline/scope.png' %}" class="equip1 img-fluid rounded stars5"></img></a>
         <select class="equip1-level-select">
           <option>10</option>
           <option>9</option>
@@ -682,7 +682,7 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="equip2 img-fluid rounded"></img></a>
         <select class="equip2-level-select">
           <option>10</option>
           <option>9</option>
@@ -696,7 +696,7 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="equip3 img-fluid rounded"></img></a>
         <select class="equip3-level-select">
           <option>10</option>
           <option>9</option>
@@ -710,18 +710,18 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#doll-select" data-toggle="modal" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2" style="width:50px"></img></a>
-        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2" style="width:50px"></img></a>
+        <a href="#doll-select" data-toggle="modal" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
+        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
       </div>
     </div>
     <div id="doll2" class="card bg-secondary text-center">
       <div class="card-body">
         <h5 id="doll2-name" class="card-title">Doll2</h5>
         <div class="affection float-left mr-2">
-          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
-          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
-          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid" style="width:40px;height:40px"></img>
-          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
+          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
         </div>
         <label>Level:</label>
         <select class="doll-level-select">
@@ -753,44 +753,44 @@
           <option>1</option>
         </select>
         <table class="table table-sm table-borderless">
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="fp align-middle">-</td>
+          <tr class="fp">
+            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="acc align-middle">-</td>
+          <tr class="acc">
+            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="eva align-middle">-</td>
+          <tr class="eva">
+            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="rof align-middle">-</td>
+          <tr class="rof">
+            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="crit align-middle">-</td>
+          <tr class="crit">
+            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="critdmg align-middle">-</td>
+          <tr class="critdmg">
+            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="rounds align-middle">-</td>
+          <tr class="rounds">
+            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="armor align-middle">-</td>
+          <tr class="armor">
+            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="ap align-middle">-</td>
+          <tr class="ap">
+            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
         </table>
-        <a href="#equip-select" data-toggle="modal"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid rounded stars5" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="{% static 'girlsfrontline/scope.png' %}" class="equip1 img-fluid rounded stars5"></img></a>
         <select class="equip1-level-select">
           <option>10</option>
           <option>9</option>
@@ -804,7 +804,7 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="equip2 img-fluid rounded"></img></a>
         <select class="equip2-level-select">
           <option>10</option>
           <option>9</option>
@@ -818,7 +818,7 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="equip3 img-fluid rounded"></img></a>
         <select class="equip3-level-select">
           <option>10</option>
           <option>9</option>
@@ -832,18 +832,18 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#doll-select" data-toggle="modal" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2" style="width:50px"></img></a>
-        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2" style="width:50px"></img></a>
+        <a href="#doll-select" data-toggle="modal" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
+        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
       </div>
     </div>
     <div id="doll3" class="card bg-secondary text-center">
       <div class="card-body">
         <h5 id="doll3-name" class="card-title">Doll3</h5>
         <div class="affection float-left mr-2">
-          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
-          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
-          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid" style="width:40px;height:40px"></img>
-          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
+          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
         </div>
         <label>Level:</label>
         <select class="doll-level-select">
@@ -875,44 +875,44 @@
           <option>1</option>
         </select>
         <table class="table table-sm table-borderless">
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="fp align-middle">-</td>
+          <tr class="fp">
+            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="acc align-middle">-</td>
+          <tr class="acc">
+            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="eva align-middle">-</td>
+          <tr class="eva">
+            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="rof align-middle">-</td>
+          <tr class="rof">
+            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="crit align-middle">-</td>
+          <tr class="crit">
+            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="critdmg align-middle">-</td>
+          <tr class="critdmg">
+            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="rounds align-middle">-</td>
+          <tr class="rounds">
+            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="armor align-middle">-</td>
+          <tr class="armor">
+            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="ap align-middle">-</td>
+          <tr class="ap">
+            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
         </table>
-        <a href="#equip-select" data-toggle="modal"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid rounded stars5" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="{% static 'girlsfrontline/scope.png' %}" class="equip1 img-fluid rounded stars5"></img></a>
         <select class="equip1-level-select">
           <option>10</option>
           <option>9</option>
@@ -926,7 +926,7 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="equip2 img-fluid rounded"></img></a>
         <select class="equip2-level-select">
           <option>10</option>
           <option>9</option>
@@ -940,7 +940,7 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="equip3 img-fluid rounded"></img></a>
         <select class="equip3-level-select">
           <option>10</option>
           <option>9</option>
@@ -954,18 +954,18 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#doll-select" data-toggle="modal" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2" style="width:50px"></img></a>
-        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2" style="width:50px"></img></a>
+        <a href="#doll-select" data-toggle="modal" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
+        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
       </div>
     </div>
     <div id="doll4" class="card bg-secondary text-center">
       <div class="card-body">
         <h5 id="doll4-name" class="card-title">Doll4</h5>
         <div class="affection float-left mr-2">
-          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
-          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
-          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid" style="width:40px;height:40px"></img>
-          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
+          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
         </div>
         <label>Level:</label>
         <select class="doll-level-select">
@@ -997,44 +997,44 @@
           <option>1</option>
         </select>
         <table class="table table-sm table-borderless">
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="fp align-middle">-</td>
+          <tr class="fp">
+            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="acc align-middle">-</td>
+          <tr class="acc">
+            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="eva align-middle">-</td>
+          <tr class="eva">
+            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="rof align-middle">-</td>
+          <tr class="rof">
+            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="crit align-middle">-</td>
+          <tr class="crit">
+            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="critdmg align-middle">-</td>
+          <tr class="critdmg">
+            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="rounds align-middle">-</td>
+          <tr class="rounds">
+            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="armor align-middle">-</td>
+          <tr class="armor">
+            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="ap align-middle">-</td>
+          <tr class="ap">
+            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
         </table>
-        <a href="#equip-select" data-toggle="modal"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid rounded stars5" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="{% static 'girlsfrontline/scope.png' %}" class="equip1 img-fluid rounded stars5"></img></a>
         <select class="equip1-level-select">
           <option>10</option>
           <option>9</option>
@@ -1048,7 +1048,7 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="equip2 img-fluid rounded"></img></a>
         <select class="equip2-level-select">
           <option>10</option>
           <option>9</option>
@@ -1062,7 +1062,7 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="equip3 img-fluid rounded"></img></a>
         <select class="equip3-level-select">
           <option>10</option>
           <option>9</option>
@@ -1076,18 +1076,18 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#doll-select" data-toggle="modal" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2" style="width:50px"></img></a>
-        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2" style="width:50px"></img></a>
+        <a href="#doll-select" data-toggle="modal" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
+        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
       </div>
     </div>
     <div id="doll5" class="card bg-secondary text-center">
       <div class="card-body">
         <h5 id="doll5-name" class="card-title">Doll5</h5>
         <div class="affection float-left mr-2">
-          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
-          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
-          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid" style="width:40px;height:40px"></img>
-          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" style="width:40px;height:40px" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
+          <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
+          <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
         </div>
         <label>Level:</label>
         <select class="doll-level-select">
@@ -1119,44 +1119,44 @@
           <option>1</option>
         </select>
         <table class="table table-sm table-borderless">
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="fp align-middle">-</td>
+          <tr class="fp">
+            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="acc align-middle">-</td>
+          <tr class="acc">
+            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="eva align-middle">-</td>
+          <tr class="eva">
+            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="rof align-middle">-</td>
+          <tr class="rof">
+            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="crit align-middle">-</td>
+          <tr class="crit">
+            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="critdmg align-middle">-</td>
+          <tr class="critdmg">
+            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="rounds align-middle">-</td>
+          <tr class="rounds">
+            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="armor align-middle">-</td>
+          <tr class="armor">
+            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
-            <td class="ap align-middle">-</td>
+          <tr class="ap">
+            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid"></img></td>
+            <td class="align-middle">-</td>
           </tr>
         </table>
-        <a href="#equip-select" data-toggle="modal"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid rounded stars5" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="{% static 'girlsfrontline/scope.png' %}" class="equip1 img-fluid rounded stars5"></img></a>
         <select class="equip1-level-select">
           <option>10</option>
           <option>9</option>
@@ -1170,7 +1170,7 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="equip2 img-fluid rounded"></img></a>
         <select class="equip2-level-select">
           <option>10</option>
           <option>9</option>
@@ -1184,7 +1184,7 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="img-fluid rounded" style="width:64px;height:64px;"></img></a>
+        <a href="#equip-select" data-toggle="modal"><img src="//:0" class="equip3 img-fluid rounded"></img></a>
         <select class="equip3-level-select">
           <option>10</option>
           <option>9</option>
@@ -1198,8 +1198,8 @@
           <option>1</option>
         </select>
         <br>
-        <a href="#doll-select" data-toggle="modal" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2" style="width:50px"></img></a>
-        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2" style="width:50px"></img></a>
+        <a href="#doll-select" data-toggle="modal" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
+        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
       </div>
     </div>
     <div class="card bg-secondary text-center" hidden>
@@ -1207,24 +1207,24 @@
         <h5 class="card-title">Fairy</h5>
         <h6 class="card-subtitle mb-2">Fairy Type</h6>
         <table class="table table-sm table-borderless">
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+          <tr class="fp">
+            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img></td>
             <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+          <tr class="acc">
+            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img></td>
             <td class="align-middle">-</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+          <tr class="eva">
+            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img></td>
             <td class="align-middle">00</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+          <tr class="crit">
+            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img></td>
             <td class="align-middle">100</td>
           </tr>
-          <tr>
-            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid" style="width:20px;height:20px"></img></td>
+          <tr class="armor">
+            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img></td>
             <td class="align-middle">100</td>
           </tr>
         </table>
@@ -1360,27 +1360,27 @@
       <div class="modal-body">
         <div class="container-fluid">
           <div class="flex-row mb-3 stars5">
-            <button type="button" class="btn mb-1" value="equipid"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
-            <button type="button" class="btn mb-1" data-toggle="tooltip" data-placement="top" data-original-title="scope"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
-            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1" value="equipid"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
+            <button type="button" class="btn mb-1" data-toggle="tooltip" data-placement="top" data-original-title="scope"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
           </div>
           <div class="flex-row mb-3 stars4">
-            <button type="button" class="btn mb-1" data-toggle="tooltip" data-placement="top" data-original-title="scope" disabled><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
-            <button type="button" class="btn mb-1" disabled><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
-            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
-            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
-            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
-            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
-            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
-            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
-            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
-            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1" data-toggle="tooltip" data-placement="top" data-original-title="scope" disabled><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
+            <button type="button" class="btn mb-1" disabled><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
           </div>
           <div class="flex-row mb-3 stars3">
-            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
           </div>
           <div class="flex-row mb-3 stars2">
-            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid" style="width:45px;height:45px"></img></button>
+            <button type="button" class="btn mb-1"><img src="{% static 'girlsfrontline/scope.png' %}" class="img-fluid"></img></button>
           </div>
         </div>
       </div>

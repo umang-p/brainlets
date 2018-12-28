@@ -1,3 +1,59 @@
+#sim-controls {
+  width: 570px;
+}
+.formation-row {
+  height: 160px;
+}
+.tilegrid {
+  right: 0;
+}
+.tilegrid-row {
+  width: 36px;
+}
+.tilegrid-col {
+  height: 12px;
+}
+.tilegrid-target {
+  background-color: rgb(0,255,252);
+}
+.tilegrid-self {
+  background-color: rgb(255,255,255);
+}
+.tilegrid-neutral {
+  background-color: rgb(107,105,107);
+}
+.tilebuff-row {
+  bottom: 0;
+}
+.tilebuff-row img {
+  background-color: black;
+}
+.fp img, .armor img, .rof img, .eva img, .acc img, .crit img, .skillcd img, .critdmg img, .rounds img, .ap img{
+  height: 20px;
+  width: 20px;
+}
+#enemy-eva, #enemy-armor, #enemy-count {
+  width: 50px;
+}
+#day-btn img, #night-btn img {
+  height: 25px;
+  width: 25px;
+}
+.affection img {
+  height: 40px;
+  width: 40px;
+}
+.equip1, .equip2, .equip3 {
+  height: 64px;
+  width: 64px;
+}
+.add-doll img, .remove-doll img {
+  width: 50px;
+}
+#equip-select img {
+  height: 45px;
+  width: 45px;
+}
 .stars5 button, img.stars5 {
   background-color: rgb(255, 219, 0);
 }
