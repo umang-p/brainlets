@@ -28,3 +28,8 @@ function calculateBatteries() {
 
   $("#batteries").text(Math.round(batteriesPerDay));
 }
+
+$(function() {
+  $("#numDorms").change(changeDormCount);
+  $("#comfort input").on('input', calculateBatteries);
+});

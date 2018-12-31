@@ -2,12 +2,18 @@
 
 {% block title %}Battery Calculator - brainlets.moe{% endblock %}
 
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'girlsfrontline/css/batterycalculator.css' %}">
+{% endblock %}
+
 {% block main %}
 <main class="container">
-<div class="row text-center mx-auto" style="max-width:600px">
+<div class=" calculator row text-center mx-auto">
   <div class="col-sm">
     <label for="numDorms">Number of Dorms:</label>
-    <select id="numDorms" class="form-control" onchange="changeDormCount()">
+    <select id="numDorms" class="form-control">
       <option selected>2</option>
       <option>3</option>
       <option>4</option>
@@ -21,23 +27,22 @@
   </div>
   <div id="comfort" class="col-sm">
     <label>Comfort:</label>
-    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 1">
-    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 2">
-    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 3" hidden>
-    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 4" hidden>
-    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 5" hidden>
-    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 6" hidden>
-    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 7" hidden>
-    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 8" hidden>
-    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 9" hidden>
-    <input type="number" class="form-control" oninput="calculateBatteries()" placeholder="Dorm 10" hidden>
+    <input type="number" class="form-control" placeholder="Dorm 1">
+    <input type="number" class="form-control" placeholder="Dorm 2">
+    <input type="number" class="form-control" placeholder="Dorm 3" hidden>
+    <input type="number" class="form-control" placeholder="Dorm 4" hidden>
+    <input type="number" class="form-control" placeholder="Dorm 5" hidden>
+    <input type="number" class="form-control" placeholder="Dorm 6" hidden>
+    <input type="number" class="form-control" placeholder="Dorm 7" hidden>
+    <input type="number" class="form-control" placeholder="Dorm 8" hidden>
+    <input type="number" class="form-control" placeholder="Dorm 9" hidden>
+    <input type="number" class="form-control" placeholder="Dorm 10" hidden>
   </div>
   <div class="col-sm">
     <label for="batteries">Batteries per day:</label>
     <p id="batteries" class="h1">50</p>
   </div>
 </div>
-{% load static %}
 <script src="{% static 'girlsfrontline/js/batterycalculator.js' %}"></script>
 </main>
 {% endblock %}
