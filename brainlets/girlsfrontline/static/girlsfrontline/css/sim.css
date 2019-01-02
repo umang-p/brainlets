@@ -38,6 +38,7 @@
 #day-btn img, #night-btn img {
   height: 25px;
   width: 25px;
+  pointer-events: none;
 }
 .affection img {
   height: 40px;
