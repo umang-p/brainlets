@@ -10,3 +10,9 @@
 .stars2 {
   background-color: rgb(222, 223, 222);
 }
+#timer-input {
+  max-width: 350px;
+}
+#doll-table {
+  max-width: 450px;
+}

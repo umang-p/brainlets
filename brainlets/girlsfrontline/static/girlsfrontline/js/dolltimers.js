@@ -27,5 +27,8 @@ function focusMinutes() {
 }
 
 $(function() {
+  $("#hours").on('input', filterDolls);
+  $("#hours").keyup(focusMinutes);
+  $("#minutes").on('input', filterDolls);
   $("#hours").focus();
 });

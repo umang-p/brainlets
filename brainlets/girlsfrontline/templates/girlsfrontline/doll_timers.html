@@ -11,13 +11,13 @@
 {% block main %}
 <main class="container">
 <p class="h4 text-center">T-doll Construction Timers:</p>
-<div id="timer_input" class="row justify-content-center text-center input-group mb-2 mx-auto" style="max-width:350px">
-    <input id="hours" type="number" class="form-control col-2" oninput="filterDolls()" onkeyup="focusMinutes()" placeholder="00">
+<div id="timer-input" class="row justify-content-center text-center input-group mb-2 mx-auto">
+    <input id="hours" type="number" class="form-control col-2" placeholder="00">
     <span class="h4"> : </span>
-    <input id="minutes" type="number" class="form-control col-2" oninput="filterDolls()" placeholder="00">
+    <input id="minutes" type="number" class="form-control col-2" placeholder="00">
 </div>
-<div class="table-responsive bg-light text-dark text-center mx-auto" style="max-width:450px">
-  <table id="dolltable" class="table">
+<div id="doll-table" class="table-responsive bg-light text-dark text-center mx-auto">
+  <table class="table">
     <thead class="thead">
       <tr>
         <th scope="col">Time</th>
@@ -36,7 +36,6 @@
     </tbody>
   </table>
 </div>
-{% load static %}
 <script src="{% static 'girlsfrontline/js/dolltimers.js' %}"></script>
 </main>
 {% endblock %}
