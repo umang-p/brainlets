@@ -10,3 +10,13 @@
 .stars2 {
   background-color: rgb(222, 223, 222);
 }
+#timer-input {
+  max-width: 350px;
+}
+#equip-table {
+  max-width: 450px;
+}
+td img {
+  height: 64px;
+  width: 64px;
+}

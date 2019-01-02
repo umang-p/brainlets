@@ -27,5 +27,8 @@ function focusMinutes() {
 }
 
 $(function() {
+  $("#hours").on('input', filterEquips);
+  $("#hours").keyup(focusMinutes);
+  $("#minutes").on('input', filterEquips);
   $("#hours").focus();
 });

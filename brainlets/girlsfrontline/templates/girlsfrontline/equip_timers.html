@@ -11,13 +11,13 @@
 {% block main %}
 <main class="container">
 <p class="h4 text-center">Equipment Construction Timers:</p>
-<div id="timer_input" class="row justify-content-center text-center input-group mb-2 mx-auto" style="max-width:350px">
-    <input id="hours" type="number" class="form-control col-2" oninput="filterEquips()" onkeyup="focusMinutes()" placeholder="00">
+<div id="timer-input" class="row justify-content-center text-center input-group mb-2 mx-auto">
+    <input id="hours" type="number" class="form-control col-2" placeholder="00">
     <span class="h4"> : </span>
-    <input id="minutes" type="number" class="form-control col-2" oninput="filterEquips()" placeholder="00">
+    <input id="minutes" type="number" class="form-control col-2" placeholder="00">
 </div>
-<div class="table-responsive bg-light text-dark text-center mx-auto" style="max-width:450px">
-  <table id="equiptable" class="table table-sm">
+<div id="equip-table" class="table-responsive bg-light text-dark text-center mx-auto">
+  <table class="table table-sm">
     <thead class="thead">
       <tr>
         <th scope="col">Time</th>
@@ -29,7 +29,7 @@
       {% for equip in equip_list %}
         <tr>
           <td class="align-middle font-weight-bold">{{equip.hours}}:{{equip.minutes}}</td>
-          <td class="stars{{equip.rarity}}"><img class="img-fluid" style="width:64px;height:64px" src="{% static 'girlsfrontline/'|add:equip.type|add:'.png' %}"></img></td>
+          <td class="stars{{equip.rarity}}"><img class="img-fluid" src="{% static 'girlsfrontline/'|add:equip.type|add:'.png' %}"></img></td>
           <td class="align-middle font-weight-bold"><p class="text-success">{{equip.poseffect}}</p>
             {% if equip.negeffect != 'none' %}
             <p class="text-danger">{{equip.negeffect}}</p>
