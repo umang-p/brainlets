@@ -1,0 +1,20 @@
+[
+{
+  "id": 1,
+  "name": "SAA",
+  "rarity": 4,
+  "type": 1,
+  "tooltip_tiles": "Damage +%, Accuracy +50%",
+  "tooltip_skill1": "dmg up",
+  "tooltip_skill2": ""
+},
+{
+  "id": 2,
+  "name": "sldkfj",
+  "rarity": 2,
+  "type": 5,
+  "tooltip_tiles": "Damage +%, Accuracy +50%",
+  "tooltip_skill1": "dmg up",
+  "tooltip_skill2": ""
+}
+]

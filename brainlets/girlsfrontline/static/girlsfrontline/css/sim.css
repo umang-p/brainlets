@@ -54,6 +54,7 @@
 #equip-select img {
   height: 45px;
   width: 45px;
+  pointer-events: none;
 }
 .stars5 button, img.stars5 {
   background-color: rgb(255, 219, 0);
@@ -69,4 +70,7 @@
 }
 .stars1 button, img.stars1 {
   background-color: rgb(222, 182, 255);
+}
+.tooltip-inner {
+  max-width: 350px;
 }

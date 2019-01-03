@@ -1,0 +1,42 @@
+[
+{
+  "id":1,
+  "type":1,
+  "rarity":2,
+  "fp": 0,
+  "acc": 0,
+  "eva": 0,
+  "movespeed":0,
+  "rof": 0,
+  "critdmg": 0,
+  "crit": 8,
+  "ap": 0,
+  "armor": 0,
+  "nightview": 0,
+  "rounds": 0,
+  "level_bonus": 0,
+  "name": "BM 3-12X40",
+  "fit_guns": "0",
+  "tooltip": "Critical Hit Chance (%) +8"
+},
+{
+  "id":2,
+  "type":1,
+  "rarity":3,
+  "fp": 0,
+  "acc": 0,
+  "eva": 0,
+  "movespeed":0,
+  "rof": 0,
+  "critdmg": 0,
+  "crit": 12,
+  "ap": 0,
+  "armor": 0,
+  "nightview": 0,
+  "rounds": 0,
+  "level_bonus": 1000,
+  "name": "LRA 2-12x50",
+  "fit_guns": "0",
+  "tooltip": "Critical Hit Chance (%) +12-24"
+}
+]
