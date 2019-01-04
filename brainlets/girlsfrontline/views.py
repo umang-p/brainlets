@@ -22,7 +22,7 @@ def equip_timers(request):
 
     equip_list = []
     for equip in equip_info:
-        if equip['fit_guns'] == '' and equip['cn_name'].find('16lab') == -1 and equip['cn_name'].find('16Lab') == -1 and equip['company'] != '' and (equip['max_level'] != 0 or equip['rank'] == 2):
+        if equip['fit_guns'] == '' and equip['cn_name'].find('16lab') == -1 and equip['cn_name'].find('16Lab') == -1 and equip['company'] != '' and (int(equip['max_level']) != 0 or int(equip['rank']) == 2) and int(equip['id']) != 51:
             info = {}
             info['hours'] = '{0:0>2.0f}'.format(int(equip['develop_duration']) / 60 // 60)
             info['minutes'] = '{0:0>2.0f}'.format(int(equip['develop_duration']) / 60 % 60)
