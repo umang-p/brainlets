@@ -31,11 +31,7 @@ $(function () {
     }
   });
 
-  echelon = [{pos:7, affection:2, base:{}, equip_bonus:{}, tile_bonus:{}},
-              {pos:4, affection:2, base:{}, equip_bonus:{}, tile_bonus:{}},
-              {pos:1, affection:2, base:{}, equip_bonus:{}, tile_bonus:{}},
-              {pos:8, affection:2, base:{}, equip_bonus:{}, tile_bonus:{}},
-              {pos:5, affection:2, base:{}, equip_bonus:{}, tile_bonus:{}}];
+  initEchelon();
 
   $('.affection').click(cycleAffection);
 
@@ -58,6 +54,36 @@ $(function () {
 
   $('[data-toggle="tooltip"]').tooltip();
 });
+
+function initEchelon() {
+  echelon = [createDummyDoll(12),
+              createDummyDoll(22),
+              createDummyDoll(32),
+              createDummyDoll(13),
+              createDummyDoll(23)];
+}
+
+function createDummyDoll(p) {
+  var obj;
+  obj = {
+    pos:p,
+    affection:2,
+    tiles:{},
+    base:{},
+    equip_bonus:{},
+    tile_bonus:{
+      fp:0,
+      acc:0,
+      eva:0,
+      rof:0,
+      crit:0,
+      skillcd:0,
+      armor:0
+    }
+  }
+
+  return obj;
+}
 
 function cycleAffection(event) {
   var affectionImage = $(event.target);
@@ -111,14 +137,14 @@ function toggleBoss() {
 function initDollSelectModal() {
   for(var i = 0; i < dollData.length; i++) {
     var doll = dollData[i];
-    $('#doll-list-'+doll.type+' .stars'+doll.rarity).append('<button type="button" class="btn mb-1" data-id="'+doll.id+'" data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="'+doll.tooltip_tiles+'<br>'+doll.tooltip_skill1+'<br>'+doll.tooltip_skill2+'">'+doll.name+'</button>');
+    $('#doll-list-'+doll.type+' .stars'+doll.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="'+doll.id+'" data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="'+doll.tooltip_tiles+'<br>'+doll.tooltip_skill1+'<br>'+doll.tooltip_skill2+'">'+doll.name+'</button>');
   }
 }
 
 function initEquipSelectModal() {
   for(var i = 0; i < equipData.length; i++) {
     var equip = equipData[i];
-    $('#equip-select .stars'+equip.rarity).append('<button type="button" class="btn mb-1" data-id="'+equip.id+'" data-toggle="tooltip" data-placement="top" data-original-title="'+equip.tooltip+'"><img src="/static/girlsfrontline/sim/equips/'+equip.type+'.png" class="img-fluid"></img></button>');
+    $('#equip-select .stars'+equip.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="'+equip.id+'" data-toggle="tooltip" data-placement="top" data-original-title="'+equip.tooltip+'"><img src="/static/girlsfrontline/sim/equips/'+equip.type+'.png" class="img-fluid"></img></button>');
   }
 }
 
@@ -150,7 +176,7 @@ function changeEquipment(event) {
   echelon[dollIndex].equip_bonus.armor = selectedEquip.armor;
   echelon[dollIndex].equip_bonus.nightview = selectedEquip.nightview;
   echelon[dollIndex].equip_bonus.rounds = selectedEquip.rounds;
-  
+
   //update DPS for this doll
   //update total dps
   //update ui
@@ -176,19 +202,74 @@ function changeDoll(event) {
   echelon[index].type = selectedDoll.type;
   echelon[index].base.fp = selectedDoll.fp;
   echelon[index].base.acc = selectedDoll.acc;
-  echelon[index].base.eva = selectedDoll.type;
+  echelon[index].base.eva = selectedDoll.eva;
   echelon[index].base.rof = selectedDoll.rof;
   echelon[index].base.crit = selectedDoll.crit;
   echelon[index].base.critdmg = selectedDoll.critdmg;
   echelon[index].base.ap = selectedDoll.ap;
   echelon[index].base.rounds = selectedDoll.rounds;
   echelon[index].base.armor = selectedDoll.armor;
+  echelon[index].tiles = selectedDoll.tiles;
+  $('#pos'+echelon[index].pos).attr('data-id', selectedDoll.id);
 
   //set default equips
-  //calculate tiles
+
+  calculateTileBonus();
+
   //update dps for all dolls
   //update total dps
   //update ui for all
 
   console.log('in change d'+event.data+'i'+$(event.target).attr('data-id'));
+}
+
+function calculateTileBonus() {
+  for(var i = 0; i < echelon.length; i++) {
+    echelon[i].tile_bonus = {fp:0,acc:0,eva:0,rof:0,crit:0,skillcd:0,armor:0};
+  }
+
+  var validSquares = [12,13,14,22,23,24,32,33,34];
+  $.each(validSquares, function(index, value) {
+    var id = $('#pos'+value).attr('data-id');
+    if(id == -1) {
+      return true;
+    }
+
+    var doll = findDollIndexById(id);
+    var targetSquares = echelon[doll].tiles.target.split(",");
+
+    for(i = 0; i < targetSquares.length; i++) {
+      var targetSquare = value + parseInt(targetSquares[i]);
+      if($.inArray(targetSquare, validSquares) == -1) {
+        continue;
+      }
+
+      var target = findDollIndexById($('#pos'+targetSquare).attr('data-id'));
+      if(target == -1) {
+        continue;
+      }
+
+      if(echelon[doll].tiles.target_type == 0 || echelon[doll].tiles.target_type == echelon[target].type) {
+        echelon[target].tile_bonus.fp += echelon[doll].tiles.effect.fp;
+        echelon[target].tile_bonus.acc += echelon[doll].tiles.effect.acc;
+        echelon[target].tile_bonus.eva += echelon[doll].tiles.effect.eva;
+        echelon[target].tile_bonus.rof += echelon[doll].tiles.effect.rof;
+        echelon[target].tile_bonus.crit += echelon[doll].tiles.effect.crit;
+        echelon[target].tile_bonus.skillcd += echelon[doll].tiles.effect.skillcd;
+        if(echelon[target].tile_bonus.skillcd > 30) {
+          echelon[target].tile_bonus.skillcd = 30;
+        }
+        echelon[target].tile_bonus.armor += echelon[doll].tiles.effect.armor;
+      }
+    }
+  });
+}
+
+function findDollIndexById(id) {
+  for(var i = 0; i < echelon.length; i++) {
+    if(echelon[i].id == id) {
+      return i;
+    }
+  }
+  return -1;
 }

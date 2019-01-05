@@ -6,7 +6,21 @@
   "type": 1,
   "tooltip_tiles": "Damage +%, Accuracy +50%",
   "tooltip_skill1": "dmg up",
-  "tooltip_skill2": ""
+  "tooltip_skill2": "",
+  "tiles":{
+            "self":23,
+            "target":"1,-1,10,-10",
+            "target_type":0,
+            "effect":{
+                        "fp":24,
+                        "acc":50,
+                        "eva":0,
+                        "rof":0,
+                        "crit":0,
+                        "skillcd":0,
+                        "armor":0
+                     }
+          }
 },
 {
   "id": 2,
@@ -15,6 +29,43 @@
   "type": 5,
   "tooltip_tiles": "Damage +%, Accuracy +50%",
   "tooltip_skill1": "dmg up",
-  "tooltip_skill2": ""
+  "tooltip_skill2": "",
+  "tiles":{
+            "self":23,
+            "target":"1,-1,10,-10",
+            "target_type":0,
+            "effect":{
+                        "fp":24,
+                        "acc":50,
+                        "eva":0,
+                        "rof":0,
+                        "crit":0,
+                        "skillcd":0,
+                        "armor":0
+                     }
+          }
+},
+{
+  "id": 3,
+  "name": "SAA3",
+  "rarity": 4,
+  "type": 1,
+  "tooltip_tiles": "Damage +%, Accuracy +50%",
+  "tooltip_skill1": "dmg up",
+  "tooltip_skill2": "",
+  "tiles":{
+            "self":23,
+            "target":"1,-1,10,-10",
+            "target_type":0,
+            "effect":{
+                        "fp":24,
+                        "acc":50,
+                        "eva":0,
+                        "rof":0,
+                        "crit":0,
+                        "skillcd":0,
+                        "armor":0
+                     }
+          }
 }
 ]
