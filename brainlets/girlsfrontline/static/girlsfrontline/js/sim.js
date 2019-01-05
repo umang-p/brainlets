@@ -188,6 +188,12 @@ function selectDoll(event) {
   event.preventDefault();
   $('#doll-select button').off('click');
   $('#doll-select button').click(event.data, changeDoll);
+
+  $('#doll-select button').prop('disabled', false);
+  for(var i = 0; i < echelon.length; i++) {
+    $('#doll-select button[data-id='+echelon[i].id+']').prop('disabled', true);
+  }
+
   $('#doll-select').modal('show');
 }
 
