@@ -47,6 +47,7 @@ $(function () {
 
   for(var i = 1; i <= 5; i++) {
     $('#doll'+i+' .add-doll').click(i,selectDoll);
+    $('#doll'+i+' .remove-doll').click(i,removeDoll);
     for(var j = 1; j <= 3; j++) {
       $('#doll'+i+' .equip'+j).click({doll:i, equip:j}, selectEquipment);
     }
@@ -283,6 +284,19 @@ function calculateTileBonus() {
   });
 }
 
+function removeDoll(event) {
+  event.preventDefault();
+
+  var index = event.data-1;
+  $('#pos'+echelon[index].pos).attr('data-id', -1);
+  echelon[index] = createDummyDoll(echelon[index].pos);
+
+  calculateTileBonus();
+  //update dps for all dolls
+  //update total dps
+  updateUIAllDolls();
+}
+
 function updateUIAllDolls() {
   for(var i = 0; i < echelon.length; i++) {
     updateUIForDoll(i);
@@ -292,37 +306,48 @@ function updateUIAllDolls() {
 function updateUIForDoll(index) {
   var doll = echelon[index];
   if(doll.id == -1) {
-    return;
-  }
-
-  $('#doll'+(index+1)+'-name').text(doll.name);
-  $('#doll'+(index+1)+' .fp span').text(doll.fp);
-  $('#doll'+(index+1)+' .acc span').text(doll.acc);
-  $('#doll'+(index+1)+' .eva span').text(doll.eva);
-  $('#doll'+(index+1)+' .rof span').text(doll.rof);
-  $('#doll'+(index+1)+' .crit span').text(doll.crit);
-  $('#doll'+(index+1)+' .critdmg span').text(doll.fp);
-  if(doll.rounds != 0) {
-    $('#doll'+(index+1)+' .rounds span').text(doll.rounds);
-  }
-  $('#doll'+(index+1)+' .armor span').text(doll.armor);
-  $('#doll'+(index+1)+' .ap span').text(doll.ap);
-
-  $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/dolls/'+doll.name+'.png');
-
-  $('#pos'+doll.pos+' .tilegrid').prop('hidden', false);
-  $('#pos'+doll.pos+' .tilegrid').attr('data-original-title', doll.tooltip_tiles);
-  var targetSquares = doll.tiles.target.split(',');
-  $('#pos'+doll.pos+' .tilegrid-col').removeClass('tilegrid-target tilegrid-neutral tilegrid-self');
-  $('#pos'+doll.pos+' .tile'+doll.tiles.self).addClass('tilegrid-self');
-  for(var i = 0; i < targetSquares.length; i++) {
-    $('#pos'+doll.pos+' .tile'+(doll.tiles.self+parseInt(targetSquares[i]))).addClass('tilegrid-target');
-  }
-  $.each([12,13,14,22,23,24,32,33,34], function(index, value) {
-    if(!$('#pos'+doll.pos+' .tile'+value).hasClass('tilegrid-self') && !$('#pos'+doll.pos+' .tile'+value).hasClass('tilegrid-target')) {
-      $('#pos'+doll.pos+' .tile'+value).addClass('tilegrid-neutral');
+    $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/placeholder.png');
+    $('#pos'+doll.pos+' .tilegrid').prop('hidden', true);
+    $('#doll'+(index+1)+'-name').text('-');
+    $('#doll'+(index+1)+' .fp span').text('-');
+    $('#doll'+(index+1)+' .acc span').text('-');
+    $('#doll'+(index+1)+' .eva span').text('-');
+    $('#doll'+(index+1)+' .rof span').text('-');
+    $('#doll'+(index+1)+' .crit span').text('-');
+    $('#doll'+(index+1)+' .critdmg span').text('-');
+    $('#doll'+(index+1)+' .rounds span').text('-');
+    $('#doll'+(index+1)+' .armor span').text('-');
+    $('#doll'+(index+1)+' .ap span').text('-');
+  } else {
+    $('#doll'+(index+1)+'-name').text(doll.name);
+    $('#doll'+(index+1)+' .fp span').text(doll.fp);
+    $('#doll'+(index+1)+' .acc span').text(doll.acc);
+    $('#doll'+(index+1)+' .eva span').text(doll.eva);
+    $('#doll'+(index+1)+' .rof span').text(doll.rof);
+    $('#doll'+(index+1)+' .crit span').text(doll.crit);
+    $('#doll'+(index+1)+' .critdmg span').text(doll.fp);
+    if(doll.rounds != 0) {
+      $('#doll'+(index+1)+' .rounds span').text(doll.rounds);
     }
-  });
+    $('#doll'+(index+1)+' .armor span').text(doll.armor);
+    $('#doll'+(index+1)+' .ap span').text(doll.ap);
+
+    $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/dolls/'+doll.name+'.png');
+
+    $('#pos'+doll.pos+' .tilegrid').prop('hidden', false);
+    $('#pos'+doll.pos+' .tilegrid').attr('data-original-title', doll.tooltip_tiles);
+    var targetSquares = doll.tiles.target.split(',');
+    $('#pos'+doll.pos+' .tilegrid-col').removeClass('tilegrid-target tilegrid-neutral tilegrid-self');
+    $('#pos'+doll.pos+' .tile'+doll.tiles.self).addClass('tilegrid-self');
+    for(var i = 0; i < targetSquares.length; i++) {
+      $('#pos'+doll.pos+' .tile'+(doll.tiles.self+parseInt(targetSquares[i]))).addClass('tilegrid-target');
+    }
+    $.each([12,13,14,22,23,24,32,33,34], function(index, value) {
+      if(!$('#pos'+doll.pos+' .tile'+value).hasClass('tilegrid-self') && !$('#pos'+doll.pos+' .tile'+value).hasClass('tilegrid-target')) {
+        $('#pos'+doll.pos+' .tile'+value).addClass('tilegrid-neutral');
+      }
+    });
+  }
 
   var tile_bonuses = ['fp','acc','eva','rof','crit','skillcd','armor'];
   for(i = 0; i < tile_bonuses.length; i++) {
@@ -336,6 +361,9 @@ function updateUIForDoll(index) {
 }
 
 function findDollIndexById(id) {
+  if(id == -1) {
+    return -1;
+  }
   for(var i = 0; i < echelon.length; i++) {
     if(echelon[i].id == id) {
       return i;
