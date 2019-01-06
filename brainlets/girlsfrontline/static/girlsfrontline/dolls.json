@@ -33,7 +33,7 @@
   "tiles":{
             "self":23,
             "target":"1,-1,10,-10",
-            "target_type":0,
+            "target_type":6,
             "effect":{
                         "fp":24,
                         "acc":50,
