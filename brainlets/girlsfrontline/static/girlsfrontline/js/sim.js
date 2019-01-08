@@ -191,8 +191,6 @@ function changeEquipment(event) {
   //update DPS for this doll
   //update total dps
   //update ui
-
-  console.log('in change e'+event.data.doll+event.data.equip+'i'+$(event.target).attr('data-id'));
 }
 
 function selectDoll(event) {
@@ -228,7 +226,7 @@ function changeDoll(event) {
   echelon[index].base.armor = selectedDoll.armor;
   echelon[index].tiles = selectedDoll.tiles;
   echelon[index].tooltip_tiles = selectedDoll.tooltip_tiles;
-  $('#pos'+echelon[index].pos).attr('data-id', selectedDoll.id);
+  $('#pos'+echelon[index].pos).attr('data-index', index);
 
   //set default equips
 
@@ -238,8 +236,6 @@ function changeDoll(event) {
   //update total dps
   //update ui for all
   updateUIAllDolls();
-
-  console.log('in change d'+event.data+'i'+$(event.target).attr('data-id'));
 }
 
 function calculateTileBonus() {
@@ -249,13 +245,12 @@ function calculateTileBonus() {
 
   var validSquares = [12,13,14,22,23,24,32,33,34];
   $.each(validSquares, function(index, value) {
-    var id = $('#pos'+value).attr('data-id');
-    if(id == -1) {
+    var dollIndex = $('#pos'+value).attr('data-index');
+    if(dollIndex == -1 || echelon[dollIndex].id == -1) {
       return true;
     }
 
-    var doll = findDollIndexById(id);
-    var targetSquares = echelon[doll].tiles.target.split(",");
+    var targetSquares = echelon[dollIndex].tiles.target.split(",");
 
     for(i = 0; i < targetSquares.length; i++) {
       var targetSquare = value + parseInt(targetSquares[i]);
@@ -263,22 +258,22 @@ function calculateTileBonus() {
         continue;
       }
 
-      var target = findDollIndexById($('#pos'+targetSquare).attr('data-id'));
-      if(target == -1) {
+      var targetIndex = $('#pos'+targetSquare).attr('data-index');
+      if(targetIndex == -1 || echelon[targetIndex].id == -1) {
         continue;
       }
 
-      if(echelon[doll].tiles.target_type == 0 || echelon[doll].tiles.target_type == echelon[target].type) {
-        echelon[target].tile_bonus.fp += echelon[doll].tiles.effect.fp;
-        echelon[target].tile_bonus.acc += echelon[doll].tiles.effect.acc;
-        echelon[target].tile_bonus.eva += echelon[doll].tiles.effect.eva;
-        echelon[target].tile_bonus.rof += echelon[doll].tiles.effect.rof;
-        echelon[target].tile_bonus.crit += echelon[doll].tiles.effect.crit;
-        echelon[target].tile_bonus.skillcd += echelon[doll].tiles.effect.skillcd;
-        if(echelon[target].tile_bonus.skillcd > 30) {
-          echelon[target].tile_bonus.skillcd = 30;
+      if(echelon[dollIndex].tiles.target_type == 0 || echelon[dollIndex].tiles.target_type == echelon[targetIndex].type) {
+        echelon[targetIndex].tile_bonus.fp += echelon[dollIndex].tiles.effect.fp;
+        echelon[targetIndex].tile_bonus.acc += echelon[dollIndex].tiles.effect.acc;
+        echelon[targetIndex].tile_bonus.eva += echelon[dollIndex].tiles.effect.eva;
+        echelon[targetIndex].tile_bonus.rof += echelon[dollIndex].tiles.effect.rof;
+        echelon[targetIndex].tile_bonus.crit += echelon[dollIndex].tiles.effect.crit;
+        echelon[targetIndex].tile_bonus.skillcd += echelon[dollIndex].tiles.effect.skillcd;
+        if(echelon[targetIndex].tile_bonus.skillcd > 30) {
+          echelon[targetIndex].tile_bonus.skillcd = 30;
         }
-        echelon[target].tile_bonus.armor += echelon[doll].tiles.effect.armor;
+        echelon[targetIndex].tile_bonus.armor += echelon[dollIndex].tiles.effect.armor;
       }
     }
   });
@@ -288,7 +283,7 @@ function removeDoll(event) {
   event.preventDefault();
 
   var index = event.data-1;
-  $('#pos'+echelon[index].pos).attr('data-id', -1);
+  $('#pos'+echelon[index].pos).attr('data-index', index);
   echelon[index] = createDummyDoll(echelon[index].pos);
 
   calculateTileBonus();
