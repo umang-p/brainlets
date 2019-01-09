@@ -49,7 +49,7 @@ $(function () {
     $('#doll'+i+' .add-doll').click(i,selectDoll);
     $('#doll'+i+' .remove-doll').click(i,removeDoll);
     for(var j = 1; j <= 3; j++) {
-      $('#doll'+i+' .equip'+j).click({doll:i, equip:j}, selectEquipment);
+      $('#doll'+i+' .equip'+j).click({doll:i-1, equip:j}, selectEquipment);
     }
   }
 
@@ -89,6 +89,9 @@ function createDummyDoll(p) {
     armor:0,
     ap:0,
     tiles:{},
+    equip1:-1,
+    equip2:-1,
+    equip3:-1,
     base:{},
     equip_bonus:{},
     tile_bonus:{
@@ -182,24 +185,16 @@ function selectEquipment(event) {
 function changeEquipment(event) {
   $('#equip-select').modal('hide');
 
-  var selectedEquip = equipData[$(event.target).attr('data-id')-1];
   var dollIndex = event.data.doll;
-  var equipIndex = event.data.equip;
+  var equipSlot = event.data.equip;
 
-  echelon[dollIndex].equip_bonus.fp = selectedEquip.fp;
-  echelon[dollIndex].equip_bonus.acc = selectedEquip.acc;
-  echelon[dollIndex].equip_bonus.eva = selectedEquip.eva;
-  echelon[dollIndex].equip_bonus.rof = selectedEquip.rof;
-  echelon[dollIndex].equip_bonus.critdmg = selectedEquip.critdmg;
-  echelon[dollIndex].equip_bonus.crit = selectedEquip.crit;
-  echelon[dollIndex].equip_bonus.ap = selectedEquip.ap;
-  echelon[dollIndex].equip_bonus.armor = selectedEquip.armor;
-  echelon[dollIndex].equip_bonus.nightview = selectedEquip.nightview;
-  echelon[dollIndex].equip_bonus.rounds = selectedEquip.rounds;
+  echelon[dollIndex]['equip'+equipSlot] = parseInt($(event.target).attr('data-id'));
 
+  calculateEquipBonus(dollIndex);
   //update DPS for this doll
   //update total dps
   //update ui
+  updateUIForDoll(dollIndex);
 }
 
 function selectDoll(event) {
@@ -245,6 +240,29 @@ function changeDoll(event) {
   //update total dps
   //update ui for all
   updateUIAllDolls();
+}
+
+function calculateEquipBonus(dollIndex) {
+  echelon[dollIndex].equip_bonus = {fp:0,acc:0,eva:0,rof:0,critdmg:0,crit:0,ap:0,armor:0,nightview:0,rounds:0};
+
+  for(var i = 1; i <= 3; i++) {
+    var equipId = echelon[dollIndex]['equip'+i];
+    if(equipId == -1)
+      continue;
+    var equip = equipData[equipId-1];
+    echelon[dollIndex].equip_bonus.fp += equip.fp;
+    echelon[dollIndex].equip_bonus.acc += equip.acc;
+    echelon[dollIndex].equip_bonus.eva += equip.eva;
+    echelon[dollIndex].equip_bonus.rof += equip.rof;
+    echelon[dollIndex].equip_bonus.critdmg += equip.critdmg;
+    echelon[dollIndex].equip_bonus.crit += equip.crit;
+    echelon[dollIndex].equip_bonus.ap += equip.ap;
+    echelon[dollIndex].equip_bonus.armor += equip.armor;
+    echelon[dollIndex].equip_bonus.nightview += equip.nightview;
+    echelon[dollIndex].equip_bonus.rounds += equip.rounds;
+  }
+
+  console.log(echelon);
 }
 
 function calculateTileBonus() {
@@ -373,6 +391,18 @@ function updateUIForDoll(index) {
       $('#pos'+doll.pos+' .'+tile_bonuses[i]).prop('hidden', false);
     } else {
       $('#pos'+doll.pos+' .'+tile_bonuses[i]).prop('hidden', true);
+    }
+  }
+
+  for(i = 1; i <= 3; i++) {
+    var equipId = doll['equip'+i];
+    if(equipId == -1) {
+      $('#doll'+(index+1)+' .equip'+i).removeClass('stars5 stars4 stars3 stars2 stars1');
+      $('#doll'+(index+1)+' .equip'+i).attr('src', '/static/girlsfrontline/sim/placeholder.png');
+    } else {
+      $('#doll'+(index+1)+' .equip'+i).removeClass('stars5 stars4 stars3 stars2 stars1');
+      $('#doll'+(index+1)+' .equip'+i).addClass('stars'+equipData[equipId-1].rarity);
+      $('#doll'+(index+1)+' .equip'+i).attr('src', '/static/girlsfrontline/sim/equips/'+equipData[equipId-1].type+'.png');
     }
   }
 }
