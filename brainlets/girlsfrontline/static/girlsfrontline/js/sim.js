@@ -53,6 +53,15 @@ $(function () {
     }
   }
 
+  var gridSquares = [12,13,14,22,23,24,32,33,34];
+  for(i = 0; i < gridSquares.length; i++) {
+    $('#pos'+gridSquares[i]).on('dragstart', onDragStart);
+    $('#pos'+gridSquares[i]).on('dragenter', onDragEnter);
+    $('#pos'+gridSquares[i]).on('dragleave', onDragLeave);
+    $('#pos'+gridSquares[i]).on('dragover', onDragOver);
+    $('#pos'+gridSquares[i]).on('drop', onDrop);
+  }
+
   $('[data-toggle="tooltip"]').tooltip();
 });
 
@@ -294,8 +303,21 @@ function removeDoll(event) {
 
 function updateUIAllDolls() {
   for(var i = 0; i < echelon.length; i++) {
-    updateUIForDoll(i);
+    updateUIForDoll(i); //update stat card and grid for each doll
   }
+
+  //update ui for grid squares with no doll
+  $.each([12,13,14,22,23,24,32,33,34], function(index, value) {
+    if($('#pos'+value).attr('data-index') != -1) {
+      return true;
+    }
+    $('#pos'+value+' > img').attr('src', '/static/girlsfrontline/sim/placeholder.png');
+    $('#pos'+value+' .tilegrid').prop('hidden', true);
+    var tile_bonuses = ['fp','acc','eva','rof','crit','skillcd','armor'];
+    for(i = 0; i < tile_bonuses.length; i++) {
+      $('#pos'+value+' .'+tile_bonuses[i]).prop('hidden', true);
+    }
+  });
 }
 
 function updateUIForDoll(index) {
@@ -365,4 +387,56 @@ function findDollIndexById(id) {
     }
   }
   return -1;
+}
+
+function onDragEnter(event) {
+  $(event.target).addClass('bg-primary dragging');
+}
+
+function onDragLeave(event) {
+  $(event.target).removeClass('bg-primary dragging');
+}
+
+function onDragOver(event) {
+  event.preventDefault(); //necessary to trigger drop event
+}
+
+function onDragStart(event) {
+  event.originalEvent.dataTransfer.setData('text', this.id);
+}
+
+function onDrop(event) {
+  event.preventDefault();
+  $(event.target).removeClass('bg-primary dragging');
+  var dropSource = event.originalEvent.dataTransfer.getData('text');
+  if($('#'+dropSource).is($(event.target))) {
+    return;
+  }
+
+  var sourceIndex = $('#'+dropSource).attr('data-index');
+  var targetIndex = $(event.target).attr('data-index');
+
+  if(sourceIndex == -1 && targetIndex == -1) {
+    return;
+  }
+
+  //swap data-index attributes in html elements
+  var temp = $('#'+dropSource).attr('data-index');
+  $('#'+dropSource).attr('data-index', $(event.target).attr('data-index'));
+  $(event.target).attr('data-index', temp);
+
+  //swap pos attributes of doll objects in echelon
+  if(sourceIndex != -1 && targetIndex != -1) {
+    echelon[temp].pos = parseInt($(event.target).attr('id').slice(3));
+    echelon[$('#'+dropSource).attr('data-index')].pos = parseInt(dropSource.slice(3));
+  } else if(sourceIndex != -1 && targetIndex == -1) {
+    echelon[temp].pos = parseInt($(event.target).attr('id').slice(3));
+  } else if(sourceIndex == -1 && targetIndex != -1) {
+    echelon[$('#'+dropSource).attr('data-index')].pos = parseInt(dropSource.slice(3));
+  }
+
+  calculateTileBonus();
+  //update dps for all dolls
+  //update total dps
+  updateUIAllDolls();
 }
