@@ -232,14 +232,62 @@ function changeDoll(event) {
   echelon[index].tooltip_tiles = selectedDoll.tooltip_tiles;
   $('#pos'+echelon[index].pos).attr('data-index', index);
 
-  //set default equips
-
+  setDefaultEquips(index);
   calculateTileBonus();
 
   //update dps for all dolls
   //update total dps
   //update ui for all
   updateUIAllDolls();
+}
+
+function setDefaultEquips(dollIndex) {
+  var doll = echelon[dollIndex];
+
+  switch(doll.type) {
+    case 1: //hg
+      doll.equip1 = 39; //suppressor
+      doll.equip2 = 45; //hp ammo
+      doll.equip3 = 35; //X-exo
+      if(isNight) {
+        doll.equip1 = 16; //PEQ
+      }
+      break;
+    case 2: //smg
+      doll.equip1 = 28; //T-exo
+      doll.equip2 = 45; //hp ammo
+      doll.equip3 = 39; //suppressor (no point using peq on main tank)
+      break;
+    case 3: //rf
+      doll.equip1 = 20; //ap ammo
+      doll.equip2 = 4;  //scope
+      doll.equip3 = 57; //cape
+      break;
+    case 4: //ar
+      doll.equip1 = 4;  //scope
+      doll.equip2 = 24; //hv ammo
+      doll.equip3 = 35; //X-exo
+      if(isNight) {
+        doll.equip1 = 16; //PEQ
+      }
+      break;
+    case 5: //mg
+      doll.equip1 = 20; //ap ammo
+      doll.equip2 = 4;  //scope
+      doll.equip3 = 41; //ammo box
+      break;
+    case 6: //sg
+      doll.equip1 = 31; //armor
+      doll.equip2 = 49; //buckshot
+      doll.equip3 = 12; //red dot sight
+      if(isNight) {
+        doll.equip3 = 16; //PEQ
+      }
+      break;
+  }
+
+  //handle off tanks here
+  //handle special cases and unique equipment here
 }
 
 function calculateEquipBonus(dollIndex) {
@@ -261,8 +309,6 @@ function calculateEquipBonus(dollIndex) {
     echelon[dollIndex].equip_bonus.nightview += equip.nightview;
     echelon[dollIndex].equip_bonus.rounds += equip.rounds;
   }
-
-  console.log(echelon);
 }
 
 function calculateTileBonus() {
