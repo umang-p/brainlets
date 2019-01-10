@@ -3,6 +3,12 @@ var isNight;
 var isBoss;
 var equipData;
 var dollData;
+var VALID_EQUIPS = [[[4,13],[6],[10,12]], //hg
+                    [[10,12],[6],[1,2,3,4,13]],//smg
+                    [[5],[1,2,3,13],[15]],//rf
+                    [[1,2,3,4,13],[8],[10,12]],//ar
+                    [[5],[1,2,3],[14]],//mg
+                    [[11],[7,9],[1,2,3,4]]]; //sg
 
 $(function () {
   $.ajax({
@@ -167,7 +173,7 @@ function initDollSelectModal() {
 function initEquipSelectModal() {
   for(var i = 0; i < equipData.length; i++) {
     var equip = equipData[i];
-    $('#equip-select .stars'+equip.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="'+equip.id+'" data-toggle="tooltip" data-placement="top" data-original-title="'+equip.tooltip+'"><img src="/static/girlsfrontline/sim/equips/'+equip.type+'.png" class="img-fluid"></img></button>');
+    $('#equip-select .stars'+equip.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="'+equip.id+'" data-type="'+equip.type+'" data-toggle="tooltip" data-placement="top" data-original-title="'+equip.tooltip+'"><img src="/static/girlsfrontline/sim/equips/'+equip.type+'.png" class="img-fluid"></img></button>');
   }
 }
 
@@ -178,9 +184,25 @@ function selectEquipment(event) {
   $('#remove-equip').off('click');
   $('#remove-equip').click(event.data, removeEquipment);
 
-  //disable unequipables here
+  //show buttons for only equips that can be worn by current doll in current slot
+  $('#equip-select [data-id]').prop('hidden', true);
+  var validTypes = getValidEquipTypes(event.data.doll, event.data.equip);
+  for(var i = 0; i < validTypes.length; i++) {
+    $('#equip-select [data-type='+validTypes[i]+']').prop('hidden', false);
+  }
 
   $('#equip-select').modal('show');
+}
+
+function getValidEquipTypes(dollIndex, equipSlot) {
+  if(echelon[dollIndex].id == -1) {
+    return [-1];
+  }
+  var validTypes = VALID_EQUIPS[echelon[dollIndex].type-1][equipSlot-1];
+
+  //special cases here
+
+  return validTypes;
 }
 
 function changeEquipment(event) {
