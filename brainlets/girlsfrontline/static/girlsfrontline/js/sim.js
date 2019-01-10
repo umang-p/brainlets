@@ -175,7 +175,8 @@ function selectEquipment(event) {
   event.preventDefault();
   $('#equip-select button').off('click');
   $('#equip-select button').click(event.data, changeEquipment);
-
+  $('#remove-equip').off('click');
+  $('#remove-equip').click(event.data, removeEquipment);
 
   //disable unequipables here
 
@@ -192,6 +193,19 @@ function changeEquipment(event) {
 
   calculateEquipBonus(dollIndex);
   //update DPS for this doll
+  //update total dps
+  //update ui
+  updateUIForDoll(dollIndex);
+}
+
+function removeEquipment(event) {
+  $('#equip-select').modal('hide');
+  var dollIndex = event.data.doll;
+  var equipSlot = event.data.equip;
+
+  echelon[dollIndex]['equip'+equipSlot] = -1;
+  calculateEquipBonus(dollIndex);
+  //update dps for this doll
   //update total dps
   //update ui
   updateUIForDoll(dollIndex);
