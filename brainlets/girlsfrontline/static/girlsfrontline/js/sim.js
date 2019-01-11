@@ -10,6 +10,46 @@ var VALID_EQUIPS = [[[4,13],[6],[10,12]], //hg
                     [[5],[1,2,3],[14]],//mg
                     [[11],[7,9],[1,2,3,4]]]; //sg
 
+var TYPE_SCALARS = [{"fp":0.6,"rof":0.8,"acc":1.2,"eva":1.8,"armor":0}, //hg
+                    {"fp":0.6,"rof":1.2,"acc":0.3,"eva":1.6,"armor":0}, //smg
+                    {"fp":2.4,"rof":0.5,"acc":1.6,"eva":0.8,"armor":0}, //rf
+                    {"fp":1,  "rof":1,  "acc":1,  "eva":1,  "armor":0},   //ar
+                    {"fp":1.8,"rof":1.6,"acc":0.6,"eva":0.6,"armor":0}, //mg
+                    {"fp":0.7,"rof":0.4,"acc":0.3,"eva":0.3,"armor":1}]; //sg
+
+var GROWTH_FACTORS = {
+  "mod": {
+    "basic": {
+      "armor": [13.979, 0.04],
+      "eva": [5],
+      "acc": [5],
+      "fp": [16],
+      "rof": [45],
+    },
+    "grow": {
+      "eva": [0.075, 22.572],
+      "acc": [0.075, 22.572],
+      "fp": [0.06, 18.018],
+      "rof": [0.022, 15.741]
+    }
+  },
+  "normal": {
+    "basic": {
+      "armor": [2, 0.161],
+      "eva": [5],
+      "acc": [5],
+      "fp": [16],
+      "rof": [45],
+    },
+    "grow": {
+      "eva": [0.303, 0],
+      "acc": [0.303, 0],
+      "fp": [0.242, 0],
+      "rof": [0.181, 0]
+    }
+  }
+}
+
 $(function () {
   $.ajax({
     async: false,
@@ -54,6 +94,7 @@ $(function () {
   for(var i = 1; i <= 5; i++) {
     $('#doll'+i+' .add-doll').click(i,selectDoll);
     $('#doll'+i+' .remove-doll').click(i,removeDoll);
+    $('#doll'+i+' .doll-level-select').change(i-1,changeLevel);
     for(var j = 1; j <= 3; j++) {
       $('#doll'+i+' .equip'+j).click({doll:i-1, equip:j}, selectEquipment);
     }
@@ -255,19 +296,11 @@ function changeDoll(event) {
   echelon[index].name = selectedDoll.name;
   echelon[index].id = selectedDoll.id;
   echelon[index].type = selectedDoll.type;
-  echelon[index].base.fp = selectedDoll.fp;
-  echelon[index].base.acc = selectedDoll.acc;
-  echelon[index].base.eva = selectedDoll.eva;
-  echelon[index].base.rof = selectedDoll.rof;
-  echelon[index].base.crit = selectedDoll.crit;
-  echelon[index].base.critdmg = selectedDoll.critdmg;
-  echelon[index].base.ap = selectedDoll.ap;
-  echelon[index].base.rounds = selectedDoll.rounds;
-  echelon[index].base.armor = selectedDoll.armor;
   echelon[index].tiles = selectedDoll.tiles;
   echelon[index].tooltip_tiles = selectedDoll.tooltip_tiles;
   $('#pos'+echelon[index].pos).attr('data-index', index);
 
+  calculateBaseStats(index);
   setDefaultEquips(index);
   calculateTileBonus();
 
@@ -386,6 +419,47 @@ function calculateTileBonus() {
       }
     }
   });
+}
+
+function calculateBaseStats(dollIndex) {
+  var doll = echelon[dollIndex];
+  var data = dollData[doll.id-1];
+  var level = parseInt($('#doll'+(dollIndex+1)+' .doll-level-select').val());
+  var dollTypeScalars = TYPE_SCALARS[doll.type-1];
+
+  var basicFactors = level > 100 ? GROWTH_FACTORS.mod.basic : GROWTH_FACTORS.normal.basic;
+  var growFactors = level > 100 ? GROWTH_FACTORS.mod.grow : GROWTH_FACTORS.normal.grow;
+
+  doll.base.fp = Math.ceil(basicFactors.fp[0] * dollTypeScalars.fp * data.fp / 100);
+  doll.base.fp += Math.ceil((growFactors.fp[1] + ((level - 1) * growFactors.fp[0])) * dollTypeScalars.fp * data.fp * data.growth_rating / 100 / 100);
+
+  doll.base.acc = Math.ceil(basicFactors.acc[0] * dollTypeScalars.acc * data.acc / 100);
+  doll.base.acc += Math.ceil((growFactors.acc[1] + ((level - 1) * growFactors.acc[0])) * dollTypeScalars.acc * data.acc * data.growth_rating / 100 / 100);
+
+  doll.base.eva = Math.ceil(basicFactors.eva[0] * dollTypeScalars.eva * data.eva / 100);
+  doll.base.eva += Math.ceil((growFactors.eva[1] + ((level - 1) * growFactors.eva[0])) * dollTypeScalars.eva * data.eva * data.growth_rating / 100 / 100);
+
+  doll.base.rof = Math.ceil(basicFactors.rof[0] * dollTypeScalars.rof * data.rof / 100);
+  doll.base.rof += Math.ceil((growFactors.rof[1] + ((level - 1) * growFactors.rof[0])) * dollTypeScalars.rof * data.rof * data.growth_rating / 100 / 100);
+
+  doll.base.armor = Math.ceil((basicFactors.armor[0] + ((level - 1) * basicFactors.armor[1])) * dollTypeScalars.armor * data.armor / 100);
+
+  doll.base.crit = data.crit;
+  doll.base.critdmg = data.critdmg;
+  doll.base.ap = data.ap;
+  doll.base.rounds = data.rounds;
+}
+
+function changeLevel(event) {
+  var doll = echelon[event.data];
+
+  calculateBaseStats(event.data);
+  if(doll.type == 1) { //hg
+    calculateTileBonus();
+  }
+  //update dps for this doll
+  //update dps for all dolls
+  updateUIAllDolls();
 }
 
 function removeDoll(event) {
