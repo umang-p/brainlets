@@ -394,6 +394,8 @@ function removeDoll(event) {
   var index = event.data-1;
   $('#pos'+echelon[index].pos).attr('data-index', index);
   echelon[index] = createDummyDoll(echelon[index].pos);
+  $('#doll'+(index+1)+' .affection').children().prop('hidden', true);
+  $('#doll'+(index+1)+' .affection').children().eq(echelon[index].affection).prop('hidden', false);
 
   calculateTileBonus();
   //update dps for all dolls
