@@ -140,6 +140,7 @@ function createDummyDoll(p) {
     equip2:-1,
     equip3:-1,
     base:{},
+    pre_battle:{},
     equip_bonus:{},
     tile_bonus:{
       fp:0,
@@ -168,9 +169,11 @@ function cycleAffection(event) {
   affectionImage.prop('hidden', true);
   affectionImage.parent().children().eq(echelon[dollIndex].affection).prop('hidden', false);
 
+  calculatePreBattleStatsForDoll(dollIndex);
   //update DPS for this doll
   //update total dps
   //update ui
+  updateUIForDoll(dollIndex);
 }
 
 function toggleDayNight(event) {
@@ -255,6 +258,7 @@ function changeEquipment(event) {
   echelon[dollIndex]['equip'+equipSlot] = parseInt($(event.target).attr('data-id'));
 
   calculateEquipBonus(dollIndex);
+  calculatePreBattleStatsForDoll(dollIndex);
   //update DPS for this doll
   //update total dps
   //update ui
@@ -268,6 +272,7 @@ function removeEquipment(event) {
 
   echelon[dollIndex]['equip'+equipSlot] = -1;
   calculateEquipBonus(dollIndex);
+  calculatePreBattleStatsForDoll(dollIndex);
   //update dps for this doll
   //update total dps
   //update ui
@@ -302,8 +307,9 @@ function changeDoll(event) {
 
   calculateBaseStats(index);
   setDefaultEquips(index);
+  calculateEquipBonus(index);
   calculateTileBonus();
-
+  calculatePreBattleStatsAllDolls();
   //update dps for all dolls
   //update total dps
   //update ui for all
@@ -450,12 +456,82 @@ function calculateBaseStats(dollIndex) {
   doll.base.rounds = data.rounds;
 }
 
+function getAffectionBonus(affection) {
+  if(affection < 10) {
+    return -0.05;
+  } else if(affection < 90) {
+    return 0;
+  } else if(affection < 140) {
+    return 0.05;
+  } else {
+    return 1;
+  }
+}
+
+function calculatePreBattleStatsForDoll(dollIndex) {
+  var doll = echelon[dollIndex];
+  var affection_bonus = getAffectionBonus(doll.affection);
+
+  doll.pre_battle.fp = doll.base.fp;
+  doll.pre_battle.acc = doll.base.acc;
+  doll.pre_battle.eva = doll.base.eva;
+  doll.pre_battle.rof = doll.base.rof;
+  doll.pre_battle.armor = doll.base.armor;
+  doll.pre_battle.crit = doll.base.crit;
+  doll.pre_battle.critdmg = doll.base.critdmg;
+  doll.pre_battle.ap = doll.base.ap;
+  doll.pre_battle.rounds = doll.base.rounds;
+
+  //apply affection bonus additively
+  doll.pre_battle.fp += Math.sign(affection_bonus) * Math.ceil(Math.abs(doll.base.fp * affection_bonus));
+  doll.pre_battle.acc += Math.sign(affection_bonus) * Math.ceil(Math.abs(doll.base.acc * affection_bonus));
+  doll.pre_battle.eva += Math.sign(affection_bonus) * Math.ceil(Math.abs(doll.base.eva * affection_bonus));
+
+  //apply equip bonus additively
+  doll.pre_battle.fp += doll.equip_bonus.fp;
+  doll.pre_battle.acc += doll.equip_bonus.acc;
+  doll.pre_battle.eva += doll.equip_bonus.eva;
+  doll.pre_battle.rof += doll.equip_bonus.rof;
+  doll.pre_battle.armor += doll.equip_bonus.armor;
+  doll.pre_battle.crit += doll.equip_bonus.crit;
+  doll.pre_battle.critdmg += doll.equip_bonus.critdmg;
+  doll.pre_battle.ap += doll.equip_bonus.ap;
+  doll.pre_battle.rounds += doll.equip_bonus.rounds;
+  doll.pre_battle.nightview = doll.equip_bonus.nightview;
+
+  //apply tile bonus multiplicatively, floored
+  doll.pre_battle.fp = Math.floor(doll.pre_battle.fp * (1 + (doll.tile_bonus.fp / 100)));
+  doll.pre_battle.acc = Math.floor(doll.pre_battle.acc * (1 + (doll.tile_bonus.acc / 100)));
+  doll.pre_battle.eva = Math.floor(doll.pre_battle.eva * (1 + (doll.tile_bonus.eva / 100)));
+  doll.pre_battle.rof = Math.floor(doll.pre_battle.rof * (1 + (doll.tile_bonus.rof / 100)));
+  doll.pre_battle.armor = Math.floor(doll.pre_battle.armor * (1 + (doll.tile_bonus.armor / 100)));
+  doll.pre_battle.crit = Math.floor(doll.pre_battle.crit * (1 + (doll.tile_bonus.crit / 100)));
+  doll.pre_battle.skillcd = doll.tile_bonus.skillcd;
+
+  //cap stats
+  if(doll.type == 6) { //sg
+    doll.pre_battle.rof = Math.min(60, doll.pre_battle.rof);
+  } else if(doll.type != 5) { ////any other than sg and mg
+    doll.pre_battle.rof = Math.min(120, doll.pre_battle.rof);
+  }
+  doll.pre_battle.crit = Math.min(100, doll.pre_battle.crit);
+}
+
+function calculatePreBattleStatsAllDolls() {
+  for(var i = 0; i < 5; i++) {
+    calculatePreBattleStatsForDoll(i);
+  }
+}
+
 function changeLevel(event) {
   var doll = echelon[event.data];
 
   calculateBaseStats(event.data);
   if(doll.type == 1) { //hg
     calculateTileBonus();
+    calculatePreBattleStatsAllDolls();
+  } else {
+    calculatePreBattleStatsForDoll(event.data);
   }
   //update dps for this doll
   //update dps for all dolls
@@ -472,6 +548,7 @@ function removeDoll(event) {
   $('#doll'+(index+1)+' .affection').children().eq(echelon[index].affection).prop('hidden', false);
 
   calculateTileBonus();
+  calculatePreBattleStatsAllDolls();
   //update dps for all dolls
   //update total dps
   updateUIAllDolls();
@@ -624,6 +701,7 @@ function onDrop(event) {
   }
 
   calculateTileBonus();
+  calculatePreBattleStatsAllDolls();
   //update dps for all dolls
   //update total dps
   updateUIAllDolls();
