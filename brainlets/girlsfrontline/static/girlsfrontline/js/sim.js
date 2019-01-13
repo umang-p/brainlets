@@ -590,17 +590,23 @@ function updateUIForDoll(index) {
     $('#doll'+(index+1)+' .ap span').text('-');
   } else {
     $('#doll'+(index+1)+'-name').text(doll.name);
-    $('#doll'+(index+1)+' .fp span').text(doll.fp);
-    $('#doll'+(index+1)+' .acc span').text(doll.acc);
-    $('#doll'+(index+1)+' .eva span').text(doll.eva);
-    $('#doll'+(index+1)+' .rof span').text(doll.rof);
-    $('#doll'+(index+1)+' .crit span').text(doll.crit);
-    $('#doll'+(index+1)+' .critdmg span').text(doll.fp);
-    if(doll.rounds != 0) {
-      $('#doll'+(index+1)+' .rounds span').text(doll.rounds);
+    $('#doll'+(index+1)+' .fp span').text(doll.pre_battle.fp);
+    $('#doll'+(index+1)+' .acc span').text(doll.pre_battle.acc);
+    $('#doll'+(index+1)+' .eva span').text(doll.pre_battle.eva);
+    $('#doll'+(index+1)+' .rof span').text(doll.pre_battle.rof);
+    $('#doll'+(index+1)+' .crit span').text(doll.pre_battle.crit+'%');
+    $('#doll'+(index+1)+' .critdmg span').text((doll.pre_battle.critdmg+100)+'%');
+    if(doll.pre_battle.rounds != 0) {
+      $('#doll'+(index+1)+' .rounds span').text(doll.pre_battle.rounds);
+    } else {
+      $('#doll'+(index+1)+' .rounds span').text('-');
     }
-    $('#doll'+(index+1)+' .armor span').text(doll.armor);
-    $('#doll'+(index+1)+' .ap span').text(doll.ap);
+    if(doll.pre_battle.armor != 0) {
+      $('#doll'+(index+1)+' .armor span').text(doll.pre_battle.armor);
+    } else {
+      $('#doll'+(index+1)+' .armor span').text('-');
+    }
+    $('#doll'+(index+1)+' .ap span').text(doll.pre_battle.ap);
 
     $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/dolls/'+doll.name+'.png');
 
