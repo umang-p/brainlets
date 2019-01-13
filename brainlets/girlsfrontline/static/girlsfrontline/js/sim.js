@@ -457,14 +457,14 @@ function calculateBaseStats(dollIndex) {
 }
 
 function getAffectionBonus(affection) {
-  if(affection < 10) {
+  if(affection == 0) {
     return -0.05;
-  } else if(affection < 90) {
+  } else if(affection == 1) {
     return 0;
-  } else if(affection < 140) {
+  } else if(affection == 2) {
     return 0.05;
   } else {
-    return 1;
+    return 0.10;
   }
 }
 
