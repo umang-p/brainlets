@@ -188,9 +188,11 @@ function toggleDayNight(event) {
     isNight = true;
   }
 
+  calculatePreBattleStatsAllDolls();
   //update DPS for all dolls
   //update total dps
   //update ui
+  updateUIAllDolls();
 }
 
 function toggleBoss() {
@@ -508,13 +510,16 @@ function calculatePreBattleStatsForDoll(dollIndex) {
   doll.pre_battle.crit = Math.floor(doll.pre_battle.crit * (1 + (doll.tile_bonus.crit / 100)));
   doll.pre_battle.skillcd = doll.tile_bonus.skillcd;
 
-  //cap stats
+  //cap stats & apply night acc penalty
   if(doll.type == 6) { //sg
     doll.pre_battle.rof = Math.min(60, doll.pre_battle.rof);
   } else if(doll.type != 5) { ////any other than sg and mg
     doll.pre_battle.rof = Math.min(120, doll.pre_battle.rof);
   }
   doll.pre_battle.crit = Math.min(100, doll.pre_battle.crit);
+  if(isNight) {
+    doll.pre_battle.acc = Math.floor(doll.pre_battle.acc * (1 - (.9 - .9 * doll.pre_battle.nightview / 100)));
+  }
 }
 
 function calculatePreBattleStatsAllDolls() {
