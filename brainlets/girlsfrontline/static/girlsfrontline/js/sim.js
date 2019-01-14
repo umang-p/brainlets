@@ -97,6 +97,7 @@ $(function () {
     $('#doll'+i+' .doll-level-select').change(i-1,changeLevel);
     for(var j = 1; j <= 3; j++) {
       $('#doll'+i+' .equip'+j).click({doll:i-1, equip:j}, selectEquipment);
+      $('#doll'+i+' .equip'+j+'-level-select').change(i-1, changeEquipLevel);
     }
   }
 
@@ -258,6 +259,7 @@ function changeEquipment(event) {
   var equipSlot = event.data.equip;
 
   echelon[dollIndex]['equip'+equipSlot] = parseInt($(event.target).attr('data-id'));
+  $('#doll'+(dollIndex+1)+' .equip'+equipSlot+'-level-select').val(10);
 
   calculateEquipBonus(dollIndex);
   calculatePreBattleStatsForDoll(dollIndex);
@@ -320,6 +322,9 @@ function changeDoll(event) {
 
 function setDefaultEquips(dollIndex) {
   var doll = echelon[dollIndex];
+  $('#doll'+(dollIndex+1)+' .equip1-level-select').val(10);
+  $('#doll'+(dollIndex+1)+' .equip2-level-select').val(10);
+  $('#doll'+(dollIndex+1)+' .equip3-level-select').val(10);
 
   switch(doll.type) {
     case 1: //hg
@@ -375,16 +380,17 @@ function calculateEquipBonus(dollIndex) {
     if(equipId == -1)
       continue;
     var equip = equipData[equipId-1];
-    echelon[dollIndex].equip_bonus.fp += equip.fp;
-    echelon[dollIndex].equip_bonus.acc += equip.acc;
-    echelon[dollIndex].equip_bonus.eva += equip.eva;
-    echelon[dollIndex].equip_bonus.rof += equip.rof;
-    echelon[dollIndex].equip_bonus.critdmg += equip.critdmg;
-    echelon[dollIndex].equip_bonus.crit += equip.crit;
-    echelon[dollIndex].equip_bonus.ap += equip.ap;
-    echelon[dollIndex].equip_bonus.armor += equip.armor;
-    echelon[dollIndex].equip_bonus.nightview += equip.nightview;
-    echelon[dollIndex].equip_bonus.rounds += equip.rounds;
+    var level = parseInt($('#doll'+(dollIndex+1)+' .equip'+i+'-level-select').val());
+    echelon[dollIndex].equip_bonus.fp += Math.floor((equip.level_bonus.fp / 10000 * level + 1) * equip.fp);
+    echelon[dollIndex].equip_bonus.acc += Math.floor((equip.level_bonus.acc / 10000 * level + 1) * equip.acc);
+    echelon[dollIndex].equip_bonus.eva += Math.floor((equip.level_bonus.eva / 10000 * level + 1) * equip.eva);
+    echelon[dollIndex].equip_bonus.rof += Math.floor((equip.level_bonus.rof / 10000 * level + 1) * equip.rof);
+    echelon[dollIndex].equip_bonus.critdmg += Math.floor((equip.level_bonus.critdmg / 10000 * level + 1) * equip.critdmg);
+    echelon[dollIndex].equip_bonus.crit += Math.floor((equip.level_bonus.crit / 10000 * level + 1) * equip.crit);
+    echelon[dollIndex].equip_bonus.ap += Math.floor((equip.level_bonus.ap / 10000 * level + 1) * equip.ap);
+    echelon[dollIndex].equip_bonus.armor += Math.floor((equip.level_bonus.armor / 10000 * level + 1) * equip.armor);
+    echelon[dollIndex].equip_bonus.nightview += Math.floor((equip.level_bonus.nightview / 10000 * level + 1) * equip.nightview);
+    echelon[dollIndex].equip_bonus.rounds += Math.floor((equip.level_bonus.rounds / 10000 * level + 1) * equip.rounds);
   }
 }
 
@@ -472,6 +478,10 @@ function getAffectionBonus(affection) {
 
 function calculatePreBattleStatsForDoll(dollIndex) {
   var doll = echelon[dollIndex];
+
+  if(doll.id == -1)
+    return;
+
   var affection_bonus = getAffectionBonus(doll.affection);
 
   doll.pre_battle.fp = doll.base.fp;
@@ -540,6 +550,16 @@ function changeLevel(event) {
   }
   //update dps for this doll
   //update dps for all dolls
+  updateUIAllDolls();
+}
+
+function changeEquipLevel(event) {
+  var doll = echelon[event.data];
+
+  calculateEquipBonus(event.data);
+  calculatePreBattleStatsForDoll(event.data);
+  //update dps for this doll
+  //update dmg for all dolls
   updateUIAllDolls();
 }
 
