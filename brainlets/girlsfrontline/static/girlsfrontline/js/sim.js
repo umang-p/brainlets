@@ -308,6 +308,7 @@ function changeDoll(event) {
   echelon[index].tiles = selectedDoll.tiles;
   echelon[index].tooltip_tiles = selectedDoll.tooltip_tiles;
   $('#pos'+echelon[index].pos).attr('data-index', index);
+  $('#doll'+(index+1)+' .doll-level-select').val(100);
 
   calculateBaseStats(index);
   setDefaultEquips(index);
