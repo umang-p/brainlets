@@ -3,6 +3,9 @@ var isNight;
 var isBoss;
 var equipData;
 var dollData;
+var enemyEva;
+var enemyArmor;
+var enemyCount;
 var VALID_EQUIPS = [[[4,13],[6],[10,12]], //hg
                     [[10,12],[6],[1,2,3,4,13]],//smg
                     [[5],[1,2,3,13],[15]],//rf
@@ -110,6 +113,10 @@ $(function () {
     $('#pos'+gridSquares[i]).on('drop', onDrop);
   }
 
+  $('#enemy-eva').change(changeEnemyStats);
+  $('#enemy-armor').change(changeEnemyStats);
+  $('#enemy-count').change(changeEnemyStats);
+
   $('[data-toggle="tooltip"]').tooltip();
 });
 
@@ -155,6 +162,16 @@ function createDummyDoll(p) {
   }
 
   return obj;
+}
+
+function changeEnemyStats() {
+  enemyEva = parseInt($('#enemy-eva').val());
+  enemyArmor = parseInt($('#enemy-armor').val());
+  enemyCount = parseInt($('#enemy-count').val());
+
+  //update dps for all dolls
+  //update total dmg
+  //update dps ui
 }
 
 function cycleAffection(event) {
