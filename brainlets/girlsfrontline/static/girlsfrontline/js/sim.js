@@ -113,8 +113,11 @@ $(function () {
   }
 
   $('#enemy-eva').change(changeEnemyStats);
+  enemyEva = 15;
   $('#enemy-armor').change(changeEnemyStats);
+  enemyArmor = 0;
   $('#enemy-count').change(changeEnemyStats);
+  enemyCount = 1;
 
   $('[data-toggle="tooltip"]').tooltip();
 });
