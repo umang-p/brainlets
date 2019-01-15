@@ -414,7 +414,7 @@ function calculateTileBonus() {
 
   var validSquares = [12,13,14,22,23,24,32,33,34];
   $.each(validSquares, function(index, value) {
-    var dollIndex = $('#pos'+value).attr('data-index');
+    var dollIndex = parseInt($('#pos'+value).attr('data-index'));
     if(dollIndex == -1 || echelon[dollIndex].id == -1) {
       return true;
     }
@@ -433,16 +433,17 @@ function calculateTileBonus() {
       }
 
       if(echelon[dollIndex].tiles.target_type == 0 || echelon[dollIndex].tiles.target_type == echelon[targetIndex].type) {
-        echelon[targetIndex].tile_bonus.fp += echelon[dollIndex].tiles.effect.fp;
-        echelon[targetIndex].tile_bonus.acc += echelon[dollIndex].tiles.effect.acc;
-        echelon[targetIndex].tile_bonus.eva += echelon[dollIndex].tiles.effect.eva;
-        echelon[targetIndex].tile_bonus.rof += echelon[dollIndex].tiles.effect.rof;
-        echelon[targetIndex].tile_bonus.crit += echelon[dollIndex].tiles.effect.crit;
-        echelon[targetIndex].tile_bonus.skillcd += echelon[dollIndex].tiles.effect.skillcd;
+        var links = echelon[dollIndex].type == 1 ? getNumLinks(dollIndex) : 1;
+        echelon[targetIndex].tile_bonus.fp += echelon[dollIndex].tiles.effect.fp[links-1];
+        echelon[targetIndex].tile_bonus.acc += echelon[dollIndex].tiles.effect.acc[links-1];
+        echelon[targetIndex].tile_bonus.eva += echelon[dollIndex].tiles.effect.eva[links-1];
+        echelon[targetIndex].tile_bonus.rof += echelon[dollIndex].tiles.effect.rof[links-1];
+        echelon[targetIndex].tile_bonus.crit += echelon[dollIndex].tiles.effect.crit[links-1];
+        echelon[targetIndex].tile_bonus.skillcd += echelon[dollIndex].tiles.effect.skillcd[links-1];
         if(echelon[targetIndex].tile_bonus.skillcd > 30) {
           echelon[targetIndex].tile_bonus.skillcd = 30;
         }
-        echelon[targetIndex].tile_bonus.armor += echelon[dollIndex].tiles.effect.armor;
+        echelon[targetIndex].tile_bonus.armor += echelon[dollIndex].tiles.effect.armor[links-1];
       }
     }
   });
@@ -696,6 +697,19 @@ function findDollIndexById(id) {
     }
   }
   return -1;
+}
+
+function getNumLinks(dollIndex) {
+  var level = parseInt($('#doll'+(dollIndex+1)+' .doll-level-select').val());
+  if(level >= 90)
+    return 5;
+  if(level >= 70)
+    return 4;
+  if(level >= 30)
+    return 3;
+  if(level >= 10)
+    return 2;
+  return 1;
 }
 
 function onDragEnter(event) {
