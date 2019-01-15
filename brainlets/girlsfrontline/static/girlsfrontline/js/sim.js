@@ -82,8 +82,6 @@ $(function () {
 
   initEchelon();
 
-  $('.affection').click(cycleAffection);
-
   isNight = false;
   $('#day-btn').click(toggleDayNight);
   $('#night-btn').click(toggleDayNight);
@@ -98,6 +96,7 @@ $(function () {
     $('#doll'+i+' .add-doll').click(i,selectDoll);
     $('#doll'+i+' .remove-doll').click(i,removeDoll);
     $('#doll'+i+' .doll-level-select').change(i-1,changeLevel);
+    $('#doll'+i+' .affection').click(i-1, changeAffection);
     for(var j = 1; j <= 3; j++) {
       $('#doll'+i+' .equip'+j).click({doll:i-1, equip:j}, selectEquipment);
       $('#doll'+i+' .equip'+j+'-level-select').change(i-1, changeEquipLevel);
@@ -174,18 +173,14 @@ function changeEnemyStats() {
   //update dps ui
 }
 
-function cycleAffection(event) {
-  var affectionImage = $(event.target);
+function changeAffection(event) {
+  var dollIndex = event.data;
+  var doll = echelon[dollIndex];
 
-  var dollIndex = parseInt(affectionImage.parent().parent().parent().attr('id').slice(-1)) - 1;
-
-  echelon[dollIndex].affection++;
-  if(echelon[dollIndex].affection > 3) {
-    echelon[dollIndex].affection = 0;
-  }
-
-  affectionImage.prop('hidden', true);
-  affectionImage.parent().children().eq(echelon[dollIndex].affection).prop('hidden', false);
+  $('#doll'+(dollIndex+1)+' .affection').children().eq(doll.affection).prop('hidden', true);
+  doll.affection++;
+  doll.affection = doll.affection > 3 ? 0 : doll.affection;
+  $('#doll'+(dollIndex+1)+' .affection').children().eq(doll.affection).prop('hidden', false);
 
   calculatePreBattleStatsForDoll(dollIndex);
   //update DPS for this doll
