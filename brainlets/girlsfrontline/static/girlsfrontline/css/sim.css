@@ -77,3 +77,6 @@
 #pos12 img, #pos13 img, #pos14 img, #pos22 img, #pos23 img, #pos24 img, #pos32 img, #pos33 img, #pos34 img, .dragging * {
   pointer-events: none;
 }
+.table td {
+  padding: 0px;
+}
