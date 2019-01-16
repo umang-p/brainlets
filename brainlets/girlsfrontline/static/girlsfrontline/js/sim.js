@@ -322,6 +322,7 @@ function changeDoll(event) {
   echelon[index].type = selectedDoll.type;
   echelon[index].tiles = selectedDoll.tiles;
   echelon[index].tooltip_tiles = selectedDoll.tooltip_tiles;
+  echelon[index].tooltip_skill1 = selectedDoll.tooltip_skill1;
   $('#pos'+echelon[index].pos).attr('data-index', index);
   $('#doll'+(index+1)+' .doll-level-select').val(100);
 
@@ -620,6 +621,7 @@ function updateUIForDoll(index) {
   if(doll.id == -1) {
     $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/placeholder.png');
     $('#pos'+doll.pos+' .tilegrid').prop('hidden', true);
+    $('#doll'+(index+1)+' .skill-label').attr('data-original-title', '-');
     $('#doll'+(index+1)+'-name').text('-');
     $('#doll'+(index+1)+' .fp span').text('-');
     $('#doll'+(index+1)+' .acc span').text('-');
@@ -632,6 +634,7 @@ function updateUIForDoll(index) {
     $('#doll'+(index+1)+' .ap span').text('-');
   } else {
     $('#doll'+(index+1)+'-name').text(doll.name);
+    $('#doll'+(index+1)+' .skill-label').attr('data-original-title', doll.tooltip_skill1);
     $('#doll'+(index+1)+' .fp span').text(doll.pre_battle.fp);
     $('#doll'+(index+1)+' .acc span').text(doll.pre_battle.acc);
     $('#doll'+(index+1)+' .eva span').text(doll.pre_battle.eva);
