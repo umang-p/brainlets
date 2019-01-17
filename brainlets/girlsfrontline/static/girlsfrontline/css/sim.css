@@ -43,6 +43,7 @@
 .affection img {
   height: 40px;
   width: 40px;
+  cursor: pointer;
 }
 .equip1, .equip2, .equip3 {
   height: 64px;
@@ -76,6 +77,9 @@
 }
 #pos12 img, #pos13 img, #pos14 img, #pos22 img, #pos23 img, #pos24 img, #pos32 img, #pos33 img, #pos34 img, .dragging * {
   pointer-events: none;
+}
+#pos12, #pos13, #pos14, #pos22, #pos23, #pos24, #pos32, #pos33, #pos34 {
+  cursor: move;
 }
 .table td {
   padding: 0px;
