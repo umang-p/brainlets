@@ -4,7 +4,7 @@
   "name": "SAA",
   "rarity": 4,
   "type": 1,
-  "tooltip_tiles": "Damage +%, Accuracy +50%",
+  "tooltip_tiles": "Damage +24%, Accuracy +50%",
   "tooltip_skill1": "dmg up",
   "tooltip_skill2": "",
   "fp":125,
@@ -24,11 +24,11 @@
             "effect":{
                         "fp":[12,15,18,21,24],
                         "acc":[25,31,37,43,50],
-                        "eva":[0],
-                        "rof":[0],
-                        "crit":[0],
-                        "skillcd":[0],
-                        "armor":[0]
+                        "eva":[0,0,0,0,0],
+                        "rof":[0,0,0,0,0],
+                        "crit":[0,0,0,0,0],
+                        "skillcd":[0,0,0,0,0],
+                        "armor":[0,0,0,0,0]
                      }
           }
 },
@@ -70,10 +70,76 @@
             "effect":{
                         "fp":[12,15,18,21,24],
                         "acc":[25,31,37,43,50],
-                        "eva":[0],
+                        "eva":[0,0,0,0,0],
+                        "rof":[0,0,0,0,0],
+                        "crit":[0,0,0,0,0],
+                        "skillcd":[0,0,0,0,0],
+                        "armor":[0,0,0,0,0]
+                     }
+          }
+},
+{
+  "id": 4,
+  "name": "Thompson",
+  "rarity": 5,
+  "type": 2,
+  "tooltip_tiles": "Damage +12%, Evasion +15%",
+  "tooltip_skill1": "invuln",
+  "tooltip_skill2": "",
+  "fp":120,
+  "acc":100,
+  "eva":90,
+  "rof":105,
+  "crit":5,
+  "critdmg":50,
+  "ap":10,
+  "rounds":0,
+  "armor":0,
+  "growth_rating":110,
+  "tiles":{
+            "self":23,
+            "target":"-11,9",
+            "target_type":4,
+            "effect":{
+                        "fp":[12],
+                        "acc":[0],
+                        "eva":[15],
                         "rof":[0],
                         "crit":[0],
                         "skillcd":[0],
+                        "armor":[0]
+                     }
+          }
+},
+{
+  "id": 5,
+  "name": "WA2000",
+  "rarity": 5,
+  "type": 3,
+  "tooltip_tiles": "Skill Cooldown -18%",
+  "tooltip_skill1": "rof up",
+  "tooltip_skill2": "",
+  "fp":120,
+  "acc":125,
+  "eva":90,
+  "rof":115,
+  "crit":40,
+  "critdmg":50,
+  "ap":10,
+  "rounds":0,
+  "armor":0,
+  "growth_rating":120,
+  "tiles":{
+            "self":23,
+            "target":"1",
+            "target_type":1,
+            "effect":{
+                        "fp":[0],
+                        "acc":[0],
+                        "eva":[0],
+                        "rof":[0],
+                        "crit":[0],
+                        "skillcd":[18],
                         "armor":[0]
                      }
           }
