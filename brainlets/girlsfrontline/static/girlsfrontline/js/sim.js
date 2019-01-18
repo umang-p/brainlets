@@ -246,12 +246,28 @@ function selectEquipment(event) {
   $('#remove-equip').off('click');
   $('#remove-equip').click(event.data, removeEquipment);
 
-  //show buttons for only equips that can be worn by current doll in current slot
+  //show buttons for only equips that can be worn by current doll in current slot taking level into account
   $('#equip-select [data-id]').prop('hidden', true);
   var validTypes = getValidEquipTypes(event.data.doll, event.data.equip);
+  var dollLevel = parseInt($('#doll'+(event.data.doll+1)+' .doll-level-select').val());
+  if(dollLevel < 20) {
+    validTypes = [-1];
+  } else if(dollLevel < 50 && event.data.equip != 1) {
+    validTypes = [-1];
+  } else if(dollLevel < 80 && event.data.equip == 3) {
+    validTypes = [-1];
+  }
   for(var i = 0; i < validTypes.length; i++) {
     $('#equip-select [data-type='+validTypes[i]+']').prop('hidden', false);
   }
+
+  //hide unequipable rarities
+  if(dollLevel < 60)
+    $('#equip-select .stars5 button').prop('hidden',true);
+  if(dollLevel < 45)
+    $('#equip-select .stars4 button').prop('hidden',true);
+  if(dollLevel < 30)
+    $('#equip-select .stars3 button').prop('hidden',true);
 
   $('#equip-select').modal('show');
 }
