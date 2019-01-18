@@ -575,7 +575,32 @@ function calculatePreBattleStatsAllDolls() {
 function changeLevel(event) {
   var doll = echelon[event.data];
 
+  //remove equipment if it can no longer be equipped
+  var dollLevel = parseInt($('#doll'+(event.data+1)+' .doll-level-select').val());
+  if(dollLevel < 80 && doll.equip3 != -1)
+    doll.equip3 = -1;
+  if(dollLevel < 50 && doll.equip2 != -1)
+    doll.equip2 = -1;
+  if(dollLevel < 20 && doll.equip1 != -1)
+    doll.equip1 = -1;
+
+  for(var i = 1; i <= 3; i++) {
+    if(doll['equip'+i] == -1)
+      continue;
+
+    if(dollLevel < 30 && equipData[doll['equip'+i]-1].rarity >= 3) {
+      doll['equip'+i] = -1;
+      continue;
+    } else if(dollLevel < 45 && equipData[doll['equip'+i]-1].rarity >= 4) {
+      doll['equip'+i] = -1;
+      continue;
+    } else if(dollLevel < 60 && equipData[doll['equip'+i]-1].rarity >= 5) {
+      doll['equip'+i] = -1;
+    }
+  }
+
   calculateBaseStats(event.data);
+  calculateEquipBonus(event.data);
   if(doll.type == 1) { //hg
     calculateTileBonus();
     calculatePreBattleStatsAllDolls();
