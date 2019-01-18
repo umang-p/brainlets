@@ -37,9 +37,10 @@
   "name": "sldkfj",
   "rarity": 2,
   "type": 5,
+  "mod":true,
   "tooltip_tiles": "Damage +%, Accuracy +50%",
   "tooltip_skill1": "dmg up",
-  "tooltip_skill2": "",
+  "tooltip_skill2": "sk2",
   "tiles":{
             "self":23,
             "target":"1,-1,10,-10",
