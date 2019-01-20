@@ -355,6 +355,8 @@ function changeDoll(event) {
     echelon[index].mod = false;
   }
 
+  echelon[index].links = getNumLinks(index);
+
   calculateBaseStats(index);
   setDefaultEquips(index);
   calculateEquipBonus(index);
@@ -615,6 +617,8 @@ function changeLevel(event) {
       doll['equip'+i] = -1;
     }
   }
+
+  doll.links = getNumLinks(event.data);
 
   calculateBaseStats(event.data);
   calculateEquipBonus(event.data);
