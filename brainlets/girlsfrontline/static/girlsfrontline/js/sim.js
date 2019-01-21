@@ -136,21 +136,13 @@ function createDummyDoll(p) {
     id:-1,
     pos:p,
     affection:2,
-    fp:0,
-    acc:0,
-    eva:0,
-    rof:0,
-    crit:0,
-    critdmg:0,
-    rounds:0,
-    armor:0,
-    ap:0,
     tiles:{},
     equip1:-1,
     equip2:-1,
     equip3:-1,
     base:{},
     pre_battle:{},
+    battle:{},
     equip_bonus:{},
     tile_bonus:{
       fp:0,
@@ -171,9 +163,7 @@ function changeEnemyStats() {
   enemyArmor = parseInt($('#enemy-armor').val());
   enemyCount = parseInt($('#enemy-count').val());
 
-  //update dps for all dolls
-  //update total dmg
-  //update dps ui
+  simulateBattle();
 }
 
 function changeAffection(event) {
@@ -186,9 +176,7 @@ function changeAffection(event) {
   $('#doll'+(dollIndex+1)+' .affection').children().eq(doll.affection).prop('hidden', false);
 
   calculatePreBattleStatsForDoll(dollIndex);
-  //update DPS for this doll
-  //update total dps
-  //update ui
+  simulateBattle();
   updateUIForDoll(dollIndex);
 }
 
@@ -205,9 +193,7 @@ function toggleDayNight(event) {
   }
 
   calculatePreBattleStatsAllDolls();
-  //update DPS for all dolls
-  //update total dps
-  //update ui
+  simulateBattle();
   updateUIAllDolls();
 }
 
@@ -220,9 +206,7 @@ function toggleBoss() {
     isBoss = true;
   }
 
-  //update DPS for all dolls
-  //update total dps
-  //update ui
+  simulateBattle();
 }
 
 function initDollSelectModal() {
@@ -294,9 +278,7 @@ function changeEquipment(event) {
 
   calculateEquipBonus(dollIndex);
   calculatePreBattleStatsForDoll(dollIndex);
-  //update DPS for this doll
-  //update total dps
-  //update ui
+  simulateBattle();
   updateUIForDoll(dollIndex);
 }
 
@@ -308,9 +290,7 @@ function removeEquipment(event) {
   echelon[dollIndex]['equip'+equipSlot] = -1;
   calculateEquipBonus(dollIndex);
   calculatePreBattleStatsForDoll(dollIndex);
-  //update dps for this doll
-  //update total dps
-  //update ui
+  simulateBattle();
   updateUIForDoll(dollIndex);
 }
 
@@ -362,9 +342,7 @@ function changeDoll(event) {
   calculateEquipBonus(index);
   calculateTileBonus();
   calculatePreBattleStatsAllDolls();
-  //update dps for all dolls
-  //update total dps
-  //update ui for all
+  simulateBattle();
   updateUIAllDolls();
 }
 
@@ -587,6 +565,115 @@ function calculatePreBattleStatsAllDolls() {
   }
 }
 
+function simulateBattle() {
+  var enemy = {armor:enemyArmor, eva:enemyEva, count:enemyCount, buffs:{}};
+  //var enemy = initEnemy();
+  //initDollsForBattle(); put skills in doll.battle.timers with initcd, add passives
+  //calculateBattleStats(doll);
+
+  //init dolls
+  for(var i = 0; i < 5; i++) {
+    var doll = echelon[i];
+    if(doll.id == -1) continue;
+    doll.battle.fp = doll.pre_battle.fp;
+    doll.battle.acc = doll.pre_battle.acc;
+    doll.battle.eva = doll.pre_battle.eva;
+    doll.battle.rof = doll.pre_battle.rof;
+    doll.battle.crit = doll.pre_battle.crit;
+    doll.battle.critdmg = doll.pre_battle.critdmg;
+    doll.battle.rounds = doll.pre_battle.rounds;
+    doll.battle.armor = doll.pre_battle.armor;
+    doll.battle.ap = doll.pre_battle.ap;
+    doll.battle.buffs = {}; //[]
+    doll.battle.action_queue = [];
+    //doll.busylinks = 0;
+    doll.battle.timers = [{type:'normalAttack',timeLeft:1}]; //change to use actual time
+    //battle timers can contain: normalAttack, skill1, skill2, skilleffects taht have a delay(grenades, charged shots), reloading
+  }
+
+
+
+
+
+  //walk time can be handled here
+
+  var battleLength = 30 * 8;
+  var totaldamage8s = 0;
+
+  var counter = 0;
+  for(var currentFrame = 0; currentFrame < battleLength; currentFrame++) {
+
+    //tick all timers
+    for(i = 0; i < 5; i++) {
+      doll = echelon[i];
+      if(doll.id == -1) continue;
+      $.each(doll.battle.timers, (timer, attributes) => {
+        //if timer is normalAttack, decrement only if links-busylinks > 0 and doll is not reloading
+        attributes.timeLeft--;
+        console.log(attributes.timeLeft);
+        if(attributes.timeLeft == 0) {
+          doll.battle.action_queue.push(attributes);
+          //maybe triggerpassive() for skill/skill2
+        }
+      });
+      //tick buff timers
+      //filter out timers whose timeLeft == 0, keep the rest
+    }
+
+
+
+    //activate/deactivate buffs
+    //for all dolls, do:
+    // for i=0 to i=action_queue.length, do
+    //  var action = action_queue.shift();
+    //  if action.type = buff, activateBuff(srcdoll,enemy, etc), triggerPassive() within activateBuff()
+    //  if action.type = attack and no delay, action_queue.push(action);
+    //    if delay, add to battle.timers and set busylinks
+    //filter out buffs with no duration left, keep the rest of the buffs
+    //calculateBattleStats();
+
+
+    //use attacks
+    for(i = 0; i < 5; i++) {
+      doll = echelon[i];
+      if(doll.id == -1) continue;
+      for(var j = 0; j < doll.battle.action_queue.length; j++) {
+        action = doll.battle.action_queue[j];
+        if(action.type == 'normalAttack') {
+          //attack
+          //if doll has multihit buff,
+            //calculateActionDamage(doll, action)
+            console.log('attack');
+            var dmg = Math.max(2, doll.battle.fp - enemy.armor);
+            console.log(dmg);
+            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.eva));
+            dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
+            dmg *= doll.links;
+            //if shotgun, check targets and enemycount
+
+            //if sg/mg, decrement ammo count
+            //increment attackcount
+            totaldamage8s += dmg;
+            counter++;
+            console.log(dmg);
+            doll.battle.timers[0].timeLeft = doll.type == 5? doll.frame : Math.ceil(50 * 30 / doll.battle.rof) - 1;
+
+          doll.battle.action_queue.shift();//splice instead
+        }
+      }
+      console.log(doll);
+    }
+
+  }
+  console.log('counter'+counter);
+  $('#dmg-8s').text(totaldamage8s);
+
+}
+
+function activateBuff() {
+  //check targets, add effect to doll.buffs of target(s), check passive triggers
+}
+
 function changeLevel(event) {
   var doll = echelon[event.data];
 
@@ -628,8 +715,7 @@ function changeLevel(event) {
   } else {
     calculatePreBattleStatsForDoll(event.data);
   }
-  //update dps for this doll
-  //update dps for all dolls
+  simulateBattle();
   updateUIAllDolls();
 }
 
@@ -638,8 +724,7 @@ function changeEquipLevel(event) {
 
   calculateEquipBonus(event.data);
   calculatePreBattleStatsForDoll(event.data);
-  //update dps for this doll
-  //update dmg for all dolls
+  simulateBattle();
   updateUIAllDolls();
 }
 
@@ -657,8 +742,7 @@ function removeDoll(event) {
 
   calculateTileBonus();
   calculatePreBattleStatsAllDolls();
-  //update dps for all dolls
-  //update total dps
+  simulateBattle();
   updateUIAllDolls();
 }
 
@@ -838,7 +922,6 @@ function onDrop(event) {
 
   calculateTileBonus();
   calculatePreBattleStatsAllDolls();
-  //update dps for all dolls
-  //update total dps
+  simulateBattle();
   updateUIAllDolls();
 }
