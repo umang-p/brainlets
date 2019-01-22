@@ -159,9 +159,9 @@ function createDummyDoll(p) {
 }
 
 function changeEnemyStats() {
-  enemyEva = parseInt($('#enemy-eva').val());
-  enemyArmor = parseInt($('#enemy-armor').val());
-  enemyCount = parseInt($('#enemy-count').val());
+  enemyEva = Math.max(0, parseInt($('#enemy-eva').val()));
+  enemyArmor = Math.max(0, parseInt($('#enemy-armor').val()));
+  enemyCount = Math.max(1, parseInt($('#enemy-count').val()));
 
   simulateBattle();
 }
