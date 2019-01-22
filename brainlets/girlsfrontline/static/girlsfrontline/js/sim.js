@@ -119,6 +119,8 @@ $(function () {
   $('#enemy-count').change(changeEnemyStats);
   enemyCount = 1;
 
+  $('#damage-graph-btn').click(showDamageGraph);
+
   $('[data-toggle="tooltip"]').tooltip();
 });
 
@@ -924,4 +926,8 @@ function onDrop(event) {
   calculatePreBattleStatsAllDolls();
   simulateBattle();
   updateUIAllDolls();
+}
+
+function showDamageGraph() {
+  $('#damage-graph-modal').modal('show');
 }

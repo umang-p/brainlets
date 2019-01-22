@@ -18,16 +18,10 @@
       <br>
       Total DPS: <span id="dps-total">-</span>
     </p>
-    <p class="h6 col">
-      <span id="name1"></span> DPS: <span id="doll1-dps">-</span>
-      <br>
-      <span id="name2"></span> DPS: <span id="doll2-dps">-</span>
-      <br>
-      <span id="name3"></span> DPS: <span id="doll3-dps">-</span>
-      <br>
-      <span id="name4"></span> DPS: <span id="doll4-dps">-</span>
-      <br>
-      <span id="name5"></span> DPS: <span id="doll5-dps">-</span>
+    <div class="col">
+      <button id="damage-graph-btn" type="button" class="btn">Damage Graph</button>
+      <button type="button" class="btn btn-default">Help</button>
+    </div>
   </div>
   <div class="formation-row row no-gutters">
     <div id="pos12" data-index="0" class="col border" draggable="true">
@@ -586,7 +580,6 @@
       <button id="night-btn" type="button" class="btn"><img src="{% static 'girlsfrontline/sim/night.png' %}" class="img-fluid"></img></button>
     </div>
     <button id="boss-toggle" type="button" class="btn mx-auto">Boss</button>
-    <button type="button" class="btn btn-default mx-auto">Help</button>
   </div>
 </div>
 
@@ -1491,6 +1484,14 @@
           </div>
           <button id="remove-equip" type="button" class="btn bg-light">Remove</button>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="damage-graph-modal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-body">
+      <div id="damage-graph">
       </div>
     </div>
   </div>
