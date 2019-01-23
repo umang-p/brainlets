@@ -652,7 +652,7 @@ function simulateBattle() {
           //if doll has multihit buff,
             //calculateActionDamage(doll, action)
             console.log('attack');
-            var dmg = Math.max(2, doll.battle.fp - enemy.armor);
+            var dmg = Math.max(2, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.armor));
             console.log(dmg);
             dmg *= (doll.battle.acc / (doll.battle.acc + enemy.eva));
             dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
