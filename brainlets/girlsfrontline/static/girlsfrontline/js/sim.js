@@ -14,42 +14,42 @@ var VALID_EQUIPS = [[[4,13],[6],[10,12]], //hg
                     [[5],[1,2,3],[14]],//mg
                     [[11],[7,9],[1,2,3,4]]]; //sg
 
-var TYPE_SCALARS = [{"fp":0.6,"rof":0.8,"acc":1.2,"eva":1.8,"armor":0}, //hg
-                    {"fp":0.6,"rof":1.2,"acc":0.3,"eva":1.6,"armor":0}, //smg
-                    {"fp":2.4,"rof":0.5,"acc":1.6,"eva":0.8,"armor":0}, //rf
-                    {"fp":1,  "rof":1,  "acc":1,  "eva":1,  "armor":0},   //ar
-                    {"fp":1.8,"rof":1.6,"acc":0.6,"eva":0.6,"armor":0}, //mg
-                    {"fp":0.7,"rof":0.4,"acc":0.3,"eva":0.3,"armor":1}]; //sg
+var TYPE_SCALARS = [{fp:0.6,rof:0.8,acc:1.2,eva:1.8,armor:0}, //hg
+                    {fp:0.6,rof:1.2,acc:0.3,eva:1.6,armor:0}, //smg
+                    {fp:2.4,rof:0.5,acc:1.6,eva:0.8,armor:0}, //rf
+                    {fp:1,  rof:1,  acc:1,  eva:1,  armor:0},   //ar
+                    {fp:1.8,rof:1.6,acc:0.6,eva:0.6,armor:0}, //mg
+                    {fp:0.7,rof:0.4,acc:0.3,eva:0.3,armor:1}]; //sg
 
 var GROWTH_FACTORS = {
-  "mod": {
-    "basic": {
-      "armor": [13.979, 0.04],
-      "eva": [5],
-      "acc": [5],
-      "fp": [16],
-      "rof": [45],
+  mod: {
+    basic: {
+      armor: [13.979, 0.04],
+      eva: [5],
+      acc: [5],
+      fp: [16],
+      rof: [45],
     },
-    "grow": {
-      "eva": [0.075, 22.572],
-      "acc": [0.075, 22.572],
-      "fp": [0.06, 18.018],
-      "rof": [0.022, 15.741]
+    grow: {
+      eva: [0.075, 22.572],
+      acc: [0.075, 22.572],
+      fp: [0.06, 18.018],
+      rof: [0.022, 15.741]
     }
   },
-  "normal": {
-    "basic": {
-      "armor": [2, 0.161],
-      "eva": [5],
-      "acc": [5],
-      "fp": [16],
-      "rof": [45],
+  normal: {
+    basic: {
+      armor: [2, 0.161],
+      eva: [5],
+      acc: [5],
+      fp: [16],
+      rof: [45],
     },
-    "grow": {
-      "eva": [0.303, 0],
-      "acc": [0.303, 0],
-      "fp": [0.242, 0],
-      "rof": [0.181, 0]
+    grow: {
+      eva: [0.303, 0],
+      acc: [0.303, 0],
+      fp: [0.242, 0],
+      rof: [0.181, 0]
     }
   }
 }
