@@ -6,6 +6,7 @@ var dollData;
 var enemyEva;
 var enemyArmor;
 var enemyCount;
+var damageData;
 var VALID_EQUIPS = [[[4,13],[6],[10,12]], //hg
                     [[10,12],[6],[1,2,3,4,13]],//smg
                     [[5],[1,2,3,13],[15]],//rf
@@ -137,6 +138,7 @@ function createDummyDoll(p) {
   obj = {
     id:-1,
     pos:p,
+    name:'',
     affection:2,
     tiles:{},
     equip1:-1,
@@ -572,10 +574,14 @@ function simulateBattle() {
   //var enemy = initEnemy();
   //initDollsForBattle(); put skills in doll.battle.timers with initcd, add passives
   //calculateBattleStats(doll);
-
+  damageData = {x:[], y:[]};
   //init dolls
   for(var i = 0; i < 5; i++) {
     var doll = echelon[i];
+    damageData.y.push({});
+    damageData.y[i].name = doll.name;
+    damageData.y[i].data = [];
+    damageData.y[i].data.push(0);
     if(doll.id == -1) continue;
     doll.battle.fp = doll.pre_battle.fp;
     doll.battle.acc = doll.pre_battle.acc;
@@ -595,19 +601,19 @@ function simulateBattle() {
 
 
 
-
-
   //walk time can be handled here
 
   var battleLength = 30 * 8;
   var totaldamage8s = 0;
 
   var counter = 0;
-  for(var currentFrame = 0; currentFrame < battleLength; currentFrame++) {
-
+  damageData.x.push(0);
+  for(var currentFrame = 1; currentFrame < battleLength; currentFrame++) {
+    damageData.x.push(parseFloat((currentFrame / 30.0).toFixed(2)));
     //tick all timers
     for(i = 0; i < 5; i++) {
       doll = echelon[i];
+      damageData.y[i].data.push(damageData.y[i].data[currentFrame-1]);
       if(doll.id == -1) continue;
       $.each(doll.battle.timers, (timer, attributes) => {
         //if timer is normalAttack, decrement only if links-busylinks > 0 and doll is not reloading
@@ -656,6 +662,7 @@ function simulateBattle() {
             //if sg/mg, decrement ammo count
             //increment attackcount
             totaldamage8s += dmg;
+            damageData.y[i].data[currentFrame] += Math.round(dmg);
             counter++;
             console.log(dmg);
             doll.battle.timers[0].timeLeft = doll.type == 5? doll.frame : Math.ceil(50 * 30 / doll.battle.rof) - 1;
@@ -668,7 +675,9 @@ function simulateBattle() {
 
   }
   console.log('counter'+counter);
-  $('#dmg-8s').text(totaldamage8s);
+  $('#dmg-8s').text(Math.round(totaldamage8s));
+
+  damageData.y = damageData.y.filter(v => v.name != '');
 
 }
 
@@ -930,4 +939,25 @@ function onDrop(event) {
 
 function showDamageGraph() {
   $('#damage-graph-modal').modal('show');
+
+  Highcharts.chart('damage-graph', {
+    title: {
+      text: 'Damage over Time'
+    },
+    tooltip: {
+      shared: true
+    },
+    xAxis: {
+      categories: damageData.x,
+      title: {
+        text: 'Time (seconds)'
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'Total Damage Done'
+      }
+    },
+    series: damageData.y
+  });
 }
