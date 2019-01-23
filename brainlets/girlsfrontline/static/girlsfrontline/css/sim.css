@@ -84,3 +84,7 @@
 .table td {
   padding: 0px;
 }
+#damage-graph-modal .modal-dialog {
+  width: 1000px;
+  max-width: 1000px;
+}
