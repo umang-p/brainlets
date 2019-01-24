@@ -80,6 +80,7 @@
 }
 #pos12, #pos13, #pos14, #pos22, #pos23, #pos24, #pos32, #pos33, #pos34 {
   cursor: move;
+  background-color: rgb(185,185,185);
 }
 .table td {
   padding: 0px;
