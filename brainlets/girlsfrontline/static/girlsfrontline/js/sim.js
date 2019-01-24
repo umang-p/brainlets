@@ -820,7 +820,7 @@ function updateUIForDoll(index) {
     }
     $('#doll'+(index+1)+' .ap span').text(doll.pre_battle.ap);
 
-    $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/dolls/'+doll.name+'.png');
+    $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/dolls/'+doll.id+'.png');
 
     $('#pos'+doll.pos+' .tilegrid').prop('hidden', false);
     $('#pos'+doll.pos+' .tilegrid').attr('data-original-title', doll.tooltip_tiles);
