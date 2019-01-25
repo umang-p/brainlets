@@ -214,9 +214,10 @@ function toggleBoss() {
 }
 
 function initDollSelectModal() {
+  var doll_types = ['All','HG','SMG','RF','AR','MG','SG'];
   for(var i = 0; i < dollData.length; i++) {
     var doll = dollData[i];
-    $('#doll-list-'+doll.type+' .stars'+doll.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="'+doll.id+'" data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="'+doll.tooltip_tiles+'<br>'+doll.tooltip_skill1+'<br>'+doll.tooltip_skill2+'">'+doll.name+'</button>');
+    $('#doll-list-'+doll.type+' .stars'+doll.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="'+doll.id+'" data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="'+doll.tooltip_tiles+' Affects: '+doll_types[doll.tiles.target_type]+'<br>'+doll.tooltip_skill1+'<br>'+doll.tooltip_skill2+'">'+doll.name+'</button>');
   }
 }
 
@@ -326,7 +327,7 @@ function changeDoll(event) {
 
   $('#pos'+echelon[index].pos).attr('data-index', index);
 
-  if('mod' in selectedDoll) {
+  if(selectedDoll.mod) {
     $('#doll'+(index+1)+' .doll-level-select').children().prop('disabled', true);
     $('#doll'+(index+1)+' .doll-level-select').children().filter(':first').prop('disabled', false);
     $('#doll'+(index+1)+' .doll-level-select').val(115);
