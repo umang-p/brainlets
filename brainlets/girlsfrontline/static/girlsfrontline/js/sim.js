@@ -450,18 +450,31 @@ function calculateTileBonus() {
         continue;
       }
 
-      if(echelon[dollIndex].tiles.target_type == 0 || echelon[dollIndex].tiles.target_type == echelon[targetIndex].type) {
-        var links = echelon[dollIndex].type == 1 ? getNumLinks(dollIndex) : 1;
-        echelon[targetIndex].tile_bonus.fp += echelon[dollIndex].tiles.effect.fp[links-1];
-        echelon[targetIndex].tile_bonus.acc += echelon[dollIndex].tiles.effect.acc[links-1];
-        echelon[targetIndex].tile_bonus.eva += echelon[dollIndex].tiles.effect.eva[links-1];
-        echelon[targetIndex].tile_bonus.rof += echelon[dollIndex].tiles.effect.rof[links-1];
-        echelon[targetIndex].tile_bonus.crit += echelon[dollIndex].tiles.effect.crit[links-1];
-        echelon[targetIndex].tile_bonus.skillcd += echelon[dollIndex].tiles.effect.skillcd[links-1];
-        if(echelon[targetIndex].tile_bonus.skillcd > 30) {
-          echelon[targetIndex].tile_bonus.skillcd = 30;
+      var target = echelon[targetIndex];
+      var source = echelon[dollIndex];
+
+      if(source.tiles.target_type == 0 || source.tiles.target_type == target.type) {
+        if(source.type == 1) {
+          target.tile_bonus.fp += Math.floor(source.tiles.effect.fp[0] + ((source.tiles.effect.fp[1] - source.tiles.effect.fp[0]) / 4) * (getNumLinks(dollIndex) - 1));
+          target.tile_bonus.acc += Math.floor(source.tiles.effect.acc[0] + ((source.tiles.effect.acc[1] - source.tiles.effect.acc[0]) / 4) * (getNumLinks(dollIndex) - 1));
+          target.tile_bonus.eva += Math.floor(source.tiles.effect.eva[0] + ((source.tiles.effect.eva[1] - source.tiles.effect.eva[0]) / 4) * (getNumLinks(dollIndex) - 1));
+          target.tile_bonus.rof += Math.floor(source.tiles.effect.rof[0] + ((source.tiles.effect.rof[1] - source.tiles.effect.rof[0]) / 4) * (getNumLinks(dollIndex) - 1));
+          target.tile_bonus.crit += Math.floor(source.tiles.effect.crit[0] + ((source.tiles.effect.crit[1] - source.tiles.effect.crit[0]) / 4) * (getNumLinks(dollIndex) - 1));
+          target.tile_bonus.skillcd += Math.floor(source.tiles.effect.skillcd[0] + ((source.tiles.effect.skillcd[1] - source.tiles.effect.skillcd[0]) / 4) * (getNumLinks(dollIndex) - 1));
+          target.tile_bonus.armor += Math.floor(source.tiles.effect.armor[0] + ((source.tiles.effect.armor[1] - source.tiles.effect.armor[0]) / 4) * (getNumLinks(dollIndex) - 1));
+        } else {
+          target.tile_bonus.fp += source.tiles.effect.fp;
+          target.tile_bonus.acc += source.tiles.effect.acc;
+          target.tile_bonus.eva += source.tiles.effect.eva;
+          target.tile_bonus.rof += source.tiles.effect.rof;
+          target.tile_bonus.crit += source.tiles.effect.crit;
+          target.tile_bonus.skillcd += source.tiles.effect.skillcd;
+          target.tile_bonus.armor += source.tiles.effect.armor;
         }
-        echelon[targetIndex].tile_bonus.armor += echelon[dollIndex].tiles.effect.armor[links-1];
+
+        if(target.tile_bonus.skillcd > 30) {
+          target.tile_bonus.skillcd = 30;
+        }
       }
     }
   });
