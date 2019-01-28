@@ -950,7 +950,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -990,7 +990,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1030,7 +1030,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1070,7 +1070,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1110,7 +1110,7 @@
         "rof": 25,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1150,7 +1150,7 @@
         "rof": 5,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1190,7 +1190,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1230,7 +1230,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1270,7 +1270,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1310,7 +1310,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1350,7 +1350,7 @@
         "rof": 0,
         "crit": 20,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1390,7 +1390,7 @@
         "rof": 15,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1430,7 +1430,7 @@
         "rof": 15,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1470,7 +1470,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1510,7 +1510,7 @@
         "rof": 10,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1550,7 +1550,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1590,7 +1590,7 @@
         "rof": 10,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1630,7 +1630,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 12,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1670,7 +1670,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 12,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1710,7 +1710,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 15,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1750,7 +1750,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 12,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1790,7 +1790,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 12,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1830,7 +1830,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 15,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1870,7 +1870,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 10,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1910,7 +1910,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 10,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1950,7 +1950,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 15,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -1990,7 +1990,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 15,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2030,7 +2030,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 12,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2070,7 +2070,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 18,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2110,7 +2110,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 10,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2150,7 +2150,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 18,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2190,7 +2190,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 12,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2230,7 +2230,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 18,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2270,7 +2270,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 10,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2310,7 +2310,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 10,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2350,7 +2350,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 18,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2389,8 +2389,8 @@
         "eva": 12,
         "rof": 0,
         "crit": 0,
-        "skillcd": ,
-        "armor": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -2430,7 +2430,7 @@
         "rof": 0,
         "crit": 30,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2470,7 +2470,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2510,7 +2510,7 @@
         "rof": 10,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2550,7 +2550,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2590,7 +2590,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2630,7 +2630,7 @@
         "rof": 10,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2670,7 +2670,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2709,8 +2709,8 @@
         "eva": 15,
         "rof": 0,
         "crit": 0,
-        "skillcd": 0,
-        "armor": 0,
+        "skillcd":0,
+        "armor": 0
       }
     }
   },
@@ -2750,7 +2750,7 @@
         "rof": 20,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2790,7 +2790,7 @@
         "rof": 10,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2830,7 +2830,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2870,7 +2870,7 @@
         "rof": 0,
         "crit": 10,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2910,7 +2910,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2950,7 +2950,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -2990,7 +2990,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3030,7 +3030,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3070,7 +3070,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3110,7 +3110,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3150,7 +3150,7 @@
         "rof": 10,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3190,7 +3190,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 10,
+        "armor": 10
       }
     }
   },
@@ -3230,7 +3230,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3270,7 +3270,7 @@
         "rof": 8,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3310,7 +3310,7 @@
         "rof": 12,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3350,7 +3350,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 10,
+        "armor": 10
       }
     }
   },
@@ -3390,7 +3390,7 @@
         "rof": 10,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3430,7 +3430,7 @@
         "rof": 15,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3470,7 +3470,7 @@
         "rof": 16,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3510,7 +3510,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3550,7 +3550,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3590,7 +3590,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3630,7 +3630,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3670,7 +3670,7 @@
         "rof": 10,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3832,7 +3832,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3872,7 +3872,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3912,7 +3912,7 @@
         "rof": 20,
         "crit": 0,
         "skillcd": 0,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -3952,7 +3952,7 @@
         "rof": 0,
         "crit": 0,
         "skillcd": 12,
-        "armor": 0,
+        "armor": 0
       }
     }
   },
@@ -4224,58 +4224,37 @@
     "voice": "Tomoyo Kurosawa",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Evasion +24%, Rate of fire +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,-9,11,-11,9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "acc": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "eva": [
-          0,
-          0,
-          0,
-          0,
-          0
+          12,
+          24
         ],
         "rof": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -4306,33 +4285,19 @@
     "voice": "Mamiko Noto",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +30%, Rate of fire +12%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 30,
+        "eva": 0,
+        "rof": 12,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -4360,33 +4325,19 @@
     "voice": "Emi Uema",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Crit Rate +500%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,11,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 500,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -4414,33 +4365,19 @@
     "voice": "Tomomi Mineuchi",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +18%, Crit Rate +30%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 18,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 30,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -4468,33 +4405,19 @@
     "voice": "Akane Fujita",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +10%, Rate of fire +8%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 10,
+        "acc": 0,
+        "eva": 0,
+        "rof": 8,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -4522,33 +4445,19 @@
     "voice": "Yumi Uchiyama",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +20%, Damage +15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 15,
+        "acc": 0,
+        "eva": 0,
+        "rof": 20,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -4576,33 +4485,19 @@
     "voice": "Haruka Yoshimura",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Evasion +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,-9,11",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 20,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -4630,33 +4525,19 @@
     "voice": "Sora Tokui",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Evasion +10%, Damage +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 0,
+        "eva": 10,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -4684,33 +4565,19 @@
     "voice": "Maaya Uchida",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +50%, Rate of fire +25%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-9,11",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 50,
+        "eva": 0,
+        "rof": 25,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -4738,33 +4605,19 @@
     "voice": "Ami Koshimizu",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +10%, Armor +10%",
     "tiles": {
       "self": 33,
-      "target": "REPLACE",
+      "target": "12,-8",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 10,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 10
       }
     }
   },
@@ -4792,33 +4645,19 @@
     "voice": "Asuka Ito",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +30%",
     "tiles": {
       "self": 33,
-      "target": "REPLACE",
+      "target": "12,-8",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 30,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -4846,33 +4685,19 @@
     "voice": "Yumi Uchiyama",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +20%",
     "tiles": {
       "self": 34,
-      "target": "REPLACE",
+      "target": "22",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 20,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -4900,33 +4725,19 @@
     "voice": "Ayaka Suwa",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Armor +20%",
     "tiles": {
       "self": 33,
-      "target": "REPLACE",
+      "target": "2,-8,12",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 20
       }
     }
   },
@@ -4954,58 +4765,37 @@
     "voice": "Minami Tanaka",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +24%, Accuracy +40%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,10,-10",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          12,
+          24
         ],
         "acc": [
-          0,
-          0,
-          0,
-          0,
-          0
+          20,
+          40
         ],
         "eva": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "rof": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -5036,58 +4826,37 @@
     "voice": "Asami Imai",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Rate of fire +16%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,-1,-11,9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "acc": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "eva": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "rof": [
-          0,
-          0,
-          0,
-          0,
-          0
+          8,
+          16
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -5118,33 +4887,19 @@
     "voice": "Aki Toyosaki",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +15%, Accuracy +30%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 30,
+        "eva": 0,
+        "rof": 15,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -5172,33 +4927,19 @@
     "voice": "Iori Nomizu",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +12%, Evasion +10%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 12,
+        "acc": 0,
+        "eva": 10,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -5226,33 +4967,19 @@
     "voice": "Asami Imai",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 15,
+        "armor": 0
       }
     }
   },
@@ -5280,33 +5007,19 @@
     "voice": "Mai Nakahara",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Evasion +15%, Rate of fire +10%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 15,
+        "rof": 10,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -5334,33 +5047,19 @@
     "voice": "Marina Inoue",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +65%, Rate of fire +25%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 65,
+        "eva": 0,
+        "rof": 25,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -5388,33 +5087,19 @@
     "voice": "Ami Hagihara",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +50%, Damage +25%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 25,
+        "acc": 50,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -5442,33 +5127,19 @@
     "voice": "Ricca Tachibana",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +18%",
     "tiles": {
       "self": 32,
-      "target": "REPLACE",
+      "target": "2,-18",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 18,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -5496,33 +5167,19 @@
     "voice": "Ayaka Fukuhara",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Evasion +10%, Damage +30%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 30,
+        "acc": 0,
+        "eva": 10,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -5550,58 +5207,37 @@
     "voice": "Ayako Kawasumi",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +12%, Evasion +36%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,10,-10",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "acc": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "eva": [
-          0,
-          0,
-          0,
-          0,
-          0
+          18,
+          36
         ],
         "rof": [
-          0,
-          0,
-          0,
-          0,
-          0
+          6,
+          12
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -5632,33 +5268,19 @@
     "voice": "Ricca Tachibana",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-9",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 12,
+        "armor": 0
       }
     }
   },
@@ -5686,33 +5308,19 @@
     "voice": "Haruka Yoshimura",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +12%, Armor +15%",
     "tiles": {
       "self": 33,
-      "target": "REPLACE",
+      "target": "12,-8",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 12,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 15
       }
     }
   },
@@ -5740,58 +5348,37 @@
     "voice": "Shiki Aoki",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Evasion +30%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,10,-10,1,11,-9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "acc": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "eva": [
-          0,
-          0,
-          0,
-          0,
-          0
+          15,
+          30
         ],
         "rof": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "crit": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -5822,33 +5409,19 @@
     "voice": "Minami Tanaka",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "9,-11",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -5876,33 +5449,19 @@
     "voice": "Rumi Okubo",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
       }
     }
   },
@@ -5930,33 +5489,19 @@
     "voice": "Kami Daimon",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +10%, Evasion +18%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 10,
+        "acc": 0,
+        "eva": 18,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -5984,33 +5529,19 @@
     "voice": "Ayane Sakura",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +10%, Evasion +18%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 18,
+        "rof": 10,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -6038,33 +5569,19 @@
     "voice": "Nozomi Yamamoto",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +55%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 55,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -6092,58 +5609,37 @@
     "voice": "Emiri Katou",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Accuracy +50%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,1,11,-9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "acc": [
-          0,
-          0,
-          0,
-          0,
-          0
+          25,
+          50
         ],
         "eva": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "rof": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -6174,33 +5670,19 @@
     "voice": "Saya Horigom",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +10%, Rate of fire +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 10,
+        "acc": 0,
+        "eva": 0,
+        "rof": 20,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -6228,33 +5710,19 @@
     "voice": "Nozomi Yamamoto",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +16%, Accuracy +75%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 75,
+        "eva": 0,
+        "rof": 16,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -6282,33 +5750,19 @@
     "voice": "Takada Yuuki",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +18%, Crit Rate +30%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 18,
+        "crit": 30,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -6336,33 +5790,19 @@
     "voice": "Serizawa Yuu",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +24%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 24,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -6390,33 +5830,19 @@
     "voice": "Ayaka Fujii",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +12%, Accuracy +30%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 30,
+        "eva": 0,
+        "rof": 12,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -6444,33 +5870,19 @@
     "voice": "Marina Inoue",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +35%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 35,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -6498,58 +5910,37 @@
     "voice": "Arise Sato",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +16%, Rate of fire +10%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,1,-1",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          8,
+          16
         ],
         "acc": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "eva": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "rof": [
-          0,
-          0,
-          0,
-          0,
-          0
+          5,
+          10
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -6580,58 +5971,37 @@
     "voice": "Naomi Mukaiyama",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +56%, Evasion +36%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,1,11,-9",
       "target_type": 0,
       "effect": {
         "fp": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "acc": [
-          0,
-          0,
-          0,
-          0,
-          0
+          28,
+          56
         ],
         "eva": [
-          0,
-          0,
-          0,
-          0,
-          0
+          18,
+          36
         ],
         "rof": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "crit": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -6662,58 +6032,37 @@
     "voice": "Arise Sato",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +28%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,-11,9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "acc": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "eva": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "rof": [
-          0,
-          0,
-          0,
-          0,
-          0
+          14,
+          28
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -6744,58 +6093,37 @@
     "voice": "Akane Fujita",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +30%, Crit Rate +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,11,-9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "acc": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "eva": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "rof": [
-          0,
-          0,
-          0,
-          0,
-          0
+          15,
+          30
         ],
         "crit": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "skillcd": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -6826,33 +6154,19 @@
     "voice": "Ayaka Fukuhara",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +10%, Accuracy +35%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,-1,-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 35,
+        "eva": 0,
+        "rof": 10,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -6880,33 +6194,19 @@
     "voice": "Rui Kariya",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Evasion +12%, Damage +10%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 10,
+        "acc": 0,
+        "eva": 12,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -6934,33 +6234,19 @@
     "voice": "Rie Takahashi",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11,-9",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 12,
+        "armor": 0
       }
     }
   },
@@ -6988,33 +6274,19 @@
     "voice": "Nozomi Yamamoto",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 15,
+        "armor": 0
       }
     }
   },
@@ -7042,33 +6314,19 @@
     "voice": "Karin Nanami",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 12,
+        "armor": 0
       }
     }
   },
@@ -7096,33 +6354,19 @@
     "voice": "Asami Seto",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
       }
     }
   },
@@ -7150,33 +6394,19 @@
     "voice": "Minami Tsuda",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +15%, Armor +10%",
     "tiles": {
       "self": 33,
-      "target": "REPLACE",
+      "target": "12,-8",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 15,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 10
       }
     }
   },
@@ -7204,33 +6434,19 @@
     "voice": "Kanae Itou",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +15%, Evasion +10%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 10,
+        "rof": 15,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -7258,33 +6474,19 @@
     "voice": "Hitomi Nabatame",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Accuracy +20%",
     "tiles": {
       "self": 13,
-      "target": "REPLACE",
+      "target": "-2",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 20,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -7312,33 +6514,19 @@
     "voice": "Makoto Koichi",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +50%",
     "tiles": {
       "self": 13,
-      "target": "REPLACE",
+      "target": "-2,8",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 50,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -7366,33 +6554,19 @@
     "voice": "Emiri Katou",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +18%",
     "tiles": {
       "self": 13,
-      "target": "REPLACE",
+      "target": "-12,8",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 18,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -7420,33 +6594,19 @@
     "voice": "Ruriko Aoki",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +18%",
     "tiles": {
       "self": 14,
-      "target": "REPLACE",
+      "target": "-2,18",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 18,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -7474,33 +6634,19 @@
     "voice": "Ruriko Aoki",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +55%",
     "tiles": {
       "self": 12,
-      "target": "REPLACE",
+      "target": "-2,-22",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 55,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -7528,33 +6674,19 @@
     "voice": "Ami Nanase",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +15%, Accuracy +20%",
     "tiles": {
       "self": 13,
-      "target": "REPLACE",
+      "target": "-2",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 15,
+        "acc": 20,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -7582,33 +6714,19 @@
     "voice": "Shizuka Ito",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%",
     "tiles": {
       "self": 13,
-      "target": "REPLACE",
+      "target": "8,-12",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -7636,33 +6754,19 @@
     "voice": "Hiromi Igarashi",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +12%, Accuracy +30%",
     "tiles": {
       "self": 14,
-      "target": "REPLACE",
+      "target": "18",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 12,
+        "acc": 30,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -7690,33 +6794,19 @@
     "voice": "Rui Kariya",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +12%, Accuracy +30%",
     "tiles": {
       "self": 12,
-      "target": "REPLACE",
+      "target": "-22",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 12,
+        "acc": 30,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -7744,33 +6834,19 @@
     "voice": "Hisako Kanemoto",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +15%",
     "tiles": {
       "self": 13,
-      "target": "REPLACE",
+      "target": "-2,-12,8",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 15,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -7798,33 +6874,19 @@
     "voice": "Yuka Ootsubo",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +12%",
     "tiles": {
       "self": 13,
-      "target": "REPLACE",
+      "target": "-2,-12,8",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 12,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -7852,33 +6914,19 @@
     "voice": "Miyuki Kobori",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%",
     "tiles": {
       "self": 13,
-      "target": "REPLACE",
+      "target": "-2,-12",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -7906,33 +6954,19 @@
     "voice": "Mariko Honda",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +22%",
     "tiles": {
       "self": 13,
-      "target": "REPLACE",
+      "target": "-2,-12",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 22,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -7960,33 +6994,19 @@
     "voice": "Manami Numakura",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +12%, Accuracy +10%",
     "tiles": {
       "self": 14,
-      "target": "REPLACE",
+      "target": "-2,8,18",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 12,
+        "acc": 10,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -8014,33 +7034,19 @@
     "voice": "Risa Kubota",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%",
     "tiles": {
       "self": 12,
-      "target": "REPLACE",
+      "target": "-2,-22",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -8068,58 +7074,37 @@
     "voice": "Shiho Kokido",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +16%, Rate of fire +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-10,10,-11,9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          8,
+          16
         ],
         "acc": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "eva": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "rof": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -8150,58 +7135,37 @@
     "voice": "Ayaka Fujii",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +32%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-11,11,9,-9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          16,
+          32
         ],
         "acc": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "eva": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "rof": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "crit": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -8232,58 +7196,37 @@
     "voice": "Ryouko Maekawa",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +30%, Accuracy +40%",
     "tiles": {
       "self": 33,
-      "target": "REPLACE",
+      "target": "10,-10,12,-8",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          15,
+          30
         ],
         "acc": [
-          0,
-          0,
-          0,
-          0,
-          0
+          20,
+          40
         ],
         "eva": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "rof": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -8314,33 +7257,19 @@
     "voice": "Arisa Ida",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +10%, Damage +6%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 6,
+        "acc": 0,
+        "eva": 0,
+        "rof": 10,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -8368,33 +7297,19 @@
     "voice": "Riiko Tazawa",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +30%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 30,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -8422,33 +7337,19 @@
     "voice": "Rina Hidaka",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd":0,
+        "armor": 0
       }
     }
   },
@@ -8476,33 +7377,19 @@
     "voice": "Kanae Itou",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +30%, Evasion +18%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 30,
+        "eva": 18,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -8530,33 +7417,19 @@
     "voice": "Minami Tsuda",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +15%, Accuracy +12%",
     "tiles": {
       "self": 34,
-      "target": "REPLACE",
+      "target": "2,12,22",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 12,
+        "eva": 0,
+        "rof": 15,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -8584,33 +7457,19 @@
     "voice": "Yuka Saito",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-9",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 12,
+        "armor": 0
       }
     }
   },
@@ -8638,33 +7497,19 @@
     "voice": "Rina Hidaka",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +50%, Evasion +15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 50,
+        "eva": 15,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -8692,33 +7537,19 @@
     "voice": "Kibune Sachiho",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +20%, Damage +15%",
     "tiles": {
       "self": 24,
-      "target": "REPLACE",
+      "target": "-1,19",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 15,
+        "acc": 20,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -8746,33 +7577,19 @@
     "voice": "Miyuki Kobori",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +25%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 25,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -8800,33 +7617,19 @@
     "voice": "Makoto Koichi",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +40%, Evasion +15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 40,
+        "eva": 15,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -8854,33 +7657,19 @@
     "voice": "Yuka Saito",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
       "self": 33,
-      "target": "REPLACE",
+      "target": "1,2",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
       }
     }
   },
@@ -8908,33 +7697,19 @@
     "voice": "Hisako Kanemoto",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 15,
+        "armor": 0
       }
     }
   },
@@ -8962,33 +7737,19 @@
     "voice": "Shiho Kokido",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Evasion +12%",
     "tiles": {
       "self": 24,
-      "target": "REPLACE",
+      "target": "1,21",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 0,
+        "eva": 12,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -9016,33 +7777,19 @@
     "voice": "Kotomi Aihara",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 12,
+        "armor": 0
       }
     }
   },
@@ -9070,58 +7817,37 @@
     "voice": "Asami Seto",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +30%, Crit Rate +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,-1,10,-10,11,-11,9,-9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          15,
+          30
         ],
         "acc": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "eva": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "rof": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "crit": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "skillcd": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -9152,33 +7878,19 @@
     "voice": "Yukiyo Fujii",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,11",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 15,
+        "armor": 0
       }
     }
   },
@@ -9206,33 +7918,19 @@
     "voice": "Chiyo Ousaki",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +10%, Armor +15%",
     "tiles": {
       "self": 33,
-      "target": "REPLACE",
+      "target": "2,12,-8",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 10,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 15
       }
     }
   },
@@ -9260,58 +7958,37 @@
     "voice": "Ryouko Maekawa",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +50%, Damage +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,1",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "acc": [
-          0,
-          0,
-          0,
-          0,
-          0
+          25,
+          50
         ],
         "eva": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "rof": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -9342,33 +8019,19 @@
     "voice": "Ami Nanase",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +15%, Accuracy +30%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 15,
+        "acc": 30,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -9396,33 +8059,19 @@
     "voice": "Azumi Asakura",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +10%, Accuracy +15%",
     "tiles": {
       "self": 13,
-      "target": "REPLACE",
+      "target": "-2,-12,8",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 10,
+        "acc": 15,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -9450,33 +8099,19 @@
     "voice": "Kotomi Aihara",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +15%, Accuracy +20%",
     "tiles": {
       "self": 13,
-      "target": "REPLACE",
+      "target": "-12",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 15,
+        "acc": 20,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd":0,
+        "armor": 0
       }
     }
   },
@@ -9504,33 +8139,19 @@
     "voice": "Karin Nanami",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +15%",
     "tiles": {
       "self": 14,
-      "target": "REPLACE",
+      "target": "-2,18",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 15,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -9558,33 +8179,19 @@
     "voice": "Akane Hanazawa",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +8%, Evasion +8%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 8,
+        "acc": 0,
+        "eva": 8,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -9612,33 +8219,19 @@
     "voice": "Satomi Satou",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11,-9",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
       }
     }
   },
@@ -9666,33 +8259,19 @@
     "voice": "Arisa Ida",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +15%, Accuracy +25%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 15,
+        "acc": 25,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -9720,33 +8299,19 @@
     "voice": "Yukiyo Fujii",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +25%, Accuracy +50%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 25,
+        "acc": 50,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -9774,33 +8339,19 @@
     "voice": "Satomi Satou",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +8%, Armor +12%",
     "tiles": {
       "self": 33,
-      "target": "REPLACE",
+      "target": "2,-8",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 8,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 12
       }
     }
   },
@@ -9828,33 +8379,19 @@
     "voice": "Azumi Asakura",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +12%, Evasion +15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 15,
+        "rof": 12,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -9882,33 +8419,19 @@
     "voice": "Reina Ueda",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -10%",
     "tiles": {
       "self": 34,
-      "target": "REPLACE",
+      "target": "10,20",
       "target_type": 3,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 10,
+        "armor": 0
       }
     }
   },
@@ -9936,33 +8459,19 @@
     "voice": "Reina Ueda",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -10%",
     "tiles": {
       "self": 32,
-      "target": "REPLACE",
+      "target": "-10,-20",
       "target_type": 3,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 10,
+        "armor": 0
       }
     }
   },
@@ -9990,33 +8499,19 @@
     "voice": "Riiko Tazawa",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +15%, Damage +10%",
     "tiles": {
       "self": 32,
-      "target": "REPLACE",
+      "target": "-8,-18",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 10,
+        "acc": 15,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -10044,33 +8539,19 @@
     "voice": "Chihiro Inamoto",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,-9",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 15,
+        "armor": 0
       }
     }
   },
@@ -10098,33 +8579,19 @@
     "voice": "Izumi Chiba",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 12,
+        "armor": 0
       }
     }
   },
@@ -10152,58 +8619,37 @@
     "voice": "Yuuki Kuwahara",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +36%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,9,-11",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          18,
+          36
         ],
         "acc": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "eva": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "rof": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "crit": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -10234,33 +8680,19 @@
     "voice": "Ayaka Fujii",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Crit Rate +20%",
     "tiles": {
       "self": 24,
-      "target": "REPLACE",
+      "target": "-1,19",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 20,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -10288,33 +8720,19 @@
     "voice": "Mariko Honda",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11,-9",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
       }
     }
   },
@@ -10342,33 +8760,19 @@
     "voice": "Manami Numakura",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +55%, Evasion +16%",
     "tiles": {
       "self": 24,
-      "target": "REPLACE",
+      "target": "1,11,21",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 55,
+        "eva": 16,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -10396,33 +8800,19 @@
     "voice": "Azumi Waki",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +25%, Rate of fire +15%",
     "tiles": {
       "self": 22,
-      "target": "REPLACE",
+      "target": "1,-9,-19",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 25,
+        "acc": 0,
+        "eva": 0,
+        "rof": 15,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -10450,33 +8840,19 @@
     "voice": "Harumi Sowa",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +10%, Evasion +15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 15,
+        "rof": 10,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -10504,33 +8880,19 @@
     "voice": "Lynn",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +15%, Armor +15%",
     "tiles": {
       "self": 33,
-      "target": "REPLACE",
+      "target": "2,12",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 15,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 15
       }
     }
   },
@@ -10558,33 +8920,19 @@
     "voice": "Harumi Sowa",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +16%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,-11",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 16,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -10612,58 +8960,37 @@
     "voice": "Asuka Kawakami",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Evasion +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,11,-9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "acc": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "eva": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "rof": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "crit": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -10694,33 +9021,19 @@
     "voice": "Arisa Kori",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
       }
     }
   },
@@ -10748,58 +9061,37 @@
     "voice": "Chihiro Inamoto",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +30%, Accuracy +40%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,10,-10,-1,-11,9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          15,
+          30
         ],
         "acc": [
-          0,
-          0,
-          0,
-          0,
-          0
+          20,
+          40
         ],
         "eva": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "rof": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -10830,33 +9122,19 @@
     "voice": "Haruno Anzu",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +15%, Rate of fire +5%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 15,
+        "acc": 0,
+        "eva": 0,
+        "rof": 5,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -10884,33 +9162,19 @@
     "voice": "Aimi",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +65%, Damage +25%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 25,
+        "acc": 65,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -10938,33 +9202,19 @@
     "voice": "Risa Kubota",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Evasion +15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 0,
+        "eva": 15,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -10992,33 +9242,19 @@
     "voice": "Ayaka Fujii",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 12,
+        "armor": 0
       }
     }
   },
@@ -11046,33 +9282,19 @@
     "voice": "Asuka Kawakami",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +12%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 12,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -11100,58 +9322,37 @@
     "voice": "Izumi Chiba",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Evasion +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,1,11,-9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "acc": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "eva": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "rof": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "crit": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -11182,58 +9383,37 @@
     "voice": "Arisa Kori",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +24%, Accuracy +40%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,10,-10,-11,9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          12,
+          24
         ],
         "acc": [
-          0,
-          0,
-          0,
-          0,
-          0
+          20,
+          40
         ],
         "eva": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "rof": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -11264,33 +9444,19 @@
     "voice": "Aimi",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
       }
     }
   },
@@ -11318,33 +9484,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +15%, Accuracy +25%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 15,
+        "acc": 25,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -11372,33 +9524,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +12%, Accuracy +35%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 12,
+        "acc": 35,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -11426,33 +9564,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +15%, Evasion +10%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 10,
+        "rof": 15,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -11480,33 +9604,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 15,
+        "armor": 0
       }
     }
   },
@@ -11534,33 +9644,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +10%",
     "tiles": {
       "self": 24,
-      "target": "REPLACE",
+      "target": "Evasion +15%",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 10,
+        "acc": 0,
+        "eva": 15,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -11588,33 +9684,19 @@
     "voice": "Ai Kakuma",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +12%, Accuracy +35%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 12,
+        "acc": 35,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -11642,33 +9724,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +18%, Accuracy +12%",
     "tiles": {
       "self": 12,
-      "target": "REPLACE",
+      "target": "-2,-12",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 18,
+        "acc": 12,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -11696,33 +9764,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11,-9",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 12,
+        "armor": 0
       }
     }
   },
@@ -11750,33 +9804,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
       }
     }
   },
@@ -11804,58 +9844,37 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +12%, Rate of fire +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,-1,-11,9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          6,
+          12
         ],
         "acc": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "eva": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "rof": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -11886,58 +9905,37 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +24%, Accuracy +60%",
     "tiles": {
       "self": 24,
-      "target": "REPLACE",
+      "target": "-1,10,9,19",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          12,
+          24
         ],
         "acc": [
-          0,
-          0,
-          0,
-          0,
-          0
+          30,
+          60
         ],
         "eva": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "rof": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -11968,33 +9966,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +18%, Crit Rate +30%",
     "tiles": {
       "self": 24,
-      "target": "REPLACE",
+      "target": "-1,9,19",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 18,
+        "crit": 30,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -12022,33 +10006,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11,-9",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 15,
+        "armor": 0
       }
     }
   },
@@ -12076,33 +10046,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Evasion +15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 0,
+        "eva": 15,
+        "rof": 0,
+        "crit": 0,
+        "skillcd":0,
+        "armor": 0
       }
     }
   },
@@ -12130,33 +10086,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Accuracy +55%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 55,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -12184,33 +10126,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +10%, Armor +15%",
     "tiles": {
       "self": 32,
-      "target": "REPLACE",
+      "target": "2,-8,-18",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 10,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 15
       }
     }
   },
@@ -12238,33 +10166,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +12%, Evasion +12%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 12,
+        "acc": 0,
+        "eva": 12,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -12292,33 +10206,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +10%, Accuracy +10%",
     "tiles": {
       "self": 34,
-      "target": "REPLACE",
+      "target": "2,22",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 10,
+        "acc": 10,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -12346,33 +10246,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,-9",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 12,
+        "armor": 0
       }
     }
   },
@@ -12400,33 +10286,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +18%, Evasion +18%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 18,
+        "acc": 0,
+        "eva": 18,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -12454,58 +10326,37 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +32%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,-1,10,-10,-11",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "acc": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "eva": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "rof": [
-          0,
-          0,
-          0,
-          0,
-          0
+          16,
+          32
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -12536,33 +10387,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +12%, Accuracy +30%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 12,
+        "acc": 30,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -12590,33 +10427,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,-9",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 15,
+        "armor": 0
       }
     }
   },
@@ -12644,58 +10467,37 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +24%, Accuracy +50%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,-1,-11,-9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          12,
+          24
         ],
         "acc": [
-          0,
-          0,
-          0,
-          0,
-          0
+          25,
+          50
         ],
         "eva": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "rof": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -12726,33 +10528,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +18%, Armor +8%",
     "tiles": {
       "self": 32,
-      "target": "REPLACE",
+      "target": "-8,-18",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 18,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 8
       }
     }
   },
@@ -12780,58 +10568,37 @@
     "voice": "Kanako Kondo",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +30%, Evasion +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,11,-11,9,-9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "acc": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "eva": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "rof": [
-          0,
-          0,
-          0,
-          0,
-          0
+          15,
+          30
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -12862,33 +10629,19 @@
     "voice": "Aya Suzaki",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +15%, Accuracy +15%",
     "tiles": {
       "self": 13,
-      "target": "REPLACE",
+      "target": "8,-12",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 15,
+        "acc": 15,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -12916,58 +10669,37 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Evasion +30%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,11,-9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "acc": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "eva": [
-          0,
-          0,
-          0,
-          0,
-          0
+          15,
+          30
         ],
         "rof": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "crit": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -12998,33 +10730,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-10,-9",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
       }
     }
   },
@@ -13052,33 +10770,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,11",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
       }
     }
   },
@@ -13106,58 +10810,37 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +30%, Accuracy +50%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,9,-11",
       "target_type": 0,
       "effect": {
         "fp": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "acc": [
-          0,
-          0,
-          0,
-          0,
-          0
+          25,
+          50
         ],
         "eva": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "rof": [
-          0,
-          0,
-          0,
-          0,
-          0
+          15,
+          30
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -13188,33 +10871,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Rate of fire +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 0,
+        "eva": 0,
+        "rof": 20,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -13242,33 +10911,19 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Accuracy +10%",
     "tiles": {
       "self": 13,
-      "target": "REPLACE",
+      "target": "-12,8",
       "target_type": 5,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 10,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -13296,58 +10951,37 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +30%, Accuracy +50%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-10,-11,10,-1,9",
       "target_type": 0,
       "effect": {
         "fp": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "acc": [
-          0,
-          0,
-          0,
-          0,
-          0
+          25,
+          50
         ],
         "eva": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "rof": [
-          0,
-          0,
-          0,
-          0,
-          0
+          15,
+          30
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -13378,58 +11012,37 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +30%, Accuracy +50%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,11,-9,1",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          15,
+          30
         ],
         "acc": [
-          0,
-          0,
-          0,
-          0,
-          0
+          25,
+          50
         ],
         "eva": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "rof": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -13460,58 +11073,37 @@
     "voice": "Aimi Tanaka",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +24%, Accuracy +60%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,-1,10,-10",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          12,
+          24
         ],
         "acc": [
-          0,
-          0,
-          0,
-          0,
-          0
+          30,
+          60
         ],
         "eva": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "rof": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -13542,58 +11134,37 @@
     "voice": "Eriko Matsui",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +24%, Accuracy +60%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,1,-1",
       "target_type": 0,
       "effect": {
         "fp": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "acc": [
-          0,
-          0,
-          0,
-          0,
-          0
+          30,
+          60
         ],
         "eva": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "rof": [
-          0,
-          0,
-          0,
-          0,
-          0
+          12,
+          24
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -13624,58 +11195,37 @@
     "voice": "Narumi Sinohara",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +36%, Crit Rate +20%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,10,-10",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          18,
+          36
         ],
         "acc": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "eva": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "rof": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "crit": [
-          0,
-          0,
-          0,
-          0,
-          0
+          10,
+          20
         ],
         "skillcd": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -13684,7 +11234,7 @@
   },
   {
     "id": 254,
-    "name": "StenMK2Mod",
+    "name": "StenMKIIMod",
     "rarity": 4,
     "type": 2,
     "mod": true,
@@ -13706,33 +11256,19 @@
     "voice": "Kami Daimon",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +30%, Evasion +40%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 30,
+        "eva": 40,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -13760,33 +11296,19 @@
     "voice": "Saori Onishi",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11,-9",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 15,
+        "armor": 0
       }
     }
   },
@@ -13814,33 +11336,19 @@
     "voice": "Uesaka Sumire",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
       }
     }
   },
@@ -13868,33 +11376,19 @@
     "voice": "Mamiko Hanada",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 15,
+        "armor": 0
       }
     }
   },
@@ -13922,33 +11416,19 @@
     "voice": "Mami Misaki",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "11,-9",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 15,
+        "armor": 0
       }
     }
   },
@@ -13976,33 +11456,19 @@
     "voice": "Haruka Tomatsu",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Crit Rate +32%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,1,11,-9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 32,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -14030,33 +11496,19 @@
     "voice": "Yukari Tamura",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Evasion +15%, Accuracy +50%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 50,
+        "eva": 15,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -14084,33 +11536,19 @@
     "voice": "Emiri Katou",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Evasion +15%, Rate of fire +10%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11,-9",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 15,
+        "rof": 10,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -14138,33 +11576,19 @@
     "voice": "Kaori Yoshioka",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Accuracy +55%, Rate of fire +25%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,-10",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 55,
+        "eva": 0,
+        "rof": 25,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -14192,33 +11616,19 @@
     "voice": "Ami Koshimizu",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +30%, Rate of fire +15%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "1,11",
       "target_type": 2,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 30,
+        "acc": 0,
+        "eva": 0,
+        "rof": 15,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -14246,33 +11656,19 @@
     "voice": "Yuuki Aoi",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +18%, Armor +10%",
     "tiles": {
       "self": 33,
-      "target": "REPLACE",
+      "target": "2",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 18,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 10
       }
     }
   },
@@ -14300,33 +11696,19 @@
     "voice": "Hiyori Nitta",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +15%, Rate of fire +15%",
     "tiles": {
       "self": 33,
-      "target": "REPLACE",
+      "target": "2",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 15,
+        "acc": 0,
+        "eva": 0,
+        "rof": 15,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -14354,33 +11736,19 @@
     "voice": "Sora Amamiya",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +10%, Accuracy +15%",
     "tiles": {
       "self": 34,
-      "target": "REPLACE",
+      "target": "2,22",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 15,
+        "eva": 0,
+        "rof": 10,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -14408,58 +11776,37 @@
     "voice": "Iori Nomizu",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +36%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "10,-10,-1,-11,9",
       "target_type": 0,
       "effect": {
         "fp": [
-          0,
-          0,
-          0,
-          0,
-          0
+          18,
+          36
         ],
         "acc": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "eva": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "rof": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "crit": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -14490,33 +11837,19 @@
     "voice": "Asuka Ito",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Evasion +20%, Crit Rate +10%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 20,
+        "rof": 0,
+        "crit": 10,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -14544,33 +11877,19 @@
     "voice": "Saya Horigome",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Rate of fire +24%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 24,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -14598,33 +11917,19 @@
     "voice": "Tomomi Mineuchi",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "REPLACE",
+    "tooltip_tiles": "Damage +20%, Crit Rate +30%",
     "tiles": {
       "self": 23,
-      "target": "REPLACE",
+      "target": "-1,-11,9",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 20,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 30,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -14660,50 +11965,29 @@
       "effect": {
         "fp": [
           15,
-          18,
-          22,
-          26,
           30
         ],
         "acc": [
           25,
-          31,
-          37,
-          43,
           50
         ],
         "eva": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "rof": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
@@ -14740,27 +12024,13 @@
       "target": "-1,9,19",
       "target_type": 4,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          25
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          15
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 25,
+        "eva": 0,
+        "rof": 15,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -14794,27 +12064,13 @@
       "target": "1,11",
       "target_type": 1,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          0
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          15
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 15,
+        "armor": 0
       }
     }
   },
@@ -14848,27 +12104,13 @@
       "target": "2,12,-8",
       "target_type": 6,
       "effect": {
-        "fp": [
-          0
-        ],
-        "acc": [
-          10
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          15
-        ]
+        "fp": 0,
+        "acc": 10,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 15
       }
     }
   },
@@ -14902,27 +12144,13 @@
       "target": "2,22",
       "target_type": 6,
       "effect": {
-        "fp": [
-          10
-        ],
-        "acc": [
-          15
-        ],
-        "eva": [
-          0
-        ],
-        "rof": [
-          0
-        ],
-        "crit": [
-          0
-        ],
-        "skillcd": [
-          0
-        ],
-        "armor": [
-          0
-        ]
+        "fp": 10,
+        "acc": 15,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
       }
     }
   },
@@ -14958,50 +12186,29 @@
       "effect": {
         "fp": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "acc": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "eva": [
           10,
-          12,
-          15,
-          17,
           20
         ],
         "rof": [
           15,
-          18,
-          22,
-          26,
           30
         ],
         "crit": [
-          0,
-          0,
-          0,
           0,
           0
         ],
         "skillcd": [
           0,
-          0,
-          0,
-          0,
           0
         ],
         "armor": [
-          0,
-          0,
-          0,
           0,
           0
         ]
