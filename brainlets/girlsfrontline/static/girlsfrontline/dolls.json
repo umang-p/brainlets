@@ -3180,7 +3180,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Armor +10%, Damage +15%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "2",
       "target_type": 6,
       "effect": {
@@ -3220,7 +3220,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +22%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "2",
       "target_type": 6,
       "effect": {
@@ -3260,7 +3260,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +8%, Damage +10%",
     "tiles": {
-      "self": 34,
+      "self": 12,
       "target": "2,22",
       "target_type": 6,
       "effect": {
@@ -3300,7 +3300,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +12%, Accuracy +10%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "2,12",
       "target_type": 6,
       "effect": {
@@ -3380,7 +3380,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Damage +10%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "2",
       "target_type": 6,
       "effect": {
@@ -3460,7 +3460,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +16%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "12,-8",
       "target_type": 6,
       "effect": {
@@ -3500,7 +3500,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "2,-8",
       "target_type": 6,
       "effect": {
@@ -3540,7 +3540,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +22%",
     "tiles": {
-      "self": 34,
+      "self": 12,
       "target": "22",
       "target_type": 6,
       "effect": {
@@ -3620,7 +3620,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +15%, Damage +10%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "12,-8",
       "target_type": 6,
       "effect": {
@@ -3660,7 +3660,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Accuracy +12%",
     "tiles": {
-      "self": 34,
+      "self": 12,
       "target": "2,22",
       "target_type": 6,
       "effect": {
@@ -4607,7 +4607,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Armor +10%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "12,-8",
       "target_type": 6,
       "effect": {
@@ -4647,7 +4647,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +30%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "12,-8",
       "target_type": 6,
       "effect": {
@@ -4687,7 +4687,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +20%",
     "tiles": {
-      "self": 34,
+      "self": 12,
       "target": "22",
       "target_type": 6,
       "effect": {
@@ -4727,7 +4727,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Armor +20%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "2,-8,12",
       "target_type": 6,
       "effect": {
@@ -5310,7 +5310,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +12%, Armor +15%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "12,-8",
       "target_type": 6,
       "effect": {
@@ -6396,7 +6396,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +15%, Armor +10%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "12,-8",
       "target_type": 6,
       "effect": {
@@ -6476,7 +6476,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Accuracy +20%",
     "tiles": {
-      "self": 13,
+      "self": 24,
       "target": "-2",
       "target_type": 5,
       "effect": {
@@ -6516,7 +6516,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +50%",
     "tiles": {
-      "self": 13,
+      "self": 24,
       "target": "-2,8",
       "target_type": 5,
       "effect": {
@@ -6556,7 +6556,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%",
     "tiles": {
-      "self": 13,
+      "self": 24,
       "target": "-12,8",
       "target_type": 5,
       "effect": {
@@ -6636,7 +6636,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +55%",
     "tiles": {
-      "self": 12,
+      "self": 34,
       "target": "-2,-22",
       "target_type": 5,
       "effect": {
@@ -6676,7 +6676,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +20%",
     "tiles": {
-      "self": 13,
+      "self": 24,
       "target": "-2",
       "target_type": 5,
       "effect": {
@@ -6716,7 +6716,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%",
     "tiles": {
-      "self": 13,
+      "self": 24,
       "target": "8,-12",
       "target_type": 5,
       "effect": {
@@ -6796,7 +6796,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +30%",
     "tiles": {
-      "self": 12,
+      "self": 34,
       "target": "-22",
       "target_type": 5,
       "effect": {
@@ -6836,7 +6836,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%",
     "tiles": {
-      "self": 13,
+      "self": 24,
       "target": "-2,-12,8",
       "target_type": 5,
       "effect": {
@@ -6876,7 +6876,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%",
     "tiles": {
-      "self": 13,
+      "self": 24,
       "target": "-2,-12,8",
       "target_type": 5,
       "effect": {
@@ -6916,7 +6916,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%",
     "tiles": {
-      "self": 13,
+      "self": 24,
       "target": "-2,-12",
       "target_type": 5,
       "effect": {
@@ -6956,7 +6956,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +22%",
     "tiles": {
-      "self": 13,
+      "self": 24,
       "target": "-2,-12",
       "target_type": 5,
       "effect": {
@@ -7036,7 +7036,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%",
     "tiles": {
-      "self": 12,
+      "self": 34,
       "target": "-2,-22",
       "target_type": 5,
       "effect": {
@@ -7198,7 +7198,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +30%, Accuracy +40%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "10,-10,12,-8",
       "target_type": 0,
       "effect": {
@@ -7419,7 +7419,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +15%, Accuracy +12%",
     "tiles": {
-      "self": 34,
+      "self": 12,
       "target": "2,12,22",
       "target_type": 6,
       "effect": {
@@ -7539,7 +7539,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +20%, Damage +15%",
     "tiles": {
-      "self": 24,
+      "self": 13,
       "target": "-1,19",
       "target_type": 4,
       "effect": {
@@ -7659,7 +7659,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "1,2",
       "target_type": 1,
       "effect": {
@@ -7739,7 +7739,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Evasion +12%",
     "tiles": {
-      "self": 24,
+      "self": 13,
       "target": "1,21",
       "target_type": 2,
       "effect": {
@@ -7920,7 +7920,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Armor +15%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "2,12,-8",
       "target_type": 6,
       "effect": {
@@ -8061,7 +8061,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Accuracy +15%",
     "tiles": {
-      "self": 13,
+      "self": 24,
       "target": "-2,-12,8",
       "target_type": 5,
       "effect": {
@@ -8101,7 +8101,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +20%",
     "tiles": {
-      "self": 13,
+      "self": 24,
       "target": "-12",
       "target_type": 5,
       "effect": {
@@ -8341,7 +8341,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +8%, Armor +12%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "2,-8",
       "target_type": 6,
       "effect": {
@@ -8421,7 +8421,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -10%",
     "tiles": {
-      "self": 34,
+      "self": 12,
       "target": "10,20",
       "target_type": 3,
       "effect": {
@@ -8682,7 +8682,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Crit Rate +20%",
     "tiles": {
-      "self": 24,
+      "self": 13,
       "target": "-1,19",
       "target_type": 4,
       "effect": {
@@ -8762,7 +8762,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +55%, Evasion +16%",
     "tiles": {
-      "self": 24,
+      "self": 13,
       "target": "1,11,21",
       "target_type": 2,
       "effect": {
@@ -8802,7 +8802,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +25%, Rate of fire +15%",
     "tiles": {
-      "self": 22,
+      "self": 33,
       "target": "1,-9,-19",
       "target_type": 2,
       "effect": {
@@ -8882,7 +8882,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Armor +15%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "2,12",
       "target_type": 6,
       "effect": {
@@ -9644,10 +9644,10 @@
     "voice": "",
     "tooltip_skill1": "",
     "tooltip_skill2": "",
-    "tooltip_tiles": "Damage +10%",
+    "tooltip_tiles": "Damage +10%, Evasion +15%",
     "tiles": {
-      "self": 24,
-      "target": "Evasion +15%",
+      "self": 13,
+      "target": "1,11,21",
       "target_type": 2,
       "effect": {
         "fp": 10,
@@ -9726,7 +9726,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%, Accuracy +12%",
     "tiles": {
-      "self": 12,
+      "self": 34,
       "target": "-2,-12",
       "target_type": 5,
       "effect": {
@@ -9907,7 +9907,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +24%, Accuracy +60%",
     "tiles": {
-      "self": 24,
+      "self": 13,
       "target": "-1,10,9,19",
       "target_type": 0,
       "effect": {
@@ -9968,7 +9968,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +18%, Crit Rate +30%",
     "tiles": {
-      "self": 24,
+      "self": 13,
       "target": "-1,9,19",
       "target_type": 4,
       "effect": {
@@ -10208,7 +10208,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Accuracy +10%",
     "tiles": {
-      "self": 34,
+      "self": 12,
       "target": "2,22",
       "target_type": 6,
       "effect": {
@@ -10631,7 +10631,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +15%",
     "tiles": {
-      "self": 13,
+      "self": 24,
       "target": "8,-12",
       "target_type": 5,
       "effect": {
@@ -10913,7 +10913,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Accuracy +10%",
     "tiles": {
-      "self": 13,
+      "self": 24,
       "target": "-12,8",
       "target_type": 5,
       "effect": {
@@ -11658,7 +11658,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%, Armor +10%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "2",
       "target_type": 6,
       "effect": {
@@ -11698,7 +11698,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Rate of fire +15%",
     "tiles": {
-      "self": 33,
+      "self": 22,
       "target": "2",
       "target_type": 6,
       "effect": {
@@ -11738,7 +11738,7 @@
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Accuracy +15%",
     "tiles": {
-      "self": 34,
+      "self": 12,
       "target": "2,22",
       "target_type": 6,
       "effect": {
