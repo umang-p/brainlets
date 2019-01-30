@@ -7,21 +7,21 @@ var enemyEva;
 var enemyArmor;
 var enemyCount;
 var damageData;
-var VALID_EQUIPS = [[[4,13],[6],[10,12]], //hg
+const VALID_EQUIPS = [[[4,13],[6],[10,12]], //hg
                     [[10,12],[6],[1,2,3,4,13]],//smg
                     [[5],[1,2,3,13],[15]],//rf
                     [[1,2,3,4,13],[8],[10,12]],//ar
                     [[5],[1,2,3],[14]],//mg
                     [[11],[7,9],[1,2,3,4]]]; //sg
 
-var TYPE_SCALARS = [{fp:0.6,rof:0.8,acc:1.2,eva:1.8,armor:0}, //hg
+const TYPE_SCALARS = [{fp:0.6,rof:0.8,acc:1.2,eva:1.8,armor:0}, //hg
                     {fp:0.6,rof:1.2,acc:0.3,eva:1.6,armor:0}, //smg
                     {fp:2.4,rof:0.5,acc:1.6,eva:0.8,armor:0}, //rf
                     {fp:1,  rof:1,  acc:1,  eva:1,  armor:0},   //ar
                     {fp:1.8,rof:1.6,acc:0.6,eva:0.6,armor:0}, //mg
                     {fp:0.7,rof:0.4,acc:0.3,eva:0.3,armor:1}]; //sg
 
-var GROWTH_FACTORS = {
+const GROWTH_FACTORS = {
   mod: {
     basic: {
       armor: [13.979, 0.04],
@@ -52,7 +52,24 @@ var GROWTH_FACTORS = {
       rof: [0.181, 0]
     }
   }
-}
+};
+
+const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
+  52:[24,31,28], //M16 !! need to add special armor here
+  54:[4,8,24], //SOP
+  260:[4,8,24], //SOP mod3 !! need to add sop special equip
+  55:[4,8,59], //STAR
+  261:[4,8,59], //STAR mod3 !! need to add star mod special equip
+  72:[20,8,60], //M1918
+  264:[20,8,60], // M1918 mod3 !! need to add bar mod special equip
+  35:[58,4,57] //Springfield
+};
+
+const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
+  133:[-1,5,-1], //6P62
+  208:[-1,5,-1], //C-MS
+  178:[-1,5,-1]  //Contender
+};
 
 $(function () {
   $.ajax({
@@ -262,12 +279,83 @@ function selectEquipment(event) {
 }
 
 function getValidEquipTypes(dollIndex, equipSlot) {
-  if(echelon[dollIndex].id == -1) {
+  var doll = echelon[dollIndex];
+
+  if(doll.id == -1) {
     return [-1];
   }
-  var validTypes = VALID_EQUIPS[echelon[dollIndex].type-1][equipSlot-1];
+  var validTypes = VALID_EQUIPS[doll.type-1][equipSlot-1];
 
-  //special cases here
+  if(doll.id in SPECIAL_VALID_EQUIPS) {
+    if($.isArray(SPECIAL_VALID_EQUIPS[doll.id][equipSlot-1])) {
+      $.each(SPECIAL_VALID_EQUIPS[doll.id][equipSlot-1], (index,value) => {
+        validTypes.push(value);
+      });
+    } else {
+      validTypes.push(SPECIAL_VALID_EQUIPS[doll.id][equipSlot-1]);
+    }
+  }
+
+  //M16
+  if(doll.id == 52) {
+    if(equipSlot == 1) {
+      return [8]; //hv ammo
+    }
+    if(equipSlot == 2 || equipSlot == 3) {
+      validTypes = [10,11,12]; //x-exo, armor, t-exo, m16 unique armor !! need to add special armor id here
+
+      //ensure same accessory cannot be equipped twice
+      var otherSlotEquipID = equipSlot == 2 ? doll.equip3 : doll.equip2;
+      if(otherSlotEquipID != -1) {
+        validTypes = validTypes.filter(type => type != equipData[otherSlotEquipID-1].type);
+        if(equipData[otherSlotEquipID-1].type == 10) {
+          validTypes = validTypes.filter(type => type != 12); //exo
+        }
+        if(equipData[otherSlotEquipID-1].type == 12) {
+          validTypes = validTypes.filter(type => type != 10); //exo
+        }
+      }
+      return validTypes;
+    }
+  }
+
+  //SOP and SOP mod3
+  if(doll.id == 54 || doll.id == 260) {
+    if(equipSlot == 1 || equipSlot == 2) {
+      validTypes = [1,2,3,4,13]; //scope, eot, red dot sight, PEQ, suppressor
+      //if(doll.id == 260)
+        //validTypes.push(); //sop unique equip !! need to add sop special equip
+
+      //ensure same accessory cannot be equipped twice
+      var otherSlotEquipID = equipSlot == 1 ? doll.equip2 : doll.equip1;
+      if(otherSlotEquipID != -1) {
+        validTypes = validTypes.filter(type => type != equipData[otherSlotEquipID-1].type);
+      }
+      return validTypes;
+    }
+    if(equipSlot == 3) {
+      return [8]; //hv ammo
+    }
+  }
+
+  //STAR and STAR mod3
+  if(doll.id == 55 || doll.id == 261) {
+    if(equipSlot == 1 || equipSlot == 2) {
+      validTypes = [1,2,3,4,13]; //scope, eot, red dot sight, PEQ, suppressor
+      //if(doll.id == 261)
+        //validTypes.push(); //star unique equip !! need to add mod star special equip
+
+      //ensure same accessory cannot be equipped twice
+      var otherSlotEquipID = equipSlot == 1 ? doll.equip2 : doll.equip1;
+      if(otherSlotEquipID != -1) {
+        validTypes = validTypes.filter(type => type != equipData[otherSlotEquipID-1].type);
+      }
+      return validTypes;
+    }
+    if(equipSlot == 3) {
+      return [8,17]; //hv ammo and star unique black ammo
+    }
+  }
 
   return validTypes;
 }
@@ -399,8 +487,11 @@ function setDefaultEquips(dollIndex) {
       break;
   }
 
-  //handle off tanks here
-  //handle special cases and unique equipment here
+  if(doll.id in SPECIAL_DEFAULT_EQUIPS) {
+    doll.equip1 = SPECIAL_DEFAULT_EQUIPS[doll.id][0];
+    doll.equip2 = SPECIAL_DEFAULT_EQUIPS[doll.id][1];
+    doll.equip3 = SPECIAL_DEFAULT_EQUIPS[doll.id][2];
+  }
 }
 
 function calculateEquipBonus(dollIndex) {
