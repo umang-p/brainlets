@@ -89,3 +89,6 @@
   width: 1000px;
   max-width: 1000px;
 }
+#doll-select button {
+  min-width: 80px;
+}
