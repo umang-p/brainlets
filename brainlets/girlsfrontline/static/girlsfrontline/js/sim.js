@@ -55,20 +55,90 @@ const GROWTH_FACTORS = {
 };
 
 const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
-  52:[24,31,28], //M16 !! need to add special armor here
+  52:[24,66,28], //M16
   54:[4,8,24], //SOP
-  260:[4,8,24], //SOP mod3 !! need to add sop special equip
+  260:[4,92,24], //SOP mod3
   55:[4,8,59], //STAR
-  261:[4,8,59], //STAR mod3 !! need to add star mod special equip
+  261:[4,71,59], //STAR mod3
   72:[20,8,60], //M1918
-  264:[20,8,60], // M1918 mod3 !! need to add bar mod special equip
-  35:[58,4,57] //Springfield
+  264:[20,81,60], // M1918 mod3
+  35:[58,4,57], //Springfield
+  26:[61,45,39], //MP5
+  56:[62,24,35], //AK-47
+  64:[62,24,35], //Type56-1
+  // 96:[67,45,39], //UMP9
+  // 97:[67,45,39], //UMP40
+  // 98:[67,45,39], //UMP45
+  270:[67,45,91], //UMP45 mod3
+  180:[20,4,69], //Ameli
+  259:[4,24,70], //M4A1 mod3
+  252:[39,72,35], //M1911 mod3
+  268:[73,45,39], //IDW mod3
+  269:[28,45,74], //Type64 mod3
+  258:[20,75,57], //FN-49 mod3
+  // 44:[20,76,57], //Kar98k
+  // 63:[77,24,35], //416
+  // 83:[20,8,78], //MG3
+  // 41:[20,4,79], //PTRD
+  256:[20,80,65], //Mosin-Nagant mod3
+  38:[20,4,65], //Mosin-Nagant
+  253:[82,45,35], //M1895 mod3
+  267:[83,45,35], //MP446 mod3
+  257:[20,4,84], //SV-98 mod3
+  249:[85,45,35], //CLEAR
+  250:[86,45,35], //FAIL
+  // 66:[87,24,35], //FAMAS
+  251:[88,45,35], //SAA mod3
+  266:[20,89,41], //Bren mod3
+  262:[90,24,35], //G3 mod3
+  // 60:[4,24,93], //G41
+  254:[28,45,94], //STEN mod3
+  255:[20,95,57], //M14 mod3
+  263:[96,24,35], //G36 mod3
+  265:[20,97,41], //LWMMG mod3
 };
 
 const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
   133:[-1,5,-1], //6P62
   208:[-1,5,-1], //C-MS
-  178:[-1,5,-1]  //Contender
+  178:[-1,5,-1],  //Contender
+  72:[-1,-1,18], //M1918
+  264:[-1,39,18], //M1918
+  35:[16,-1,-1], //Springfield
+  26:[19,-1,-1], //MP5
+  56:[[20,21,22],-1,-1], //AK-47
+  64:[[20,21,22],-1,-1], //Type56-1
+  96:[25,-1,-1], //UMP9
+  97:[25,-1,-1], //UMP40
+  98:[25,-1,-1], //UMP45
+  270:[25,-1,49], //UMP45 mod3
+  113:[26,-1,-1], //9A-91
+  180:[-1,-1,27], //Ameli
+  259:[-1,-1,28], //M4A1 mod3
+  252:[-1,30,-1], //M1911 mod3
+  268:[31,-1,-1], //IDW mod3
+  269:[-1,-1,32], //Type64 mod3
+  258:[-1,33,-1], //FN-49 mod3
+  44:[-1,34,-1], //Kar98k
+  63:[35,-1,-1], //416
+  83:[-1,-1,36], //MG3
+  41:[-1,-1,37], //PTRD
+  256:[-1,38,23], //Mosin-Nagant mod3
+  38:[-1,-1,23], //Mosin-Nagant
+  253:[40,-1,-1], //M1895 mod3
+  267:[41,-1,-1], //MP446 mod3
+  257:[-1,-1,42], //SV-98 mod3
+  249:[43,-1,-1], //CLEAR
+  250:[44,-1,-1], //FAIL
+  66:[45,-1,-1], //FAMAS
+  251:[46,-1,-1], //SAA mod3
+  266:[-1,47,-1], //Bren mod3
+  262:[48,-1,-1], //G3 mod3
+  60:[-1,-1,51], //G41
+  254:[-1,-1,52], //STEN mod3
+  255:[-1,53,-1], //M14 mod3
+  263:[54,-1,-1], //G36 mod3
+  265:[-1,55,-1], //LWMMG mod3
 };
 
 $(function () {
@@ -284,7 +354,11 @@ function getValidEquipTypes(dollIndex, equipSlot) {
   if(doll.id == -1) {
     return [-1];
   }
-  var validTypes = VALID_EQUIPS[doll.type-1][equipSlot-1];
+
+  var validTypes = [];
+  $.each(VALID_EQUIPS[doll.type-1][equipSlot-1], (index,value) => {
+    validTypes.push(value);
+  });
 
   if(doll.id in SPECIAL_VALID_EQUIPS) {
     if($.isArray(SPECIAL_VALID_EQUIPS[doll.id][equipSlot-1])) {
@@ -302,7 +376,7 @@ function getValidEquipTypes(dollIndex, equipSlot) {
       return [8]; //hv ammo
     }
     if(equipSlot == 2 || equipSlot == 3) {
-      validTypes = [10,11,12]; //x-exo, armor, t-exo, m16 unique armor !! need to add special armor id here
+      validTypes = [10,11,12,24]; //x-exo, armor, t-exo, m16 unique armor
 
       //ensure same accessory cannot be equipped twice
       var otherSlotEquipID = equipSlot == 2 ? doll.equip3 : doll.equip2;
@@ -314,6 +388,12 @@ function getValidEquipTypes(dollIndex, equipSlot) {
         if(equipData[otherSlotEquipID-1].type == 12) {
           validTypes = validTypes.filter(type => type != 10); //exo
         }
+        if(equipData[otherSlotEquipID-1].type == 24) {
+          validTypes = validTypes.filter(type => type != 11); //armor + special armor
+        }
+        if(equipData[otherSlotEquipID-1].type == 11) {
+          validTypes = validTypes.filter(type => type != 24); //armor + special armor
+        }
       }
       return validTypes;
     }
@@ -323,8 +403,8 @@ function getValidEquipTypes(dollIndex, equipSlot) {
   if(doll.id == 54 || doll.id == 260) {
     if(equipSlot == 1 || equipSlot == 2) {
       validTypes = [1,2,3,4,13]; //scope, eot, red dot sight, PEQ, suppressor
-      //if(doll.id == 260)
-        //validTypes.push(); //sop unique equip !! need to add sop special equip
+      if(doll.id == 260)
+        validTypes.push(50); //sop unique equip
 
       //ensure same accessory cannot be equipped twice
       var otherSlotEquipID = equipSlot == 1 ? doll.equip2 : doll.equip1;
@@ -342,8 +422,8 @@ function getValidEquipTypes(dollIndex, equipSlot) {
   if(doll.id == 55 || doll.id == 261) {
     if(equipSlot == 1 || equipSlot == 2) {
       validTypes = [1,2,3,4,13]; //scope, eot, red dot sight, PEQ, suppressor
-      //if(doll.id == 261)
-        //validTypes.push(); //star unique equip !! need to add mod star special equip
+      if(doll.id == 261)
+        validTypes.push(29); //star mod3 unique equip
 
       //ensure same accessory cannot be equipped twice
       var otherSlotEquipID = equipSlot == 1 ? doll.equip2 : doll.equip1;
