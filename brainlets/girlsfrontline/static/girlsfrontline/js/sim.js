@@ -6,7 +6,7 @@ var dollData;
 var enemyEva;
 var enemyArmor;
 var enemyCount;
-var damageData;
+var graphData;
 const VALID_EQUIPS = [[[4,13],[6],[10,12]], //hg
                     [[10,12],[6],[1,2,3,4,13]],//smg
                     [[5],[1,2,3,13],[15]],//rf
@@ -235,18 +235,25 @@ function createDummyDoll(p) {
     pre_battle:{},
     battle:{},
     equip_bonus:{},
-    tile_bonus:{
-      fp:0,
-      acc:0,
-      eva:0,
-      rof:0,
-      crit:0,
-      skillcd:0,
-      armor:0
-    }
+    tile_bonus:{}
   }
 
   return obj;
+}
+
+function initDollSelectModal() {
+  var doll_types = ['All','HG','SMG','RF','AR','MG','SG'];
+  for(var i = 0; i < dollData.length; i++) {
+    var doll = dollData[i];
+    $('#doll-list-'+doll.type+' .stars'+doll.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="'+doll.id+'" data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="'+doll.tooltip_tiles+' Affects: '+doll_types[doll.tiles.target_type]+'<br>'+doll.tooltip_skill1+'<br>'+doll.tooltip_skill2+'">'+doll.name+'</button>');
+  }
+}
+
+function initEquipSelectModal() {
+  for(var i = 0; i < equipData.length; i++) {
+    var equip = equipData[i];
+    $('#equip-select .stars'+equip.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="'+equip.id+'" data-type="'+equip.type+'" data-toggle="tooltip" data-placement="top" data-original-title="'+equip.tooltip+'"><img src="/static/girlsfrontline/sim/equips/'+equip.type+'.png" class="img-fluid"></img></button>');
+  }
 }
 
 function changeEnemyStats() {
@@ -298,21 +305,6 @@ function toggleBoss() {
   }
 
   simulateBattle();
-}
-
-function initDollSelectModal() {
-  var doll_types = ['All','HG','SMG','RF','AR','MG','SG'];
-  for(var i = 0; i < dollData.length; i++) {
-    var doll = dollData[i];
-    $('#doll-list-'+doll.type+' .stars'+doll.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="'+doll.id+'" data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="'+doll.tooltip_tiles+' Affects: '+doll_types[doll.tiles.target_type]+'<br>'+doll.tooltip_skill1+'<br>'+doll.tooltip_skill2+'">'+doll.name+'</button>');
-  }
-}
-
-function initEquipSelectModal() {
-  for(var i = 0; i < equipData.length; i++) {
-    var equip = equipData[i];
-    $('#equip-select .stars'+equip.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="'+equip.id+'" data-type="'+equip.type+'" data-toggle="tooltip" data-placement="top" data-original-title="'+equip.tooltip+'"><img src="/static/girlsfrontline/sim/equips/'+equip.type+'.png" class="img-fluid"></img></button>');
-  }
 }
 
 function selectEquipment(event) {
@@ -449,10 +441,27 @@ function changeEquipment(event) {
   echelon[dollIndex]['equip'+equipSlot] = parseInt($(event.target).attr('data-id'));
   $('#doll'+(dollIndex+1)+' .equip'+equipSlot+'-level-select').val(10);
 
+  if(echelon[dollIndex].type == 6) {
+    if(equipData[echelon[dollIndex]['equip'+equipSlot]-1].type == 7) {
+      echelon[dollIndex].hasSlug = true;
+    } else {
+      echelon[dollIndex].hasSlug = false;
+    }
+  }
+
   calculateEquipBonus(dollIndex);
   calculatePreBattleStatsForDoll(dollIndex);
   simulateBattle();
   updateUIForDoll(dollIndex);
+}
+
+function changeEquipLevel(event) {
+  var doll = echelon[event.data];
+
+  calculateEquipBonus(event.data);
+  calculatePreBattleStatsForDoll(event.data);
+  simulateBattle();
+  updateUIAllDolls();
 }
 
 function removeEquipment(event) {
@@ -461,6 +470,12 @@ function removeEquipment(event) {
   var equipSlot = event.data.equip;
 
   echelon[dollIndex]['equip'+equipSlot] = -1;
+
+  if(echelon[dollIndex].type == 6 && equipSlot == 2) {
+    echelon[dollIndex].hasSlug = false;
+  }
+
+
   calculateEquipBonus(dollIndex);
   calculatePreBattleStatsForDoll(dollIndex);
   simulateBattle();
@@ -486,12 +501,21 @@ function changeDoll(event) {
   var selectedDoll = dollData[$(event.target).attr('data-id')-1];
   var index = event.data-1;
 
+  echelon[index] = createDummyDoll(echelon[index].pos);
   echelon[index].name = selectedDoll.name;
   echelon[index].id = selectedDoll.id;
   echelon[index].type = selectedDoll.type;
   echelon[index].tiles = selectedDoll.tiles;
   echelon[index].tooltip_tiles = selectedDoll.tooltip_tiles;
   echelon[index].tooltip_skill1 = selectedDoll.tooltip_skill1;
+  echelon[index].links = getNumLinks(index);
+
+  if(selectedDoll.type == 5) { //mg
+    echelon[index].frames_per_attack = selectedDoll.frames_per_attack;
+  }
+  if(selectedDoll.type == 6) { //sg
+    echelon[index].targets = 3;
+  }
 
   $('#pos'+echelon[index].pos).attr('data-index', index);
 
@@ -508,11 +532,72 @@ function changeDoll(event) {
     echelon[index].mod = false;
   }
 
-  echelon[index].links = getNumLinks(index);
-
   calculateBaseStats(index);
   setDefaultEquips(index);
   calculateEquipBonus(index);
+  calculateTileBonus();
+  calculatePreBattleStatsAllDolls();
+  simulateBattle();
+  updateUIAllDolls();
+}
+
+function changeLevel(event) {
+  var doll = echelon[event.data];
+
+  if(doll.id == -1) {
+    return;
+  }
+
+  //remove equipment if it can no longer be equipped
+  var dollLevel = parseInt($('#doll'+(event.data+1)+' .doll-level-select').val());
+  if(dollLevel < 80 && doll.equip3 != -1)
+    doll.equip3 = -1;
+  if(dollLevel < 50 && doll.equip2 != -1)
+    doll.equip2 = -1;
+  if(dollLevel < 20 && doll.equip1 != -1)
+    doll.equip1 = -1;
+
+  for(var i = 1; i <= 3; i++) {
+    if(doll['equip'+i] == -1)
+      continue;
+
+    if(dollLevel < 30 && equipData[doll['equip'+i]-1].rarity >= 3) {
+      doll['equip'+i] = -1;
+      continue;
+    } else if(dollLevel < 45 && equipData[doll['equip'+i]-1].rarity >= 4) {
+      doll['equip'+i] = -1;
+      continue;
+    } else if(dollLevel < 60 && equipData[doll['equip'+i]-1].rarity >= 5) {
+      doll['equip'+i] = -1;
+    }
+  }
+
+  doll.links = getNumLinks(event.data);
+
+  calculateBaseStats(event.data);
+  calculateEquipBonus(event.data);
+  if(doll.type == 1) { //hg
+    calculateTileBonus();
+    calculatePreBattleStatsAllDolls();
+  } else {
+    calculatePreBattleStatsForDoll(event.data);
+  }
+  simulateBattle();
+  updateUIAllDolls();
+}
+
+function removeDoll(event) {
+  event.preventDefault();
+
+  var index = event.data-1;
+  $('#pos'+echelon[index].pos).attr('data-index', index);
+  echelon[index] = createDummyDoll(echelon[index].pos);
+  $('#doll'+(index+1)+' .affection').children().prop('hidden', true);
+  $('#doll'+(index+1)+' .affection').children().eq(echelon[index].affection).prop('hidden', false);
+  $('#doll'+(index+1)+' .doll-level-select').children().prop('disabled', false);
+  $('#doll'+(index+1)+' .doll-level-select').children().filter(':first').prop('disabled', true);
+  $('#doll'+(index+1)+' .doll-level-select').val(100);
+
   calculateTileBonus();
   calculatePreBattleStatsAllDolls();
   simulateBattle();
@@ -573,6 +658,112 @@ function setDefaultEquips(dollIndex) {
     doll.equip3 = SPECIAL_DEFAULT_EQUIPS[doll.id][2];
   }
 }
+
+function updateUIAllDolls() {
+  for(var i = 0; i < echelon.length; i++) {
+    updateUIForDoll(i); //update stat card and grid for each doll
+  }
+
+  //update ui for grid squares with no doll
+  $.each([12,13,14,22,23,24,32,33,34], function(index, value) {
+    if($('#pos'+value).attr('data-index') != -1) {
+      return true;
+    }
+    $('#pos'+value+' > img').attr('src', '/static/girlsfrontline/sim/placeholder.png');
+    $('#pos'+value+' .tilegrid').prop('hidden', true);
+    var tile_bonuses = ['fp','acc','eva','rof','crit','skillcd','armor'];
+    for(i = 0; i < tile_bonuses.length; i++) {
+      $('#pos'+value+' .'+tile_bonuses[i]).prop('hidden', true);
+    }
+  });
+}
+
+function updateUIForDoll(index) {
+  var doll = echelon[index];
+  if(doll.id == -1) {
+    $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/placeholder.png');
+    $('#pos'+doll.pos+' .tilegrid').prop('hidden', true);
+    $('#doll'+(index+1)+' .skill-label').attr('data-original-title', '-');
+    $('#doll'+(index+1)+' .skill2').prop('hidden', true);
+    $('#doll'+(index+1)+'-name').text('-');
+    $('#doll'+(index+1)+' .fp span').text('-');
+    $('#doll'+(index+1)+' .acc span').text('-');
+    $('#doll'+(index+1)+' .eva span').text('-');
+    $('#doll'+(index+1)+' .rof span').text('-');
+    $('#doll'+(index+1)+' .crit span').text('-');
+    $('#doll'+(index+1)+' .critdmg span').text('-');
+    $('#doll'+(index+1)+' .rounds span').text('-');
+    $('#doll'+(index+1)+' .armor span').text('-');
+    $('#doll'+(index+1)+' .ap span').text('-');
+  } else {
+    $('#doll'+(index+1)+'-name').text(doll.name);
+    $('#doll'+(index+1)+' .skill-label').attr('data-original-title', doll.tooltip_skill1);
+    if(doll.mod) {
+      $('#doll'+(index+1)+' .skill2').prop('hidden', false);
+      $('#doll'+(index+1)+' .skill2-label').attr('data-original-title', doll.tooltip_skill2);
+    } else {
+      $('#doll'+(index+1)+' .skill2').prop('hidden', true);
+    }
+    $('#doll'+(index+1)+' .fp span').text(doll.pre_battle.fp);
+    $('#doll'+(index+1)+' .acc span').text(doll.pre_battle.acc);
+    $('#doll'+(index+1)+' .eva span').text(doll.pre_battle.eva);
+    $('#doll'+(index+1)+' .rof span').text(doll.pre_battle.rof);
+    $('#doll'+(index+1)+' .crit span').text(doll.pre_battle.crit+'%');
+    $('#doll'+(index+1)+' .critdmg span').text((doll.pre_battle.critdmg+100)+'%');
+    if(doll.pre_battle.rounds != 0) {
+      $('#doll'+(index+1)+' .rounds span').text(doll.pre_battle.rounds);
+    } else {
+      $('#doll'+(index+1)+' .rounds span').text('-');
+    }
+    if(doll.pre_battle.armor != 0) {
+      $('#doll'+(index+1)+' .armor span').text(doll.pre_battle.armor);
+    } else {
+      $('#doll'+(index+1)+' .armor span').text('-');
+    }
+    $('#doll'+(index+1)+' .ap span').text(doll.pre_battle.ap);
+
+    $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/dolls/'+doll.id+'.png');
+
+    $('#pos'+doll.pos+' .tilegrid').prop('hidden', false);
+    $('#pos'+doll.pos+' .tilegrid').attr('data-original-title', doll.tooltip_tiles);
+    var targetSquares = doll.tiles.target.split(',');
+    $('#pos'+doll.pos+' .tilegrid-col').removeClass('tilegrid-target tilegrid-neutral tilegrid-self');
+    $('#pos'+doll.pos+' .tile'+doll.tiles.self).addClass('tilegrid-self');
+    for(var i = 0; i < targetSquares.length; i++) {
+      $('#pos'+doll.pos+' .tile'+(doll.tiles.self+parseInt(targetSquares[i]))).addClass('tilegrid-target');
+    }
+    $.each([12,13,14,22,23,24,32,33,34], function(index, value) {
+      if(!$('#pos'+doll.pos+' .tile'+value).hasClass('tilegrid-self') && !$('#pos'+doll.pos+' .tile'+value).hasClass('tilegrid-target')) {
+        $('#pos'+doll.pos+' .tile'+value).addClass('tilegrid-neutral');
+      }
+    });
+  }
+
+  var tile_bonuses = ['fp','acc','eva','rof','crit','skillcd','armor'];
+  for(i = 0; i < tile_bonuses.length; i++) {
+    if(doll.tile_bonus[tile_bonuses[i]] > 0) {
+      $('#pos'+doll.pos+' .'+tile_bonuses[i]+' small').text(doll.tile_bonus[tile_bonuses[i]]+'%');
+      $('#pos'+doll.pos+' .'+tile_bonuses[i]).prop('hidden', false);
+    } else {
+      $('#pos'+doll.pos+' .'+tile_bonuses[i]).prop('hidden', true);
+    }
+  }
+
+  for(i = 1; i <= 3; i++) {
+    var equipId = doll['equip'+i];
+    if(equipId == -1) {
+      $('#doll'+(index+1)+' .equip'+i).removeClass('stars5 stars4 stars3 stars2 stars1');
+      $('#doll'+(index+1)+' .equip'+i).attr('src', '/static/girlsfrontline/sim/placeholder.png');
+    } else {
+      $('#doll'+(index+1)+' .equip'+i).removeClass('stars5 stars4 stars3 stars2 stars1');
+      $('#doll'+(index+1)+' .equip'+i).addClass('stars'+equipData[equipId-1].rarity);
+      $('#doll'+(index+1)+' .equip'+i).attr('src', '/static/girlsfrontline/sim/equips/'+equipData[equipId-1].type+'.png');
+    }
+  }
+}
+
+
+
 
 function calculateEquipBonus(dollIndex) {
   echelon[dollIndex].equip_bonus = {fp:0,acc:0,eva:0,rof:0,critdmg:0,crit:0,ap:0,armor:0,nightview:0,rounds:0};
@@ -680,18 +871,6 @@ function calculateBaseStats(dollIndex) {
   doll.base.rounds = data.rounds;
 }
 
-function getAffectionBonus(affection) {
-  if(affection == 0) {
-    return -0.05;
-  } else if(affection == 1) {
-    return 0;
-  } else if(affection == 2) {
-    return 0.05;
-  } else {
-    return 0.10;
-  }
-}
-
 function calculatePreBattleStatsForDoll(dollIndex) {
   var doll = echelon[dollIndex];
 
@@ -717,6 +896,14 @@ function calculatePreBattleStatsForDoll(dollIndex) {
 
   //apply equip bonus additively
   doll.pre_battle.fp += doll.equip_bonus.fp;
+  if(doll.type == 6) { //sg
+    if(doll.hasSlug) {
+      doll.targets = 1;
+      doll.pre_battle.fp *= 3;
+    } else {
+      doll.targets = 3;
+    }
+  }
   doll.pre_battle.acc += doll.equip_bonus.acc;
   doll.pre_battle.eva += doll.equip_bonus.eva;
   doll.pre_battle.rof += doll.equip_bonus.rof;
@@ -739,7 +926,7 @@ function calculatePreBattleStatsForDoll(dollIndex) {
   //cap stats & apply night acc penalty
   if(doll.type == 6) { //sg
     doll.pre_battle.rof = Math.min(60, doll.pre_battle.rof);
-  } else if(doll.type != 5) { ////any other than sg and mg
+  } else if(doll.type != 5) { //any other than sg and mg
     doll.pre_battle.rof = Math.min(120, doll.pre_battle.rof);
   }
   doll.pre_battle.crit = Math.min(100, doll.pre_battle.crit);
@@ -754,20 +941,23 @@ function calculatePreBattleStatsAllDolls() {
   }
 }
 
-function simulateBattle() {
-  var enemy = {armor:enemyArmor, eva:enemyEva, count:enemyCount, buffs:{}};
-  //var enemy = initEnemy();
-  //initDollsForBattle(); put skills in doll.battle.timers with initcd, add passives
-  //calculateBattleStats(doll);
-  damageData = {x:[], y:[]};
-  //init dolls
+
+
+
+function initDollsForBattle() {
   for(var i = 0; i < 5; i++) {
     var doll = echelon[i];
-    damageData.y.push({});
-    damageData.y[i].name = doll.name;
-    damageData.y[i].data = [];
-    damageData.y[i].data.push(0);
-    if(doll.id == -1) continue;
+
+    graphData.y.push({});
+    graphData.y[i].name = doll.name;
+    graphData.y[i].data = [];
+    graphData.y[i].data.push(0);
+
+    if(doll.id == -1) {
+      continue;
+    }
+
+    doll.battle = {};
     doll.battle.fp = doll.pre_battle.fp;
     doll.battle.acc = doll.pre_battle.acc;
     doll.battle.eva = doll.pre_battle.eva;
@@ -775,42 +965,76 @@ function simulateBattle() {
     doll.battle.crit = doll.pre_battle.crit;
     doll.battle.critdmg = doll.pre_battle.critdmg;
     doll.battle.rounds = doll.pre_battle.rounds;
+    doll.battle.currentRounds = doll.battle.rounds;
     doll.battle.armor = doll.pre_battle.armor;
     doll.battle.ap = doll.pre_battle.ap;
-    doll.battle.buffs = {}; //[]
+    if(doll.type == 6) {
+      doll.battle.targets = doll.targets;
+    }
+    if(doll.type == 5) {
+      doll.battle.frames_per_attack = doll.frames_per_attack;
+    }
+    doll.battle.busylinks = 0;
+    doll.battle.buffs = [];
     doll.battle.action_queue = [];
-    //doll.busylinks = 0;
-    doll.battle.timers = [{type:'normalAttack',timeLeft:1}]; //change to use actual time
-    //battle timers can contain: normalAttack, skill1, skill2, skilleffects taht have a delay(grenades, charged shots), reloading
-  }
+    doll.battle.timers = [];
 
+    var normalAttackTimer = {
+      type:'normalAttack',
+      timeLeft:0
+    };
+    normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.ceil(50 * 30 / doll.battle.rof) - 1;
+    doll.battle.timers.push(normalAttackTimer);
+
+    //battle timers can contain: normalAttack, skill1, skill2, skilleffects taht have a delay(grenades, charged shots), reloading
+    //put skills in doll.battle.timers with initcd, add passives
+  }
+}
+
+function simulateBattle() {
+  graphData = {x:[], y:[]};
+
+  initDollsForBattle();
+  var enemy = {armor:enemyArmor, eva:enemyEva, count:enemyCount, buffs:[]};
+  var battleLength = 30 * 20;
+  var totaldamage8s = 0;
+  var totaldamage20s = 0;
 
 
   //walk time can be handled here
 
-  var battleLength = 30 * 8;
-  var totaldamage8s = 0;
 
-  var counter = 0;
-  damageData.x.push(0);
+  graphData.x.push(0);
   for(var currentFrame = 1; currentFrame < battleLength; currentFrame++) {
-    damageData.x.push(parseFloat((currentFrame / 30.0).toFixed(2)));
+    graphData.x.push(parseFloat((currentFrame / 30.0).toFixed(2)));
+
     //tick all timers
-    for(i = 0; i < 5; i++) {
-      doll = echelon[i];
-      damageData.y[i].data.push(damageData.y[i].data[currentFrame-1]);
+    for(var i = 0; i < 5; i++) {
+      var doll = echelon[i];
       if(doll.id == -1) continue;
-      $.each(doll.battle.timers, (timer, attributes) => {
-        //if timer is normalAttack, decrement only if links-busylinks > 0 and doll is not reloading
-        attributes.timeLeft--;
-        console.log(attributes.timeLeft);
-        if(attributes.timeLeft == 0) {
-          doll.battle.action_queue.push(attributes);
+
+      graphData.y[i].data.push(graphData.y[i].data[currentFrame-1]);
+
+      $.each(doll.battle.timers, (index, timer) => {
+        if(timer.type == 'normalAttack') {
+          var reloading = doll.battle.timers.find(timer => timer.type == 'reload') === undefined ? false : true;
+          if(doll.links - doll.battle.busylinks > 0 && !reloading) {
+            timer.timeLeft--;
+          }
+        } else {
+          timer.timeLeft--;
+        }
+
+        if(timer.timeLeft == 0) {
+          doll.battle.action_queue.push(timer);
           //maybe triggerpassive() for skill/skill2
         }
       });
+      doll.battle.timers = doll.battle.timers.filter(timer => timer.timeLeft != 0);
+
+
       //tick buff timers
-      //filter out timers whose timeLeft == 0, keep the rest
+      //filter out buffs whose timeLeft == 0, keep the rest
     }
 
 
@@ -826,236 +1050,80 @@ function simulateBattle() {
     //calculateBattleStats();
 
 
-    //use attacks
+
+    //perform actions
     for(i = 0; i < 5; i++) {
       doll = echelon[i];
       if(doll.id == -1) continue;
+
+      var dmg = 0;
+
       for(var j = 0; j < doll.battle.action_queue.length; j++) {
         action = doll.battle.action_queue[j];
+
         if(action.type == 'normalAttack') {
-          //attack
           //if doll has multihit buff,
-            //calculateActionDamage(doll, action)
-            console.log('attack');
-            var dmg = Math.max(2, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.armor));
-            console.log(dmg);
-            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.eva));
-            dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
-            dmg *= doll.links;
-            //if shotgun, check targets and enemycount
+          //calculateActionDamage(doll, action)
+          dmg = Math.max(2, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.armor));
+          dmg *= (doll.battle.acc / (doll.battle.acc + enemy.eva));
+          dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
+          dmg *= doll.links - doll.battle.busylinks;
 
-            //if sg/mg, decrement ammo count
-            //increment attackcount
+          if(doll.type == 6) { //sg
+            dmg = dmg * Math.min(doll.battle.targets, enemy.count);
+          }
+
+          if(doll.type == 5 || doll.type == 6) { //mg/sg , do not change to doll.type < 5
+            doll.battle.currentRounds--;
+            if(doll.battle.currentRounds == 0) {
+              var reloadTimer = {
+                type:'reload',
+                timeLeft:0
+              };
+              reloadTimer.timeLeft = doll.type == 5? Math.ceil(30 * (4 + 200 / doll.battle.rof)) : Math.ceil(30 * (1.4 + 0.5 * doll.battle.rounds));
+              doll.battle.timers.push(reloadTimer);
+            }
+          }
+
+          var normalAttackTimer = {
+            type:'normalAttack',
+            timeLeft:0
+          };
+          normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.ceil(50 * 30 / doll.battle.rof) - 1;
+          doll.battle.timers.push(normalAttackTimer);
+
+          doll.battle.action_queue.shift();//splice instead (?)
+
+          if(currentFrame < 30 * 8) {
             totaldamage8s += dmg;
-            damageData.y[i].data[currentFrame] += Math.round(dmg);
-            counter++;
-            console.log(dmg);
-            doll.battle.timers[0].timeLeft = doll.type == 5? doll.frame : Math.ceil(50 * 30 / doll.battle.rof) - 1;
+          }
+          totaldamage20s += dmg;
+          graphData.y[i].data[currentFrame] += Math.round(dmg);
+        }
 
-          doll.battle.action_queue.shift();//splice instead
+        if(action.type == 'reload') {
+          doll.battle.currentRounds = doll.battle.rounds;
+          doll.battle.action_queue.shift();//splice instead (?)
         }
       }
-      console.log(doll);
     }
 
+
+
   }
-  console.log('counter'+counter);
+
   $('#dmg-8s').text(Math.round(totaldamage8s));
+  $('#dmg-20s').text(Math.round(totaldamage20s));
 
-  damageData.y = damageData.y.filter(v => v.name != '');
-
+  graphData.y = graphData.y.filter(v => v.name != '');
 }
 
 function activateBuff() {
   //check targets, add effect to doll.buffs of target(s), check passive triggers
 }
 
-function changeLevel(event) {
-  var doll = echelon[event.data];
 
-  if(doll.id == -1) {
-    return;
-  }
 
-  //remove equipment if it can no longer be equipped
-  var dollLevel = parseInt($('#doll'+(event.data+1)+' .doll-level-select').val());
-  if(dollLevel < 80 && doll.equip3 != -1)
-    doll.equip3 = -1;
-  if(dollLevel < 50 && doll.equip2 != -1)
-    doll.equip2 = -1;
-  if(dollLevel < 20 && doll.equip1 != -1)
-    doll.equip1 = -1;
-
-  for(var i = 1; i <= 3; i++) {
-    if(doll['equip'+i] == -1)
-      continue;
-
-    if(dollLevel < 30 && equipData[doll['equip'+i]-1].rarity >= 3) {
-      doll['equip'+i] = -1;
-      continue;
-    } else if(dollLevel < 45 && equipData[doll['equip'+i]-1].rarity >= 4) {
-      doll['equip'+i] = -1;
-      continue;
-    } else if(dollLevel < 60 && equipData[doll['equip'+i]-1].rarity >= 5) {
-      doll['equip'+i] = -1;
-    }
-  }
-
-  doll.links = getNumLinks(event.data);
-
-  calculateBaseStats(event.data);
-  calculateEquipBonus(event.data);
-  if(doll.type == 1) { //hg
-    calculateTileBonus();
-    calculatePreBattleStatsAllDolls();
-  } else {
-    calculatePreBattleStatsForDoll(event.data);
-  }
-  simulateBattle();
-  updateUIAllDolls();
-}
-
-function changeEquipLevel(event) {
-  var doll = echelon[event.data];
-
-  calculateEquipBonus(event.data);
-  calculatePreBattleStatsForDoll(event.data);
-  simulateBattle();
-  updateUIAllDolls();
-}
-
-function removeDoll(event) {
-  event.preventDefault();
-
-  var index = event.data-1;
-  $('#pos'+echelon[index].pos).attr('data-index', index);
-  echelon[index] = createDummyDoll(echelon[index].pos);
-  $('#doll'+(index+1)+' .affection').children().prop('hidden', true);
-  $('#doll'+(index+1)+' .affection').children().eq(echelon[index].affection).prop('hidden', false);
-  $('#doll'+(index+1)+' .doll-level-select').children().prop('disabled', false);
-  $('#doll'+(index+1)+' .doll-level-select').children().filter(':first').prop('disabled', true);
-  $('#doll'+(index+1)+' .doll-level-select').val(100);
-
-  calculateTileBonus();
-  calculatePreBattleStatsAllDolls();
-  simulateBattle();
-  updateUIAllDolls();
-}
-
-function updateUIAllDolls() {
-  for(var i = 0; i < echelon.length; i++) {
-    updateUIForDoll(i); //update stat card and grid for each doll
-  }
-
-  //update ui for grid squares with no doll
-  $.each([12,13,14,22,23,24,32,33,34], function(index, value) {
-    if($('#pos'+value).attr('data-index') != -1) {
-      return true;
-    }
-    $('#pos'+value+' > img').attr('src', '/static/girlsfrontline/sim/placeholder.png');
-    $('#pos'+value+' .tilegrid').prop('hidden', true);
-    var tile_bonuses = ['fp','acc','eva','rof','crit','skillcd','armor'];
-    for(i = 0; i < tile_bonuses.length; i++) {
-      $('#pos'+value+' .'+tile_bonuses[i]).prop('hidden', true);
-    }
-  });
-}
-
-function updateUIForDoll(index) {
-  var doll = echelon[index];
-  if(doll.id == -1) {
-    $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/placeholder.png');
-    $('#pos'+doll.pos+' .tilegrid').prop('hidden', true);
-    $('#doll'+(index+1)+' .skill-label').attr('data-original-title', '-');
-    $('#doll'+(index+1)+' .skill2').prop('hidden', true);
-    $('#doll'+(index+1)+'-name').text('-');
-    $('#doll'+(index+1)+' .fp span').text('-');
-    $('#doll'+(index+1)+' .acc span').text('-');
-    $('#doll'+(index+1)+' .eva span').text('-');
-    $('#doll'+(index+1)+' .rof span').text('-');
-    $('#doll'+(index+1)+' .crit span').text('-');
-    $('#doll'+(index+1)+' .critdmg span').text('-');
-    $('#doll'+(index+1)+' .rounds span').text('-');
-    $('#doll'+(index+1)+' .armor span').text('-');
-    $('#doll'+(index+1)+' .ap span').text('-');
-  } else {
-    $('#doll'+(index+1)+'-name').text(doll.name);
-    $('#doll'+(index+1)+' .skill-label').attr('data-original-title', doll.tooltip_skill1);
-    if(doll.mod) {
-      $('#doll'+(index+1)+' .skill2').prop('hidden', false);
-      $('#doll'+(index+1)+' .skill2-label').attr('data-original-title', doll.tooltip_skill2);
-    } else {
-      $('#doll'+(index+1)+' .skill2').prop('hidden', true);
-    }
-    $('#doll'+(index+1)+' .fp span').text(doll.pre_battle.fp);
-    $('#doll'+(index+1)+' .acc span').text(doll.pre_battle.acc);
-    $('#doll'+(index+1)+' .eva span').text(doll.pre_battle.eva);
-    $('#doll'+(index+1)+' .rof span').text(doll.pre_battle.rof);
-    $('#doll'+(index+1)+' .crit span').text(doll.pre_battle.crit+'%');
-    $('#doll'+(index+1)+' .critdmg span').text((doll.pre_battle.critdmg+100)+'%');
-    if(doll.pre_battle.rounds != 0) {
-      $('#doll'+(index+1)+' .rounds span').text(doll.pre_battle.rounds);
-    } else {
-      $('#doll'+(index+1)+' .rounds span').text('-');
-    }
-    if(doll.pre_battle.armor != 0) {
-      $('#doll'+(index+1)+' .armor span').text(doll.pre_battle.armor);
-    } else {
-      $('#doll'+(index+1)+' .armor span').text('-');
-    }
-    $('#doll'+(index+1)+' .ap span').text(doll.pre_battle.ap);
-
-    $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/dolls/'+doll.id+'.png');
-
-    $('#pos'+doll.pos+' .tilegrid').prop('hidden', false);
-    $('#pos'+doll.pos+' .tilegrid').attr('data-original-title', doll.tooltip_tiles);
-    var targetSquares = doll.tiles.target.split(',');
-    $('#pos'+doll.pos+' .tilegrid-col').removeClass('tilegrid-target tilegrid-neutral tilegrid-self');
-    $('#pos'+doll.pos+' .tile'+doll.tiles.self).addClass('tilegrid-self');
-    for(var i = 0; i < targetSquares.length; i++) {
-      $('#pos'+doll.pos+' .tile'+(doll.tiles.self+parseInt(targetSquares[i]))).addClass('tilegrid-target');
-    }
-    $.each([12,13,14,22,23,24,32,33,34], function(index, value) {
-      if(!$('#pos'+doll.pos+' .tile'+value).hasClass('tilegrid-self') && !$('#pos'+doll.pos+' .tile'+value).hasClass('tilegrid-target')) {
-        $('#pos'+doll.pos+' .tile'+value).addClass('tilegrid-neutral');
-      }
-    });
-  }
-
-  var tile_bonuses = ['fp','acc','eva','rof','crit','skillcd','armor'];
-  for(i = 0; i < tile_bonuses.length; i++) {
-    if(doll.tile_bonus[tile_bonuses[i]] > 0) {
-      $('#pos'+doll.pos+' .'+tile_bonuses[i]+' small').text(doll.tile_bonus[tile_bonuses[i]]+'%');
-      $('#pos'+doll.pos+' .'+tile_bonuses[i]).prop('hidden', false);
-    } else {
-      $('#pos'+doll.pos+' .'+tile_bonuses[i]).prop('hidden', true);
-    }
-  }
-
-  for(i = 1; i <= 3; i++) {
-    var equipId = doll['equip'+i];
-    if(equipId == -1) {
-      $('#doll'+(index+1)+' .equip'+i).removeClass('stars5 stars4 stars3 stars2 stars1');
-      $('#doll'+(index+1)+' .equip'+i).attr('src', '/static/girlsfrontline/sim/placeholder.png');
-    } else {
-      $('#doll'+(index+1)+' .equip'+i).removeClass('stars5 stars4 stars3 stars2 stars1');
-      $('#doll'+(index+1)+' .equip'+i).addClass('stars'+equipData[equipId-1].rarity);
-      $('#doll'+(index+1)+' .equip'+i).attr('src', '/static/girlsfrontline/sim/equips/'+equipData[equipId-1].type+'.png');
-    }
-  }
-}
-
-function findDollIndexById(id) {
-  if(id == -1) {
-    return -1;
-  }
-  for(var i = 0; i < echelon.length; i++) {
-    if(echelon[i].id == id) {
-      return i;
-    }
-  }
-  return -1;
-}
 
 function getNumLinks(dollIndex) {
   var level = parseInt($('#doll'+(dollIndex+1)+' .doll-level-select').val());
@@ -1068,6 +1136,18 @@ function getNumLinks(dollIndex) {
   if(level >= 10)
     return 2;
   return 1;
+}
+
+function getAffectionBonus(affection) {
+  if(affection == 0) {
+    return -0.05;
+  } else if(affection == 1) {
+    return 0;
+  } else if(affection == 2) {
+    return 0.05;
+  } else {
+    return 0.10;
+  }
 }
 
 function onDragEnter(event) {
@@ -1133,7 +1213,7 @@ function showDamageGraph() {
       shared: true
     },
     xAxis: {
-      categories: damageData.x,
+      categories: graphData.x,
       title: {
         text: 'Time (seconds)'
       }
@@ -1143,6 +1223,6 @@ function showDamageGraph() {
         text: 'Total Damage Done'
       }
     },
-    series: damageData.y
+    series: graphData.y
   });
 }
