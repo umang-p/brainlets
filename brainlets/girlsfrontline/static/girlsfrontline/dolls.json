@@ -22,6 +22,12 @@
     "artist": "Saru",
     "voice": "Aimi Tanaka",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+    "skill": {
+      "icd":0,
+      "cd":[],
+      "effects": {
+      }
+    },
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +24%, Accuracy +50%",
     "tiles": {
@@ -83,6 +89,12 @@
     "artist": "spirtie",
     "voice": "Eriko Matsui",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +20%, Accuracy +50%",
     "tiles": {
@@ -144,6 +156,12 @@
     "artist": "M.vv",
     "voice": "Aya Suzaki",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +20%, Damage +20%",
     "tiles": {
@@ -205,6 +223,12 @@
     "artist": "REALMBW",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +30%, Crit Rate +20%",
     "tiles": {
@@ -266,6 +290,12 @@
     "artist": "X布",
     "voice": "Narumi Sinohara",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +32%, Crit Rate +16%",
     "tiles": {
@@ -327,6 +357,12 @@
     "artist": "废人",
     "voice": "Hiromi Sakuma",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +20%, Accuracy +50%",
     "tiles": {
@@ -388,6 +424,12 @@
     "artist": "鳗鱼子",
     "voice": "Eri Kitamura",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Rate of fire +24%",
     "tiles": {
@@ -449,6 +491,12 @@
     "artist": "河马",
     "voice": "Uesaka Sumire",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Rate of fire +12%",
     "tiles": {
@@ -510,6 +558,12 @@
     "artist": "とり",
     "voice": "Tooru Kanae",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +14%, Accuracy +56%",
     "tiles": {
@@ -571,6 +625,12 @@
     "artist": "堀森",
     "voice": "Asuka Ito",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +32%, Crit Rate +16%",
     "tiles": {
@@ -632,6 +692,12 @@
     "artist": "防弹乳牛",
     "voice": "Takao Koizumi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +70%, Damage +14%",
     "tiles": {
@@ -693,6 +759,12 @@
     "artist": "林檎愛す",
     "voice": "Ayaka Itatani",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +64%, Evasion +30%",
     "tiles": {
@@ -754,6 +826,12 @@
     "artist": "莲子",
     "voice": "Suzuko Mimori",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +50%, Evasion +40%",
     "tiles": {
@@ -815,6 +893,12 @@
     "artist": "spirtie",
     "voice": "Sora Amamiya",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +20%, Evasion +20%",
     "tiles": {
@@ -876,6 +960,12 @@
     "artist": "Rain Lan",
     "voice": "Sora Tokui",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +64%, Evasion +30%",
     "tiles": {
@@ -937,6 +1027,12 @@
     "artist": "NS",
     "voice": "Risa Taneda",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Evasion +15%",
     "tiles": {
@@ -977,6 +1073,12 @@
     "artist": "november",
     "voice": "Nozomi Amane",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +40%, Evasion +30%",
     "tiles": {
@@ -1017,6 +1119,12 @@
     "artist": "SA",
     "voice": "Ogura Yui",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%",
     "tiles": {
@@ -1057,6 +1165,12 @@
     "artist": "NorthAbyssor",
     "voice": "Serizawa Yuu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Evasion +12%",
     "tiles": {
@@ -1097,6 +1211,12 @@
     "artist": "SA",
     "voice": "Saori Hayami",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +25%",
     "tiles": {
@@ -1137,6 +1257,12 @@
     "artist": "和茶",
     "voice": "Uesaka Sumire",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Rate of fire +5%",
     "tiles": {
@@ -1177,6 +1303,12 @@
     "artist": "两卡车",
     "voice": "Uesaka Sumire",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%",
     "tiles": {
@@ -1217,6 +1349,12 @@
     "artist": "NIXOO",
     "voice": "Shiki Aoki",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +8%, Evasion +20%",
     "tiles": {
@@ -1257,6 +1395,12 @@
     "artist": "NoriZC",
     "voice": "Tamari Hinata",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Accuracy +25%",
     "tiles": {
@@ -1297,6 +1441,12 @@
     "artist": "废人",
     "voice": "Eriko Matsui",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +25%, Evasion +20%",
     "tiles": {
@@ -1337,6 +1487,12 @@
     "artist": "Saru",
     "voice": "Naomi Mukaiyama",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +40%, Crit Rate +20%",
     "tiles": {
@@ -1377,6 +1533,12 @@
     "artist": "SA",
     "voice": "Eriko Matsui",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +15%, Accuracy +50%",
     "tiles": {
@@ -1417,6 +1579,12 @@
     "artist": "戏言咸咸",
     "voice": "Lynn",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +25%, Rate of fire +15%",
     "tiles": {
@@ -1457,6 +1625,12 @@
     "artist": "真名",
     "voice": "Kami Daimon",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +10%, Evasion +30%",
     "tiles": {
@@ -1497,6 +1671,12 @@
     "artist": "ALLENES",
     "voice": "Haruka Takahashi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +5%, Rate of fire +10%",
     "tiles": {
@@ -1537,6 +1717,12 @@
     "artist": "死盖",
     "voice": "Saori Onishi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%",
     "tiles": {
@@ -1577,6 +1763,12 @@
     "artist": "TAMAXI",
     "voice": "Mikako Takahashi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Evasion +10%",
     "tiles": {
@@ -1617,6 +1809,12 @@
     "artist": "哈路卡",
     "voice": "Risa Taneda",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -1657,6 +1855,12 @@
     "artist": "哈路卡",
     "voice": "Suzuko Mimori",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -1697,6 +1901,12 @@
     "artist": "多元菌",
     "voice": "Yui Horie",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -1737,6 +1947,12 @@
     "artist": "Rain Lan",
     "voice": "Saori Onishi ",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -1777,6 +1993,12 @@
     "artist": "卑しい人间",
     "voice": "Eri Kitamura",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -1817,6 +2039,12 @@
     "artist": "防弹乳牛",
     "voice": "Uesaka Sumire",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -1857,6 +2085,12 @@
     "artist": "sola7764",
     "voice": "Kaori Ide",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldodwn -10%",
     "tiles": {
@@ -1897,6 +2131,12 @@
     "artist": "phantania",
     "voice": "Aya Suzaki",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -10%",
     "tiles": {
@@ -1937,6 +2177,12 @@
     "artist": "Evan揚",
     "voice": "Ai Shimizu ",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -1977,6 +2223,12 @@
     "artist": "幻象黑兔",
     "voice": "Minami Tanaka",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -2017,6 +2269,12 @@
     "artist": "幻象黑兔",
     "voice": "Mamiko Hanada",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -2057,6 +2315,12 @@
     "artist": "芙芙酱",
     "voice": "Ai Kayano ",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -2097,6 +2361,12 @@
     "artist": "河马",
     "voice": "Nozomi Amane",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -10%",
     "tiles": {
@@ -2137,6 +2407,12 @@
     "artist": "多元菌",
     "voice": "Haruka Tomatsu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -2177,6 +2453,12 @@
     "artist": "KAN",
     "voice": "Rui Kariya",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -2217,6 +2499,12 @@
     "artist": "rei",
     "voice": "Haruka Tomatsu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -2257,6 +2545,12 @@
     "artist": "Bison仓鼠",
     "voice": "Mami Misaki",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -10%",
     "tiles": {
@@ -2297,6 +2591,12 @@
     "artist": "原子Dan",
     "voice": "Tomoyo Chuujou",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -10%",
     "tiles": {
@@ -2337,6 +2637,12 @@
     "artist": "RAN",
     "voice": "Ai Kayano ",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -2377,6 +2683,12 @@
     "artist": "海猫络合物",
     "voice": "Yamane Nozomi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +12%, Damage +10%",
     "tiles": {
@@ -2417,6 +2729,12 @@
     "artist": "海猫络合物",
     "voice": "Haruka Tomatsu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%, Crit Rate +30%",
     "tiles": {
@@ -2457,6 +2775,12 @@
     "artist": "海猫络合物",
     "voice": "Yukari Tamura",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +12%, Accuracy +50%",
     "tiles": {
@@ -2497,6 +2821,12 @@
     "artist": "LIN+",
     "voice": "Emiri Katou",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +12%, Rate of fire +10%",
     "tiles": {
@@ -2537,6 +2867,12 @@
     "artist": "厕所董事长",
     "voice": "Rina Sato",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +18%",
     "tiles": {
@@ -2577,6 +2913,12 @@
     "artist": "音符",
     "voice": "Haruka Takahashi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +25%",
     "tiles": {
@@ -2617,6 +2959,12 @@
     "artist": "防弹乳牛",
     "voice": "Uesaka Sumire",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Damage +25%",
     "tiles": {
@@ -2657,6 +3005,12 @@
     "artist": "八才",
     "voice": "Ai Kayano ",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +60%, Evasion +20%",
     "tiles": {
@@ -2697,6 +3051,12 @@
     "artist": "NS",
     "voice": "Rie Kugimiya",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +15%, Accuracy +50%",
     "tiles": {
@@ -2737,6 +3097,12 @@
     "artist": "PHI",
     "voice": "Kaori Yoshioka",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +50%, Rate of fire +20%",
     "tiles": {
@@ -2777,6 +3143,12 @@
     "artist": "薯子Imoko",
     "voice": "Ami Koshimizu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +30%, Rate of fire +10%",
     "tiles": {
@@ -2817,6 +3189,12 @@
     "artist": "NIXOO",
     "voice": "Ai Nonaka",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +40%",
     "tiles": {
@@ -2857,6 +3235,12 @@
     "artist": "CanceR",
     "voice": "Sora Amamiya",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Crit Rate +10%, Evasion +15%",
     "tiles": {
@@ -2897,6 +3281,12 @@
     "artist": "MKiiiiii",
     "voice": "Yukiko Ayamiya",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +50%, Damage +20%",
     "tiles": {
@@ -2937,6 +3327,12 @@
     "artist": "KY",
     "voice": "Eriko Matsui",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +60%, Damage +25%",
     "tiles": {
@@ -2977,6 +3373,12 @@
     "artist": "麻将",
     "voice": "Sumire Yatsurugi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +12%, Accuracy +50%",
     "tiles": {
@@ -3017,6 +3419,12 @@
     "artist": "lyo",
     "voice": "Karin Mitarai",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +12%, Accuracy +50%",
     "tiles": {
@@ -3057,6 +3465,12 @@
     "artist": "木shiyo",
     "voice": "Yume Maihara",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +18%",
     "tiles": {
@@ -3097,6 +3511,12 @@
     "artist": "芙芙酱",
     "voice": "Azumi Waki",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +20%",
     "tiles": {
@@ -3137,6 +3557,12 @@
     "artist": "spirtie",
     "voice": "Miki Amano",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Damage +20%",
     "tiles": {
@@ -3178,6 +3604,12 @@
     "artist": "水乌龟",
     "voice": "Yuuki Aoi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Armor +10%, Damage +15%",
     "tiles": {
@@ -3219,6 +3651,12 @@
     "artist": "15K",
     "voice": "Izumi Iwamatsu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +22%",
     "tiles": {
@@ -3260,6 +3698,12 @@
     "artist": "ミカピカゾ",
     "voice": "Asuka Ito",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +8%, Damage +10%",
     "tiles": {
@@ -3301,6 +3745,12 @@
     "artist": "雪樱樱",
     "voice": "Yoshino Nanjo",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +12%, Accuracy +10%",
     "tiles": {
@@ -3342,6 +3792,12 @@
     "artist": "AS109",
     "voice": "Sachiyo Yoshida",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +25%, Armor +10%",
     "tiles": {
@@ -3383,6 +3839,12 @@
     "artist": "RFF",
     "voice": "Hiyori Nitta",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Damage +10%",
     "tiles": {
@@ -3424,6 +3886,12 @@
     "artist": "BIBIA",
     "voice": "Kanae Ikadai",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +15%",
     "tiles": {
@@ -3465,6 +3933,12 @@
     "artist": "Sam_Ashton",
     "voice": "Iori Nomizu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +16%",
     "tiles": {
@@ -3506,6 +3980,12 @@
     "artist": "木shiyo",
     "voice": "Kaori Nazuka",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%",
     "tiles": {
@@ -3547,6 +4027,12 @@
     "artist": "spirtie",
     "voice": "Sayaka Yokoya",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +22%",
     "tiles": {
@@ -3588,6 +4074,12 @@
     "artist": "spirtie",
     "voice": "Tomoyo Chuujou",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%",
     "tiles": {
@@ -3629,6 +4121,12 @@
     "artist": "猫头神",
     "voice": "Risa Taneda",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +15%, Damage +10%",
     "tiles": {
@@ -3670,6 +4168,12 @@
     "artist": "废人",
     "voice": "Sora Amamiya",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Accuracy +12%",
     "tiles": {
@@ -3710,6 +4214,12 @@
     "artist": "Bison仓鼠",
     "voice": "Aoi Koga",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +20%, Accuracy +40%",
     "tiles": {
@@ -3771,6 +4281,12 @@
     "artist": "XQ",
     "voice": "Iori Nomizu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +28%",
     "tiles": {
@@ -3832,6 +4348,12 @@
     "artist": "MKiiiiii",
     "voice": "Emi Uema",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%",
     "tiles": {
@@ -3872,6 +4394,12 @@
     "artist": "Ki桑",
     "voice": "Asuka Ito",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +20%",
     "tiles": {
@@ -3912,6 +4440,12 @@
     "artist": "小迪",
     "voice": "Saya Horigome",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +20%",
     "tiles": {
@@ -3952,6 +4486,12 @@
     "artist": "团子",
     "voice": "Yuuka Aisaka",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -3992,6 +4532,12 @@
     "artist": "REALMBW",
     "voice": "Ayaka Itatani",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +30%, Evasion +20%",
     "tiles": {
@@ -4053,6 +4599,12 @@
     "artist": "音符",
     "voice": "Aoi Koga",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +30%, Accuracy +50%",
     "tiles": {
@@ -4114,6 +4666,12 @@
     "artist": "麻将",
     "voice": "Yuka Ootsubo",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +90%, Damage +12%",
     "tiles": {
@@ -4175,6 +4733,12 @@
     "artist": "雪樱樱",
     "voice": "Hikaru Akao",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +36%",
     "tiles": {
@@ -4236,6 +4800,12 @@
     "artist": "Saru",
     "voice": "Tomoyo Kurosawa",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +24%, Rate of fire +20%",
     "tiles": {
@@ -4297,6 +4867,12 @@
     "artist": "ZAGALA",
     "voice": "Mamiko Noto",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +30%, Rate of fire +12%",
     "tiles": {
@@ -4337,6 +4913,12 @@
     "artist": "Renatus.Z",
     "voice": "Emi Uema",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Crit Rate +500%",
     "tiles": {
@@ -4377,6 +4959,12 @@
     "artist": "ZAGALA",
     "voice": "Tomomi Mineuchi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%, Crit Rate +30%",
     "tiles": {
@@ -4417,6 +5005,12 @@
     "artist": "Parsley",
     "voice": "Akane Fujita",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Rate of fire +8%",
     "tiles": {
@@ -4457,6 +5051,12 @@
     "artist": "林檎愛す",
     "voice": "Yumi Uchiyama",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +20%, Damage +15%",
     "tiles": {
@@ -4497,6 +5097,12 @@
     "artist": "水乌龟",
     "voice": "Haruka Yoshimura",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +20%",
     "tiles": {
@@ -4537,6 +5143,12 @@
     "artist": "hanasa",
     "voice": "Sora Tokui",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +10%, Damage +20%",
     "tiles": {
@@ -4577,6 +5189,12 @@
     "artist": "木子翔",
     "voice": "Maaya Uchida",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +50%, Rate of fire +25%",
     "tiles": {
@@ -4618,6 +5236,12 @@
     "artist": "音符",
     "voice": "Ami Koshimizu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Armor +10%",
     "tiles": {
@@ -4659,6 +5283,12 @@
     "artist": "叽困",
     "voice": "Asuka Ito",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +30%",
     "tiles": {
@@ -4700,6 +5330,12 @@
     "artist": "Lino",
     "voice": "Yumi Uchiyama",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +20%",
     "tiles": {
@@ -4741,6 +5377,12 @@
     "artist": "十月十日奏",
     "voice": "Ayaka Suwa",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Armor +20%",
     "tiles": {
@@ -4781,6 +5423,12 @@
     "artist": "能登ツグミ",
     "voice": "Minami Tanaka",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +24%, Accuracy +40%",
     "tiles": {
@@ -4842,6 +5490,12 @@
     "artist": "工口牛",
     "voice": "Asami Imai",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Rate of fire +16%",
     "tiles": {
@@ -4903,6 +5557,12 @@
     "artist": "Anmi",
     "voice": "Aki Toyosaki",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +15%, Accuracy +30%",
     "tiles": {
@@ -4943,6 +5603,12 @@
     "artist": "ALLENES",
     "voice": "Iori Nomizu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Evasion +10%",
     "tiles": {
@@ -4983,6 +5649,12 @@
     "artist": "CanceR",
     "voice": "Asami Imai",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -5023,6 +5695,12 @@
     "artist": "防弹乳牛",
     "voice": "Mai Nakahara",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +15%, Rate of fire +10%",
     "tiles": {
@@ -5063,6 +5741,12 @@
     "artist": "ASK",
     "voice": "Marina Inoue",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +65%, Rate of fire +25%",
     "tiles": {
@@ -5103,6 +5787,12 @@
     "artist": "死盖",
     "voice": "Ami Hagihara",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +50%, Damage +25%",
     "tiles": {
@@ -5144,6 +5834,12 @@
     "artist": "SA",
     "voice": "Ricca Tachibana",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +18%",
     "tiles": {
@@ -5184,6 +5880,12 @@
     "artist": "音符",
     "voice": "Ayaka Fukuhara",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +10%, Damage +30%",
     "tiles": {
@@ -5224,6 +5926,12 @@
     "artist": "真名",
     "voice": "Ayako Kawasumi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +12%, Evasion +36%",
     "tiles": {
@@ -5285,6 +5993,12 @@
     "artist": "受菟",
     "voice": "Ricca Tachibana",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -5326,6 +6040,12 @@
     "artist": "neco",
     "voice": "Haruka Yoshimura",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +12%, Armor +15%",
     "tiles": {
@@ -5366,6 +6086,12 @@
     "artist": "音符",
     "voice": "Shiki Aoki",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Evasion +30%",
     "tiles": {
@@ -5427,6 +6153,12 @@
     "artist": "防弹乳牛",
     "voice": "Minami Tanaka",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%",
     "tiles": {
@@ -5467,6 +6199,12 @@
     "artist": "Saru",
     "voice": "Rumi Okubo",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -5507,6 +6245,12 @@
     "artist": "木shiyo",
     "voice": "Kami Daimon",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Evasion +18%",
     "tiles": {
@@ -5547,6 +6291,12 @@
     "artist": "木shiyo",
     "voice": "Ayane Sakura",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Evasion +18%",
     "tiles": {
@@ -5587,6 +6337,12 @@
     "artist": "钉田西瓜",
     "voice": "Nozomi Yamamoto",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +55%",
     "tiles": {
@@ -5627,6 +6383,12 @@
     "artist": "麻将",
     "voice": "Emiri Katou",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Accuracy +50%",
     "tiles": {
@@ -5688,6 +6450,12 @@
     "artist": "TOMATO",
     "voice": "Saya Horigom",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Rate of fire +20%",
     "tiles": {
@@ -5728,6 +6496,12 @@
     "artist": "NoriZC",
     "voice": "Nozomi Yamamoto",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +16%, Accuracy +75%",
     "tiles": {
@@ -5768,6 +6542,12 @@
     "artist": "熊猫印象",
     "voice": "Takada Yuuki",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +18%, Crit Rate +30%",
     "tiles": {
@@ -5808,6 +6588,12 @@
     "artist": "八才",
     "voice": "Serizawa Yuu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +24%",
     "tiles": {
@@ -5848,6 +6634,12 @@
     "artist": "熊猫印象",
     "voice": "Ayaka Fujii",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +12%, Accuracy +30%",
     "tiles": {
@@ -5888,6 +6680,12 @@
     "artist": "羽中",
     "voice": "Marina Inoue",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +35%",
     "tiles": {
@@ -5928,6 +6726,12 @@
     "artist": "林大B",
     "voice": "Arise Sato",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +16%, Rate of fire +10%",
     "tiles": {
@@ -5989,6 +6793,12 @@
     "artist": "sola7764",
     "voice": "Naomi Mukaiyama",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +56%, Evasion +36%",
     "tiles": {
@@ -6050,6 +6860,12 @@
     "artist": "哈路卡",
     "voice": "Arise Sato",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +28%",
     "tiles": {
@@ -6111,6 +6927,12 @@
     "artist": "水乌龟",
     "voice": "Akane Fujita",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +30%, Crit Rate +20%",
     "tiles": {
@@ -6172,6 +6994,12 @@
     "artist": "海猫络合物",
     "voice": "Ayaka Fukuhara",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Accuracy +35%",
     "tiles": {
@@ -6212,6 +7040,12 @@
     "artist": "麻将",
     "voice": "Rui Kariya",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +12%, Damage +10%",
     "tiles": {
@@ -6252,6 +7086,12 @@
     "artist": "rosele",
     "voice": "Rie Takahashi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -6292,6 +7132,12 @@
     "artist": "工口牛",
     "voice": "Nozomi Yamamoto",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -6332,6 +7178,12 @@
     "artist": "拿铁",
     "voice": "Karin Nanami",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -6372,6 +7224,12 @@
     "artist": "十月十日奏",
     "voice": "Asami Seto",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -6413,6 +7271,12 @@
     "artist": "RAN",
     "voice": "Minami Tsuda",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +15%, Armor +10%",
     "tiles": {
@@ -6453,6 +7317,12 @@
     "artist": "八云玖",
     "voice": "Kanae Itou",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +15%, Evasion +10%",
     "tiles": {
@@ -6493,6 +7363,12 @@
     "artist": "REALMBW",
     "voice": "Hitomi Nabatame",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Accuracy +20%",
     "tiles": {
@@ -6533,6 +7409,12 @@
     "artist": "小迪",
     "voice": "Makoto Koichi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +50%",
     "tiles": {
@@ -6573,6 +7455,12 @@
     "artist": "Rain Lan",
     "voice": "Emiri Katou",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%",
     "tiles": {
@@ -6613,6 +7501,12 @@
     "artist": "Ki桑",
     "voice": "Ruriko Aoki",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%",
     "tiles": {
@@ -6653,6 +7547,12 @@
     "artist": "防弹乳牛",
     "voice": "Ruriko Aoki",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +55%",
     "tiles": {
@@ -6693,6 +7593,12 @@
     "artist": "废人",
     "voice": "Ami Nanase",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +20%",
     "tiles": {
@@ -6733,6 +7639,12 @@
     "artist": "neco",
     "voice": "Shizuka Ito",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%",
     "tiles": {
@@ -6773,6 +7685,12 @@
     "artist": "死盖",
     "voice": "Hiromi Igarashi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +30%",
     "tiles": {
@@ -6813,6 +7731,12 @@
     "artist": "Bison仓鼠",
     "voice": "Rui Kariya",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +30%",
     "tiles": {
@@ -6853,6 +7777,12 @@
     "artist": "防弹乳牛",
     "voice": "Hisako Kanemoto",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%",
     "tiles": {
@@ -6893,6 +7823,12 @@
     "artist": "河马",
     "voice": "Yuka Ootsubo",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%",
     "tiles": {
@@ -6933,6 +7869,12 @@
     "artist": "洲川Terras",
     "voice": "Miyuki Kobori",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%",
     "tiles": {
@@ -6973,6 +7915,12 @@
     "artist": "Silverwing",
     "voice": "Mariko Honda",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +22%",
     "tiles": {
@@ -7013,6 +7961,12 @@
     "artist": "nineo",
     "voice": "Manami Numakura",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +10%",
     "tiles": {
@@ -7053,6 +8007,12 @@
     "artist": "DDAL",
     "voice": "Risa Kubota",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%",
     "tiles": {
@@ -7093,6 +8053,12 @@
     "artist": "音符",
     "voice": "Shiho Kokido",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +16%, Rate of fire +20%",
     "tiles": {
@@ -7154,6 +8120,12 @@
     "artist": "雪樱樱",
     "voice": "Ayaka Fujii",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +32%",
     "tiles": {
@@ -7215,6 +8187,12 @@
     "artist": "Skade",
     "voice": "Ryouko Maekawa",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +30%, Accuracy +40%",
     "tiles": {
@@ -7276,6 +8254,12 @@
     "artist": "幻象黑兔",
     "voice": "Arisa Ida",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Damage +6%",
     "tiles": {
@@ -7316,6 +8300,12 @@
     "artist": "仙女V",
     "voice": "Riiko Tazawa",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +30%",
     "tiles": {
@@ -7356,6 +8346,12 @@
     "artist": "rei",
     "voice": "Rina Hidaka",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%",
     "tiles": {
@@ -7396,6 +8392,12 @@
     "artist": "Anmi",
     "voice": "Kanae Itou",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +30%, Evasion +18%",
     "tiles": {
@@ -7437,6 +8439,12 @@
     "artist": "虎三",
     "voice": "Minami Tsuda",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +15%, Accuracy +12%",
     "tiles": {
@@ -7477,6 +8485,12 @@
     "artist": "八才",
     "voice": "Yuka Saito",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -7517,6 +8531,12 @@
     "artist": "Saru",
     "voice": "Rina Hidaka",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +50%, Evasion +15%",
     "tiles": {
@@ -7557,6 +8577,12 @@
     "artist": "废人",
     "voice": "Kibune Sachiho",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +20%, Damage +15%",
     "tiles": {
@@ -7597,6 +8623,12 @@
     "artist": "水熊",
     "voice": "Miyuki Kobori",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +25%",
     "tiles": {
@@ -7637,6 +8669,12 @@
     "artist": "Ki桑",
     "voice": "Makoto Koichi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +40%, Evasion +15%",
     "tiles": {
@@ -7677,6 +8715,12 @@
     "artist": "liduke",
     "voice": "Yuka Saito",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -7717,6 +8761,12 @@
     "artist": "nineo",
     "voice": "Hisako Kanemoto",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -7757,6 +8807,12 @@
     "artist": "Krenz",
     "voice": "Shiho Kokido",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Evasion +12%",
     "tiles": {
@@ -7797,6 +8853,12 @@
     "artist": "zui",
     "voice": "Kotomi Aihara",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -7837,6 +8899,12 @@
     "artist": "細重ソウジ",
     "voice": "Asami Seto",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +30%, Crit Rate +20%",
     "tiles": {
@@ -7898,6 +8966,12 @@
     "artist": "92M",
     "voice": "Yukiyo Fujii",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -7939,6 +9013,12 @@
     "artist": "水熊",
     "voice": "Chiyo Ousaki",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Armor +15%",
     "tiles": {
@@ -7979,6 +9059,12 @@
     "artist": "PHI",
     "voice": "Ryouko Maekawa",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +50%, Damage +20%",
     "tiles": {
@@ -8040,6 +9126,12 @@
     "artist": "百足",
     "voice": "Ami Nanase",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +30%",
     "tiles": {
@@ -8080,6 +9172,12 @@
     "artist": "NIN",
     "voice": "Azumi Asakura",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Accuracy +15%",
     "tiles": {
@@ -8120,6 +9218,12 @@
     "artist": "麻将",
     "voice": "Kotomi Aihara",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +20%",
     "tiles": {
@@ -8160,6 +9264,12 @@
     "artist": "HIKARI",
     "voice": "Karin Nanami",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%",
     "tiles": {
@@ -8200,6 +9310,12 @@
     "artist": "猫头神",
     "voice": "Akane Hanazawa",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +8%, Evasion +8%",
     "tiles": {
@@ -8240,6 +9356,12 @@
     "artist": "音符",
     "voice": "Satomi Satou",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -8280,6 +9402,12 @@
     "artist": "PHI",
     "voice": "Arisa Ida",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +25%",
     "tiles": {
@@ -8320,6 +9448,12 @@
     "artist": "Anmi",
     "voice": "Yukiyo Fujii",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +25%, Accuracy +50%",
     "tiles": {
@@ -8361,6 +9495,12 @@
     "artist": "Rain Lan",
     "voice": "Satomi Satou",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +8%, Armor +12%",
     "tiles": {
@@ -8401,6 +9541,12 @@
     "artist": "nineo",
     "voice": "Azumi Asakura",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +12%, Evasion +15%",
     "tiles": {
@@ -8441,6 +9587,12 @@
     "artist": "細重ソウジ",
     "voice": "Reina Ueda",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -10%",
     "tiles": {
@@ -8481,6 +9633,12 @@
     "artist": "細重ソウジ",
     "voice": "Reina Ueda",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -10%",
     "tiles": {
@@ -8522,6 +9680,12 @@
     "artist": "兔爷",
     "voice": "Riiko Tazawa",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +15%, Damage +10%",
     "tiles": {
@@ -8562,6 +9726,12 @@
     "artist": "时辰",
     "voice": "Chihiro Inamoto",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -8602,6 +9772,12 @@
     "artist": "荒境TS",
     "voice": "Izumi Chiba",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -8642,6 +9818,12 @@
     "artist": "NIN",
     "voice": "Yuuki Kuwahara",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +36%",
     "tiles": {
@@ -8703,6 +9885,12 @@
     "artist": "HJL",
     "voice": "Ayaka Fujii",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Crit Rate +20%",
     "tiles": {
@@ -8743,6 +9931,12 @@
     "artist": "水乌龟",
     "voice": "Mariko Honda",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -8783,6 +9977,12 @@
     "artist": "多元菌",
     "voice": "Manami Numakura",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +55%, Evasion +16%",
     "tiles": {
@@ -8823,6 +10023,12 @@
     "artist": "多元菌",
     "voice": "Azumi Waki",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +25%, Rate of fire +15%",
     "tiles": {
@@ -8863,6 +10069,12 @@
     "artist": "NoriZC",
     "voice": "Harumi Sowa",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Evasion +15%",
     "tiles": {
@@ -8904,6 +10116,12 @@
     "artist": "小吃",
     "voice": "Lynn",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Armor +15%",
     "tiles": {
@@ -8944,6 +10162,12 @@
     "artist": "spirtie",
     "voice": "Harumi Sowa",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +16%",
     "tiles": {
@@ -8984,6 +10208,12 @@
     "artist": "小吃",
     "voice": "Asuka Kawakami",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Evasion +20%",
     "tiles": {
@@ -9045,6 +10275,12 @@
     "artist": "neco",
     "voice": "Arisa Kori",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -9085,6 +10321,12 @@
     "artist": "Lpip",
     "voice": "Chihiro Inamoto",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +30%, Accuracy +40%",
     "tiles": {
@@ -9146,6 +10388,12 @@
     "artist": "小吃",
     "voice": "Haruno Anzu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Rate of fire +5%",
     "tiles": {
@@ -9186,6 +10434,12 @@
     "artist": "RAN",
     "voice": "Aimi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +65%, Damage +25%",
     "tiles": {
@@ -9226,6 +10480,12 @@
     "artist": "かれい",
     "voice": "Risa Kubota",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Evasion +15%",
     "tiles": {
@@ -9266,6 +10526,12 @@
     "artist": "Kincora",
     "voice": "Ayaka Fujii",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -9306,6 +10572,12 @@
     "artist": "狂気の君",
     "voice": "Asuka Kawakami",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +12%",
     "tiles": {
@@ -9346,6 +10618,12 @@
     "artist": "油库狸",
     "voice": "Izumi Chiba",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Evasion +20%",
     "tiles": {
@@ -9407,6 +10685,12 @@
     "artist": "AC130",
     "voice": "Arisa Kori",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +24%, Accuracy +40%",
     "tiles": {
@@ -9468,6 +10752,12 @@
     "artist": "洲川Terras",
     "voice": "Aimi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -9508,6 +10798,12 @@
     "artist": "X布",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +25%",
     "tiles": {
@@ -9548,6 +10844,12 @@
     "artist": "音符",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +35%",
     "tiles": {
@@ -9588,6 +10890,12 @@
     "artist": "废人",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +15%, Evasion +10%",
     "tiles": {
@@ -9628,6 +10936,12 @@
     "artist": "黑猫桃园",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -9668,6 +10982,12 @@
     "artist": "工口牛",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Evasion +15%",
     "tiles": {
@@ -9708,6 +11028,12 @@
     "artist": "かれい",
     "voice": "Ai Kakuma",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +35%",
     "tiles": {
@@ -9748,6 +11074,12 @@
     "artist": "水熊",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%, Accuracy +12%",
     "tiles": {
@@ -9788,6 +11120,12 @@
     "artist": "卑しい人间",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -9828,6 +11166,12 @@
     "artist": "Redjuice",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -9868,6 +11212,12 @@
     "artist": "shin556",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Rate of fire +20%",
     "tiles": {
@@ -9929,6 +11279,12 @@
     "artist": "戏言咸咸",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +24%, Accuracy +60%",
     "tiles": {
@@ -9990,6 +11346,12 @@
     "artist": "防弹乳牛",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +18%, Crit Rate +30%",
     "tiles": {
@@ -10030,6 +11392,12 @@
     "artist": "ゆらん",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -10070,6 +11438,12 @@
     "artist": "反骨Max",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Evasion +15%",
     "tiles": {
@@ -10110,6 +11484,12 @@
     "artist": "洲川Terras",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Accuracy +55%",
     "tiles": {
@@ -10151,6 +11531,12 @@
     "artist": "NIN",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +10%, Armor +15%",
     "tiles": {
@@ -10191,6 +11577,12 @@
     "artist": "迷肘",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Evasion +12%",
     "tiles": {
@@ -10232,6 +11624,12 @@
     "artist": "Evan揚",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +10%, Accuracy +10%",
     "tiles": {
@@ -10272,6 +11670,12 @@
     "artist": "XQ",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
     "tiles": {
@@ -10312,6 +11716,12 @@
     "artist": "Parsley",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%, Evasion +18%",
     "tiles": {
@@ -10352,6 +11762,12 @@
     "artist": "",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +32%",
     "tiles": {
@@ -10413,6 +11829,12 @@
     "artist": "LM7",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +30%",
     "tiles": {
@@ -10453,6 +11875,12 @@
     "artist": "AIKO",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -10493,6 +11921,12 @@
     "artist": "十月十日奏",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +24%, Accuracy +50%",
     "tiles": {
@@ -10555,6 +11989,12 @@
     "artist": "かれい",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +18%, Armor +8%",
     "tiles": {
@@ -10595,6 +12035,12 @@
     "artist": "水熊",
     "voice": "Kanako Kondo",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +30%, Evasion +20%",
     "tiles": {
@@ -10656,6 +12102,12 @@
     "artist": "ZAGALA",
     "voice": "Aya Suzaki",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +15%",
     "tiles": {
@@ -10696,6 +12148,12 @@
     "artist": "水乌龟",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Evasion +30%",
     "tiles": {
@@ -10757,6 +12215,12 @@
     "artist": "NIN",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -10797,6 +12261,12 @@
     "artist": "水熊",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -10837,6 +12307,12 @@
     "artist": "咩爆",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +30%, Accuracy +50%",
     "tiles": {
@@ -10898,6 +12374,12 @@
     "artist": "DOGALA",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Rate of fire +20%",
     "tiles": {
@@ -10938,6 +12420,12 @@
     "artist": "DOGALA",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Accuracy +10%",
     "tiles": {
@@ -10978,6 +12466,12 @@
     "artist": "水熊",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +30%, Accuracy +50%",
     "tiles": {
@@ -11039,6 +12533,12 @@
     "artist": "水熊",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +30%, Accuracy +50%",
     "tiles": {
@@ -11100,7 +12600,19 @@
     "artist": "Saru",
     "voice": "Aimi Tanaka",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Damage +24%, Accuracy +60%",
     "tiles": {
       "self": 23,
@@ -11161,7 +12673,19 @@
     "artist": "spirtie",
     "voice": "Eriko Matsui",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Rate of fire +24%, Accuracy +60%",
     "tiles": {
       "self": 23,
@@ -11222,7 +12746,19 @@
     "artist": "X布",
     "voice": "Narumi Sinohara",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Damage +36%, Crit Rate +20%",
     "tiles": {
       "self": 23,
@@ -11283,7 +12819,19 @@
     "artist": "真名",
     "voice": "Kami Daimon",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Accuracy +30%, Evasion +40%",
     "tiles": {
       "self": 23,
@@ -11323,7 +12871,19 @@
     "artist": "Rain Lan",
     "voice": "Saori Onishi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
       "self": 23,
@@ -11363,7 +12923,19 @@
     "artist": "防弹乳牛",
     "voice": "Uesaka Sumire",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
       "self": 23,
@@ -11403,7 +12975,19 @@
     "artist": "幻象黑兔",
     "voice": "Mamiko Hanada",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
       "self": 23,
@@ -11443,7 +13027,19 @@
     "artist": "Bison仓鼠",
     "voice": "Mami Misaki",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
       "self": 23,
@@ -11483,7 +13079,19 @@
     "artist": "ZAGALA",
     "voice": "Haruka Tomatsu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Damage +20%, Crit Rate +32%",
     "tiles": {
       "self": 23,
@@ -11523,7 +13131,19 @@
     "artist": "ZAGALA",
     "voice": "Yukari Tamura",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Evasion +15%, Accuracy +50%",
     "tiles": {
       "self": 23,
@@ -11563,7 +13183,19 @@
     "artist": "LIN+",
     "voice": "Emiri Katou",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Evasion +15%, Rate of fire +10%",
     "tiles": {
       "self": 23,
@@ -11603,7 +13235,19 @@
     "artist": "PHI",
     "voice": "Kaori Yoshioka",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Accuracy +55%, Rate of fire +25%",
     "tiles": {
       "self": 23,
@@ -11643,7 +13287,19 @@
     "artist": "薯子Imoko",
     "voice": "Ami Koshimizu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Damage +30%, Rate of fire +15%",
     "tiles": {
       "self": 23,
@@ -11684,7 +13340,19 @@
     "artist": "水乌龟",
     "voice": "Yuuki Aoi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Damage +18%, Armor +10%",
     "tiles": {
       "self": 22,
@@ -11725,7 +13393,19 @@
     "artist": "RFF",
     "voice": "Hiyori Nitta",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Damage +15%, Rate of fire +15%",
     "tiles": {
       "self": 22,
@@ -11766,7 +13446,19 @@
     "artist": "废人",
     "voice": "Sora Amamiya",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Rate of fire +10%, Accuracy +15%",
     "tiles": {
       "self": 12,
@@ -11806,7 +13498,19 @@
     "artist": "XQ",
     "voice": "Iori Nomizu",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Damage +36%",
     "tiles": {
       "self": 23,
@@ -11867,7 +13571,19 @@
     "artist": "Ki桑",
     "voice": "Asuka Ito",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Evasion +20%, Crit Rate +10%",
     "tiles": {
       "self": 23,
@@ -11907,7 +13623,19 @@
     "artist": "小迪",
     "voice": "Saya Horigome",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Rate of fire +24%",
     "tiles": {
       "self": 23,
@@ -11947,7 +13675,19 @@
     "artist": "ZAGALA",
     "voice": "Tomomi Mineuchi",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill2": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_tiles": "Damage +20%, Crit Rate +30%",
     "tiles": {
       "self": 23,
@@ -11987,6 +13727,12 @@
     "artist": "音符",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +30%, Accuracy +50%",
     "tiles": {
@@ -12048,6 +13794,12 @@
     "artist": "十月十日奏",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +15%, Accuracy +25%",
     "tiles": {
@@ -12088,6 +13840,12 @@
     "artist": "Pandea work",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -12129,6 +13887,12 @@
     "artist": "STAR影法师",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +10%, Armor +15%",
     "tiles": {
@@ -12170,6 +13934,12 @@
     "artist": "DSマイル",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +15%, Damage +10%",
     "tiles": {
@@ -12210,6 +13980,12 @@
     "artist": "水熊",
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
+		"skill": {
+			"icd":0,
+			"cd":[],
+			"effects": {
+			}
+		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +30%, Evasion +20%",
     "tiles": {

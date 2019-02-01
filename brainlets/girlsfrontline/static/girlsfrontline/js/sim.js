@@ -507,6 +507,7 @@ function changeDoll(event) {
   echelon[index].type = selectedDoll.type;
   echelon[index].tiles = selectedDoll.tiles;
   echelon[index].tooltip_tiles = selectedDoll.tooltip_tiles;
+  echelon[index].skill = selectedDoll.skill;
   echelon[index].tooltip_skill1 = selectedDoll.tooltip_skill1;
   echelon[index].links = getNumLinks(index);
 
@@ -524,6 +525,7 @@ function changeDoll(event) {
     $('#doll'+(index+1)+' .doll-level-select').children().filter(':first').prop('disabled', false);
     $('#doll'+(index+1)+' .doll-level-select').val(115);
     echelon[index].tooltip_skill2 = selectedDoll.tooltip_skill2;
+    echelon[index].skill2 = selectedDoll.skill2;
     echelon[index].mod = true;
   } else {
     $('#doll'+(index+1)+' .doll-level-select').children().prop('disabled', false);
