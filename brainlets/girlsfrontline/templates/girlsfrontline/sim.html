@@ -21,7 +21,8 @@
     </p>
     <div class="col">
       <button id="damage-graph-btn" type="button" class="btn">Damage Graph</button>
-      <button type="button" class="btn btn-default">Help</button>
+      <button type="button" class="btn btn-default" hidden>Save</button>
+      <button type="button" class="btn btn-default" hidden>Load</button>
     </div>
   </div>
   <div class="formation-row row no-gutters">
@@ -563,7 +564,7 @@
   </div>
   <div class="row no-gutters mt-2">
     <div class="col">
-      <label for="enemy-eva">Enemy EVA:</label>
+      <label for="enemy-eva">Enemy Evasion:</label>
       <input id="enemy-eva" type="number" value="15">
     </div>
     <div class="col">
@@ -575,12 +576,23 @@
       <input id="enemy-count" type="number" value="1">
     </div>
   </div>
-  <div class="row mt-2">
-    <div class="btn-group mx-auto">
-      <button id="day-btn" type="button" class="btn btn-success"><img src="{% static 'girlsfrontline/sim/day.png' %}" class="img-fluid"></img></button>
-      <button id="night-btn" type="button" class="btn"><img src="{% static 'girlsfrontline/sim/night.png' %}" class="img-fluid"></img></button>
+  <div class="row no-gutters mt-2">
+    <div class="col-3">
+      <div class="btn-group mx-auto">
+        <button id="day-btn" type="button" class="btn btn-success"><img src="{% static 'girlsfrontline/sim/day.png' %}" class="img-fluid"></img></button>
+        <button id="night-btn" type="button" class="btn"><img src="{% static 'girlsfrontline/sim/night.png' %}" class="img-fluid"></img></button>
+      </div>
     </div>
-    <button id="boss-toggle" type="button" class="btn mx-auto">Boss</button>
+    <div class="col-2">
+      <button id="boss-toggle" type="button" class="btn mx-auto">Boss</button>
+    </div>
+    <div class="col-4">
+      <label for="walk-time">Walking Time:</label>
+      <input id="walk-time" type="number" value="0" style="width:50px">
+    </div>
+    <div class="col-2">
+      <button type="button" class="btn btn-default">Help/About</button>
+    </div>
   </div>
 </div>
 
