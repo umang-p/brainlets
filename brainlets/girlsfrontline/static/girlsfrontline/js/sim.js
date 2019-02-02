@@ -699,6 +699,8 @@ function updateUIForDoll(index) {
     $('#doll'+(index+1)+' .ap span').text('-');
   } else {
     $('#doll'+(index+1)+'-name').text(doll.name);
+    $('#doll'+(index+1)+' .affection').children().prop('hidden', true);
+    $('#doll'+(index+1)+' .affection').children().eq(doll.affection).prop('hidden', false);
     $('#doll'+(index+1)+' .skill-label').attr('data-original-title', doll.tooltip_skill1);
     if(doll.mod) {
       $('#doll'+(index+1)+' .skill2').css('visibility', 'visible');
