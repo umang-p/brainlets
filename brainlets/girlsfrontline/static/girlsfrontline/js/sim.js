@@ -14,16 +14,17 @@ const VALID_EQUIPS = [[[4,13],[6],[10,12]], //hg
                     [[5],[1,2,3],[14]],//mg
                     [[11],[7,9],[1,2,3,4]]]; //sg
 
-const TYPE_SCALARS = [{fp:0.6,rof:0.8,acc:1.2,eva:1.8,armor:0}, //hg
-                    {fp:0.6,rof:1.2,acc:0.3,eva:1.6,armor:0}, //smg
-                    {fp:2.4,rof:0.5,acc:1.6,eva:0.8,armor:0}, //rf
-                    {fp:1,  rof:1,  acc:1,  eva:1,  armor:0},   //ar
-                    {fp:1.8,rof:1.6,acc:0.6,eva:0.6,armor:0}, //mg
-                    {fp:0.7,rof:0.4,acc:0.3,eva:0.3,armor:1}]; //sg
+const TYPE_SCALARS = [{hp:0.6,fp:0.6,rof:0.8,acc:1.2,eva:1.8,armor:0}, //hg
+                    {hp:1.6,fp:0.6,rof:1.2,acc:0.3,eva:1.6,armor:0}, //smg
+                    {hp:0.8,fp:2.4,rof:0.5,acc:1.6,eva:0.8,armor:0}, //rf
+                    {hp:1,  fp:1,  rof:1,  acc:1,  eva:1,  armor:0},   //ar
+                    {hp:1.5,fp:1.8,rof:1.6,acc:0.6,eva:0.6,armor:0}, //mg
+                    {hp:2.0,fp:0.7,rof:0.4,acc:0.3,eva:0.3,armor:1}]; //sg
 
 const GROWTH_FACTORS = {
   mod: {
     basic: {
+      hp: [96.283, 0.138],
       armor: [13.979, 0.04],
       eva: [5],
       acc: [5],
@@ -39,6 +40,7 @@ const GROWTH_FACTORS = {
   },
   normal: {
     basic: {
+      hp: [55, 0.555],
       armor: [2, 0.161],
       eva: [5],
       acc: [5],
@@ -184,6 +186,9 @@ $(function () {
     $('#doll'+i+' .add-doll').click(i,selectDoll);
     $('#doll'+i+' .remove-doll').click(i,removeDoll);
     $('#doll'+i+' .doll-level-select').change(i-1,changeLevel);
+    $('#doll'+i+' .skill-level-select').change(i-1,changeSkillLevel);
+    $('#doll'+i+' .skill2-level-select').change(i-1,changeSkill2Level);
+    $('#doll'+i+' .skill-toggle').change(i-1,toggleSkillUsage);
     $('#doll'+i+' .affection').click(i-1, changeAffection);
     for(var j = 1; j <= 3; j++) {
       $('#doll'+i+' .equip'+j).click({doll:i-1, equip:j}, selectEquipment);
@@ -524,8 +529,10 @@ function changeDoll(event) {
     $('#doll'+(index+1)+' .doll-level-select').children().prop('disabled', true);
     $('#doll'+(index+1)+' .doll-level-select').children().filter(':first').prop('disabled', false);
     $('#doll'+(index+1)+' .doll-level-select').val(115);
+    $('#doll'+(index+1)+' .skill2-level-select').val(10);
     echelon[index].tooltip_skill2 = selectedDoll.tooltip_skill2;
     echelon[index].skill2 = selectedDoll.skill2;
+    echelon[index].skill2level = 10;
     echelon[index].mod = true;
   } else {
     $('#doll'+(index+1)+' .doll-level-select').children().prop('disabled', false);
@@ -533,6 +540,11 @@ function changeDoll(event) {
     $('#doll'+(index+1)+' .doll-level-select').val(100);
     echelon[index].mod = false;
   }
+
+  $('#doll'+(index+1)+' .skill-level-select').val(10);
+  $('#doll'+(index+1)+' .skill-toggle').prop('checked', true);
+  echelon[index].useSkill = true;
+  echelon[index].skilllevel = 10;
 
   calculateBaseStats(index);
   setDefaultEquips(index);
@@ -594,8 +606,6 @@ function removeDoll(event) {
   var index = event.data-1;
   $('#pos'+echelon[index].pos).attr('data-index', index);
   echelon[index] = createDummyDoll(echelon[index].pos);
-  $('#doll'+(index+1)+' .affection').children().prop('hidden', true);
-  $('#doll'+(index+1)+' .affection').children().eq(echelon[index].affection).prop('hidden', false);
   $('#doll'+(index+1)+' .doll-level-select').children().prop('disabled', false);
   $('#doll'+(index+1)+' .doll-level-select').children().filter(':first').prop('disabled', true);
   $('#doll'+(index+1)+' .doll-level-select').val(100);
@@ -661,6 +671,24 @@ function setDefaultEquips(dollIndex) {
   }
 }
 
+function changeSkillLevel(event) {
+  echelon[event.data].skilllevel = $('#doll'+(event.data+1)+' .skill-level-select').val();
+
+  simulateBattle();
+}
+
+function changeSkill2Level(event) {
+  echelon[event.data].skill2level = $('#doll'+(event.data+1)+' .skill2-level-select').val();
+
+  simulateBattle();
+}
+
+function toggleSkillUsage(event) {
+  echelon[event.data].useSkill = $('#doll'+(event.data+1)+' .skill-toggle').prop('checked');
+
+  simulateBattle();
+}
+
 function updateUIAllDolls() {
   for(var i = 0; i < echelon.length; i++) {
     updateUIForDoll(i); //update stat card and grid for each doll
@@ -687,7 +715,10 @@ function updateUIForDoll(index) {
     $('#pos'+doll.pos+' .tilegrid').prop('hidden', true);
     $('#doll'+(index+1)+' .skill-label').attr('data-original-title', '-');
     $('#doll'+(index+1)+' .skill2').css('visibility', 'hidden');
+    $('#doll'+(index+1)+' .skill-toggle').prop('checked', true);
+    $('#doll'+(index+1)+' .skill-level-select').val(10);
     $('#doll'+(index+1)+'-name').text('-');
+    $('#doll'+(index+1)+' .hp span').text('-');
     $('#doll'+(index+1)+' .fp span').text('-');
     $('#doll'+(index+1)+' .acc span').text('-');
     $('#doll'+(index+1)+' .eva span').text('-');
@@ -708,6 +739,7 @@ function updateUIForDoll(index) {
     } else {
       $('#doll'+(index+1)+' .skill2').css('visibility', 'hidden');
     }
+    $('#doll'+(index+1)+' .hp span').text(doll.pre_battle.hp);
     $('#doll'+(index+1)+' .fp span').text(doll.pre_battle.fp);
     $('#doll'+(index+1)+' .acc span').text(doll.pre_battle.acc);
     $('#doll'+(index+1)+' .eva span').text(doll.pre_battle.eva);
@@ -855,6 +887,8 @@ function calculateBaseStats(dollIndex) {
   var basicFactors = level > 100 ? GROWTH_FACTORS.mod.basic : GROWTH_FACTORS.normal.basic;
   var growFactors = level > 100 ? GROWTH_FACTORS.mod.grow : GROWTH_FACTORS.normal.grow;
 
+  doll.base.hp = Math.ceil((basicFactors.hp[0] + ((level - 1) * basicFactors.hp[1])) * dollTypeScalars.hp * data.hp / 100);
+
   doll.base.fp = Math.ceil(basicFactors.fp[0] * dollTypeScalars.fp * data.fp / 100);
   doll.base.fp += Math.ceil((growFactors.fp[1] + ((level - 1) * growFactors.fp[0])) * dollTypeScalars.fp * data.fp * data.growth_rating / 100 / 100);
 
@@ -883,6 +917,7 @@ function calculatePreBattleStatsForDoll(dollIndex) {
 
   var affection_bonus = getAffectionBonus(doll.affection);
 
+  doll.pre_battle.hp = doll.base.hp * getNumLinks(dollIndex);
   doll.pre_battle.fp = doll.base.fp;
   doll.pre_battle.acc = doll.base.acc;
   doll.pre_battle.eva = doll.base.eva;
