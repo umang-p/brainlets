@@ -28,7 +28,7 @@
 .tilebuff-row img {
   background-color: black;
 }
-.fp img, .armor img, .rof img, .eva img, .acc img, .crit img, .skillcd img, .critdmg img, .rounds img, .ap img{
+.fp img, .armor img, .rof img, .eva img, .acc img, .crit img, .skillcd img, .critdmg img, .rounds img, .ap img, .hp img{
   height: 20px;
   width: 20px;
 }
@@ -91,4 +91,11 @@
 }
 #doll-select button {
   min-width: 80px;
+}
+.skill2, .skill-control  {
+  visibility: hidden;
+}
+
+.doll-level-label, .skill-label, .skill2-label {
+  width: 41px;
 }

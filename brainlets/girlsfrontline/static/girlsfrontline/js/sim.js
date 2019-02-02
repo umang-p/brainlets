@@ -209,7 +209,7 @@ $(function () {
 
   $('#damage-graph-btn').click(showDamageGraph);
 
-  $('[data-toggle="tooltip"]').tooltip();
+  $('[data-toggle="tooltip"]').tooltip({trigger:'hover'});
 });
 
 function initEchelon() {
@@ -686,7 +686,7 @@ function updateUIForDoll(index) {
     $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/placeholder.png');
     $('#pos'+doll.pos+' .tilegrid').prop('hidden', true);
     $('#doll'+(index+1)+' .skill-label').attr('data-original-title', '-');
-    $('#doll'+(index+1)+' .skill2').prop('hidden', true);
+    $('#doll'+(index+1)+' .skill2').css('visibility', 'hidden');
     $('#doll'+(index+1)+'-name').text('-');
     $('#doll'+(index+1)+' .fp span').text('-');
     $('#doll'+(index+1)+' .acc span').text('-');
@@ -701,10 +701,10 @@ function updateUIForDoll(index) {
     $('#doll'+(index+1)+'-name').text(doll.name);
     $('#doll'+(index+1)+' .skill-label').attr('data-original-title', doll.tooltip_skill1);
     if(doll.mod) {
-      $('#doll'+(index+1)+' .skill2').prop('hidden', false);
+      $('#doll'+(index+1)+' .skill2').css('visibility', 'visible');
       $('#doll'+(index+1)+' .skill2-label').attr('data-original-title', doll.tooltip_skill2);
     } else {
-      $('#doll'+(index+1)+' .skill2').prop('hidden', true);
+      $('#doll'+(index+1)+' .skill2').css('visibility', 'hidden');
     }
     $('#doll'+(index+1)+' .fp span').text(doll.pre_battle.fp);
     $('#doll'+(index+1)+' .acc span').text(doll.pre_battle.acc);

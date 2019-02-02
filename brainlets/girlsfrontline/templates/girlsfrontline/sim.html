@@ -601,47 +601,124 @@
     <div id="doll1" class="card bg-secondary text-center">
       <div class="card-body">
         <div class="clearfix">
-          <h6 id="doll1-name" class="float-right">-</h6>
-          <div class="affection float-left mr-2">
+          <div class="affection float-left mr-1 mb-1">
             <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
             <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
             <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
             <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
           </div>
+          <p id="doll1-name" class="align-middle float-right">-</p>
         </div>
-        <label>Level:</label>
-        <select class="doll-level-select">
-          <option disabled>115</option>
-          <option>100</option>
-          <option>90</option>
-          <option>80</option>
-          <option>70</option>
-          <option>60</option>
-          <option>50</option>
-          <option>40</option>
-          <option>30</option>
-          <option>20</option>
-          <option>10</option>
-          <option>1</option>
-        </select>
-        <br>
-        <label class="skill-label" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill:</label>
-        <select class="skill-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-        </select>
-        <br>
-        <div class="skill2" hidden>
-          <label class="skill2-label" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill2:</label>
-          <select class="skill2-level-select">
+        <div class="text-left row no-gutters">
+          <label class="doll-level-label mr-1">Level:</label>
+          <div class="col">
+            <select class="doll-level-select">
+              <option disabled>115</option>
+              <option>100</option>
+              <option>90</option>
+              <option>80</option>
+              <option>70</option>
+              <option>60</option>
+              <option>50</option>
+              <option>40</option>
+              <option>30</option>
+              <option>20</option>
+              <option>10</option>
+              <option>1</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-left row no-gutters">
+          <label class="skill-label mr-1" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill:</label>
+          <div class="col">
+            <select class="skill-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option hidden>100</option>
+            </select>
+          </div>
+          <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
+            <input class="skill-toggle" type="checkbox" value="">
+          </span>
+        </div>
+        <div class="text-left skill2 row no-gutters">
+          <label class="skill2-label mr-1" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill2:</label>
+          <div class="col">
+            <select class="skill2-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option hidden>100</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-left skill-control">
+          <button type="button" class="btn btn-sm btn-default">Skill Control</button>
+        </div>
+        <div class="row no-gutters mb-3">
+          <div class="col">
+            <div class="hp d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="fp d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="acc d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="eva d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="rof d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="crit d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="critdmg d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="rounds d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="armor d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="ap d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+          </div>
+        </div>
+        <div class="mb-1">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
+          <select class="equip1-level-select">
             <option>10</option>
             <option>9</option>
             <option>8</option>
@@ -652,139 +729,168 @@
             <option>3</option>
             <option>2</option>
             <option>1</option>
+            <option>0</option>
           </select>
         </div>
-        <table class="table table-borderless">
-          <tr class="fp">
-            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="acc">
-            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="eva">
-            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="rof">
-            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="crit">
-            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="critdmg">
-            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="rounds">
-            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="armor">
-            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="ap">
-            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-        </table>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
-        <select class="equip1-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
-        <select class="equip2-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
-        <select class="equip3-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
-        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
+        <div class="mb-1">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
+          <select class="equip2-level-select">
+            <option>10</option>
+            <option>9</option>
+            <option>8</option>
+            <option>7</option>
+            <option>6</option>
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+            <option>0</option>
+          </select>
+        </div>
+        <div class="">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
+          <select class="equip3-level-select">
+            <option>10</option>
+            <option>9</option>
+            <option>8</option>
+            <option>7</option>
+            <option>6</option>
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+            <option>0</option>
+          </select>
+        </div>
+        <div>
+          <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
+          <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
+        </div>
       </div>
     </div>
     <div id="doll2" class="card bg-secondary text-center">
       <div class="card-body">
         <div class="clearfix">
-          <h6 id="doll2-name" class="float-right">-</h6>
-          <div class="affection float-left mr-2">
+          <div class="affection float-left mr-1 mb-1">
             <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
             <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
             <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
             <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
           </div>
+          <p id="doll2-name" class="align-middle float-right">-</p>
         </div>
-        <label>Level:</label>
-        <select class="doll-level-select">
-          <option disabled>115</option>
-          <option>100</option>
-          <option>90</option>
-          <option>80</option>
-          <option>70</option>
-          <option>60</option>
-          <option>50</option>
-          <option>40</option>
-          <option>30</option>
-          <option>20</option>
-          <option>10</option>
-          <option>1</option>
-        </select>
-        <br>
-        <label class="skill-label" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill:</label>
-        <select class="skill-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-        </select>
-        <br>
-        <div class="skill2" hidden>
-          <label class="skill2-label" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill2:</label>
-          <select class="skill2-level-select">
+        <div class="text-left row no-gutters">
+          <label class="doll-level-label mr-1">Level:</label>
+          <div class="col">
+            <select class="doll-level-select">
+              <option disabled>115</option>
+              <option>100</option>
+              <option>90</option>
+              <option>80</option>
+              <option>70</option>
+              <option>60</option>
+              <option>50</option>
+              <option>40</option>
+              <option>30</option>
+              <option>20</option>
+              <option>10</option>
+              <option>1</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-left row no-gutters">
+          <label class="skill-label mr-1" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill:</label>
+          <div class="col">
+            <select class="skill-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option hidden>100</option>
+            </select>
+          </div>
+          <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
+            <input class="skill-toggle" type="checkbox" value="">
+          </span>
+        </div>
+        <div class="text-left skill2 row no-gutters">
+          <label class="skill2-label mr-1" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill2:</label>
+          <div class="col">
+            <select class="skill2-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option hidden>100</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-left skill-control">
+          <button type="button" class="btn btn-sm btn-default">Skill Control</button>
+        </div>
+        <div class="row no-gutters mb-3">
+          <div class="col">
+            <div class="hp d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="fp d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="acc d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="eva d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="rof d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="crit d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="critdmg d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="rounds d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="armor d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="ap d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+          </div>
+        </div>
+        <div class="mb-1">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
+          <select class="equip1-level-select">
             <option>10</option>
             <option>9</option>
             <option>8</option>
@@ -795,139 +901,168 @@
             <option>3</option>
             <option>2</option>
             <option>1</option>
+            <option>0</option>
           </select>
         </div>
-        <table class="table table-borderless">
-          <tr class="fp">
-            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="acc">
-            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="eva">
-            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="rof">
-            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="crit">
-            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="critdmg">
-            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="rounds">
-            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="armor">
-            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="ap">
-            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-        </table>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
-        <select class="equip1-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
-        <select class="equip2-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
-        <select class="equip3-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
-        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
+        <div class="mb-1">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
+          <select class="equip2-level-select">
+            <option>10</option>
+            <option>9</option>
+            <option>8</option>
+            <option>7</option>
+            <option>6</option>
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+            <option>0</option>
+          </select>
+        </div>
+        <div class="">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
+          <select class="equip3-level-select">
+            <option>10</option>
+            <option>9</option>
+            <option>8</option>
+            <option>7</option>
+            <option>6</option>
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+            <option>0</option>
+          </select>
+        </div>
+        <div>
+          <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
+          <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
+        </div>
       </div>
     </div>
     <div id="doll3" class="card bg-secondary text-center">
       <div class="card-body">
         <div class="clearfix">
-          <h6 id="doll3-name" class="float-right">-</h6>
-          <div class="affection float-left mr-2">
+          <div class="affection float-left mr-1 mb-1">
             <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
             <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
             <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
             <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
           </div>
+          <p id="doll3-name" class="align-middle float-right">-</p>
         </div>
-        <label>Level:</label>
-        <select class="doll-level-select">
-          <option disabled>115</option>
-          <option>100</option>
-          <option>90</option>
-          <option>80</option>
-          <option>70</option>
-          <option>60</option>
-          <option>50</option>
-          <option>40</option>
-          <option>30</option>
-          <option>20</option>
-          <option>10</option>
-          <option>1</option>
-        </select>
-        <br>
-        <label class="skill-label" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill:</label>
-        <select class="skill-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-        </select>
-        <br>
-        <div class="skill2" hidden>
-          <label class="skill2-label" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill2:</label>
-          <select class="skill2-level-select">
+        <div class="text-left row no-gutters">
+          <label class="doll-level-label mr-1">Level:</label>
+          <div class="col">
+            <select class="doll-level-select">
+              <option disabled>115</option>
+              <option>100</option>
+              <option>90</option>
+              <option>80</option>
+              <option>70</option>
+              <option>60</option>
+              <option>50</option>
+              <option>40</option>
+              <option>30</option>
+              <option>20</option>
+              <option>10</option>
+              <option>1</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-left row no-gutters">
+          <label class="skill-label mr-1" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill:</label>
+          <div class="col">
+            <select class="skill-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option hidden>100</option>
+            </select>
+          </div>
+          <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
+            <input class="skill-toggle" type="checkbox" value="">
+          </span>
+        </div>
+        <div class="text-left skill2 row no-gutters">
+          <label class="skill2-label mr-1" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill2:</label>
+          <div class="col">
+            <select class="skill2-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option hidden>100</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-left skill-control">
+          <button type="button" class="btn btn-sm btn-default">Skill Control</button>
+        </div>
+        <div class="row no-gutters mb-3">
+          <div class="col">
+            <div class="hp d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="fp d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="acc d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="eva d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="rof d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="crit d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="critdmg d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="rounds d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="armor d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="ap d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+          </div>
+        </div>
+        <div class="mb-1">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
+          <select class="equip1-level-select">
             <option>10</option>
             <option>9</option>
             <option>8</option>
@@ -938,139 +1073,168 @@
             <option>3</option>
             <option>2</option>
             <option>1</option>
+            <option>0</option>
           </select>
         </div>
-        <table class="table table-borderless">
-          <tr class="fp">
-            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="acc">
-            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="eva">
-            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="rof">
-            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="crit">
-            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="critdmg">
-            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="rounds">
-            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="armor">
-            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="ap">
-            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-        </table>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
-        <select class="equip1-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
-        <select class="equip2-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
-        <select class="equip3-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
-        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
+        <div class="mb-1">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
+          <select class="equip2-level-select">
+            <option>10</option>
+            <option>9</option>
+            <option>8</option>
+            <option>7</option>
+            <option>6</option>
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+            <option>0</option>
+          </select>
+        </div>
+        <div class="">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
+          <select class="equip3-level-select">
+            <option>10</option>
+            <option>9</option>
+            <option>8</option>
+            <option>7</option>
+            <option>6</option>
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+            <option>0</option>
+          </select>
+        </div>
+        <div>
+          <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
+          <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
+        </div>
       </div>
     </div>
     <div id="doll4" class="card bg-secondary text-center">
       <div class="card-body">
         <div class="clearfix">
-          <h6 id="doll4-name" class="float-right">-</h6>
-          <div class="affection float-left mr-2">
+          <div class="affection float-left mr-1 mb-1">
             <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
             <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
             <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
             <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
           </div>
+          <p id="doll4-name" class="align-middle float-right">-</p>
         </div>
-        <label>Level:</label>
-        <select class="doll-level-select">
-          <option disabled>115</option>
-          <option>100</option>
-          <option>90</option>
-          <option>80</option>
-          <option>70</option>
-          <option>60</option>
-          <option>50</option>
-          <option>40</option>
-          <option>30</option>
-          <option>20</option>
-          <option>10</option>
-          <option>1</option>
-        </select>
-        <br>
-        <label class="skill-label" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill:</label>
-        <select class="skill-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-        </select>
-        <br>
-        <div class="skill2" hidden>
-          <label class="skill2-label" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill2:</label>
-          <select class="skill2-level-select">
+        <div class="text-left row no-gutters">
+          <label class="doll-level-label mr-1">Level:</label>
+          <div class="col">
+            <select class="doll-level-select">
+              <option disabled>115</option>
+              <option>100</option>
+              <option>90</option>
+              <option>80</option>
+              <option>70</option>
+              <option>60</option>
+              <option>50</option>
+              <option>40</option>
+              <option>30</option>
+              <option>20</option>
+              <option>10</option>
+              <option>1</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-left row no-gutters">
+          <label class="skill-label mr-1" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill:</label>
+          <div class="col">
+            <select class="skill-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option hidden>100</option>
+            </select>
+          </div>
+          <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
+            <input class="skill-toggle" type="checkbox" value="">
+          </span>
+        </div>
+        <div class="text-left skill2 row no-gutters">
+          <label class="skill2-label mr-1" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill2:</label>
+          <div class="col">
+            <select class="skill2-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option hidden>100</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-left skill-control">
+          <button type="button" class="btn btn-sm btn-default">Skill Control</button>
+        </div>
+        <div class="row no-gutters mb-3">
+          <div class="col">
+            <div class="hp d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="fp d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="acc d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="eva d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="rof d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="crit d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="critdmg d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="rounds d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="armor d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="ap d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+          </div>
+        </div>
+        <div class="mb-1">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
+          <select class="equip1-level-select">
             <option>10</option>
             <option>9</option>
             <option>8</option>
@@ -1081,139 +1245,168 @@
             <option>3</option>
             <option>2</option>
             <option>1</option>
+            <option>0</option>
           </select>
         </div>
-        <table class="table table-borderless">
-          <tr class="fp">
-            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="acc">
-            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="eva">
-            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="rof">
-            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="crit">
-            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="critdmg">
-            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="rounds">
-            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="armor">
-            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="ap">
-            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-        </table>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
-        <select class="equip1-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
-        <select class="equip2-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
-        <select class="equip3-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
-        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
+        <div class="mb-1">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
+          <select class="equip2-level-select">
+            <option>10</option>
+            <option>9</option>
+            <option>8</option>
+            <option>7</option>
+            <option>6</option>
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+            <option>0</option>
+          </select>
+        </div>
+        <div class="">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
+          <select class="equip3-level-select">
+            <option>10</option>
+            <option>9</option>
+            <option>8</option>
+            <option>7</option>
+            <option>6</option>
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+            <option>0</option>
+          </select>
+        </div>
+        <div>
+          <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
+          <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
+        </div>
       </div>
     </div>
     <div id="doll5" class="card bg-secondary text-center">
       <div class="card-body">
         <div class="clearfix">
-          <h6 id="doll5-name" class="float-right">-</h6>
-          <div class="affection float-left mr-2">
+          <div class="affection float-left mr-1 mb-1">
             <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
             <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
             <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
             <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
           </div>
+          <p id="doll5-name" class="align-middle float-right">-</p>
         </div>
-        <label>Level:</label>
-        <select class="doll-level-select">
-          <option disabled>115</option>
-          <option>100</option>
-          <option>90</option>
-          <option>80</option>
-          <option>70</option>
-          <option>60</option>
-          <option>50</option>
-          <option>40</option>
-          <option>30</option>
-          <option>20</option>
-          <option>10</option>
-          <option>1</option>
-        </select>
-        <br>
-        <label class="skill-label" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill:</label>
-        <select class="skill-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-        </select>
-        <br>
-        <div class="skill2" hidden>
-          <label class="skill2-label" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill2:</label>
-          <select class="skill2-level-select">
+        <div class="text-left row no-gutters">
+          <label class="doll-level-label mr-1">Level:</label>
+          <div class="col">
+            <select class="doll-level-select">
+              <option disabled>115</option>
+              <option>100</option>
+              <option>90</option>
+              <option>80</option>
+              <option>70</option>
+              <option>60</option>
+              <option>50</option>
+              <option>40</option>
+              <option>30</option>
+              <option>20</option>
+              <option>10</option>
+              <option>1</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-left row no-gutters">
+          <label class="skill-label mr-1" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill:</label>
+          <div class="col">
+            <select class="skill-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option hidden>100</option>
+            </select>
+          </div>
+          <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
+            <input class="skill-toggle" type="checkbox" value="">
+          </span>
+        </div>
+        <div class="text-left skill2 row no-gutters">
+          <label class="skill2-label mr-1" data-toggle="tooltip" data-placement="top" data-original-title="-">Skill2:</label>
+          <div class="col">
+            <select class="skill2-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option hidden>100</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-left skill-control">
+          <button type="button" class="btn btn-sm btn-default">Skill Control</button>
+        </div>
+        <div class="row no-gutters mb-3">
+          <div class="col">
+            <div class="hp d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="fp d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="acc d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="eva d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="rof d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="crit d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="critdmg d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="rounds d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="armor d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="ap d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+          </div>
+        </div>
+        <div class="mb-1">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
+          <select class="equip1-level-select">
             <option>10</option>
             <option>9</option>
             <option>8</option>
@@ -1224,93 +1417,45 @@
             <option>3</option>
             <option>2</option>
             <option>1</option>
+            <option>0</option>
           </select>
         </div>
-        <table class="table table-borderless">
-          <tr class="fp">
-            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="acc">
-            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="eva">
-            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="rof">
-            <td><img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="crit">
-            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="critdmg">
-            <td><img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="rounds">
-            <td><img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="armor">
-            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="ap">
-            <td><img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-        </table>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
-        <select class="equip1-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
-        <select class="equip2-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
-        <select class="equip3-level-select">
-          <option>10</option>
-          <option>9</option>
-          <option>8</option>
-          <option>7</option>
-          <option>6</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-          <option>0</option>
-        </select>
-        <br>
-        <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
-        <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
+        <div class="mb-1">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
+          <select class="equip2-level-select">
+            <option>10</option>
+            <option>9</option>
+            <option>8</option>
+            <option>7</option>
+            <option>6</option>
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+            <option>0</option>
+          </select>
+        </div>
+        <div class="">
+          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
+          <select class="equip3-level-select">
+            <option>10</option>
+            <option>9</option>
+            <option>8</option>
+            <option>7</option>
+            <option>6</option>
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+            <option>0</option>
+          </select>
+        </div>
+        <div>
+          <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
+          <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
+        </div>
       </div>
     </div>
     <div class="card bg-secondary text-center" hidden>
