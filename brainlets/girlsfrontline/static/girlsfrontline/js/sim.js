@@ -214,7 +214,7 @@ $(function () {
   $('#enemy-armor').change(changeEnemyStats);
   enemyArmor = 0;
   $('#enemy-count').change(changeEnemyStats);
-  enemyCount = 1;
+  enemyCount = 3;
 
   $('#damage-graph-btn').click(showDamageGraph);
 
@@ -1089,7 +1089,7 @@ function initDollsForBattle() {
       type:'normalAttack',
       timeLeft:0
     };
-    normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.floor(50 * 30 / doll.battle.rof) - 1;
+    normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.floor(50 * 30 / doll.battle.rof);
     doll.battle.timers.push(normalAttackTimer);
 
     var skillTimer = {
@@ -1253,7 +1253,7 @@ function simulateBattle() {
             type:'normalAttack',
             timeLeft:0
           };
-          normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.floor(50 * 30 / doll.battle.rof) - 1;
+          normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.floor(50 * 30 / doll.battle.rof);
           doll.battle.timers.push(normalAttackTimer);
 
           if(currentFrame < 30 * 8) {
@@ -1313,7 +1313,6 @@ function calculateSkillBonus(dollIndex) {
       });
     }
   });
-
 }
 
 function calculateBattleStats(dollIndex) {
