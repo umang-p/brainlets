@@ -672,13 +672,13 @@ function setDefaultEquips(dollIndex) {
 }
 
 function changeSkillLevel(event) {
-  echelon[event.data].skilllevel = $('#doll'+(event.data+1)+' .skill-level-select').val();
+  echelon[event.data].skilllevel = parseInt($('#doll'+(event.data+1)+' .skill-level-select').val());
 
   simulateBattle();
 }
 
 function changeSkill2Level(event) {
-  echelon[event.data].skill2level = $('#doll'+(event.data+1)+' .skill2-level-select').val();
+  echelon[event.data].skill2level = parseInt($('#doll'+(event.data+1)+' .skill2-level-select').val());
 
   simulateBattle();
 }
@@ -1014,6 +1014,18 @@ function initDollsForBattle() {
       doll.battle.frames_per_attack = doll.frames_per_attack;
     }
     doll.battle.busylinks = 0;
+    doll.battle.skill = doll.skill;
+    doll.battle.skillbonus = {
+      fp:1,
+      acc:1,
+      eva:1,
+      rof:1,
+      crit:1,
+      critdmg:1,
+      rounds:0,
+      armor:1,
+      ap:1
+    }
     doll.battle.buffs = [];
     doll.battle.action_queue = [];
     doll.battle.timers = [];
@@ -1025,8 +1037,24 @@ function initDollsForBattle() {
     normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.ceil(50 * 30 / doll.battle.rof) - 1;
     doll.battle.timers.push(normalAttackTimer);
 
-    //battle timers can contain: normalAttack, skill1, skill2, skilleffects taht have a delay(grenades, charged shots), reloading
-    //put skills in doll.battle.timers with initcd, add passives
+    var skillTimer = {
+      type:'skill',
+      timeLeft:Math.round(doll.battle.skill.icd * 30)
+    };
+    if(doll.useSkill) {
+      doll.battle.timers.push(skillTimer);
+    }
+
+    if(doll.mod) {
+      doll.battle.skill2 = doll.skill2;
+      var skill2Timer = {
+        type:'skill2',
+        timeLeft:Math.round(doll.battle.skill2.icd * 30)
+      }
+      if(doll.useSkill) {
+        doll.battle.timers.push(skill2Timer);
+      }
+    }
   }
 }
 
@@ -1034,7 +1062,7 @@ function simulateBattle() {
   graphData = {x:[], y:[]};
 
   initDollsForBattle();
-  var enemy = {armor:enemyArmor, eva:enemyEva, count:enemyCount, buffs:[]};
+  var enemy = {armor:enemyArmor, eva:enemyEva, count:enemyCount, battle:{buffs:[]}};
   var battleLength = 30 * 20;
   var totaldamage8s = 0;
   var totaldamage20s = 0;
@@ -1047,13 +1075,13 @@ function simulateBattle() {
   for(var currentFrame = 1; currentFrame < battleLength; currentFrame++) {
     graphData.x.push(parseFloat((currentFrame / 30.0).toFixed(2)));
 
-    //tick all timers
     for(var i = 0; i < 5; i++) {
       var doll = echelon[i];
       if(doll.id == -1) continue;
 
       graphData.y[i].data.push(graphData.y[i].data[currentFrame-1]);
 
+      //tick timers and queue actions
       $.each(doll.battle.timers, (index, timer) => {
         if(timer.type == 'normalAttack') {
           var reloading = doll.battle.timers.find(timer => timer.type == 'reload') === undefined ? false : true;
@@ -1065,28 +1093,71 @@ function simulateBattle() {
         }
 
         if(timer.timeLeft == 0) {
-          doll.battle.action_queue.push(timer);
-          //maybe triggerpassive() for skill/skill2
+          if(timer.type == 'skill') {
+            $.each(doll.battle.skill.effects, (index,effect) => {
+              effect.level = doll.skilllevel;
+              doll.battle.action_queue.push(effect);
+            });
+
+            timer.timeLeft = Math.round(doll.battle.skill.cd[doll.skilllevel-1] * 30);
+          } else if(timer.type == 'skill2') {
+            $.each(doll.battle.skill2.effects, (index,effect) => {
+              effect.level = doll.skill2level;
+              doll.battle.action_queue.push(effect);
+            });
+
+            timer.timeLeft = Math.round(doll.battle.skill2.cd[doll.skill2level-1] * 30);
+          } else {
+            doll.battle.action_queue.push(timer);
+          }
         }
       });
-      doll.battle.timers = doll.battle.timers.filter(timer => timer.timeLeft != 0);
 
+      doll.battle.timers = doll.battle.timers.filter(timer => timer.timeLeft != 0); //remove expired timers
 
-      //tick buff timers
-      //filter out buffs whose timeLeft == 0, keep the rest
+      //tick buffs
+      $.each(doll.battle.buffs, (index,buff) => {
+        buff.timeLeft--;
+      });
+
+      doll.battle.buffs = doll.battle.buffs.filter(buff => buff.timeLeft != 0); //remove expired buffs
     }
 
 
+    //apply buffs and recalculate stats
+    for(i = 0; i < 5; i++) {
+      doll = echelon[i];
+      if(doll.id == -1) continue;
 
-    //activate/deactivate buffs
-    //for all dolls, do:
-    // for i=0 to i=action_queue.length, do
-    //  var action = action_queue.shift();
-    //  if action.type = buff, activateBuff(srcdoll,enemy, etc), triggerPassive() within activateBuff()
-    //  if action.type = attack and no delay, action_queue.push(action);
-    //    if delay, add to battle.timers and set busylinks
-    //filter out buffs with no duration left, keep the rest of the buffs
-    //calculateBattleStats();
+      for(var j = 0; j < doll.battle.action_queue.length; j++) {
+        var action = doll.battle.action_queue.shift();
+
+        if(action.type == 'buff') {
+          activateBuff(doll, action, enemy);
+        } else if('delay' in action) {
+          action.timeLeft = Math.round(action.delay * 30);
+
+          if('busylinks' in action) {
+            doll.battle.busylinks += action.busylinks;
+          }
+
+          doll.battle.timers.push(action);
+        } else {
+          if('busylinks' in action) {
+            doll.battle.busylinks += action.busylinks;
+          }
+          doll.battle.action_queue.push(action);
+        }
+      }
+    }
+
+    //recalculate stats to include all buffs
+    for(i = 0; i < 5; i++) {
+      if(echelon[i].id != -1) {
+        calculateSkillBonus(i);
+        calculateBattleStats(i);
+      }
+    }
 
 
 
@@ -1097,12 +1168,10 @@ function simulateBattle() {
 
       var dmg = 0;
 
-      for(var j = 0; j < doll.battle.action_queue.length; j++) {
-        action = doll.battle.action_queue[j];
+      for(j = 0; j < doll.battle.action_queue.length; j++) {
+        action = doll.battle.action_queue.shift();
 
         if(action.type == 'normalAttack') {
-          //if doll has multihit buff,
-          //calculateActionDamage(doll, action)
           dmg = Math.max(2, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.armor));
           dmg *= (doll.battle.acc / (doll.battle.acc + enemy.eva));
           dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
@@ -1131,8 +1200,6 @@ function simulateBattle() {
           normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.ceil(50 * 30 / doll.battle.rof) - 1;
           doll.battle.timers.push(normalAttackTimer);
 
-          doll.battle.action_queue.shift();//splice instead (?)
-
           if(currentFrame < 30 * 8) {
             totaldamage8s += dmg;
           }
@@ -1141,8 +1208,7 @@ function simulateBattle() {
         }
 
         if(action.type == 'reload') {
-          doll.battle.currentRounds = doll.battle.rounds;
-          doll.battle.action_queue.shift();//splice instead (?)
+          doll.battle.currentRounds += doll.battle.rounds;
         }
       }
     }
@@ -1157,8 +1223,71 @@ function simulateBattle() {
   graphData.y = graphData.y.filter(v => v.name != '');
 }
 
-function activateBuff() {
-  //check targets, add effect to doll.buffs of target(s), check passive triggers
+function calculateSkillBonus(dollIndex) {
+  var doll = echelon[dollIndex];
+
+  doll.battle.skillbonus = {
+    fp:1,
+    acc:1,
+    eva:1,
+    rof:1,
+    crit:1,
+    critdmg:1,
+    rounds:0,
+    armor:1,
+    ap:1
+  }
+
+  $.each(doll.battle.buffs, (index,buff) => {
+    if('stat' in buff) {
+      $.each(buff.stat, (stat, amount) => {
+        if(stat == 'rounds') {
+          if($.isArray(amount)) {
+            doll.battle.skillbonus.rounds = amount[buff.level-1];
+          } else {
+            doll.battle.skillbonus.rounds = amount;
+          }
+          return true;
+        }
+        if($.isArray(amount)) {
+          doll.battle.skillbonus[stat] *= (1+(amount[buff.level-1] / 100));
+        } else {
+          doll.battle.skillbonus[stat] *= (1 + (amount / 100));
+        }
+      });
+    }
+  });
+
+}
+
+function calculateBattleStats(dollIndex) {
+  var doll = echelon[dollIndex];
+  doll.battle.fp = doll.pre_battle.fp * doll.battle.skillbonus.fp;
+  doll.battle.acc = doll.pre_battle.acc * doll.battle.skillbonus.acc;
+  doll.battle.eva = doll.pre_battle.eva * doll.battle.skillbonus.eva;
+  doll.battle.rof = doll.pre_battle.rof * doll.battle.skillbonus.rof;
+  doll.battle.crit = doll.pre_battle.crit * doll.battle.skillbonus.crit;
+  doll.battle.critdmg = doll.pre_battle.critdmg * doll.battle.skillbonus.critdmg;
+  doll.battle.armor = doll.pre_battle.armor * doll.battle.skillbonus.armor;
+  doll.battle.rounds = doll.pre_battle.rounds + doll.battle.skillbonus.rounds;
+  doll.battle.ap = doll.pre_battle.ap * doll.battle.skillbonus.ap;
+}
+
+function activateBuff(doll, action, enemy) {
+  var targets = [];
+  if(action.target == 'all') {
+    for(var i = 0; i < 5; i++) {
+      if(echelon[i].id != -1) {
+        targets.push(echelon[i]);
+      }
+    }
+  }
+
+  action.timeLeft = $.isArray(action.duration) ? action.duration[action.level-1] * 30 : action.duration * 30;
+
+  $.each(targets, (index,target) => {
+    target.battle.buffs.push(action);
+  })
 }
 
 
