@@ -915,7 +915,7 @@ function calculatePreBattleStatsForDoll(dollIndex) {
   if(doll.id == -1)
     return;
 
-  var affection_bonus = getAffectionBonus(doll.affection);
+  var affection_bonus = getAffectionBonus(doll.affection, doll.mod);
 
   doll.pre_battle.hp = doll.base.hp * getNumLinks(dollIndex);
   doll.pre_battle.fp = doll.base.fp;
@@ -963,12 +963,20 @@ function calculatePreBattleStatsForDoll(dollIndex) {
   doll.pre_battle.skillcd = doll.tile_bonus.skillcd;
 
   //cap stats & apply night acc penalty
+  doll.pre_battle.fp = Math.max(0, doll.pre_battle.fp);
+  doll.pre_battle.eva = Math.max(0, doll.pre_battle.eva);
+  doll.pre_battle.crit = Math.max(0, Math.min(100, doll.pre_battle.crit));
+  doll.pre_battle.critdmg = Math.max(0, doll.pre_battle.critdmg);
+  doll.pre_battle.ap = Math.max(0, doll.pre_battle.ap);
+  doll.pre_battle.armor = Math.max(0, doll.pre_battle.armor);
+  doll.pre_battle.acc = Math.max(1, doll.pre_battle.acc);
   if(doll.type == 6) { //sg
-    doll.pre_battle.rof = Math.min(60, doll.pre_battle.rof);
-  } else if(doll.type != 5) { //any other than sg and mg
-    doll.pre_battle.rof = Math.min(120, doll.pre_battle.rof);
+    doll.pre_battle.rof = Math.min(60, Math.max(15,doll.pre_battle.rof));
+  } else if(doll.type == 5) { //mg
+    doll.pre_battle.rof = Math.min(1000, Math.max(1,doll.pre_battle.rof));
+  } else { //hg,rf,ar,smg
+    doll.pre_battle.rof = Math.min(120, Math.max(15,doll.pre_battle.rof));
   }
-  doll.pre_battle.crit = Math.min(100, doll.pre_battle.crit);
   if(isNight) {
     doll.pre_battle.acc = Math.floor(doll.pre_battle.acc * (1 - (.9 - .9 * doll.pre_battle.nightview / 100)));
   }
@@ -1034,12 +1042,12 @@ function initDollsForBattle() {
       type:'normalAttack',
       timeLeft:0
     };
-    normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.ceil(50 * 30 / doll.battle.rof) - 1;
+    normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.floor(50 * 30 / doll.battle.rof) - 1;
     doll.battle.timers.push(normalAttackTimer);
 
     var skillTimer = {
       type:'skill',
-      timeLeft:Math.round(doll.battle.skill.icd * 30)
+      timeLeft:Math.round(doll.battle.skill.icd * 30 * (1-doll.pre_battle.skillcd / 100))
     };
     if(doll.useSkill) {
       doll.battle.timers.push(skillTimer);
@@ -1049,7 +1057,7 @@ function initDollsForBattle() {
       doll.battle.skill2 = doll.skill2;
       var skill2Timer = {
         type:'skill2',
-        timeLeft:Math.round(doll.battle.skill2.icd * 30)
+        timeLeft:Math.round(doll.battle.skill2.icd * 30 * (1-doll.pre_battle.skillcd / 100))
       }
       if(doll.useSkill) {
         doll.battle.timers.push(skill2Timer);
@@ -1099,14 +1107,14 @@ function simulateBattle() {
               doll.battle.action_queue.push(effect);
             });
 
-            timer.timeLeft = Math.round(doll.battle.skill.cd[doll.skilllevel-1] * 30);
+            timer.timeLeft = Math.round(doll.battle.skill.cd[doll.skilllevel-1] * 30 * (1-doll.pre_battle.skillcd / 100));
           } else if(timer.type == 'skill2') {
             $.each(doll.battle.skill2.effects, (index,effect) => {
               effect.level = doll.skill2level;
               doll.battle.action_queue.push(effect);
             });
 
-            timer.timeLeft = Math.round(doll.battle.skill2.cd[doll.skill2level-1] * 30);
+            timer.timeLeft = Math.round(doll.battle.skill2.cd[doll.skill2level-1] * 30 * (1-doll.pre_battle.skillcd / 100));
           } else {
             doll.battle.action_queue.push(timer);
           }
@@ -1172,9 +1180,10 @@ function simulateBattle() {
         action = doll.battle.action_queue.shift();
 
         if(action.type == 'normalAttack') {
-          dmg = Math.max(2, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.armor));
+          dmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.armor));
           dmg *= (doll.battle.acc / (doll.battle.acc + enemy.eva));
           dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
+          //enemy vuln up taken into account here
           dmg *= doll.links - doll.battle.busylinks;
 
           if(doll.type == 6) { //sg
@@ -1188,7 +1197,7 @@ function simulateBattle() {
                 type:'reload',
                 timeLeft:0
               };
-              reloadTimer.timeLeft = doll.type == 5? Math.ceil(30 * (4 + 200 / doll.battle.rof)) : Math.ceil(30 * (1.4 + 0.5 * doll.battle.rounds));
+              reloadTimer.timeLeft = doll.type == 5? Math.floor(30 * (4 + 200 / doll.battle.rof)) : Math.floor(30 * (1.4 + 0.5 * doll.battle.rounds));
               doll.battle.timers.push(reloadTimer);
             }
           }
@@ -1197,7 +1206,7 @@ function simulateBattle() {
             type:'normalAttack',
             timeLeft:0
           };
-          normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.ceil(50 * 30 / doll.battle.rof) - 1;
+          normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.floor(50 * 30 / doll.battle.rof) - 1;
           doll.battle.timers.push(normalAttackTimer);
 
           if(currentFrame < 30 * 8) {
@@ -1262,15 +1271,31 @@ function calculateSkillBonus(dollIndex) {
 
 function calculateBattleStats(dollIndex) {
   var doll = echelon[dollIndex];
-  doll.battle.fp = doll.pre_battle.fp * doll.battle.skillbonus.fp;
-  doll.battle.acc = doll.pre_battle.acc * doll.battle.skillbonus.acc;
-  doll.battle.eva = doll.pre_battle.eva * doll.battle.skillbonus.eva;
-  doll.battle.rof = doll.pre_battle.rof * doll.battle.skillbonus.rof;
-  doll.battle.crit = doll.pre_battle.crit * doll.battle.skillbonus.crit;
-  doll.battle.critdmg = doll.pre_battle.critdmg * doll.battle.skillbonus.critdmg;
-  doll.battle.armor = doll.pre_battle.armor * doll.battle.skillbonus.armor;
-  doll.battle.rounds = doll.pre_battle.rounds + doll.battle.skillbonus.rounds;
-  doll.battle.ap = doll.pre_battle.ap * doll.battle.skillbonus.ap;
+  doll.battle.fp = Math.floor(doll.pre_battle.fp * doll.battle.skillbonus.fp);
+  doll.battle.acc = Math.floor(doll.pre_battle.acc * doll.battle.skillbonus.acc);
+  doll.battle.eva = Math.floor(doll.pre_battle.eva * doll.battle.skillbonus.eva);
+  doll.battle.rof = Math.floor(doll.pre_battle.rof * doll.battle.skillbonus.rof);
+  doll.battle.crit = Math.floor(doll.pre_battle.crit * doll.battle.skillbonus.crit);
+  doll.battle.critdmg = Math.floor(doll.pre_battle.critdmg * doll.battle.skillbonus.critdmg);
+  doll.battle.armor = Math.floor(doll.pre_battle.armor * doll.battle.skillbonus.armor);
+  doll.battle.rounds = Math.floor(doll.pre_battle.rounds + doll.battle.skillbonus.rounds);
+  doll.battle.ap = Math.floor(doll.pre_battle.ap * doll.battle.skillbonus.ap);
+
+  //cap stats
+  doll.battle.fp = Math.max(0, doll.battle.fp);
+  doll.battle.eva = Math.max(0, doll.battle.eva);
+  doll.battle.crit = Math.max(0, Math.min(100, doll.battle.crit));
+  doll.battle.critdmg = Math.max(0, doll.battle.critdmg);
+  doll.battle.ap = Math.max(0, doll.battle.ap);
+  doll.battle.armor = Math.max(0, doll.battle.armor);
+  doll.battle.acc = Math.max(1, doll.battle.acc);
+  if(doll.type == 6) { //sg
+    doll.battle.rof = Math.min(60, Math.max(15,doll.battle.rof));
+  } else if(doll.type == 5) { //mg
+    doll.battle.rof = Math.min(1000, Math.max(1,doll.battle.rof));
+  } else { //hg,rf,ar,smg
+    doll.battle.rof = Math.min(120, Math.max(15,doll.battle.rof));
+  }
 }
 
 function activateBuff(doll, action, enemy) {
@@ -1306,7 +1331,7 @@ function getNumLinks(dollIndex) {
   return 1;
 }
 
-function getAffectionBonus(affection) {
+function getAffectionBonus(affection, mod) {
   if(affection == 0) {
     return -0.05;
   } else if(affection == 1) {
@@ -1314,6 +1339,9 @@ function getAffectionBonus(affection) {
   } else if(affection == 2) {
     return 0.05;
   } else {
+    if(mod) {
+      return 0.15;
+    }
     return 0.10;
   }
 }
