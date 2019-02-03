@@ -7,6 +7,7 @@ var enemyEva;
 var enemyArmor;
 var enemyCount;
 var graphData;
+var showBuffedStats;
 const VALID_EQUIPS = [[[4,13],[6],[10,12]], //hg
                     [[10,12],[6],[1,2,3,4,13]],//smg
                     [[5],[1,2,3,13],[15]],//rf
@@ -179,6 +180,9 @@ $(function () {
   isBoss = false;
   $('#boss-toggle').click(toggleBoss);
 
+  showBuffedStats = false;
+  $('#buffed-stats-toggle').change(toggleBuffedStats);
+
   initEquipSelectModal();
   initDollSelectModal();
 
@@ -310,6 +314,12 @@ function toggleBoss() {
   }
 
   simulateBattle();
+}
+
+function toggleBuffedStats() {
+  showBuffedStats = $('#buffed-stats-toggle').prop('checked');
+
+  updateUIAllDolls();
 }
 
 function selectEquipment(event) {
@@ -675,18 +685,21 @@ function changeSkillLevel(event) {
   echelon[event.data].skilllevel = parseInt($('#doll'+(event.data+1)+' .skill-level-select').val());
 
   simulateBattle();
+  updateUIAllDolls();
 }
 
 function changeSkill2Level(event) {
   echelon[event.data].skill2level = parseInt($('#doll'+(event.data+1)+' .skill2-level-select').val());
 
   simulateBattle();
+  updateUIAllDolls();
 }
 
 function toggleSkillUsage(event) {
   echelon[event.data].useSkill = $('#doll'+(event.data+1)+' .skill-toggle').prop('checked');
 
   simulateBattle();
+  updateUIAllDolls();
 }
 
 function updateUIAllDolls() {
@@ -739,24 +752,47 @@ function updateUIForDoll(index) {
     } else {
       $('#doll'+(index+1)+' .skill2').css('visibility', 'hidden');
     }
+
+    if(showBuffedStats) {
+      $('#doll'+(index+1)+' .fp span').text(doll.battle.maxstats.fp);
+      $('#doll'+(index+1)+' .acc span').text(doll.battle.maxstats.acc);
+      $('#doll'+(index+1)+' .eva span').text(doll.battle.maxstats.eva);
+      $('#doll'+(index+1)+' .rof span').text(doll.battle.maxstats.rof);
+      $('#doll'+(index+1)+' .crit span').text(doll.battle.maxstats.crit+'%');
+      $('#doll'+(index+1)+' .critdmg span').text((doll.battle.maxstats.critdmg+100)+'%');
+      if(doll.battle.maxstats.rounds != 0) {
+        $('#doll'+(index+1)+' .rounds span').text(doll.battle.maxstats.rounds);
+      } else {
+        $('#doll'+(index+1)+' .rounds span').text('-');
+      }
+      if(doll.battle.maxstats.armor != 0) {
+        $('#doll'+(index+1)+' .armor span').text(doll.battle.maxstats.armor);
+      } else {
+        $('#doll'+(index+1)+' .armor span').text('-');
+      }
+      $('#doll'+(index+1)+' .ap span').text(doll.battle.maxstats.ap);
+    } else {
+      $('#doll'+(index+1)+' .fp span').text(doll.pre_battle.fp);
+      $('#doll'+(index+1)+' .acc span').text(doll.pre_battle.acc);
+      $('#doll'+(index+1)+' .eva span').text(doll.pre_battle.eva);
+      $('#doll'+(index+1)+' .rof span').text(doll.pre_battle.rof);
+      $('#doll'+(index+1)+' .crit span').text(doll.pre_battle.crit+'%');
+      $('#doll'+(index+1)+' .critdmg span').text((doll.pre_battle.critdmg+100)+'%');
+      if(doll.pre_battle.rounds != 0) {
+        $('#doll'+(index+1)+' .rounds span').text(doll.pre_battle.rounds);
+      } else {
+        $('#doll'+(index+1)+' .rounds span').text('-');
+      }
+      if(doll.pre_battle.armor != 0) {
+        $('#doll'+(index+1)+' .armor span').text(doll.pre_battle.armor);
+      } else {
+        $('#doll'+(index+1)+' .armor span').text('-');
+      }
+      $('#doll'+(index+1)+' .ap span').text(doll.pre_battle.ap);
+    }
+
     $('#doll'+(index+1)+' .hp span').text(doll.pre_battle.hp);
-    $('#doll'+(index+1)+' .fp span').text(doll.pre_battle.fp);
-    $('#doll'+(index+1)+' .acc span').text(doll.pre_battle.acc);
-    $('#doll'+(index+1)+' .eva span').text(doll.pre_battle.eva);
-    $('#doll'+(index+1)+' .rof span').text(doll.pre_battle.rof);
-    $('#doll'+(index+1)+' .crit span').text(doll.pre_battle.crit+'%');
-    $('#doll'+(index+1)+' .critdmg span').text((doll.pre_battle.critdmg+100)+'%');
-    if(doll.pre_battle.rounds != 0) {
-      $('#doll'+(index+1)+' .rounds span').text(doll.pre_battle.rounds);
-    } else {
-      $('#doll'+(index+1)+' .rounds span').text('-');
-    }
-    if(doll.pre_battle.armor != 0) {
-      $('#doll'+(index+1)+' .armor span').text(doll.pre_battle.armor);
-    } else {
-      $('#doll'+(index+1)+' .armor span').text('-');
-    }
-    $('#doll'+(index+1)+' .ap span').text(doll.pre_battle.ap);
+
 
     $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/dolls/'+doll.id+'.png');
 
@@ -1033,7 +1069,18 @@ function initDollsForBattle() {
       rounds:0,
       armor:1,
       ap:1
-    }
+    };
+    doll.battle.maxstats = {
+      fp:0,
+      acc:0,
+      eva:0,
+      rof:0,
+      crit:0,
+      critdmg:0,
+      rounds:0,
+      armor:0,
+      ap:0
+    };
     doll.battle.buffs = [];
     doll.battle.action_queue = [];
     doll.battle.timers = [];
@@ -1296,6 +1343,17 @@ function calculateBattleStats(dollIndex) {
   } else { //hg,rf,ar,smg
     doll.battle.rof = Math.min(120, Math.max(15,doll.battle.rof));
   }
+
+  //track max stats
+  doll.battle.maxstats.fp = Math.max(doll.battle.maxstats.fp, doll.battle.fp);
+  doll.battle.maxstats.acc = Math.max(doll.battle.maxstats.acc, doll.battle.acc);
+  doll.battle.maxstats.eva = Math.max(doll.battle.maxstats.eva, doll.battle.eva);
+  doll.battle.maxstats.rof = Math.max(doll.battle.maxstats.rof, doll.battle.rof);
+  doll.battle.maxstats.crit = Math.max(doll.battle.maxstats.crit, doll.battle.crit);
+  doll.battle.maxstats.critdmg = Math.max(doll.battle.maxstats.critdmg, doll.battle.critdmg);
+  doll.battle.maxstats.rounds = Math.max(doll.battle.maxstats.rounds, doll.battle.rounds);
+  doll.battle.maxstats.armor = Math.max(doll.battle.maxstats.armor, doll.battle.armor);
+  doll.battle.maxstats.ap = Math.max(doll.battle.maxstats.ap, doll.battle.ap);
 }
 
 function activateBuff(doll, action, enemy) {
