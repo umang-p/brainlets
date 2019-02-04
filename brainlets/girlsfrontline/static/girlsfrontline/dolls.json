@@ -21,7 +21,7 @@
 		"en_released":true,
     "artist": "Saru",
     "voice": "Aimi Tanaka",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial Cooldown: 6s, Cooldown: 12s<br>Increase all allies' damage by 22% for 8s",
     "skill": {
       "icd":6,
       "cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
