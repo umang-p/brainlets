@@ -21,7 +21,7 @@
 		"en_released":true,
     "artist": "Saru",
     "voice": "Aimi Tanaka",
-    "tooltip_skill1": "Initial Cooldown: 6s, Cooldown: 12s<br>Increase all allies' damage by 22% for 8s",
+    "tooltip_skill1": "Initial CD: 6s, CD: 12s<br>Increase all allies' damage by 22% for 8s",
     "skill": {
       "icd":6,
       "cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
@@ -96,12 +96,17 @@
 		"en_released":true,
     "artist": "spirtie",
     "voice": "Eriko Matsui",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 1s, CD: 12s<br>Launch a smoke grenade that decreases enemy rate of fire by 36% and movement speed by 45 within a radius of 2.5 units for 4 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":1,
+			"cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
+			"effects": [
+        {
+          "type":"smoke",
+          "busylinks":1,
+          "delay":1.5
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +20%, Accuracy +50%",

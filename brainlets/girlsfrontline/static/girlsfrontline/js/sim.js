@@ -1082,6 +1082,7 @@ function initDollsForBattle() {
       ap:0
     };
     doll.battle.buffs = [];
+    doll.battle.effect_queue = [];
     doll.battle.action_queue = [];
     doll.battle.timers = [];
 
@@ -1113,11 +1114,33 @@ function initDollsForBattle() {
   }
 }
 
+function initEnemyForBattle() {
+  var enemy = {
+    count:enemyCount,
+    eva:enemyEva,
+    armor:enemyArmor,
+    vulnerability:1,
+    battle:{
+      eva:enemyEva,
+      armor:enemyArmor,
+      vulnerability:1,
+      skillbonus:{
+        eva:1,
+        armor:1,
+        vulnerability:1,
+      }
+    },
+    buffs:[]
+  };
+
+  return enemy;
+}
+
 function simulateBattle() {
   graphData = {x:[], y:[]};
 
   initDollsForBattle();
-  var enemy = {armor:enemyArmor, eva:enemyEva, count:enemyCount, battle:{buffs:[]}};
+  var enemy = initEnemyForBattle();
   var battleLength = 30 * 20;
   var totaldamage8s = 0;
   var totaldamage20s = 0;
@@ -1130,13 +1153,13 @@ function simulateBattle() {
   for(var currentFrame = 1; currentFrame < battleLength; currentFrame++) {
     graphData.x.push(parseFloat((currentFrame / 30.0).toFixed(2)));
 
+    //tick timers, queue actions
     for(var i = 0; i < 5; i++) {
       var doll = echelon[i];
       if(doll.id == -1) continue;
 
       graphData.y[i].data.push(graphData.y[i].data[currentFrame-1]);
 
-      //tick timers and queue actions
       $.each(doll.battle.timers, (index, timer) => {
         if(timer.type == 'normalAttack') {
           var reloading = doll.battle.timers.find(timer => timer.type == 'reload') === undefined ? false : true;
@@ -1151,19 +1174,17 @@ function simulateBattle() {
           if(timer.type == 'skill') {
             $.each(doll.battle.skill.effects, (index,effect) => {
               effect.level = doll.skilllevel;
-              doll.battle.action_queue.push(effect);
+              doll.battle.effect_queue.push(effect);
             });
-
             timer.timeLeft = Math.round(doll.battle.skill.cd[doll.skilllevel-1] * 30 * (1-doll.pre_battle.skillcd / 100));
           } else if(timer.type == 'skill2') {
             $.each(doll.battle.skill2.effects, (index,effect) => {
               effect.level = doll.skill2level;
-              doll.battle.action_queue.push(effect);
+              doll.battle.effect_queue.push(effect);
             });
-
             timer.timeLeft = Math.round(doll.battle.skill2.cd[doll.skill2level-1] * 30 * (1-doll.pre_battle.skillcd / 100));
           } else {
-            doll.battle.action_queue.push(timer);
+            doll.battle.effect_queue.push(timer);
           }
         }
       });
@@ -1184,20 +1205,15 @@ function simulateBattle() {
       doll = echelon[i];
       if(doll.id == -1) continue;
 
-      for(var j = 0; j < doll.battle.action_queue.length; j++) {
-        var action = doll.battle.action_queue.shift();
+      for(var j = 0; j < doll.battle.effect_queue.length; j++) {
+        var action = doll.battle.effect_queue.shift();
 
         if(action.type == 'buff') {
           activateBuff(doll, action, enemy);
-        } else if('delay' in action) {
-          action.timeLeft = Math.round(action.delay * 30);
-
-          if('busylinks' in action) {
-            doll.battle.busylinks += action.busylinks;
-          }
-
-          doll.battle.timers.push(action);
         } else {
+          if('delay' in action) {
+            action.timeLeft = Math.round(action.delay * 30) + 1;
+          }
           if('busylinks' in action) {
             doll.battle.busylinks += action.busylinks;
           }
@@ -1213,7 +1229,7 @@ function simulateBattle() {
         calculateBattleStats(i);
       }
     }
-
+    calculateEnemyStats(enemy);
 
 
     //perform actions
@@ -1266,6 +1282,22 @@ function simulateBattle() {
         if(action.type == 'reload') {
           doll.battle.currentRounds += doll.battle.rounds;
         }
+
+        if(action.type == 'grenade') {
+          //doll busylinks -= action busylinks
+        }
+
+        if(action.type == 'smoke') {
+          if('delay' in action) {
+            if(action.timeLeft != 0) {
+              action.timeLeft--;
+              doll.battle.action_queue.push(action);
+              continue;
+            }
+          }
+
+          doll.battle.busylinks -= action.busylinks;
+        }
       }
     }
 
@@ -1292,16 +1324,16 @@ function calculateSkillBonus(dollIndex) {
     rounds:0,
     armor:1,
     ap:1
-  }
+  };
 
   $.each(doll.battle.buffs, (index,buff) => {
     if('stat' in buff) {
       $.each(buff.stat, (stat, amount) => {
         if(stat == 'rounds') {
           if($.isArray(amount)) {
-            doll.battle.skillbonus.rounds = amount[buff.level-1];
+            doll.battle.skillbonus.rounds += amount[buff.level-1];
           } else {
-            doll.battle.skillbonus.rounds = amount;
+            doll.battle.skillbonus.rounds += amount;
           }
           return true;
         }
@@ -1353,6 +1385,36 @@ function calculateBattleStats(dollIndex) {
   doll.battle.maxstats.rounds = Math.max(doll.battle.maxstats.rounds, doll.battle.rounds);
   doll.battle.maxstats.armor = Math.max(doll.battle.maxstats.armor, doll.battle.armor);
   doll.battle.maxstats.ap = Math.max(doll.battle.maxstats.ap, doll.battle.ap);
+}
+
+function calculateEnemyStats(enemy) {
+  enemy.battle.skillbonus = {
+    eva:1,
+    armor:1,
+    vulnerability:1,
+  };
+
+  //calculate skill bonus
+  $.each(enemy.buffs, (index,buff) => {
+    if('stat' in buff) {
+      $.each(buff.stat, (stat,amount) => {
+        if($.isArray(amount)) {
+          enemy.battle.skillbonus[stat] *= (1 + (amount[buff.level] / 100));
+        } else {
+          enemy.battle.skillbonus[stat] *= (1 + (amount / 100));
+        }
+      });
+    }
+  });
+
+  //apply skill bonus
+  enemy.battle.eva = Math.floor(enemy.eva * enemy.battle.skillbonus.eva);
+  enemy.battle.armor = Math.floor(enemy.armor * enemy.battle.skillbonus.armor);
+  enemy.battle.vulnerability = enemy.vulnerability * enemy.battle.skillbonus.vulnerability;
+
+  //cap stats
+  enemy.battle.eva = Math.max(0, enemy.battle.eva);
+  enemy.battle.armor = Math.max(0, enemy.battle.armor);
 }
 
 function activateBuff(doll, action, enemy) {
