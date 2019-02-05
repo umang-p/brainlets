@@ -168,12 +168,17 @@
 		"en_released":true,
     "artist": "M.vv",
     "voice": "Aya Suzaki",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 12s<br>Launch a stun grenade that stuns enemies within a radius of 2.5 units for 3.2 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
+			"effects": [
+        {
+          "type":"stun",
+          "busylinks":1,
+          "delay":1.5
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +20%, Damage +20%",
@@ -237,11 +242,83 @@
     "voice": "",
     "tooltip_skill1": "SKILL NOT YET ADDED",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
+			"effects": [
+      ]
 		},
+    "passives": [
+      {
+        "type":"passive",
+        "trigger":"receivefp",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"tiles",
+            "stat":{
+              "fp":[3,3,4,4,5,5,5,6,6,6]
+            },
+            "duration":3
+          }
+        ]
+      },
+      {
+        "type":"passive",
+        "trigger":"receiverof",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"tiles",
+            "stat":{
+              "rof":[3,3,4,4,5,5,5,6,6,6]
+            },
+            "duration":3
+          }
+        ]
+      },
+      {
+        "type":"passive",
+        "trigger":"receiveeva",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"tiles",
+            "stat":{
+              "eva":[15,17,18,20,22,23,25,27,28,30]
+            },
+            "duration":3
+          }
+        ]
+      },
+      {
+        "type":"passive",
+        "trigger":"receiveacc",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"tiles",
+            "stat":{
+              "acc":[15,17,18,20,22,23,25,27,28,30]
+            },
+            "duration":3
+          }
+        ]
+      },
+      {
+        "type":"passive",
+        "trigger":"receivecrit",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"tiles",
+            "stat":{
+              "crit":[6,7,7,7,8,9,9,10,11,12]
+            },
+            "duration":3
+          }
+        ]
+      }
+    ],
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +30%, Crit Rate +20%",
     "tiles": {

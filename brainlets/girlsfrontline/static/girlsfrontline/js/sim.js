@@ -533,6 +533,10 @@ function changeDoll(event) {
     echelon[index].targets = 3;
   }
 
+  if('passives' in selectedDoll) {
+    echelon[index].passives = selectedDoll.passives;
+  }
+
   $('#pos'+echelon[index].pos).attr('data-index', index);
 
   if(selectedDoll.mod) {
@@ -1081,6 +1085,14 @@ function initDollsForBattle() {
       armor:0,
       ap:0
     };
+    if('passives' in doll) {
+      doll.battle.passives = doll.passives;
+      $.each(doll.battle.passives, (index,passive) => {
+        $.each(passive.effects, (j,effect) => {
+          effect.level = doll.skilllevel;
+        });
+      });
+    }
     doll.battle.buffs = [];
     doll.battle.effect_queue = [];
     doll.battle.action_queue = [];
@@ -1174,17 +1186,17 @@ function simulateBattle() {
           if(timer.type == 'skill') {
             $.each(doll.battle.skill.effects, (index,effect) => {
               effect.level = doll.skilllevel;
-              doll.battle.effect_queue.push(effect);
+              doll.battle.effect_queue.push($.extend({}, effect));
             });
             timer.timeLeft = Math.round(doll.battle.skill.cd[doll.skilllevel-1] * 30 * (1-doll.pre_battle.skillcd / 100));
           } else if(timer.type == 'skill2') {
             $.each(doll.battle.skill2.effects, (index,effect) => {
               effect.level = doll.skill2level;
-              doll.battle.effect_queue.push(effect);
+              doll.battle.effect_queue.push($.extend({}, effect));
             });
             timer.timeLeft = Math.round(doll.battle.skill2.cd[doll.skill2level-1] * 30 * (1-doll.pre_battle.skillcd / 100));
           } else {
-            doll.battle.effect_queue.push(timer);
+            doll.battle.effect_queue.push($.extend({}, timer));
           }
         }
       });
@@ -1287,7 +1299,7 @@ function simulateBattle() {
           //doll busylinks -= action busylinks
         }
 
-        if(action.type == 'smoke') {
+        if(action.type == 'smoke' || action.type == 'stun') {
           if('delay' in action) {
             if(action.timeLeft != 0) {
               action.timeLeft--;
@@ -1417,9 +1429,50 @@ function calculateEnemyStats(enemy) {
   enemy.battle.armor = Math.max(0, enemy.battle.armor);
 }
 
-function activateBuff(doll, action, enemy) {
+function activateBuff(doll, buff, enemy) {
+  var targets = getBuffTargets(doll, buff, enemy);
+
+  buff.timeLeft = $.isArray(buff.duration) ? buff.duration[buff.level-1] * 30 : buff.duration * 30;
+
+  $.each(targets, (index,target) => {
+    target.battle.buffs.push($.extend({}, buff));
+    if('stat' in buff) {
+      if('fp' in buff.stat) {
+        triggerPassive('receivefp', target);
+      }
+      if('rof' in buff.stat) {
+        triggerPassive('receiverof', target);
+      }
+      if('eva' in buff.stat) {
+        triggerPassive('receiveeva', target);
+      }
+      if('acc' in buff.stat) {
+        triggerPassive('receiveacc', target);
+      }
+      if('crit' in buff.stat) {
+        triggerPassive('receivecrit', target);
+      }
+    }
+  })
+}
+
+function triggerPassive(trigger, doll) {
+  if(!('passives' in doll.battle)) {
+    return;
+  }
+
+  var passives = doll.battle.passives.filter(passive => passive.trigger == trigger);
+  $.each(passives, (index, passive) => {
+    $.each(passive.effects, (j,effect) => {
+      doll.battle.effect_queue.push($.extend({}, effect));
+    });
+  });
+}
+
+function getBuffTargets(doll, buff, enemy) {
   var targets = [];
-  if(action.target == 'all') {
+
+  if(buff.target == 'all') {
     for(var i = 0; i < 5; i++) {
       if(echelon[i].id != -1) {
         targets.push(echelon[i]);
@@ -1427,11 +1480,18 @@ function activateBuff(doll, action, enemy) {
     }
   }
 
-  action.timeLeft = $.isArray(action.duration) ? action.duration[action.level-1] * 30 : action.duration * 30;
+  if(buff.target == 'tiles') {
+    var targetSquares = doll.tiles.target.split(",");
+    targetSquares = targetSquares.map(targetSquare => parseInt(targetSquare));
+    targetSquares = targetSquares.map(targetSquare => targetSquare + doll.pos);
+    for(var i = 0; i < 5; i++) {
+      if(echelon[i].id != -1 && $.inArray(echelon[i].pos, targetSquares) != -1) {
+        targets.push(echelon[i]);
+      }
+    }
+  }
 
-  $.each(targets, (index,target) => {
-    target.battle.buffs.push(action);
-  })
+  return targets;
 }
 
 
