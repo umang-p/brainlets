@@ -1062,7 +1062,8 @@ function initDollsForBattle() {
       doll.battle.frames_per_attack = doll.frames_per_attack;
     }
     doll.battle.busylinks = 0;
-    doll.battle.skill = doll.skill;
+    doll.battle.skill = $.extend({},doll.skill);
+    doll.battle.skill.effects = getUsableSkillEffects(doll.skill.effects);
     doll.battle.skillbonus = {
       fp:1,
       acc:1,
@@ -1116,7 +1117,8 @@ function initDollsForBattle() {
     }
 
     if(doll.mod) {
-      doll.battle.skill2 = doll.skill2;
+      doll.battle.skill2 = $.extend({}, doll.skill2);
+      doll.battle.skill2.effects = getUsableSkillEffects(doll.skill2.effects);
       var skill2Timer = {
         type:'skill2',
         timeLeft:Math.round(doll.battle.skill2.icd * 30 * (1-doll.pre_battle.skillcd / 100))
@@ -1212,6 +1214,7 @@ function simulateBattle() {
 
       doll.battle.buffs = doll.battle.buffs.filter(buff => buff.timeLeft != 0); //remove expired buffs
 
+      //tick and remove passives
       $.each(doll.battle.passives, (index,passive) => {
         if('timeLeft' in passive) {
           passive.timeLeft--;
@@ -1221,12 +1224,9 @@ function simulateBattle() {
         if('timeLeft' in passive) {
           if(passive.timeLeft == 0) {
             return false;
-          } else {
-            return true;
           }
-        } else {
-          return true;
         }
+        return true;
       });
     }
 
@@ -1306,27 +1306,17 @@ function simulateBattle() {
           doll.battle.timers.push(normalAttackTimer);
 
           triggerPassive('normalAttack', doll, enemy);
-          var limitedAttackPassives = doll.battle.passives.filter(passive => {
-            if(!('attacksLeft' in passive)) {
-              return false;
-            } else {
-              return true;
-            }
-          });
-          $.each(limitedAttackPassives, (index,passive) => {
-            passive.attacksLeft--;
-          });
+          
+          var limitedAttackPassives = doll.battle.passives.filter(passive => 'attacksLeft' in passive);
+          $.each(limitedAttackPassives, (index,passive) => passive.attacksLeft--);
           doll.battle.passives = doll.battle.passives.filter(passive => {
             if('attacksLeft' in passive) {
               if(passive.attacksLeft == 0) {
                 return false;
-              } else {
-                return true;
               }
-            } else {
-              return true;
             }
-          })
+            return true;
+          });
 
           if(currentFrame < 30 * 8) {
             totaldamage8s += dmg;
@@ -1541,6 +1531,10 @@ function getBuffTargets(doll, buff, enemy) {
     }
   }
 
+  if(buff.target == 'enemy') {
+    targets.push(enemy);
+  }
+
   if(buff.target == 'self') {
     targets.push(doll);
   }
@@ -1577,6 +1571,28 @@ function addPassive(doll, passive, enemy) {
     passiveskill.timeLeft = $.isArray(passiveskill.duration) ? passiveskill.duration[passiveskill.level-1] * 30 : passiveskill.duration * 30;
   }
   doll.battle.passives.push(passiveskill);
+}
+
+function getUsableSkillEffects(effects) {
+  var validEffects = [];
+
+  for(var i = 0; i < effects.length; i++) {
+    if(!('requirements' in effects[i])) {
+      validEffects.push($.extend({}, effects[i]));
+      continue;
+    }
+    var valid = true;
+    $.each(effects[i].requirements, (condition,value) => {
+      if(condition == 'night') {
+        valid = valid && (isNight == value);
+      }
+    });
+    if(valid) {
+      validEffects.push($.extend({}, effects[i]));
+    }
+  }
+
+  return validEffects;
 }
 
 

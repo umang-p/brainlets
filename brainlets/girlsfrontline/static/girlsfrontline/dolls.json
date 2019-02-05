@@ -240,7 +240,7 @@
 		"en_released":false,
     "artist": "REALMBW",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 12s<br>Active: Python's next 6 shots will have a 100% chance of increasing her damage by 30% (stacking up to 6 times) for 5 seconds. Passive: When Python receives a fp/rof/eva/acc/crit buff, the corresponding stat is buffed by 6%/6%/30%/30%/12% for allies on her tiles for 3 seconds",
 		"skill": {
 			"icd":6,
 			"cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
@@ -406,12 +406,28 @@
 		"en_released":true,
     "artist": "X布",
     "voice": "Narumi Sinohara",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 12s<br>Decreases all enemies' damage by 35% (20% during day) for 8 seconds (5s during day)",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
+			"effects": [
+        {
+          "type":"buff",
+          "target":"enemy",
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5],
+          "requirements":{
+            "night":false
+          }
+        },
+        {
+          "type":"buff",
+          "target":"enemy",
+          "duration":[5,6,6,6,7,7,7,8,8,8],
+          "requirements":{
+            "night":true
+          }
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +32%, Crit Rate +16%",
