@@ -1092,6 +1092,8 @@ function initDollsForBattle() {
           effect.level = doll.skilllevel;
         });
       });
+    } else {
+      doll.battle.passives = [];
     }
     doll.battle.buffs = [];
     doll.battle.effect_queue = [];
@@ -1209,6 +1211,23 @@ function simulateBattle() {
       });
 
       doll.battle.buffs = doll.battle.buffs.filter(buff => buff.timeLeft != 0); //remove expired buffs
+
+      $.each(doll.battle.passives, (index,passive) => {
+        if('timeLeft' in passive) {
+          passive.timeLeft--;
+        }
+      });
+      doll.battle.passives = doll.battle.passives.filter(passive => {
+        if('timeLeft' in passive) {
+          if(passive.timeLeft == 0) {
+            return false;
+          } else {
+            return true;
+          }
+        } else {
+          return true;
+        }
+      });
     }
 
 
@@ -1222,6 +1241,8 @@ function simulateBattle() {
 
         if(action.type == 'buff') {
           activateBuff(doll, action, enemy);
+        } else if(action.type == 'passive') {
+          addPassive(doll,action,enemy);
         } else {
           if('delay' in action) {
             action.timeLeft = Math.round(action.delay * 30) + 1;
@@ -1284,6 +1305,29 @@ function simulateBattle() {
           normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.floor(50 * 30 / doll.battle.rof);
           doll.battle.timers.push(normalAttackTimer);
 
+          triggerPassive('normalAttack', doll, enemy);
+          var limitedAttackPassives = doll.battle.passives.filter(passive => {
+            if(!('attacksLeft' in passive)) {
+              return false;
+            } else {
+              return true;
+            }
+          });
+          $.each(limitedAttackPassives, (index,passive) => {
+            passive.attacksLeft--;
+          });
+          doll.battle.passives = doll.battle.passives.filter(passive => {
+            if('attacksLeft' in passive) {
+              if(passive.attacksLeft == 0) {
+                return false;
+              } else {
+                return true;
+              }
+            } else {
+              return true;
+            }
+          })
+
           if(currentFrame < 30 * 8) {
             totaldamage8s += dmg;
           }
@@ -1341,18 +1385,29 @@ function calculateSkillBonus(dollIndex) {
   $.each(doll.battle.buffs, (index,buff) => {
     if('stat' in buff) {
       $.each(buff.stat, (stat, amount) => {
-        if(stat == 'rounds') {
-          if($.isArray(amount)) {
-            doll.battle.skillbonus.rounds += amount[buff.level-1];
+        var bonus = 1;
+        if('stackable' in buff) {
+          if(stat == 'rounds') {
+            bonus = $.isArray(amount) ? amount[buff.level-1] * buff.stacks : amount * buff.stacks;
+            doll.battle.skillbonus.rounds += bonus;
           } else {
-            doll.battle.skillbonus.rounds += amount;
+            if('stackChance' in buff) {
+              bonus = $.isArray(buff.stackChance) ? buff.stackChance[buff.level-1] / 100 * buff.stacks : stackChance / 100 * buff.stacks; //expected number of stacks
+              bonus = $.isArray(amount) ? bonus * amount[buff.level-1] / 100 : bonus * amount / 100;
+              bonus += 1;
+              doll.battle.skillbonus[stat] *= bonus;
+            } else {
+              bonus = $.isArray(amount) ? amount[buff.level-1] / 100 * buff.stacks : amount / 100 * buff.stacks;
+              bonus += 1;
+              doll.battle.skillbonus[stat] *= bonus;
+            }
           }
-          return true;
-        }
-        if($.isArray(amount)) {
-          doll.battle.skillbonus[stat] *= (1+(amount[buff.level-1] / 100));
         } else {
-          doll.battle.skillbonus[stat] *= (1 + (amount / 100));
+          if(stat == 'rounds') {
+            doll.battle.skillbonus.rounds += $.isArray(amount) ? amount[buff.level-1] : amount;
+          } else {
+            doll.battle.skillbonus[stat] *= $.isArray(amount) ? (1+(amount[buff.level-1] / 100)) : (1+(amount/100));
+          }
         }
       });
     }
@@ -1438,25 +1493,25 @@ function activateBuff(doll, buff, enemy) {
     target.battle.buffs.push($.extend({}, buff));
     if('stat' in buff) {
       if('fp' in buff.stat) {
-        triggerPassive('receivefp', target);
+        triggerPassive('receivefp', target, enemy);
       }
       if('rof' in buff.stat) {
-        triggerPassive('receiverof', target);
+        triggerPassive('receiverof', target, enemy);
       }
       if('eva' in buff.stat) {
-        triggerPassive('receiveeva', target);
+        triggerPassive('receiveeva', target, enemy);
       }
       if('acc' in buff.stat) {
-        triggerPassive('receiveacc', target);
+        triggerPassive('receiveacc', target, enemy);
       }
       if('crit' in buff.stat) {
-        triggerPassive('receivecrit', target);
+        triggerPassive('receivecrit', target, enemy);
       }
     }
   })
 }
 
-function triggerPassive(trigger, doll) {
+function triggerPassive(trigger, doll, enemy) {
   if(!('passives' in doll.battle)) {
     return;
   }
@@ -1464,7 +1519,13 @@ function triggerPassive(trigger, doll) {
   var passives = doll.battle.passives.filter(passive => passive.trigger == trigger);
   $.each(passives, (index, passive) => {
     $.each(passive.effects, (j,effect) => {
-      doll.battle.effect_queue.push($.extend({}, effect));
+      if(effect.type == 'buff') {
+        activateBuff(doll,effect,enemy);
+      } else if(effect.type == 'addStack') {
+        addStack(doll,effect,enemy);
+      } else {
+        doll.battle.effect_queue.push($.extend({}, effect));
+      }
     });
   });
 }
@@ -1480,6 +1541,10 @@ function getBuffTargets(doll, buff, enemy) {
     }
   }
 
+  if(buff.target == 'self') {
+    targets.push(doll);
+  }
+
   if(buff.target == 'tiles') {
     var targetSquares = doll.tiles.target.split(",");
     targetSquares = targetSquares.map(targetSquare => parseInt(targetSquare));
@@ -1492,6 +1557,26 @@ function getBuffTargets(doll, buff, enemy) {
   }
 
   return targets;
+}
+
+function addStack(doll, effect, enemy) {
+  var targets = getBuffTargets(doll, effect, enemy);
+
+  $.each(targets, (index,target) => {
+    var buff = target.battle.buffs.find(buff => buff.name == effect.name);
+    buff.stacks++;
+    if('max_stacks' in buff) {
+      buff.stacks = buff.stacks > buff.max_stacks ? buff.max_stacks : buff.stacks;
+    }
+  });
+}
+
+function addPassive(doll, passive, enemy) {
+  var passiveskill = $.extend({}, passive);
+  if('duration' in passiveskill) {
+    passiveskill.timeLeft = $.isArray(passiveskill.duration) ? passiveskill.duration[passiveskill.level-1] * 30 : passiveskill.duration * 30;
+  }
+  doll.battle.passives.push(passiveskill);
 }
 
 
