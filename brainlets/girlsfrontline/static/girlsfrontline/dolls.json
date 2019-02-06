@@ -2230,12 +2230,20 @@
 		"en_released":true,
     "artist": "哈路卡",
     "voice": "Suzuko Mimori",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 16s<br>Increase self rate of fire by 40% for 15 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[22,24,26,28,30,32,34,36,38,40]
+          },
+          "duration":[9,9.7,10.3,11,11.7,12.3,13,13.7,14.3,15]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
@@ -2276,12 +2284,18 @@
 		"en_released":true,
     "artist": "多元菌",
     "voice": "Yui Horie",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>After aiming for 1.5s, shoot the furthest target for 6x damage",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":10,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "multiplier":[3,3.3,3.7,4,4.3,4.7,5,5.3,5.7,6],
+          "busylinks":5,
+          "delay":1.5
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
@@ -2322,12 +2336,20 @@
 		"en_released":true,
     "artist": "Rain Lan",
     "voice": "Saori Onishi ",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self damage by 60% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[35,38,41,43,46,49,52,54,57,60]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
@@ -2368,12 +2390,18 @@
 		"en_released":true,
     "artist": "卑しい人间",
     "voice": "Eri Kitamura",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>After aiming for 1.5 seconds, shoot a specific target for 5.5x damage",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":10,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "delay":1.5,
+          "multiplier":[2.8,3.1,3.4,3.7,4,4.3,4.6,4.9,5.2,5.5],
+          "busylinks":5
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
@@ -2414,12 +2442,18 @@
 		"en_released":true,
     "artist": "防弹乳牛",
     "voice": "Uesaka Sumire",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>After aiming for 1.5 seconds, shoot the furthest target for 6x damage",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":10,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "delay":1.5,
+          "busylinks":5,
+          "multiplier":[3,3.3,3.7,4,4.3,4.7,5,5.3,5.7,6]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
@@ -2460,12 +2494,18 @@
 		"en_released":true,
     "artist": "sola7764",
     "voice": "Kaori Ide",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>After aiming for 1.5 seconds, shoot a specific target for 5x damage",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":10,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "delay":1.5,
+          "busylinks":5,
+          "multiplier":[2.5,2.8,3.1,3.3,3.6,3.9,4.2,4.4,4.7,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldodwn -10%",
@@ -2506,12 +2546,20 @@
 		"en_released":true,
     "artist": "phantania",
     "voice": "Aya Suzaki",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self rate of fire by 55% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[32,35,37,40,42,45,47,50,52,55]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -10%",
@@ -2551,13 +2599,19 @@
     "en_craftable": true,
 		"en_released":true,
     "artist": "Evan揚",
-    "voice": "Ai Shimizu ",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "voice": "Ai Shimizu",
+    "tooltip_skill1": "Initial CD: 15s, CD: 16s<br>After aiming for 2 seconds, shoot the nearest target for 7x damage",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":15,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "delay":2,
+          "multiplier":[3.2,3.6,4,4.5,4.9,5.3,5.7,6.2,6.6,7],
+          "busylinks":5
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
@@ -2598,12 +2652,20 @@
 		"en_released":true,
     "artist": "幻象黑兔",
     "voice": "Minami Tanaka",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self rate of fire by 65% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[40,43,46,48,51,54,57,59,62,65]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
@@ -2644,12 +2706,18 @@
 		"en_released":true,
     "artist": "幻象黑兔",
     "voice": "Mamiko Hanada",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>After aiming for 1.5 seconds, shoot the nearest target for 5.5x damage",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":10,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "delay":1.5,
+          "multiplier":[2.8,3.1,3.4,3.7,4,4.3,4.6,4.9,5.2,5.5],
+          "busylinks":5
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
@@ -2690,12 +2758,24 @@
 		"en_released":true,
     "artist": "芙芙酱",
     "voice": "Ai Kayano ",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Take two aimed shots, aiming for 1 second each time and shooting the current target for 3.5x damage",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "delay":1,
+          "busylinks":5,
+          "multiplier":[1.5,1.7,1.9,2.2,2.4,2.6,2.8,3.1,3.3,3.5],
+          "after":{
+            "type":"chargedshot",
+            "delay":1,
+            "busylinks":5,
+            "multiplier":[1.5,1.7,1.9,2.2,2.4,2.6,2.8,3.1,3.3,3.5]
+          }
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
@@ -2736,12 +2816,34 @@
 		"en_released":true,
     "artist": "河马",
     "voice": "Nozomi Amane",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 10s<br>Increase self rate of fire by 85% (28% during daytime) for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[45,49,54,58,63,67,72,76,81,85]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5],
+          "requirements":{
+            "night":true
+          }
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[15,16,18,19,21,22,24,25,27,28]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5],
+          "requirements":{
+            "night":false
+          }
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -10%",
@@ -2782,12 +2884,20 @@
 		"en_released":true,
     "artist": "多元菌",
     "voice": "Haruka Tomatsu",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self rate of fire by 75% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[45,48,52,55,58,62,65,68,72,75]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
@@ -2828,12 +2938,20 @@
 		"en_released":false,
     "artist": "KAN",
     "voice": "Rui Kariya",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self damage by 60% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[35,38,41,43,46,49,52,54,57,60]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
@@ -2874,12 +2992,20 @@
 		"en_released":true,
     "artist": "rei",
     "voice": "Haruka Tomatsu",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self damage by 75% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[45,48,52,55,58,62,65,68,72,75]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
@@ -2920,12 +3046,20 @@
 		"en_released":true,
     "artist": "Bison仓鼠",
     "voice": "Mami Misaki",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self damage by 55% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[32,35,37,40,42,45,47,50,52,55]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -10%",
@@ -2966,12 +3100,20 @@
 		"en_released":true,
     "artist": "原子Dan",
     "voice": "Tomoyo Chuujou",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self rate of fire by 55% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+      "cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[32,35,37,40,42,45,47,50,52,55]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -10%",
@@ -3011,13 +3153,19 @@
     "en_craftable": true,
 		"en_released":true,
     "artist": "RAN",
-    "voice": "Ai Kayano ",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "voice": "Ai Kayano",
+    "tooltip_skill1": "Initial CD: 15s, CD: 16s<br>After aiming for 2 seconds, shoot the nearest target for 8x damage",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":15,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "busylinks":5,
+          "delay":2,
+          "multiplier":[3.5,4,4.5,5,5.5,6,6.5,7,7.5,8]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
@@ -3058,12 +3206,17 @@
 		"en_released":true,
     "artist": "海猫络合物",
     "voice": "Yamane Nozomi",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 16s<br>Launch a stun grenade that stuns enemies within a radius of 2.5 units for 4 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"stun",
+          "delay":1.5,
+          "busylinks":1
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +12%, Damage +10%",
@@ -3104,12 +3257,20 @@
 		"en_released":true,
     "artist": "海猫络合物",
     "voice": "Haruka Tomatsu",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 4s, CD: 16s<br>Increase self damage by 70% for 10 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":4,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[40,43,47,50,53,57,60,63,67,70]
+          },
+          "duration":[6,6.4,6.8,7.2,7.6,8,8.4,8.8,9.4,10]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%, Crit Rate +30%",
@@ -3150,12 +3311,19 @@
 		"en_released":true,
     "artist": "海猫络合物",
     "voice": "Yukari Tamura",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Launch a grenade that deals 12x damage to enemies within a 1.5 unit radius",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "delay":1.5,
+          "multiplier":[5,5.8,6.6,7.3,8.1,8.9,9.7,10.4,11.2,12],
+          "busylinks":1,
+          "radius":1.5
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +12%, Accuracy +50%",
@@ -3196,12 +3364,20 @@
 		"en_released":true,
     "artist": "LIN+",
     "voice": "Emiri Katou",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 4s, CD: 16s<br>Increase self rate of fire by 45% for 15 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":4,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[25,27,29,32,34,36,38,41,43,45]
+          },
+          "duration":[9,9.7,10.3,11,11.7,12.3,13,13.7,14.3,15]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +12%, Rate of fire +10%",
@@ -3242,12 +3418,21 @@
 		"en_released":true,
     "artist": "厕所董事长",
     "voice": "Rina Sato",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self damage by 35% and accuracy by 100% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[15,17,19,22,24,26,28,31,33,35],
+            "acc":[50,56,61,67,72,78,83,89,94,100]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +18%",
@@ -3288,12 +3473,12 @@
 		"en_released":false,
     "artist": "音符",
     "voice": "Haruka Takahashi",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 16s<br>While active, any enemy that deals damage to AK-74U will receive a 50% damage reduction (25% if elite enemy) and 50% accuracy reduction (25% if elite enemy) for 5 seconds, skill lasts for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +25%",
@@ -3334,12 +3519,34 @@
 		"en_released":true,
     "artist": "防弹乳牛",
     "voice": "Uesaka Sumire",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 16s<br>Increase self damage by 180% (60% during daytime) for 6 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[110,118,126,133,141,149,157,164,172,180]
+          },
+          "duration":[3.5,3.8,4.1,4.3,4.6,4.9,5.2,5.4,5.7,6],
+          "requirements":{
+            "night":true
+          }
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[35,38,41,43,46,49,52,54,57,60]
+          },
+          "duration":[3.5,3.8,4.1,4.3,4.6,4.9,5.2,5.4,5.7,6],
+          "requirements":{
+            "night":false
+          }
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Damage +25%",
@@ -3379,13 +3586,34 @@
     "en_craftable": true,
 		"en_released":true,
     "artist": "八才",
-    "voice": "Ai Kayano ",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "voice": "Ai Kayano",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Launch a grenade that deals 4.5x/1.8x/1x damage to enemies within a 1/2.5/4 unit radius",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "delay":1.5,
+          "multiplier":[1.1,1.3,1.5,1.6,1.8,2,2.2,2.2,2.4,2.7],
+          "radius":1,
+          "busylinks":1
+        },
+        {
+          "type":"grenade",
+          "delay":1.5,
+          "multiplier":[0.3,0.3,0.4,0.5,0.5,0.6,0.6,0.8,0.9,0.8],
+          "radius":2.5,
+          "busylinks":0
+        },
+        {
+          "type":"grenade",
+          "delay":1.5,
+          "multiplier":[0.4,0.5,0.5,0.6,0.7,0.7,0.8,0.9,0.9,1],
+          "radius":4,
+          "busylinks":0
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +60%, Evasion +20%",
@@ -3426,12 +3654,20 @@
 		"en_released":true,
     "artist": "NS",
     "voice": "Rie Kugimiya",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 4s, CD: 16s<br>Increase self damage by 75% for 10 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":4,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[45,48,52,55,58,62,65,68,72,75]
+          },
+          "duration":[6,6.4,6.8,7.2,7.6,8,8.4,8.8,9.4,10]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +15%, Accuracy +50%",
@@ -3472,12 +3708,19 @@
 		"en_released":true,
     "artist": "PHI",
     "voice": "Kaori Yoshioka",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Launch a grenade that deals 10x damage to enemies within a 1.5 unit radius",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "multiplier":[4,4.7,5.3,6,6.7,7.3,8,8.7,9.3,10],
+          "busylinks":1,
+          "delay":1.5,
+          "radius":1.5
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +50%, Rate of fire +20%",
@@ -3518,12 +3761,20 @@
 		"en_released":true,
     "artist": "薯子Imoko",
     "voice": "Ami Koshimizu",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 4s, CD: 16s<br>Increase self damage by 70% for 10 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":4,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[40,43,47,50,53,57,60,63,67,70]
+          },
+          "duration":[6,6.4,6.8,7.2,7.6,8,8.4,8.8,9.4,10]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +30%, Rate of fire +10%",
@@ -3564,12 +3815,19 @@
 		"en_released":true,
     "artist": "NIXOO",
     "voice": "Ai Nonaka",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Launch a grenade that deals 15x damage to enemies within a 1.5 unit radius",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "radius":1.5,
+          "delay":1.5,
+          "busylinks":1,
+          "multiplier":[6,7,8,9,10,11,12,13,14,15]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +40%",
@@ -3610,12 +3868,33 @@
 		"en_released":true,
     "artist": "CanceR",
     "voice": "Sora Amamiya",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Launch a grenade that deals 5x/2x/1x damage to enemies within a 1/2.5/4 unit radius",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "delay":1.5,
+          "busylinks":1,
+          "multiplier":[1.2,1.3,1.6,1.8,2,2.2,2.4,2.6,2.8,3],
+          "radius":1
+        },
+        {
+          "type":"grenade",
+          "delay":1.5,
+          "busylinks":0,
+          "multiplier":[0.4,0.3,0.6,0.6,0.6,0.8,0.8,0.8,1,1],
+          "radius":2.5
+        },
+        {
+          "type":"grenade",
+          "delay":1.5,
+          "busylinks":0,
+          "multiplier":[0.4,0.5,0.5,0.6,0.7,0.7,0.8,0.9,0.9,1],
+          "radius":4
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Crit Rate +10%, Evasion +15%",
@@ -3656,12 +3935,21 @@
 		"en_released":true,
     "artist": "MKiiiiii",
     "voice": "Yukiko Ayamiya",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Increase self damage by 35% and rate of fire by 15% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[20,22,23,25,27,27,30,32,33,35],
+            "rof":[10,11,11,12,12,13,13,14,14,15]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +50%, Damage +20%",
@@ -3702,12 +3990,33 @@
 		"en_released":true,
     "artist": "KY",
     "voice": "Eriko Matsui",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Launch a grenade that deals 5x/2x/1x damage to enemies within a 1/2.5/4 unit radius",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "radius":1,
+          "busylinks":1,
+          "multiplier":[1.2,1.3,1.6,1.8,2,2.2,2.4,2.6,2.8,3],
+          "delay":1.5
+        },
+        {
+          "type":"grenade",
+          "radius":2.5,
+          "busylinks":0,
+          "multiplier":[0.4,0.3,0.6,0.6,0.6,0.8,0.8,0.8,1,1],
+          "delay":1.5
+        },
+        {
+          "type":"grenade",
+          "radius":4,
+          "busylinks":0,
+          "multiplier":[0.4,0.5,0.5,0.6,0.7,0.7,0.8,0.9,0.9,1],
+          "delay":1.5
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +60%, Damage +25%",
@@ -3748,12 +4057,20 @@
 		"en_released":true,
     "artist": "麻将",
     "voice": "Sumire Yatsurugi",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self damage by 60% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[35,38,41,43,46,49,52,54,57,60]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +12%, Accuracy +50%",
@@ -3794,12 +4111,20 @@
 		"en_released":true,
     "artist": "lyo",
     "voice": "Karin Mitarai",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 16<br>Increase self accuracy by 500% for 15 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "acc":[200,233,267,300,333,367,400,433,467,500]
+          },
+          "duration":[9,9.7,10.3,11,11.7,12.3,13,13.7,14.3,15]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +12%, Accuracy +50%",
@@ -3840,12 +4165,21 @@
 		"en_released":true,
     "artist": "木shiyo",
     "voice": "Yume Maihara",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 16s<br>Increase self damage by 75% and rate of fire by 25% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[45,48,52,55,58,62,65,68,72,75],
+            "rof":[15,16,17,18,19,21,22,23,24,25]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Evasion +18%",

@@ -1247,7 +1247,8 @@ function simulateBattle() {
       doll = echelon[i];
       if(doll.id == -1) continue;
 
-      for(var j = 0; j < doll.battle.effect_queue.length; j++) {
+      var len = doll.battle.effect_queue.length;
+      for(var j = 0; j < len; j++) {
         var action = doll.battle.effect_queue.shift();
 
         if(action.type == 'buff') {
@@ -1286,7 +1287,8 @@ function simulateBattle() {
 
       var dmg = 0;
 
-      for(j = 0; j < doll.battle.action_queue.length; j++) {
+      len = doll.battle.action_queue.length;
+      for(j = 0; j < len; j++) {
         action = doll.battle.action_queue.shift();
 
         if(action.type == 'normalAttack') {
@@ -1332,7 +1334,7 @@ function simulateBattle() {
             return true;
           });
 
-          if(currentFrame < 30 * 8) {
+          if(currentFrame <= 30 * 8 +1) {
             totaldamage8s += dmg;
           }
           totaldamage20s += dmg;
@@ -1370,7 +1372,7 @@ function simulateBattle() {
           }
 
 
-          if(currentFrame < 30 * 8) {
+          if(currentFrame <= 30 * 8 +1) {
             totaldamage8s += dmg;
           }
           totaldamage20s += dmg;
@@ -1395,7 +1397,7 @@ function simulateBattle() {
             doll.battle.action_queue.push(action);
           }
 
-          if(currentFrame < 30 * 8) {
+          if(currentFrame <= 30 * 8 +1) {
             totaldamage8s += dmg;
           }
           totaldamage20s += dmg;
@@ -1436,10 +1438,14 @@ function simulateBattle() {
           //enemy vuln up taken into account here
           dmg *= doll.battle.busylinks;
 
-          console.log(doll.battle.busylinks);
           doll.battle.busylinks -= Math.min(action.busylinks, doll.links);
 
-          if(currentFrame < 30 * 8) {
+          if('after' in action) {
+            action.after.level = action.level;
+            doll.battle.effect_queue.push(action.after);
+          }
+
+          if(currentFrame <= 30 * 8 +1) {
             totaldamage8s += dmg;
           }
           totaldamage20s += dmg;
