@@ -1259,7 +1259,7 @@ function simulateBattle() {
             action.timeLeft = Math.round(action.delay * 30) + 1;
           }
           if('busylinks' in action) {
-            doll.battle.busylinks += action.busylinks;
+            doll.battle.busylinks += Math.min(action.busylinks, doll.links);
           }
           if('duration' in action) {
             action.timeLeft = $.isArray(action.duration) ? Math.round(action.duration[action.level-1] * 30) : Math.round(action.duration * 30);
@@ -1362,7 +1362,7 @@ function simulateBattle() {
             dmg *= hits * 5; //5 enemies per enemy echelon
           }
 
-          doll.battle.busylinks -= action.busylinks;
+          doll.battle.busylinks -= Math.min(action.busylinks, doll.links);
 
           if('after' in action) {
             action.after.level = action.level;
@@ -1411,7 +1411,39 @@ function simulateBattle() {
             }
           }
 
-          doll.battle.busylinks -= action.busylinks;
+          doll.battle.busylinks -= Math.min(action.busylinks, doll.links);
+        }
+
+        if(action.type == 'chargedshot') {
+          if(action.timeLeft != 0) {
+            action.timeLeft--;
+            doll.battle.action_queue.push(action);
+            continue;
+          }
+
+          //unless specified, charged shots cannot miss and cannot crit
+          var sureHit = 'sureHit' in action ? action.sureHit : true;
+          var canCrit = 'canCrit' in action ? action.canCrit : false;
+
+          dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level-1] : doll.battle.fp * action.multiplier;
+          dmg = Math.max(1, dmg + Math.min(2, doll.battle.ap - enemy.armor));
+          if(!sureHit) {
+            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.eva));
+          }
+          if(canCrit) {
+            dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
+          }
+          //enemy vuln up taken into account here
+          dmg *= doll.battle.busylinks;
+
+          console.log(doll.battle.busylinks);
+          doll.battle.busylinks -= Math.min(action.busylinks, doll.links);
+
+          if(currentFrame < 30 * 8) {
+            totaldamage8s += dmg;
+          }
+          totaldamage20s += dmg;
+          graphData.y[i].data[currentFrame] += Math.round(dmg);
         }
       }
     }

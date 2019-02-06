@@ -2178,12 +2178,18 @@
 		"en_released":true,
     "artist": "哈路卡",
     "voice": "Risa Taneda",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>After aiming for 1.5 seconds, shoot current target for 5.5x damage",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":10,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "delay":1.5,
+          "multiplier":[2.8,3.1,3.4,3.7,4,4.3,4.6,4.9,5.2,5.5],
+          "busylinks":5
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -12%",
