@@ -758,23 +758,23 @@ function updateUIForDoll(index) {
     }
 
     if(showBuffedStats) {
-      $('#doll'+(index+1)+' .fp span').text(doll.battle.maxstats.fp);
-      $('#doll'+(index+1)+' .acc span').text(doll.battle.maxstats.acc);
-      $('#doll'+(index+1)+' .eva span').text(doll.battle.maxstats.eva);
-      $('#doll'+(index+1)+' .rof span').text(doll.battle.maxstats.rof);
-      $('#doll'+(index+1)+' .crit span').text(doll.battle.maxstats.crit+'%');
-      $('#doll'+(index+1)+' .critdmg span').text((doll.battle.maxstats.critdmg+100)+'%');
-      if(doll.battle.maxstats.rounds != 0) {
-        $('#doll'+(index+1)+' .rounds span').text(doll.battle.maxstats.rounds);
+      $('#doll'+(index+1)+' .fp span').text(doll.battle.finalstats.fp);
+      $('#doll'+(index+1)+' .acc span').text(doll.battle.finalstats.acc);
+      $('#doll'+(index+1)+' .eva span').text(doll.battle.finalstats.eva);
+      $('#doll'+(index+1)+' .rof span').text(doll.battle.finalstats.rof);
+      $('#doll'+(index+1)+' .crit span').text(doll.battle.finalstats.crit+'%');
+      $('#doll'+(index+1)+' .critdmg span').text((doll.battle.finalstats.critdmg+100)+'%');
+      if(doll.battle.finalstats.rounds != 0) {
+        $('#doll'+(index+1)+' .rounds span').text(doll.battle.finalstats.rounds);
       } else {
         $('#doll'+(index+1)+' .rounds span').text('-');
       }
-      if(doll.battle.maxstats.armor != 0) {
-        $('#doll'+(index+1)+' .armor span').text(doll.battle.maxstats.armor);
+      if(doll.battle.finalstats.armor != 0) {
+        $('#doll'+(index+1)+' .armor span').text(doll.battle.finalstats.armor);
       } else {
         $('#doll'+(index+1)+' .armor span').text('-');
       }
-      $('#doll'+(index+1)+' .ap span').text(doll.battle.maxstats.ap);
+      $('#doll'+(index+1)+' .ap span').text(doll.battle.finalstats.ap);
     } else {
       $('#doll'+(index+1)+' .fp span').text(doll.pre_battle.fp);
       $('#doll'+(index+1)+' .acc span').text(doll.pre_battle.acc);
@@ -1076,15 +1076,26 @@ function initDollsForBattle() {
       ap:1
     };
     doll.battle.maxstats = {
-      fp:0,
-      acc:0,
-      eva:0,
-      rof:0,
-      crit:0,
-      critdmg:0,
-      rounds:0,
-      armor:0,
-      ap:0
+      fp:doll.pre_battle.fp,
+      acc:doll.pre_battle.acc,
+      eva:doll.pre_battle.eva,
+      rof:doll.pre_battle.rof,
+      crit:doll.pre_battle.crit,
+      critdmg:doll.pre_battle.critdmg,
+      rounds:doll.pre_battle.rounds,
+      armor:doll.pre_battle.armor,
+      ap:doll.pre_battle.ap
+    };
+    doll.battle.minstats = {
+      fp:doll.pre_battle.fp,
+      acc:doll.pre_battle.acc,
+      eva:doll.pre_battle.eva,
+      rof:doll.pre_battle.rof,
+      crit:doll.pre_battle.crit,
+      critdmg:doll.pre_battle.critdmg,
+      rounds:doll.pre_battle.rounds,
+      armor:doll.pre_battle.armor,
+      ap:doll.pre_battle.ap
     };
     if('passives' in doll) {
       doll.battle.passives = doll.passives;
@@ -1144,9 +1155,9 @@ function initEnemyForBattle() {
         eva:1,
         armor:1,
         vulnerability:1,
-      }
-    },
-    buffs:[]
+      },
+      buffs:[]
+    }
   };
 
   return enemy;
@@ -1250,6 +1261,9 @@ function simulateBattle() {
           if('busylinks' in action) {
             doll.battle.busylinks += action.busylinks;
           }
+          if('duration' in action) {
+            action.timeLeft = $.isArray(action.duration) ? Math.round(action.duration[action.level-1] * 30) : Math.round(action.duration * 30);
+          }
           doll.battle.action_queue.push(action);
         }
       }
@@ -1283,7 +1297,7 @@ function simulateBattle() {
           dmg *= doll.links - doll.battle.busylinks;
 
           if(doll.type == 6) { //sg
-            dmg = dmg * Math.min(doll.battle.targets, enemy.count);
+            dmg = isBoss ? dmg * Math.min(doll.battle.targets, enemy.count) : dmg * Math.min(doll.battle.targets, enemy.count * 5);
           }
 
           if(doll.type == 5 || doll.type == 6) { //mg/sg , do not change to doll.type < 5
@@ -1306,7 +1320,7 @@ function simulateBattle() {
           doll.battle.timers.push(normalAttackTimer);
 
           triggerPassive('normalAttack', doll, enemy);
-          
+
           var limitedAttackPassives = doll.battle.passives.filter(passive => 'attacksLeft' in passive);
           $.each(limitedAttackPassives, (index,passive) => passive.attacksLeft--);
           doll.battle.passives = doll.battle.passives.filter(passive => {
@@ -1330,7 +1344,62 @@ function simulateBattle() {
         }
 
         if(action.type == 'grenade') {
-          //doll busylinks -= action busylinks
+          if('delay' in action) {
+            if(action.timeLeft != 0) {
+              action.timeLeft--;
+              doll.battle.action_queue.push(action);
+              continue;
+            }
+          }
+
+          dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level-1] : doll.battle.fp * action.multiplier;
+          //grenades ignore Armor
+          //grenades cant miss
+          //grenades cant crit
+          var hits = Math.min(action.radius * 1.5, enemy.count); //num enemy echelons hit
+
+          if(!isBoss) {
+            dmg *= hits * 5; //5 enemies per enemy echelon
+          }
+
+          doll.battle.busylinks -= action.busylinks;
+
+          if('after' in action) {
+            action.after.level = action.level;
+            doll.battle.effect_queue.push(action.after);
+          }
+
+
+          if(currentFrame < 30 * 8) {
+            totaldamage8s += dmg;
+          }
+          totaldamage20s += dmg;
+          graphData.y[i].data[currentFrame] += Math.round(dmg);
+        }
+
+        if(action.type == 'grenadedot') {
+          action.timeLeft--;
+
+          if(action.timeLeft % action.tick == 0) {
+            dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level-1] : doll.battle.fp * action.multiplier;
+            //grenades ignore Armor
+            //grenades cant miss
+            //grenades cant crit
+            var hits = Math.min(action.radius * 1.5, enemy.count); //num enemy echelons hit
+            if(!isBoss) {
+              dmg *= hits * 5; //5 enemies per enemy echelon
+            }
+          }
+
+          if(action.timeLeft != 0) {
+            doll.battle.action_queue.push(action);
+          }
+
+          if(currentFrame < 30 * 8) {
+            totaldamage8s += dmg;
+          }
+          totaldamage20s += dmg;
+          graphData.y[i].data[currentFrame] += Math.round(dmg);
         }
 
         if(action.type == 'smoke' || action.type == 'stun') {
@@ -1353,6 +1422,8 @@ function simulateBattle() {
 
   $('#dmg-8s').text(Math.round(totaldamage8s));
   $('#dmg-20s').text(Math.round(totaldamage20s));
+
+  determineFinalStats();
 
   graphData.y = graphData.y.filter(v => v.name != '');
 }
@@ -1442,6 +1513,17 @@ function calculateBattleStats(dollIndex) {
   doll.battle.maxstats.rounds = Math.max(doll.battle.maxstats.rounds, doll.battle.rounds);
   doll.battle.maxstats.armor = Math.max(doll.battle.maxstats.armor, doll.battle.armor);
   doll.battle.maxstats.ap = Math.max(doll.battle.maxstats.ap, doll.battle.ap);
+
+  //track min stats
+  doll.battle.minstats.fp = Math.min(doll.battle.minstats.fp, doll.battle.fp);
+  doll.battle.minstats.acc = Math.min(doll.battle.minstats.acc, doll.battle.acc);
+  doll.battle.minstats.eva = Math.min(doll.battle.minstats.eva, doll.battle.eva);
+  doll.battle.minstats.rof = Math.min(doll.battle.minstats.rof, doll.battle.rof);
+  doll.battle.minstats.crit = Math.min(doll.battle.minstats.crit, doll.battle.crit);
+  doll.battle.minstats.critdmg = Math.min(doll.battle.minstats.critdmg, doll.battle.critdmg);
+  doll.battle.minstats.rounds = Math.min(doll.battle.minstats.rounds, doll.battle.rounds);
+  doll.battle.minstats.armor = Math.min(doll.battle.minstats.armor, doll.battle.armor);
+  doll.battle.minstats.ap = Math.min(doll.battle.minstats.ap, doll.battle.ap);
 }
 
 function calculateEnemyStats(enemy) {
@@ -1593,6 +1675,29 @@ function getUsableSkillEffects(effects) {
   }
 
   return validEffects;
+}
+
+function determineFinalStats() {
+  for(var i = 0; i < 5; i++) {
+    var doll = echelon[i];
+    if(doll.id == -1) continue;
+
+    doll.battle.finalstats = {};
+    $.each(['fp','eva','acc','rof','crit','critdmg','rounds','armor','ap'], (index,stat) => {
+      if(doll.battle.maxstats[stat] == doll.pre_battle[stat]) {
+        doll.battle.finalstats[stat] = doll.battle.minstats[stat];
+      } else {
+        doll.battle.finalstats[stat] = doll.battle.maxstats[stat];
+      }
+
+      //THIS IS A TERRIBLE WAY TO DO IT AND DOES NOT REFLECT WHAT THE STAT WILL BE WHEN ALL SKILLS ARE ON
+      //however, this only applies to cases where a doll reduces a stat (aug, mp7, etc)
+      //if a doll if only ever buffed during battle or only ever debuffed in battle, the stats shown in the ui will be correct
+      if(doll.battle.maxstats[stat] != doll.pre_battle[stat] && doll.battle.minstats[stat] != doll.pre_battle[stat]) {
+        doll.battle.finalstats[stat] = Math.round((doll.battle.maxstats[stat] + doll.battle.minstats[stat]) / 2);
+      }
+    });
+  }
 }
 
 
