@@ -1107,6 +1107,7 @@ function initDollsForBattle() {
     } else {
       doll.battle.passives = [];
     }
+    doll.battle.numAttacks = 1;
     doll.battle.buffs = [];
     doll.battle.effect_queue = [];
     doll.battle.action_queue = [];
@@ -1218,12 +1219,20 @@ function simulateBattle() {
 
       doll.battle.timers = doll.battle.timers.filter(timer => timer.timeLeft != 0); //remove expired timers
 
-      //tick buffs
+      //tick and remove buffs
       $.each(doll.battle.buffs, (index,buff) => {
-        buff.timeLeft--;
+        if('timeLeft' in buff) {
+          buff.timeLeft--;
+        }
       });
-
-      doll.battle.buffs = doll.battle.buffs.filter(buff => buff.timeLeft != 0); //remove expired buffs
+      doll.battle.buffs = doll.battle.buffs.filter(buff => {
+        if('timeLeft' in buff) {
+          if(buff.timeLeft == 0) {
+            return false;
+          }
+        }
+        return true;
+      });
 
       //tick and remove passives
       $.each(doll.battle.passives, (index,passive) => {
@@ -1292,11 +1301,26 @@ function simulateBattle() {
         action = doll.battle.action_queue.shift();
 
         if(action.type == 'normalAttack') {
-          dmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.armor));
-          dmg *= (doll.battle.acc / (doll.battle.acc + enemy.eva));
-          dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
-          //enemy vuln up taken into account here
-          dmg *= doll.links - doll.battle.busylinks;
+          var attackBuff = doll.battle.buffs.find(buff => buff.name == 'normalAttackBuff');
+          if(attackBuff !== undefined) {
+            var canCrit = 'canCrit' in attackBuff ? attackBuff.canCrit : true;
+
+            dmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.armor));
+            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.eva));
+            dmg *= canCrit ? (1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100)) : 1;
+            //enemy vuln up taken into account here
+            dmg *= doll.links - doll.battle.busylinks;
+            if('multiplier' in attackBuff) {
+              dmg *= $.isArray(attackBuff.multiplier) ? attackBuff.multiplier[attackBuff.level-1] : 1;
+            }
+          } else {
+
+            dmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.armor));
+            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.eva));
+            dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
+            //enemy vuln up taken into account here
+            dmg *= doll.links - doll.battle.busylinks;
+          }
 
           if(doll.type == 6) { //sg
             dmg = isBoss ? dmg * Math.min(doll.battle.targets, enemy.count) : dmg * Math.min(doll.battle.targets, enemy.count * 5);
@@ -1319,9 +1343,26 @@ function simulateBattle() {
             timeLeft:0
           };
           normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.floor(50 * 30 / doll.battle.rof);
+          if(doll.battle.buffs.find(buff => buff.name == 'sweep') !== undefined) {
+            normalAttackTimer.timeLeft = 10;
+          }
           doll.battle.timers.push(normalAttackTimer);
 
+          doll.battle.numAttacks++;
+
           triggerPassive('normalAttack', doll, enemy);
+
+
+          var limitedAttackBuffs = doll.battle.buffs.filter(buff => 'attacksLeft' in buff);
+          $.each(limitedAttackBuffs, (index,buff) => buff.attacksLeft--);
+          doll.battle.buffs = doll.battle.buffs.filter(buff => {
+            if('attacksLeft' in buff) {
+              if(buff.attacksLeft == 0) {
+                return false;
+              }
+            }
+            return true;
+          });
 
           var limitedAttackPassives = doll.battle.passives.filter(passive => 'attacksLeft' in passive);
           $.each(limitedAttackPassives, (index,passive) => passive.attacksLeft--);
@@ -1333,6 +1374,13 @@ function simulateBattle() {
             }
             return true;
           });
+
+
+
+          if(doll.battle.numAttacks % 4 == 0) {
+            triggerPassive('every4thhit', doll, enemy);
+          }
+
 
           if(currentFrame <= 30 * 8 +1) {
             totaldamage8s += dmg;
