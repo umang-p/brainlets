@@ -4448,12 +4448,34 @@
 		"en_released":true,
     "artist": "ミカピカゾ",
     "voice": "Asuka Ito",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Increase self damage by 105% (35% during daytime) for 6 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[40,47,54,62,69,76,83,91,98,105]
+          },
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6],
+          "requirements":{
+            "night":true
+          }
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[12,15,17,20,22,25,27,30,32,35]
+          },
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6],
+          "requirements":{
+            "night":false
+          }
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +8%, Damage +10%",
@@ -4495,12 +4517,36 @@
 		"en_released":true,
     "artist": "雪樱樱",
     "voice": "Yoshino Nanjo",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Increase self damage by 45% (10% during daytime) for 8 seconds and increase ammo count for the current salvo by 4",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[25,27,29,32,34,36,38,41,43,45],
+            "rounds":[1,2,2,2,2,3,3,3,3,4]
+          },
+          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8],
+          "requirements":{
+            "night":true
+          }
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[5,6,6,7,7,8,8,9,9,10],
+            "rounds":[1,2,2,2,2,3,3,3,3,4]
+          },
+          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8],
+          "requirements":{
+            "night":false
+          }
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +12%, Accuracy +10%",
@@ -4542,12 +4588,22 @@
 		"en_released":true,
     "artist": "AS109",
     "voice": "Sachiyo Yoshida",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 3s, CD: 18s<br>Increase self accuracy by 65% and all hits will be critical for 6 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":3,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "stat":{
+            "acc":[25,29,34,38,43,47,52,56,61,65]
+          },
+          "duration":[1,1.6,2.1,2.7,3.2,3.8,4.3,4.9,5.4,6],
+          "sureCrit":true
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +25%, Armor +10%",
@@ -4589,12 +4645,22 @@
 		"en_released":true,
     "artist": "RFF",
     "voice": "Hiyori Nitta",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 3s, CD: 18s<br>Increase self accuracy by 60% and all hits will be critical for 6 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+      "icd":3,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "stat":{
+            "acc":[22,26,30,35,39,43,47,52,56,60]
+          },
+          "duration":[1,1.6,2.1,2.7,3.2,3.8,4.3,4.9,5.4,6],
+          "sureCrit":true
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Damage +10%",
@@ -4636,12 +4702,21 @@
 		"en_released":true,
     "artist": "BIBIA",
     "voice": "Kanae Ikadai",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Increase self damage by 28% for 8 seconds and increase the ammo count for the current salvo by 3",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[16,17,19,20,21,23,24,25,27,28],
+            "rounds":[1,1,2,2,2,2,3,3,3,3]
+          },
+          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +15%",
@@ -4683,12 +4758,20 @@
 		"en_released":true,
     "artist": "Sam_Ashton",
     "voice": "Iori Nomizu",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Increase self damage by 65% for 6 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[22,27,32,36,41,46,51,55,60,65]
+          },
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +16%",
@@ -4730,13 +4813,29 @@
 		"en_released":true,
     "artist": "木shiyo",
     "voice": "Kaori Nazuka",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Passive: After every 3 hits, the next hit will deal 2.6x damage",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":-1,
+			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+			"effects":[]
 		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"every4thhit",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"normalAttackBuff",
+            "attacksLeft":1,
+            "duration":-1,
+            "canCrit":false,
+            "multiplier":[1.5,1.6,1.7,1.9,2,2.1,2.2,2.4,2.5,2.6]
+          }
+        ]
+      }
+    ],
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%",
     "tiles": {
@@ -4777,12 +4876,20 @@
 		"en_released":true,
     "artist": "spirtie",
     "voice": "Sayaka Yokoya",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Increase self damage by 65% for 6 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[22,27,32,36,41,46,51,55,60,65]
+          },
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +22%",
@@ -4824,12 +4931,20 @@
 		"en_released":true,
     "artist": "spirtie",
     "voice": "Tomoyo Chuujou",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Increase self damage by 60% for 6 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+      "icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[20,24,29,33,38,42,47,51,56,60]
+          },
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%",
@@ -4871,12 +4986,21 @@
 		"en_released":true,
     "artist": "猫头神",
     "voice": "Risa Taneda",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Increase self damage by 30% for 8 seconds and increase ammo count for the current salvo by 4",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[18,19,21,22,23,25,26,27,29,30],
+            "rounds":[1,2,2,2,2,3,3,3,3,4]
+          },
+          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +15%, Damage +10%",
@@ -4918,12 +5042,21 @@
 		"en_released":true,
     "artist": "废人",
     "voice": "Sora Amamiya",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Increase self damage by 30% for 8 seconds and increase ammo count for the current salvo by 3",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+      "icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[18,19,21,22,23,25,26,27,29,30],
+            "rounds":[1,1,2,2,2,2,3,3,3,3]
+          },
+          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +10%, Accuracy +12%",
@@ -4964,12 +5097,20 @@
 		"en_released":true,
     "artist": "Bison仓鼠",
     "voice": "Aoi Koga",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 12s<br>Decrease all enemies' evasion by 40% for 8 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"enemy",
+          "stat":{
+            "eva":[-32,-33,-34,-35,-36,-36,-37,-38,-39,-40]
+          },
+          "duration":[5,6,6,6,7,7,7,8,8,8]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +20%, Accuracy +40%",

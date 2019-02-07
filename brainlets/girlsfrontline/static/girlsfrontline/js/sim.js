@@ -266,9 +266,9 @@ function initEquipSelectModal() {
 }
 
 function changeEnemyStats() {
-  enemyEva = Math.max(0, parseInt($('#enemy-eva').val()));
-  enemyArmor = Math.max(0, parseInt($('#enemy-armor').val()));
-  enemyCount = Math.max(1, parseInt($('#enemy-count').val()));
+  enemyEva = Math.max(0, parseInt($('#enemy-eva').val()) || 0);
+  enemyArmor = Math.max(0, parseInt($('#enemy-armor').val()) || 0);
+  enemyCount = Math.max(1, parseInt($('#enemy-count').val()) || 1);
 
   simulateBattle();
 }
@@ -1250,8 +1250,23 @@ function simulateBattle() {
       });
     }
 
+    //tick/remove enemy buffs
+    $.each(enemy.battle.buffs, (index,buff) => {
+      if('timeLeft' in buff) {
+        buff.timeLeft--;
+      }
+    });
+    enemy.battle.buffs = enemy.battle.buffs.filter(buff => {
+      if('timeLeft' in buff) {
+        if(buff.timeLeft == 0) {
+          return false;
+        }
+      }
+      return true;
+    });
 
-    //apply buffs and recalculate stats
+
+    //apply buffs
     for(i = 0; i < 5; i++) {
       doll = echelon[i];
       if(doll.id == -1) continue;
@@ -1304,10 +1319,13 @@ function simulateBattle() {
           var attackBuff = doll.battle.buffs.find(buff => buff.name == 'normalAttackBuff');
           if(attackBuff !== undefined) {
             var canCrit = 'canCrit' in attackBuff ? attackBuff.canCrit : true;
+            var sureCrit = 'sureCrit' in attackBuff ? attackBuff.sureCrit : false;
 
-            dmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.armor));
-            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.eva));
-            dmg *= canCrit ? (1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100)) : 1;
+            dmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.battle.armor));
+            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
+            if(canCrit) {
+              dmg *= sureCrit ? (1 + (doll.battle.critdmg / 100)) : 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
+            }
             //enemy vuln up taken into account here
             dmg *= doll.links - doll.battle.busylinks;
             if('multiplier' in attackBuff) {
@@ -1315,8 +1333,8 @@ function simulateBattle() {
             }
           } else {
 
-            dmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.armor));
-            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.eva));
+            dmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.battle.armor));
+            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
             dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
             //enemy vuln up taken into account here
             dmg *= doll.links - doll.battle.busylinks;
@@ -1476,9 +1494,9 @@ function simulateBattle() {
           var canCrit = 'canCrit' in action ? action.canCrit : false;
 
           dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level-1] : doll.battle.fp * action.multiplier;
-          dmg = Math.max(1, dmg + Math.min(2, doll.battle.ap - enemy.armor));
+          dmg = Math.max(1, dmg + Math.min(2, doll.battle.ap - enemy.battle.armor));
           if(!sureHit) {
-            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.eva));
+            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
           }
           if(canCrit) {
             dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
@@ -1620,14 +1638,11 @@ function calculateEnemyStats(enemy) {
   };
 
   //calculate skill bonus
-  $.each(enemy.buffs, (index,buff) => {
+  $.each(enemy.battle.buffs, (index,buff) => {
+    console.log(buff);
     if('stat' in buff) {
       $.each(buff.stat, (stat,amount) => {
-        if($.isArray(amount)) {
-          enemy.battle.skillbonus[stat] *= (1 + (amount[buff.level] / 100));
-        } else {
-          enemy.battle.skillbonus[stat] *= (1 + (amount / 100));
-        }
+        enemy.battle.skillbonus[stat] *= $.isArray(amount) ? (1 + (amount[buff.level-1] / 100)) : (1 + (amount / 100));
       });
     }
   });
