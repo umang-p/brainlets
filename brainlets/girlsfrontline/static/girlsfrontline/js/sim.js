@@ -536,6 +536,12 @@ function changeDoll(event) {
   if('passives' in selectedDoll) {
     echelon[index].passives = selectedDoll.passives;
   }
+  if('skill_control' in selectedDoll) {
+    echelon[index].skill_control = selectedDoll.skill_control;
+    echelon[index].special_control = true;
+  } else {
+    echelon[index].special_control = false;
+  }
 
   $('#pos'+echelon[index].pos).attr('data-index', index);
 
@@ -723,6 +729,34 @@ function updateUIAllDolls() {
       $('#pos'+value+' .'+tile_bonuses[i]).prop('hidden', true);
     }
   });
+
+  if(echelon.find(doll => doll.mod) !== undefined) {
+    $('#doll'+1+' .skill2').prop('hidden', false);
+    $('#doll'+2+' .skill2').prop('hidden', false);
+    $('#doll'+3+' .skill2').prop('hidden', false);
+    $('#doll'+4+' .skill2').prop('hidden', false);
+    $('#doll'+5+' .skill2').prop('hidden', false);
+  } else {
+    $('#doll'+1+' .skill2').prop('hidden', true);
+    $('#doll'+2+' .skill2').prop('hidden', true);
+    $('#doll'+3+' .skill2').prop('hidden', true);
+    $('#doll'+4+' .skill2').prop('hidden', true);
+    $('#doll'+5+' .skill2').prop('hidden', true);
+  }
+
+  if(echelon.find(doll => doll.special_control) !== undefined) {
+    $('#doll'+1+' .skill-control').prop('hidden', false);
+    $('#doll'+2+' .skill-control').prop('hidden', false);
+    $('#doll'+3+' .skill-control').prop('hidden', false);
+    $('#doll'+4+' .skill-control').prop('hidden', false);
+    $('#doll'+5+' .skill-control').prop('hidden', false);
+  } else {
+    $('#doll'+1+' .skill-control').prop('hidden', true);
+    $('#doll'+2+' .skill-control').prop('hidden', true);
+    $('#doll'+3+' .skill-control').prop('hidden', true);
+    $('#doll'+4+' .skill-control').prop('hidden', true);
+    $('#doll'+5+' .skill-control').prop('hidden', true);
+  }
 }
 
 function updateUIForDoll(index) {
@@ -755,6 +789,11 @@ function updateUIForDoll(index) {
       $('#doll'+(index+1)+' .skill2-label').attr('data-original-title', doll.tooltip_skill2);
     } else {
       $('#doll'+(index+1)+' .skill2').css('visibility', 'hidden');
+    }
+    if(doll.special_control) {
+      $('#doll'+(index+1)+' .skill-control').css('visibility', 'visible');
+    } else {
+      $('#doll'+(index+1)+' .skill-control').css('visibility', 'hidden');
     }
 
     if(showBuffedStats) {
