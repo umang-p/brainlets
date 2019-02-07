@@ -1265,6 +1265,8 @@ function simulateBattle() {
       return true;
     });
 
+    //trigger time passive here maybe
+
 
     //apply buffs
     for(i = 0; i < 5; i++) {
