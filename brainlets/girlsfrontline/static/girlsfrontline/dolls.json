@@ -5901,13 +5901,67 @@
 		"en_released":false,
     "artist": "Renatus.Z",
     "voice": "Emi Uema",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 1s, CD: 666s<br>Before activating: Increase self evasion by 10% and decrease self damage by 5% every 2 seconds, stacking up to 5 times. After activating, remove those stacks and increase self damage by 30% and decrease self evasion by 25% every 2 seconds, stacking up to 5 times.",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":1,
+			"cd":[666,666,666,666,666,666,666,666,666,666],
+      "effects": [
+        {
+          "type":"removeBuff",
+          "target":"self",
+          "name":"ump40"
+        },
+        {
+          "type":"removePassive",
+          "target":"self",
+          "name":"ump40"
+        },
+        {
+          "type":"passive",
+          "trigger":"time",
+          "interval":2,
+          "effects":[
+            {
+              "type":"buff",
+              "target":"self",
+              "name":"ump40",
+              "stat":{
+                "fp":[20,21,22,23,24,25,26,27,28,30],
+                "eva":[-20,-21,-21,-22,-22,-23,-23,-24,-24,-25]
+              },
+              "duration":-1,
+              "stackable":true,
+              "stacks":1,
+              "max_stacks":5
+            }
+          ]
+        }
+      ]
 		},
+    "passives":[
+      {
+        "type":"passive",
+        "name":"ump40",
+        "trigger":"time",
+        "interval":2,
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"ump40",
+            "stat":{
+              "fp":-5,
+              "eva":10
+            },
+            "duration":-1,
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":5
+          }
+        ]
+      }
+    ],
+    "skill_control":"Enter when UMP40's skill should be activated (in seconds), then hit apply<br><input id=\"ump40-icd\" type=\"number\" value=\"1\"><br>Minimum is 1 second due to the initial cooldown. There is no maximum.",
     "tooltip_skill2": "",
     "tooltip_tiles": "Crit Rate +500%",
     "tiles": {

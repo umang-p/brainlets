@@ -193,6 +193,7 @@ $(function () {
     $('#doll'+i+' .skill-level-select').change(i-1,changeSkillLevel);
     $('#doll'+i+' .skill2-level-select').change(i-1,changeSkill2Level);
     $('#doll'+i+' .skill-toggle').change(i-1,toggleSkillUsage);
+    $('#doll'+i+' .skill-control button').click(i-1,openSkillControl);
     $('#doll'+i+' .affection').click(i-1, changeAffection);
     for(var j = 1; j <= 3; j++) {
       $('#doll'+i+' .equip'+j).click({doll:i-1, equip:j}, selectEquipment);
@@ -712,6 +713,32 @@ function toggleSkillUsage(event) {
   updateUIAllDolls();
 }
 
+function openSkillControl(event) {
+  var doll = echelon[event.data];
+  if(doll.id == -1 || !doll.special_control) {
+    return;
+  }
+
+  $('#skill-control-body').html(doll.skill_control);
+  $('#skill-control-apply').click(event.data, closeSkillControl);
+  $('#skill-control-modal').modal('show');
+}
+
+function closeSkillControl(event) {
+  $('#skill-control-modal').modal('hide');
+  $('#skill-control-apply').off('click');
+
+  var doll = echelon[event.data];
+  if(doll.id == -1 || !doll.special_control) {
+    return;
+  }
+
+  SKILL_CONTROL[doll.id](doll);
+
+  simulateBattle();
+  updateUIAllDolls();
+}
+
 function updateUIAllDolls() {
   for(var i = 0; i < echelon.length; i++) {
     updateUIForDoll(i); //update stat card and grid for each doll
@@ -1139,6 +1166,9 @@ function initDollsForBattle() {
     if('passives' in doll) {
       doll.battle.passives = doll.passives;
       $.each(doll.battle.passives, (index,passive) => {
+        if('interval' in passive) {
+          passive.startTime = 1;
+        }
         $.each(passive.effects, (j,effect) => {
           effect.level = doll.skilllevel;
         });
@@ -1287,6 +1317,13 @@ function simulateBattle() {
         }
         return true;
       });
+
+      //tick and trigger time-based passives
+      $.each(doll.battle.passives.filter(passive => 'interval' in passive), (index,passiveskill) => {
+        if((currentFrame - passiveskill.startTime) % (passiveskill.interval * 30) == 0) {
+          triggerPassive('time', doll, enemy);
+        }
+      });
     }
 
     //tick/remove enemy buffs
@@ -1319,7 +1356,11 @@ function simulateBattle() {
         if(action.type == 'buff') {
           activateBuff(doll, action, enemy);
         } else if(action.type == 'passive') {
-          addPassive(doll,action,enemy);
+          addPassive(doll,action,enemy, currentFrame);
+        } else if(action.type == 'removeBuff') {
+          removeBuff(doll, action, enemy);
+        } else if (action.type == 'removePassive') {
+          removePassive(doll, action, enemy);
         } else {
           if('delay' in action) {
             action.timeLeft = Math.round(action.delay * 30) + 1;
@@ -1598,14 +1639,18 @@ function calculateSkillBonus(dollIndex) {
             doll.battle.skillbonus.rounds += bonus;
           } else {
             if('stackChance' in buff) {
-              bonus = $.isArray(buff.stackChance) ? buff.stackChance[buff.level-1] / 100 * buff.stacks : stackChance / 100 * buff.stacks; //expected number of stacks
-              bonus = $.isArray(amount) ? bonus * amount[buff.level-1] / 100 : bonus * amount / 100;
-              bonus += 1;
-              doll.battle.skillbonus[stat] *= bonus;
+              for(var i = 0; i < buff.stacks; i++) {
+                bonus = $.isArray(buff.stackChance) ? buff.stackChance[buff.level-1] / 100 : stackChance / 100;
+                bonus *= $.isArray(amount) ? amount[buff.level-1] / 100 : amount / 100;
+                bonus += 1;
+                doll.battle.skillbonus[stat] *= bonus;
+              }
             } else {
-              bonus = $.isArray(amount) ? amount[buff.level-1] / 100 * buff.stacks : amount / 100 * buff.stacks;
-              bonus += 1;
-              doll.battle.skillbonus[stat] *= bonus;
+              for(var i = 0; i < buff.stacks; i++) {
+                bonus = $.isArray(amount) ? amount[buff.level-1] / 100 : amount / 100;
+                bonus += 1;
+                doll.battle.skillbonus[stat] *= bonus;
+              }
             }
           }
         } else {
@@ -1801,7 +1846,7 @@ function addStack(target, effect, enemy) {
   }
 }
 
-function addPassive(doll, passive, enemy) {
+function addPassive(doll, passive, enemy, currentTime) {
   var passiveskill = $.extend({}, passive);
 
   passiveskill.level = doll.skilllevel;
@@ -1809,8 +1854,27 @@ function addPassive(doll, passive, enemy) {
   if('duration' in passiveskill) {
     passiveskill.timeLeft = $.isArray(passiveskill.duration) ? passiveskill.duration[passiveskill.level-1] * 30 : passiveskill.duration * 30;
   }
+  if('interval' in passiveskill) {
+    passiveskill.startTime = currentTime;
+  }
 
   doll.battle.passives.push(passiveskill);
+}
+
+function removeBuff(doll, buff, enemy) {
+  var targets = getBuffTargets(doll, buff, enemy);
+
+  $.each(targets, (index,target) => {
+    target.battle.buffs = target.battle.buffs.filter(b => b.name != buff.name);
+  });
+}
+
+function removePassive(doll, passive, enemy) {
+  var targets = getBuffTargets(doll, passive, enemy);
+
+  $.each(targets, (index,target) => {
+    target.battle.passives = target.battle.passives.filter(p => p.name != passive.name);
+  });
 }
 
 function getUsableSkillEffects(effects) {
@@ -1859,6 +1923,14 @@ function determineFinalStats() {
 }
 
 
+
+const SKILL_CONTROL = {
+  97:function(doll) {
+    doll.skill = $.extend({}, dollData[doll.id-1].skill);
+    var icd = Math.max(1, parseInt($('#ump40-icd').val()) || 0);
+    doll.skill.icd = icd;
+  }
+}
 
 
 function getNumLinks(dollIndex) {
