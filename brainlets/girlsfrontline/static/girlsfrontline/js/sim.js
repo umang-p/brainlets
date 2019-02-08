@@ -1411,7 +1411,10 @@ function simulateBattle() {
             //enemy vuln up taken into account here
             dmg *= doll.links - doll.battle.busylinks;
             if('multiplier' in attackBuff) {
-              dmg *= $.isArray(attackBuff.multiplier) ? attackBuff.multiplier[attackBuff.level-1] : 1;
+              dmg *= $.isArray(attackBuff.multiplier) ? attackBuff.multiplier[attackBuff.level-1] : attackBuff.multiplier;
+            }
+            if('hitCount' in attackBuff) {
+              dmg *= $.isArray(attackBuff.hitCount) ? attackBuff.hitCount[attackBuff.level-1] : attackBuff.hitCount;
             }
           } else {
 
@@ -1491,6 +1494,7 @@ function simulateBattle() {
 
         if(action.type == 'reload') {
           doll.battle.currentRounds += doll.battle.rounds;
+          triggerPassive('reload', doll, enemy);
         }
 
         if(action.type == 'grenade') {
@@ -1926,7 +1930,9 @@ function determineFinalStats() {
 
 const SKILL_CONTROL = {
   97:function(doll) {
+    //UMP40
     doll.skill = $.extend({}, dollData[doll.id-1].skill);
+
     var icd = Math.max(1, parseInt($('#ump40-icd').val()) || 0);
     doll.skill.icd = icd;
   }
