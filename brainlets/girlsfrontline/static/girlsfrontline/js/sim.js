@@ -1455,18 +1455,18 @@ function simulateBattle() {
             console.log(extraAttack);
             var canCrit = 'canCrit' in extraAttack ? extraAttack.canCrit : true;
             var sureCrit = 'sureCrit' in extraAttack ? extraAttack.sureCrit : false;
-            var sureHit = 'sureHit' in extraAttack ? extraAttack.sureHit : true;
+            var sureHit = 'sureHit' in extraAttack ? extraAttack.sureHit : false;
 
             var extradmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.battle.armor));
+            if('multiplier' in extraAttack) {
+              extradmg *= $.isArray(extraAttack.multiplier) ? extraAttack.multiplier[extraAttack.level-1] : extraAttack.multiplier;
+            }
             extradmg *= !sureHit ? (doll.battle.acc / (doll.battle.acc + enemy.battle.eva)) : 1;
             if(canCrit) {
               extradmg *= sureCrit ? (1 + (doll.battle.critdmg / 100)) : 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
             }
             //vuln up here
             extradmg *= doll.links - doll.battle.busylinks;
-            if('multiplier' in extraAttack) {
-              extradmg *= $.isArray(extraAttack.multiplier) ? extraAttack.multiplier[extraAttack.level-1] : extraAttack.multiplier;
-            }
             extradmg *= 'extraAttackChance' in extraAttack ? extraAttack.extraAttackChance[extraAttack.level-1] / 100 : 1
             console.log(extradmg);
           }
