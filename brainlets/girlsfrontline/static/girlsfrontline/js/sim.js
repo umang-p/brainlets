@@ -1332,7 +1332,7 @@ function simulateBattle() {
 
       //tick and trigger time-based passives
       $.each(doll.battle.passives.filter(passive => 'interval' in passive), (index,passiveskill) => {
-        if((currentFrame - passiveskill.startTime) % (passiveskill.interval * 30) == 0) {
+        if((currentFrame - passiveskill.startTime) % Math.floor(passiveskill.interval * 30) == 0) {
           triggerPassive('time', doll, enemy);
         }
       });
@@ -1352,8 +1352,6 @@ function simulateBattle() {
       }
       return true;
     });
-
-    //trigger time passive here maybe
 
 
     //apply buffs
@@ -1420,7 +1418,7 @@ function simulateBattle() {
             if(canCrit) {
               dmg *= sureCrit ? (1 + (doll.battle.critdmg / 100)) : 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
             }
-            //enemy vuln up taken into account here
+            dmg *= enemy.battle.vulnerability;
             dmg *= doll.links - doll.battle.busylinks;
             if('multiplier' in attackBuff) {
               dmg *= $.isArray(attackBuff.multiplier) ? attackBuff.multiplier[attackBuff.level-1] : attackBuff.multiplier;
@@ -1440,7 +1438,7 @@ function simulateBattle() {
             dmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.battle.armor));
             dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
             dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
-            //enemy vuln up taken into account here
+            dmg *= enemy.battle.vulnerability;
             dmg *= doll.links - doll.battle.busylinks;
             if(doll.type == 6) { //sg
               dmg = dmg * Math.min(doll.battle.targets, enemy.count);
@@ -1465,7 +1463,7 @@ function simulateBattle() {
             if(canCrit) {
               extradmg *= sureCrit ? (1 + (doll.battle.critdmg / 100)) : 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
             }
-            //vuln up here
+            dmg *= enemy.battle.vulnerability;
             extradmg *= doll.links - doll.battle.busylinks;
             extradmg *= 'extraAttackChance' in extraAttack ? extraAttack.extraAttackChance[extraAttack.level-1] / 100 : 1
             console.log(extradmg);
@@ -1553,6 +1551,7 @@ function simulateBattle() {
           //grenades ignore Armor
           //grenades cant miss
           //grenades cant crit
+          dmg *= enemy.battle.vulnerability;
           var hits = Math.min(action.radius * 1.5, enemy.count); //num enemy echelons hit
 
           if(!isBoss) {
@@ -1582,6 +1581,7 @@ function simulateBattle() {
             //grenades ignore Armor
             //grenades cant miss
             //grenades cant crit
+            dmg *= enemy.battle.vulnerability;
             var hits = Math.min(action.radius * 1.5, enemy.count); //num enemy echelons hit
             if(!isBoss) {
               dmg *= hits * 5; //5 enemies per enemy echelon
@@ -1630,14 +1630,21 @@ function simulateBattle() {
           if(canCrit) {
             dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
           }
-          //enemy vuln up taken into account here
+          dmg *= enemy.battle.vulnerability;
           dmg *= doll.battle.busylinks;
+          if('piercing' in action) {
+            dmg *= enemy.count + 1;
+          }
 
           doll.battle.busylinks -= Math.min(action.busylinks, doll.links);
 
           if('after' in action) {
             action.after.level = action.level;
-            doll.battle.effect_queue.push(action.after);
+            if(action.after.type == 'buff') {
+              activateBuff(doll, action.after, enemy);
+            } else {
+              doll.battle.effect_queue.push(action.after);
+            }
           }
 
           if(currentFrame <= 30 * 8 +1) {
@@ -1670,7 +1677,7 @@ function simulateBattle() {
           if('fixedDamage' in action) {
             dmg = $.isArray(action.fixedDamage) ? action.fixedDamage[action.level-1] : action.fixedDamage;
           }
-          //enemy vuln up taken into account here
+          dmg *= enemy.battle.vulnerability;
           dmg *= doll.links;
 
           if(!('targets' in action)) {
@@ -1837,8 +1844,7 @@ function calculateEnemyStats(enemy) {
 function activateBuff(doll, buff, enemy) {
   var targets = getBuffTargets(doll, buff, enemy);
 
-  buff.timeLeft = $.isArray(buff.duration) ? buff.duration[buff.level-1] * 30 : buff.duration * 30;
-
+  buff.timeLeft = $.isArray(buff.duration) ? Math.floor(buff.duration[buff.level-1] * 30) : Math.floor(buff.duration * 30);
   $.each(targets, (index,target) => {
     if('stackable' in buff) {
       if(target.battle.buffs.find(b => b.name == buff.name) !== undefined) {
@@ -1931,7 +1937,7 @@ function addStack(target, effect, enemy) {
   }
   var refresh = 'refreshduration' in buff ? buff.refreshduration : true; //buff = original buff, effect = new stack
   if(refresh) {
-    buff.timeLeft = $.isArray(buff.duration) ? buff.duration[buff.level-1] * 30 : buff.duration * 30;
+    buff.timeLeft = $.isArray(buff.duration) ? Math.floor(buff.duration[buff.level-1] * 30) : Math.floor(buff.duration * 30);
   }
 }
 
@@ -1941,7 +1947,7 @@ function addPassive(doll, passive, enemy, currentTime) {
   passiveskill.level = doll.skilllevel;
   $.each(passiveskill.effects, (index,effect) => effect.level = passiveskill.level);
   if('duration' in passiveskill) {
-    passiveskill.timeLeft = $.isArray(passiveskill.duration) ? passiveskill.duration[passiveskill.level-1] * 30 : passiveskill.duration * 30;
+    passiveskill.timeLeft = $.isArray(passiveskill.duration) ? Math.floor(passiveskill.duration[passiveskill.level-1] * 30) : Math.floor(passiveskill.duration * 30);
   }
   if('interval' in passiveskill) {
     passiveskill.startTime = currentTime;
@@ -1978,6 +1984,9 @@ function getUsableSkillEffects(effects) {
     $.each(effects[i].requirements, (condition,value) => {
       if(condition == 'night') {
         valid = valid && (isNight == value);
+      }
+      if(condition == 'armored') {
+        valid = valid && (enemyArmor > 0 == value);
       }
     });
     if(valid) {
@@ -2033,16 +2042,21 @@ const SKILL_CONTROL = {
 
     doll.skill.effects[0].dollid = target1;
     doll.skill.effects[1].dollid = target2;
+  },
+  178:function(doll) {
+    //Contender
+    doll.skill = $.extend({}, dollData[doll.id-1].skill);
 
-    console.log(target1);
-    console.log(target2);
+    var icd = Math.max(6, parseInt($('#contender-icd').val()) || 0);
+    doll.skill.icd = icd;
   }
 };
 
 const SKILL_CONTROL_HTML = {
   97:function(doll) {
     //ump40
-    return "Enter when UMP40's skill should be activated (in seconds), then hit apply<br><input id=\"ump40-icd\" type=\"number\" value=\"1\"><br>Minimum is 1 second due to the initial cooldown. There is no maximum."
+    var value = doll.skill.icd;
+    return "Enter when UMP40's skill should be activated (in seconds), then hit apply<br><input id=\"ump40-icd\" type=\"number\" value=\""+value+"\"><br>Minimum is 1 second due to the initial cooldown. There is no maximum."
   },
   159:function(doll) {
     //FP-6
@@ -2068,6 +2082,11 @@ const SKILL_CONTROL_HTML = {
     htmlstring += '</div>'
 
     return htmlstring;
+  },
+  178:function(doll) {
+    //Contender
+    var value = doll.skill.icd;
+    return "Enter when Contender's skill should be activated (in seconds, before skill cooldown tile effects are applied), then hit apply. Remember that there is a 1 second aiming time.<br><input id=\"contender-icd\" type=\"number\" value=\""+value+"\"><br>Minimum is 6 seconds due to the initial cooldown. There is no maximum.";
   }
 };
 
