@@ -1447,6 +1447,31 @@ function simulateBattle() {
             }
           }
 
+          //handle pkp
+          var extradmg = 0;
+          var afterAttack = doll.battle.passives.find(passive => passive.trigger == 'afterAttack');
+          if(afterAttack !== undefined) {
+            var extraAttack = afterAttack.effects[0];
+            console.log(extraAttack);
+            var canCrit = 'canCrit' in extraAttack ? extraAttack.canCrit : true;
+            var sureCrit = 'sureCrit' in extraAttack ? extraAttack.sureCrit : false;
+            var sureHit = 'sureHit' in extraAttack ? extraAttack.sureHit : true;
+
+            var extradmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.battle.armor));
+            extradmg *= !sureHit ? (doll.battle.acc / (doll.battle.acc + enemy.battle.eva)) : 1;
+            if(canCrit) {
+              extradmg *= sureCrit ? (1 + (doll.battle.critdmg / 100)) : 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
+            }
+            //vuln up here
+            extradmg *= doll.links - doll.battle.busylinks;
+            if('multiplier' in extraAttack) {
+              extradmg *= $.isArray(extraAttack.multiplier) ? extraAttack.multiplier[extraAttack.level-1] : extraAttack.multiplier;
+            }
+            extradmg *= 'extraAttackChance' in extraAttack ? extraAttack.extraAttackChance[extraAttack.level-1] / 100 : 1
+            console.log(extradmg);
+          }
+          dmg += extradmg;
+
           if(doll.type == 5 || doll.type == 6) { //mg/sg , do not change to doll.type < 5
             doll.battle.currentRounds--;
             if(doll.battle.currentRounds == 0) {
@@ -1891,6 +1916,10 @@ function getBuffTargets(doll, buff, enemy) {
     }
   }
 
+  if(buff.target == 'doll') {
+    targets.push(echelon.find(doll => doll.id == buff.dollid));
+  }
+
   return targets;
 }
 
@@ -1991,12 +2020,54 @@ const SKILL_CONTROL = {
 
     var icd = Math.max(1, parseInt($('#ump40-icd').val()) || 0);
     doll.skill.icd = icd;
+  },
+  159:function(doll) {
+    //FP-6
+    doll.skill = $.extend({}, dollData[doll.id-1].skill);
+
+    var target1 = parseInt($('#skill-control-body .shield1 input:checked').val());
+    var target2 = parseInt($('#skill-control-body .shield2 input:checked').val());
+
+    doll.skill.effects[0].target = 'doll'
+    doll.skill.effects[1].target = 'doll'
+
+    doll.skill.effects[0].dollid = target1;
+    doll.skill.effects[1].dollid = target2;
+
+    console.log(target1);
+    console.log(target2);
   }
 };
 
 const SKILL_CONTROL_HTML = {
   97:function(doll) {
+    //ump40
     return "Enter when UMP40's skill should be activated (in seconds), then hit apply<br><input id=\"ump40-icd\" type=\"number\" value=\"1\"><br>Minimum is 1 second due to the initial cooldown. There is no maximum."
+  },
+  159:function(doll) {
+    //FP-6
+    var htmlstring = "Select the dolls that should receive the two shields/damage buffs from FP-6 then hit apply. (Her skill targets only the dolls in her column but since you can move everyone around in battle, you can pick any doll to receive the buff in this simulator)<br>";
+    htmlstring += 'Shield 1:<div class="shield1">';
+    for(var i = 0; i < 5; i++) {
+      if(echelon[i].id == -1) continue;
+      htmlstring += '<input type="radio" name="shield1" value="'+echelon[i].id;
+      if(echelon[i] == doll)
+        htmlstring += '" checked>'+echelon[i].name+'</input><br>';
+      else
+        htmlstring += '">'+echelon[i].name+'</input><br>';
+    }
+    htmlstring += '</div><br>Shield 2:<div class="shield2">'
+    for(i = 0; i < 5; i++) {
+      if(echelon[i].id == -1) continue;
+      htmlstring += '<input type="radio" name="shield2" value="'+echelon[i].id;
+      if(echelon[i] == doll)
+        htmlstring += '" checked>'+echelon[i].name+'</input><br>';
+      else
+        htmlstring += '">'+echelon[i].name+'</input><br>';
+    }
+    htmlstring += '</div>'
+
+    return htmlstring;
   }
 };
 
