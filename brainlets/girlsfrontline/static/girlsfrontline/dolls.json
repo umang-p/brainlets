@@ -8895,12 +8895,17 @@
 		"en_released":true,
     "artist": "REALMBW",
     "voice": "Hitomi Nabatame",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 15s, CD: 16s<br>Inflicts 1000 damage to a single target and causes a knockback effect of 3 units",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":15,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"burstimpact",
+          "targets":1,
+          "fixedDamage":[100,200,300,400,500,600,700,800,900,1000]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Accuracy +20%",
@@ -8941,12 +8946,16 @@
 		"en_released":false,
     "artist": "小迪",
     "voice": "Makoto Koichi",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Perform an extra attack, dealing 2x damage and causing a knockback effect of 3 units",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"burstimpact",
+          "multiplier":[1,1.1,1.2,1.3,1.4,1.6,1.7,1.8,1.9,2]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +50%",
@@ -8987,12 +8996,16 @@
 		"en_released":true,
     "artist": "Rain Lan",
     "voice": "Emiri Katou",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Perform an extra attack, dealing 2.5x damage and causing a knockback effect of 3 units",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"burstimpact",
+          "multiplier":[1.2,1.3,1.5,1.6,1.8,1.9,2.1,2.2,2.4,2.5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%",
@@ -9033,12 +9046,20 @@
 		"en_released":true,
     "artist": "Ki桑",
     "voice": "Ruriko Aoki",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>Increase self armor by 60% for 6 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":10,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "armor":[30,33,37,40,43,47,50,53,57,60]
+          },
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%",
@@ -9079,12 +9100,20 @@
 		"en_released":true,
     "artist": "防弹乳牛",
     "voice": "Ruriko Aoki",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>Increase self armor by 70% for 6 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":10,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "armor":[40,43,47,50,53,57,60,63,67,70]
+          },
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +55%",
@@ -9125,12 +9154,21 @@
 		"en_released":true,
     "artist": "废人",
     "voice": "Ami Nanase",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>Increase self evasion by 55% and armor by 50% for 6 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":10,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "eva":[28,31,34,37,40,43,46,49,52,55],
+            "armor":[25,28,31,33,36,39,42,44,47,50]
+          },
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +20%",
@@ -9171,12 +9209,21 @@
 		"en_released":true,
     "artist": "neco",
     "voice": "Shizuka Ito",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>Increase self evasion by 60% and armor by 60% for 6 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":10,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "eva":[30,33,37,40,43,47,50,53,57,60],
+            "armor":[30,33,37,40,43,47,50,53,57,60]
+          },
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%",
@@ -9217,12 +9264,27 @@
 		"en_released":true,
     "artist": "死盖",
     "voice": "Hiromi Igarashi",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Increase damage by 120% and increase targets to 5 for 8 seconds (does not stack with slug ammo)",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[30,40,50,60,70,80,90,100,110,120]
+          },
+          "duration":8
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "duration":8,
+          "name":"normalAttackBuff",
+          "targets":5
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +30%",
@@ -9263,12 +9325,16 @@
 		"en_released":true,
     "artist": "Bison仓鼠",
     "voice": "Rui Kariya",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Perform an extra attack, dealing 2x damage and causing a knockback effect of 3 units",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"burstimpact",
+          "multiplier":[1,1.1,1.2,1.3,1.4,1.6,1.7,1.8,1.9,2]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +30%",
@@ -9309,12 +9375,26 @@
 		"en_released":false,
     "artist": "防弹乳牛",
     "voice": "Hisako Kanemoto",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Attack 3 times with increasing damage, dealing 1.5x/2.5x/3.5x damage to each target",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"burstimpact",
+          "multiplier":[0.8,0.9,1,1.1,1.2,1.3,1.4,1.4,1.5,1.5]
+        },
+        {
+          "type":"burstimpact",
+          "multiplier":[1.2,1.3,1.5,1.6,1.8,1.9,2.1,2.2,2.4,2.5],
+          "delay":1
+        },
+        {
+          "type":"burstimpact",
+          "multiplier":[1.6,1.7,2,2.1,2.4,2.5,2.8,3,3.3,3.5],
+          "delay":2
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%",
@@ -9355,12 +9435,27 @@
 		"en_released":true,
     "artist": "河马",
     "voice": "Yuka Ootsubo",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Increase damage by 120% and increase targets to 5 for 8 seconds (does not stack with slug ammo)",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[30,40,50,60,70,80,90,100,110,120]
+          },
+          "duration":8
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "duration":8,
+          "name":"normalAttackBuff",
+          "targets":5
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%",
@@ -9401,12 +9496,27 @@
 		"en_released":false,
     "artist": "洲川Terras",
     "voice": "Miyuki Kobori",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Increase damage by 120% and increase targets to 5 for 8 seconds (does not stack with slug ammo)",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[30,40,50,60,70,80,90,100,110,120]
+          },
+          "duration":8
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "duration":8,
+          "name":"normalAttackBuff",
+          "targets":5
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%",
@@ -9447,12 +9557,21 @@
 		"en_released":false,
     "artist": "Silverwing",
     "voice": "Mariko Honda",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Increase self rate of fire by 80%, ammo count by 10, and knockback chance per attack to 10% for 8 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[35,40,45,50,55,60,65,70,75,80],
+            "rounds":[5,5,6,6,7,7,8,8,9,10]
+          },
+          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.5,7.7,8]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +22%",
@@ -9495,11 +9614,28 @@
     "voice": "Manami Numakura",
     "tooltip_skill1": "SKILL NOT YET ADDED",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":10,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[15,17,19,21,22,24,26,27,28,30]
+          },
+          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.5,7.7,8]
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[15,17,19,21,22,24,26,27,28,30]
+          },
+          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.5,7.7,8]
+        }
+      ]
 		},
+    "skill_control":"",
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +10%",
     "tiles": {

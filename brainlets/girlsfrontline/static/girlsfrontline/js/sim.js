@@ -532,13 +532,14 @@ function changeDoll(event) {
   }
   if(selectedDoll.type == 6) { //sg
     echelon[index].targets = 3;
+    echelon[index].hasSlug = false;
   }
 
   if('passives' in selectedDoll) {
     echelon[index].passives = selectedDoll.passives;
   }
   if('skill_control' in selectedDoll) {
-    echelon[index].skill_control = selectedDoll.skill_control;
+    // echelon[index].skill_control = selectedDoll.skill_control;
     echelon[index].special_control = true;
   } else {
     echelon[index].special_control = false;
@@ -719,7 +720,7 @@ function openSkillControl(event) {
     return;
   }
 
-  $('#skill-control-body').html(doll.skill_control);
+  $('#skill-control-body').html(SKILL_CONTROL_HTML[doll.id](doll));
   $('#skill-control-apply').click(event.data, closeSkillControl);
   $('#skill-control-modal').modal('show');
 }
@@ -1266,20 +1267,31 @@ function simulateBattle() {
         } else {
           timer.timeLeft--;
         }
+      });
 
+      $.each(doll.battle.timers, (index, timer) => {
         if(timer.timeLeft == 0) {
+          var reloading = doll.battle.timers.find(timer => timer.type == 'reload') === undefined ? false : true;
           if(timer.type == 'skill') {
-            $.each(doll.battle.skill.effects, (index,effect) => {
-              effect.level = doll.skilllevel;
-              doll.battle.effect_queue.push($.extend({}, effect));
-            });
-            timer.timeLeft = Math.round(doll.battle.skill.cd[doll.skilllevel-1] * 30 * (1-doll.pre_battle.skillcd / 100));
+            if(reloading && doll.battle.timers.find(timer => timer.type == 'reload').timeLeft != 0) {
+              timer.timeLeft++;
+            } else {
+              $.each(doll.battle.skill.effects, (index,effect) => {
+                effect.level = doll.skilllevel;
+                doll.battle.effect_queue.push($.extend({}, effect));
+              });
+              timer.timeLeft = Math.round(doll.battle.skill.cd[doll.skilllevel-1] * 30 * (1-doll.pre_battle.skillcd / 100));
+            }
           } else if(timer.type == 'skill2') {
-            $.each(doll.battle.skill2.effects, (index,effect) => {
-              effect.level = doll.skill2level;
-              doll.battle.effect_queue.push($.extend({}, effect));
-            });
-            timer.timeLeft = Math.round(doll.battle.skill2.cd[doll.skill2level-1] * 30 * (1-doll.pre_battle.skillcd / 100));
+            if(reloading && doll.battle.timers.find(timer => timer.type == 'reload').timeLeft != 0) {
+              timer.timeLeft++;
+            } else {
+              $.each(doll.battle.skill2.effects, (index,effect) => {
+                effect.level = doll.skill2level;
+                doll.battle.effect_queue.push($.extend({}, effect));
+              });
+              timer.timeLeft = Math.round(doll.battle.skill2.cd[doll.skill2level-1] * 30 * (1-doll.pre_battle.skillcd / 100));
+            }
           } else {
             doll.battle.effect_queue.push($.extend({}, timer));
           }
@@ -1416,6 +1428,13 @@ function simulateBattle() {
             if('hitCount' in attackBuff) {
               dmg *= $.isArray(attackBuff.hitCount) ? attackBuff.hitCount[attackBuff.level-1] : attackBuff.hitCount;
             }
+            if(doll.type == 6) { //sg
+              if(('targets' in attackBuff) && (!doll.hasSlug)) {
+                dmg = dmg * Math.min(attackBuff.targets, enemy.count);
+              } else {
+                dmg = dmg * Math.min(doll.battle.targets, enemy.count);
+              }
+            }
           } else {
 
             dmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.battle.armor));
@@ -1423,10 +1442,9 @@ function simulateBattle() {
             dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
             //enemy vuln up taken into account here
             dmg *= doll.links - doll.battle.busylinks;
-          }
-
-          if(doll.type == 6) { //sg
-            dmg = isBoss ? dmg * Math.min(doll.battle.targets, enemy.count) : dmg * Math.min(doll.battle.targets, enemy.count * 5);
+            if(doll.type == 6) { //sg
+              dmg = dmg * Math.min(doll.battle.targets, enemy.count);
+            }
           }
 
           if(doll.type == 5 || doll.type == 6) { //mg/sg , do not change to doll.type < 5
@@ -1603,6 +1621,45 @@ function simulateBattle() {
           totaldamage20s += dmg;
           graphData.y[i].data[currentFrame] += Math.round(dmg);
         }
+
+        if(action.type == 'burstimpact') {
+          if('delay' in action) {
+            if(action.timeLeft != 0) {
+              action.timeLeft--;
+              doll.battle.action_queue.push(action);
+              continue;
+            }
+          }
+
+          var sureHit = 'sureHit' in action ? action.sureHit : true;
+          var canCrit = 'canCrit' in action ? action.canCrit : true;
+
+          dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level-1] : doll.battle.fp * action.multiplier;
+          dmg = Math.max(1, dmg + Math.min(2, doll.battle.ap - enemy.battle.armor));
+          if(!sureHit) {
+            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
+          }
+          if(canCrit) {
+            dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
+          }
+          if('fixedDamage' in action) {
+            dmg = $.isArray(action.fixedDamage) ? action.fixedDamage[action.level-1] : action.fixedDamage;
+          }
+          //enemy vuln up taken into account here
+          dmg *= doll.links;
+
+          if(!('targets' in action)) {
+            dmg = dmg * Math.min(doll.battle.targets, enemy.count);
+          } else {
+            dmg = dmg * Math.min(action.targets, enemy.count);
+          }
+
+          if(currentFrame <= 30 * 8 +1) {
+            totaldamage8s += dmg;
+          }
+          totaldamage20s += dmg;
+          graphData.y[i].data[currentFrame] += Math.round(dmg);
+        }
       }
     }
 
@@ -1735,7 +1792,6 @@ function calculateEnemyStats(enemy) {
 
   //calculate skill bonus
   $.each(enemy.battle.buffs, (index,buff) => {
-    console.log(buff);
     if('stat' in buff) {
       $.each(buff.stat, (stat,amount) => {
         enemy.battle.skillbonus[stat] *= $.isArray(amount) ? (1 + (amount[buff.level-1] / 100)) : (1 + (amount / 100));
@@ -1936,7 +1992,13 @@ const SKILL_CONTROL = {
     var icd = Math.max(1, parseInt($('#ump40-icd').val()) || 0);
     doll.skill.icd = icd;
   }
-}
+};
+
+const SKILL_CONTROL_HTML = {
+  97:function(doll) {
+    return "Enter when UMP40's skill should be activated (in seconds), then hit apply<br><input id=\"ump40-icd\" type=\"number\" value=\"1\"><br>Minimum is 1 second due to the initial cooldown. There is no maximum."
+  }
+};
 
 
 function getNumLinks(dollIndex) {
