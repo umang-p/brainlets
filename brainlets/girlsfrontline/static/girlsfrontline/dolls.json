@@ -4516,8 +4516,7 @@
           "type":"buff",
           "target":"self",
           "stat":{
-            "fp":[25,27,29,32,34,36,38,41,43,45],
-            "rounds":[1,2,2,2,2,3,3,3,3,4]
+            "fp":[25,27,29,32,34,36,38,41,43,45]
           },
           "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8],
           "requirements":{
@@ -4528,13 +4527,17 @@
           "type":"buff",
           "target":"self",
           "stat":{
-            "fp":[5,6,6,7,7,8,8,9,9,10],
-            "rounds":[1,2,2,2,2,3,3,3,3,4]
+            "fp":[5,6,6,7,7,8,8,9,9,10]
           },
           "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8],
           "requirements":{
             "night":false
           }
+        },
+        {
+          "type":"loadRounds",
+          "target":"self",
+          "rounds":[1,2,2,2,2,3,3,3,3,4]
         }
       ]
 		},
@@ -4701,10 +4704,14 @@
           "type":"buff",
           "target":"self",
           "stat":{
-            "fp":[16,17,19,20,21,23,24,25,27,28],
-            "rounds":[1,1,2,2,2,2,3,3,3,3]
+            "fp":[16,17,19,20,21,23,24,25,27,28]
           },
           "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8]
+        },
+        {
+          "type":"loadRounds",
+          "target":"self",
+          "rounds":[1,1,2,2,2,2,3,3,3,3]
         }
       ]
 		},
@@ -4985,10 +4992,14 @@
           "type":"buff",
           "target":"self",
           "stat":{
-            "fp":[18,19,21,22,23,25,26,27,29,30],
-            "rounds":[1,2,2,2,2,3,3,3,3,4]
+            "fp":[18,19,21,22,23,25,26,27,29,30]
           },
           "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8]
+        },
+        {
+          "type":"loadRounds",
+          "target":"self",
+          "rounds":[1,2,2,2,2,3,3,3,3,4]
         }
       ]
 		},
@@ -5041,10 +5052,14 @@
           "type":"buff",
           "target":"self",
           "stat":{
-            "fp":[18,19,21,22,23,25,26,27,29,30],
-            "rounds":[1,1,2,2,2,2,3,3,3,3]
+            "fp":[18,19,21,22,23,25,26,27,29,30]
           },
           "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8]
+        },
+        {
+          "type":"loadRounds",
+          "target":"self",
+          "rounds":[1,1,2,2,2,2,3,3,3,3]
         }
       ]
 		},
@@ -7349,10 +7364,14 @@
           "type":"buff",
           "target":"self",
           "stat":{
-            "fp":[20,22,23,25,27,28,30,32,33,35],
-            "rounds":[1,2,2,2,2,3,3,3,3,4]
+            "fp":[20,22,23,25,27,28,30,32,33,35]
           },
           "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8]
+        },
+        {
+          "type":"loadRounds",
+          "target":"self",
+          "rounds":[1,2,2,2,2,3,3,3,3,4]
         }
       ]
 		},
@@ -10583,7 +10602,7 @@
 		"en_released":false,
     "artist": "nineo",
     "voice": "Hisako Kanemoto",
-    "tooltip_skill1": "Initial CD: 6s, CD: 16s<br>After aiming for 2 seconds ",
+    "tooltip_skill1": "Initial CD: 6s, CD: 16s<br>After aiming for 2 seconds at the furthest enemy, fires a bullet with a penetrating effect, dealing 1.8x damage on pierced enemies and an additional 1.8x damage on the target",
 		"skill": {
 			"icd":6,
 			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
@@ -10907,8 +10926,7 @@
           "type":"buff",
           "target":"self",
           "stat":{
-            "fp":[28,30,33,35,38,40,43,45,48,50],
-            "rounds":[1,2,2,2,2,3,3,3,3,4]
+            "fp":[28,30,33,35,38,40,43,45,48,50]
           },
           "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8],
           "requirements":{
@@ -10919,13 +10937,17 @@
           "type":"buff",
           "target":"self",
           "stat":{
-            "fp":[6,7,7,8,8,9,9,10,10,11],
-            "rounds":[1,2,2,2,2,3,3,3,3,4]
+            "fp":[6,7,7,8,8,9,9,10,10,11]
           },
           "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8],
           "requirements":{
             "night":false
           }
+        },
+        {
+          "type":"loadRounds",
+          "target":"self",
+          "rounds":[1,2,2,2,2,3,3,3,3,4]
         }
       ]
 		},
@@ -11139,12 +11161,43 @@
 		"en_released":true,
     "artist": "麻将",
     "voice": "Kotomi Aihara",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 1s, CD: 16s<br>Increase self rate of fire by 60% for 8 seconds and increase current ammo count by 4, but increase reload time after the current salvo by 1 second",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":1,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[32,35,38,41,44,47,50,53,56,60]
+          },
+          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.5,7.7,8]
+        },
+        {
+          "type":"loadRounds",
+          "target":"self",
+          "rounds":[1,2,2,2,2,3,3,3,3,4]
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"reloadBuff",
+          "fixedTime":1,
+          "duration":-1
+        },
+        {
+          "type":"passive",
+          "trigger":"reload",
+          "effects":[
+            {
+              "type":"removeBuff",
+              "target":"self",
+              "name":"reloadBuff"
+            }
+          ]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +20%",
@@ -11185,12 +11238,16 @@
 		"en_released":true,
     "artist": "HIKARI",
     "voice": "Karin Nanami",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Perform an extra attack, dealing 2x damage and causing a knockback effect of 3 units",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"burstimpact",
+          "multiplier":[1,1.1,1.2,1.3,1.4,1.6,1.7,1.8,1.9,2]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%",
@@ -11231,12 +11288,26 @@
 		"en_released":false,
     "artist": "猫头神",
     "voice": "Akane Hanazawa",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 3s, CD: 16s<br>Launch an incendiary grenade that deals 6x damage to enemies within a 1.5 unit radius and leaves a DoT that deals 1x damage every 0.33 seconds for 5 seconds in a 1.5 unit radius",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":3,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "busylinks":1,
+          "multiplier":[3,3.3,3.7,4,4.3,4.7,5,5.3,5.7,6],
+          "radius":1.5,
+          "delay":1.5,
+          "after":{
+            "type":"grenadedot",
+            "multiplier":[0.5,0.6,0.6,0.7,0.7,0.8,0.8,0.9,0.9,1],
+            "radius":1.5,
+            "duration":[2,2.4,2.7,3,3.4,3.7,4,4.3,4.7,5.0],
+            "tick":10
+          }
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +8%, Evasion +8%",
@@ -11277,12 +11348,19 @@
 		"en_released":true,
     "artist": "音符",
     "voice": "Satomi Satou",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 16s<br>After aiming for 2 seconds at the furthest enemy, fires a bullet with penetrating effects, dealing 2x damage to pierced enemies and an additional 2x damage on the target",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "delay":2,
+          "busylinks":5,
+          "multiplier":[0.9,1,1.1,1.2,1.4,1.5,1.6,1.7,1.8,2],
+          "piercing":true
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
@@ -11323,12 +11401,36 @@
 		"en_released":false,
     "artist": "PHI",
     "voice": "Arisa Ida",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 16s<br>Increase self damage by 100% (45% during daytime) and rate of fire by 40% (22% during daytime) for 8 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[50,55,61,66,72,77,83,88,94,100],
+            "rof":[22,24,26,28,30,32,34,36,38,40]
+          },
+          "duration":[5,6,6,6,7,7,7,8,8,8],
+          "requirements":{
+            "night":true
+          }
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[18,21,24,27,30,33,36,39,42,45],
+            "rof":[12,13,14,15,16,17,18,19,20,22]
+          },
+          "duration":[5,6,6,6,7,7,7,8,8,8],
+          "requirements":{
+            "night":false
+          }
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +25%",
@@ -11416,12 +11518,25 @@
 		"en_released":false,
     "artist": "Rain Lan",
     "voice": "Satomi Satou",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Increase self damage by 30% for 8 seconds and increase ammo count for the current salvo by 3",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+      "icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[18,19,21,22,23,25,26,27,29,30]
+          },
+          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8]
+        },
+        {
+          "type":"loadRounds",
+          "target":"self",
+          "rounds":[1,1,2,2,2,2,3,3,3,3]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +8%, Armor +12%",
@@ -11462,13 +11577,50 @@
 		"en_released":true,
     "artist": "nineo",
     "voice": "Azumi Asakura",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 4s, CD: 16s<br>Launch a grenade that deals 3x damage to enemies within a 2.5 unit radius. If 3 or more enemies are hit, they will take 15% extra damage for 3 seconds. If less than 3 enemies are hit, increase self damage by 60% for 8 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":4,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "multiplier":[1.2,1.4,1.6,1.8,2,2.2,2.4,2.6,2.8,3],
+          "busylinks":1,
+          "radius":2.5,
+          "delay":1.5
+        }
+      ]
 		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"hit3ormore",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"enemy",
+            "stat":{
+              "vulnerability":[10,11,11,12,12,13,13,14,14,15]
+            },
+            "duration":[2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,3]
+          }
+        ]
+      },
+      {
+        "type":"passive",
+        "trigger":"hitlessthanthree",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "stat":{
+              "fp":[40,42,44,46,48,50,52,54,57,60]
+            },
+            "duration":[5,5.3,5.6,5.9,6.3,6.6,6.9,7.2,7.6,8]
+          }
+        ]
+      }
+    ],
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +12%, Evasion +15%",
     "tiles": {
@@ -11508,13 +11660,44 @@
 		"en_released":false,
     "artist": "細重ソウジ",
     "voice": "Reina Ueda",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Active: Increase self crit rate and rate of fire by 8% per RF in the echelon for 7.5 seconds. Passive: 40% chance per attack to increase crit rate and rate of fire by 4% for 2 seconds for dolls standing in the same column, stacking up to 3 times",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "crit":[5,5.3,5.6,5.9,6.3,6.6,7,7.3,7.6,8],
+            "rof":[5,5.3,5.6,5.9,6.3,6.6,7,7.3,7.6,8]
+          },
+          "duration":[4.5,4.8,5.2,5.5,5.8,6.2,6.5,6.8,7.2,7.5]
+        }
+      ]
 		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"normalAttack",
+        "effects":[
+          {
+            "type":"buff",
+            "name":"strawberrypassive",
+            "target":"column",
+            "stat":{
+              "crit":[2,2.2,2.4,2.7,3,3.2,3.4,3.6,3.8,4],
+              "rof":[2,2.2,2.4,2.7,3,3.2,3.4,3.6,3.8,4]
+            },
+            "duration":2,
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":3,
+            "stackChance":40
+          }
+        ]
+      }
+    ],
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -10%",
     "tiles": {
@@ -11554,13 +11737,102 @@
 		"en_released":false,
     "artist": "細重ソウジ",
     "voice": "Reina Ueda",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Active: Gain 18 marks. Passive: 70% chance per attack to increase marks by 2. Upon reaching 18 marks, next attack will deal 4500% damage (300% if boss/elite target) and reset marks to 0",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"removeBuff",
+          "target":"self",
+          "name":"grape"
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "attacksLeft":1,
+          "duration":-1,
+          "sureHit":true,
+          "canCrit":false,
+          "multiplier":[1.8,1.9,2,2.1,2.25,2.4,2.55,2.7,2.85,3],
+          "requirements":{
+            "boss":true
+          }
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "attacksLeft":1,
+          "duration":-1,
+          "sureHit":true,
+          "canCrit":false,
+          "multiplier":[27,28.5,30,31.5,33.75,36,38.25,40.5,42.75,45],
+          "requirements":{
+            "boss":false
+          }
+        }
+      ]
 		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"normalAttack",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"grape",
+            "duration":-1,
+            "stackable":true,
+            "max_stacks":99,
+            "stacks":2,
+            "stacksToAdd":2,
+            "stackChance":[30,35,40,45,50,55,55,60,65,70]
+          }
+        ]
+      },
+      {
+        "type":"passive",
+        "trigger":"hasStacks",
+        "name":"grape",
+        "stacksRequired":18,
+        "effects":[
+          {
+            "type":"removeBuff",
+            "target":"self",
+            "name":"grape"
+          },
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"normalAttackBuff",
+            "attacksLeft":1,
+            "duration":-1,
+            "sureHit":true,
+            "canCrit":false,
+            "multiplier":[1.8,1.9,2,2.1,2.25,2.4,2.55,2.7,2.85,3],
+            "requirements":{
+              "boss":true
+            }
+          },
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"normalAttackBuff",
+            "attacksLeft":1,
+            "duration":-1,
+            "sureHit":true,
+            "canCrit":false,
+            "multiplier":[27,28.5,30,31.5,33.75,36,38.25,40.5,42.75,45],
+            "requirements":{
+              "boss":false
+            }
+          }
+        ]
+      }
+    ],
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -10%",
     "tiles": {

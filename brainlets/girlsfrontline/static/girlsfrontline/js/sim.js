@@ -272,6 +272,7 @@ function changeEnemyStats() {
   enemyCount = Math.max(1, parseInt($('#enemy-count').val()) || 1);
 
   simulateBattle();
+  updateUIAllDolls();
 }
 
 function changeAffection(event) {
@@ -315,6 +316,7 @@ function toggleBoss() {
   }
 
   simulateBattle();
+  updateUIAllDolls();
 }
 
 function toggleBuffedStats() {
@@ -1097,6 +1099,19 @@ function calculatePreBattleStatsAllDolls() {
 
 
 
+function preBattleSkillChanges(doll) {
+  if(doll.id == 192) {
+    var effect = doll.battle.skill.effects[0];
+    for(var i = 0; i < 5; i++) {
+      if(echelon[i].id == -1) {
+        continue;
+      }
+      if(echelon[i].id != 192 && echelon[i].type == 3) {
+        doll.battle.skill.effects.push($.extend({}, effect));
+      }
+    }
+  }
+}
 
 function initDollsForBattle() {
   for(var i = 0; i < 5; i++) {
@@ -1130,6 +1145,7 @@ function initDollsForBattle() {
     }
     doll.battle.busylinks = 0;
     doll.battle.skill = $.extend({},doll.skill);
+    preBattleSkillChanges(doll);
     doll.battle.skill.effects = getUsableSkillEffects(doll.skill.effects);
     doll.battle.skillbonus = {
       fp:1,
@@ -1165,11 +1181,12 @@ function initDollsForBattle() {
       ap:doll.pre_battle.ap
     };
     if('passives' in doll) {
-      doll.battle.passives = doll.passives;
+      doll.battle.passives = JSON.parse(JSON.stringify(doll.passives));
       $.each(doll.battle.passives, (index,passive) => {
         if('interval' in passive) {
           passive.startTime = 1;
         }
+        passive.effects = getUsableSkillEffects(passive.effects);
         $.each(passive.effects, (j,effect) => {
           effect.level = doll.skilllevel;
         });
@@ -1278,7 +1295,14 @@ function simulateBattle() {
             } else {
               $.each(doll.battle.skill.effects, (index,effect) => {
                 effect.level = doll.skilllevel;
-                doll.battle.effect_queue.push($.extend({}, effect));
+                if(effect.type == 'loadRounds') {
+                  var targets = getBuffTargets(doll, effect, enemy);
+                  $.each(targets, (index,target) => {
+                    target.battle.currentRounds += $.isArray(effect.rounds) ? effect.rounds[effect.level-1] : effect.rounds;
+                  });
+                } else {
+                  doll.battle.effect_queue.push($.extend({}, effect));
+                }
               });
               timer.timeLeft = Math.round(doll.battle.skill.cd[doll.skilllevel-1] * 30 * (1-doll.pre_battle.skillcd / 100));
             }
@@ -1288,7 +1312,14 @@ function simulateBattle() {
             } else {
               $.each(doll.battle.skill2.effects, (index,effect) => {
                 effect.level = doll.skill2level;
-                doll.battle.effect_queue.push($.extend({}, effect));
+                if(effect.type == 'loadRounds') {
+                  var targets = getBuffTargets(doll, effect, enemy);
+                  $.each(targets, (index,target) => {
+                    target.battle.currentRounds += $.isArray(effect.rounds) ? effect.rounds[effect.level-1] : effect.rounds;
+                  });
+                } else {
+                  doll.battle.effect_queue.push($.extend({}, effect));
+                }
               });
               timer.timeLeft = Math.round(doll.battle.skill2.cd[doll.skill2level-1] * 30 * (1-doll.pre_battle.skillcd / 100));
             }
@@ -1412,9 +1443,12 @@ function simulateBattle() {
           if(attackBuff !== undefined) {
             var canCrit = 'canCrit' in attackBuff ? attackBuff.canCrit : true;
             var sureCrit = 'sureCrit' in attackBuff ? attackBuff.sureCrit : false;
+            var sureHit = 'sureHit' in attackBuff ? attackBuff.sureHit : false;
 
             dmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.battle.armor));
-            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
+            if(!sureHit) {
+              dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
+            }
             if(canCrit) {
               dmg *= sureCrit ? (1 + (doll.battle.critdmg / 100)) : 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
             }
@@ -1450,7 +1484,6 @@ function simulateBattle() {
           var afterAttack = doll.battle.passives.find(passive => passive.trigger == 'afterAttack');
           if(afterAttack !== undefined) {
             var extraAttack = afterAttack.effects[0];
-            console.log(extraAttack);
             var canCrit = 'canCrit' in extraAttack ? extraAttack.canCrit : true;
             var sureCrit = 'sureCrit' in extraAttack ? extraAttack.sureCrit : false;
             var sureHit = 'sureHit' in extraAttack ? extraAttack.sureHit : false;
@@ -1466,7 +1499,6 @@ function simulateBattle() {
             dmg *= enemy.battle.vulnerability;
             extradmg *= doll.links - doll.battle.busylinks;
             extradmg *= 'extraAttackChance' in extraAttack ? extraAttack.extraAttackChance[extraAttack.level-1] / 100 : 1
-            console.log(extradmg);
           }
           dmg += extradmg;
 
@@ -1478,10 +1510,24 @@ function simulateBattle() {
                 timeLeft:0
               };
               reloadTimer.timeLeft = doll.type == 5? Math.floor(30 * (4 + 200 / doll.battle.rof)) : Math.floor(30 * (1.4 + 0.5 * doll.battle.rounds));
+              var reloadBuff = doll.battle.buffs.find(buff => buff.name == 'reloadBuff');
+              if(reloadBuff !== undefined) {
+                if('fixedTime' in reloadBuff) {
+                  reloadTimer.timeLeft += $.isArray(reloadBuff.fixedTime) ? Math.floor(reloadBuff.fixedTime[reloadBuff.level-1] * 30) : Math.floor(30 * reloadBuff.fixedTime);
+                }
+                if('multiplier' in reloadBuff) {
+                  if('stackable' in reloadBuff) {
+                    reloadTimer.timeLeft *= $.isArray(reloadBuff.multiplier) ? ((reloadBuff.multiplier[reloadBuff.level-1] * reloadBuff.stacks) / 100) + 1 : (reloadBuff.multiplier * reloadBuff.stacks / 100) + 1;
+                  } else {
+                    reloadTimer.timeLeft *= $.isArray(reloadBuff.multiplier) ? ((reloadBuff.multiplier[reloadBuff.level-1]) / 100) + 1 : (reloadBuff.multiplier / 100) + 1;
+                  }
+                }
+              }
               doll.battle.timers.push(reloadTimer);
             }
           }
 
+          // TODO: add check for reloadtimer. if exists, do not add normalattacktimer
           var normalAttackTimer = {
             type:'normalAttack',
             timeLeft:0
@@ -1493,8 +1539,6 @@ function simulateBattle() {
           doll.battle.timers.push(normalAttackTimer);
 
           doll.battle.numAttacks++;
-
-          triggerPassive('normalAttack', doll, enemy);
 
 
           var limitedAttackBuffs = doll.battle.buffs.filter(buff => 'attacksLeft' in buff);
@@ -1519,7 +1563,7 @@ function simulateBattle() {
             return true;
           });
 
-
+          triggerPassive('normalAttack', doll, enemy);
 
           if(doll.battle.numAttacks % 4 == 0) {
             triggerPassive('every4thhit', doll, enemy);
@@ -1536,6 +1580,7 @@ function simulateBattle() {
         if(action.type == 'reload') {
           doll.battle.currentRounds += doll.battle.rounds;
           triggerPassive('reload', doll, enemy);
+          //add normalAttackTimer here
         }
 
         if(action.type == 'grenade') {
@@ -1553,6 +1598,12 @@ function simulateBattle() {
           //grenades cant crit
           dmg *= enemy.battle.vulnerability;
           var hits = Math.min(action.radius * 1.5, enemy.count); //num enemy echelons hit
+
+          if(hits >= 3) {
+            triggerPassive('hit3ormore', doll, enemy);
+          } else {
+            triggerPassive('hitlessthanthree', doll, enemy);
+          }
 
           if(!isBoss) {
             dmg *= hits * 5; //5 enemies per enemy echelon
@@ -1733,7 +1784,7 @@ function calculateSkillBonus(dollIndex) {
           } else {
             if('stackChance' in buff) {
               for(var i = 0; i < buff.stacks; i++) {
-                bonus = $.isArray(buff.stackChance) ? buff.stackChance[buff.level-1] / 100 : stackChance / 100;
+                bonus = $.isArray(buff.stackChance) ? buff.stackChance[buff.level-1] / 100 : buff.stackChance / 100;
                 bonus *= $.isArray(amount) ? amount[buff.level-1] / 100 : amount / 100;
                 bonus += 1;
                 doll.battle.skillbonus[stat] *= bonus;
@@ -1799,7 +1850,7 @@ function calculateBattleStats(dollIndex) {
   doll.battle.maxstats.rof = Math.max(doll.battle.maxstats.rof, doll.battle.rof);
   doll.battle.maxstats.crit = Math.max(doll.battle.maxstats.crit, doll.battle.crit);
   doll.battle.maxstats.critdmg = Math.max(doll.battle.maxstats.critdmg, doll.battle.critdmg);
-  doll.battle.maxstats.rounds = Math.max(doll.battle.maxstats.rounds, doll.battle.rounds);
+  doll.battle.maxstats.rounds = Math.max(doll.battle.currentRounds, Math.max(doll.battle.maxstats.rounds, doll.battle.rounds));
   doll.battle.maxstats.armor = Math.max(doll.battle.maxstats.armor, doll.battle.armor);
   doll.battle.maxstats.ap = Math.max(doll.battle.maxstats.ap, doll.battle.ap);
 
@@ -1885,6 +1936,11 @@ function triggerPassive(trigger, doll, enemy) {
     $.each(passive.effects, (j,effect) => {
       if(effect.type == 'buff') {
         activateBuff(doll,effect,enemy);
+      } else if (effect.type == 'loadRounds') {
+        var targets = getBuffTargets(doll, effect, enemy);
+        $.each(targets, (index,target) => {
+          target.battle.currentRounds += $.isArray(effect.rounds) ? effect.rounds[effect.level-1] : effect.rounds;
+        });
       } else {
         doll.battle.effect_queue.push($.extend({}, effect));
       }
@@ -1922,6 +1978,16 @@ function getBuffTargets(doll, buff, enemy) {
     }
   }
 
+  if(buff.target == 'column') {
+    var col = [-20,-10,10,20];
+    $.each(col, (index,distance) => {
+      var target = echelon.find(d => d.pos == doll.pos+distance && d.id != -1);
+      if(target !== undefined) {
+        targets.push(target);
+      }
+    });
+  }
+
   if(buff.target == 'doll') {
     targets.push(echelon.find(doll => doll.id == buff.dollid));
   }
@@ -1931,7 +1997,11 @@ function getBuffTargets(doll, buff, enemy) {
 
 function addStack(target, effect, enemy) {
   var buff = target.battle.buffs.find(buff => buff.name == effect.name);
-  buff.stacks++;
+  if('stacksToAdd' in buff) {
+    buff.stacks += $.isArray(buff.stacksToAdd) ? buff.stacksToAdd[buff.level-1] : buff.stacksToAdd;
+  } else {
+    buff.stacks++;
+  }
   if('max_stacks' in buff) {
     buff.stacks = buff.stacks > buff.max_stacks ? buff.max_stacks : buff.stacks;
   }
@@ -1939,6 +2009,20 @@ function addStack(target, effect, enemy) {
   if(refresh) {
     buff.timeLeft = $.isArray(buff.duration) ? Math.floor(buff.duration[buff.level-1] * 30) : Math.floor(buff.duration * 30);
   }
+
+  $.each(target.battle.passives.filter(passive => 'stacksRequired' in passive), (index,passiveskill) => {
+    var b = target.battle.buffs.find(buf => buf.name == passiveskill.name);
+    if(b != undefined) {
+      if('stackChance' in b) {
+        var expectedstacks = $.isArray(b.stackChance) ? b.stacks * b.stackChance[b.level-1] / 100 : b.stacks * b.stackChance / 100;
+        if(expectedstacks >= passiveskill.stacksRequired) {
+          triggerPassive('hasStacks', target, enemy);
+        }
+      } else if(b.stacks >= passiveskill.stacksRequired) {
+        triggerPassive('hasStacks', target, enemy);
+      }
+    }
+  });
 }
 
 function addPassive(doll, passive, enemy, currentTime) {
@@ -1960,7 +2044,13 @@ function removeBuff(doll, buff, enemy) {
   var targets = getBuffTargets(doll, buff, enemy);
 
   $.each(targets, (index,target) => {
-    target.battle.buffs = target.battle.buffs.filter(b => b.name != buff.name);
+    target.battle.buffs = target.battle.buffs.filter(b => {
+      if('name' in b) {
+        return b.name != buff.name;
+      } else {
+        return true;
+      }
+    });
   });
 }
 
@@ -1987,6 +2077,9 @@ function getUsableSkillEffects(effects) {
       }
       if(condition == 'armored') {
         valid = valid && (enemyArmor > 0 == value);
+      }
+      if(condition == 'boss') {
+        valid = valid && (isBoss == value);
       }
     });
     if(valid) {
