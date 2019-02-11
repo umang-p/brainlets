@@ -1101,6 +1101,7 @@ function calculatePreBattleStatsAllDolls() {
 
 function preBattleSkillChanges(doll) {
   if(doll.id == 192) {
+    //strawberry cano probably
     var effect = doll.battle.skill.effects[0];
     for(var i = 0; i < 5; i++) {
       if(echelon[i].id == -1) {
@@ -1110,6 +1111,43 @@ function preBattleSkillChanges(doll) {
         doll.battle.skill.effects.push($.extend({}, effect));
       }
     }
+  }
+
+  if(doll.id == 239) {
+    //Jericho
+    var skilleffect = {
+      type:"passive",
+      trigger:"reload",
+      effects:[
+        {
+          type:"buff",
+          target:"self",
+          name:"jericho",
+          stat:{
+            fp:5,
+            acc:5
+          },
+          duration:15,
+          stackable:true,
+          stacks:1,
+          max_stacks:1
+        }
+      ]
+    };
+
+    var targetSquares = doll.tiles.target.split(",");
+    targetSquares = targetSquares.map(targetSquare => parseInt(targetSquare));
+    targetSquares = targetSquares.map(targetSquare => targetSquare + doll.pos);
+    for(var i = 0; i < 5; i++) {
+      if(echelon[i].id != -1 && $.inArray(echelon[i].pos, targetSquares) != -1) {
+        echelon[i].battle.passives.push($.extend({}, skilleffect));
+      }
+    }
+  }
+
+  if(doll.id == 253) {
+    //m1895 mod3 nagant revolver
+    doll.battle.skill2.icd = (doll.battle.timers.find(t => t.type == 'normalAttack').timeLeft+3) / 30 ;
   }
 }
 
@@ -1145,7 +1183,6 @@ function initDollsForBattle() {
     }
     doll.battle.busylinks = 0;
     doll.battle.skill = $.extend({},doll.skill);
-    preBattleSkillChanges(doll);
     doll.battle.skill.effects = getUsableSkillEffects(doll.skill.effects);
     doll.battle.skillbonus = {
       fp:1,
@@ -1226,6 +1263,10 @@ function initDollsForBattle() {
         doll.battle.timers.push(skill2Timer);
       }
     }
+  }
+
+  for(i = 0; i < 5; i++) {
+    preBattleSkillChanges(echelon[i]);
   }
 }
 
@@ -1567,6 +1608,9 @@ function simulateBattle() {
 
           if(doll.battle.numAttacks % 4 == 0) {
             triggerPassive('every4thhit', doll, enemy);
+          }
+          if(doll.battle.numAttacks % 8 == 0) {
+            triggerPassive('every8thhit', doll, enemy);
           }
 
 
@@ -1974,6 +2018,45 @@ function getBuffTargets(doll, buff, enemy) {
     for(var i = 0; i < 5; i++) {
       if(echelon[i].id != -1 && $.inArray(echelon[i].pos, targetSquares) != -1) {
         targets.push(echelon[i]);
+      }
+    }
+  }
+
+  if(buff.target == 'tilesHGSMG') {
+    var targetSquares = doll.tiles.target.split(",");
+    targetSquares = targetSquares.map(targetSquare => parseInt(targetSquare));
+    targetSquares = targetSquares.map(targetSquare => targetSquare + doll.pos);
+    for(var i = 0; i < 5; i++) {
+      if(echelon[i].id != -1 && $.inArray(echelon[i].pos, targetSquares) != -1) {
+        if(echelon[i].type == 1 || echelon[i].type == 2) {
+          targets.push(echelon[i]);
+        }
+      }
+    }
+  }
+
+  if(buff.target == 'tilesARRF') {
+    var targetSquares = doll.tiles.target.split(",");
+    targetSquares = targetSquares.map(targetSquare => parseInt(targetSquare));
+    targetSquares = targetSquares.map(targetSquare => targetSquare + doll.pos);
+    for(var i = 0; i < 5; i++) {
+      if(echelon[i].id != -1 && $.inArray(echelon[i].pos, targetSquares) != -1) {
+        if(echelon[i].type == 4 || echelon[i].type == 3) {
+          targets.push(echelon[i]);
+        }
+      }
+    }
+  }
+
+  if(buff.target == 'tilesSGMG') {
+    var targetSquares = doll.tiles.target.split(",");
+    targetSquares = targetSquares.map(targetSquare => parseInt(targetSquare));
+    targetSquares = targetSquares.map(targetSquare => targetSquare + doll.pos);
+    for(var i = 0; i < 5; i++) {
+      if(echelon[i].id != -1 && $.inArray(echelon[i].pos, targetSquares) != -1) {
+        if(echelon[i].type == 6 || echelon[i].type == 5) {
+          targets.push(echelon[i]);
+        }
       }
     }
   }
