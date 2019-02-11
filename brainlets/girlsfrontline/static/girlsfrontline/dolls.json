@@ -12047,16 +12047,20 @@
 		"en_released":false,
     "artist": "NIN",
     "voice": "Yuuki Kuwahara",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 4s, CD: 12s<br>After aiming for 1 second, shoot the nearest enemy for 12x damage. This shot can miss and if it does, aim for 2 seconds and shoot again",
 		"skill": {
 			"icd":4,
 			"cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
       "effects": [
         {
-
+          "type":"chargedshot",
+          "multiplier":[8,8.4,8.9,9.3,9.8,10.2,10.7,11,11.6,12],
+          "delay":1,
+          "busylinks":5
         }
       ]
 		},
+    "skill_control":true,
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +36%",
     "tiles": {
@@ -12172,13 +12176,39 @@
 		"en_released":false,
     "artist": "水乌龟",
     "voice": "Mariko Honda",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Active: Inflicts an extra attack on marked targets and removes the mark. Lasts 6 seconds or until all marks are gone. Passive: Mark an enemy every 1.5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"modifySkill",
+          "modifySkill":"accumulate"
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "hitCount":2,
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6],
+          "attacksLeft":0,
+          "modifySkill":"removeMark"
+        }
+      ]
 		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"time",
+        "interval":[3,2.8,2.7,2.5,2.3,2.2,2,1.8,1.7,1.5],
+        "effects":[
+          {
+            "type":"modifySkill",
+            "modifySkill":"addMark"
+          }
+        ]
+      }
+    ],
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -12777,13 +12807,22 @@
 		"en_released":false,
     "artist": "RAN",
     "voice": "Aimi",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 4s, CD: 16s<br>If there is a doll in front of her in battle, give that doll a 40hp shield and increase that doll's evasion by 80% for 10 seconds. Otherwise, increase self damage by 45% and rate of fire by 22% for 10 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":4,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"front",
+          "stat":{
+            "eva":[40,44,49,53,58,62,67,71,76,80]
+          },
+          "duration":[6,6.4,6.8,7.2,7.6,8,8.4,8.8,9.4,10]
+        }
+      ]
 		},
+    "skill_control":true,
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +65%, Damage +25%",
     "tiles": {
@@ -13494,13 +13533,22 @@
 		"en_released":false,
     "artist": "かれい",
     "voice": "Ai Kakuma",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Gain a 42hp shield for 5 seconds. If the shield breaks, increase self evasion for 5 seconds. If the shield doesnt break but expires, increase self damage by 85% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[40,45,50,55,60,65,70,75,80,85]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
+    "skill_control":true,
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +35%",
     "tiles": {
@@ -13640,13 +13688,23 @@
 		"en_released":false,
     "artist": "Redjuice",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Start each battle with 3 special bullets and use 1 bullet per skill activation. Aim for 1 second and deal 4.2x damage. The last bullet deals double the damage and reduces the target's damage by 20% for 5 seconds. Each victory in the current mission increases skill damage by 10% (stacking up to 3 times)",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[8,8,8,8,8,8,8,8,8,8],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "delay":1,
+          "multiplier":[2.5,2.7,2.9,3.1,3.3,3.5,3.7,3.8,4.1,4.2],
+          "busylinks":5,
+          "modifySkill":"usedSkill",
+          "skillDamageBonus":[5,6,6,7,7,8,8,9,9,10],
+          "victories":0
+        }
+      ]
 		},
+    "skill_control":true,
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
@@ -14995,13 +15053,36 @@
 		"en_released":false,
     "artist": "DOGALA",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Passive: The last shot in each clip will deal 300% damage and cause her to instantly reload",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":-1,
+			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+			"effects":[]
 		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"lastShot",
+        "effects":[
+          {
+            "type":"buff",
+            "name":"normalAttackBuff",
+            "target":"self",
+            "duration":-1,
+            "attacksLeft":2,
+            "multiplier":[1.5,1.7,1.8,2,2.2,2.3,2.5,2.7,2.8,3]
+          },
+          {
+            "type":"buff",
+            "name":"reloadBuff",
+            "target":"self",
+            "multiplier":-100,
+            "duration":-1,
+            "uses":1
+          }
+        ]
+      }
+    ],
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Accuracy +10%",
     "tiles": {
@@ -15922,19 +16003,31 @@
 		"en_released":false,
     "artist": "PHI",
     "voice": "Kaori Yoshioka",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Launch a grenade that deals 12x damage to enemies within a 1.5 unit radius",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+      "buffednade":false,
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "multiplier":[5,5.8,6.6,7.3,8.1,8.9,9.7,10.4,11.2,12],
+          "busylinks":1,
+          "delay":1.5,
+          "radius":1.5
+        }
+      ]
 		},
-    "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "skill_control":true,
+    "tooltip_skill2": "Passive: If targets have over 50% HP, they will be stunned for 1.6 seconds. If the targets have less than 50% HP, the grenade will deal an extra 4x damage for a total of 16x damage",
     "skill2": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":-1,
+			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+			"effects":[
+        {
+          "multiplier":[1.6,1.8,2.1,2.4,2.7,2.9,3.2,3.5,3.7,4]
+        }
+      ]
 		},
     "tooltip_tiles": "Accuracy +55%, Rate of fire +25%",
     "tiles": {
