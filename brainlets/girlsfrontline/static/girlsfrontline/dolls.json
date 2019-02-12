@@ -16316,7 +16316,7 @@
         ]
       }
     ],
-    "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "tooltip_skill2": "Passive: Increase self accuracy by 15% and ammo count by 1 after every reload, stacking up to 3 times",
     "skill2": {
 			"icd":0,
 			"cd":[],
@@ -16796,13 +16796,51 @@
 		"en_released":false,
     "artist": "STAR影法师",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Active: Increase self damage by 75% for 6 seconds. Passive: After every reload, decrease reload time by 15% and increase ammo count by 1 (stacking up to 3 times for 45% and 3 ammo)",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[27,32,38,43,48,54,59,64,70,75]
+          },
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6]
+        }
+      ]
 		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"reload",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"reloadBuff",
+            "multiplier":-15,
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":3,
+            "duration":-1
+          },
+          {
+            "type":"buff",
+            "name":"lewis",
+            "target":"self",
+            "stat":{
+              "rounds":1
+            },
+            "duration":-1,
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":3
+          }
+        ]
+      }
+    ],
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +10%, Armor +15%",
     "tiles": {
@@ -16843,12 +16881,57 @@
 		"en_released":false,
     "artist": "DSマイル",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Increase self accuracy by 80% (40% if daytime) for 8 seconds and increase ammo count for the current salvo by 4 (2 if daytime) and decrease reload time by 30%",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "acc":[40,44,48,54,58,62,66,72,76,80]
+          },
+          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8],
+          "requirements":{
+            "night":true
+          }
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "acc":[20,22,24,27,29,31,33,36,38,40]
+          },
+          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8],
+          "requirements":{
+            "night":false
+          }
+        },
+        {
+          "type":"loadRounds",
+          "target":"self",
+          "rounds":[4,4,4,4,4,4,4,4,4,4],
+          "requirements":{
+            "night":true
+          }
+        },
+        {
+          "type":"loadRounds",
+          "target":"self",
+          "rounds":[2,2,2,2,2,2,2,2,2,2],
+          "requirements":{
+            "night":false
+          }
+        },
+        {
+          "type":"buff",
+          "name":"reloadBuff",
+          "target":"self",
+          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8],
+          "multiplier":-30
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +15%, Damage +10%",
@@ -16889,13 +16972,13 @@
 		"en_released":false,
     "artist": "水熊",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 12s<br>Grant a 42HP shield to all allies for 6 seconds. If the shield still exists after 3 seconds, increase damage and accuracy by 35% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
+      "effects": []
 		},
+    "skill_control":true,
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +30%, Evasion +20%",
     "tiles": {

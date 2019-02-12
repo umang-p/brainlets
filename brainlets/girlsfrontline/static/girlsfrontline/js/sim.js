@@ -1369,7 +1369,7 @@ function simulateBattle() {
 
   initDollsForBattle();
   var enemy = initEnemyForBattle();
-  var battleLength = 30 * 20;
+  var battleLength = 30 * 40;
   var totaldamage8s = 0;
   var totaldamage20s = 0;
 
@@ -1658,6 +1658,8 @@ function simulateBattle() {
                     reloadBuff.timeLeft = 1;
                   }
                 }
+
+                reloadTimer.timeLeft = Math.floor(reloadTimer.timeLeft);
               }
               if(reloadTimer.timeLeft != 0) {
                 doll.battle.timers.push(reloadTimer);
@@ -2219,7 +2221,10 @@ function getBuffTargets(doll, buff, enemy) {
   }
 
   if(buff.target == 'doll') {
-    targets.push(echelon.find(doll => doll.id == buff.dollid));
+    var t = echelon.find(doll => doll.id == buff.dollid);
+    if(t !== undefined) {
+      targets.push(t);
+    }
   }
 
   return targets;
@@ -2475,6 +2480,29 @@ const SKILL_CONTROL = {
     } else {
       doll.skill.buffednade = true;
     }
+  },
+  276:function(doll) {
+    //hs2000
+    doll.skill.effects = [];
+    for(var i = 0; i < 5; i++) {
+      if(echelon[i].id == -1) {
+        continue;
+      }
+      var giveBuff = $('#dollindex'+i).prop('checked');
+      if(giveBuff) {
+        var buff = {
+          type:"buff",
+          target:"doll",
+          dollid:echelon[i].id,
+          stat:{
+            fp:[18,20,22,24,26,27,29,31,33,35],
+            acc:[18,20,22,24,26,27,29,31,33,35]
+          },
+          duration:[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        };
+        doll.skill.effects.push(buff);
+      }
+    }
   }
 };
 
@@ -2570,6 +2598,18 @@ const SKILL_CONTROL_HTML = {
       htmlstring += '<br><input type="checkbox" id="g3mod-skill">More than 50% hp</input>';
     } else {
       htmlstring += '<br><input type="checkbox" id="g3mod-skill" checked>More than 50% hp</input>';
+    }
+    return htmlstring;
+  },
+  276:function(doll) {
+    //hs2000
+    var htmlstring = '<p>Check the box if you want that doll\'s shield not to break (damage/accuracy buff), uncheck it to break the shield (no buff) then hit apply</p>';
+    for(var i = 0; i < 5; i++) {
+      if(echelon[i].id == -1) {
+        htmlstring += '<input type="checkbox" id="dollindex'+i+'"hidden></input>';
+      } else {
+        htmlstring += '<input type="checkbox" id="dollindex'+i+'">'+echelon[i].name+'</input><br>';
+      }
     }
     return htmlstring;
   }
