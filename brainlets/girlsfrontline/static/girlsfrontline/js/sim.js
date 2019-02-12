@@ -1167,6 +1167,59 @@ function preBattleSkillChanges(doll) {
       doll.battle.skill.effects[0].multiplier = [5,5.8,6.6,7.3,8.1,8.9,9.7,10.4,11.2,12];
     }
   }
+
+  if(doll.id == 263) {
+    //g36mod
+    var buffcount = 0;
+    var tiledoll = echelon.find(d => d.pos == doll.pos+1);
+    if(tiledoll !== undefined && tiledoll.id != -1) {
+      buffcount++;
+    }
+    var tiledoll = echelon.find(d => d.pos == doll.pos+11);
+    if(tiledoll !== undefined && tiledoll.id != -1) {
+      buffcount++;
+    }
+    var buff = {
+      type:"buff",
+      target:"self",
+      stat:{
+        rof:[5,6,6,7,7,8,8,9,9,10]
+      },
+      duration:[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5],
+      name:"g36mod",
+      stackable:true,
+      max_stacks:2,
+      stacks:1
+    }
+    if(buffcount == 1) {
+      doll.battle.skill2.effects.push($.extend({}, buff));
+    } else if (buffcount == 2) {
+      doll.battle.skill2.effects.push($.extend({}, buff));
+      doll.battle.skill2.effects.push($.extend({}, buff));
+    }
+  }
+
+  if(doll.id == 264) {
+    var reloadbuff = {
+      type:"buff",
+      target:"self",
+      name:"reloadBuff",
+      level:doll.skill2level,
+      setTime:[5.5,5.4,5.4,5.3,5.3,5.2,5.2,5.1,5.1,5],
+      duration:-1
+    };
+    var attackbuff = {
+      type:"buff",
+      target:"self",
+      name:"normalAttackBuff",
+      level:doll.skill2level,
+      multiplier:[1.25,1.27,1.28,1.3,1.32,1.33,1.35,1.37,1.38,1.4],
+      attacksLeft:3,
+      duration:-1
+    }
+    doll.battle.buffs.push(reloadbuff);
+    doll.battle.buffs.push(attackbuff);
+  }
 }
 
 function initDollsForBattle() {
@@ -1241,10 +1294,10 @@ function initDollsForBattle() {
         if('interval' in passive) {
           passive.startTime = 1;
         }
-        passive.level = doll.skilllevel;
+        passive.level = 'skill2passive' in passive ? doll.skill2level : doll.skilllevel;
         passive.effects = getUsableSkillEffects(passive.effects);
         $.each(passive.effects, (j,effect) => {
-          effect.level = doll.skilllevel;
+          effect.level = passive.level;
         });
       });
     } else {
@@ -1593,6 +1646,10 @@ function simulateBattle() {
                   } else {
                     reloadTimer.timeLeft *= $.isArray(reloadBuff.multiplier) ? ((reloadBuff.multiplier[reloadBuff.level-1]) / 100) + 1 : (reloadBuff.multiplier / 100) + 1;
                   }
+                }
+
+                if('setTime' in reloadBuff) {
+                  reloadTimer.timeLeft = $.isArray(reloadBuff.setTime) ? Math.floor(reloadBuff.setTime[reloadBuff.level-1] * 30) : Math.floor(30 * reloadBuff.setTime);
                 }
 
                 if('uses' in reloadBuff) {
@@ -2128,6 +2185,36 @@ function getBuffTargets(doll, buff, enemy) {
     var dollInFront = echelon.find(d => d.pos == doll.pos+1);
     if(dollInFront !== undefined && dollInFront.id != -1) {
       targets.push(dollInFront);
+    }
+  }
+
+  if(buff.target == 'middlerow') {
+    var dollInMiddle = echelon.find(d => d.pos == 13);
+    if(dollInMiddle !== undefined && dollInMiddle.id != -1) {
+      targets.push(dollInMiddle);
+    }
+    dollInMiddle = echelon.find(d => d.pos == 23);
+    if(dollInMiddle !== undefined && dollInMiddle.id != -1) {
+      targets.push(dollInMiddle);
+    }
+    dollInMiddle = echelon.find(d => d.pos == 33);
+    if(dollInMiddle !== undefined && dollInMiddle.id != -1) {
+      targets.push(dollInMiddle);
+    }
+  }
+
+  if(buff.target == 'backrow') {
+    var dollInBack = echelon.find(d => d.pos == 12);
+    if(dollInBack !== undefined && dollInBack.id != -1) {
+      targets.push(dollInBack);
+    }
+    dollInBack = echelon.find(d => d.pos == 22);
+    if(dollInBack !== undefined && dollInBack.id != -1) {
+      targets.push(dollInBack);
+    }
+    dollInBack = echelon.find(d => d.pos == 32);
+    if(dollInBack !== undefined && dollInBack.id != -1) {
+      targets.push(dollInBack);
     }
   }
 
