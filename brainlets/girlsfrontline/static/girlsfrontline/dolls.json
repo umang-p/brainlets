@@ -13895,12 +13895,36 @@
 		"en_released":false,
     "artist": "防弹乳牛",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Gain self buffs based on the number of enemies remaining. With only 1 group of enemies left, increase self damage by 50% for 5 seconds (with 3 stacks). For each additional enemy, remove 1 damage buff and add 1 evasion buff, increasing self evasion by 35% for 5 seconds. Evasion buff can stack up to 6 times",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "eva":[15,17,19,22,24,26,28,31,33,35]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5],
+          "stackable":true,
+          "name":"js9eva",
+          "stacks":2,
+          "max_stacks":6
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[30,32,34,37,39,41,43,46,48,50]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5],
+          "stackable":true,
+          "name":"js9fp",
+          "stacks":1,
+          "max_stacks":3
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +18%, Crit Rate +30%",
@@ -13941,13 +13965,20 @@
 		"en_released":false,
     "artist": "ゆらん",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Mark the current target. After aiming for 1.5 seconds, shoot the target for 5.5x damage. The mark lasts 5 seconds and if the target dies while the mark is active, increase self rate of fire by 25% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "delay":1.5,
+          "multiplier":[2.8,3.1,3.4,3.7,4,4.3,4.6,4.9,5.2,5.5],
+          "busylinks":5
+        }
+      ]
 		},
+    "skill_control":true,
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -14298,13 +14329,22 @@
 		"en_released":false,
     "artist": "Parsley",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD: 16s<br>Gain different effects based on the number of enemies when the skill is activated. If more than 5 enemies exist, increase self rate of fire and accuracy by 80% for 3 seconds, otherwise increase self damage by 90% for 3 seconds. After 3 seconds, if more than 2 enemies are left, grant a 25HP shield to allies on her tiles, otherwise increase damage for self and allies on tiles by 55% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[40,46,51,57,62,68,73,79,84,90]
+          },
+          "duration":3
+        }
+      ]
 		},
+    "skill_control":true,
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +18%, Evasion +18%",
     "tiles": {
@@ -15847,20 +15887,54 @@
 		"en_released":false,
     "artist": "ZAGALA",
     "voice": "Haruka Tomatsu",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 4s, CD: 16s<br>Increase self damage by 75% for 10 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":4,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[45,48,52,55,58,62,65,68,72,75]
+          },
+          "duration":[6,6.4,6.8,7.2,7.6,8,8.4,8.8,9.4,10]
+        },
+        {
+          "type":"buff",
+          "target":"none",
+          "stat":{
+            "rof":-70
+          },
+          "duration":[6,6.4,6.8,7.2,7.6,8,8.4,8.8,9.4,10]
+        },
+        {
+          "type":"buff",
+          "target":"none",
+          "name":"normalAttackBuff",
+          "multiplier":[3,3.33,3.67,4,4.33,4.67,5,5.33,5.67,6],
+          "sureHit":true,
+          "canCrit":false,
+          "aoe":true,
+          "aoe_multiplier":1,
+          "aoe_radius":2.5,
+          "duration":[6,6.4,6.8,7.2,7.6,8,8.4,8.8,9.4,10]
+        },
+        {
+          "type":"buff",
+          "target":"none",
+          "name":"avenger",
+          "duration":-1
+        }
+      ]
 		},
-    "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "tooltip_skill2": "Passive: When skill1 activates, if there are 3 dolls or less on the field, decrease rate of fire by 70% and each attack will deal 600% and 100% damage to a 2.5 unit radius from the target. Also applies the avenger's mark debuff on the enemy",
     "skill2": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":-1,
+			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+			"effects":[]
 		},
+    "skill_control":true,
     "tooltip_tiles": "Damage +20%, Crit Rate +32%",
     "tiles": {
       "self": 23,
@@ -15899,12 +15973,46 @@
 		"en_released":false,
     "artist": "ZAGALA",
     "voice": "Yukari Tamura",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Launch a grenade that deals 15x damage to enemies within a 1.5 unit radius",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "delay":1.5,
+          "multiplier":[6,7,8,9,10,11,12,13,14,15],
+          "busylinks":1,
+          "radius":1.5,
+          "after":[
+            {
+              "type":"modifySkill",
+              "modifySkill":"checkAvenger"
+            },
+            {
+              "type":"grenade",
+              "delay":0.75,
+              "multiplier":[0.7,0.8,1,1.1,1.2,1.4,1.5,1.6,1.8,1.9],
+              "busylinks":0,
+              "radius":1
+            },
+            {
+              "type":"grenade",
+              "delay":0.75,
+              "multiplier":[0.7,0.8,1,1.1,1.2,1.4,1.5,1.6,1.8,1.9],
+              "busylinks":0,
+              "radius":1
+            },
+            {
+              "type":"grenade",
+              "delay":0.75,
+              "multiplier":[0.7,0.8,1,1.1,1.2,1.4,1.5,1.6,1.8,1.9],
+              "busylinks":0,
+              "radius":1
+            }
+          ]
+        }
+      ]
 		},
     "tooltip_skill2": "SKILL2 NOT YET ADDED",
     "skill2": {
@@ -15951,19 +16059,39 @@
 		"en_released":false,
     "artist": "LIN+",
     "voice": "Emiri Katou",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 4s, CD:16s<br>Increase self rate of fire by 50% for 15 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":4,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[30,32,34,37,39,41,43,46,48,50]
+          },
+          "duration":[9,9.7,10.3,11,11.7,12.3,13,13.7,14.3,15]
+        }
+      ]
 		},
-    "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "tooltip_skill2": "Passive: When skill1 is activated, pull out secondary weapon and attack simultaneously, dealing 10% of the primary weapon's damage (20% if avenger's mark is on the enemy)",
     "skill2": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+      "icd":4,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "multiplier":[1.05,1.06,1.06,1.07,1.07,1.08,1.08,1.09,1.09,1.1],
+          "modifySkill":"checkAvenger",
+          "duration":[9,9.7,10.3,11,11.7,12.3,13,13.7,14.3,15]
+        },
+        {
+          "type":"modifySkill",
+          "modifySkill":"checkAvenger"
+        }
+      ]
 		},
     "tooltip_tiles": "Evasion +15%, Rate of fire +10%",
     "tiles": {

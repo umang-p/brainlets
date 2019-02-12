@@ -525,7 +525,7 @@ function changeDoll(event) {
   echelon[index].type = selectedDoll.type;
   echelon[index].tiles = selectedDoll.tiles;
   echelon[index].tooltip_tiles = selectedDoll.tooltip_tiles;
-  echelon[index].skill = selectedDoll.skill;
+  echelon[index].skill = $.extend(true, {},selectedDoll.skill);
   echelon[index].tooltip_skill1 = selectedDoll.tooltip_skill1;
   echelon[index].links = getNumLinks(index);
 
@@ -555,7 +555,7 @@ function changeDoll(event) {
     $('#doll'+(index+1)+' .doll-level-select').val(115);
     $('#doll'+(index+1)+' .skill2-level-select').val(10);
     echelon[index].tooltip_skill2 = selectedDoll.tooltip_skill2;
-    echelon[index].skill2 = selectedDoll.skill2;
+    echelon[index].skill2 = $.extend(true, {},selectedDoll.skill2);
     echelon[index].skill2level = 10;
     echelon[index].mod = true;
   } else {
@@ -1220,6 +1220,39 @@ function preBattleSkillChanges(doll) {
     doll.battle.buffs.push(reloadbuff);
     doll.battle.buffs.push(attackbuff);
   }
+
+  if(doll.id == 227) {
+    //js9
+    var fpstacks = enemyCount > 3 ? 0 : 4 - enemyCount;
+    var evastacks = enemyCount == 1 ? 0 : Math.min(6, enemyCount - 1);
+    doll.battle.skill.effects[0].stacks = evastacks;
+    doll.battle.skill.effects[1].stacks = fpstacks;
+  }
+
+  if(doll.id == 235) {
+    //howa type64
+    if(enemyCount > 5) {
+      doll.battle.skill.effects[0].stat.fp = 0;
+      doll.battle.skill.effects[0].stat.rof = [30,36,41,47,52,58,63,69,74,80];
+      doll.battle.skill.effects[0].stat.acc = [30,36,41,47,52,58,63,69,74,80];
+    } else {
+      doll.battle.skill.effects[0].stat.fp = [40,46,51,57,62,68,73,79,84,90];
+      doll.battle.skill.effects[0].stat.rof = 0;
+      doll.battle.skill.effects[0].stat.acc = 0;
+    }
+  }
+
+  if(doll.id == 259) {
+    //m4a1 mod3
+    doll.battle.skill.effects[2].multiplier = doll.battle.skill.effects[2].multiplier[doll.skill2level-1];
+  }
+
+  if(doll.id == 260) {
+    //sop mod3
+    doll.battle.skill.effects[0].after[1].multiplier = doll.battle.skill.effects[0].after[1].multiplier[doll.skill2level-1];
+    doll.battle.skill.effects[0].after[2].multiplier = doll.battle.skill.effects[0].after[2].multiplier[doll.skill2level-1];
+    doll.battle.skill.effects[0].after[3].multiplier = doll.battle.skill.effects[0].after[3].multiplier[doll.skill2level-1];
+  }
 }
 
 function initDollsForBattle() {
@@ -1253,8 +1286,8 @@ function initDollsForBattle() {
       doll.battle.frames_per_attack = doll.frames_per_attack;
     }
     doll.battle.busylinks = 0;
-    doll.battle.skill = $.extend({},doll.skill);
-    doll.battle.skill.effects = getUsableSkillEffects(doll.skill.effects);
+    doll.battle.skill = $.extend(true, {},doll.skill);
+    doll.battle.skill.effects = getUsableSkillEffects(doll.battle.skill.effects);
     doll.battle.skillbonus = {
       fp:1,
       acc:1,
@@ -1325,8 +1358,8 @@ function initDollsForBattle() {
     }
 
     if(doll.mod) {
-      doll.battle.skill2 = $.extend({}, doll.skill2);
-      doll.battle.skill2.effects = getUsableSkillEffects(doll.skill2.effects);
+      doll.battle.skill2 = $.extend(true, {}, doll.skill2);
+      doll.battle.skill2.effects = getUsableSkillEffects(doll.battle.skill2.effects);
       var skill2Timer = {
         type:'skill2',
         timeLeft:Math.round(doll.battle.skill2.icd * 30 * (1-doll.pre_battle.skillcd / 100))
@@ -1369,7 +1402,7 @@ function simulateBattle() {
 
   initDollsForBattle();
   var enemy = initEnemyForBattle();
-  var battleLength = 30 * 40;
+  var battleLength = 30 * 20;
   var totaldamage8s = 0;
   var totaldamage20s = 0;
 
@@ -1453,6 +1486,10 @@ function simulateBattle() {
       doll.battle.buffs = doll.battle.buffs.filter(buff => {
         if('timeLeft' in buff) {
           if(buff.timeLeft == 0) {
+            if('after' in buff) {
+              buff.after.level = buff.level
+              doll.battle.effect_queue.push($.extend({},buff.after));
+            }
             return false;
           }
         }
@@ -1517,7 +1554,7 @@ function simulateBattle() {
         } else if (action.type == 'removePassive') {
           removePassive(doll, action, enemy);
         } else if (action.type == 'modifySkill') {
-          modifySkill(doll, action);
+          modifySkill(doll, action, enemy);
         } else {
           if('delay' in action) {
             action.timeLeft = Math.round(action.delay * 30) + 1;
@@ -1583,8 +1620,20 @@ function simulateBattle() {
                 dmg = dmg * Math.min(doll.battle.targets, enemy.count);
               }
             }
+
+            if('aoe' in attackBuff) {
+              var damage = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.battle.armor));
+              damage *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
+              if('aoe_multiplier' in attackBuff) {
+                damage *= $.isArray(attackBuff.aoe_multiplier) ? attackBuff.aoe_multiplier[attackBuff.level-1] : attackBuff.aoe_multiplier;
+              }
+              damage *= Math.min(attackBuff.aoe_radius * 1.5, enemy.count);
+
+              dmg += damage;
+            }
+
             if('modifySkill' in attackBuff) {
-              modifySkill(doll, attackBuff);
+              modifySkill(doll, attackBuff, enemy);
             }
           } else {
 
@@ -1757,8 +1806,15 @@ function simulateBattle() {
           doll.battle.busylinks -= Math.min(action.busylinks, doll.links);
 
           if('after' in action) {
-            action.after.level = action.level;
-            doll.battle.effect_queue.push(action.after);
+            if($.isArray(action.after)) {
+              $.each(action.after, (index,effect) => {
+                effect.level = action.level;
+                doll.battle.effect_queue.push(effect);
+              });
+            } else {
+              action.after.level = action.level;
+              doll.battle.effect_queue.push(action.after);
+            }
           }
 
 
@@ -1851,7 +1907,7 @@ function simulateBattle() {
           }
 
           if('modifySkill' in action) {
-            modifySkill(doll, action);
+            modifySkill(doll, action, enemy);
           }
 
           if(currentFrame <= 30 * 8 +1) {
@@ -1978,7 +2034,7 @@ function calculateBattleStats(dollIndex) {
   doll.battle.eva = Math.floor(doll.pre_battle.eva * doll.battle.skillbonus.eva);
   doll.battle.rof = Math.floor(doll.pre_battle.rof * doll.battle.skillbonus.rof);
   doll.battle.crit = Math.floor(doll.pre_battle.crit * doll.battle.skillbonus.crit);
-  doll.battle.critdmg = Math.floor(doll.pre_battle.critdmg * doll.battle.skillbonus.critdmg);
+  doll.battle.critdmg = Math.floor(((doll.pre_battle.critdmg+100) * doll.battle.skillbonus.critdmg)-100);
   doll.battle.armor = Math.floor(doll.pre_battle.armor * doll.battle.skillbonus.armor);
   doll.battle.rounds = Math.floor(doll.pre_battle.rounds + doll.battle.skillbonus.rounds);
   doll.battle.ap = Math.floor(doll.pre_battle.ap * doll.battle.skillbonus.ap);
@@ -2132,6 +2188,18 @@ function getBuffTargets(doll, buff, enemy) {
         targets.push(echelon[i]);
       }
     }
+  }
+
+  if(buff.target == 'selfandtiles') {
+    var targetSquares = doll.tiles.target.split(",");
+    targetSquares = targetSquares.map(targetSquare => parseInt(targetSquare));
+    targetSquares = targetSquares.map(targetSquare => targetSquare + doll.pos);
+    for(var i = 0; i < 5; i++) {
+      if(echelon[i].id != -1 && $.inArray(echelon[i].pos, targetSquares) != -1) {
+        targets.push(echelon[i]);
+      }
+    }
+    targets.push(doll);
   }
 
   if(buff.target == 'tilesHGSMG') {
@@ -2297,7 +2365,7 @@ function removePassive(doll, passive, enemy) {
   });
 }
 
-function modifySkill(doll, effect) {
+function modifySkill(doll, effect, enemy) {
   if(doll.id == 199) {
     //ballista
     if(effect.modifySkill == 'addMark') {
@@ -2325,6 +2393,32 @@ function modifySkill(doll, effect) {
     }
     if(doll.battle.skillUseCount >= 3) {
       doll.battle.skill.effects = [];
+    }
+  }
+
+  if(doll.id == 261) {
+    //star mod3
+    if(effect.modifySkill == 'checkAvenger') {
+      var buffExists = enemy.battle.buffs.find(b => b.name == 'avenger');
+      if(buffExists) {
+        var buff = doll.battle.buffs.find(b => b.name == 'normalAttackBuff');
+        buff.multiplier = [1.1,1.12,1.12,1.14,1.14,1.16,1.16,1.18,1.18,1.2];
+      }
+    }
+  }
+
+  if(doll.id == 260) {
+    //sop mod3
+    if(effect.modifySkill == 'checkAvenger') {
+      var buffExists = enemy.battle.buffs.find(b => b.name == 'avenger');
+      if(buffExists) {
+        var skill2bonus = [0.15,0.16,0.17,0.18,0.19,0.21,0.22,0.23,0.24,0.25];
+        $.each(doll.battle.effect_queue, (index,effect) => {
+          if(effect.type == 'grenade') {
+            effect.multiplier += skill2bonus[doll.skill2level-1];
+          }
+        });
+      }
     }
   }
 }
@@ -2503,6 +2597,75 @@ const SKILL_CONTROL = {
         doll.skill.effects.push(buff);
       }
     }
+  },
+  228:function(doll) {
+    //spr a3g
+    var targetdies = $('#spra3g-skill').prop('checked');
+    if(targetdies) {
+      doll.skill.effects[0] = {
+        type:"chargedshot",
+        delay:1.5,
+        multiplier:[2.8,3.1,3.4,3.7,4,4.3,4.6,4.9,5.2,5.5],
+        busylinks:5,
+        after:{
+          type:"buff",
+          target:"self",
+          stat:{
+            rof:[15,16,17,18,19,21,22,23,24,25]
+          },
+          duration:5
+        }
+      };
+    } else {
+      doll.skill.effects[0] = {
+        type:"chargedshot",
+        delay:1.5,
+        multiplier:[2.8,3.1,3.4,3.7,4,4.3,4.6,4.9,5.2,5.5],
+        busylinks:5
+      };
+    }
+  },
+  235:function(doll) {
+    //Howa
+    var shield = $('#howa-skill').prop('checked');
+    if(shield) {
+      doll.skill.effects[0] = {
+        type:"buff",
+        target:"self",
+        stat:{
+          fp:[40,46,51,57,62,68,73,79,84,90]
+        },
+        duration:3
+      };
+    } else {
+      doll.skill.effects[0] = {
+        type:"buff",
+        target:"self",
+        stat:{
+          fp:[40,46,51,57,62,68,73,79,84,90]
+        },
+        duration:3,
+        after:{
+          type:"buff",
+          target:"selfandtiles",
+          stat:{
+            fp:[25,28,32,35,38,42,45,48,52,55]
+          },
+          duration:5
+        }
+      };
+    }
+  },
+  259:function(doll) {
+    //m4a1 mod3
+    doll.skill = $.extend(true, {}, dollData[doll.id-1].skill);
+    console.log(doll.skill);
+    var lessthan3 = $('#m4mod3-skill').prop('checked');
+    if(lessthan3) {
+      doll.skill.effects[1].target = "self";
+      doll.skill.effects[2].target = "self";
+      doll.skill.effects[3].target = "enemy";
+    }
   }
 };
 
@@ -2611,6 +2774,24 @@ const SKILL_CONTROL_HTML = {
         htmlstring += '<input type="checkbox" id="dollindex'+i+'">'+echelon[i].name+'</input><br>';
       }
     }
+    return htmlstring;
+  },
+  228:function(doll) {
+    //spr a3g
+    htmlstring = '<p>Check the box if you want the marked target to die while the mark is active (rate of fire buff), uncheck to leave it alive while mark expires (no effect)</p>';
+    htmlstring += '<input type="checkbox" id="spra3g-skill">Marked target dies with mark active</input>';
+    return htmlstring;
+  },
+  235:function(doll) {
+    //howa
+    var htmlstring = '<p>Check the box if you want to assume more than 2 groups of enemies exist after the buff expires (shields allies on tiles) or uncheck if you want to assume 2 or less enemies remain (damage buff for self/allies on tiles) then hit apply</p>';
+    htmlstring += '<input type="checkbox" id="howa-skill" checked>More than 2 groups of enemies</input>';
+    return htmlstring;
+  },
+  259:function(doll) {
+    //m4a1 mod3
+    htmlstring = '<p>Check the box to have the sim assume only 3 or less dolls are on the field, uncheck otherwise, then hit apply.</p>';
+    htmlstring += '<input type="checkbox" id="m4mod3-skill">3 or less dolls on field when skill activates</input>';
     return htmlstring;
   }
 };
