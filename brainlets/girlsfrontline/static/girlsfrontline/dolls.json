@@ -14815,12 +14815,28 @@
 		"en_released":false,
     "artist": "水乌龟",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 12s<br>Lightning strikes the enemy, dealing critical damage in a 1.5 unit radius, stunning the enemy, and increasing the targets' damage taken by 40% for 3 seconds. (Does not work on bosses)",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
+      "effects": [
+        {
+          "type":"grenade",
+          "busylinks":0,
+          "delay":0,
+          "multiplier":1,
+          "sureCrit":true,
+          "radius":1.5,
+          "after":{
+            "type":"buff",
+            "target":"enemy",
+            "stat":{
+              "vulnerability":[25,27,28,30,32,33,35,37,38,40]
+            },
+            "duration":[1.5,1.7,1.8,2,2.2,2.4,2.6,2.8,2.9,3]
+          }
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Evasion +30%",
@@ -14934,12 +14950,26 @@
 		"en_released":false,
     "artist": "水熊",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 5s, CD:1 turn<br>Launch a grenade that creates a black hole. The black hole lasts for 5 seconds and attract enemies within a 2.5 unit radius to it. Enemies within a 1.5 unit radius of the black hole will suffer 0.2x damage every second for 5 seconds. Can only be used once per turn",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":5,
+			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      "effects": [
+        {
+          "type":"grenade",
+          "delay":1.5,
+          "radius":2.5,
+          "multiplier":[0.1,0.11,0.12,0.13,0.14,0.15,0.16,0.17,0.18,0.20],
+          "busylinks":1,
+          "after":{
+            "type":"grenadedot",
+            "multiplier":[0.1,0.11,0.12,0.13,0.14,0.15,0.16,0.17,0.18,0.20],
+            "radius":1.5,
+            "duration":[2,2.3,2.7,3,3.3,3.7,4,4.3,4.7,5],
+            "tick":30
+          }
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Skill Cooldown -18%",
@@ -14980,12 +15010,20 @@
 		"en_released":false,
     "artist": "咩爆",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 1s, CD: 12s<br>Increase damage done by 100% to enemies within a radius of 5 tiles around Theresa for 5 seconds. Every attack has a chance to immobilize target for 2 seconds (bosses cannot be immobilized)",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":1,
+			"cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"enemy",
+          "stat":{
+            "vulnerability":[60,64,69,73,78,82,87,91,96,100]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +30%, Accuracy +50%",
@@ -15047,12 +15085,19 @@
 		"en_released":false,
     "artist": "DOGALA",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 1s, CD: 16s<br>Charm the 3 closest enemies, decreasing their damage and movement speed by 30% for 5 seconds and increasing her damage to them by 60% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":1,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "multiplier":[1.3,1.33,1.37,1.4,1.43,1.47,1.5,1.53,1.57,1.6],
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Rate of fire +20%",
@@ -16575,19 +16620,65 @@
 		"en_released":false,
     "artist": "Ki桑",
     "voice": "Asuka Ito",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Increase self evasion by 130% for 5 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+      "icd":6,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "eva":[70,77,83,90,97,103,110,117,123,130]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
 		},
-    "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"time",
+        "interval":[1.5,1.6,1.7,1.9,2,2.1,2.2,2.4,2.5,2.6],
+        "skill2passive":true,
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "stat":{
+              "rof":[6,6,7,7,8,8,9,9,10,10],
+              "fp":[12,13,14,15,16,16,17,18,19,20]
+            },
+            "duration":-1,
+            "name":"idwmod",
+            "stackable":true,
+            "stacks":3,
+            "stacksToAdd":-1,
+            "max_stacks":3
+          }
+        ]
+      }
+    ],
+    "tooltip_skill2": "Passive: Start battle with 3 bars of battery, with each bar increasing self rate of fire by 10% and damage by 20%. Every 2.6 seconds, lose 1 bar. Bars recharge to 3 when skill1 activates",
     "skill2": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+      "icd":6,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[6,6,7,7,8,8,9,9,10,10],
+            "fp":[12,13,14,15,16,16,17,18,19,20]
+          },
+          "duration":-1,
+          "name":"idwmod",
+          "stackable":true,
+          "stacks":3,
+          "stacksToAdd":3,
+          "max_stacks":3
+        }
+      ]
 		},
     "tooltip_tiles": "Evasion +20%, Crit Rate +10%",
     "tiles": {

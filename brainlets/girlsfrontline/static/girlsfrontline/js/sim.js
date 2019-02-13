@@ -1108,7 +1108,7 @@ function preBattleSkillChanges(doll) {
         continue;
       }
       if(echelon[i].id != 192 && echelon[i].type == 3) {
-        doll.battle.skill.effects.push($.extend({}, effect));
+        doll.battle.skill.effects.push($.extend(true,{}, effect));
       }
     }
   }
@@ -1130,7 +1130,7 @@ function preBattleSkillChanges(doll) {
           duration:15,
           stackable:true,
           stacks:1,
-          max_stacks:1
+          max_stacks:3
         }
       ]
     };
@@ -1140,7 +1140,7 @@ function preBattleSkillChanges(doll) {
     targetSquares = targetSquares.map(targetSquare => targetSquare + doll.pos);
     for(var i = 0; i < 5; i++) {
       if(echelon[i].id != -1 && $.inArray(echelon[i].pos, targetSquares) != -1) {
-        echelon[i].battle.passives.push($.extend({}, skilleffect));
+        echelon[i].battle.passives.push($.extend(true,{}, skilleffect));
       }
     }
   }
@@ -1252,6 +1252,26 @@ function preBattleSkillChanges(doll) {
     doll.battle.skill.effects[0].after[1].multiplier = doll.battle.skill.effects[0].after[1].multiplier[doll.skill2level-1];
     doll.battle.skill.effects[0].after[2].multiplier = doll.battle.skill.effects[0].after[2].multiplier[doll.skill2level-1];
     doll.battle.skill.effects[0].after[3].multiplier = doll.battle.skill.effects[0].after[3].multiplier[doll.skill2level-1];
+  }
+
+  if(doll.id == 268) {
+    //idw mod3
+    var buff = {
+      type:"buff",
+      target:"self",
+      stat:{
+        rof:[6,6,7,7,8,8,9,9,10,10],
+        fp:[12,13,14,15,16,16,17,18,19,20]
+      },
+      level:doll.skill2level,
+      duration:-1,
+      name:"idwmod",
+      stackable:true,
+      stacks:3,
+      stacksToAdd:3,
+      max_stacks:3
+    }
+    doll.battle.buffs.push(buff);
   }
 }
 
@@ -1440,7 +1460,9 @@ function simulateBattle() {
               timer.timeLeft++;
             } else {
               $.each(doll.battle.skill.effects, (index,effect) => {
-                effect.level = doll.skilllevel;
+                if(!('level' in effect)) {
+                  effect.level = doll.skilllevel;
+                }
                 if(effect.type == 'loadRounds') {
                   var targets = getBuffTargets(doll, effect, enemy);
                   $.each(targets, (index,target) => {
@@ -1457,7 +1479,9 @@ function simulateBattle() {
               timer.timeLeft++;
             } else {
               $.each(doll.battle.skill2.effects, (index,effect) => {
-                effect.level = doll.skill2level;
+                if(!('level' in effect)) {
+                  effect.level = doll.skill2level;
+                }
                 if(effect.type == 'loadRounds') {
                   var targets = getBuffTargets(doll, effect, enemy);
                   $.each(targets, (index,target) => {
@@ -1789,7 +1813,10 @@ function simulateBattle() {
           dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level-1] : doll.battle.fp * action.multiplier;
           //grenades ignore Armor
           //grenades cant miss
-          //grenades cant crit
+          //grenades cant crit, except kiana
+          if('sureCrit' in action) {
+            dmg *= (1 + (doll.battle.critdmg / 100));
+          }
           dmg *= enemy.battle.vulnerability;
           var hits = Math.min(action.radius * 1.5, enemy.count); //num enemy echelons hit
 
@@ -2300,14 +2327,15 @@ function getBuffTargets(doll, buff, enemy) {
 
 function addStack(target, effect, enemy) {
   var buff = target.battle.buffs.find(buff => buff.name == effect.name);
-  if('stacksToAdd' in buff) {
-    buff.stacks += $.isArray(buff.stacksToAdd) ? buff.stacksToAdd[buff.level-1] : buff.stacksToAdd;
+  if('stacksToAdd' in effect) {
+    buff.stacks += $.isArray(effect.stacksToAdd) ? effect.stacksToAdd[effect.level-1] : effect.stacksToAdd;
   } else {
     buff.stacks++;
   }
   if('max_stacks' in buff) {
     buff.stacks = buff.stacks > buff.max_stacks ? buff.max_stacks : buff.stacks;
   }
+  buff.stacks = Math.max(0, buff.stacks);
   var refresh = 'refreshduration' in buff ? buff.refreshduration : true; //buff = original buff, effect = new stack
   if(refresh) {
     buff.timeLeft = $.isArray(buff.duration) ? Math.floor(buff.duration[buff.level-1] * 30) : Math.floor(buff.duration * 30);
@@ -2479,14 +2507,14 @@ function determineFinalStats() {
 const SKILL_CONTROL = {
   97:function(doll) {
     //UMP40
-    doll.skill = $.extend({}, dollData[doll.id-1].skill);
+    doll.skill = $.extend(true,{}, dollData[doll.id-1].skill);
 
     var icd = Math.max(1, parseInt($('#ump40-icd').val()) || 0);
     doll.skill.icd = icd;
   },
   159:function(doll) {
     //FP-6
-    doll.skill = $.extend({}, dollData[doll.id-1].skill);
+    doll.skill = $.extend(true,{}, dollData[doll.id-1].skill);
 
     var target1 = parseInt($('#skill-control-body .shield1 input:checked').val());
     var target2 = parseInt($('#skill-control-body .shield2 input:checked').val());
@@ -2499,7 +2527,7 @@ const SKILL_CONTROL = {
   },
   178:function(doll) {
     //Contender
-    doll.skill = $.extend({}, dollData[doll.id-1].skill);
+    doll.skill = $.extend(true,{}, dollData[doll.id-1].skill);
 
     var icd = Math.max(6, parseInt($('#contender-icd').val()) || 0);
     doll.skill.icd = icd;
