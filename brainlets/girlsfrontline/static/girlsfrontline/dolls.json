@@ -11474,11 +11474,16 @@
 		"en_released":false,
     "artist": "Anmi",
     "voice": "Yukiyo Fujii",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 3s<br>Start the battle in fever mode. Activating the skill switches between fever and note mode.<br>Fever mode: Each attack inflicts 3 hits of 52% damage each, heating up the barrel by 1 level. At the 15th level, the barrel overheats and K2 loses 2% damage and accuracy per level (up to 20 stacks).<br>Note mode: Decrease evasion and movement speed by 40% and shoot once per attack instead of 3 times. Each attack cool down the barrel by 1 level. Each attack on the same enemy increases the damage K2 deals to it by 5% (up to 10 stacks)",
 		"skill": {
 			"icd":8,
 			"cd":[5,4.8,4.6,4.4,4.2,4,3.8,3.6,3.3,3],
-      "effects": []
+      "effects": [
+        {
+          "type":"modifySkill",
+          "modifySkill":"switchMode"
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +25%, Accuracy +50%",

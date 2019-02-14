@@ -1324,6 +1324,92 @@ function preBattleSkillChanges(doll) {
     };
     doll.battle.buffs.push(lmgbuff);
   }
+
+  if(doll.id == 189) {
+    //k2
+    doll.skill.mode = 'fever';
+    var feverbuff = {
+      type:"buff",
+      target:"self",
+      name:"normalAttackBuff",
+      hitCount:3,
+      multiplier:[0.4,0.412,0.424,0.436,0.448,0.46,0.472,0.484,0.496,0.52],
+      duration:-1,
+      level:doll.skilllevel
+    };
+    var heatbuff = {
+      type:"buff",
+      target:"self",
+      duration:-1,
+      stackable:true,
+      stacks:1,
+      max_stacks:20,
+      stacksToAdd:1,
+      name:"heat",
+      stat:{
+        fp:0,
+        acc:0
+      },
+      level:doll.skilllevel
+    };
+    var normalAttackPassive = {
+      type:"passive",
+      trigger:"normalAttack",
+      level:doll.skilllevel,
+      effects:[
+        {
+          type:"buff",
+          target:"self",
+          duration:-1,
+          stackable:true,
+          stacks:1,
+          max_stacks:20,
+          stacksToAdd:1,
+          name:"heat",
+          stat:{
+            fp:0,
+            acc:0
+          },
+          level:doll.skilllevel
+        },
+        {
+          type:"modifySkill",
+          modifySkill:"singleEnemyAttackStack"
+        }
+      ]
+    };
+    var hasStacksPassive = {
+      type:"passive",
+      trigger:"hasStacks",
+      stacksRequired:16,
+      name:"heat",
+      level:doll.skilllevel,
+      effects:[
+        {
+          type:"modifySkill",
+          modifySkill:"changeHeatStats"
+        }
+      ]
+    };
+    var notHasStacksPassive = {
+      type:"passive",
+      trigger:"notHasStacks",
+      stacksRequired:15,
+      name:"heat",
+      level:doll.skilllevel,
+      effects:[
+        {
+          type:"modifySkill",
+          modifySkill:"changeHeatStatsDown"
+        }
+      ]
+    };
+    doll.battle.buffs.push(feverbuff);
+    doll.battle.buffs.push(heatbuff);
+    doll.battle.passives.push(normalAttackPassive);
+    doll.battle.passives.push(hasStacksPassive);
+    doll.battle.passives.push(notHasStacksPassive);
+  }
 }
 
 function initDollsForBattle() {
@@ -2416,7 +2502,7 @@ function addStack(target, effect, enemy) {
     buff.timeLeft = $.isArray(buff.duration) ? Math.floor(buff.duration[buff.level-1] * 30) : Math.floor(buff.duration * 30);
   }
 
-  $.each(target.battle.passives.filter(passive => 'stacksRequired' in passive), (index,passiveskill) => {
+  $.each(target.battle.passives.filter(passive => 'hasStacks' == passive.trigger), (index,passiveskill) => {
     var b = target.battle.buffs.find(buf => buf.name == passiveskill.name);
     if(b != undefined) {
       if('stackChance' in b) {
@@ -2426,6 +2512,21 @@ function addStack(target, effect, enemy) {
         }
       } else if(b.stacks >= passiveskill.stacksRequired) {
         triggerPassive('hasStacks', target, enemy);
+      }
+    }
+  });
+
+  //notstacksrequired passive
+  $.each(target.battle.passives.filter(passive => 'notHasStacks' == passive.trigger), (index,passiveskill) => {
+    var b = target.battle.buffs.find(buf => buf.name == passiveskill.name);
+    if(b != undefined) {
+      if('stackChance' in b) {
+        var expectedstacks = $.isArray(b.stackChance) ? b.stacks * b.stackChance[b.level-1] / 100 : b.stacks * b.stackChance / 100;
+        if(expectedstacks <= passiveskill.stacksRequired) {
+          triggerPassive('notHasStacks', target, enemy);
+        }
+      } else if(b.stacks <= passiveskill.stacksRequired) {
+        triggerPassive('notHasStacks', target, enemy);
       }
     }
   });
@@ -2540,6 +2641,83 @@ function modifySkill(doll, effect, enemy, currentTime) {
     if(effect.modifySkill == 'resetTimer') {
       var passive = doll.battle.passives.find(p => p.name == 'sv98modpassive');
       passive.startTime = currentTime;
+    }
+  }
+
+  if(doll.id == 189) {
+    //k2
+    if(effect.modifySkill == 'changeHeatStats') {
+      var heatbuff = doll.battle.buffs.find(b => b.name == 'heat');
+      heatbuff.stat.fp = [-3.2,-3.1,-3,-2.8,-2.7,-2.6,-2.4,-2.3,-2.2,-2];
+      heatbuff.stat.acc = [-3.2,-3.1,-3,-2.8,-2.7,-2.6,-2.4,-2.3,-2.2,-2];
+      console.log('add');
+      console.log(heatbuff.stacks);
+    }
+    if(effect.modifySkill == 'changeHeatStatsDown') {
+      var heatbuff = doll.battle.buffs.find(b => b.name == 'heat');
+      heatbuff.stat.fp = 0;
+      heatbuff.stat.acc = 0;
+      console.log('remove');
+      console.log(heatbuff.stacks);
+    }
+    if(effect.modifySkill == 'singleEnemyAttackStack') {
+      var singleTargetBuff = doll.battle.buffs.find(b => 'attacksOnSingle' in b);
+      if(singleTargetBuff !== undefined) {
+        singleTargetBuff.attacksOnSingle++;
+        if(singleTargetBuff.attacksOnSingle > 10) {
+          singleTargetBuff.attacksOnSingle = 10;
+        }
+        singleTargetBuff.multiplier = 0.05 * singleTargetBuff.attacksOnSingle + 1;
+      }
+    }
+    if(effect.modifySkill == 'switchMode') {
+      if(doll.skill.mode == 'fever') {
+        //switch to note
+        var normalpassive = doll.battle.passives.find(p => p.trigger == 'normalAttack');
+        normalpassive.effects[0].stacksToAdd = -1;
+        doll.battle.buffs = doll.battle.buffs.filter(b => b.name != 'normalAttackBuff');
+        var sittingbuff = {
+          type:"buff",
+          target:"self",
+          stat:{
+            eva:[-60,-58,-56,-54,-52,-50,-48,-46,-44,-40]
+          },
+          level:doll.skilllevel,
+          duration:-1,
+          name:"sitting"
+        };
+        var singleTargetBuff = {
+          type:"buff",
+          target:"self",
+          name:"normalAttackBuff",
+          attacksOnSingle:0,
+          multiplier:1,
+          duration:-1,
+          level:doll.skilllevel
+        };
+        doll.battle.buffs.push(sittingbuff);
+        doll.battle.buffs.push(singleTargetBuff);
+        doll.skill.mode = 'note';
+        console.log('fevertonote'+currentTime);
+      } else {
+        //switch to fever
+        var normalpassive = doll.battle.passives.find(p => p.trigger == 'normalAttack');
+        normalpassive.effects[0].stacksToAdd = 1;
+        doll.battle.buffs = doll.battle.buffs.filter(b => b.name != 'sitting');
+        doll.battle.buffs = doll.battle.buffs.filter(b => 'attacksOnSingle' in b);
+        var feverbuff = {
+          type:"buff",
+          target:"self",
+          name:"normalAttackBuff",
+          hitCount:3,
+          multiplier:[0.4,0.412,0.424,0.436,0.448,0.46,0.472,0.484,0.496,0.52],
+          duration:-1,
+          level:doll.skilllevel
+        };
+        doll.battle.buffs.push(feverbuff);
+        doll.skill.mode = 'fever';
+        console.log('notetofever'+currentTime);
+      }
     }
   }
 }
