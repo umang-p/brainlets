@@ -470,7 +470,7 @@ function changeEquipment(event) {
   calculateEquipBonus(dollIndex);
   calculatePreBattleStatsForDoll(dollIndex);
   simulateBattle();
-  updateUIForDoll(dollIndex);
+  updateUIAllDolls();
 }
 
 function changeEquipLevel(event) {
@@ -525,6 +525,9 @@ function changeDoll(event) {
   echelon[index].type = selectedDoll.type;
   echelon[index].tiles = selectedDoll.tiles;
   echelon[index].tooltip_tiles = selectedDoll.tooltip_tiles;
+  var doll_types = ['All','HG','SMG','RF','AR','MG','SG']
+  echelon[index].tooltip_tiles += '<br>Affects: ' + doll_types[echelon[index].tiles.target_type];
+
   echelon[index].skill = $.extend(true, {},selectedDoll.skill);
   echelon[index].tooltip_skill1 = selectedDoll.tooltip_skill1;
   echelon[index].links = getNumLinks(index);
@@ -1273,6 +1276,54 @@ function preBattleSkillChanges(doll) {
     }
     doll.battle.buffs.push(buff);
   }
+
+  if(doll.id == 256) {
+    if(doll.battle.skill.effects[0].after.target == "self") {
+      var rof = [15,17,18,20,22,23,25,27,28,30];
+      doll.battle.skill.effects[0].after.stat.rof = rof[doll.skill2level-1];
+    }
+  }
+
+  if(doll.id == 249) {
+    //clear
+    var dollsToBuff = echelon.filter(d => {
+      if(d.id == -1 || d.id == 249) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+    if(dollsToBuff.length == 0) {
+      return;
+    }
+    var hasEquip = doll.equip1 == 85 ? true : false;
+    //hand out all 5 buffs in sequence
+    for(var i = 0; i < 5; i+=dollsToBuff.length) {
+      for(var j = 0; j < Math.min(dollsToBuff.length, 5-i); j++) {
+        doll.battle.skill.effects[i+j+1].after.target = "doll";
+        doll.battle.skill.effects[i+j+1].after.dollid = dollsToBuff[j].id;
+        if(hasEquip) {
+          doll.battle.skill.effects[i+j+1].after.stat.fp = [20,22,24,27,29,31,33,36,38,40];
+          doll.battle.skill.effects[i+j+1].after.stat.acc = [20,22,24,27,29,31,33,36,38,40];
+        }
+      }
+    }
+  }
+
+  if(doll.id == 231) {
+    //type88 (mg)
+    var lmgbuff = {
+      type:"buff",
+      target:"self",
+      level:doll.skilllevel,
+      stat:{
+        acc:[-40,-38,-36,-33,-31,-29,-27,-24,-22,-20]
+      },
+      duration:6,
+      timeLeft:180
+    };
+    doll.battle.buffs.push(lmgbuff);
+  }
 }
 
 function initDollsForBattle() {
@@ -1538,7 +1589,7 @@ function simulateBattle() {
       //tick and trigger time-based passives
       $.each(doll.battle.passives.filter(passive => 'interval' in passive), (index,passiveskill) => {
         var interval = $.isArray(passiveskill.interval) ? passiveskill.interval[passiveskill.level-1] : passiveskill.interval;
-        if((currentFrame - passiveskill.startTime) % Math.floor(interval * 30) == 0 && currentFrame != 1) {
+        if((currentFrame - passiveskill.startTime) % Math.floor(interval * 30) == 0 && currentFrame != 1 && interval != -1) {
           triggerPassive('time', doll, enemy);
         }
       });
@@ -1578,7 +1629,7 @@ function simulateBattle() {
         } else if (action.type == 'removePassive') {
           removePassive(doll, action, enemy);
         } else if (action.type == 'modifySkill') {
-          modifySkill(doll, action, enemy);
+          modifySkill(doll, action, enemy, currentFrame);
         } else {
           if('delay' in action) {
             action.timeLeft = Math.round(action.delay * 30) + 1;
@@ -1657,7 +1708,7 @@ function simulateBattle() {
             }
 
             if('modifySkill' in attackBuff) {
-              modifySkill(doll, attackBuff, enemy);
+              modifySkill(doll, attackBuff, enemy, currentFrame);
             }
           } else {
 
@@ -1699,7 +1750,6 @@ function simulateBattle() {
 
             if(doll.battle.currentRounds == 1) {
               triggerPassive('lastShot', doll, enemy);
-              console.log(currentFrame);
             }
 
             if(doll.battle.currentRounds == 0) {
@@ -1780,12 +1830,12 @@ function simulateBattle() {
 
           triggerPassive('normalAttack', doll, enemy);
 
-          if(doll.battle.numAttacks % 4 == 0) {
-            triggerPassive('every4thhit', doll, enemy);
-          }
-          if(doll.battle.numAttacks % 8 == 0) {
-            triggerPassive('every8thhit', doll, enemy);
-          }
+          $.each(doll.battle.passives.filter(p => p.trigger == 'everyXhits'), (index, passive) => {
+            var hits = $.isArray(passive.hits) ? passive.hits[passive.level-1] : passive.hits;
+            if(doll.battle.numAttacks % hits == 0 && hits != -1) {
+              triggerPassive('everyXhits', doll, enemy);
+            }
+          });
 
 
           if(currentFrame <= 30 * 8 +1) {
@@ -1830,6 +1880,16 @@ function simulateBattle() {
             dmg *= hits * 5; //5 enemies per enemy echelon
           }
 
+          if(doll.id == 229) {
+            //k11
+            if(isBoss) {
+              dmg *= 1.5;
+              dmg *= doll.links;
+            } else {
+              dmg *= doll.links;
+            }
+          }
+
           doll.battle.busylinks -= Math.min(action.busylinks, doll.links);
 
           if('after' in action) {
@@ -1862,6 +1922,9 @@ function simulateBattle() {
             //grenades cant crit
             dmg *= enemy.battle.vulnerability;
             var hits = Math.min(action.radius * 1.5, enemy.count); //num enemy echelons hit
+            if('fixedDamage' in action) {
+              dmg = $.isArray(action.fixedDamage) ? action.fixedDamage[action.level-1] : action.fixedDamage;
+            }
             if(!isBoss) {
               dmg *= hits * 5; //5 enemies per enemy echelon
             }
@@ -1884,6 +1947,18 @@ function simulateBattle() {
               action.timeLeft--;
               doll.battle.action_queue.push(action);
               continue;
+            }
+          }
+
+          if('after' in action) {
+            if($.isArray(action.after)) {
+              $.each(action.after, (index,effect) => {
+                effect.level = action.level;
+                doll.battle.effect_queue.push(effect);
+              });
+            } else {
+              action.after.level = action.level;
+              doll.battle.effect_queue.push(action.after);
             }
           }
 
@@ -1934,7 +2009,7 @@ function simulateBattle() {
           }
 
           if('modifySkill' in action) {
-            modifySkill(doll, action, enemy);
+            modifySkill(doll, action, enemy, currentFrame);
           }
 
           if(currentFrame <= 30 * 8 +1) {
@@ -2393,7 +2468,7 @@ function removePassive(doll, passive, enemy) {
   });
 }
 
-function modifySkill(doll, effect, enemy) {
+function modifySkill(doll, effect, enemy, currentTime) {
   if(doll.id == 199) {
     //ballista
     if(effect.modifySkill == 'addMark') {
@@ -2447,6 +2522,24 @@ function modifySkill(doll, effect, enemy) {
           }
         });
       }
+    }
+  }
+
+  if(doll.id == 257) {
+    //sv98 mod3
+    if(effect.modifySkill == 'checkBuff') {
+      var buff = doll.battle.buffs.find(b => b.name == 'sv98mod');
+      if(buff !== undefined) {
+        var damagebonus = [10,11,12,13,14,14,15,16,17,18];
+        var chargedshot = doll.battle.action_queue.find(action => action.name == 'sv98modshot');
+        if(chargedshot !== undefined) {
+          chargedshot.skillDamageBonus = damagebonus[doll.skill2level-1];
+        }
+      }
+    }
+    if(effect.modifySkill == 'resetTimer') {
+      var passive = doll.battle.passives.find(p => p.name == 'sv98modpassive');
+      passive.startTime = currentTime;
     }
   }
 }
@@ -2590,7 +2683,7 @@ const SKILL_CONTROL = {
   },
   224:function(doll) {
     //m82a1
-    var victories = parseInt($('#m82a1-skill').val());
+    var victories = parseInt($('#m82a1-skill').val()) || 0;
     doll.skill.effects[0].victories = victories;
     doll.skill.effects[0].skillDamageBonus = [5,6,6,7,7,8,8,9,9,10];
   },
@@ -2687,13 +2780,58 @@ const SKILL_CONTROL = {
   259:function(doll) {
     //m4a1 mod3
     doll.skill = $.extend(true, {}, dollData[doll.id-1].skill);
-    console.log(doll.skill);
     var lessthan3 = $('#m4mod3-skill').prop('checked');
     if(lessthan3) {
       doll.skill.effects[1].target = "self";
       doll.skill.effects[2].target = "self";
       doll.skill.effects[3].target = "enemy";
     }
+  },
+  256:function(doll) {
+    //mosin-nagant mod3
+    var skill1kill = $('#mosinmod3-skill1').prop('checked');
+    var hitsperkill = Math.max(0, parseInt($('#mosinmod3-skill2').val()) || 0);
+
+    doll.skill = $.extend(true,{}, dollData[doll.id-1].skill);
+    if(skill1kill) {
+      doll.skill.effects[0].after.target = "self";
+    } else {
+      doll.skill.effects[0].after.target = "none";
+    }
+
+    if(hitsperkill == 0) {
+      doll.passives[0].hits = -1;
+    } else {
+      doll.passives[0].hits = hitsperkill;
+    }
+  },
+  208:function(doll) {
+    //c-ms
+    doll.skill = $.extend(true,{}, dollData[doll.id-1].skill);
+    var toDamage = Math.max(0, parseInt($('#cms-skill').val()) || 0);
+    var toAcc = Math.max(0, parseInt($('#cms-skill2').val()) || 0);
+    if(toDamage == 0) {
+      return;
+    } else {
+      doll.skill.effects[0].after.duration = toDamage;
+      doll.skill.effects[1].delay = toDamage;
+    }
+    if(toAcc == 0) {
+      return;
+    } else {
+      doll.skill.effects[1].after.duration = toAcc;
+      doll.skill.effects[2].delay = toAcc;
+    }
+  },
+  272:function(doll) {
+    //x95
+    doll.skill = $.extend(true,{}, dollData[doll.id-1].skill);
+    var missinghp = parseInt($('#x95-skill').val()) || 0;
+    missinghp = Math.max(0, missinghp);
+    missinghp = Math.min(99, missinghp);
+    var skillmodifier = [1.2,1.4,1.6,1.8,2,2.2,2.4,2.6,2.8,3];
+
+    doll.skill.effects[0].multiplier = missinghp * skillmodifier[doll.skilllevel-1] / 100;
   }
 };
 
@@ -2820,6 +2958,26 @@ const SKILL_CONTROL_HTML = {
     //m4a1 mod3
     htmlstring = '<p>Check the box to have the sim assume only 3 or less dolls are on the field, uncheck otherwise, then hit apply.</p>';
     htmlstring += '<input type="checkbox" id="m4mod3-skill">3 or less dolls on field when skill activates</input>';
+    return htmlstring;
+  },
+  256:function(doll) {
+    //mosin-nagant mod3
+    var htmlstring = '<p>Make changes then hit apply. Check the box if you want mosin-nagants first skill to kill an enemy (rate of fire buff), uncheck it otherwise. For the second field, enter how often she kills an enemy (provides damage buff). Enter 0 for never (no buff). Example: 1 = every shot kills an enemy, 2 = every other shot kills an enemy, 3 = every 3rd shot, etc etc.</p><br>';
+    htmlstring += '<input type="checkbox" id="mosinmod3-skill1">Skill1 kills an enemy</input><br>';
+    htmlstring += '<input type="number" value="0" id="mosinmod3-skill2">Number of hits to kill an enemy</input><p></p>';
+    return htmlstring;
+  },
+  208:function(doll) {
+    //c-ms
+    var htmlstring = '<p>Enter when you would like to activate the skill and switch effects then hit apply.<br>Enter a value of 0 to not switch to that ammunition. Entering 0 for both means C-MS will stay in evasion mode the entire time. Remember there is a 1s cooldown time every time you switch modes.<br>maybe instead of swtichgin this should just let you pick one mode to go with for the whole simulation</p><br>';
+    htmlstring += '<input type="number" id="cms-skill">Enter how many seconds into evasion mode you want to switch into damage mode</input><br>';
+    htmlstring += '<input type="number" id="cms-skill2">Enter how many seconds into damage mode you want to switch into accuracy mode</input><br><p></p>';
+    return htmlstring;
+  },
+  272:function(doll) {
+    //x95
+    var htmlstring = '<p>Enter the percentage of hp missing from the enemy (so if the enemy has 10% hp left, you enter 90 here) then hit apply</p><br>';
+    htmlstring += '<input type="number" id="x95-skill">% of hp missing from enemy (min: 0, max:99)</input><p></p>';
     return htmlstring;
   }
 };

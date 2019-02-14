@@ -4384,7 +4384,8 @@
     "passives":[
       {
         "type":"passive",
-        "trigger":"every4thhit",
+        "trigger":"everyXhits",
+        "hits":4,
         "effects":[
           {
             "type":"buff",
@@ -4819,7 +4820,8 @@
     "passives":[
       {
         "type":"passive",
-        "trigger":"every4thhit",
+        "trigger":"everyXhits",
+        "hits":4,
         "effects":[
           {
             "type":"buff",
@@ -6370,7 +6372,8 @@
     "passives":[
       {
         "type":"passive",
-        "trigger":"every4thhit",
+        "trigger":"everyXhits",
+        "hits":4,
         "effects":[
           {
             "type":"buff",
@@ -11473,10 +11476,9 @@
     "voice": "Yukiyo Fujii",
     "tooltip_skill1": "SKILL NOT YET ADDED",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[5,4.8,4.6,4.4,4.2,4,3.8,3.6,3.3,3],
+      "effects": []
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +25%, Accuracy +50%",
@@ -12761,13 +12763,53 @@
 		"en_released":false,
     "artist": "小吃",
     "voice": "Haruno Anzu",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 1s, CD: 1s<br>Activate skill to switch between ammunition for a different effect. Subsonic rounds (starting ammo): Increase self evasion by 65%. Spoon point tip: Increase self damage by 85%. Standard rounds: Increase self accuracy by 200%",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":1,
+			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      "effects": [
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":0,
+          "after":{
+            "type":"buff",
+            "target":"self",
+            "stat":{
+              "eva":[30,34,38,42,46,49,53,57,61,65]
+            },
+            "duration":-1
+          }
+        },
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":-1,
+          "after":{
+            "type":"buff",
+            "target":"self",
+            "stat":{
+              "fp":[40,45,50,55,60,65,70,75,80,85]
+            },
+            "duration":-1
+          }
+        },
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":-1,
+          "after":{
+            "type":"buff",
+            "target":"self",
+            "stat":{
+              "acc":[110,120,130,140,150,160,170,180,190,200]
+            },
+            "duration":-1
+          }
+        }
+      ]
 		},
+    "skill_control":true,
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Rate of fire +5%",
     "tiles": {
@@ -14018,12 +14060,19 @@
 		"en_released":false,
     "artist": "反骨Max",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 16s<br>Launch a grenade based on the number on dummy links, dealing 4x damage to enemies within a radius of 1 unit. Enemies are hit by a grenade are marked for 3 seconds. If K11's grenades hit a marked enemy, they take an additional 2x damage",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "busylinks":5,
+          "delay":1.5,
+          "radius":1,
+          "multiplier":[2,2.2,2.4,2.7,3,3.2,3.4,3.6,3.8,4]
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +20%, Evasion +15%",
@@ -14120,13 +14169,43 @@
 		"en_released":false,
     "artist": "NIN",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Active: Increase self damage by 75% for 6 seconds.<br>Passive: Switch between LMG and HMG mode based on whether or not movement is made. In LMG mode, increase movement speed by 50% but decrease accuracy by 20%. If no movement is taken for 6 seconds, enter HMG mode, increasing accuracy by 30% and max ammo by 2. Movement causes a switch from HMG to LMG mode.",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[27,32,38,43,48,54,59,64,70,75]
+          },
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6]
+        }
+      ]
 		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"time",
+        "interval":6,
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "stat":{
+              "acc":[15,17,18,20,22,23,25,27,28,30],
+              "rounds":[0,0,0,1,1,1,2,2,2,2]
+            },
+            "duration":-1,
+            "name":"t88",
+            "stackable":true,
+            "max_stacks":1,
+            "stacks":1
+          }
+        ]
+      }
+    ],
     "tooltip_skill2": "",
     "tooltip_tiles": "Accuracy +10%, Armor +15%",
     "tiles": {
@@ -14450,13 +14529,169 @@
 		"en_released":false,
     "artist": "LM7",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 12s<br>Arc Shadow effect: Increase self evasion by 20% (stacking) every second and the next 4 attacks are guaranteed to hit and crit. <br>Active: Activate Arc Shadow for 5 seconds and deploy holograms based on the number of dummy links P90 has. Each hologram has 999 armor and 3hp and lasts for 3 seconds.<br>Passive: Whenever P90 loses 5% health, activate Arc Shadow for 3 seconds. Passive can trigger at most every 6 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[16,15.6,15.1,14.7,14.2,13.8,13.3,12.9,12.4,12],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "sureCrit":true,
+          "sureHit":true,
+          "attacksLeft":4,
+          "duration":-1
+        },
+        {
+          "type":"smoke",
+          "delay":1,
+          "busylinks":0,
+          "after":{
+            "type":"buff",
+            "target":"self",
+            "name":"p90",
+            "stat":{
+              "eva":[8,9,11,12,13,15,16,17,19,20]
+            },
+            "duration":5,
+            "stackable":true,
+            "stacks":1
+          }
+        },
+        {
+          "type":"smoke",
+          "delay":2,
+          "busylinks":0,
+          "after":{
+            "type":"buff",
+            "target":"self",
+            "name":"p90",
+            "stat":{
+              "eva":[8,9,11,12,13,15,16,17,19,20]
+            },
+            "duration":5,
+            "stackable":true,
+            "stacks":1
+          }
+        },
+        {
+          "type":"smoke",
+          "delay":3,
+          "busylinks":0,
+          "after":{
+            "type":"buff",
+            "target":"self",
+            "name":"p90",
+            "stat":{
+              "eva":[8,9,11,12,13,15,16,17,19,20]
+            },
+            "duration":5,
+            "stackable":true,
+            "stacks":1
+          }
+        },
+        {
+          "type":"smoke",
+          "delay":4,
+          "busylinks":0,
+          "after":{
+            "type":"buff",
+            "target":"self",
+            "name":"p90",
+            "stat":{
+              "eva":[8,9,11,12,13,15,16,17,19,20]
+            },
+            "duration":5,
+            "stackable":true,
+            "stacks":1
+          }
+        },
+        {
+          "type":"smoke",
+          "delay":5,
+          "busylinks":0,
+          "after":{
+            "type":"buff",
+            "target":"self",
+            "name":"p90",
+            "stat":{
+              "eva":[8,9,11,12,13,15,16,17,19,20]
+            },
+            "duration":5,
+            "stackable":true,
+            "stacks":1
+          }
+        }
+      ]
 		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"time",
+        "interval":-1,
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"normalAttackBuff",
+            "sureCrit":true,
+            "sureHit":true,
+            "attacksLeft":4,
+            "duration":-1
+          },
+          {
+            "type":"smoke",
+            "delay":1,
+            "busylinks":0,
+            "after":{
+              "type":"buff",
+              "target":"self",
+              "name":"p90",
+              "stat":{
+                "eva":[8,9,11,12,13,15,16,17,19,20]
+              },
+              "duration":3,
+              "stackable":true,
+              "stacks":1
+            }
+          },
+          {
+            "type":"smoke",
+            "delay":2,
+            "busylinks":0,
+            "after":{
+              "type":"buff",
+              "target":"self",
+              "name":"p90",
+              "stat":{
+                "eva":[8,9,11,12,13,15,16,17,19,20]
+              },
+              "duration":3,
+              "stackable":true,
+              "stacks":1
+            }
+          },
+          {
+            "type":"smoke",
+            "delay":3,
+            "busylinks":0,
+            "after":{
+              "type":"buff",
+              "target":"self",
+              "name":"p90",
+              "stat":{
+                "eva":[8,9,11,12,13,15,16,17,19,20]
+              },
+              "duration":3,
+              "stackable":true,
+              "stacks":1
+            }
+          }
+        ]
+      }
+    ],
+    "skill_control":true,
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +30%",
     "tiles": {
@@ -15207,12 +15442,107 @@
 		"en_released":false,
     "artist": "水熊",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Stops shooting and plays her guitar 5 times. Each time she plays, a teammate other than herself receives a damage and accuracy buff of 30% (40% if she has Glory Light equipped) for 3 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"smoke",
+          "delay":5,
+          "busylinks":5
+        },
+        {
+          "type":"smoke",
+          "delay":1,
+          "busylinks":0,
+          "after":{
+            "type":"buff",
+            "target":"none",
+            "stat":{
+              "fp":[15,17,18,20,22,23,25,27,28,30],
+              "acc":[15,17,18,20,22,23,25,27,28,30]
+            },
+            "name":"clear",
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":1,
+            "duration":3
+          }
+        },
+        {
+          "type":"smoke",
+          "delay":2,
+          "busylinks":0,
+          "after":{
+            "type":"buff",
+            "target":"none",
+            "stat":{
+              "fp":[15,17,18,20,22,23,25,27,28,30],
+              "acc":[15,17,18,20,22,23,25,27,28,30]
+            },
+            "name":"clear",
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":1,
+            "duration":3
+          }
+        },
+        {
+          "type":"smoke",
+          "delay":3,
+          "busylinks":0,
+          "after":{
+            "type":"buff",
+            "target":"none",
+            "stat":{
+              "fp":[15,17,18,20,22,23,25,27,28,30],
+              "acc":[15,17,18,20,22,23,25,27,28,30]
+            },
+            "name":"clear",
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":1,
+            "duration":3
+          }
+        },
+        {
+          "type":"smoke",
+          "delay":4,
+          "busylinks":0,
+          "after":{
+            "type":"buff",
+            "target":"none",
+            "stat":{
+              "fp":[15,17,18,20,22,23,25,27,28,30],
+              "acc":[15,17,18,20,22,23,25,27,28,30]
+            },
+            "name":"clear",
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":1,
+            "duration":3
+          }
+        },
+        {
+          "type":"smoke",
+          "delay":5,
+          "busylinks":0,
+          "after":{
+            "type":"buff",
+            "target":"none",
+            "stat":{
+              "fp":[15,17,18,20,22,23,25,27,28,30],
+              "acc":[15,17,18,20,22,23,25,27,28,30]
+            },
+            "name":"clear",
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":1,
+            "duration":3
+          }
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +30%, Accuracy +50%",
@@ -15274,12 +15604,17 @@
 		"en_released":false,
     "artist": "水熊",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Stops shooting and plays her guitar 5 times. Each time she plays, 3 random enemy echelons receive a rate of fire and accuracy debuff of 12% (15% if she has Black Cat equipped) for 3 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":6,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"smoke",
+          "delay":5,
+          "busylinks":5
+        }
+      ]
 		},
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +30%, Accuracy +50%",
@@ -15536,7 +15871,8 @@
     "passives":[
       {
         "type":"passive",
-        "trigger":"every8thhit",
+        "trigger":"everyXhits",
+        "hits":8,
         "effects":[
           {
             "type":"buff",
@@ -15760,20 +16096,56 @@
 		"en_released":false,
     "artist": "防弹乳牛",
     "voice": "Uesaka Sumire",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>After aiming for 1.5 seconds, shoot the furthest target for 6.5x damage",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":10,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "delay":1.5,
+          "busylinks":5,
+          "multiplier":[3.2,3.6,3.9,4.3,4.7,5,5.4,5.8,6.1,6.5],
+          "after":{
+            "type":"buff",
+            "target":"none",
+            "stat":{
+              "rof":[15,17,18,20,22,23,25,27,28,30]
+            },
+            "duration":5
+          }
+        }
+      ]
 		},
-    "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"everyXhits",
+        "hits":-1,
+        "skill2passive":true,
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "stat":{
+              "fp":[10,11,12,13,14,16,17,18,19,20]
+            },
+            "duration":3,
+            "stackable":true,
+            "name":"mosinmod3",
+            "stacks":1,
+            "max_stacks":1
+          }
+        ]
+      }
+    ],
+    "tooltip_skill2": "Passive: Every enemy unit killed by Mosin increases her damage by 20% for 3 seconds. Killing an enemy unit with her skill1 increases her rate of fire by 30% for 5 seconds",
     "skill2": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":-1,
+			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+			"effects": []
 		},
+    "skill_control":true,
     "tooltip_tiles": "Skill Cooldown -18%",
     "tiles": {
       "self": 23,
@@ -15812,19 +16184,68 @@
 		"en_released":false,
     "artist": "幻象黑兔",
     "voice": "Mamiko Hanada",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>After aiming for 1.5 seconds, shoot the nearest target for 6x damage",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":10,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "delay":1.5,
+          "multiplier":[3,3.3,3.7,4,4.3,4.7,5,5.3,5.7,6],
+          "busylinks":5,
+          "modifySkill":"resetTimer",
+          "name":"sv98modshot",
+          "after":{
+            "type":"buff",
+            "target":"self",
+            "name":"sv98mod",
+            "stat":{
+              "acc":[5,5,6,6,6,7,7,7,8,8],
+              "rof":[5,5,6,6,6,7,7,7,8,8]
+            },
+            "duration":-1,
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":1,
+            "stacksToAdd":-1
+          }
+        },
+        {
+          "type":"modifySkill",
+          "modifySkill":"checkBuff"
+        }
+      ]
 		},
-    "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"time",
+        "interval":3,
+        "skill2passive":true,
+        "name":"sv98modpassive",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"sv98mod",
+            "stat":{
+              "acc":[5,5,6,6,6,7,7,7,8,8],
+              "rof":[5,5,6,6,6,7,7,7,8,8]
+            },
+            "duration":-1,
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":1
+          }
+        ]
+      }
+    ],
+    "tooltip_skill2": "Passive: Become cloaked after not moving for 3 seconds. While cloaked, increase self accuracy and rate of fire by 8% and increase skill1 damage by 18%. Using skill1 while cloaked then removes cloaked status",
     "skill2": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":-1,
+			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+			"effects": []
 		},
     "tooltip_tiles": "Skill Cooldown -15%",
     "tiles": {
@@ -16059,7 +16480,7 @@
         }
       ]
 		},
-    "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "tooltip_skill2": "Passive: After the grenade detonates, it splits into 3 smaller grenades dealing 1.9x damage to enemies within a 1 unit radius. If the enemy is marked by Avenger's Mark, the smaller grenades will deal an additional 0.25x damage",
     "skill2": {
 			"icd":0,
 			"cd":[],
@@ -16340,7 +16761,7 @@
         ]
       }
     ],
-    "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "tooltip_skill2": "Passive: Reload time is reduced to 5 seconds. After reloading, the first 3 bullets with deal an additional 40% damage (affects the first volley)",
     "skill2": {
 			"icd":-1,
 			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -16774,19 +17195,39 @@
 		"en_released":false,
     "artist": "ZAGALA",
     "voice": "Tomomi Mineuchi",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 1s, CD: 16s<br>Launch a smoke grenade that decreases enemy rate of fire by 40% and movement speed by 55% within a radius of 2.5 units for 4 seconds",
 		"skill": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+			"icd":1,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"smoke",
+          "busylinks":1,
+          "delay":1.5
+        }
+      ]
 		},
-    "tooltip_skill2": "SKILL2 NOT YET ADDED",
+    "tooltip_skill2": "Passive: After smoke grenade has been out for 2 seconds, enemies will be hacked every 2 seconds. Hacked enemies will take a fixed 50 damage every time they attack. Hacking lasts 5 seconds",
     "skill2": {
-			"icd":0,
-			"cd":[],
-			"effects": {
-			}
+      "icd":1,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "busylinks":0,
+          "multiplier":0,
+          "radius":2.5,
+          "delay":2,
+          "after":{
+            "type":"grenadedot",
+            "multiplier":0,
+            "radius":2.5,
+            "duration":5,
+            "fixedDamage":[23,26,29,32,35,38,41,44,47,50],
+            "tick":30
+          }
+        }
+      ]
 		},
     "tooltip_tiles": "Damage +20%, Crit Rate +30%",
     "tiles": {
@@ -16910,12 +17351,21 @@
 		"en_released":false,
     "artist": "十月十日奏",
     "voice": "",
-    "tooltip_skill1": "SKILL NOT YET ADDED",
+    "tooltip_skill1": "Initial CD: 4s, CD: 8s<br>Switch to the target with the lowest hp and deal more damage the less hp it has left. Damage increase is equal to (3 * % hp missing from target). Skill lasts 5 seconds",
 		"skill": {
 			"icd":4,
 			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
-      "effects": []
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5],
+          "multiplier":1.5
+        }
+      ]
 		},
+    "skill_control":true,
     "tooltip_skill2": "",
     "tooltip_tiles": "Rate of fire +15%, Accuracy +25%",
     "tiles": {
