@@ -36,8 +36,8 @@
   width: 50px;
 }
 #day-btn img, #night-btn img {
-  height: 25px;
-  width: 25px;
+  height: 23px;
+  width: 23px;
   pointer-events: none;
 }
 .affection img {

@@ -180,7 +180,7 @@ $(function () {
   isBoss = false;
   $('#boss-toggle').click(toggleBoss);
 
-  showBuffedStats = false;
+  showBuffedStats = true;
   $('#buffed-stats-toggle').change(toggleBuffedStats);
 
   initEquipSelectModal();
@@ -812,6 +812,8 @@ function updateUIForDoll(index) {
     $('#doll'+(index+1)+' .rounds span').text('-');
     $('#doll'+(index+1)+' .armor span').text('-');
     $('#doll'+(index+1)+' .ap span').text('-');
+    $('#doll'+(index+1)+'-dmg-label').text('-');
+    $('#doll'+(index+1)+'-dmg').text('-');
   } else {
     $('#doll'+(index+1)+'-name').text(doll.name);
     $('#doll'+(index+1)+' .affection').children().prop('hidden', true);
@@ -868,6 +870,9 @@ function updateUIForDoll(index) {
     }
 
     $('#doll'+(index+1)+' .hp span').text(doll.pre_battle.hp);
+
+    $('#doll'+(index+1)+'-dmg-label').text(doll.name);
+    $('#doll'+(index+1)+'-dmg').text(doll.totaldmg);
 
 
     $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/dolls/'+doll.id+'.png');
@@ -2153,6 +2158,13 @@ function simulateBattle() {
   $('#dmg-8s').text(Math.round(totaldamage8s));
   $('#dmg-20s').text(Math.round(totaldamage20s));
 
+  for(i = 0; i < 5; i++) {
+    if(echelon[i].id == -1) {
+      continue;
+    }
+    echelon[i].totaldmg = graphData.y[i].data[currentFrame-1];
+  }
+
   determineFinalStats();
 
   graphData.y = graphData.y.filter(v => v.name != '');
@@ -2763,11 +2775,9 @@ function determineFinalStats() {
         doll.battle.finalstats[stat] = doll.battle.maxstats[stat];
       }
 
-      //THIS IS A TERRIBLE WAY TO DO IT AND DOES NOT REFLECT WHAT THE STAT WILL BE WHEN ALL SKILLS ARE ON
-      //however, this only applies to cases where a doll reduces a stat (aug, mp7, etc)
-      //if a doll if only ever buffed during battle or only ever debuffed in battle, the stats shown in the ui will be correct
+      //if stat went both up and down in battle, just show both min and max
       if(doll.battle.maxstats[stat] != doll.pre_battle[stat] && doll.battle.minstats[stat] != doll.pre_battle[stat]) {
-        doll.battle.finalstats[stat] = Math.round((doll.battle.maxstats[stat] + doll.battle.minstats[stat]) / 2);
+        doll.battle.finalstats[stat] = doll.battle.minstats[stat] + '-' + doll.battle.maxstats[stat];
       }
     });
   }

@@ -11,19 +11,27 @@
 {% block main %}
 <main class="container-fluid clearfix">
 <div id="sim-controls" class="float-left mr-4 ml-2">
-  <div class="row">
-    <p class="h6 col">
+  <div class="row no-gutters">
+    <p class="h6 col-auto">
       Total DMG 8s: <span id="dmg-8s">-</span>
       <br>
       Total DMG 20s: <span id="dmg-20s">-</span>
       <br>
-      {# Total DPS: <span id="dps-total">-</span> #}
     </p>
-    <div class="col">
-      <button id="damage-graph-btn" type="button" class="btn">Damage Graph</button>
-      <button type="button" class="btn btn-default" hidden>Save</button>
-      <button type="button" class="btn btn-default" hidden>Load</button>
-    </div>
+    <p class="h6 col-auto mx-auto">
+      <span id="doll1-dmg-label">-</span>: <span id="doll1-dmg">-</span>
+      <br>
+      <span id="doll2-dmg-label">-</span>: <span id="doll2-dmg">-</span>
+      <br>
+      <span id="doll3-dmg-label">-</span>: <span id="doll3-dmg">-</span>
+    </p>
+    <p class="h6 col-auto mx-auto">
+      <span id="doll4-dmg-label">-</span>: <span id="doll4-dmg">-</span>
+      <br>
+      <span id="doll5-dmg-label">-</span>: <span id="doll5-dmg">-</span>
+      <br>
+      <span id="fairy-dmg-label">-</span>: <span id="fairy-dmg">-</span>
+    </p>
   </div>
   <div class="formation-row row no-gutters">
     <div id="pos12" data-index="0" class="col border border-dark" draggable="true">
@@ -577,23 +585,30 @@
     </div>
   </div>
   <div class="row no-gutters mt-2">
-    <div class="col-3">
+    <div class="col-auto mx-auto">
       <div class="btn-group mx-auto">
         <button id="day-btn" type="button" class="btn btn-success"><img src="{% static 'girlsfrontline/sim/day.png' %}" class="img-fluid"></img></button>
         <button id="night-btn" type="button" class="btn"><img src="{% static 'girlsfrontline/sim/night.png' %}" class="img-fluid"></img></button>
       </div>
     </div>
-    <div class="col-2">
+    <div class="col-auto mx-auto">
       <button id="boss-toggle" type="button" class="btn mx-auto" data-toggle="tooltip" data-placement="top" data-original-title="Changes number of enemies per echelon to 1 and allows skill effects that require a boss">Boss</button>
     </div>
-    <div class="col-2">
-      <button type="button" class="btn btn-default">Help/About</button>
+    <div class="col-auto mx-auto">
+      <button type="button" class="mx-auto btn btn-default">Help/About</button>
+    </div>
+    <div class="col-auto mx-auto">
+      <button type="button" class="mx-auto btn btn-default" hidden>Save</button>
+      <button type="button" class="mx-auto btn btn-default" hidden>Load</button>
+    </div>
+    <div class="col-auto mx-auto">
+      <button id="damage-graph-btn" type="button" class="btn">Damage Graph</button>
     </div>
   </div>
   <div class="row no-gutters mt-2">
     <div class="col">
       <label for="buffed-stats-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Toggle showing skill buffs in stats">Show Buffed Stats</label>
-      <input id="buffed-stats-toggle" type="checkbox">
+      <input id="buffed-stats-toggle" type="checkbox" checked>
     </div>
   </div>
 </div>
@@ -673,7 +688,7 @@
           <button type="button" class="btn btn-sm btn-default">Skill Control</button>
         </div>
         <div class="row no-gutters mb-3">
-          <div class="col">
+          <div class="col-auto">
             <div class="hp d-flex align-items-center">
               <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
               <span>-</span>
@@ -695,7 +710,7 @@
               <span>-</span>
             </div>
           </div>
-          <div class="col">
+          <div class="col-auto">
             <div class="crit d-flex align-items-center">
               <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
               <span>-</span>
@@ -845,7 +860,7 @@
           <button type="button" class="btn btn-sm btn-default">Skill Control</button>
         </div>
         <div class="row no-gutters mb-3">
-          <div class="col">
+          <div class="col-auto">
             <div class="hp d-flex align-items-center">
               <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
               <span>-</span>
@@ -867,7 +882,7 @@
               <span>-</span>
             </div>
           </div>
-          <div class="col">
+          <div class="col-auto">
             <div class="crit d-flex align-items-center">
               <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
               <span>-</span>
@@ -1017,7 +1032,7 @@
           <button type="button" class="btn btn-sm btn-default">Skill Control</button>
         </div>
         <div class="row no-gutters mb-3">
-          <div class="col">
+          <div class="col-auto">
             <div class="hp d-flex align-items-center">
               <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
               <span>-</span>
@@ -1039,7 +1054,7 @@
               <span>-</span>
             </div>
           </div>
-          <div class="col">
+          <div class="col-auto">
             <div class="crit d-flex align-items-center">
               <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
               <span>-</span>
@@ -1189,7 +1204,7 @@
           <button type="button" class="btn btn-sm btn-default">Skill Control</button>
         </div>
         <div class="row no-gutters mb-3">
-          <div class="col">
+          <div class="col-auto">
             <div class="hp d-flex align-items-center">
               <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
               <span>-</span>
@@ -1211,7 +1226,7 @@
               <span>-</span>
             </div>
           </div>
-          <div class="col">
+          <div class="col-auto">
             <div class="crit d-flex align-items-center">
               <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
               <span>-</span>
@@ -1361,7 +1376,7 @@
           <button type="button" class="btn btn-sm btn-default">Skill Control</button>
         </div>
         <div class="row no-gutters mb-3">
-          <div class="col">
+          <div class="col-auto">
             <div class="hp d-flex align-items-center">
               <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
               <span>-</span>
@@ -1383,7 +1398,7 @@
               <span>-</span>
             </div>
           </div>
-          <div class="col">
+          <div class="col-auto">
             <div class="crit d-flex align-items-center">
               <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
               <span>-</span>
