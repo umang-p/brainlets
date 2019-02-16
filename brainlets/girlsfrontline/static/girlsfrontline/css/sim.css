@@ -73,7 +73,7 @@
   background-color: rgb(222, 182, 255);
 }
 .tooltip-inner {
-  max-width: 350px;
+  max-width: 450px;
   background-color: white;
   color: black;
 }
@@ -103,6 +103,15 @@
 
 .doll-level-label, .skill-label, .skill2-label {
   width: 41px;
+}
+
+.fairy-level-label, .fairy-skill-label, .fairy-talent-label, .fairy-rarity-label {
+  width: 45px;
+}
+
+#fairy-img {
+  width: 150px;
+  height: 150px;
 }
 
 input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {

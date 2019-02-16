@@ -1475,33 +1475,98 @@
         </div>
       </div>
     </div>
-    <div class="card bg-secondary text-center" hidden>
+    <div id="fairy" class="card bg-secondary text-center">
       <div class="card-body">
-        <h6 class="card-title">Fairy</h6>
-        <h6 class="card-subtitle mb-2">Fairy Type</h6>
-        <table class="table table-borderless">
-          <tr class="fp">
-            <td><img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="acc">
-            <td><img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle"><span>-</span></td>
-          </tr>
-          <tr class="eva">
-            <td><img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle">00</td>
-          </tr>
-          <tr class="crit">
-            <td><img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle">100</td>
-          </tr>
-          <tr class="armor">
-            <td><img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img></td>
-            <td class="align-middle">100</td>
-          </tr>
-        </table>
-        <button type="button" class="btn btn-danger">Remove</button>
+        <p id="fairy-name" class="align-middle">-</p>
+        <div>
+          <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" id="fairy-img" class="img-fluid"></img>
+        </div>
+        <div class="text-left row no-gutters">
+          <label class="fairy-level-label mr-1">Level:</label>
+          <div class="col">
+            <select class="fairy-level-select">
+              <option>100</option>
+              <option>90</option>
+              <option>80</option>
+              <option>70</option>
+              <option>60</option>
+              <option>50</option>
+              <option>40</option>
+              <option>30</option>
+              <option>20</option>
+              <option>10</option>
+              <option>1</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-left row no-gutters">
+          <label class="fairy-skill-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top" data-original-title="-">Skill:</label>
+          <div class="col mr-1">
+            <select class="fairy-skill-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option hidden>100</option>
+            </select>
+          </div>
+          <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
+            <input class="fairy-skill-toggle" type="checkbox" checked>
+          </span>
+        </div>
+        <div class="text-left row no-gutters">
+          <label class="fairy-rarity-label mr-1">Rarity:</label>
+          <div class="col mb-1">
+            <select class="fairy-rarity-select">
+              <option value="5">★★★★★</option>
+              <option value="4">★★★★</option>
+              <option value="3">★★★</option>
+              <option value="2">★★</option>
+              <option value="1">★</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-left row no-gutters">
+          <label class="fairy-talent-label mr-1" data-toggle="tooltip" data-placement="top" data-original-title="-">Talent:</label>
+          <div class="col">
+            <select class="fairy-talent-select">
+            </select>
+          </div>
+        </div>
+        <div class="row no-gutters mb-3">
+          <div class="col">
+            <div class="fp d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="acc d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="eva d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="critdmg d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+            <div class="armor d-flex align-items-center">
+              <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
+              <span>-</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <a href="#fairy-select" id="add-fairy" data-toggle="modal" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
+          <a href="#" id="remove-fairy" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
+        </div>
       </div>
     </div>
   </div>
@@ -1658,6 +1723,44 @@
           <div class="flex-row mb-3 stars2">
           </div>
           <button id="remove-equip" type="button" class="btn bg-light">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="fairy-select" class="modal fade" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-secondary text-light">
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="accordion">
+            <div class="card bg-secondary text-light">
+              <div class="card-header">
+                <a class="btn" data-toggle="collapse" data-target="#combatfairy-list">
+                  <img src="{% static 'girlsfrontline/sim/combat.png' %}" class="img-fluid"></img>
+                </a>
+              </div>
+              <div id="combatfairy-list" class="collapse">
+                <div class="card-body">
+                  <div class="flex-row mb-3 combat">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card bg-secondary text-light">
+              <div class="card-header">
+                <a class="btn" data-toggle="collapse" data-target="#tacticalfairy-list">
+                  <img src="{% static 'girlsfrontline/sim/tactical.png' %}" class="img-fluid"></img>
+                </a>
+              </div>
+              <div id="tacticalfairy-list" class="collapse">
+                <div class="card-body">
+                  <div class="flex-row mb-3 tactical">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
