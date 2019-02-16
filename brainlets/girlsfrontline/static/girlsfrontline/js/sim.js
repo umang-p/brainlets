@@ -1,8 +1,11 @@
 var echelon;
+var fairy;
 var isNight;
 var isBoss;
 var equipData;
 var dollData;
+var fairyData;
+var talentData;
 var enemyEva;
 var enemyArmor;
 var enemyCount;
@@ -56,6 +59,25 @@ const GROWTH_FACTORS = {
     }
   }
 };
+
+const FAIRY_GROWTH_FACTORS = {
+  basic:{
+    fp:7,
+    acc:25,
+    eva:20,
+    armor:5,
+    critdmg:10
+  },
+  grow:{
+    fp:0.076,
+    acc:0.252,
+    eva:0.202,
+    armor:0.05,
+    critdmg:0.101
+  }
+};
+
+const FAIRY_RARITY_SCALARS = [0.4,0.5,0.6,0.8,1];
 
 const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   52:[24,66,28], //M16
@@ -171,6 +193,32 @@ $(function () {
     }
   });
 
+  $.ajax({
+    async: false,
+    dataType: 'json',
+    url: '/static/girlsfrontline/fairies.json',
+    success: function(data, status, xhr) {
+      fairyData = data;
+    },
+    error: function(xhr, status, err) {
+      console.log(status);
+      console.log(err);
+    }
+  });
+
+  $.ajax({
+    async: false,
+    dataType: 'json',
+    url: '/static/girlsfrontline/talents.json',
+    success: function(data, status, xhr) {
+      talentData = data;
+    },
+    error: function(xhr, status, err) {
+      console.log(status);
+      console.log(err);
+    }
+  });
+
   initEchelon();
 
   isNight = false;
@@ -185,6 +233,18 @@ $(function () {
 
   initEquipSelectModal();
   initDollSelectModal();
+  initFairySelectModal();
+  initTalentSelect();
+
+  $('.fairy-talent-label').attr('data-original-title', talentData[$('.fairy-talent-select').val()-1].tooltip);
+  $('.fairy-talent-select').change(changeFairyTalent);
+  $('.fairy-skill-toggle').change(toggleFairySkillUsage);
+  $('.fairy-skill-level-select').change(changeFairySkillLevel);
+  $('.fairy-rarity-select').change(changeFairyRarity);
+  $('.fairy-level-select').change(changeFairyLevel);
+
+  $('#fairy-select button').click(changeFairy);
+  $('#remove-fairy').click(removeFairy);
 
   for(var i = 1; i <= 5; i++) {
     $('#doll'+i+' .add-doll').click(i,selectDoll);
@@ -228,6 +288,7 @@ function initEchelon() {
               createDummyDoll(32),
               createDummyDoll(13),
               createDummyDoll(23)];
+  fairy = createDummyFairy();
 }
 
 function createDummyDoll(p) {
@@ -251,6 +312,21 @@ function createDummyDoll(p) {
   return obj;
 }
 
+function createDummyFairy() {
+  var obj;
+  obj = {
+    id:-1,
+    aura:{
+      fp:0,
+      acc:0,
+      eva:0,
+      armor:0,
+      critdmg:0
+    }
+  };
+  return obj;
+}
+
 function initDollSelectModal() {
   var doll_types = ['All','HG','SMG','RF','AR','MG','SG'];
   for(var i = 0; i < dollData.length; i++) {
@@ -263,6 +339,21 @@ function initEquipSelectModal() {
   for(var i = 0; i < equipData.length; i++) {
     var equip = equipData[i];
     $('#equip-select .stars'+equip.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="'+equip.id+'" data-type="'+equip.type+'" data-toggle="tooltip" data-placement="top" data-original-title="'+equip.tooltip+'"><img src="/static/girlsfrontline/sim/equips/'+equip.type+'.png" class="img-fluid"></img></button>');
+  }
+}
+
+function initFairySelectModal() {
+  var fairy_types = ['','combat','tactical'];
+  for(var i = 0; i < fairyData.length; i++) {
+    var fairy = fairyData[i];
+    $('#fairy-select .'+fairy_types[fairy.type]).append('<button type="button" class="btn mb-1 mr-1" data-id="'+fairy.id+'" data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="'+fairy.tooltip_aura+'<br>'+fairy.tooltip_skill+'">'+fairy.name+'</button>');
+  }
+}
+
+function initTalentSelect() {
+  for(var i = 0; i < talentData.length; i++) {
+    var talent = talentData[i];
+    $('.fairy-talent-select').append('<option value="'+talent.id+'">'+talent.name+'</option>');
   }
 }
 
@@ -324,6 +415,8 @@ function toggleBuffedStats() {
 
   updateUIAllDolls();
 }
+
+
 
 function selectEquipment(event) {
   event.preventDefault();
@@ -499,6 +592,8 @@ function removeEquipment(event) {
   simulateBattle();
   updateUIForDoll(dollIndex);
 }
+
+
 
 function selectDoll(event) {
   event.preventDefault();
@@ -745,6 +840,111 @@ function closeSkillControl(event) {
   updateUIAllDolls();
 }
 
+
+
+function changeFairy(event) {
+  $('#fairy-select').modal('hide');
+
+  var selectedFairy = fairyData[$(event.target).attr('data-id')-1];
+
+  fairy = $.extend(true, {}, selectedFairy);
+
+  $('.fairy-level-select').val(100);
+  $('.fairy-rarity-select').val(5);
+  $('.fairy-skill-level-select').val(10);
+  $('.fairy-skill-toggle').prop('checked', true);
+  fairy.level = 100;
+  fairy.rarity = 5;
+  fairy.skilllevel = 10;
+  fairy.useSkill = true;
+  fairy.talent = $.extend(true, {}, talentData[$('.fairy-talent-select').val()-1]);
+
+  calculateFairyBonus();
+  calculatePreBattleStatsAllDolls();
+  simulateBattle();
+  updateUIAllDolls();
+  updateUIForFairy();
+}
+
+function changeFairyLevel(event) {
+  if(fairy.id == -1) {
+    return;
+  }
+
+  fairy.level = parseInt($('.fairy-level-select').val());
+
+  calculateFairyBonus();
+  calculatePreBattleStatsAllDolls();
+  simulateBattle();
+  updateUIAllDolls();
+  updateUIForFairy();
+}
+
+function changeFairyRarity(event) {
+  if(fairy.id == -1) {
+    return;
+  }
+
+  fairy.rarity = parseInt($('.fairy-rarity-select').val());
+
+  calculateFairyBonus();
+  calculatePreBattleStatsAllDolls();
+  simulateBattle();
+  updateUIAllDolls();
+  updateUIForFairy();
+}
+
+function changeFairySkillLevel(event) {
+  if(fairy.id == -1) {
+    return;
+  }
+
+  fairy.skilllevel = parseInt($('.fairy-skill-level-select').val());
+
+  simulateBattle();
+  updateUIAllDolls();
+}
+
+function changeFairyTalent(event) {
+  if(fairy.id == -1) {
+    $('.fairy-talent-label').attr('data-original-title', talentData[$('.fairy-talent-select').val()-1].tooltip);
+  } else {
+    fairy.talent = $.extend(true, {}, talentData[$('.fairy-talent-select').val()-1]);
+    $('.fairy-talent-label').attr('data-original-title', fairy.talent.tooltip);
+    simulateBattle();
+    updateUIAllDolls();
+    updateUIForFairy();
+  }
+}
+
+function toggleFairySkillUsage(event) {
+  if(fairy.id == -1) {
+    return;
+  }
+
+  fairy.useSkill = $('.fairy-skill-toggle').prop('checked');
+
+  simulateBattle();
+  updateUIAllDolls();
+}
+
+function removeFairy(event) {
+  event.preventDefault();
+
+  fairy = createDummyFairy();
+  $('.fairy-level-select').val(100);
+  $('.fairy-rarity-select').val(5);
+  $('.fairy-skill-level-select').val(10);
+
+  calculateFairyBonus();
+  calculatePreBattleStatsAllDolls();
+  simulateBattle();
+  updateUIAllDolls();
+  updateUIForFairy();
+}
+
+
+
 function updateUIAllDolls() {
   for(var i = 0; i < echelon.length; i++) {
     updateUIForDoll(i); //update stat card and grid for each doll
@@ -872,8 +1072,6 @@ function updateUIForDoll(index) {
     $('#doll'+(index+1)+' .hp span').text(doll.pre_battle.hp);
 
     $('#doll'+(index+1)+'-dmg-label').text(doll.name);
-    $('#doll'+(index+1)+'-dmg').text(doll.totaldmg);
-
 
     $('#pos'+doll.pos+' > img').attr('src', '/static/girlsfrontline/sim/dolls/'+doll.id+'.png');
 
@@ -891,6 +1089,8 @@ function updateUIForDoll(index) {
       }
     });
   }
+
+
 
   var tile_bonuses = ['fp','acc','eva','rof','crit','skillcd','armor'];
   for(i = 0; i < tile_bonuses.length; i++) {
@@ -912,6 +1112,32 @@ function updateUIForDoll(index) {
       $('#doll'+(index+1)+' .equip'+i).addClass('stars'+equipData[equipId-1].rarity);
       $('#doll'+(index+1)+' .equip'+i).attr('src', '/static/girlsfrontline/sim/equips/'+equipData[equipId-1].type+'.png');
     }
+  }
+}
+
+function updateUIForFairy() {
+  if(fairy.id == -1) {
+    $('#fairy-name').text('-');
+    $('#fairy-dmg-label').text('-');
+    $('#fairy-img').attr('src', '/static/girlsfrontline/sim/placeholder.png');
+    $('.fairy-skill-label').attr('data-original-title', '-');
+    $('#fairy .fp span').text('-');
+    $('#fairy .acc span').text('-');
+    $('#fairy .eva span').text('-');
+    $('#fairy .armor span').text('-');
+    $('#fairy .critdmg span').text('-');
+  } else {
+    $('#fairy-name').text(fairy.name);
+    $('#fairy-dmg-label').text(fairy.name);
+    $('#fairy-img').attr('src', '/static/girlsfrontline/sim/fairies/'+fairy.id+'.png');
+    $('.fairy-skill-label').attr('data-original-title', fairy.tooltip_skill);
+    $.each(['fp','acc','eva','armor','critdmg'], (i,stat) => {
+      if(fairy.aura[stat] == 0) {
+        $('#fairy .'+stat+' span').text('-');
+      } else {
+        $('#fairy .'+stat+' span').text(parseFloat(fairy.aura[stat].toFixed(2)) + '%');
+      }
+    });
   }
 }
 
@@ -993,6 +1219,27 @@ function calculateTileBonus() {
       }
     }
   });
+}
+
+function calculateFairyBonus() {
+  fairy.aura = {
+    fp:0,
+    acc:0,
+    eva:0,
+    armor:0,
+    critdmg:0
+  };
+
+  if(fairy.id == -1) {
+    return;
+  }
+
+  fairy.aura.fp = (Math.ceil(FAIRY_GROWTH_FACTORS.basic.fp * fairy.fp / 100) + Math.ceil(FAIRY_GROWTH_FACTORS.grow.fp * fairy.fp * fairy.growth_rating * (fairy.level - 1) / 10000)) * FAIRY_RARITY_SCALARS[fairy.rarity-1];
+  fairy.aura.acc = (Math.ceil(FAIRY_GROWTH_FACTORS.basic.acc * fairy.acc / 100) + Math.ceil(FAIRY_GROWTH_FACTORS.grow.acc * fairy.acc * fairy.growth_rating * (fairy.level - 1) / 10000)) * FAIRY_RARITY_SCALARS[fairy.rarity-1];
+  fairy.aura.eva = (Math.ceil(FAIRY_GROWTH_FACTORS.basic.eva * fairy.eva / 100) + Math.ceil(FAIRY_GROWTH_FACTORS.grow.eva * fairy.eva * fairy.growth_rating * (fairy.level - 1) / 10000)) * FAIRY_RARITY_SCALARS[fairy.rarity-1];
+  fairy.aura.armor = (Math.ceil(FAIRY_GROWTH_FACTORS.basic.armor * fairy.armor / 100) + Math.ceil(FAIRY_GROWTH_FACTORS.grow.armor * fairy.armor * fairy.growth_rating * (fairy.level - 1) / 10000)) * FAIRY_RARITY_SCALARS[fairy.rarity-1];
+  fairy.aura.critdmg = (Math.ceil(FAIRY_GROWTH_FACTORS.basic.critdmg * fairy.critdmg / 100) + Math.ceil(FAIRY_GROWTH_FACTORS.grow.critdmg * fairy.critdmg * fairy.growth_rating * (fairy.level - 1) / 10000)) * FAIRY_RARITY_SCALARS[fairy.rarity-1];
+  console.log(fairy.aura);
 }
 
 function calculateBaseStats(dollIndex) {
@@ -1078,6 +1325,13 @@ function calculatePreBattleStatsForDoll(dollIndex) {
   doll.pre_battle.armor = Math.floor(doll.pre_battle.armor * (1 + (doll.tile_bonus.armor / 100)));
   doll.pre_battle.crit = Math.floor(doll.pre_battle.crit * (1 + (doll.tile_bonus.crit / 100)));
   doll.pre_battle.skillcd = doll.tile_bonus.skillcd;
+
+  //apply fairy bonus multiplicatively, ceiling
+  doll.pre_battle.fp = Math.ceil(doll.pre_battle.fp * (1 + fairy.aura.fp / 100));
+  doll.pre_battle.acc = Math.ceil(doll.pre_battle.acc * (1 + fairy.aura.acc / 100));
+  doll.pre_battle.eva = Math.ceil(doll.pre_battle.eva * (1 + fairy.aura.eva / 100));
+  doll.pre_battle.armor = Math.ceil(doll.pre_battle.armor * (1 + fairy.aura.armor / 100));
+  doll.pre_battle.critdmg = Math.ceil((doll.pre_battle.critdmg+100) * (1 + fairy.aura.critdmg / 100)) - 100;
 
   //cap stats & apply night acc penalty
   doll.pre_battle.fp = Math.max(0, doll.pre_battle.fp);
@@ -2163,7 +2417,12 @@ function simulateBattle() {
       continue;
     }
     echelon[i].totaldmg = graphData.y[i].data[currentFrame-1];
+    $('#doll'+(i+1)+'-dmg').text(echelon[i].totaldmg);
   }
+
+  // if(fairy.id != -1) {
+  //   $('#fairy-dmg').text(fairy.totaldmg);
+  // }
 
   determineFinalStats();
 
