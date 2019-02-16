@@ -9,6 +9,7 @@
       "stat":{
         "fp":12
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[40,60,80,90,100]
     }
@@ -23,6 +24,7 @@
       "stat":{
         "fp":15
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[20,40,60,80,100]
     }
@@ -37,6 +39,7 @@
       "stat":{
         "acc":20
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[40,60,80,90,100]
     }
@@ -51,6 +54,7 @@
       "stat":{
         "acc":25
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[20,40,60,80,100]
     }
@@ -65,6 +69,7 @@
       "stat":{
         "eva":15
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[40,60,80,90,100]
     }
@@ -79,6 +84,7 @@
       "stat":{
         "eva":20
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[20,40,60,80,100]
     }
@@ -93,6 +99,7 @@
       "stat":{
         "armor":8
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[40,60,80,90,100]
     }
@@ -107,6 +114,7 @@
       "stat":{
         "armor":10
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[20,40,60,80,100]
     }
@@ -121,6 +129,7 @@
       "stat":{
         "crit":40
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[40,60,80,90,100]
     }
@@ -135,6 +144,7 @@
       "stat":{
         "crit":50
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[20,40,60,80,100]
     }
@@ -150,6 +160,7 @@
         "fp":8,
         "eva":12
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[30,50,70,90,100]
     }
@@ -165,6 +176,7 @@
         "fp":10,
         "rof":8
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[30,50,70,90,100]
     }
@@ -180,6 +192,7 @@
         "fp":8,
         "rof":10
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[30,50,70,90,100]
     }
@@ -195,6 +208,7 @@
         "fp":10,
         "crit":20
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[30,50,70,90,100]
     }
@@ -210,6 +224,7 @@
         "fp":10,
         "acc":15
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[30,50,70,90,100]
     }
@@ -225,6 +240,7 @@
         "eva":10,
         "crit":30
       },
+      "duration":-1,
       "name":"fairytalent",
       "stackChance":[30,50,70,90,100]
     }
@@ -233,17 +249,25 @@
     "id":17,
     "name":"Morale",
     "tooltip":"Increase echelon damage by 10% every 8s (up to 3 stacks)",
-    "effect":{
-      "type":"buff",
-      "target":"all",
-      "stat":{
-        "fp":10
-      },
-      "name":"fairytalent",
-      "stackChance":[20,40,60,80,100],
-      "stackable":true,
-      "stacks":1,
-      "max_stacks":3
+    "effect": {
+      "type":"passive",
+      "trigger":"time",
+      "interval":8,
+      "effects":[
+        {
+          "type":"buff",
+          "target":"all",
+          "stat":{
+            "fp":10
+          },
+          "duration":-1,
+          "name":"fairytalent",
+          "stackChance":[20,40,60,80,100],
+          "stackable":true,
+          "stacks":1,
+          "max_stacks":3
+        }
+      ]
     }
   },
   {
@@ -254,6 +278,7 @@
       "type":"buff",
       "target":"all",
       "name":"fairytalent",
+      "duration":-1,
       "stackChance":[40,60,80,90,100]
     }
   },
@@ -265,6 +290,7 @@
       "type":"buff",
       "target":"all",
       "name":"fairytalent",
+      "duration":-1,
       "stackChance":[40,60,80,90,100]
     }
   }

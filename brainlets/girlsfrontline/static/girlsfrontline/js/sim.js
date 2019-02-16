@@ -242,6 +242,7 @@ $(function () {
   $('.fairy-skill-level-select').change(changeFairySkillLevel);
   $('.fairy-rarity-select').change(changeFairyRarity);
   $('.fairy-level-select').change(changeFairyLevel);
+  $('#fairy-skill-control').click(openFairySkillControl);
 
   $('#fairy-select button').click(changeFairy);
   $('#remove-fairy').click(removeFairy);
@@ -316,6 +317,7 @@ function createDummyFairy() {
   var obj;
   obj = {
     id:-1,
+    name:'',
     aura:{
       fp:0,
       acc:0,
@@ -858,6 +860,18 @@ function changeFairy(event) {
   fairy.skilllevel = 10;
   fairy.useSkill = true;
   fairy.talent = $.extend(true, {}, talentData[$('.fairy-talent-select').val()-1]);
+  fairy.special_control = 'special_control' in selectedFairy ? true : false;
+
+  if(fairy.id == 14) {
+    //construction fairy
+    $('.fairy-skill-level-select').prop('disabled', true);
+    $('.fairy-skill-toggle').prop('checked', false);
+    $('.fairy-skill-toggle').prop('disabled', true);
+    fairy.useSkill = false;
+  } else {
+    $('.fairy-skill-level-select').prop('disabled', false);
+    $('.fairy-skill-toggle').prop('disabled', false);
+  }
 
   calculateFairyBonus();
   calculatePreBattleStatsAllDolls();
@@ -935,9 +949,36 @@ function removeFairy(event) {
   $('.fairy-level-select').val(100);
   $('.fairy-rarity-select').val(5);
   $('.fairy-skill-level-select').val(10);
+  $('.fairy-skill-level-select').prop('disabled', false);
+  $('.fairy-skill-toggle').prop('disabled', false);
 
   calculateFairyBonus();
   calculatePreBattleStatsAllDolls();
+  simulateBattle();
+  updateUIAllDolls();
+  updateUIForFairy();
+}
+
+function openFairySkillControl() {
+  if(fairy.id == -1 || !fairy.special_control) {
+    return;
+  }
+
+  $('#skill-control-body').html(FAIRY_SKILL_CONTROL_HTML[fairy.id]());
+  $('#skill-control-apply').click(closeFairySkillControl);
+  $('#skill-control-modal').modal('show');
+}
+
+function closeFairySkillControl() {
+  $('#skill-control-modal').modal('hide');
+  $('#skill-control-apply').off('click');
+
+  if(fairy.id == -1 || !fairy.special_control) {
+    return;
+  }
+
+  FAIRY_SKILL_CONTROL[fairy.id]();
+
   simulateBattle();
   updateUIAllDolls();
   updateUIForFairy();
@@ -1126,6 +1167,7 @@ function updateUIForFairy() {
     $('#fairy .eva span').text('-');
     $('#fairy .armor span').text('-');
     $('#fairy .critdmg span').text('-');
+    $('#fairy-skill-control').prop('hidden', true);
   } else {
     $('#fairy-name').text(fairy.name);
     $('#fairy-dmg-label').text(fairy.name);
@@ -1138,6 +1180,11 @@ function updateUIForFairy() {
         $('#fairy .'+stat+' span').text(parseFloat(fairy.aura[stat].toFixed(2)) + '%');
       }
     });
+    if(fairy.special_control) {
+      $('#fairy-skill-control').prop('hidden', false);
+    } else {
+      $('#fairy-skill-control').prop('hidden', true);
+    }
   }
 }
 
@@ -1239,7 +1286,6 @@ function calculateFairyBonus() {
   fairy.aura.eva = (Math.ceil(FAIRY_GROWTH_FACTORS.basic.eva * fairy.eva / 100) + Math.ceil(FAIRY_GROWTH_FACTORS.grow.eva * fairy.eva * fairy.growth_rating * (fairy.level - 1) / 10000)) * FAIRY_RARITY_SCALARS[fairy.rarity-1];
   fairy.aura.armor = (Math.ceil(FAIRY_GROWTH_FACTORS.basic.armor * fairy.armor / 100) + Math.ceil(FAIRY_GROWTH_FACTORS.grow.armor * fairy.armor * fairy.growth_rating * (fairy.level - 1) / 10000)) * FAIRY_RARITY_SCALARS[fairy.rarity-1];
   fairy.aura.critdmg = (Math.ceil(FAIRY_GROWTH_FACTORS.basic.critdmg * fairy.critdmg / 100) + Math.ceil(FAIRY_GROWTH_FACTORS.grow.critdmg * fairy.critdmg * fairy.growth_rating * (fairy.level - 1) / 10000)) * FAIRY_RARITY_SCALARS[fairy.rarity-1];
-  console.log(fairy.aura);
 }
 
 function calculateBaseStats(dollIndex) {
@@ -1813,18 +1859,59 @@ function initEnemyForBattle() {
   return enemy;
 }
 
+function initiFairyForBattle() {
+  graphData.y.push({});
+  graphData.y[5].name = fairy.name;
+  graphData.y[5].data = [];
+  graphData.y[5].data.push(0);
+
+  if(fairy.id == -1) {
+    return;
+  }
+
+  fairy.battle = {};
+  fairy.battle.skill = $.extend(true, {}, fairy.skill);
+  fairy.battle.timers = [];
+  fairy.battle.effect_queue = [];
+  fairy.battle.action_queue = [];
+
+  var skilltimer = {
+    type:'skill',
+    timeLeft: fairy.battle.skill.icd == 0 ? 1 : Math.round(fairy.battle.skill.icd * 30)
+  };
+  if(fairy.useSkill) {
+    fairy.battle.timers.push(skilltimer);
+  }
+}
+
 function simulateBattle() {
   graphData = {x:[], y:[]};
 
   initDollsForBattle();
   var enemy = initEnemyForBattle();
+  initiFairyForBattle();
   var battleLength = 30 * 20;
   var totaldamage8s = 0;
   var totaldamage20s = 0;
 
-
-  //walk time can be handled here
-
+  //apply fairy talent effect to dolls
+  if(fairy.id != -1) {
+    var talenteffect = $.extend(true, {}, fairy.talent.effect);
+    talenteffect.level = fairy.rarity;
+    if(talenteffect.type == 'passive') {
+      $.each(talenteffect.effects, (i,effect) => effect.level = fairy.rarity);
+    }
+    for(var i = 0; i < 5; i++) {
+      if(echelon[i].id != -1) {
+        if(talenteffect.type == 'passive') {
+          talenteffect.startTime = 1;
+          echelon[i].battle.passives.push(talenteffect);
+        } else if (talenteffect.type == 'buff') {
+          echelon[i].battle.buffs.push(talenteffect);
+        }
+      }
+    }
+  }
 
   graphData.x.push(0);
   for(var currentFrame = 1; currentFrame < battleLength; currentFrame++) {
@@ -1940,6 +2027,24 @@ function simulateBattle() {
       });
     }
 
+    //tick fairy skill timer
+    if(fairy.id != -1) {
+      graphData.y[5].data.push(graphData.y[i].data[currentFrame-1]);
+      $.each(fairy.battle.timers, (index, timer) => timer.timeLeft--);
+      $.each(fairy.battle.timers, (index, timer) => {
+        if(timer.timeLeft == 0) {
+          if(timer.type == 'skill') {
+            $.each(fairy.battle.skill.effects, (i,effect) => {
+              effect.level = fairy.skilllevel;
+              fairy.battle.effect_queue.push(effect);
+            });
+            timer.timeLeft = Math.round(fairy.battle.skill.cd * 30);
+          }
+        }
+      });
+      fairy.battle.timers = fairy.battle.timers.filter(timer => timer.timeLeft != 0);
+    }
+
     //tick/remove enemy buffs
     $.each(enemy.battle.buffs, (index,buff) => {
       if('timeLeft' in buff) {
@@ -1986,6 +2091,19 @@ function simulateBattle() {
             action.timeLeft = $.isArray(action.duration) ? Math.round(action.duration[action.level-1] * 30) : Math.round(action.duration * 30);
           }
           doll.battle.action_queue.push(action);
+        }
+      }
+    }
+
+    if(fairy.id != -1) {
+      var len = fairy.battle.effect_queue.length;
+      for(var j = 0; j < len; j++) {
+        var action = fairy.battle.effect_queue.shift();
+
+        if(action.type == 'buff') {
+          activateBuff(fairy, action, enemy);
+        } else {
+          fairy.battle.action_queue.push(action);
         }
       }
     }
@@ -2405,6 +2523,75 @@ function simulateBattle() {
       }
     }
 
+    if(fairy.id != -1 && echelon.find(d => d.id != -1) !== undefined) {
+      var len = fairy.battle.action_queue.length;
+      var dmg = 0;
+      for(var j = 0; j < len; j++) {
+        var action = fairy.battle.action_queue.shift();
+
+        if(action.type == 'chargedshot') {
+          dmg = $.isArray(action.damage) ? action.damage[action.level-1] : action.damage;
+          dmg *= enemy.battle.vulnerability;
+
+          if(currentFrame <= 30 * 8 +1) {
+            totaldamage8s += dmg;
+          }
+          if(currentFrame <= 30 * 20 +1) {
+            totaldamage20s += dmg;
+          }
+          graphData.y[5].data[currentFrame] += Math.round(dmg);
+        }
+
+        if(action.type == 'grenade') {
+          dmg = $.isArray(action.damage) ? action.damage[action.level-1] : action.damage;
+          dmg *= enemy.battle.vulnerability;
+
+          var hits = Math.min(action.radius * 1.5, enemy.count);
+          if(action.radius == 0) {
+            hits = enemy.count
+          }
+
+          if(!isBoss) {
+            dmg *= hits * 5; //5 enemies per enemy echelon
+          }
+
+          if(currentFrame <= 30 * 8 +1) {
+            totaldamage8s += dmg;
+          }
+          if(currentFrame <= 30 * 20 +1) {
+            totaldamage20s += dmg;
+          }
+          graphData.y[5].data[currentFrame] += Math.round(dmg);
+        }
+
+        if(action.type == 'grenadedot') {
+          action.timeLeft--;
+
+          if(action.timeLeft % action.tick == 0) {
+            dmg = $.isArray(action.damage) ? action.damage[action.level-1] : action.damage;
+            dmg *= enemy.battle.vulnerability;
+
+            var hits = Math.min(action.radius * 1.5, enemy.count);
+            if(!isBoss) {
+              dmg *= hits * 5; //5 enemies per enemy echelon
+            }
+          }
+
+          if(action.timeLeft != 0) {
+            fairy.battle.action_queue.push(action);
+          }
+
+          if(currentFrame <= 30 * 8 +1) {
+            totaldamage8s += dmg;
+          }
+          if(currentFrame <= 30 * 20 +1) {
+            totaldamage20s += dmg;
+          }
+          graphData.y[5].data[currentFrame] += Math.round(dmg);
+        }
+      }
+    }
+
 
 
   }
@@ -2420,9 +2607,9 @@ function simulateBattle() {
     $('#doll'+(i+1)+'-dmg').text(echelon[i].totaldmg);
   }
 
-  // if(fairy.id != -1) {
-  //   $('#fairy-dmg').text(fairy.totaldmg);
-  // }
+  if(fairy.id != -1) {
+    $('#fairy-dmg').text(graphData.y[5].data[currentFrame-1]);
+  }
 
   determineFinalStats();
 
@@ -2754,6 +2941,31 @@ function getBuffTargets(doll, buff, enemy) {
     }
   }
 
+  if(buff.target == 'hg') {
+    var allHG = echelon.filter(d => d.id != -1 && d.type == 1);
+    $.each(allHG, (index,hg) => targets.push(hg));
+  }
+  if(buff.target == 'smg') {
+    var allSMG = echelon.filter(d => d.id != -1 && d.type == 2);
+    $.each(allSMG, (index,smg) => targets.push(smg));
+  }
+  if(buff.target == 'rf') {
+    var allRF = echelon.filter(d => d.id != -1 && d.type == 3);
+    $.each(allRF, (index,rf) => targets.push(rf));
+  }
+  if(buff.target == 'ar') {
+    var allAR = echelon.filter(d => d.id != -1 && d.type == 4);
+    $.each(allAR, (index,ar) => targets.push(ar));
+  }
+  if(buff.target == 'mg') {
+    var allMG = echelon.filter(d => d.id != -1 && d.type == 5);
+    $.each(allMG, (index,mg) => targets.push(mg));
+  }
+  if(buff.target == 'sg') {
+    var allSG = echelon.filter(d => d.id != -1 && d.type == 6);
+    $.each(allSG, (index,sg) => targets.push(sg));
+  }
+
   return targets;
 }
 
@@ -2806,7 +3018,9 @@ function addStack(target, effect, enemy) {
 function addPassive(doll, passive, enemy, currentTime) {
   var passiveskill = $.extend({}, passive);
 
-  passiveskill.level = doll.skilllevel;
+  if(!('level' in passiveskill)) {
+    passiveskill.level = doll.skilllevel;
+  }
   $.each(passiveskill.effects, (index,effect) => effect.level = passiveskill.level);
   if('duration' in passiveskill) {
     passiveskill.timeLeft = $.isArray(passiveskill.duration) ? Math.floor(passiveskill.duration[passiveskill.level-1] * 30) : Math.floor(passiveskill.duration * 30);
@@ -2921,15 +3135,11 @@ function modifySkill(doll, effect, enemy, currentTime) {
       var heatbuff = doll.battle.buffs.find(b => b.name == 'heat');
       heatbuff.stat.fp = [-3.2,-3.1,-3,-2.8,-2.7,-2.6,-2.4,-2.3,-2.2,-2];
       heatbuff.stat.acc = [-3.2,-3.1,-3,-2.8,-2.7,-2.6,-2.4,-2.3,-2.2,-2];
-      console.log('add');
-      console.log(heatbuff.stacks);
     }
     if(effect.modifySkill == 'changeHeatStatsDown') {
       var heatbuff = doll.battle.buffs.find(b => b.name == 'heat');
       heatbuff.stat.fp = 0;
       heatbuff.stat.acc = 0;
-      console.log('remove');
-      console.log(heatbuff.stacks);
     }
     if(effect.modifySkill == 'singleEnemyAttackStack') {
       var singleTargetBuff = doll.battle.buffs.find(b => 'attacksOnSingle' in b);
@@ -2969,7 +3179,6 @@ function modifySkill(doll, effect, enemy, currentTime) {
         doll.battle.buffs.push(sittingbuff);
         doll.battle.buffs.push(singleTargetBuff);
         doll.skill.mode = 'note';
-        console.log('fevertonote'+currentTime);
       } else {
         //switch to fever
         var normalpassive = doll.battle.passives.find(p => p.trigger == 'normalAttack');
@@ -2987,7 +3196,6 @@ function modifySkill(doll, effect, enemy, currentTime) {
         };
         doll.battle.buffs.push(feverbuff);
         doll.skill.mode = 'fever';
-        console.log('notetofever'+currentTime);
       }
     }
   }
@@ -3426,6 +3634,37 @@ const SKILL_CONTROL_HTML = {
     var htmlstring = '<p>Enter the percentage of hp missing from the enemy (so if the enemy has 10% hp left, you enter 90 here) then hit apply</p><br>';
     htmlstring += '<input type="number" id="x95-skill">% of hp missing from enemy (min: 0, max:99)</input><p></p>';
     return htmlstring;
+  }
+};
+
+const FAIRY_SKILL_CONTROL_HTML = {
+  19:function() {
+    var htmlstring = 'The effect from the cooking fairy is random in battle, but for simulation purposes you can select which effect you want here<br>';
+    htmlstring += '<div class="effect"><input type="radio" name="effect" value="1" checked>Damage buff</input><br>';
+    htmlstring += '<input type="radio" name="effect" value="2">Rate of fire buff</input><br>';
+    htmlstring += '<input type="radio" name="effect" value="3">Accuracy buff</input><br>';
+    htmlstring += '<input type="radio" name="effect" value="4">Evasion buff</input><br>';
+    htmlstring += '<input type="radio" name="effect" value="5">Damage debuff</input><br>';
+    return htmlstring;
+  }
+};
+
+const FAIRY_SKILL_CONTROL = {
+  19:function() {
+    fairy.skill = $.extend(true,{}, fairyData[fairy.id-1].skill);
+
+    var bufftype = parseInt($('#skill-control-body .effect input:checked').val());
+    if(bufftype == 1) {
+      fairy.skill.effects[0].stat.fp = [8,9,10,11,12,13,14,16,18,20];
+    } else if (bufftype == 2) {
+      fairy.skill.effects[0].stat.rof = [8,9,10,11,12,13,14,16,18,20];
+    } else if (bufftype == 3) {
+      fairy.skill.effects[0].stat.acc = [12,14,15,16,18,20,22,24,27,30];
+    } else if (bufftype == 4) {
+      fairy.skill.effects[0].stat.eva = [10,12,13,14,15,16,18,20,22,25];
+    } else if (bufftype == 5) {
+      fairy.skill.effects[0].stat.fp = [-15,-14,-13,-12,-11,-10,-8,-5,0,0];
+    }
   }
 };
 
