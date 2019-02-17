@@ -32,7 +32,7 @@
   height: 20px;
   width: 20px;
 }
-#enemy-eva, #enemy-armor, #enemy-count {
+#enemy-eva, #enemy-armor, #enemy-count, #walk-time, #battle-length {
   width: 50px;
 }
 #day-btn img, #night-btn img {

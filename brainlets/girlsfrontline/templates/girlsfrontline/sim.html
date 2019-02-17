@@ -595,20 +595,46 @@
       <button id="boss-toggle" type="button" class="btn mx-auto" data-toggle="tooltip" data-placement="top" data-original-title="Changes number of enemies per echelon to 1 and allows skill effects that require a boss">Boss</button>
     </div>
     <div class="col-auto mx-auto">
-      <button type="button" class="mx-auto btn btn-default">Help/About</button>
+      <label for="walk-time">Walk Time:</label>
+      <input id="walk-time" type="number" value="0">
     </div>
     <div class="col-auto mx-auto">
-      <button type="button" class="mx-auto btn btn-default" hidden>Save</button>
-      <button type="button" class="mx-auto btn btn-default" hidden>Load</button>
+      <label for="fortress-node-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Toggle use of fortress node, a buff from the construction fairy">Fortress Node:</label>
+      <input id="fortress-node-toggle" type="checkbox">
+      <select id="fortress-node-level-select">
+        <option>10</option>
+        <option>9</option>
+        <option>8</option>
+        <option>7</option>
+        <option>6</option>
+        <option>5</option>
+        <option>4</option>
+        <option>3</option>
+        <option>2</option>
+        <option>1</option>
+      </select>
+    </div>
+  </div>
+  <div class="row no-gutters mt-2">
+    <div class="col-auto mx-auto">
+      <label for="buffed-stats-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Toggle showing skill buffs in stats">Show Buffed Stats</label>
+      <input id="buffed-stats-toggle" type="checkbox" checked>
+    </div>
+    <div class="col-auto mx-auto">
+      <label for="battle-length" data-toggle="tooltip" data-placement="top" data-original-title="Minimum 20 seconds">Battle Length:</label>
+      <input id="battle-length" type="number" value="20">
     </div>
     <div class="col-auto mx-auto">
       <button id="damage-graph-btn" type="button" class="btn">Damage Graph</button>
     </div>
   </div>
   <div class="row no-gutters mt-2">
-    <div class="col">
-      <label for="buffed-stats-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Toggle showing skill buffs in stats">Show Buffed Stats</label>
-      <input id="buffed-stats-toggle" type="checkbox" checked>
+    <div class="col-auto mx-auto">
+      <button type="button" class="mx-auto btn btn-default">Help/About</button>
+    </div>
+    <div class="col-auto mx-auto">
+      <button type="button" class="mx-auto btn btn-default" hidden>Save</button>
+      <button type="button" class="mx-auto btn btn-default" hidden>Load</button>
     </div>
   </div>
 </div>

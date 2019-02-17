@@ -11,6 +11,10 @@ var enemyArmor;
 var enemyCount;
 var graphData;
 var showBuffedStats;
+var battleLength;
+var walkTime;
+var useFortressNode;
+var fortressNodeLevel;
 const VALID_EQUIPS = [[[4,13],[6],[10,12]], //hg
                     [[10,12],[6],[1,2,3,4,13]],//smg
                     [[5],[1,2,3,13],[15]],//rf
@@ -231,6 +235,17 @@ $(function () {
   showBuffedStats = true;
   $('#buffed-stats-toggle').change(toggleBuffedStats);
 
+  battleLength = 20;
+  $('#battle-length').change(changeBattleLength);
+
+  walkTime = 0;
+  $('#walk-time').change(changeWalkTime);
+
+  useFortressNode = false;
+  fortressNodeLevel = 10;
+  $('#fortress-node-toggle').change(toggleFortressNode);
+  $('#fortress-node-level-select').change(changeFortressNodeLevel);
+
   initEquipSelectModal();
   initDollSelectModal();
   initFairySelectModal();
@@ -416,6 +431,36 @@ function toggleBuffedStats() {
   showBuffedStats = $('#buffed-stats-toggle').prop('checked');
 
   updateUIAllDolls();
+}
+
+function changeBattleLength() {
+  battleLength = Math.max(20, parseInt($('#battle-length').val()));
+
+  simulateBattle();
+  updateUIAllDolls();
+}
+
+function changeWalkTime() {
+  walkTime = Math.max(0, parseInt($('#walk-time').val()));
+
+  simulateBattle();
+  updateUIAllDolls();
+}
+
+function toggleFortressNode() {
+  useFortressNode = $('#fortress-node-toggle').prop('checked');
+
+  simulateBattle();
+  updateUIAllDolls();
+}
+
+function changeFortressNodeLevel() {
+  fortressNodeLevel = parseInt($('#fortress-node-level-select').val());
+
+  if(useFortressNode) {
+    simulateBattle();
+    updateUIAllDolls();
+  }
 }
 
 
@@ -1879,7 +1924,7 @@ function initiFairyForBattle() {
     type:'skill',
     timeLeft: fairy.battle.skill.icd == 0 ? 1 : Math.round(fairy.battle.skill.icd * 30)
   };
-  if(fairy.useSkill) {
+  if(fairy.useSkill && fairy.id != 14) {
     fairy.battle.timers.push(skilltimer);
   }
 }
@@ -1890,7 +1935,7 @@ function simulateBattle() {
   initDollsForBattle();
   var enemy = initEnemyForBattle();
   initiFairyForBattle();
-  var battleLength = 30 * 20;
+  var simulationLength = 30 * battleLength;
   var totaldamage8s = 0;
   var totaldamage20s = 0;
 
@@ -1913,8 +1958,96 @@ function simulateBattle() {
     }
   }
 
+  //apply fortress node effect
+  if(useFortressNode) {
+    if(fairy.id != 24 || (fairy.id == 24 && !fairy.useSkill)) { //sue skill overrides fortress node
+      for(var i = 0; i < 5; i++) {
+        if(echelon[i].id != -1) {
+          var fortressbuff = $.extend(true,{}, fairyData[13].skill.effects[0]);
+          fortressbuff.level = fortressNodeLevel;
+          echelon[i].battle.buffs.push(fortressbuff);
+        }
+      }
+    }
+  }
+
+
+  //walk time
   graphData.x.push(0);
-  for(var currentFrame = 1; currentFrame < battleLength; currentFrame++) {
+  for(var time = 1; time < walkTime * 30; time++) {
+    graphData.x.push(parseFloat((time / 30.0).toFixed(2)));
+
+    if(fairy.id != -1) {
+      graphData.y[5].data.push(graphData.y[5].data[time-1]);
+      $.each(fairy.battle.timers, (index, timer) => {
+        if(timer.timeLeft > 1) {
+          timer.timeLeft--;
+        }
+      });
+    }
+
+    for(var i = 0; i < 5; i++) {
+      graphData.y[i].data.push(graphData.y[i].data[time-1]);
+      var doll = echelon[i];
+      if(doll.id == -1) continue;
+
+      $.each(doll.battle.timers, (index,timer) => {
+        if(timer.timeLeft > 1) { // && timer.type != 'normalAttack' ??? need to check this assumption
+          timer.timeLeft--;
+        }
+      });
+
+      //tick and remove buffs
+      $.each(doll.battle.buffs, (index,buff) => {
+        if('timeLeft' in buff) {
+          buff.timeLeft--;
+        }
+      });
+      doll.battle.buffs = doll.battle.buffs.filter(buff => {
+        if('timeLeft' in buff) {
+          if(buff.timeLeft == 0) {
+            if('after' in buff) {
+              buff.after.level = buff.level
+              doll.battle.effect_queue.push($.extend({},buff.after));
+            }
+            return false;
+          }
+        }
+        return true;
+      });
+
+      //tick and remove passives
+      $.each(doll.battle.passives, (index,passive) => {
+        if('timeLeft' in passive) {
+          passive.timeLeft--;
+        }
+      });
+      doll.battle.passives = doll.battle.passives.filter(passive => {
+        if('timeLeft' in passive) {
+          if(passive.timeLeft == 0) {
+            return false;
+          }
+        }
+        return true;
+      });
+
+      //tick and trigger time-based passives
+      $.each(doll.battle.passives.filter(passive => 'interval' in passive), (index,passiveskill) => {
+        var interval = $.isArray(passiveskill.interval) ? passiveskill.interval[passiveskill.level-1] : passiveskill.interval;
+        if((time - passiveskill.startTime) % Math.floor(interval * 30) == 0 && time != 1 && interval != -1) {
+          triggerPassive('time', doll, enemy);
+        }
+      });
+
+      calculateSkillBonus(i);
+      calculateBattleStats(i);
+    }
+  }
+
+
+
+  graphData.x.push((time / 30.0).toFixed(2));
+  for(var currentFrame = time; currentFrame < simulationLength; currentFrame++) {
     graphData.x.push(parseFloat((currentFrame / 30.0).toFixed(2)));
 
     //tick timers, queue actions
@@ -2304,7 +2437,9 @@ function simulateBattle() {
           if(currentFrame <= 30 * 8 +1) {
             totaldamage8s += dmg;
           }
-          totaldamage20s += dmg;
+          if(currentFrame <= 30 * 20 +1) {
+            totaldamage20s += dmg;
+          }
           graphData.y[i].data[currentFrame] += Math.round(dmg);
         }
 
@@ -2371,7 +2506,9 @@ function simulateBattle() {
           if(currentFrame <= 30 * 8 +1) {
             totaldamage8s += dmg;
           }
-          totaldamage20s += dmg;
+          if(currentFrame <= 30 * 20 +1) {
+            totaldamage20s += dmg;
+          }
           graphData.y[i].data[currentFrame] += Math.round(dmg);
         }
 
@@ -2400,7 +2537,9 @@ function simulateBattle() {
           if(currentFrame <= 30 * 8 +1) {
             totaldamage8s += dmg;
           }
-          totaldamage20s += dmg;
+          if(currentFrame <= 30 * 20 +1) {
+            totaldamage20s += dmg;
+          }
           graphData.y[i].data[currentFrame] += Math.round(dmg);
         }
 
@@ -2478,7 +2617,9 @@ function simulateBattle() {
           if(currentFrame <= 30 * 8 +1) {
             totaldamage8s += dmg;
           }
-          totaldamage20s += dmg;
+          if(currentFrame <= 30 * 20 +1) {
+            totaldamage20s += dmg;
+          }
           graphData.y[i].data[currentFrame] += Math.round(dmg);
         }
 
@@ -2517,7 +2658,9 @@ function simulateBattle() {
           if(currentFrame <= 30 * 8 +1) {
             totaldamage8s += dmg;
           }
-          totaldamage20s += dmg;
+          if(currentFrame <= 30 * 20 +1) {
+            totaldamage20s += dmg;
+          }
           graphData.y[i].data[currentFrame] += Math.round(dmg);
         }
       }
@@ -3667,6 +3810,7 @@ const FAIRY_SKILL_CONTROL = {
     }
   }
 };
+
 
 
 function getNumLinks(dollIndex) {
