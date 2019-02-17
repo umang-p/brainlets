@@ -1,6 +1,6 @@
 {% extends "girlsfrontline/base.html" %}
 
-{% block title %}Damage Sim - Girls Frontline - brainlets.moe{% endblock %}
+{% block title %}Damage Sim - Girls' Frontline - brainlets.moe{% endblock %}
 
 {% load static %}
 {% block head %}
@@ -570,71 +570,20 @@
       </div>
     </div>
   </div>
-  <div class="row no-gutters mt-2">
-    <div class="col">
-      <label for="enemy-eva">Enemy Evasion:</label>
-      <input id="enemy-eva" type="number" value="15">
-    </div>
-    <div class="col">
-      <label for="enemy-armor">Enemy Armor:</label>
-      <input id="enemy-armor" type="number" value="0">
-    </div>
-    <div class="col">
-      <label for="enemy-count">Enemy Count:</label>
-      <input id="enemy-count" type="number" value="3">
-    </div>
-  </div>
+
   <div class="row no-gutters mt-2">
     <div class="col-auto mx-auto">
-      <div class="btn-group mx-auto">
-        <button id="day-btn" type="button" class="btn btn-success"><img src="{% static 'girlsfrontline/sim/day.png' %}" class="img-fluid"></img></button>
-        <button id="night-btn" type="button" class="btn"><img src="{% static 'girlsfrontline/sim/night.png' %}" class="img-fluid"></img></button>
-      </div>
+      <button type="button" data-toggle="modal" data-target="#help-modal" class="mx-auto btn btn-default">Help/About</button>
     </div>
-    <div class="col-auto mx-auto">
-      <button id="boss-toggle" type="button" class="btn mx-auto" data-toggle="tooltip" data-placement="top" data-original-title="Changes number of enemies per echelon to 1 and allows skill effects that require a boss">Boss</button>
-    </div>
-    <div class="col-auto mx-auto">
-      <label for="walk-time">Walk Time:</label>
-      <input id="walk-time" type="number" value="0">
-    </div>
-    <div class="col-auto mx-auto">
-      <label for="fortress-node-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Toggle use of fortress node, a buff from the construction fairy">Fortress Node:</label>
-      <input id="fortress-node-toggle" type="checkbox">
-      <select id="fortress-node-level-select">
-        <option>10</option>
-        <option>9</option>
-        <option>8</option>
-        <option>7</option>
-        <option>6</option>
-        <option>5</option>
-        <option>4</option>
-        <option>3</option>
-        <option>2</option>
-        <option>1</option>
-      </select>
-    </div>
-  </div>
-  <div class="row no-gutters mt-2">
-    <div class="col-auto mx-auto">
-      <label for="buffed-stats-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Toggle showing skill buffs in stats">Show Buffed Stats</label>
-      <input id="buffed-stats-toggle" type="checkbox" checked>
-    </div>
-    <div class="col-auto mx-auto">
-      <label for="battle-length" data-toggle="tooltip" data-placement="top" data-original-title="Minimum 20 seconds">Battle Length:</label>
-      <input id="battle-length" type="number" value="20">
+    <div class="col-auto mx-auto" hidden>
+      <button id="save-btn" type="button" class="mx-auto btn btn-default">Save</button>
+      <button id="load-btn" type="button" class="mx-auto btn btn-default">Load</button>
     </div>
     <div class="col-auto mx-auto">
       <button id="damage-graph-btn" type="button" class="btn">Damage Graph</button>
     </div>
-  </div>
-  <div class="row no-gutters mt-2">
     <div class="col-auto mx-auto">
-      <button type="button" class="mx-auto btn btn-default">Help/About</button>
-    </div>
-    <div class="col-auto mx-auto">
-      <button type="button" class="mx-auto btn btn-default" hidden>Save</button>
-      <button type="button" class="mx-auto btn btn-default" hidden>Load</button>
+      <button type="button" data-toggle="modal" data-target="#battle-control-modal" class="mx-auto btn btn-default">Battle Settings</button>
     </div>
   </div>
 </div>
@@ -1814,6 +1763,85 @@
         <div id="skill-control-body" class="container-fluid">
         </div>
         <button id="skill-control-apply" type="button" class="btn bg-light">Apply</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="help-modal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-secondary text-light">
+      <div class="modal-body">
+        <div id="help-modal-body" class="container-fluid">
+          <h6>Help:</h6>
+          <p>
+            Just press buttons
+            <img src="{% static 'girlsfrontline/sim/uzi.jpg' %}" class="img-fluid" style="height:300px"/>
+          </p>
+          <hr>
+          <h6>Created by:</h6>
+          <p>
+            EN UID: 84999 (info gathering)
+            <br>
+            EN UID: 55604 (some icons/design)
+            <br>
+            EN UID: 278089 (everything else)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="battle-control-modal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-secondary text-light">
+      <div class="modal-body">
+        <div id="battle-control-body" class="container-fluid">
+          <div class="row no-gutters mt-2">
+            <div class="col-auto mx-auto">
+              <label for="enemy-eva">Enemy Evasion:</label>
+              <input id="enemy-eva" type="number" value="15">
+              <br>
+              <label for="enemy-armor">Enemy Armor:</label>
+              <input id="enemy-armor" type="number" value="0">
+              <br>
+              <label for="enemy-count">Enemy Count:</label>
+              <input id="enemy-count" type="number" value="3">
+            </div>
+            <div class="col-auto mx-auto">
+              <label for="walk-time">Walk Time:</label>
+              <input id="walk-time" type="number" value="0">
+              <br>
+              <label for="battle-length" data-toggle="tooltip" data-placement="top" data-original-title="Minimum 20 seconds">Battle Length:</label>
+              <input id="battle-length" type="number" value="20">
+              <br>
+              <label for="fortress-node-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Toggle use of fortress node, a buff from the construction fairy">Fortress Node:</label>
+              <input id="fortress-node-toggle" type="checkbox">
+              <select id="fortress-node-level-select">
+                <option>10</option>
+                <option>9</option>
+                <option>8</option>
+                <option>7</option>
+                <option>6</option>
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+              </select>
+            </div>
+            <div class="col-auto mx-auto">
+              <label for="buffed-stats-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Toggle showing skill buffs in stats">Show Buffed Stats</label>
+              <input id="buffed-stats-toggle" type="checkbox" checked>
+              <br>
+              <div class="btn-group mx-auto">
+                <button id="day-btn" type="button" class="btn btn-success"><img src="{% static 'girlsfrontline/sim/day.png' %}" class="img-fluid"></img></button>
+                <button id="night-btn" type="button" class="btn"><img src="{% static 'girlsfrontline/sim/night.png' %}" class="img-fluid"></img></button>
+              </div>
+              <br>
+              <button id="boss-toggle" type="button" class="btn mx-auto mt-2" data-toggle="tooltip" data-placement="top" data-original-title="Changes number of enemies per echelon to 1 and allows skill effects that require a boss">Boss</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
