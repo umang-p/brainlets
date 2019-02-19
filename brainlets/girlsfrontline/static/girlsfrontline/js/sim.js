@@ -15,6 +15,9 @@ var battleLength;
 var walkTime;
 var useFortressNode;
 var fortressNodeLevel;
+var savedTeamList;
+var savedTeamCount;
+
 const VALID_EQUIPS = [[[4,13],[6],[10,12]], //hg
                     [[10,12],[6],[1,2,3,4,13]],//smg
                     [[5],[1,2,3,13],[15]],//rf
@@ -246,6 +249,25 @@ $(function () {
   $('#fortress-node-toggle').change(toggleFortressNode);
   $('#fortress-node-level-select').change(changeFortressNodeLevel);
 
+  $('#save-btn').click(saveTeam);
+  $('#load-btn').click(selectTeam);
+  savedTeamCount = localStorage.getItem('savedTeamCount') !== null ? localStorage.savedTeamCount : 0;
+  savedTeamList = [];
+  if(savedTeamCount != 0) {
+    var i = 0;
+    var loadedCount = 0;
+    while(loadedCount < savedTeamCount) {
+      if(localStorage.getItem('team'+i) === null) {
+        i++;
+      } else {
+        savedTeamList.push(JSON.parse(localStorage.getItem('team'+i)));
+        i++;
+        loadedCount++;
+      }
+    }
+  }
+  generateTeamsModal();
+
   initEquipSelectModal();
   initDollSelectModal();
   initFairySelectModal();
@@ -461,6 +483,275 @@ function changeFortressNodeLevel() {
     simulateBattle();
     updateUIAllDolls();
   }
+}
+
+
+
+
+function generateSavedTeamGrid(team) {
+  var positions = {};
+
+  if(team.doll1.id != -1) {
+    positions[team.doll1.pos] = team.doll1.id;
+  }
+  if(team.doll2.id != -1) {
+    positions[team.doll2.pos] = team.doll2.id;
+  }
+  if(team.doll3.id != -1) {
+    positions[team.doll3.pos] = team.doll3.id;
+  }
+  if(team.doll4.id != -1) {
+    positions[team.doll4.pos] = team.doll4.id;
+  }
+  if(team.doll5.id != -1) {
+    positions[team.doll5.pos] = team.doll5.id;
+  }
+
+  var htmlstring = '';
+  htmlstring += '<div class="col-auto">';
+  htmlstring += '<div class="row no-gutters saved-team-row">';
+  htmlstring += '<div class="col border border-dark saved-team-col">';
+  if(12 in positions) {
+    htmlstring += '<img src="/static/girlsfrontline/sim/dolls/'+positions[12]+'.png" class="pos12 img-fluid position-absolute"></img></div>';
+  } else {
+    htmlstring += '<img src="/static/girlsfrontline/sim/placeholder.png" class="pos12 img-fluid position-absolute"></img></div>';
+  }
+  htmlstring += '<div class="col border-top border-bottom border-dark saved-team-col">';
+  if(13 in positions) {
+    htmlstring += '<img src="/static/girlsfrontline/sim/dolls/'+positions[13]+'.png" class="pos13 img-fluid position-absolute"></img></div>';
+  } else {
+    htmlstring += '<img src="/static/girlsfrontline/sim/placeholder.png" class="pos13 img-fluid position-absolute"></img></div>';
+  }
+  htmlstring += '<div class="col border border-dark saved-team-col">';
+  if(14 in positions) {
+    htmlstring += '<img src="/static/girlsfrontline/sim/dolls/'+positions[14]+'.png" class="pos14 img-fluid position-absolute"></img></div>';
+  } else {
+    htmlstring += '<img src="/static/girlsfrontline/sim/placeholder.png" class="pos14 img-fluid position-absolute"></img></div>';
+  }
+  htmlstring += '</div>';
+
+  htmlstring += '<div class="row no-gutters saved-team-row">';
+  htmlstring += '<div class="col border-left border-right border-dark saved-team-col">';
+  if(22 in positions) {
+    htmlstring += '<img src="/static/girlsfrontline/sim/dolls/'+positions[22]+'.png" class="pos22 img-fluid position-absolute"></img></div>';
+  } else {
+    htmlstring += '<img src="/static/girlsfrontline/sim/placeholder.png" class="pos22 img-fluid position-absolute"></img></div>';
+  }
+  htmlstring += '<div class="col saved-team-col">';
+  if(23 in positions) {
+    htmlstring += '<img src="/static/girlsfrontline/sim/dolls/'+positions[23]+'.png" class="pos23 img-fluid position-absolute"></img></div>';
+  } else {
+    htmlstring += '<img src="/static/girlsfrontline/sim/placeholder.png" class="pos23 img-fluid position-absolute"></img></div>';
+  }
+  htmlstring += '<div class="col border-left border-right border-dark saved-team-col">';
+  if(24 in positions) {
+    htmlstring += '<img src="/static/girlsfrontline/sim/dolls/'+positions[24]+'.png" class="pos24 img-fluid position-absolute"></img></div>';
+  } else {
+    htmlstring += '<img src="/static/girlsfrontline/sim/placeholder.png" class="pos24 img-fluid position-absolute"></img></div>';
+  }
+  htmlstring += '</div>';
+
+  htmlstring += '<div class="row no-gutters saved-team-row">';
+  htmlstring += '<div class="col border border-dark saved-team-col">';
+  if(32 in positions) {
+    htmlstring += '<img src="/static/girlsfrontline/sim/dolls/'+positions[32]+'.png" class="pos32 img-fluid position-absolute"></img></div>';
+  } else {
+    htmlstring += '<img src="/static/girlsfrontline/sim/placeholder.png" class="pos32 img-fluid position-absolute"></img></div>';
+  }
+  htmlstring += '<div class="col border-top border-bottom border-dark saved-team-col">';
+  if(33 in positions) {
+    htmlstring += '<img src="/static/girlsfrontline/sim/dolls/'+positions[33]+'.png" class="pos33 img-fluid position-absolute"></img></div>';
+  } else {
+    htmlstring += '<img src="/static/girlsfrontline/sim/placeholder.png" class="pos33 img-fluid position-absolute"></img></div>';
+  }
+  htmlstring += '<div class="col border border-dark saved-team-col">';
+  if(34 in positions) {
+    htmlstring += '<img src="/static/girlsfrontline/sim/dolls/'+positions[34]+'.png" class="pos34 img-fluid position-absolute"></img></div>';
+  } else {
+    htmlstring += '<img src="/static/girlsfrontline/sim/placeholder.png" class="pos34 img-fluid position-absolute"></img></div>';
+  }
+  htmlstring += '</div></div>';
+
+  return htmlstring;
+}
+
+function generateTeamsModal() {
+  if(savedTeamCount == 0) {
+    $('#teams-modal-body').html('No saved echelons found');
+    return;
+  }
+
+  $('#teams-modal-body').html('');
+  for(var i = 0; i < savedTeamList.length; i++) {
+    var team = savedTeamList[i];
+    var teamhtml = '<div class="row no-gutters">';
+    teamhtml += '<div class="col-auto">';
+    teamhtml += '<button class="load-team btn btn-sm btn-default mb-5" type="button" data-id="'+team.id+'">Load</button><br>';
+    teamhtml += '<button class="delete-team btn btn-sm btn-danger mb-5" type="button" data-id="'+team.id+'">Delete</button><br>';
+    teamhtml += '<button class="export-team btn btn-sm btn-default mb-1" type="button" data-id="'+team.id+'" hidden>Export</button></div>';
+    teamhtml += generateSavedTeamGrid(team);
+    teamhtml += '<div class="col-2">';
+    if(team.fairy.id != -1) {
+      teamhtml += '<img src="/static/girlsfrontline/sim/fairies/'+team.fairy.id+'.png" class="saved-fairy img-fluid"></img>'
+    } else {
+      teamhtml += '<img src="/static/girlsfrontline/sim/placeholder.png" class="saved-fairy img-fluid"></img>'
+    }
+    teamhtml += '</div>';
+    teamhtml += '<div class="col"><textarea class="form-control saved-text" data-id="'+team.id+'" rows="9">'+team.savedText+'</textarea></div>'
+    teamhtml += '</div><hr>';
+    $('#teams-modal-body').append(teamhtml);
+  }
+
+  $('#teams-modal-body .load-team').off('click');
+  $('#teams-modal-body .delete-team').off('click');
+  // $('#teams-modal-body .export-team').off('click');
+  $('#teams-modal-body .saved-text').off('change');
+
+  $('#teams-modal-body .load-team').click(loadTeam);
+  $('#teams-modal-body .delete-team').click(deleteTeam);
+  // $('#teams-modal-body .export-team').click(exportTeam);
+  $('#teams-modal-body .saved-text').change(changeTeamText);
+}
+
+function saveTeam() {
+  //don't allow teams to be saved unless there is atleast one doll in them
+  var doll = echelon.find(d => d.id != -1);
+  if(doll === undefined) {
+    return;
+  }
+
+  var name = prompt("Enter a name for this echelon:");
+  if(name == null || name == '') {
+    return;
+  }
+
+  var team = {
+    doll1:$.extend(true, {}, echelon[0]),
+    doll2:$.extend(true, {}, echelon[1]),
+    doll3:$.extend(true, {}, echelon[2]),
+    doll4:$.extend(true, {}, echelon[3]),
+    doll5:$.extend(true, {}, echelon[4]),
+    fairy:$.extend(true, {}, fairy),
+    savedText:name
+  };
+
+  for(var i = 0; i < 5; i++) {
+    doll = echelon[i];
+    if(doll.id == -1) {
+      continue;
+    }
+    team['doll'+(i+1)].level = parseInt($('#doll'+(i+1)+' .doll-level-select').val());
+    if(doll.equip1 != -1) {
+      team['doll'+(i+1)].equip1level = parseInt($('#doll'+(i+1)+' .equip1-level-select').val());
+    }
+    if(doll.equip2 != -1) {
+      team['doll'+(i+1)].equip2level = parseInt($('#doll'+(i+1)+' .equip2-level-select').val());
+    }
+    if(doll.equip3 != -1) {
+      team['doll'+(i+1)].equip3level = parseInt($('#doll'+(i+1)+' .equip3-level-select').val());
+    }
+  }
+
+  var i = 0;
+  var saved = false;
+  while(!saved) {
+    if(localStorage.getItem('team'+i) === null) {
+      team.id = i;
+      localStorage.setItem('team'+i, JSON.stringify(team));
+      savedTeamList.push(team);
+      savedTeamCount++;
+      localStorage.setItem('savedTeamCount', savedTeamCount);
+      saved = true;
+    } else {
+      i++;
+    }
+  }
+
+
+  generateTeamsModal();
+}
+
+function selectTeam(event) {
+  $('#teams-modal').modal('show');
+}
+
+function loadTeam(event) {
+  $('#teams-modal').modal('hide');
+
+  var t = savedTeamList.find(team => team.id == parseInt($(event.target).attr('data-id')));
+  if(t === undefined) {
+    return;
+  }
+
+  var team = $.extend(true, {}, t);
+
+  echelon[0] = team.doll1;
+  echelon[1] = team.doll2;
+  echelon[2] = team.doll3;
+  echelon[3] = team.doll4;
+  echelon[4] = team.doll5;
+  fairy = team.fairy;
+
+  for(var i = 0; i < 5; i++) {
+    if(echelon[i].id == -1) {
+      continue;
+    }
+
+    $('#doll'+(i+1)+' .doll-level-select').val(team['doll'+(i+1)].level);
+    $('#doll'+(i+1)+' .equip1-level-select').val(team['doll'+(i+1)].equip1level);
+    $('#doll'+(i+1)+' .equip2-level-select').val(team['doll'+(i+1)].equip2level);
+    $('#doll'+(i+1)+' .equip3-level-select').val(team['doll'+(i+1)].equip3level);
+    $('#doll'+(i+1)+' .skill-level-select').val(team['doll'+(i+1)].skilllevel);
+    if(echelon[i].mod) {
+      $('#doll'+(i+1)+' .skill2-level-select').val(team['doll'+(i+1)].skill2level);
+    }
+    $('#doll'+(i+1)+' .skill-toggle').prop('checked', team['doll'+(i+1)].useSkill);
+  }
+
+  if(fairy.id != -1) {
+    $('.fairy-level-select').val(fairy.level);
+    $('.fairy-skill-level-select').val(fairy.skilllevel);
+    $('.fairy-rarity-select').val(fairy.rarity);
+    $('.fairy-talent-select').val(fairy.talent.id);
+    $('.fairy-talent-label').attr('data-original-title', fairy.talent.tooltip);
+    $('.fairy-skill-toggle').prop('checked', fairy.useSkill);
+  }
+
+  simulateBattle();
+  updateUIAllDolls();
+  updateUIForFairy();
+}
+
+function deleteTeam(event) {
+  var id = parseInt($(event.target).attr('data-id'));
+  var team = savedTeamList.find(team => team.id == id);
+  if(team === undefined) {
+    return;
+  }
+
+  if (!confirm("Are you sure you want to delete this echelon?")) {
+    return;
+  }
+
+  localStorage.removeItem('team'+id);
+  savedTeamCount--;
+  localStorage.setItem('savedTeamCount', savedTeamCount);
+  savedTeamList = savedTeamList.filter(team => team.id != id);
+
+  generateTeamsModal();
+}
+
+function changeTeamText(event) {
+  var team = savedTeamList.find(team => team.id == parseInt($(event.target).attr('data-id')));
+  if(team === undefined) {
+    return;
+  }
+
+  var newText = $(event.target).val();
+  team.savedText = newText;
+  localStorage.setItem('team'+team.id, JSON.stringify(team));
+
+  generateTeamsModal();
 }
 
 

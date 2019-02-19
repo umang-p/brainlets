@@ -571,7 +571,7 @@
     "en_released":false,
     "en_craftable":false,
     "tooltip_aura":"Crit Dmg +32%, Accuracy +70%, Evasion +24%, Armor +15%",
-    "tooltip_skill":"NOT YET ADDED",
+    "tooltip_skill":"SKILL NOT YET ADDED",
     "skill":{
       "icd":0,
       "cd":-1,
@@ -592,7 +592,7 @@
     "en_released":false,
     "en_craftable":false,
     "tooltip_aura":"Damage +18%, Accuracy +55%, Evasion +64%, Armor +6%",
-    "tooltip_skill":"NOT YET ADDED",
+    "tooltip_skill":"SKILL NOT YET ADDED",
     "skill":{
       "icd":0,
       "cd":-1,
@@ -676,7 +676,7 @@
     "en_released":false,
     "en_craftable":false,
     "tooltip_aura":"Damage +22%, Crit Dmg +32%, Accuracy +50%, Evasion +10%, Armor +10%",
-    "tooltip_skill":"NOT YET ADDED",
+    "tooltip_skill":"SKILL NOT YET ADDED",
     "skill":{
       "icd":0,
       "cd":-1,
