@@ -22,7 +22,6 @@
       <tr>
         <th scope="col">Time</th>
         <th scope="col">Equip</th>
-        <th scope="col">Effects</th>
       </tr>
     </thead>
     <tbody>
@@ -30,11 +29,6 @@
         <tr>
           <td class="align-middle font-weight-bold">{{equip.hours}}:{{equip.minutes}}</td>
           <td class="stars{{equip.rarity}}"><img class="img-fluid" src="{% static 'girlsfrontline/'|add:equip.type|add:'.png' %}"></img></td>
-          <td class="align-middle font-weight-bold"><p class="text-success">{{equip.poseffect}}</p>
-            {% if equip.negeffect != 'none' %}
-            <p class="text-danger">{{equip.negeffect}}</p>
-            {% endif %}
-          </td>
         </tr>
       {% endfor %}
     </tbody>
