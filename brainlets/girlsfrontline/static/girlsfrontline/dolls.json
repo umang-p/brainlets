@@ -11405,7 +11405,7 @@
 		"en_released":false,
     "artist": "PHI",
     "voice": "Arisa Ida",
-    "tooltip_skill1": "Initial CD: 5s, CD: 16s<br>Increase self damage by 100% (45% during daytime) and rate of fire by 40% (22% during daytime) for 8 seconds",
+    "tooltip_skill1": "Initial CD: 5s, CD: 16s<br>Increase self damage by 100% (45% during daytime) and crit rate by 40% (22% during daytime) for 8 seconds",
 		"skill": {
 			"icd":5,
 			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
@@ -11415,7 +11415,7 @@
           "target":"self",
           "stat":{
             "fp":[50,55,61,66,72,77,83,88,94,100],
-            "rof":[22,24,26,28,30,32,34,36,38,40]
+            "crit":[22,24,26,28,30,32,34,36,38,40]
           },
           "duration":[5,6,6,6,7,7,7,8,8,8],
           "requirements":{
@@ -11427,7 +11427,7 @@
           "target":"self",
           "stat":{
             "fp":[18,21,24,27,30,33,36,39,42,45],
-            "rof":[12,13,14,15,16,17,18,19,20,22]
+            "crit":[12,13,14,15,16,17,18,19,20,22]
           },
           "duration":[5,6,6,6,7,7,7,8,8,8],
           "requirements":{
