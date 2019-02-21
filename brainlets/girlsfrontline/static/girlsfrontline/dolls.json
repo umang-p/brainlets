@@ -17691,5 +17691,59 @@
         ]
       }
     }
+  },
+  {
+    "id": 277,
+    "name": "Steyr Scout",
+    "rarity": 3,
+    "type": 3,
+    "mod": false,
+    "hp": 102,
+    "fp": 101,
+    "acc": 113,
+    "eva": 100,
+    "rof": 103,
+    "crit": 40,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 118,
+    "construct_time": 0,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "小叶有喜",
+    "voice": "",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self damage by 60% for 5 seconds",
+		"skill": {
+			"icd":5,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[35,38,41,43,46,49,52,54,57,60]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
+		},
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Skill Cooldown -12%",
+    "tiles": {
+      "self": 23,
+      "target": "1,-9",
+      "target_type": 1,
+      "effect": {
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 12,
+        "armor": 0
+      }
+    }
   }
 ]
