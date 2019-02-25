@@ -370,8 +370,47 @@ function initDollSelectModal() {
   var doll_types = ['All','HG','SMG','RF','AR','MG','SG'];
   for(var i = 0; i < dollData.length; i++) {
     var doll = dollData[i];
-    $('#doll-list-'+doll.type+' .stars'+doll.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="'+doll.id+'" data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="'+doll.tooltip_tiles+' Affects: '+doll_types[doll.tiles.target_type]+'<br>'+doll.tooltip_skill1+'<br>'+doll.tooltip_skill2+'">'+doll.name+'</button>');
+    var tilegrid = getTileGridHTML(doll);
+    $('#doll-list-'+doll.type+' .stars'+doll.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="'+doll.id+'" data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="">'+doll.name+'</button>');
+    var btnTooltip = doll.tooltip_tiles+' Affects: '+doll_types[doll.tiles.target_type]+tilegrid+'<br>'+doll.tooltip_skill1+'<br>'+doll.tooltip_skill2;
+    $('#doll-select button[data-id='+doll.id+']').attr('data-original-title', btnTooltip);
   }
+}
+
+function getTileGridHTML(doll) {
+  var selfSquare = doll.tiles.self;
+  var targetSquares = doll.tiles.target.split(",").map(tile => parseInt(tile) + doll.tiles.self);
+
+  var tileType = [0,1,2,3,4,5,6,7,8];
+  $.each([12,13,14,22,23,24,32,33,34], (index,tile) => {
+    if(tile == doll.tiles.self) {
+      tileType[index] = 'tilegrid-self';
+    } else if ($.inArray(tile, targetSquares) != -1) {
+      tileType[index] = 'tilegrid-target';
+    } else {
+      tileType[index] = 'tilegrid-neutral';
+    }
+  });
+
+  var htmlstring = '<div>';
+  htmlstring += '<div class=\"tilegrid-row mx-auto row no-gutters\">';
+  htmlstring += '<div class=\"tile12 tilegrid-col '+tileType[0]+' col border border-dark\"></div>';
+  htmlstring += '<div class=\"tile13 tilegrid-col '+tileType[1]+' col border-top border-bottom border-dark\"></div>';
+  htmlstring += '<div class=\"tile14 tilegrid-col '+tileType[2]+' col border border-dark\"></div>';
+  htmlstring += '</div>';
+  htmlstring += '<div class=\"tilegrid-row mx-auto row no-gutters\">';
+  htmlstring += '<div class=\"tile22 tilegrid-col '+tileType[3]+' col border-left border-right border-dark\"></div>';
+  htmlstring += '<div class=\"tile23 tilegrid-col '+tileType[4]+' col\"></div>';
+  htmlstring += '<div class=\"tile24 tilegrid-col '+tileType[5]+' col border-left border-right border-dark\"></div>';
+  htmlstring += '</div>';
+  htmlstring += '<div class=\"tilegrid-row mx-auto row no-gutters\">';
+  htmlstring += '<div class=\"tile32 tilegrid-col '+tileType[6]+' col border border-dark\"></div>';
+  htmlstring += '<div class=\"tile33 tilegrid-col '+tileType[7]+' col border-top border-bottom border-dark\"></div>';
+  htmlstring += '<div class=\"tile34 tilegrid-col '+tileType[8]+' col border border-dark\"></div>';
+  htmlstring += '</div>';
+  htmlstring += '</div>';
+
+  return htmlstring;
 }
 
 function initEquipSelectModal() {
