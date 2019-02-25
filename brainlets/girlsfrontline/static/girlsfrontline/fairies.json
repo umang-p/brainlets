@@ -544,7 +544,7 @@
     "tooltip_aura":"Damage +26%, Crit Dmg +32%, Evasion +24%, Armor +6%",
     "tooltip_skill":"Summons large AOE fire pillars in the enemy area that last for 2 seconds, dealing 120 damage every 0.5 seconds to any enemy within the aoe",
     "skill":{
-      "icd":0,
+      "icd":4,
       "cd":-1,
       "effects":[
         {
