@@ -977,10 +977,10 @@ function selectDoll(event) {
   $('#doll-select button').off('click');
   $('#doll-select button').click(event.data, changeDoll);
 
-  $('#doll-select button').prop('disabled', false);
-  for(var i = 0; i < echelon.length; i++) {
-    $('#doll-select button[data-id='+echelon[i].id+']').prop('disabled', true);
-  }
+  // $('#doll-select button').prop('disabled', false);
+  // for(var i = 0; i < echelon.length; i++) {
+  //   $('#doll-select button[data-id='+echelon[i].id+']').prop('disabled', true);
+  // }
 
   $('#doll-select').modal('show');
 }
@@ -3692,6 +3692,7 @@ function modifySkill(doll, effect, enemy, currentTime) {
   }
 
   if(doll.id == 278) {
+    //m200
     if(effect.modifySkill == "addChargedShot") {
       var hasSniperMode = doll.battle.buffs.find(b => b.name == 'm200') !== undefined ? true : false;
       if(hasSniperMode) {
@@ -3774,7 +3775,7 @@ const SKILL_CONTROL = {
     //UMP40
     doll.skill = $.extend(true,{}, dollData[doll.id-1].skill);
 
-    var icd = Math.max(1, parseInt($('#ump40-icd').val()) || 0);
+    var icd = Math.max(1, parseInt($('.ump40-icd').val()) || 0);
     doll.skill.icd = icd;
   },
   159:function(doll) {
@@ -3784,8 +3785,8 @@ const SKILL_CONTROL = {
     var target1 = parseInt($('#skill-control-body .shield1 input:checked').val());
     var target2 = parseInt($('#skill-control-body .shield2 input:checked').val());
 
-    doll.skill.effects[0].target = 'doll'
-    doll.skill.effects[1].target = 'doll'
+    doll.skill.effects[0].target = 'doll';
+    doll.skill.effects[1].target = 'doll';
 
     doll.skill.effects[0].dollid = target1;
     doll.skill.effects[1].dollid = target2;
@@ -3794,12 +3795,12 @@ const SKILL_CONTROL = {
     //Contender
     doll.skill = $.extend(true,{}, dollData[doll.id-1].skill);
 
-    var icd = Math.max(6, parseInt($('#contender-icd').val()) || 0);
+    var icd = Math.max(6, parseInt($('.contender-icd').val()) || 0);
     doll.skill.icd = icd;
   },
   197:function(doll) {
     //thunder
-    var miss = $('#thunder-skill').prop('checked');
+    var miss = $('.thunder-skill').prop('checked');
     if(miss) {
       doll.skill.effects[0].delay = 3;
     } else {
@@ -3808,7 +3809,7 @@ const SKILL_CONTROL = {
   },
   209:function(doll) {
     //mdr
-    var dollInFront = $('#mdr-skill').prop('checked');
+    var dollInFront = $('.mdr-skill').prop('checked');
     if(dollInFront) {
       doll.skill.effects[0] = {
         type:"buff",
@@ -3832,7 +3833,7 @@ const SKILL_CONTROL = {
   },
   221:function(doll) {
     //type100
-    var shieldNoBreak = $('#t100-skill').prop('checked');
+    var shieldNoBreak = $('.t100-skill').prop('checked');
     if(shieldNoBreak) {
       doll.skill.effects[0] = {
         type:"buff",
@@ -3855,13 +3856,13 @@ const SKILL_CONTROL = {
   },
   224:function(doll) {
     //m82a1
-    var victories = parseInt($('#m82a1-skill').val()) || 0;
+    var victories = parseInt($('.m82a1-skill').val()) || 0;
     doll.skill.effects[0].victories = victories;
     doll.skill.effects[0].skillDamageBonus = [5,6,6,7,7,8,8,9,9,10];
   },
   262:function(doll) {
     //g3mod
-    var morethanhalfhp = $('#g3mod-skill').prop('checked');
+    var morethanhalfhp = $('.g3mod-skill').prop('checked');
     if(morethanhalfhp) {
       doll.skill.buffednade = false;
     } else {
@@ -3875,7 +3876,7 @@ const SKILL_CONTROL = {
       if(echelon[i].id == -1) {
         continue;
       }
-      var giveBuff = $('#dollindex'+i).prop('checked');
+      var giveBuff = $('.dollindex'+i).prop('checked');
       if(giveBuff) {
         var buff = {
           type:"buff",
@@ -3893,7 +3894,7 @@ const SKILL_CONTROL = {
   },
   228:function(doll) {
     //spr a3g
-    var targetdies = $('#spra3g-skill').prop('checked');
+    var targetdies = $('.spra3g-skill').prop('checked');
     if(targetdies) {
       doll.skill.effects[0] = {
         type:"chargedshot",
@@ -3920,7 +3921,7 @@ const SKILL_CONTROL = {
   },
   235:function(doll) {
     //Howa
-    var shield = $('#howa-skill').prop('checked');
+    var shield = $('.howa-skill').prop('checked');
     if(shield) {
       doll.skill.effects[0] = {
         type:"buff",
@@ -3952,7 +3953,7 @@ const SKILL_CONTROL = {
   259:function(doll) {
     //m4a1 mod3
     doll.skill = $.extend(true, {}, dollData[doll.id-1].skill);
-    var lessthan3 = $('#m4mod3-skill').prop('checked');
+    var lessthan3 = $('.m4mod3-skill').prop('checked');
     if(lessthan3) {
       doll.skill.effects[1].target = "self";
       doll.skill.effects[2].target = "self";
@@ -3961,8 +3962,8 @@ const SKILL_CONTROL = {
   },
   256:function(doll) {
     //mosin-nagant mod3
-    var skill1kill = $('#mosinmod3-skill1').prop('checked');
-    var hitsperkill = Math.max(0, parseInt($('#mosinmod3-skill2').val()) || 0);
+    var skill1kill = $('.mosinmod3-skill1').prop('checked');
+    var hitsperkill = Math.max(0, parseInt($('.mosinmod3-skill2').val()) || 0);
 
     doll.skill = $.extend(true,{}, dollData[doll.id-1].skill);
     if(skill1kill) {
@@ -3980,8 +3981,8 @@ const SKILL_CONTROL = {
   208:function(doll) {
     //c-ms
     doll.skill = $.extend(true,{}, dollData[doll.id-1].skill);
-    var toDamage = Math.max(0, parseInt($('#cms-skill').val()) || 0);
-    var toAcc = Math.max(0, parseInt($('#cms-skill2').val()) || 0);
+    var toDamage = Math.max(0, parseInt($('.cms-skill').val()) || 0);
+    var toAcc = Math.max(0, parseInt($('.cms-skill2').val()) || 0);
     if(toDamage == 0) {
       return;
     } else {
@@ -3998,7 +3999,7 @@ const SKILL_CONTROL = {
   272:function(doll) {
     //x95
     doll.skill = $.extend(true,{}, dollData[doll.id-1].skill);
-    var missinghp = parseInt($('#x95-skill').val()) || 0;
+    var missinghp = parseInt($('.x95-skill').val()) || 0;
     missinghp = Math.max(0, missinghp);
     missinghp = Math.min(99, missinghp);
     var skillmodifier = [1.2,1.4,1.6,1.8,2,2.2,2.4,2.6,2.8,3];
@@ -4011,7 +4012,7 @@ const SKILL_CONTROL_HTML = {
   97:function(doll) {
     //ump40
     var value = doll.skill.icd;
-    return "Enter when UMP40's skill should be activated (in seconds), then hit apply<br><input id=\"ump40-icd\" type=\"number\" value=\""+value+"\"><br>Minimum is 1 second due to the initial cooldown. There is no maximum."
+    return "Enter when UMP40's skill should be activated (in seconds), then hit apply<br><input class=\"ump40-icd\" type=\"number\" value=\""+value+"\"><br>Minimum is 1 second due to the initial cooldown. There is no maximum."
   },
   159:function(doll) {
     //FP-6
@@ -4041,12 +4042,12 @@ const SKILL_CONTROL_HTML = {
   178:function(doll) {
     //Contender
     var value = doll.skill.icd;
-    return "Enter when Contender's skill should be activated (in seconds, before skill cooldown tile effects are applied), then hit apply. Remember that there is a 1 second aiming time.<br><input id=\"contender-icd\" type=\"number\" value=\""+value+"\"><br>Minimum is 6 seconds due to the initial cooldown. There is no maximum.";
+    return "Enter when Contender's skill should be activated (in seconds, before skill cooldown tile effects are applied), then hit apply. Remember that there is a 1 second aiming time.<br><input class=\"contender-icd\" type=\"number\" value=\""+value+"\"><br>Minimum is 6 seconds due to the initial cooldown. There is no maximum.";
   },
   197:function(doll) {
     //thunder
     var checked = doll.skill.effects[0].delay > 1 ? true : false;
-    var htmlstring = "Check the box if you want Thunder's skill to miss the first time, then hit apply.<br><input type=\"checkbox\" id=\"thunder-skill\"";
+    var htmlstring = "Check the box if you want Thunder's skill to miss the first time, then hit apply.<br><input type=\"checkbox\" class=\"thunder-skill\"";
     if(checked) {
       htmlstring += 'checked>Miss</input>';
     } else {
@@ -4059,9 +4060,9 @@ const SKILL_CONTROL_HTML = {
     var htmlstring = "<p>Since the effects of MDR's skill depends on whether or not there is a doll in front of her IN BATTLE, check the box if you want the sim to assume there is a doll in front of her (default, provides shield+evasion bonus to that doll) or not (provides firepower+rate of fire buff to MDR), then hit apply</p>";
     var checked = doll.skill.effects[0].target == 'front' ? true: false;
     if(checked) {
-      htmlstring += '<br><input type="checkbox" id="mdr-skill" checked>doll in front of mdr</input>';
+      htmlstring += '<br><input type="checkbox" class="mdr-skill" checked>doll in front of mdr</input>';
     } else {
-      htmlstring += '<br><input type="checkbox" id="mdr-skill">doll in front of mdr</input>';
+      htmlstring += '<br><input type="checkbox" class="mdr-skill">doll in front of mdr</input>';
     }
     return htmlstring;
   },
@@ -4070,16 +4071,16 @@ const SKILL_CONTROL_HTML = {
     var htmlstring = "<p>Uncheck the box if you want the shield to break (evasion buff), check the box if you want the shield to stay (default, damage buff), then hit apply.</p>";
     var checked = 'fp' in doll.skill.effects[0].stat ? true: false;
     if(checked) {
-      htmlstring += '<br><input type="checkbox" id="t100-skill" checked>Shield does not break</input>';
+      htmlstring += '<br><input type="checkbox" class="t100-skill" checked>Shield does not break</input>';
     } else {
-      htmlstring += '<br><input type="checkbox" id="t100-skill">Shield does not break</input>';
+      htmlstring += '<br><input type="checkbox" class="t100-skill">Shield does not break</input>';
     }
     return htmlstring;
   },
   224:function(doll) {
     //m82a1
     var htmlstring = "<p>Each victory in the current mission increases M82A1's skill damage by 10% (up to 3 stacks). Select the number of victories in the current mission, then hit apply.</p><br>";
-    htmlstring += 'Number of victories in current mission:<select id="m82a1-skill">';
+    htmlstring += 'Number of victories in current mission:<select class="m82a1-skill">';
     for(var i = 0; i < 4; i++) {
       htmlstring += '<option value="'+i+'"';
       if(doll.skill.effects[0].victories == i) {
@@ -4096,9 +4097,9 @@ const SKILL_CONTROL_HTML = {
     var htmlstring = "<p>Check the box if you want the sim to assume targets have more than 50% hp (stun). Uncheck for less than 50% hp (default, grenade damage increase) then hit apply.</p>"
     var morethanhalfhp = doll.skill.buffednade ? false : true;
     if(!morethanhalfhp) {
-      htmlstring += '<br><input type="checkbox" id="g3mod-skill">More than 50% hp</input>';
+      htmlstring += '<br><input type="checkbox" class="g3mod-skill">More than 50% hp</input>';
     } else {
-      htmlstring += '<br><input type="checkbox" id="g3mod-skill" checked>More than 50% hp</input>';
+      htmlstring += '<br><input type="checkbox" class="g3mod-skill" checked>More than 50% hp</input>';
     }
     return htmlstring;
   },
@@ -4107,9 +4108,9 @@ const SKILL_CONTROL_HTML = {
     var htmlstring = '<p>Check the box if you want that doll\'s shield not to break (damage/accuracy buff), uncheck it to break the shield (no buff) then hit apply</p>';
     for(var i = 0; i < 5; i++) {
       if(echelon[i].id == -1) {
-        htmlstring += '<input type="checkbox" id="dollindex'+i+'"hidden></input>';
+        htmlstring += '<input type="checkbox" class="dollindex'+i+'"hidden></input>';
       } else {
-        htmlstring += '<input type="checkbox" id="dollindex'+i+'">'+echelon[i].name+'</input><br>';
+        htmlstring += '<input type="checkbox" class="dollindex'+i+'">'+echelon[i].name+'</input><br>';
       }
     }
     return htmlstring;
@@ -4117,39 +4118,39 @@ const SKILL_CONTROL_HTML = {
   228:function(doll) {
     //spr a3g
     htmlstring = '<p>Check the box if you want the marked target to die while the mark is active (rate of fire buff), uncheck to leave it alive while mark expires (no effect)</p>';
-    htmlstring += '<input type="checkbox" id="spra3g-skill">Marked target dies with mark active</input>';
+    htmlstring += '<input type="checkbox" class="spra3g-skill">Marked target dies with mark active</input>';
     return htmlstring;
   },
   235:function(doll) {
     //howa
     var htmlstring = '<p>Check the box if you want to assume more than 2 groups of enemies exist after the buff expires (shields allies on tiles) or uncheck if you want to assume 2 or less enemies remain (damage buff for self/allies on tiles) then hit apply</p>';
-    htmlstring += '<input type="checkbox" id="howa-skill" checked>More than 2 groups of enemies</input>';
+    htmlstring += '<input type="checkbox" class="howa-skill" checked>More than 2 groups of enemies</input>';
     return htmlstring;
   },
   259:function(doll) {
     //m4a1 mod3
     htmlstring = '<p>Check the box to have the sim assume only 3 or less dolls are on the field, uncheck otherwise, then hit apply.</p>';
-    htmlstring += '<input type="checkbox" id="m4mod3-skill">3 or less dolls on field when skill activates</input>';
+    htmlstring += '<input type="checkbox" class="m4mod3-skill">3 or less dolls on field when skill activates</input>';
     return htmlstring;
   },
   256:function(doll) {
     //mosin-nagant mod3
     var htmlstring = '<p>Make changes then hit apply. Check the box if you want mosin-nagants first skill to kill an enemy (rate of fire buff), uncheck it otherwise. For the second field, enter how often she kills an enemy (provides damage buff). Enter 0 for never (no buff). Example: 1 = every shot kills an enemy, 2 = every other shot kills an enemy, 3 = every 3rd shot, etc etc.</p><br>';
-    htmlstring += '<input type="checkbox" id="mosinmod3-skill1">Skill1 kills an enemy</input><br>';
-    htmlstring += '<input type="number" value="0" id="mosinmod3-skill2">Number of hits to kill an enemy</input><p></p>';
+    htmlstring += '<input type="checkbox" class="mosinmod3-skill1">Skill1 kills an enemy</input><br>';
+    htmlstring += '<input type="number" value="0" class="mosinmod3-skill2">Number of hits to kill an enemy</input><p></p>';
     return htmlstring;
   },
   208:function(doll) {
     //c-ms
     var htmlstring = '<p>Enter when you would like to activate the skill and switch effects then hit apply.<br>Enter a value of 0 to not switch to that ammunition. Entering 0 for both means C-MS will stay in evasion mode the entire time. Remember there is a 1s cooldown time every time you switch modes.<br>maybe instead of swtichgin this should just let you pick one mode to go with for the whole simulation</p><br>';
-    htmlstring += '<input type="number" id="cms-skill">Enter how many seconds into evasion mode you want to switch into damage mode</input><br>';
-    htmlstring += '<input type="number" id="cms-skill2">Enter how many seconds into damage mode you want to switch into accuracy mode</input><br><p></p>';
+    htmlstring += '<input type="number" class="cms-skill">Enter how many seconds into evasion mode you want to switch into damage mode</input><br>';
+    htmlstring += '<input type="number" class="cms-skill2">Enter how many seconds into damage mode you want to switch into accuracy mode</input><br><p></p>';
     return htmlstring;
   },
   272:function(doll) {
     //x95
     var htmlstring = '<p>Enter the percentage of hp missing from the enemy (so if the enemy has 10% hp left, you enter 90 here) then hit apply</p><br>';
-    htmlstring += '<input type="number" id="x95-skill">% of hp missing from enemy (min: 0, max:99)</input><p></p>';
+    htmlstring += '<input type="number" class="x95-skill">% of hp missing from enemy (min: 0, max:99)</input><p></p>';
     return htmlstring;
   }
 };
