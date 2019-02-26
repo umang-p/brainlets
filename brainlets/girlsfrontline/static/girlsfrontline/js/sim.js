@@ -2090,6 +2090,21 @@ function preBattleSkillChanges(doll) {
     doll.battle.passives.push(hasStacksPassive);
     doll.battle.passives.push(notHasStacksPassive);
   }
+
+  if(doll.id == 278) {
+    //M200
+    var buff = {
+      type:"buff",
+      name:"normalAttackBuff",
+      target:"self",
+      duration:-1,
+      level:doll.skilllevel,
+      multiplier:1.05
+    };
+    if(enemyArmor == 0) {
+      doll.battle.buffs.push(buff);
+    }
+  }
 }
 
 function initDollsForBattle() {
@@ -2545,7 +2560,7 @@ function simulateBattle() {
           modifySkill(doll, action, enemy, currentFrame);
         } else {
           if('delay' in action) {
-            action.timeLeft = Math.round(action.delay * 30) + 1;
+            action.timeLeft = $.isArray(action.delay) ? Math.round(action.delay[action.level-1] * 30) : Math.round(action.delay * 30) + 1;
           }
           if('busylinks' in action) {
             doll.battle.busylinks += Math.min(action.busylinks, doll.links);
@@ -3669,6 +3684,32 @@ function modifySkill(doll, effect, enemy, currentTime) {
         };
         doll.battle.buffs.push(feverbuff);
         doll.skill.mode = 'fever';
+      }
+    }
+  }
+
+  if(doll.id == 278) {
+    if(effect.modifySkill == "addChargedShot") {
+      var hasSniperMode = doll.battle.buffs.find(b => b.name == 'm200') !== undefined ? true : false;
+      if(hasSniperMode) {
+        var chargedshot = {
+          type:"chargedshot",
+          delay:[2.5,2.4,2.3,2.2,2.1,1.9,1.8,1.7,1.6,1.5],
+          busylinks:5,
+          canCrit:true,
+          multiplier:[1.5,1.56,1.61,1.67,1.72,1.78,1.83,1.89,1.94,2],
+          modifySkill:"addChargedShot",
+          level:doll.skilllevel
+        };
+
+        if('delay' in chargedshot) {
+          chargedshot.timeLeft = $.isArray(chargedshot.delay) ? Math.round(chargedshot.delay[chargedshot.level-1] * 30) : Math.round(chargedshot.delay * 30) + 1;
+        }
+        if('busylinks' in chargedshot) {
+          doll.battle.busylinks += Math.min(chargedshot.busylinks, doll.links);
+        }
+
+        doll.battle.action_queue.push(chargedshot);
       }
     }
   }

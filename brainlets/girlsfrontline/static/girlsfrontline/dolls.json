@@ -17745,5 +17745,65 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 278,
+    "name": "M200",
+    "rarity": 5,
+    "type": 3,
+    "mod": false,
+    "hp": 100,
+    "fp": 118,
+    "acc": 124,
+    "eva": 76,
+    "rof": 95,
+    "crit": 40,
+    "critdmg": 50,
+    "ap": 10,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 135,
+    "construct_time": 16320,
+    "en_craftable": true,
+		"en_released":true,
+    "artist": "DANGERDROP",
+    "voice": "",
+    "tooltip_skill1": "Initial CD: 6s, CD: 16s<br>Active: Enter sniper mode for 9 seconds. After every 1.5 seconds of aiming, deal 2x damage (able to crit) to the furthest target and decrease their damage dealt by 10% for 3 seconds.<br>Passive: Normal attacks against armorless enemies deal 1.05x damage",
+		"skill": {
+			"icd":6,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "duration":9,
+          "name":"m200"
+        },
+        {
+          "type":"chargedshot",
+          "delay":[2.5,2.4,2.3,2.2,2.1,1.9,1.8,1.7,1.6,1.5],
+          "busylinks":5,
+          "canCrit":true,
+          "multiplier":[1.5,1.56,1.61,1.67,1.72,1.78,1.83,1.89,1.94,2],
+          "modifySkill":"addChargedShot"
+        }
+      ]
+		},
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Skill Cooldown -18%",
+    "tiles": {
+      "self": 23,
+      "target": "1,11",
+      "target_type": 1,
+      "effect": {
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
+      }
+    }
   }
 ]
