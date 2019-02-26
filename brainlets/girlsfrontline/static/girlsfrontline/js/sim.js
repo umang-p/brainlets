@@ -2924,7 +2924,10 @@ function simulateBattle() {
           var canCrit = 'canCrit' in action ? action.canCrit : false;
 
           dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level-1] : doll.battle.fp * action.multiplier;
-          dmg = Math.max(1, dmg + Math.min(2, doll.battle.ap - enemy.battle.armor));
+          if(!('multiplier' in action)) {
+            dmg = doll.battle.fp;
+          }
+          // dmg = Math.max(1, dmg + Math.min(2, doll.battle.ap - enemy.battle.armor));
           if(!sureHit) {
             dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
           }
