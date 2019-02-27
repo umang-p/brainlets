@@ -5979,7 +5979,7 @@
         ]
       }
     ],
-    "skill_control":"Enter when UMP40's skill should be activated (in seconds), then hit apply<br><input id=\"ump40-icd\" type=\"number\" value=\"1\"><br>Minimum is 1 second due to the initial cooldown. There is no maximum.",
+    "skill_control":true,
     "tooltip_skill2": "",
     "tooltip_tiles": "Crit Rate +500%",
     "tiles": {
@@ -9658,7 +9658,7 @@
         }
       ]
 		},
-    "skill_control":"",
+    "skill_control":true,
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +10%",
     "tiles": {
@@ -14697,7 +14697,6 @@
         ]
       }
     ],
-    "skill_control":true,
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +12%, Accuracy +30%",
     "tiles": {
