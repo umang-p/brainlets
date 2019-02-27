@@ -2926,15 +2926,19 @@ function simulateBattle() {
             continue;
           }
 
-          //unless specified, charged shots cannot miss and cannot crit
+          //unless specified, charged shots cannot miss and cannot crit and ignore armor
           var sureHit = 'sureHit' in action ? action.sureHit : true;
           var canCrit = 'canCrit' in action ? action.canCrit : false;
+          var ignoreArmor = 'ignoreArmor' in action ? action.ignoreArmor : true;
 
           dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level-1] : doll.battle.fp * action.multiplier;
           if(!('multiplier' in action)) {
             dmg = doll.battle.fp;
           }
-          // dmg = Math.max(1, dmg + Math.min(2, doll.battle.ap - enemy.battle.armor));
+          if(!ignoreArmor) {
+            dmg = Math.max(1, dmg + Math.min(2, doll.battle.ap - enemy.battle.armor));
+          }
+
           if(!sureHit) {
             dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
           }
@@ -3708,6 +3712,7 @@ function modifySkill(doll, effect, enemy, currentTime) {
           delay:[2.5,2.4,2.3,2.2,2.1,1.9,1.8,1.7,1.6,1.5],
           busylinks:5,
           canCrit:true,
+          ignoreArmor:false,
           multiplier:[1.5,1.56,1.61,1.67,1.72,1.78,1.83,1.89,1.94,2],
           modifySkill:"addChargedShot",
           level:doll.skilllevel
