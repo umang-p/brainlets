@@ -17,6 +17,7 @@ var useFortressNode;
 var fortressNodeLevel;
 var savedTeamList;
 var savedTeamCount;
+var graphColors = ['#7CB5EC', '#434348', '#90ED7D', '#F7A35C', '#8085E9', '#F15C80'];
 
 const VALID_EQUIPS = [[[4,13],[6],[10,12]], //hg
                     [[10,12],[6],[1,2,3,4,13]],//smg
@@ -1432,6 +1433,8 @@ function updateUIForDoll(index) {
     $('#doll'+(index+1)+'-dmg').text('-');
   } else {
     $('#doll'+(index+1)+'-name').text(doll.name);
+    $('#doll'+(index+1)+'-name').css('border-bottom', '2px solid');
+    $('#doll'+(index+1)+'-name').css('border-bottom-color', graphColors[index]);
     $('#doll'+(index+1)+' .affection').children().prop('hidden', true);
     $('#doll'+(index+1)+' .affection').children().eq(doll.affection).prop('hidden', false);
     $('#doll'+(index+1)+' .skill-label').attr('data-original-title', doll.tooltip_skill1);
@@ -1545,6 +1548,8 @@ function updateUIForFairy() {
     $('#fairy-skill-control').prop('hidden', true);
   } else {
     $('#fairy-name').text(fairy.name);
+    $('#fairy-name').css('border-bottom', '2px solid');
+    $('#fairy-name').css('border-bottom-color', graphColors[5]);
     $('#fairy-dmg-label').text(fairy.name);
     $('#fairy-img').attr('src', '/static/girlsfrontline/sim/fairies/'+fairy.id+'.png');
     $('.fairy-skill-label').attr('data-original-title', fairy.tooltip_skill);
@@ -2113,6 +2118,7 @@ function initDollsForBattle() {
 
     graphData.y.push({});
     graphData.y[i].name = doll.name;
+    graphData.y[i].color = graphColors[i];
     graphData.y[i].data = [];
     graphData.y[i].data.push(0);
 
@@ -2252,6 +2258,7 @@ function initEnemyForBattle() {
 function initiFairyForBattle() {
   graphData.y.push({});
   graphData.y[5].name = fairy.name;
+  graphData.y[5].color = graphColors[5];
   graphData.y[5].data = [];
   graphData.y[5].data.push(0);
 
