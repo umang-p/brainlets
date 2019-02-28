@@ -2109,6 +2109,7 @@ function preBattleSkillChanges(doll) {
     if(enemyArmor == 0) {
       doll.battle.buffs.push(buff);
     }
+    doll.battle.skill.numShots = 0;
   }
 }
 
@@ -3704,7 +3705,11 @@ function modifySkill(doll, effect, enemy, currentTime) {
 
   if(doll.id == 278) {
     //m200
+    if(effect.modifySkill == "resetShotCount") {
+      doll.battle.skill.numShots = 0;
+    }
     if(effect.modifySkill == "addChargedShot") {
+      doll.battle.skill.numShots++;
       var hasSniperMode = doll.battle.buffs.find(b => b.name == 'm200') !== undefined ? true : false;
       if(hasSniperMode) {
         var chargedshot = {
@@ -3718,14 +3723,18 @@ function modifySkill(doll, effect, enemy, currentTime) {
           level:doll.skilllevel
         };
 
-        if('delay' in chargedshot) {
-          chargedshot.timeLeft = $.isArray(chargedshot.delay) ? Math.round(chargedshot.delay[chargedshot.level-1] * 30) : Math.round(chargedshot.delay * 30) + 1;
+        if(doll.battle.skill.numShots < 7) {
+          if('delay' in chargedshot) {
+            chargedshot.timeLeft = $.isArray(chargedshot.delay) ? Math.round(chargedshot.delay[chargedshot.level-1] * 30) : Math.round(chargedshot.delay * 30) + 1;
+            if(doll.pre_battle.skillcd > 0) {
+              chargedshot.timeLeft = Math.floor((1 - doll.pre_battle.skillcd / 100) * chargedshot.timeLeft);
+            }
+          }
+          if('busylinks' in chargedshot) {
+            doll.battle.busylinks += Math.min(chargedshot.busylinks, doll.links);
+          }
+          doll.battle.action_queue.push(chargedshot);
         }
-        if('busylinks' in chargedshot) {
-          doll.battle.busylinks += Math.min(chargedshot.busylinks, doll.links);
-        }
-
-        doll.battle.action_queue.push(chargedshot);
       }
     }
   }

@@ -17773,6 +17773,10 @@
 			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
       "effects": [
         {
+          "type":"modifySkill",
+          "modifySkill":"resetShotCount"
+        },
+        {
           "type":"buff",
           "target":"self",
           "duration":9,
