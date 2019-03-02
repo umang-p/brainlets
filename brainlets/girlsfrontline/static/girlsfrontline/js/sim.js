@@ -2547,7 +2547,7 @@ function simulateBattle() {
     });
 
 
-    //apply buffs
+    //apply buffs, handle effects that aren't actions
     for(i = 0; i < 5; i++) {
       doll = echelon[i];
       if(doll.id == -1) continue;
@@ -2798,6 +2798,10 @@ function simulateBattle() {
 
         if(action.type == 'reload') {
           doll.battle.currentRounds += doll.battle.rounds;
+
+          //apparently the counter for terminating barrage MGs resets when they reload
+          doll.battle.numAttacks = 1;
+
           triggerPassive('reload', doll, enemy);
           //add normalAttackTimer here
         }
