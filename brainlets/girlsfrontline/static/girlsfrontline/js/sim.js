@@ -3112,6 +3112,8 @@ function simulateBattle() {
 
   if(fairy.id != -1) {
     $('#fairy-dmg').text(graphData.y[5].data[currentFrame-1]);
+  } else {
+    $('#fairy-dmg').text('-');
   }
 
   determineFinalStats();
