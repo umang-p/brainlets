@@ -9415,7 +9415,8 @@
         {
           "type":"burstimpact",
           "multiplier":[1.6,1.7,2,2.1,2.4,2.5,2.8,3,3.3,3.5],
-          "delay":2
+          "delay":2,
+          "busylinks":5
         }
       ]
 		},

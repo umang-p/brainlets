@@ -3007,12 +3007,21 @@ function simulateBattle() {
             dmg = $.isArray(action.fixedDamage) ? action.fixedDamage[action.level-1] : action.fixedDamage;
           }
           dmg *= enemy.battle.vulnerability;
-          dmg *= doll.links;
+
+          if('busylinks' in action) {
+            dmg *= doll.battle.busylinks;
+          } else {
+            dmg *= doll.links;
+          }
 
           if(!('targets' in action)) {
             dmg = dmg * Math.min(doll.battle.targets, enemy.count);
           } else {
             dmg = dmg * Math.min(action.targets, enemy.count);
+          }
+
+          if('busylinks' in action) {
+            doll.battle.busylinks -= Math.min(action.busylinks, doll.links);
           }
 
           if(currentFrame <= 30 * 8 +1) {
