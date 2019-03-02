@@ -1743,13 +1743,13 @@ function calculatePreBattleStatsForDoll(dollIndex) {
   doll.pre_battle.rounds += doll.equip_bonus.rounds;
   doll.pre_battle.nightview = doll.equip_bonus.nightview;
 
-  //apply tile bonus multiplicatively, floored
-  doll.pre_battle.fp = Math.floor(doll.pre_battle.fp * (1 + (doll.tile_bonus.fp / 100)));
-  doll.pre_battle.acc = Math.floor(doll.pre_battle.acc * (1 + (doll.tile_bonus.acc / 100)));
-  doll.pre_battle.eva = Math.floor(doll.pre_battle.eva * (1 + (doll.tile_bonus.eva / 100)));
-  doll.pre_battle.rof = Math.floor(doll.pre_battle.rof * (1 + (doll.tile_bonus.rof / 100)));
-  doll.pre_battle.armor = Math.floor(doll.pre_battle.armor * (1 + (doll.tile_bonus.armor / 100)));
-  doll.pre_battle.crit = Math.floor(doll.pre_battle.crit * (1 + (doll.tile_bonus.crit / 100)));
+  //apply tile bonus multiplicatively, do not floor
+  doll.pre_battle.fp = doll.pre_battle.fp * (1 + (doll.tile_bonus.fp / 100));
+  doll.pre_battle.acc = doll.pre_battle.acc * (1 + (doll.tile_bonus.acc / 100));
+  doll.pre_battle.eva = doll.pre_battle.eva * (1 + (doll.tile_bonus.eva / 100));
+  doll.pre_battle.rof = doll.pre_battle.rof * (1 + (doll.tile_bonus.rof / 100));
+  doll.pre_battle.armor = doll.pre_battle.armor * (1 + (doll.tile_bonus.armor / 100));
+  doll.pre_battle.crit = doll.pre_battle.crit * (1 + (doll.tile_bonus.crit / 100));
   doll.pre_battle.skillcd = doll.tile_bonus.skillcd;
 
   //apply fairy bonus multiplicatively, ceiling
@@ -3189,11 +3189,11 @@ function calculateSkillBonus(dollIndex) {
 
 function calculateBattleStats(dollIndex) {
   var doll = echelon[dollIndex];
-  doll.battle.fp = Math.floor(doll.pre_battle.fp * doll.battle.skillbonus.fp);
+  doll.battle.fp = doll.pre_battle.fp * doll.battle.skillbonus.fp;
   doll.battle.acc = Math.floor(doll.pre_battle.acc * doll.battle.skillbonus.acc);
   doll.battle.eva = Math.floor(doll.pre_battle.eva * doll.battle.skillbonus.eva);
   doll.battle.rof = Math.floor(doll.pre_battle.rof * doll.battle.skillbonus.rof);
-  doll.battle.crit = Math.floor(doll.pre_battle.crit * doll.battle.skillbonus.crit);
+  doll.battle.crit = doll.pre_battle.crit * doll.battle.skillbonus.crit;
   doll.battle.critdmg = Math.floor(((doll.pre_battle.critdmg+100) * doll.battle.skillbonus.critdmg)-100);
   doll.battle.armor = Math.floor(doll.pre_battle.armor * doll.battle.skillbonus.armor);
   doll.battle.rounds = Math.floor(doll.pre_battle.rounds + doll.battle.skillbonus.rounds);
@@ -3780,20 +3780,29 @@ function getUsableSkillEffects(effects) {
 }
 
 function determineFinalStats() {
+  //this whole mechanism of determining which numbers to show the user if they have enabled showBuffedStats
+  //needs to be redone.
+
   for(var i = 0; i < 5; i++) {
     var doll = echelon[i];
     if(doll.id == -1) continue;
 
     doll.battle.finalstats = {};
+
+    doll.battle.maxstats.fp = Math.floor(doll.battle.maxstats.fp);
+    doll.battle.maxstats.crit = Math.floor(doll.battle.maxstats.crit);
+    doll.battle.minstats.fp = Math.floor(doll.battle.minstats.fp);
+    doll.battle.minstats.crit = Math.floor(doll.battle.minstats.crit);
+
     $.each(['fp','eva','acc','rof','crit','critdmg','rounds','armor','ap'], (index,stat) => {
-      if(doll.battle.maxstats[stat] == doll.pre_battle[stat]) {
+      if(doll.battle.maxstats[stat] == Math.floor(doll.pre_battle[stat])) {
         doll.battle.finalstats[stat] = doll.battle.minstats[stat];
       } else {
         doll.battle.finalstats[stat] = doll.battle.maxstats[stat];
       }
 
       //if stat went both up and down in battle, just show both min and max
-      if(doll.battle.maxstats[stat] != doll.pre_battle[stat] && doll.battle.minstats[stat] != doll.pre_battle[stat]) {
+      if(doll.battle.maxstats[stat] != Math.floor(doll.pre_battle[stat]) && doll.battle.minstats[stat] != Math.floor(doll.pre_battle[stat])) {
         doll.battle.finalstats[stat] = doll.battle.minstats[stat] + '-' + doll.battle.maxstats[stat];
       }
     });
