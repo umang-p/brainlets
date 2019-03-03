@@ -3178,7 +3178,7 @@ function calculateSkillBonus(dollIndex) {
             doll.battle.skillbonus.rounds += $.isArray(amount) ? amount[buff.level-1] : amount;
           } else {
             if('stackChance' in buff) {
-              bonus = $.isArray(buff.stackChance) ? buff.stackChance[buff.level-1] / 100 : stackChance / 100;
+              bonus = $.isArray(buff.stackChance) ? buff.stackChance[buff.level-1] / 100 : buff.stackChance / 100;
               bonus *= $.isArray(amount) ? amount[buff.level-1] / 100 : amount/100;
               doll.battle.skillbonus[stat] *= (bonus + 1);
             } else {
@@ -3283,26 +3283,27 @@ function activateBuff(doll, buff, enemy) {
       target.battle.buffs.push($.extend({}, buff));
     }
     if('stat' in buff && doll != target) {
+      var triggerChance = 'stackChance' in buff ? buff.stackChance : undefined;
       if('fp' in buff.stat) {
-        triggerPassive('receivefp', target, enemy);
+        triggerPassive('receivefp', target, enemy, triggerChance);
       }
       if('rof' in buff.stat) {
-        triggerPassive('receiverof', target, enemy);
+        triggerPassive('receiverof', target, enemy, triggerChance);
       }
       if('eva' in buff.stat) {
-        triggerPassive('receiveeva', target, enemy);
+        triggerPassive('receiveeva', target, enemy, triggerChance);
       }
       if('acc' in buff.stat) {
-        triggerPassive('receiveacc', target, enemy);
+        triggerPassive('receiveacc', target, enemy, triggerChance);
       }
       if('crit' in buff.stat) {
-        triggerPassive('receivecrit', target, enemy);
+        triggerPassive('receivecrit', target, enemy, triggerChance);
       }
     }
   });
 }
 
-function triggerPassive(trigger, doll, enemy) {
+function triggerPassive(trigger, doll, enemy, triggerChance=undefined) {
   if(!('passives' in doll.battle)) {
     return;
   }
@@ -3311,7 +3312,11 @@ function triggerPassive(trigger, doll, enemy) {
   $.each(passives, (index, passive) => {
     $.each(passive.effects, (j,effect) => {
       if(effect.type == 'buff') {
-        activateBuff(doll,effect,enemy);
+        var buff = $.extend(true, {}, effect);
+        if(triggerChance != undefined) {
+          buff.stackChance = triggerChance;
+        }
+        activateBuff(doll,buff,enemy);
       } else if (effect.type == 'loadRounds') {
         var targets = getBuffTargets(doll, effect, enemy);
         $.each(targets, (index,target) => {
