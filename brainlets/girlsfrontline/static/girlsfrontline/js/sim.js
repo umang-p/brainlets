@@ -1472,8 +1472,8 @@ function updateUIForDoll(index) {
       $('#doll'+(index+1)+' .fp span').text(doll.pre_battle.fp);
       $('#doll'+(index+1)+' .acc span').text(doll.pre_battle.acc);
       $('#doll'+(index+1)+' .eva span').text(doll.pre_battle.eva);
-      $('#doll'+(index+1)+' .rof span').text(doll.pre_battle.rof);
-      $('#doll'+(index+1)+' .crit span').text(doll.pre_battle.crit+'%');
+      $('#doll'+(index+1)+' .rof span').text(Math.floor(doll.pre_battle.rof));
+      $('#doll'+(index+1)+' .crit span').text(Math.floor(doll.pre_battle.crit)+'%');
       $('#doll'+(index+1)+' .critdmg span').text((doll.pre_battle.critdmg+100)+'%');
       if(doll.pre_battle.rounds != 0) {
         $('#doll'+(index+1)+' .rounds span').text(doll.pre_battle.rounds);
@@ -3800,14 +3800,14 @@ function determineFinalStats() {
 
     $.each(['fp','eva','acc','rof','crit','critdmg','rounds','armor','ap'], (index,stat) => {
       if(doll.battle.maxstats[stat] == Math.floor(doll.pre_battle[stat])) {
-        doll.battle.finalstats[stat] = doll.battle.minstats[stat];
+        doll.battle.finalstats[stat] = Math.floor(doll.battle.minstats[stat]);
       } else {
-        doll.battle.finalstats[stat] = doll.battle.maxstats[stat];
+        doll.battle.finalstats[stat] = Math.floor(doll.battle.maxstats[stat]);
       }
 
       //if stat went both up and down in battle, just show both min and max
       if(doll.battle.maxstats[stat] != Math.floor(doll.pre_battle[stat]) && doll.battle.minstats[stat] != Math.floor(doll.pre_battle[stat])) {
-        doll.battle.finalstats[stat] = doll.battle.minstats[stat] + '-' + doll.battle.maxstats[stat];
+        doll.battle.finalstats[stat] = Math.floor(doll.battle.minstats[stat]) + '-' + Math.floor(doll.battle.maxstats[stat]);
       }
     });
   }
