@@ -276,6 +276,10 @@
             "stat":{
               "fp":[3,3,4,4,5,5,5,6,6,6]
             },
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":3,
+            "name":"pythonfp",
             "duration":3
           }
         ]
@@ -290,6 +294,10 @@
             "stat":{
               "rof":[3,3,4,4,5,5,5,6,6,6]
             },
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":3,
+            "name":"pythonrof",
             "duration":3
           }
         ]
@@ -304,6 +312,10 @@
             "stat":{
               "eva":[15,17,18,20,22,23,25,27,28,30]
             },
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":3,
+            "name":"pythoneva",
             "duration":3
           }
         ]
@@ -318,6 +330,10 @@
             "stat":{
               "acc":[15,17,18,20,22,23,25,27,28,30]
             },
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":3,
+            "name":"pythonacc",
             "duration":3
           }
         ]
@@ -332,6 +348,10 @@
             "stat":{
               "crit":[6,7,7,7,8,9,9,10,11,12]
             },
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":3,
+            "name":"pythoncrit",
             "duration":3
           }
         ]
