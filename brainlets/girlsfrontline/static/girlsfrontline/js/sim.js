@@ -1263,6 +1263,21 @@ function changeFairyLevel(event) {
 
   fairy.level = parseInt($('.fairy-level-select').val());
 
+  //change fairy rarity if level requirement is no longer met
+  if(fairy.level < 20 && fairy.level >= 1 && fairy.rarity > 1) {
+    fairy.rarity = 1;
+    $('.fairy-rarity-select').val(fairy.rarity);
+  } else if (fairy.level < 40 && fairy.level >= 20 && fairy.rarity > 2) {
+    fairy.rarity = 2;
+    $('.fairy-rarity-select').val(fairy.rarity);
+  } else if (fairy.level < 70 && fairy.level >= 40 && fairy.rarity > 3) {
+    fairy.rarity = 3;
+    $('.fairy-rarity-select').val(fairy.rarity);
+  } else if (fairy.level < 100 && fairy.level >= 70 && fairy.rarity > 4) {
+    fairy.rarity = 4;
+    $('.fairy-rarity-select').val(fairy.rarity);
+  }
+
   calculateFairyBonus();
   calculatePreBattleStatsAllDolls();
   simulateBattle();
@@ -1276,6 +1291,21 @@ function changeFairyRarity(event) {
   }
 
   fairy.rarity = parseInt($('.fairy-rarity-select').val());
+
+  //change fairy level to meet the new rarity's min. level requirement if necessary
+  if(fairy.rarity == 5 && fairy.level != 100) {
+    fairy.level = 100;
+    $('.fairy-level-select').val(fairy.level);
+  } else if (fairy.rarity == 4 && fairy.level < 70) {
+    fairy.level = 70;
+    $('.fairy-level-select').val(fairy.level);
+  } else if (fairy.rarity == 3 && fairy.level < 40) {
+    fairy.level = 40;
+    $('.fairy-level-select').val(fairy.level);
+  } else if (fairy.rarity == 2 && fairy.level < 20) {
+    fairy.level = 20;
+    $('.fairy-level-select').val(fairy.level);
+  }
 
   calculateFairyBonus();
   calculatePreBattleStatsAllDolls();
