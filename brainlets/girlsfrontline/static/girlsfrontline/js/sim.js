@@ -2111,6 +2111,39 @@ function preBattleSkillChanges(doll) {
     }
     doll.battle.skill.numShots = 0;
   }
+
+  if(doll.id == 193) {
+    //grape cano
+    var buff = {
+      type:"buff",
+      target:"self",
+      name:"grape",
+      duration:-1,
+      stackable:true,
+      max_stacks:99,
+      stacks:0,
+      stacksToAdd:[1,1,1,1,1,1,2,2,2,2],
+      stackChance:[30,35,40,45,50,55,55,60,65,70],
+      level:doll.skilllevel
+    };
+    var activeBuff = {
+      type:"buff",
+      target:"self",
+      name:"grape",
+      duration:-1,
+      stackable:true,
+      max_stacks:99,
+      stacks:0,
+      stacksToAdd:[12,13,14,14,15,16,16,17,17,18],
+      stackChance:[30,35,40,45,50,55,55,60,65,70],
+      level:doll.skilllevel
+    };
+    activeBuff.stacksToAdd = Math.ceil(100 / activeBuff.stackChance[activeBuff.level-1] * activeBuff.stacksToAdd[activeBuff.level-1]); //to make up for the stackChance when hasStacks passive is calculated
+    activeBuff.stacks = activeBuff.stacksToAdd; //in case there is a point in the battle where the skill goes off right after the hasStacks passive is triggered and removes all stacks
+
+    doll.battle.buffs.push(buff);
+    doll.battle.skill.effects[0] = activeBuff;
+  }
 }
 
 function initDollsForBattle() {

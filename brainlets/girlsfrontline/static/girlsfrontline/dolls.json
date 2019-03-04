@@ -11789,35 +11789,15 @@
 			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
       "effects": [
         {
-          "type":"removeBuff",
-          "target":"self",
-          "name":"grape"
-        },
-        {
           "type":"buff",
           "target":"self",
-          "name":"normalAttackBuff",
-          "attacksLeft":1,
+          "name":"grape",
           "duration":-1,
-          "sureHit":true,
-          "canCrit":false,
-          "multiplier":[1.8,1.9,2,2.1,2.25,2.4,2.55,2.7,2.85,3],
-          "requirements":{
-            "boss":true
-          }
-        },
-        {
-          "type":"buff",
-          "target":"self",
-          "name":"normalAttackBuff",
-          "attacksLeft":1,
-          "duration":-1,
-          "sureHit":true,
-          "canCrit":false,
-          "multiplier":[27,28.5,30,31.5,33.75,36,38.25,40.5,42.75,45],
-          "requirements":{
-            "boss":false
-          }
+          "stackable":true,
+          "max_stacks":99,
+          "stacks":0,
+          "stacksToAdd":[12,13,14,14,15,16,16,17,17,18],
+          "stackChance":[30,35,40,45,50,55,55,60,65,70]
         }
       ]
 		},
@@ -11834,7 +11814,7 @@
             "stackable":true,
             "max_stacks":99,
             "stacks":2,
-            "stacksToAdd":2,
+            "stacksToAdd":[1,1,1,1,1,1,2,2,2,2],
             "stackChance":[30,35,40,45,50,55,55,60,65,70]
           }
         ]
@@ -11846,31 +11826,29 @@
         "stacksRequired":18,
         "effects":[
           {
-            "type":"removeBuff",
-            "target":"self",
-            "name":"grape"
-          },
-          {
             "type":"buff",
             "target":"self",
-            "name":"normalAttackBuff",
-            "attacksLeft":1,
+            "name":"grape",
             "duration":-1,
-            "sureHit":true,
-            "canCrit":false,
+            "stackable":true,
+            "max_stacks":99,
+            "stacks":2,
+            "stacksToAdd":-99,
+            "stackChance":[30,35,40,45,50,55,55,60,65,70]
+          },
+          {
+            "type":"chargedshot",
+            "delay":0,
+            "busylinks":5,
             "multiplier":[1.8,1.9,2,2.1,2.25,2.4,2.55,2.7,2.85,3],
             "requirements":{
               "boss":true
             }
           },
           {
-            "type":"buff",
-            "target":"self",
-            "name":"normalAttackBuff",
-            "attacksLeft":1,
-            "duration":-1,
-            "sureHit":true,
-            "canCrit":false,
+            "type":"chargedshot",
+            "delay":0,
+            "busylinks":5,
             "multiplier":[27,28.5,30,31.5,33.75,36,38.25,40.5,42.75,45],
             "requirements":{
               "boss":false
