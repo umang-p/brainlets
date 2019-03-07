@@ -682,5 +682,34 @@
       "cd":-1,
       "effects":[]
     }
+  },
+  {
+    "id": 27,
+    "name": "Nian",
+    "type": 1,
+    "fp": 105,
+    "acc": 0,
+    "eva": 31,
+    "armor": 125,
+    "critdmg": 80,
+    "growth_rating": 207,
+    "construct_time": 18600,
+    "en_released":false,
+    "en_craftable":false,
+    "tooltip_aura":"Damage +25%, Crit Dmg +25%, Evasion +20%, Armor +20%",
+    "tooltip_skill":"Light a firecracker, stunning the target enemy for 2 seconds and dealing 50 damage every 1 second for 5 seconds to enemies within a radius of 4 units",
+    "skill":{
+      "icd":4,
+      "cd":-1,
+      "effects":[
+        {
+          "type":"grenadedot",
+          "radius":4,
+          "damage":[10,15,20,25,25,30,35,40,45,50],
+          "timeLeft":150,
+          "tick":30
+        }
+      ]
+    }
   }
 ]
