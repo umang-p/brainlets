@@ -182,7 +182,7 @@
   },
   {
     "id": 8,
-    "name": "Mortar Fairy",
+    "name": "Artillery Fairy",
     "type": 1,
     "fp": 372,
     "acc": 0,
@@ -266,7 +266,7 @@
   },
   {
     "id": 11,
-    "name": "Airborne Fairy",
+    "name": "Parachute Fairy",
     "type": 2,
     "fp": 190,
     "acc": 0,
@@ -418,7 +418,7 @@
   },
   {
     "id": 17,
-    "name": "Illumine Fairy",
+    "name": "Illumination Fairy",
     "type": 2,
     "fp": 0,
     "acc": 200,
