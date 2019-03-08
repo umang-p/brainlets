@@ -757,6 +757,14 @@ function loadTeam(event) {
     $('.fairy-skill-toggle').prop('checked', fairy.useSkill);
   }
 
+  $.each([12,13,14,22,23,24,32,33,34], (index,value) => {
+    $('#pos'+value).attr('data-index', -1);
+  });
+
+  for(var i = 0; i < 5; i++) {
+    $('#pos'+echelon[i].pos).attr('data-index', i);
+  }
+
   simulateBattle();
   updateUIAllDolls();
   updateUIForFairy();
