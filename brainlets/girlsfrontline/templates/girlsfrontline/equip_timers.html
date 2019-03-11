@@ -21,7 +21,7 @@
     <thead class="thead">
       <tr>
         <th scope="col">Time</th>
-        <th scope="col">Equip</th>
+        <th scope="col">Equip/Fairy</th>
       </tr>
     </thead>
     <tbody>
@@ -29,6 +29,12 @@
         <tr>
           <td class="align-middle font-weight-bold">{{equip.hours}}:{{equip.minutes}}</td>
           <td class="stars{{equip.rarity}}"><img class="img-fluid" src="{% static 'girlsfrontline/'|add:equip.type|add:'.png' %}"></img></td>
+        </tr>
+      {% endfor %}
+      {% for fairy in fairy_list %}
+        <tr>
+          <td class="align-middle font-weight-bold">{{fairy.hours}}:{{fairy.minutes}}</td>
+          <td><img class="fairy img-fluid" src="{% static 'girlsfrontline/sim/fairies/'|add:fairy.id|add:'.png' %}"></img></td>
         </tr>
       {% endfor %}
     </tbody>

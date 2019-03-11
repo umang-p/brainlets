@@ -32,7 +32,21 @@ def equip_timers(request):
 
     equip_list = sorted(equip_list, key=itemgetter('hours','minutes'))
 
-    return render(request, 'girlsfrontline/equip_timers.html', {"equip_list" : equip_list})
+    with open(settings.STATIC_ROOT+'/girlsfrontline/fairies.json', encoding='utf-8', mode='r') as data:
+        fairy_info = json.load(data)
+
+    fairy_list = []
+    for fairy in fairy_info:
+        if fairy['en_craftable'] == True:
+            info = {}
+            info['hours'] = '{0:0>2.0f}'.format(int(fairy['construct_time']) / 60 // 60)
+            info['minutes'] = '{0:0>2.0f}'.format(int(fairy['construct_time']) / 60 % 60)
+            info['id'] = str(fairy['id'])
+            fairy_list.append(info)
+
+    fairy_list = sorted(fairy_list, key=itemgetter('hours','minutes'))
+
+    return render(request, 'girlsfrontline/equip_timers.html', {"equip_list" : equip_list, "fairy_list" : fairy_list})
 
 def doll_timers(request):
     with open(settings.STATIC_ROOT+'/girlsfrontline/dolls.json', encoding='utf-8', mode='r') as data:
