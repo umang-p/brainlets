@@ -183,7 +183,7 @@
   },
   {
     "id":13,
-    "name":"Sharpeyed",
+    "name":"Aim",
     "tooltip":"Increase RF damage by 8% and rate of fire by 10%",
     "effect":{
       "type":"buff",
@@ -199,7 +199,7 @@
   },
   {
     "id":14,
-    "name":"Resistant",
+    "name":"Sturdy",
     "tooltip":"Increase SG damage by 10% and crit rate by 20%",
     "effect":{
       "type":"buff",
@@ -215,7 +215,7 @@
   },
   {
     "id":15,
-    "name":"Suppressive",
+    "name":"Suppression",
     "tooltip":"Increase MG damage by 10% and accuracy by 15%",
     "effect":{
       "type":"buff",
@@ -231,7 +231,7 @@
   },
   {
     "id":16,
-    "name":"Agile",
+    "name":"Keen",
     "tooltip":"Increase HG evasion by 10% and crit rate by 30%",
     "effect":{
       "type":"buff",
@@ -247,7 +247,7 @@
   },
   {
     "id":17,
-    "name":"Morale",
+    "name":"Fervor",
     "tooltip":"Increase echelon damage by 10% every 8s (up to 3 stacks)",
     "effect": {
       "type":"passive",
