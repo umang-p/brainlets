@@ -34,7 +34,7 @@
       {% for fairy in fairy_list %}
         <tr>
           <td class="align-middle font-weight-bold">{{fairy.hours}}:{{fairy.minutes}}</td>
-          <td><img class="fairy img-fluid" src="{% static 'girlsfrontline/sim/fairies/'|add:fairy.id|add:'.png' %}"></img></td>
+          <td><img class="fairy img-fluid" src="{% static 'girlsfrontline/sim/fairies/'|add:fairy.id|add:'.png' %}"></img><br>{{fairy.name}}</td>
         </tr>
       {% endfor %}
     </tbody>

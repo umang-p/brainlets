@@ -42,6 +42,7 @@ def equip_timers(request):
             info['hours'] = '{0:0>2.0f}'.format(int(fairy['construct_time']) / 60 // 60)
             info['minutes'] = '{0:0>2.0f}'.format(int(fairy['construct_time']) / 60 % 60)
             info['id'] = str(fairy['id'])
+            info['name'] = str(fairy['name'])
             fairy_list.append(info)
 
     fairy_list = sorted(fairy_list, key=itemgetter('hours','minutes'))
