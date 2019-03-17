@@ -2376,7 +2376,7 @@ function simulateBattle() {
           talenteffect.startTime = 1;
           echelon[i].battle.passives.push(talenteffect);
         } else if (talenteffect.type == 'buff') {
-          echelon[i].battle.buffs.push(talenteffect);
+          $.each(getBuffTargets(undefined, talenteffect, enemy), (i, target) => target.battle.buffs.push($.extend(true, {}, talenteffect)));
         }
       }
     }
