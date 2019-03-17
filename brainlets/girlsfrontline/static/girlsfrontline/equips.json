@@ -3296,5 +3296,39 @@
     "construct_time": 0,
     "name": "MGO 6X48",
     "tooltip": "Damage +1-2, Accuracy +17-34, Rate of fire -1"
+  },
+  {
+    "id": 98,
+    "type": 56,
+    "rarity": 5,
+    "fp": 0,
+    "acc": 18,
+    "eva": 0,
+    "movespeed": 0,
+    "rof": -1,
+    "critdmg": 0,
+    "crit": 15,
+    "ap": 0,
+    "armor": 0,
+    "nightview": 0,
+    "rounds": 0,
+    "level_bonus": {
+      "fp": 0,
+      "acc": 1000,
+      "eva": 0,
+      "movespeed": 0,
+      "rof": 0,
+      "critdmg": 0,
+      "crit": 700,
+      "ap": 0,
+      "armor": 0,
+      "nightview": 0,
+      "rounds": 0
+    },
+    "en_craftable": false,
+    "en_released": false,
+    "construct_time": 0,
+    "name": "MG4 Exclusive MGO",
+    "tooltip": "Crit Rate +15-25, Accuracy +18-36, Rate of fire -1"
   }
 ]

@@ -129,6 +129,7 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   255:[20,95,57], //M14 mod3
   263:[96,24,35], //G36 mod3
   265:[20,97,41], //LWMMG mod3
+  // 120:[20,98,41], //MG4
 };
 
 const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
@@ -172,6 +173,7 @@ const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
   255:[-1,53,-1], //M14 mod3
   263:[54,-1,-1], //G36 mod3
   265:[-1,55,-1], //LWMMG mod3
+  120:[-1,56,-1], //MG4
 };
 
 $(function () {
