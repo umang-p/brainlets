@@ -1015,7 +1015,7 @@ function changeDoll(event) {
   echelon[index].tooltip_skill1 = selectedDoll.tooltip_skill1;
   echelon[index].links = getNumLinks(index);
 
-  if(selectedDoll.type == 5) { //mg
+  if('frames_per_attack' in selectedDoll) {
     echelon[index].frames_per_attack = selectedDoll.frames_per_attack;
   }
   if(selectedDoll.type == 6) { //sg
@@ -1868,7 +1868,9 @@ function preBattleSkillChanges(doll) {
     targetSquares = targetSquares.map(targetSquare => targetSquare + doll.pos);
     for(var i = 0; i < 5; i++) {
       if(echelon[i].id != -1 && $.inArray(echelon[i].pos, targetSquares) != -1) {
-        echelon[i].battle.passives.push($.extend(true,{}, skilleffect));
+        if(echelon[i].type == 5 || echelon[i].type == 6) { // have to specify mg/sg so it doesn't work on falcon
+          echelon[i].battle.passives.push($.extend(true,{}, skilleffect));
+        }
       }
     }
   }
@@ -2184,6 +2186,19 @@ function preBattleSkillChanges(doll) {
     doll.battle.buffs.push(buff);
     doll.battle.skill.effects[0] = activeBuff;
   }
+
+  if(doll.id == 279) {
+    //falcon
+    var normalAttackBuff = {
+      type:"buff",
+      target:"self",
+      name:"normalAttackBuff",
+      multiplier:1.5,
+      level:doll.skilllevel,
+      duration:-1
+    };
+    doll.battle.buffs.push(normalAttackBuff);
+  }
 }
 
 function initDollsForBattle() {
@@ -2214,7 +2229,7 @@ function initDollsForBattle() {
     if(doll.type == 6) {
       doll.battle.targets = doll.targets;
     }
-    if(doll.type == 5) {
+    if('frames_per_attack' in doll) {
       doll.battle.frames_per_attack = doll.frames_per_attack;
     }
     doll.battle.busylinks = 0;
@@ -2767,7 +2782,7 @@ function simulateBattle() {
           }
           dmg += extradmg;
 
-          if(doll.type == 5 || doll.type == 6) { //mg/sg , do not change to doll.type < 5
+          if(doll.battle.rounds > 0) {
             doll.battle.currentRounds--;
 
             if(doll.battle.currentRounds == 1) {
@@ -2779,7 +2794,17 @@ function simulateBattle() {
                 type:'reload',
                 timeLeft:0
               };
-              reloadTimer.timeLeft = doll.type == 5? Math.floor(30 * (4 + 200 / doll.battle.rof)) : Math.floor(30 * (1.4 + 0.5 * doll.battle.rounds));
+              if(doll.type == 5) {
+                //mg reload formula
+                reloadTimer.timeLeft = Math.floor(30 * (4 + 200 / doll.battle.rof));
+              } else if (doll.type == 6) {
+                //sg reload formula
+                reloadTimer.timeLeft = Math.floor(30 * (1.4 + 0.5 * doll.battle.rounds));
+              } else {
+                //falcon reload formula
+                reloadTimer.timeLeft = Math.floor(30 * (120 / (doll.battle.rof + 10))) + 30;
+              }
+
               var reloadBuff = doll.battle.buffs.find(buff => buff.name == 'reloadBuff');
               if(reloadBuff !== undefined) {
                 if('fixedTime' in reloadBuff) {
@@ -3822,6 +3847,40 @@ function modifySkill(doll, effect, enemy, currentTime) {
             if(doll.pre_battle.skillcd > 0) {
               chargedshot.timeLeft = Math.floor((1 - doll.pre_battle.skillcd / 100) * chargedshot.timeLeft);
             }
+          }
+          if('busylinks' in chargedshot) {
+            doll.battle.busylinks += Math.min(chargedshot.busylinks, doll.links);
+          }
+          doll.battle.action_queue.push(chargedshot);
+        }
+      }
+    }
+  }
+
+  if(doll.id == 279) {
+    //Falcon
+    if(effect.modifySkill == 'changePassiveTimer') {
+      if(doll.battle.passives[0].interval == 6) {
+        doll.battle.passives[0].interval = 10;
+        doll.battle.passives[0].startTime = currentTime;
+      }
+    }
+
+    if(effect.modifySkill == 'useSpecialAmmo') {
+      var ammoBuff = doll.battle.buffs.find(b => b.name == 'falcon');
+      if(ammoBuff !== undefined) {
+        if(ammoBuff.stacks > 0) {
+          ammoBuff.stacks--;
+          var chargedshot = {
+            type:"chargedshot",
+            delay:[2,2,2,2,2,2,2,2,2,2],
+            busylinks:5,
+            canCrit:true,
+            multiplier:[1.5,1.61,1.72,1.83,1.94,2.06,2.17,2.28,2.39,2.5],
+            level:doll.skilllevel
+          };
+          if('delay' in chargedshot) {
+            chargedshot.timeLeft = $.isArray(chargedshot.delay) ? Math.round(chargedshot.delay[chargedshot.level-1] * 30) : Math.round(chargedshot.delay * 30) + 1;
           }
           if('busylinks' in chargedshot) {
             doll.battle.busylinks += Math.min(chargedshot.busylinks, doll.links);

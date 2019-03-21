@@ -17845,5 +17845,82 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 279,
+    "name": "Falcon",
+    "rarity": 3,
+    "type": 3,
+    "mod": false,
+    "hp": 100,
+    "fp": 125,
+    "acc": 101,
+    "eva": 76,
+    "rof": 94,
+    "crit": 40,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 2,
+    "armor": 0,
+    "frames_per_attack":30,
+    "growth_rating": 118,
+    "construct_time": 0,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "八才",
+    "voice": "",
+    "tooltip_skill1": "Initial CD: 6s, CD: 1s<br>Active: Consume 1 special bullet, aim for 2 seconds and deal 2.5x damage to the enemy with the highest HP (able to crit). <br>Passive: Obtain 1 special bullet 6 seconds after the battle starts and every 10 seconds after that. Can store up to 2 special bullets. Increase self damage and accuracy by 18% per special bullet. <br>Passive: Every 1 second, perform 1 normal attack, consuming 1 normal bullet and dealing 1.5x damage to the furthest enemy. Can store up to 2 normal bullets. Needs to reload when normal bullets run out, reload time can be decreased with a higher rate of fire.",
+		"skill": {
+			"icd":6,
+			"cd":[1,1,1,1,1,1,1,1,1,1],
+      "effects": [
+        {
+          "type":"modifySkill",
+          "modifySkill":"useSpecialAmmo"
+        }
+      ]
+		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"time",
+        "interval":6,
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"falcon",
+            "stat":{
+              "fp":[6,7,9,10,11,13,14,15,16,18],
+              "acc":[6,7,9,10,11,13,14,15,16,18]
+            },
+            "duration":-1,
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":2
+          },
+          {
+            "type":"modifySkill",
+            "modifySkill":"changePassiveTimer"
+          }
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Skill Cooldown -12%",
+    "tiles": {
+      "self": 23,
+      "target": "1,11",
+      "target_type": 1,
+      "effect": {
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 12,
+        "armor": 0
+      }
+    }
   }
 ]
