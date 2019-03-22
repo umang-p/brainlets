@@ -256,7 +256,7 @@
       "effects":[
         {
           "type":"buff",
-          "target":"all",
+          "target":"self",
           "stat":{
             "fp":10
           },

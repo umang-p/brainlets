@@ -2386,16 +2386,17 @@ function simulateBattle() {
     talenteffect.level = fairy.rarity;
     if(talenteffect.type == 'passive') {
       $.each(talenteffect.effects, (i,effect) => effect.level = fairy.rarity);
-    }
-    for(var i = 0; i < 5; i++) {
-      if(echelon[i].id != -1) {
-        if(talenteffect.type == 'passive') {
+      for(var i = 0; i < 5; i++) {
+        if(echelon[i].id != -1) {
           talenteffect.startTime = 1;
-          echelon[i].battle.passives.push(talenteffect);
-        } else if (talenteffect.type == 'buff') {
-          $.each(getBuffTargets(undefined, talenteffect, enemy), (i, target) => target.battle.buffs.push($.extend(true, {}, talenteffect)));
+          echelon[i].battle.passives.push($.extend(true, {}, talenteffect));
+          if(fairy.talent.id == 17) { //fervor
+            echelon[i].battle.buffs.push($.extend(true, {}, talenteffect.effects[0]))
+          }
         }
       }
+    } else if (talenteffect.type == 'buff') {
+      $.each(getBuffTargets(undefined, talenteffect, enemy), (i, target) => target.battle.buffs.push($.extend(true, {}, talenteffect)));
     }
   }
 
