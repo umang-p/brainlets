@@ -10,8 +10,7 @@
         "fp":12
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[40,60,80,90,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -25,8 +24,7 @@
         "fp":15
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[20,40,60,80,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -40,8 +38,7 @@
         "acc":20
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[40,60,80,90,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -55,8 +52,7 @@
         "acc":25
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[20,40,60,80,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -70,8 +66,7 @@
         "eva":15
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[40,60,80,90,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -85,8 +80,7 @@
         "eva":20
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[20,40,60,80,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -100,8 +94,7 @@
         "armor":8
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[40,60,80,90,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -115,8 +108,7 @@
         "armor":10
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[20,40,60,80,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -130,8 +122,7 @@
         "crit":40
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[40,60,80,90,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -145,8 +136,7 @@
         "crit":50
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[20,40,60,80,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -161,8 +151,7 @@
         "eva":12
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[30,50,70,90,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -177,8 +166,7 @@
         "rof":8
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[30,50,70,90,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -193,8 +181,7 @@
         "rof":10
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[30,50,70,90,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -209,8 +196,7 @@
         "crit":20
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[30,50,70,90,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -225,8 +211,7 @@
         "acc":15
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[30,50,70,90,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -241,8 +226,7 @@
         "crit":30
       },
       "duration":-1,
-      "name":"fairytalent",
-      "stackChance":[30,50,70,90,100]
+      "name":"fairytalent"
     }
   },
   {
@@ -262,7 +246,6 @@
           },
           "duration":-1,
           "name":"fairytalent",
-          "stackChance":[20,40,60,80,100],
           "stackable":true,
           "stacks":1,
           "max_stacks":3
@@ -278,8 +261,7 @@
       "type":"buff",
       "target":"all",
       "name":"fairytalent",
-      "duration":-1,
-      "stackChance":[40,60,80,90,100]
+      "duration":-1
     }
   },
   {
@@ -290,8 +272,7 @@
       "type":"buff",
       "target":"all",
       "name":"fairytalent",
-      "duration":-1,
-      "stackChance":[40,60,80,90,100]
+      "duration":-1
     }
   }
 ]
