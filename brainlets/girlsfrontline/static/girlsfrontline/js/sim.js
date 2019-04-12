@@ -4325,7 +4325,7 @@ const SKILL_CONTROL_HTML = {
   },
   208:function(doll) {
     //c-ms
-    var htmlstring = '<p>Enter when you would like to activate the skill and switch effects then hit apply.<br>Enter a value of 0 to not switch to that ammunition. Entering 0 for both means C-MS will stay in evasion mode the entire time. Remember there is a 1s cooldown time every time you switch modes.<br>maybe instead of swtichgin this should just let you pick one mode to go with for the whole simulation</p><br>';
+    var htmlstring = '<p>Enter when you would like to activate the skill and switch effects then hit apply.<br>Enter a value of 0 to not switch to that ammunition. Entering 0 for both means C-MS will stay in evasion mode the entire time. Remember there is a 1s cooldown time every time you switch modes.<br></p><br>';
     htmlstring += '<input type="number" class="cms-skill">Enter how many seconds into evasion mode you want to switch into damage mode</input><br>';
     htmlstring += '<input type="number" class="cms-skill2">Enter how many seconds into damage mode you want to switch into accuracy mode</input><br><p></p>';
     return htmlstring;
