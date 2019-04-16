@@ -377,7 +377,7 @@
   {
     "id": 15,
     "name": "Command Fairy",
-    "type": 2,
+    "type": 1,
     "fp": 285,
     "acc": 0,
     "eva": 92,
@@ -398,7 +398,7 @@
   {
     "id": 16,
     "name": "Rescue Fairy",
-    "type": 2,
+    "type": 1,
     "fp": 270,
     "acc": 200,
     "eva": 200,
