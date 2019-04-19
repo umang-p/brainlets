@@ -17,6 +17,7 @@ var useFortressNode;
 var fortressNodeLevel;
 var savedTeamList;
 var savedTeamCount;
+var selectedDoll = undefined;
 var graphColors = ['#7CB5EC', '#434348', '#90ED7D', '#F7A35C', '#8085E9', '#F15C80'];
 
 const VALID_EQUIPS = [[[4,13],[6],[10,12]], //hg
@@ -302,8 +303,12 @@ $(function () {
     }
   }
 
+  var isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   var gridSquares = [12,13,14,22,23,24,32,33,34];
   for(i = 0; i < gridSquares.length; i++) {
+    if(isMobileDevice) {
+      $('#pos'+gridSquares[i]).click(moveDoll);
+    }
     $('#pos'+gridSquares[i]).on('dragstart', onDragStart);
     $('#pos'+gridSquares[i]).on('dragenter', onDragEnter);
     $('#pos'+gridSquares[i]).on('dragleave', onDragLeave);
@@ -4423,32 +4428,64 @@ function onDrop(event) {
     return;
   }
 
-  var sourceIndex = $('#'+dropSource).attr('data-index');
-  var targetIndex = $(event.target).attr('data-index');
+  swapGridPositions($('#'+dropSource), $(event.target));
+}
+
+function swapGridPositions(sourceSquare, destinationSquare) {
+  var sourceIndex = sourceSquare.attr('data-index');
+  var targetIndex = destinationSquare.attr('data-index');
 
   if(sourceIndex == -1 && targetIndex == -1) {
     return;
   }
 
   //swap data-index attributes in html elements
-  var temp = $('#'+dropSource).attr('data-index');
-  $('#'+dropSource).attr('data-index', $(event.target).attr('data-index'));
-  $(event.target).attr('data-index', temp);
+  var temp = sourceSquare.attr('data-index');
+  sourceSquare.attr('data-index', destinationSquare.attr('data-index'));
+  destinationSquare.attr('data-index', temp);
 
   //swap pos attributes of doll objects in echelon
   if(sourceIndex != -1 && targetIndex != -1) {
-    echelon[temp].pos = parseInt($(event.target).attr('id').slice(3));
-    echelon[$('#'+dropSource).attr('data-index')].pos = parseInt(dropSource.slice(3));
+    echelon[temp].pos = parseInt(destinationSquare.attr('id').slice(3));
+    echelon[sourceSquare.attr('data-index')].pos = parseInt(sourceSquare.attr('id').slice(3));
   } else if(sourceIndex != -1 && targetIndex == -1) {
-    echelon[temp].pos = parseInt($(event.target).attr('id').slice(3));
+    echelon[temp].pos = parseInt(destinationSquare.attr('id').slice(3));
   } else if(sourceIndex == -1 && targetIndex != -1) {
-    echelon[$('#'+dropSource).attr('data-index')].pos = parseInt(dropSource.slice(3));
+    echelon[sourceSquare.attr('data-index')].pos = parseInt(sourceSquare.attr('id').slice(3));
   }
 
   calculateTileBonus();
   calculatePreBattleStatsAllDolls();
   simulateBattle();
   updateUIAllDolls();
+}
+
+function moveDoll(event) {
+  if($(event.target).attr('data-index') == undefined) return;
+
+  var gridSquares = [12,13,14,22,23,24,32,33,34];
+
+  if(selectedDoll == undefined) {
+    for(i = 0; i < gridSquares.length; i++) {
+      $('#pos'+gridSquares[i]).addClass('bg-primary');
+    }
+    $(event.target).removeClass('bg-primary');
+
+    selectedDoll = $(event.target);
+    return;
+  } else {
+    for(i = 0; i < gridSquares.length; i++) {
+      $('#pos'+gridSquares[i]).removeClass('bg-primary');
+    }
+
+    if($(event.target).is(selectedDoll)) {
+      selectedDoll = undefined;
+      return;
+    } else {
+      swapGridPositions(selectedDoll, $(event.target))
+      selectedDoll = undefined;
+    }
+  }
 }
 
 function showDamageGraph() {
