@@ -113,7 +113,7 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   // 44:[20,76,57], //Kar98k
   // 63:[77,24,35], //416
   // 83:[20,8,78], //MG3
-  // 41:[20,4,79], //PTRD
+  41:[20,4,79], //PTRD
   256:[20,80,65], //Mosin-Nagant mod3
   38:[20,4,65], //Mosin-Nagant
   253:[82,45,35], //M1895 mod3
