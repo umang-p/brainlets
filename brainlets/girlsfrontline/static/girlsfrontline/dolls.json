@@ -13597,7 +13597,7 @@
   },
   {
     "id": 221,
-    "name": "Type 100",
+    "name": "100 Shiki",
     "rarity": 5,
     "type": 2,
     "mod": false,
@@ -14882,7 +14882,7 @@
   },
   {
     "id": 240,
-    "name": "Type 62",
+    "name": "62 Shiki",
     "rarity": 3,
     "type": 5,
     "mod": false,
@@ -14900,7 +14900,7 @@
     "growth_rating": 118,
     "construct_time": 19500,
     "en_craftable": false,
-		"en_released":false,
+		"en_released":true,
     "artist": "かれい",
     "voice": "",
     "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Increase self damage by 45% and accuracy by 65% for 6 seconds",
