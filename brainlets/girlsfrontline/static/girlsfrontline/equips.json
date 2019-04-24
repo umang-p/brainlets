@@ -2680,7 +2680,7 @@
       "rounds": 0
     },
     "en_craftable": false,
-    "en_released": false,
+    "en_released": true,
     "construct_time": 0,
     "name": "Blue Thickened Cape",
     "tooltip": "Crit Damage +15-25, Rate of Fire +2-4, Movement Speed -3"
@@ -3330,5 +3330,39 @@
     "construct_time": 0,
     "name": "MG4 Exclusive MGO",
     "tooltip": "Crit Rate +15-25, Accuracy +18-36, Rate of fire -1"
+  },
+  {
+    "id": 99,
+    "type": 57,
+    "rarity": 5,
+    "fp": 0,
+    "acc": 2,
+    "eva": 8,
+    "movespeed": 0,
+    "rof": -1,
+    "critdmg": 0,
+    "crit": 15,
+    "ap": 0,
+    "armor": 0,
+    "nightview": 0,
+    "rounds": 0,
+    "level_bonus": {
+      "fp": 0,
+      "acc": 1000,
+      "eva": 300,
+      "movespeed": 0,
+      "rof": 0,
+      "critdmg": 0,
+      "crit": 350,
+      "ap": 0,
+      "armor": 0,
+      "nightview": 0,
+      "rounds": 0
+    },
+    "en_craftable": false,
+    "en_released": false,
+    "construct_time": 0,
+    "name": "Stechkin Exclusive Stock",
+    "tooltip": "Crit Rate +15-20, Accuracy +2-4, Evasion +8-10, Adds bonus effect to skill: Increase damage by 4% for all allies"
   }
 ]
