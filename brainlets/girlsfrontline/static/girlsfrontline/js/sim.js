@@ -4505,7 +4505,18 @@ function showDamageGraph() {
       text: 'Damage over Time'
     },
     tooltip: {
-      shared: true
+      shared: true,
+      useHTML: true,
+      formatter: function() {
+        var output = '<span style="font-size: 10px">'+ this.x +'</span><br/>'; //time
+        var total = 0;
+        $.each(this.points, (index,point) => {
+          output += '<span style="color:'+ point.color +'">\u25CF</span> '+ point.series.name +': <b>'+ point.y +'</b><br/>'; //each doll's total dmg
+          total += point.y;
+        });
+        output += '<hr>TOTAL: <b>' + total + '</b>';
+        return output;
+      }
     },
     xAxis: {
       categories: graphData.x,
