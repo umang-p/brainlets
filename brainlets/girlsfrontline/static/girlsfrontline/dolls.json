@@ -17922,5 +17922,123 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 280,
+    "name": "Magal",
+    "rarity": 3,
+    "type": 4,
+    "mod": false,
+    "hp": 105,
+    "fp": 66,
+    "acc": 107,
+    "eva": 99,
+    "rof": 85,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 127,
+    "construct_time": 0,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "XIN",
+    "voice": "",
+    "tooltip_skill1": "Initial CD: 6s, CD: 16s<br>Increase self damage by 50% and rate of fire by 20% for 10 seconds",
+		"skill": {
+			"icd":6,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[35,37,38,40,42,43,45,47,48,50],
+            "rof":[12,13,14,15,16,16,17,18,19,20]
+          },
+          "duration":[6,6.4,6.8,7.2,7.6,8,8.4,8.8,9.4,10]
+        }
+      ]
+		},
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Accuracy +50%, Evasion +12%",
+    "tiles": {
+      "self": 23,
+      "target": "11",
+      "target_type": 2,
+      "effect": {
+        "fp": 0,
+        "acc": 50,
+        "eva": 12,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
+  },
+  {
+    "id": 281,
+    "name": "PM-9",
+    "rarity": 5,
+    "type": 2,
+    "mod": false,
+    "hp": 100,
+    "fp": 146,
+    "acc": 140,
+    "eva": 62,
+    "rof": 125,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 123,
+    "construct_time": 0,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "音符",
+    "voice": "",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Increase self evasion by 100% and decrease self damage and accuracy by 30% and all attacks hit twice for 5 seconds",
+		"skill": {
+			"icd":6,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "eva":[50,56,61,67,72,78,83,89,94,100],
+            "fp":[-50,-48,-46,-43,-41,-39,-37,-34,-32,-30],
+            "acc":[-50,-48,-46,-43,-41,-39,-37,-34,-32,-30]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5],
+          "hitCount":[2,2,2,2,2,2,2,2,2,2]
+        }
+      ]
+		},
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Accuracy +30%, Rate of Fire +15%",
+    "tiles": {
+      "self": 13,
+      "target": "-1,19",
+      "target_type": 4,
+      "effect": {
+        "fp": 0,
+        "acc": 30,
+        "eva": 0,
+        "rof": 15,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]
