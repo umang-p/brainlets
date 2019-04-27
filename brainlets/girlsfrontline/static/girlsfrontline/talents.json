@@ -187,12 +187,12 @@
   {
     "id":14,
     "name":"Sturdy",
-    "tooltip":"Increase SG damage by 10% and crit rate by 20%",
+    "tooltip":"Increase SG armor by 8% and crit rate by 20%",
     "effect":{
       "type":"buff",
       "target":"sg",
       "stat":{
-        "fp":10,
+        "armor":8,
         "crit":20
       },
       "duration":-1,
