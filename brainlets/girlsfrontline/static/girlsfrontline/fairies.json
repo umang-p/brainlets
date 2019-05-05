@@ -104,7 +104,7 @@
     "construct_time": 11100,
     "en_released":true,
     "en_craftable":true,
-    "tooltip_aura":"Damage +20%, Accuracy +80%, Armor +20%",
+    "tooltip_aura":"Damage +20%, Accuracy +60%, Evasion +80%",
     "tooltip_skill":"Grant SMGs a 150hp shield in the next battle",
     "skill":{
       "icd":0,
