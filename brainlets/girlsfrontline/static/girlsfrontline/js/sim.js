@@ -276,6 +276,7 @@ $(function () {
 
   initEquipSelectModal();
   initDollSelectModal();
+  $('#doll-filter').on('input',changeDollSelectFilter);
   initFairySelectModal();
   initTalentSelect();
 
@@ -1010,6 +1011,23 @@ function selectDoll(event) {
   // }
 
   $('#doll-select').modal('show');
+}
+
+function changeDollSelectFilter(event) {
+  var query = $('#doll-filter').val();
+
+  if(query.length == 0) {
+    $('#doll-select button').prop('hidden', false);
+    return;
+  }
+
+  $.each($('#doll-select button'), (index, button) => {
+    if($(button).text().toUpperCase().indexOf(query.toUpperCase()) == -1) {
+      $(button).prop('hidden', true);
+    } else {
+      $(button).prop('hidden', false);
+    }
+  });
 }
 
 function changeDoll(event) {
