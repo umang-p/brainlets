@@ -382,7 +382,16 @@ function initDollSelectModal() {
     var doll = dollData[i];
     var tilegrid = getTileGridHTML(doll);
     $('#doll-list-'+doll.type+' .stars'+doll.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="'+doll.id+'" data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="">'+doll.name+'</button>');
-    var btnTooltip = doll.tooltip_tiles+' Affects: '+doll_types[doll.tiles.target_type]+tilegrid+'<br>'+doll.tooltip_skill1+'<br>'+doll.tooltip_skill2;
+    var tileTargetTypes;
+    if($.isArray(doll.tiles.target_type)) {
+      tileTargetTypes = doll_types[doll.tiles.target_type[0]];
+      for(var j = 1; j < doll.tiles.target_type.length; j++) {
+        tileTargetTypes += ', ' + doll_types[doll.tiles.target_type[j]];
+      }
+    } else {
+      tileTargetTypes = doll_types[doll.tiles.target_type];
+    }
+    var btnTooltip = doll.tooltip_tiles+' Affects: '+tileTargetTypes+tilegrid+'<br>'+doll.tooltip_skill1+'<br>'+doll.tooltip_skill2;
     $('#doll-select button[data-id='+doll.id+']').attr('data-original-title', btnTooltip);
   }
 }
@@ -1641,10 +1650,12 @@ function calculateEquipBonus(dollIndex) {
 }
 
 function calculateTileBonus() {
+  //reset everyone's tile bonus
   for(var i = 0; i < echelon.length; i++) {
     echelon[i].tile_bonus = {fp:0,acc:0,eva:0,rof:0,crit:0,skillcd:0,armor:0};
   }
 
+  //iterate through all grid squares, checking for a doll
   var validSquares = [12,13,14,22,23,24,32,33,34];
   $.each(validSquares, function(index, value) {
     var dollIndex = parseInt($('#pos'+value).attr('data-index'));
@@ -1653,7 +1664,7 @@ function calculateTileBonus() {
     }
 
     var targetSquares = echelon[dollIndex].tiles.target.split(",");
-
+    //iterate through all squares this doll affects
     for(i = 0; i < targetSquares.length; i++) {
       var targetSquare = value + parseInt(targetSquares[i]);
       if($.inArray(targetSquare, validSquares) == -1) {
@@ -1668,7 +1679,13 @@ function calculateTileBonus() {
       var target = echelon[targetIndex];
       var source = echelon[dollIndex];
 
-      if(source.tiles.target_type == 0 || source.tiles.target_type == target.type) {
+      var targetReceivesBuff = false;
+      if($.isArray(source.tiles.target_type)) {
+        targetReceivesBuff = $.inArray(target.type, source.tiles.target_type) == -1 ? false : true;
+      } else {
+        targetReceivesBuff = source.tiles.target_type == target.type;
+      }
+      if(source.tiles.target_type == 0 || targetReceivesBuff) {
         if(source.type == 1) {
           target.tile_bonus.fp += Math.floor(source.tiles.effect.fp[0] + ((source.tiles.effect.fp[1] - source.tiles.effect.fp[0]) / 4) * (getNumLinks(dollIndex) - 1));
           target.tile_bonus.acc += Math.floor(source.tiles.effect.acc[0] + ((source.tiles.effect.acc[1] - source.tiles.effect.acc[0]) / 4) * (getNumLinks(dollIndex) - 1));
