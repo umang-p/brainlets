@@ -18040,5 +18040,157 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 282,
+    "name": "Chauchat",
+    "rarity": 4,
+    "type": 5,
+    "mod": false,
+    "hp": 105,
+    "fp": 122,
+    "acc": 130,
+    "eva": 112,
+    "rof": 75,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 9,
+    "armor": 0,
+    "growth_rating": 125,
+    "frames_per_attack":10,
+    "construct_time": 23100,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "hanasa",
+    "voice": "",
+    "tooltip_skill1": "Initial CD: 6s, CD: 2s<br>Passive: Start battle with 1 stack. Gain 1 stack every 4 seconds for up to 4 stacks.<br>Active: Consume up to 2 stacks to reduce the next reload time by 20% per stack. (44% reload time reduction if 2 stacks are used, 20% if one stack is used)",
+		"skill": {
+			"icd":6,
+			"cd":[2,2,2,2,2,2,2,2,2,2],
+      "effects": [
+        {
+          "type":"modifySkill",
+          "modifySkill":"consumeStack"
+        }
+      ]
+		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"time",
+        "interval":[6,5.8,5.6,5.3,5.1,4.9,4.7,4.4,4.2,4],
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"chauchat",
+            "duration":-1,
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":4
+          }
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Armor +12%, Rate of Fire +12%",
+    "tiles": {
+      "self": 12,
+      "target": "2,12",
+      "target_type": 6,
+      "effect": {
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 12,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 12
+      }
+    }
+  },
+  {
+    "id": 283,
+    "name": "MG36",
+    "rarity": 5,
+    "type": 5,
+    "mod": false,
+    "hp": 110,
+    "fp": 97,
+    "acc": 125,
+    "eva": 131,
+    "rof": 116,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 10,
+    "armor": 0,
+    "growth_rating": 134,
+    "frames_per_attack":10,
+    "construct_time": 23760,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "暖森",
+    "voice": "",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Passive: While reloading, damage taken by dolls on her tiles is reduced by 20%.<br>Active: Increase self damage by 55% for 6 seconds and gain buffs based on the types of dolls on her tiles, stacking up to 3 times per type of buff: ARs grant 25% accuracy, SMGs grant 25% faster reload speed, SGs grant +1 clip size",
+		"skill": {
+			"icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[25,28,32,35,38,42,45,48,52,55]
+          },
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6]
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "acc":[25,25,25,25,25,25,25,25,25,25]
+          },
+          "stackable":true,
+          "name":"mg36_ar",
+          "stacks":0,
+          "max_stacks":3,
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6]
+        },
+        {
+          "type":"buff",
+          "name":"reloadBuff",
+          "target":"self",
+          "multiplier":-25,
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6],
+          "stackable":true,
+          "stacks":0,
+          "max_stacks":3
+        },
+        {
+          "type":"loadRounds",
+          "target":"self",
+          "name":"mg36_sg",
+          "rounds":0
+        }
+      ]
+		},
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +10%, Accuracy +15%",
+    "tiles": {
+      "self": 22,
+      "target": "1,2,-8",
+      "target_type": [6,4,2],
+      "effect": {
+        "fp": 10,
+        "acc": 15,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]
