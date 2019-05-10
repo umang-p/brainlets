@@ -10,1827 +10,632 @@
 
 {% block main %}
 <main class="container-fluid clearfix">
-<div id="sim-controls" class="float-left mr-4 ml-2">
-  <div class="row no-gutters">
-    <p class="h6 col-auto">
-      Total DMG 8s: <span id="dmg-8s">-</span>
-      <br>
-      Total DMG 20s: <span id="dmg-20s">-</span>
-      <br>
-    </p>
-    <p class="h6 col-auto mx-auto">
-      <span id="doll1-dmg-label">-</span>: <span id="doll1-dmg">-</span>
-      <br>
-      <span id="doll2-dmg-label">-</span>: <span id="doll2-dmg">-</span>
-      <br>
-      <span id="doll3-dmg-label">-</span>: <span id="doll3-dmg">-</span>
-    </p>
-    <p class="h6 col-auto mx-auto">
-      <span id="doll4-dmg-label">-</span>: <span id="doll4-dmg">-</span>
-      <br>
-      <span id="doll5-dmg-label">-</span>: <span id="doll5-dmg">-</span>
-      <br>
-      <span id="fairy-dmg-label">-</span>: <span id="fairy-dmg">-</span>
-    </p>
-  </div>
-  <div class="formation-row row no-gutters">
-    <div id="pos12" data-index="0" class="col border border-dark" draggable="true">
-      <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!" data-html="true" hidden>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
+  <div id="sim-controls" class="float-left mr-4 ml-2">
+    <div class="row no-gutters">
+      <p class="h6 col-auto">
+        Total DMG 8s: <span id="dmg-8s">-</span>
+        <br>
+        Total DMG 20s: <span id="dmg-20s">-</span>
+        <br>
+      </p>
+      <p class="h6 col-auto mx-auto">
+        <span id="doll1-dmg-label">-</span>: <span id="doll1-dmg">-</span>
+        <br>
+        <span id="doll2-dmg-label">-</span>: <span id="doll2-dmg">-</span>
+        <br>
+        <span id="doll3-dmg-label">-</span>: <span id="doll3-dmg">-</span>
+      </p>
+      <p class="h6 col-auto mx-auto">
+        <span id="doll4-dmg-label">-</span>: <span id="doll4-dmg">-</span>
+        <br>
+        <span id="doll5-dmg-label">-</span>: <span id="doll5-dmg">-</span>
+        <br>
+        <span id="fairy-dmg-label">-</span>: <span id="fairy-dmg">-</span>
+      </p>
+    </div>
+    <div class="formation-row row no-gutters">
+      <div id="pos12" data-index="0" class="col border border-dark" draggable="true">
+        <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
+        <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top"
+          data-original-title="Grizzly!" data-html="true" hidden>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
           </div>
-          <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
+            </div>
+            <div class="tile23 tilegrid-col tilegrid-self col">
+            </div>
+            <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
+            </div>
           </div>
-          <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
           </div>
         </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
+        <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
+          <div class="fp bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile23 tilegrid-col tilegrid-self col">
+          <div class="armor bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
+          <div class="rof bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-        </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
+          <div class="acc bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          <div class="eva bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
+          <div class="crit bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="skillcd bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
         </div>
       </div>
-      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
-        <div class="fp bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
-          <small>100%</small>
+      <div id="pos13" data-index="3" class="col border-top border-bottom border-dark" draggable="true">
+        <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
+        <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top"
+          data-original-title="Grizzly!" data-html="true" hidden>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
+          </div>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
+            </div>
+            <div class="tile23 tilegrid-col tilegrid-self col">
+            </div>
+            <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
+            </div>
+          </div>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
+          </div>
         </div>
-        <div class="armor bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
-          <small>100%</small>
+        <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
+          <div class="fp bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="armor bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="rof bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="acc bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="eva bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="crit bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="skillcd bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
         </div>
-        <div class="rof bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
-          <small>100%</small>
+      </div>
+      <div id="pos14" data-index="-1" class="col border border-dark" draggable="true">
+        <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
+        <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top"
+          data-original-title="Grizzly!" data-html="true" hidden>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
+          </div>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
+            </div>
+            <div class="tile23 tilegrid-col tilegrid-self col">
+            </div>
+            <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
+            </div>
+          </div>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
+          </div>
         </div>
-        <div class="acc bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="eva bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="crit bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="skillcd bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
-          <small>100%</small>
+        <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
+          <div class="fp bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="armor bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="rof bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="acc bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="eva bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="crit bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="skillcd bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
         </div>
       </div>
     </div>
-    <div id="pos13" data-index="3" class="col border-top border-bottom border-dark" draggable="true">
-      <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!" data-html="true" hidden>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
+    <div class=" formation-row row no-gutters">
+      <div id="pos22" data-index="1" class="col border-left border-right border-dark" draggable="true">
+        <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
+        <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top"
+          data-original-title="Grizzly!" data-html="true" hidden>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
           </div>
-          <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
+            </div>
+            <div class="tile23 tilegrid-col tilegrid-self col">
+            </div>
+            <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
+            </div>
           </div>
-          <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
-          </div>
-        </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
-          </div>
-          <div class="tile23 tilegrid-col tilegrid-self col">
-          </div>
-          <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
-          </div>
-        </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
-          </div>
-          <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
-          </div>
-          <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
-          </div>
-        </div>
-      </div>
-      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
-        <div class="fp bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="armor bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="rof bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="acc bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="eva bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="crit bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="skillcd bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-      </div>
-    </div>
-    <div id="pos14" data-index="-1" class="col border border-dark" draggable="true">
-      <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!" data-html="true" hidden>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
-          </div>
-          <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
-          </div>
-          <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
           </div>
         </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
+        <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
+          <div class="fp bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile23 tilegrid-col tilegrid-self col">
+          <div class="armor bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
+          <div class="rof bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-        </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
+          <div class="acc bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          <div class="eva bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
+          <div class="crit bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="skillcd bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
         </div>
       </div>
-      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
-        <div class="fp bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="armor bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="rof bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="acc bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="eva bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="crit bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="skillcd bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class=" formation-row row no-gutters">
-    <div id="pos22" data-index="1" class="col border-left border-right border-dark" draggable="true">
-      <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!" data-html="true" hidden>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
+      <div id="pos23" data-index="4" class="col" draggable="true">
+        <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
+        <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top"
+          data-original-title="Grizzly!" data-html="true" hidden>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
           </div>
-          <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
+            </div>
+            <div class="tile23 tilegrid-col tilegrid-self col">
+            </div>
+            <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
+            </div>
           </div>
-          <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
           </div>
         </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
+        <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
+          <div class="fp bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile23 tilegrid-col tilegrid-self col">
+          <div class="armor bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
+          <div class="rof bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-        </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
+          <div class="acc bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          <div class="eva bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
+          <div class="crit bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-        </div>
-      </div>
-      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
-        <div class="fp bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="armor bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="rof bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="acc bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="eva bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="crit bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="skillcd bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-      </div>
-    </div>
-    <div id="pos23" data-index="4" class="col" draggable="true">
-      <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!" data-html="true" hidden>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
-          </div>
-          <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
-          </div>
-          <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
-          </div>
-        </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
-          </div>
-          <div class="tile23 tilegrid-col tilegrid-self col">
-          </div>
-          <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
-          </div>
-        </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
-          </div>
-          <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
-          </div>
-          <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
+          <div class="skillcd bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
         </div>
       </div>
-      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
-        <div class="fp bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
-          <small>100%</small>
+      <div id="pos24" data-index="-1" class="col border-left border-right border-dark" draggable="true">
+        <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
+        <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top"
+          data-original-title="Grizzly!" data-html="true" hidden>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
+          </div>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
+            </div>
+            <div class="tile23 tilegrid-col tilegrid-self col">
+            </div>
+            <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
+            </div>
+          </div>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
+          </div>
         </div>
-        <div class="armor bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="rof bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="acc bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="eva bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="crit bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="skillcd bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
-          <small>100%</small>
+        <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
+          <div class="fp bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="armor bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="rof bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="acc bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="eva bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="crit bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="skillcd bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
         </div>
       </div>
     </div>
-    <div id="pos24" data-index="-1" class="col border-left border-right border-dark" draggable="true">
-      <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!" data-html="true" hidden>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
+    <div class="formation-row row no-gutters">
+      <div id="pos32" data-index="2" class="col border border-dark" draggable="true">
+        <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
+        <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top"
+          data-original-title="Grizzly!" data-html="true" hidden>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
           </div>
-          <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
+            </div>
+            <div class="tile23 tilegrid-col tilegrid-self col">
+            </div>
+            <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
+            </div>
           </div>
-          <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
           </div>
         </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
+        <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
+          <div class="fp bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile23 tilegrid-col tilegrid-self col">
+          <div class="armor bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
+          <div class="rof bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-        </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
+          <div class="acc bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+          <div class="eva bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
-          <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
+          <div class="crit bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="skillcd bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
+            <small>100%</small>
           </div>
         </div>
       </div>
-      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
-        <div class="fp bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
-          <small>100%</small>
+      <div id="pos33" data-index="-1" class="col border-top border-bottom border-dark" draggable="true">
+        <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
+        <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top"
+          data-original-title="Grizzly!" data-html="true" hidden>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
+          </div>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
+            </div>
+            <div class="tile23 tilegrid-col tilegrid-self col">
+            </div>
+            <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
+            </div>
+          </div>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
+          </div>
         </div>
-        <div class="armor bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
-          <small>100%</small>
+        <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
+          <div class="fp bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="armor bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="rof bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="acc bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="eva bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="crit bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="skillcd bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
         </div>
-        <div class="rof bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
-          <small>100%</small>
+      </div>
+      <div id="pos34" data-index="-1" class="col border border-dark" draggable="true">
+        <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
+        <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top"
+          data-original-title="Grizzly!" data-html="true" hidden>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
+          </div>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
+            </div>
+            <div class="tile23 tilegrid-col tilegrid-self col">
+            </div>
+            <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
+            </div>
+          </div>
+          <div class="tilegrid-row row no-gutters">
+            <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
+            </div>
+            <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
+            </div>
+            <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
+            </div>
+          </div>
         </div>
-        <div class="acc bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="eva bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="crit bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="skillcd bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
-          <small>100%</small>
+        <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
+          <div class="fp bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="armor bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="rof bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="acc bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="eva bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="crit bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
+          <div class="skillcd bg-dark ml-1" hidden>
+            <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
+            <small>100%</small>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="formation-row row no-gutters">
-    <div id="pos32" data-index="2" class="col border border-dark" draggable="true">
-      <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!" data-html="true" hidden>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
-          </div>
-          <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
-          </div>
-          <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
-          </div>
-        </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
-          </div>
-          <div class="tile23 tilegrid-col tilegrid-self col">
-          </div>
-          <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
-          </div>
-        </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
-          </div>
-          <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
-          </div>
-          <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
-          </div>
-        </div>
+
+    <div class="row no-gutters mt-2">
+      <div class="col-auto mx-auto">
+        <button type="button" data-toggle="modal" data-target="#help-modal"
+          class="mx-auto btn btn-default">Help</button>
       </div>
-      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
-        <div class="fp bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="armor bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="rof bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="acc bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="eva bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="crit bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="skillcd bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
+      <div class="col-auto mx-auto">
+        <button id="save-btn" type="button" class="mx-auto btn btn-default">Save</button>
+        <button id="load-btn" type="button" class="mx-auto btn btn-default">Load</button>
       </div>
-    </div>
-    <div id="pos33" data-index="-1" class="col border-top border-bottom border-dark" draggable="true">
-      <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!" data-html="true" hidden>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
-          </div>
-          <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
-          </div>
-          <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
-          </div>
-        </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
-          </div>
-          <div class="tile23 tilegrid-col tilegrid-self col">
-          </div>
-          <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
-          </div>
-        </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
-          </div>
-          <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
-          </div>
-          <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
-          </div>
-        </div>
+      <div class="col-auto mx-auto">
+        <button id="damage-graph-btn" type="button" class="btn">Damage Graph</button>
       </div>
-      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
-        <div class="fp bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="armor bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="rof bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="acc bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="eva bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="crit bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="skillcd bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-      </div>
-    </div>
-    <div id="pos34" data-index="-1" class="col border border-dark" draggable="true">
-      <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="img-fluid position-absolute"></img>
-      <div class="tilegrid position-absolute mr-1 mt-1" data-toggle="tooltip" data-placement="top" data-original-title="Grizzly!" data-html="true" hidden>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile12 tilegrid-col tilegrid-target col border border-dark">
-          </div>
-          <div class="tile13 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
-          </div>
-          <div class="tile14 tilegrid-col tilegrid-neutral col border border-dark">
-          </div>
-        </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile22 tilegrid-col tilegrid-neutral col border-left border-right border-dark">
-          </div>
-          <div class="tile23 tilegrid-col tilegrid-self col">
-          </div>
-          <div class="tile24 tilegrid-col tilegrid-target col border-left border-right border-dark">
-          </div>
-        </div>
-        <div class="tilegrid-row row no-gutters">
-          <div class="tile32 tilegrid-col tilegrid-target col border border-dark">
-          </div>
-          <div class="tile33 tilegrid-col tilegrid-target col border-top border-bottom border-dark">
-          </div>
-          <div class="tile34 tilegrid-col tilegrid-neutral col border border-dark">
-          </div>
-        </div>
-      </div>
-      <div class="tilebuff-row d-inline-flex flex-wrap flex-row align-content-end position-absolute">
-        <div class="fp bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="armor bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="rof bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="acc bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="eva bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="crit bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
-        <div class="skillcd bg-dark ml-1" hidden>
-          <img src="{% static 'girlsfrontline/sim/skillcd.png' %}" class="img-fluid"></img>
-          <small>100%</small>
-        </div>
+      <div class="col-auto mx-auto">
+        <button type="button" data-toggle="modal" data-target="#battle-control-modal"
+          class="mx-auto btn btn-default">Battle Settings</button>
       </div>
     </div>
   </div>
 
-  <div class="row no-gutters mt-2">
-    <div class="col-auto mx-auto">
-      <button type="button" data-toggle="modal" data-target="#help-modal" class="mx-auto btn btn-default">Help</button>
-    </div>
-    <div class="col-auto mx-auto">
-      <button id="save-btn" type="button" class="mx-auto btn btn-default">Save</button>
-      <button id="load-btn" type="button" class="mx-auto btn btn-default">Load</button>
-    </div>
-    <div class="col-auto mx-auto">
-      <button id="damage-graph-btn" type="button" class="btn">Damage Graph</button>
-    </div>
-    <div class="col-auto mx-auto">
-      <button type="button" data-toggle="modal" data-target="#battle-control-modal" class="mx-auto btn btn-default">Battle Settings</button>
-    </div>
-  </div>
-</div>
-
-<div class="float-left ml-3">
-  <div class="row">
-    <div id="doll1" class="card bg-secondary text-center">
-      <div class="card-body">
-        <div class="clearfix">
-          <div class="affection float-left mr-1 mb-1">
-            <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
-            <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
-            <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
-            <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
-          </div>
-          <p id="doll1-name" class="align-middle float-right">-</p>
-        </div>
-        <div class="text-left row no-gutters">
-          <label class="doll-level-label mr-1">Level:</label>
-          <div class="col">
-            <select class="doll-level-select">
-              <option disabled>115</option>
-              <option>100</option>
-              <option>90</option>
-              <option>80</option>
-              <option>70</option>
-              <option>60</option>
-              <option>50</option>
-              <option>40</option>
-              <option>30</option>
-              <option>20</option>
-              <option>10</option>
-              <option>1</option>
-            </select>
-          </div>
-        </div>
-        <div class="text-left row no-gutters">
-          <label class="skill-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top" data-original-title="-">Skill:</label>
-          <div class="col">
-            <select class="skill-level-select">
-              <option>10</option>
-              <option>9</option>
-              <option>8</option>
-              <option>7</option>
-              <option>6</option>
-              <option>5</option>
-              <option>4</option>
-              <option>3</option>
-              <option>2</option>
-              <option>1</option>
-              <option hidden>100</option>
-            </select>
-          </div>
-          <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
-            <input class="skill-toggle" type="checkbox" checked>
-          </span>
-        </div>
-        <div class="text-left skill2 row no-gutters" hidden>
-          <label class="skill2-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top" data-original-title="-">Skill2:</label>
-          <div class="col">
-            <select class="skill2-level-select">
-              <option>10</option>
-              <option>9</option>
-              <option>8</option>
-              <option>7</option>
-              <option>6</option>
-              <option>5</option>
-              <option>4</option>
-              <option>3</option>
-              <option>2</option>
-              <option>1</option>
-              <option hidden>100</option>
-            </select>
-          </div>
-        </div>
-        <div class="text-left skill-control" hidden>
-          <button type="button" class="btn btn-sm btn-default">Skill Control</button>
-        </div>
-        <div class="row no-gutters mb-3">
-          <div class="col-auto">
-            <div class="hp d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
+  <div class="float-left ml-3">
+    <div class="row">
+      <div id="doll1" class="card bg-secondary text-center">
+        <div class="card-body">
+          <div class="clearfix">
+            <div class="affection float-left mr-1 mb-1">
+              <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
+              <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
+              <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
+              <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
             </div>
-            <div class="fp d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="acc d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="eva d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="rof d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
+            <p id="doll1-name" class="align-middle float-right">-</p>
+          </div>
+          <div class="text-left row no-gutters">
+            <label class="doll-level-label mr-1">Level:</label>
+            <div class="col">
+              <select class="doll-level-select">
+                <option disabled>115</option>
+                <option>100</option>
+                <option>90</option>
+                <option>80</option>
+                <option>70</option>
+                <option>60</option>
+                <option>50</option>
+                <option>40</option>
+                <option>30</option>
+                <option>20</option>
+                <option>10</option>
+                <option>1</option>
+              </select>
             </div>
           </div>
-          <div class="col-auto">
-            <div class="crit d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="critdmg d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="rounds d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="armor d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="ap d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-          </div>
-        </div>
-        <div class="mb-1">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
-          <select class="equip1-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div class="mb-1">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
-          <select class="equip2-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div class="">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
-          <select class="equip3-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div>
-          <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
-          <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
-        </div>
-      </div>
-    </div>
-    <div id="doll2" class="card bg-secondary text-center">
-      <div class="card-body">
-        <div class="clearfix">
-          <div class="affection float-left mr-1 mb-1">
-            <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
-            <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
-            <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
-            <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
-          </div>
-          <p id="doll2-name" class="align-middle float-right">-</p>
-        </div>
-        <div class="text-left row no-gutters">
-          <label class="doll-level-label mr-1">Level:</label>
-          <div class="col">
-            <select class="doll-level-select">
-              <option disabled>115</option>
-              <option>100</option>
-              <option>90</option>
-              <option>80</option>
-              <option>70</option>
-              <option>60</option>
-              <option>50</option>
-              <option>40</option>
-              <option>30</option>
-              <option>20</option>
-              <option>10</option>
-              <option>1</option>
-            </select>
-          </div>
-        </div>
-        <div class="text-left row no-gutters">
-          <label class="skill-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top" data-original-title="-">Skill:</label>
-          <div class="col">
-            <select class="skill-level-select">
-              <option>10</option>
-              <option>9</option>
-              <option>8</option>
-              <option>7</option>
-              <option>6</option>
-              <option>5</option>
-              <option>4</option>
-              <option>3</option>
-              <option>2</option>
-              <option>1</option>
-              <option hidden>100</option>
-            </select>
-          </div>
-          <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
-            <input class="skill-toggle" type="checkbox" checked>
-          </span>
-        </div>
-        <div class="text-left skill2 row no-gutters" hidden>
-          <label class="skill2-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top" data-original-title="-">Skill2:</label>
-          <div class="col">
-            <select class="skill2-level-select">
-              <option>10</option>
-              <option>9</option>
-              <option>8</option>
-              <option>7</option>
-              <option>6</option>
-              <option>5</option>
-              <option>4</option>
-              <option>3</option>
-              <option>2</option>
-              <option>1</option>
-              <option hidden>100</option>
-            </select>
-          </div>
-        </div>
-        <div class="text-left skill-control" hidden>
-          <button type="button" class="btn btn-sm btn-default">Skill Control</button>
-        </div>
-        <div class="row no-gutters mb-3">
-          <div class="col-auto">
-            <div class="hp d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="fp d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="acc d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="eva d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="rof d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="crit d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="critdmg d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="rounds d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="armor d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="ap d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-          </div>
-        </div>
-        <div class="mb-1">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
-          <select class="equip1-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div class="mb-1">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
-          <select class="equip2-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div class="">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
-          <select class="equip3-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div>
-          <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
-          <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
-        </div>
-      </div>
-    </div>
-    <div id="doll3" class="card bg-secondary text-center">
-      <div class="card-body">
-        <div class="clearfix">
-          <div class="affection float-left mr-1 mb-1">
-            <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
-            <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
-            <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
-            <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
-          </div>
-          <p id="doll3-name" class="align-middle float-right">-</p>
-        </div>
-        <div class="text-left row no-gutters">
-          <label class="doll-level-label mr-1">Level:</label>
-          <div class="col">
-            <select class="doll-level-select">
-              <option disabled>115</option>
-              <option>100</option>
-              <option>90</option>
-              <option>80</option>
-              <option>70</option>
-              <option>60</option>
-              <option>50</option>
-              <option>40</option>
-              <option>30</option>
-              <option>20</option>
-              <option>10</option>
-              <option>1</option>
-            </select>
-          </div>
-        </div>
-        <div class="text-left row no-gutters">
-          <label class="skill-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top" data-original-title="-">Skill:</label>
-          <div class="col">
-            <select class="skill-level-select">
-              <option>10</option>
-              <option>9</option>
-              <option>8</option>
-              <option>7</option>
-              <option>6</option>
-              <option>5</option>
-              <option>4</option>
-              <option>3</option>
-              <option>2</option>
-              <option>1</option>
-              <option hidden>100</option>
-            </select>
-          </div>
-          <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
-            <input class="skill-toggle" type="checkbox" checked>
-          </span>
-        </div>
-        <div class="text-left skill2 row no-gutters" hidden>
-          <label class="skill2-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top" data-original-title="-">Skill2:</label>
-          <div class="col">
-            <select class="skill2-level-select">
-              <option>10</option>
-              <option>9</option>
-              <option>8</option>
-              <option>7</option>
-              <option>6</option>
-              <option>5</option>
-              <option>4</option>
-              <option>3</option>
-              <option>2</option>
-              <option>1</option>
-              <option hidden>100</option>
-            </select>
-          </div>
-        </div>
-        <div class="text-left skill-control" hidden>
-          <button type="button" class="btn btn-sm btn-default">Skill Control</button>
-        </div>
-        <div class="row no-gutters mb-3">
-          <div class="col-auto">
-            <div class="hp d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="fp d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="acc d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="eva d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="rof d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="crit d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="critdmg d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="rounds d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="armor d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="ap d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-          </div>
-        </div>
-        <div class="mb-1">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
-          <select class="equip1-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div class="mb-1">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
-          <select class="equip2-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div class="">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
-          <select class="equip3-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div>
-          <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
-          <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
-        </div>
-      </div>
-    </div>
-    <div id="doll4" class="card bg-secondary text-center">
-      <div class="card-body">
-        <div class="clearfix">
-          <div class="affection float-left mr-1 mb-1">
-            <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
-            <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
-            <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
-            <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
-          </div>
-          <p id="doll4-name" class="align-middle float-right">-</p>
-        </div>
-        <div class="text-left row no-gutters">
-          <label class="doll-level-label mr-1">Level:</label>
-          <div class="col">
-            <select class="doll-level-select">
-              <option disabled>115</option>
-              <option>100</option>
-              <option>90</option>
-              <option>80</option>
-              <option>70</option>
-              <option>60</option>
-              <option>50</option>
-              <option>40</option>
-              <option>30</option>
-              <option>20</option>
-              <option>10</option>
-              <option>1</option>
-            </select>
-          </div>
-        </div>
-        <div class="text-left row no-gutters">
-          <label class="skill-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top" data-original-title="-">Skill:</label>
-          <div class="col">
-            <select class="skill-level-select">
-              <option>10</option>
-              <option>9</option>
-              <option>8</option>
-              <option>7</option>
-              <option>6</option>
-              <option>5</option>
-              <option>4</option>
-              <option>3</option>
-              <option>2</option>
-              <option>1</option>
-              <option hidden>100</option>
-            </select>
-          </div>
-          <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
-            <input class="skill-toggle" type="checkbox" checked>
-          </span>
-        </div>
-        <div class="text-left skill2 row no-gutters" hidden>
-          <label class="skill2-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top" data-original-title="-">Skill2:</label>
-          <div class="col">
-            <select class="skill2-level-select">
-              <option>10</option>
-              <option>9</option>
-              <option>8</option>
-              <option>7</option>
-              <option>6</option>
-              <option>5</option>
-              <option>4</option>
-              <option>3</option>
-              <option>2</option>
-              <option>1</option>
-              <option hidden>100</option>
-            </select>
-          </div>
-        </div>
-        <div class="text-left skill-control" hidden>
-          <button type="button" class="btn btn-sm btn-default">Skill Control</button>
-        </div>
-        <div class="row no-gutters mb-3">
-          <div class="col-auto">
-            <div class="hp d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="fp d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="acc d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="eva d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="rof d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="crit d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="critdmg d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="rounds d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="armor d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="ap d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-          </div>
-        </div>
-        <div class="mb-1">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
-          <select class="equip1-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div class="mb-1">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
-          <select class="equip2-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div class="">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
-          <select class="equip3-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div>
-          <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
-          <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
-        </div>
-      </div>
-    </div>
-    <div id="doll5" class="card bg-secondary text-center">
-      <div class="card-body">
-        <div class="clearfix">
-          <div class="affection float-left mr-1 mb-1">
-            <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
-            <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
-            <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
-            <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
-          </div>
-          <p id="doll5-name" class="align-middle float-right">-</p>
-        </div>
-        <div class="text-left row no-gutters">
-          <label class="doll-level-label mr-1">Level:</label>
-          <div class="col">
-            <select class="doll-level-select">
-              <option disabled>115</option>
-              <option>100</option>
-              <option>90</option>
-              <option>80</option>
-              <option>70</option>
-              <option>60</option>
-              <option>50</option>
-              <option>40</option>
-              <option>30</option>
-              <option>20</option>
-              <option>10</option>
-              <option>1</option>
-            </select>
-          </div>
-        </div>
-        <div class="text-left row no-gutters">
-          <label class="skill-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top" data-original-title="-">Skill:</label>
-          <div class="col">
-            <select class="skill-level-select">
-              <option>10</option>
-              <option>9</option>
-              <option>8</option>
-              <option>7</option>
-              <option>6</option>
-              <option>5</option>
-              <option>4</option>
-              <option>3</option>
-              <option>2</option>
-              <option>1</option>
-              <option hidden>100</option>
-            </select>
-          </div>
-          <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
-            <input class="skill-toggle" type="checkbox" checked>
-          </span>
-        </div>
-        <div class="text-left skill2 row no-gutters" hidden>
-          <label class="skill2-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top" data-original-title="-">Skill2:</label>
-          <div class="col">
-            <select class="skill2-level-select">
-              <option>10</option>
-              <option>9</option>
-              <option>8</option>
-              <option>7</option>
-              <option>6</option>
-              <option>5</option>
-              <option>4</option>
-              <option>3</option>
-              <option>2</option>
-              <option>1</option>
-              <option hidden>100</option>
-            </select>
-          </div>
-        </div>
-        <div class="text-left skill-control" hidden>
-          <button type="button" class="btn btn-sm btn-default">Skill Control</button>
-        </div>
-        <div class="row no-gutters mb-3">
-          <div class="col-auto">
-            <div class="hp d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="fp d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="acc d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="eva d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="rof d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="crit d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="critdmg d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="rounds d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="armor d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="ap d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-          </div>
-        </div>
-        <div class="mb-1">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip1 img-fluid rounded border"></img></a>
-          <select class="equip1-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div class="mb-1">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip2 img-fluid rounded border"></img></a>
-          <select class="equip2-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div class="">
-          <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}" class="equip3 img-fluid rounded border"></img></a>
-          <select class="equip3-level-select">
-            <option>10</option>
-            <option>9</option>
-            <option>8</option>
-            <option>7</option>
-            <option>6</option>
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-            <option>0</option>
-          </select>
-        </div>
-        <div>
-          <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
-          <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
-        </div>
-      </div>
-    </div>
-    <div id="fairy" class="card bg-secondary text-center">
-      <div class="card-body">
-        <p id="fairy-name" class="align-middle">-</p>
-        <div>
-          <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" id="fairy-img" class="img-fluid"></img>
-        </div>
-        <div class="text-left row no-gutters">
-          <label class="fairy-level-label mr-1">Level:</label>
-          <div class="col">
-            <select class="fairy-level-select">
-              <option>100</option>
-              <option>90</option>
-              <option>80</option>
-              <option>70</option>
-              <option>60</option>
-              <option>50</option>
-              <option>40</option>
-              <option>30</option>
-              <option>20</option>
-              <option>10</option>
-              <option>1</option>
-            </select>
-          </div>
-        </div>
-        <div class="text-left row no-gutters">
-          <label class="fairy-skill-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top" data-original-title="-">Skill:</label>
-          <div class="col mr-1">
-            <select class="fairy-skill-level-select">
-              <option>10</option>
-              <option>9</option>
-              <option>8</option>
-              <option>7</option>
-              <option>6</option>
-              <option>5</option>
-              <option>4</option>
-              <option>3</option>
-              <option>2</option>
-              <option>1</option>
-              <option hidden>100</option>
-            </select>
-          </div>
-          <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
-            <input class="fairy-skill-toggle" type="checkbox" checked>
-          </span>
-        </div>
-        <div class="text-left row no-gutters">
-          <label class="fairy-rarity-label mr-1">Rarity:</label>
-          <div class="col mb-1">
-            <select class="fairy-rarity-select">
-              <option value="5">★★★★★</option>
-              <option value="4">★★★★</option>
-              <option value="3">★★★</option>
-              <option value="2">★★</option>
-              <option value="1">★</option>
-            </select>
-          </div>
-        </div>
-        <div class="text-left row no-gutters">
-          <label class="fairy-talent-label mr-1" data-toggle="tooltip" data-placement="top" data-original-title="-">Talent:</label>
-          <div class="col">
-            <select class="fairy-talent-select">
-            </select>
-          </div>
-        </div>
-        <div class="row no-gutters mb-3">
-          <div class="col">
-            <div class="fp d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="acc d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="eva d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="critdmg d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-            <div class="armor d-flex align-items-center">
-              <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
-              <span>-</span>
-            </div>
-          </div>
-          <div class="col ml-1">
-            <button id="fairy-skill-control" type="button" class="btn btn-sm btn-default" hidden>Skill Control</button>
-          </div>
-        </div>
-        <div>
-          <a href="#fairy-select" id="add-fairy" data-toggle="modal" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
-          <a href="#" id="remove-fairy" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="doll-select" class="modal fade" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content bg-secondary text-light">
-      <div class="modal-body">
-        <div class="container-fluid">
-          <label>Search:</label>
-          <input id="doll-filter" type="text">
-          <div class="accordion">
-            <div class="card bg-secondary text-light">
-              <div class="card-header">
-                <a class="btn" data-toggle="collapse" data-target="#doll-list-1">
-                  <img src="{% static 'girlsfrontline/sim/HG.png' %}" class="img-fluid"></img>
-                </a>
-              </div>
-              <div id="doll-list-1" class="collapse">
-                <div class="card-body">
-                  <div class="flex-row mb-3 stars5">
-                  </div>
-                  <div class="flex-row mb-3 stars4">
-                  </div>
-                  <div class="flex-row mb-3 stars3">
-                  </div>
-                  <div class="flex-row mb-3 stars2">
-                  </div>
-                  <div class="flex-row mb-3 stars1">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-secondary text-light">
-              <div class="card-header">
-                <a class="btn" data-toggle="collapse" data-target="#doll-list-3">
-                  <img src="{% static 'girlsfrontline/sim/RF.png' %}" class="img-fluid"></img>
-                </a>
-              </div>
-              <div id="doll-list-3" class="collapse">
-                <div class="card-body">
-                  <div class="flex-row mb-3 stars5">
-                  </div>
-                  <div class="flex-row mb-3 stars4">
-                  </div>
-                  <div class="flex-row mb-3 stars3">
-                  </div>
-                  <div class="flex-row mb-3 stars2">
-                  </div>
-                  <div class="flex-row mb-3 stars1">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-secondary text-light">
-              <div class="card-header">
-                <a class="btn" data-toggle="collapse" data-target="#doll-list-2">
-                  <img src="{% static 'girlsfrontline/sim/SMG.png' %}" class="img-fluid"></img>
-                </a>
-              </div>
-              <div id="doll-list-2" class="collapse">
-                <div class="card-body">
-                  <div class="flex-row mb-3 stars5">
-                  </div>
-                  <div class="flex-row mb-3 stars4">
-                  </div>
-                  <div class="flex-row mb-3 stars3">
-                  </div>
-                  <div class="flex-row mb-3 stars2">
-                  </div>
-                  <div class="flex-row mb-3 stars1">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-secondary text-light">
-              <div class="card-header">
-                <a class="btn" data-toggle="collapse" data-target="#doll-list-4">
-                  <img src="{% static 'girlsfrontline/sim/AR.png' %}" class="img-fluid"></img>
-                </a>
-              </div>
-              <div id="doll-list-4" class="collapse">
-                <div class="card-body">
-                  <div class="flex-row mb-3 stars5">
-                  </div>
-                  <div class="flex-row mb-3 stars4">
-                  </div>
-                  <div class="flex-row mb-3 stars3">
-                  </div>
-                  <div class="flex-row mb-3 stars2">
-                  </div>
-                  <div class="flex-row mb-3 stars1">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-secondary text-light">
-              <div class="card-header">
-                <a class="btn" data-toggle="collapse" data-target="#doll-list-6">
-                  <img src="{% static 'girlsfrontline/sim/SG.png' %}" class="img-fluid"></img>
-                </a>
-              </div>
-              <div id="doll-list-6" class="collapse">
-                <div class="card-body">
-                  <div class="flex-row mb-3 stars5">
-                  </div>
-                  <div class="flex-row mb-3 stars4">
-                  </div>
-                  <div class="flex-row mb-3 stars3">
-                  </div>
-                  <div class="flex-row mb-3 stars2">
-                  </div>
-                  <div class="flex-row mb-3 stars1">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-secondary text-light">
-              <div class="card-header">
-                <a class="btn" data-toggle="collapse" data-target="#doll-list-5">
-                  <img src="{% static 'girlsfrontline/sim/MG.png' %}" class="img-fluid"></img>
-                </a>
-              </div>
-              <div id="doll-list-5" class="collapse">
-                <div class="card-body">
-                  <div class="flex-row mb-3 stars5">
-                  </div>
-                  <div class="flex-row mb-3 stars4">
-                  </div>
-                  <div class="flex-row mb-3 stars3">
-                  </div>
-                  <div class="flex-row mb-3 stars2">
-                  </div>
-                  <div class="flex-row mb-3 stars1">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="equip-select" class="modal fade" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content bg-secondary text-light">
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div class="flex-row mb-3 stars5">
-          </div>
-          <div class="flex-row mb-3 stars4">
-          </div>
-          <div class="flex-row mb-3 stars3">
-          </div>
-          <div class="flex-row mb-3 stars2">
-          </div>
-          <button id="remove-equip" type="button" class="btn bg-light">Remove</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="fairy-select" class="modal fade" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content bg-secondary text-light">
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div class="accordion">
-            <div class="card bg-secondary text-light">
-              <div class="card-header">
-                <a class="btn" data-toggle="collapse" data-target="#combatfairy-list">
-                  <img src="{% static 'girlsfrontline/sim/combat.png' %}" class="img-fluid"></img>
-                </a>
-              </div>
-              <div id="combatfairy-list" class="collapse">
-                <div class="card-body">
-                  <div class="flex-row mb-3 combat">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-secondary text-light">
-              <div class="card-header">
-                <a class="btn" data-toggle="collapse" data-target="#tacticalfairy-list">
-                  <img src="{% static 'girlsfrontline/sim/tactical.png' %}" class="img-fluid"></img>
-                </a>
-              </div>
-              <div id="tacticalfairy-list" class="collapse">
-                <div class="card-body">
-                  <div class="flex-row mb-3 tactical">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="damage-graph-modal" class="modal fade" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content bg-secondary text-light">
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div id="damage-graph">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="skill-control-modal" class="modal fade" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content bg-secondary text-light">
-      <div class="modal-body">
-        <div id="skill-control-body" class="container-fluid">
-        </div>
-        <button id="skill-control-apply" type="button" class="btn bg-light">Apply</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="help-modal" class="modal fade" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content bg-secondary text-light">
-      <div class="modal-body">
-        <div id="help-modal-body" class="container-fluid">
-          <h6>Help:</h6>
-          <p>
-            On mobile, you can tap on a doll to move her around.
-            <br>
-            モバイルでは、人形をタップすれば動かすことができます。
-            <br>
-            Passive skills cannot be toggled off.
-            <br>
-            パッシブスキルの効果を未表示にすることはできません。
-            <br>
-            The total damage number should only be used to compare teams. In a real battle, the actual damage will vary because of RNG
-            <br>
-            最大ダメージはあくまで参考までに、実践ではRNGのせいで変わる場合が多い。
-            <br>
-            To simulate a fairy with no talent, use the golden talent since it has no effect on stats.
-            <br>
-            天賦を使いたくない場合は「Golden」を使ってください。「Golden」の天賦にステタスバフがいない
-          </p>
-          <hr>
-          <h6>Created by:</h6>
-          <p>
-            If you find any bugs or have any questions about how the sim works, please contact me on twitter:
-            <br>
-            バグ発見また質問の場合は、ツイッターまでご連絡いただければと思います。
-          </p>
-          <h5><a class="text-black-50" href="https://twitter.com/dobturtle">@dobturtle</a></h5>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="battle-control-modal" class="modal fade" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content bg-secondary text-light">
-      <div class="modal-body">
-        <div id="battle-control-body" class="container-fluid">
-          <div class="row no-gutters mt-2">
-            <div class="col-auto mx-auto">
-              <label for="enemy-eva">Enemy Evasion:</label>
-              <input id="enemy-eva" type="number" value="15">
-              <br>
-              <label for="enemy-armor">Enemy Armor:</label>
-              <input id="enemy-armor" type="number" value="0">
-              <br>
-              <label for="enemy-count">Enemy Count:</label>
-              <input id="enemy-count" type="number" value="3">
-            </div>
-            <div class="col-auto mx-auto">
-              <label for="walk-time">Walk Time:</label>
-              <input id="walk-time" type="number" value="0">
-              <br>
-              <label for="battle-length" data-toggle="tooltip" data-placement="top" data-original-title="Minimum 20 seconds">Battle Length:</label>
-              <input id="battle-length" type="number" value="20">
-              <br>
-              <label for="fortress-node-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Toggle use of fortress node, a buff from the construction fairy">Fortress Node:</label>
-              <input id="fortress-node-toggle" type="checkbox">
-              <select id="fortress-node-level-select">
+          <div class="text-left row no-gutters">
+            <label class="skill-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top"
+              data-original-title="-">Skill:</label>
+            <div class="col">
+              <select class="skill-level-select">
                 <option>10</option>
                 <option>9</option>
                 <option>8</option>
@@ -1841,35 +646,1304 @@
                 <option>3</option>
                 <option>2</option>
                 <option>1</option>
+                <option hidden>100</option>
               </select>
             </div>
-            <div class="col-auto mx-auto">
-              <label for="buffed-stats-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Toggle showing skill buffs in stats">Show Buffed Stats</label>
-              <input id="buffed-stats-toggle" type="checkbox" checked>
-              <br>
-              <div class="btn-group mx-auto">
-                <button id="day-btn" type="button" class="btn btn-success"><img src="{% static 'girlsfrontline/sim/day.png' %}" class="img-fluid"></img></button>
-                <button id="night-btn" type="button" class="btn"><img src="{% static 'girlsfrontline/sim/night.png' %}" class="img-fluid"></img></button>
+            <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
+              <input class="skill-toggle" type="checkbox" checked>
+            </span>
+          </div>
+          <div class="text-left skill2 row no-gutters" hidden>
+            <label class="skill2-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top"
+              data-original-title="-">Skill2:</label>
+            <div class="col">
+              <select class="skill2-level-select">
+                <option>10</option>
+                <option>9</option>
+                <option>8</option>
+                <option>7</option>
+                <option>6</option>
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+                <option hidden>100</option>
+              </select>
+            </div>
+          </div>
+          <div class="text-left skill-control" hidden>
+            <button type="button" class="btn btn-sm btn-default">Skill Control</button>
+          </div>
+          <div class="row no-gutters mb-3">
+            <div class="col-auto">
+              <div class="hp d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
               </div>
-              <br>
-              <button id="boss-toggle" type="button" class="btn mx-auto mt-2" data-toggle="tooltip" data-placement="top" data-original-title="Changes number of enemies per enemy group from 5 to 1 and allows skill effects that require a boss">Boss</button>
+              <div class="fp d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="acc d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="eva d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="rof d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="crit d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="critdmg d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="rounds d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="armor d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="ap d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+            </div>
+          </div>
+          <div class="mb-1">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip1 img-fluid rounded border"></img></a>
+            <select class="equip1-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div class="mb-1">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip2 img-fluid rounded border"></img></a>
+            <select class="equip2-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div class="">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip3 img-fluid rounded border"></img></a>
+            <select class="equip3-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div>
+            <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}"
+                class="img-fluid mt-2"></img></a>
+            <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}"
+                class="img-fluid mt-2"></img></a>
+          </div>
+        </div>
+      </div>
+      <div id="doll2" class="card bg-secondary text-center">
+        <div class="card-body">
+          <div class="clearfix">
+            <div class="affection float-left mr-1 mb-1">
+              <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
+              <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
+              <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
+              <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
+            </div>
+            <p id="doll2-name" class="align-middle float-right">-</p>
+          </div>
+          <div class="text-left row no-gutters">
+            <label class="doll-level-label mr-1">Level:</label>
+            <div class="col">
+              <select class="doll-level-select">
+                <option disabled>115</option>
+                <option>100</option>
+                <option>90</option>
+                <option>80</option>
+                <option>70</option>
+                <option>60</option>
+                <option>50</option>
+                <option>40</option>
+                <option>30</option>
+                <option>20</option>
+                <option>10</option>
+                <option>1</option>
+              </select>
+            </div>
+          </div>
+          <div class="text-left row no-gutters">
+            <label class="skill-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top"
+              data-original-title="-">Skill:</label>
+            <div class="col">
+              <select class="skill-level-select">
+                <option>10</option>
+                <option>9</option>
+                <option>8</option>
+                <option>7</option>
+                <option>6</option>
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+                <option hidden>100</option>
+              </select>
+            </div>
+            <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
+              <input class="skill-toggle" type="checkbox" checked>
+            </span>
+          </div>
+          <div class="text-left skill2 row no-gutters" hidden>
+            <label class="skill2-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top"
+              data-original-title="-">Skill2:</label>
+            <div class="col">
+              <select class="skill2-level-select">
+                <option>10</option>
+                <option>9</option>
+                <option>8</option>
+                <option>7</option>
+                <option>6</option>
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+                <option hidden>100</option>
+              </select>
+            </div>
+          </div>
+          <div class="text-left skill-control" hidden>
+            <button type="button" class="btn btn-sm btn-default">Skill Control</button>
+          </div>
+          <div class="row no-gutters mb-3">
+            <div class="col-auto">
+              <div class="hp d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="fp d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="acc d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="eva d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="rof d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="crit d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="critdmg d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="rounds d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="armor d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="ap d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+            </div>
+          </div>
+          <div class="mb-1">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip1 img-fluid rounded border"></img></a>
+            <select class="equip1-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div class="mb-1">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip2 img-fluid rounded border"></img></a>
+            <select class="equip2-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div class="">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip3 img-fluid rounded border"></img></a>
+            <select class="equip3-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div>
+            <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}"
+                class="img-fluid mt-2"></img></a>
+            <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}"
+                class="img-fluid mt-2"></img></a>
+          </div>
+        </div>
+      </div>
+      <div id="doll3" class="card bg-secondary text-center">
+        <div class="card-body">
+          <div class="clearfix">
+            <div class="affection float-left mr-1 mb-1">
+              <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
+              <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
+              <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
+              <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
+            </div>
+            <p id="doll3-name" class="align-middle float-right">-</p>
+          </div>
+          <div class="text-left row no-gutters">
+            <label class="doll-level-label mr-1">Level:</label>
+            <div class="col">
+              <select class="doll-level-select">
+                <option disabled>115</option>
+                <option>100</option>
+                <option>90</option>
+                <option>80</option>
+                <option>70</option>
+                <option>60</option>
+                <option>50</option>
+                <option>40</option>
+                <option>30</option>
+                <option>20</option>
+                <option>10</option>
+                <option>1</option>
+              </select>
+            </div>
+          </div>
+          <div class="text-left row no-gutters">
+            <label class="skill-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top"
+              data-original-title="-">Skill:</label>
+            <div class="col">
+              <select class="skill-level-select">
+                <option>10</option>
+                <option>9</option>
+                <option>8</option>
+                <option>7</option>
+                <option>6</option>
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+                <option hidden>100</option>
+              </select>
+            </div>
+            <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
+              <input class="skill-toggle" type="checkbox" checked>
+            </span>
+          </div>
+          <div class="text-left skill2 row no-gutters" hidden>
+            <label class="skill2-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top"
+              data-original-title="-">Skill2:</label>
+            <div class="col">
+              <select class="skill2-level-select">
+                <option>10</option>
+                <option>9</option>
+                <option>8</option>
+                <option>7</option>
+                <option>6</option>
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+                <option hidden>100</option>
+              </select>
+            </div>
+          </div>
+          <div class="text-left skill-control" hidden>
+            <button type="button" class="btn btn-sm btn-default">Skill Control</button>
+          </div>
+          <div class="row no-gutters mb-3">
+            <div class="col-auto">
+              <div class="hp d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="fp d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="acc d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="eva d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="rof d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="crit d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="critdmg d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="rounds d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="armor d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="ap d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+            </div>
+          </div>
+          <div class="mb-1">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip1 img-fluid rounded border"></img></a>
+            <select class="equip1-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div class="mb-1">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip2 img-fluid rounded border"></img></a>
+            <select class="equip2-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div class="">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip3 img-fluid rounded border"></img></a>
+            <select class="equip3-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div>
+            <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}"
+                class="img-fluid mt-2"></img></a>
+            <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}"
+                class="img-fluid mt-2"></img></a>
+          </div>
+        </div>
+      </div>
+      <div id="doll4" class="card bg-secondary text-center">
+        <div class="card-body">
+          <div class="clearfix">
+            <div class="affection float-left mr-1 mb-1">
+              <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
+              <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
+              <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
+              <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
+            </div>
+            <p id="doll4-name" class="align-middle float-right">-</p>
+          </div>
+          <div class="text-left row no-gutters">
+            <label class="doll-level-label mr-1">Level:</label>
+            <div class="col">
+              <select class="doll-level-select">
+                <option disabled>115</option>
+                <option>100</option>
+                <option>90</option>
+                <option>80</option>
+                <option>70</option>
+                <option>60</option>
+                <option>50</option>
+                <option>40</option>
+                <option>30</option>
+                <option>20</option>
+                <option>10</option>
+                <option>1</option>
+              </select>
+            </div>
+          </div>
+          <div class="text-left row no-gutters">
+            <label class="skill-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top"
+              data-original-title="-">Skill:</label>
+            <div class="col">
+              <select class="skill-level-select">
+                <option>10</option>
+                <option>9</option>
+                <option>8</option>
+                <option>7</option>
+                <option>6</option>
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+                <option hidden>100</option>
+              </select>
+            </div>
+            <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
+              <input class="skill-toggle" type="checkbox" checked>
+            </span>
+          </div>
+          <div class="text-left skill2 row no-gutters" hidden>
+            <label class="skill2-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top"
+              data-original-title="-">Skill2:</label>
+            <div class="col">
+              <select class="skill2-level-select">
+                <option>10</option>
+                <option>9</option>
+                <option>8</option>
+                <option>7</option>
+                <option>6</option>
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+                <option hidden>100</option>
+              </select>
+            </div>
+          </div>
+          <div class="text-left skill-control" hidden>
+            <button type="button" class="btn btn-sm btn-default">Skill Control</button>
+          </div>
+          <div class="row no-gutters mb-3">
+            <div class="col-auto">
+              <div class="hp d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="fp d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="acc d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="eva d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="rof d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="crit d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="critdmg d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="rounds d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="armor d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="ap d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+            </div>
+          </div>
+          <div class="mb-1">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip1 img-fluid rounded border"></img></a>
+            <select class="equip1-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div class="mb-1">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip2 img-fluid rounded border"></img></a>
+            <select class="equip2-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div class="">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip3 img-fluid rounded border"></img></a>
+            <select class="equip3-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div>
+            <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}"
+                class="img-fluid mt-2"></img></a>
+            <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}"
+                class="img-fluid mt-2"></img></a>
+          </div>
+        </div>
+      </div>
+      <div id="doll5" class="card bg-secondary text-center">
+        <div class="card-body">
+          <div class="clearfix">
+            <div class="affection float-left mr-1 mb-1">
+              <img src="{% static 'girlsfrontline/sim/affection1.png' %}" class="img-fluid" hidden></img>
+              <img src="{% static 'girlsfrontline/sim/affection2.png' %}" class="img-fluid" hidden></img>
+              <img src="{% static 'girlsfrontline/sim/affection3.png' %}" class="img-fluid"></img>
+              <img src="{% static 'girlsfrontline/sim/affection4.png' %}" class="img-fluid" hidden></img>
+            </div>
+            <p id="doll5-name" class="align-middle float-right">-</p>
+          </div>
+          <div class="text-left row no-gutters">
+            <label class="doll-level-label mr-1">Level:</label>
+            <div class="col">
+              <select class="doll-level-select">
+                <option disabled>115</option>
+                <option>100</option>
+                <option>90</option>
+                <option>80</option>
+                <option>70</option>
+                <option>60</option>
+                <option>50</option>
+                <option>40</option>
+                <option>30</option>
+                <option>20</option>
+                <option>10</option>
+                <option>1</option>
+              </select>
+            </div>
+          </div>
+          <div class="text-left row no-gutters">
+            <label class="skill-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top"
+              data-original-title="-">Skill:</label>
+            <div class="col">
+              <select class="skill-level-select">
+                <option>10</option>
+                <option>9</option>
+                <option>8</option>
+                <option>7</option>
+                <option>6</option>
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+                <option hidden>100</option>
+              </select>
+            </div>
+            <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
+              <input class="skill-toggle" type="checkbox" checked>
+            </span>
+          </div>
+          <div class="text-left skill2 row no-gutters" hidden>
+            <label class="skill2-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top"
+              data-original-title="-">Skill2:</label>
+            <div class="col">
+              <select class="skill2-level-select">
+                <option>10</option>
+                <option>9</option>
+                <option>8</option>
+                <option>7</option>
+                <option>6</option>
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+                <option hidden>100</option>
+              </select>
+            </div>
+          </div>
+          <div class="text-left skill-control" hidden>
+            <button type="button" class="btn btn-sm btn-default">Skill Control</button>
+          </div>
+          <div class="row no-gutters mb-3">
+            <div class="col-auto">
+              <div class="hp d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/hp.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="fp d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="acc d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="eva d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="rof d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/rof.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="crit d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/crit.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="critdmg d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="rounds d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/rounds.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="armor d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="ap d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/ap.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+            </div>
+          </div>
+          <div class="mb-1">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip1 img-fluid rounded border"></img></a>
+            <select class="equip1-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div class="mb-1">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip2 img-fluid rounded border"></img></a>
+            <select class="equip2-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div class="">
+            <a href="#"><img src="{% static 'girlsfrontline/sim/placeholder.png' %}"
+                class="equip3 img-fluid rounded border"></img></a>
+            <select class="equip3-level-select">
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+              <option>0</option>
+            </select>
+          </div>
+          <div>
+            <a href="#" class="add-doll"><img src="{% static 'girlsfrontline/sim/adddoll.png' %}"
+                class="img-fluid mt-2"></img></a>
+            <a href="#" class="remove-doll"><img src="{% static 'girlsfrontline/sim/removedoll.png' %}"
+                class="img-fluid mt-2"></img></a>
+          </div>
+        </div>
+      </div>
+      <div id="fairy" class="card bg-secondary text-center">
+        <div class="card-body">
+          <p id="fairy-name" class="align-middle">-</p>
+          <div>
+            <img src="{% static 'girlsfrontline/sim/placeholder.png' %}" id="fairy-img" class="img-fluid"></img>
+          </div>
+          <div class="text-left row no-gutters">
+            <label class="fairy-level-label mr-1">Level:</label>
+            <div class="col">
+              <select class="fairy-level-select">
+                <option>100</option>
+                <option>90</option>
+                <option>80</option>
+                <option>70</option>
+                <option>60</option>
+                <option>50</option>
+                <option>40</option>
+                <option>30</option>
+                <option>20</option>
+                <option>10</option>
+                <option>1</option>
+              </select>
+            </div>
+          </div>
+          <div class="text-left row no-gutters">
+            <label class="fairy-skill-label mr-1" data-toggle="tooltip" data-html="true" data-placement="top"
+              data-original-title="-">Skill:</label>
+            <div class="col mr-1">
+              <select class="fairy-skill-level-select">
+                <option>10</option>
+                <option>9</option>
+                <option>8</option>
+                <option>7</option>
+                <option>6</option>
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+                <option hidden>100</option>
+              </select>
+            </div>
+            <span class="" data-toggle="tooltip" data-placement="top" data-original-title="Toggle skill on/off">
+              <input class="fairy-skill-toggle" type="checkbox" checked>
+            </span>
+          </div>
+          <div class="text-left row no-gutters">
+            <label class="fairy-rarity-label mr-1">Rarity:</label>
+            <div class="col mb-1">
+              <select class="fairy-rarity-select">
+                <option value="5">★★★★★</option>
+                <option value="4">★★★★</option>
+                <option value="3">★★★</option>
+                <option value="2">★★</option>
+                <option value="1">★</option>
+              </select>
+            </div>
+          </div>
+          <div class="text-left row no-gutters">
+            <label class="fairy-talent-label mr-1" data-toggle="tooltip" data-placement="top"
+              data-original-title="-">Talent:</label>
+            <div class="col">
+              <select class="fairy-talent-select">
+              </select>
+            </div>
+          </div>
+          <div class="row no-gutters mb-3">
+            <div class="col">
+              <div class="fp d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/fp.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="acc d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/acc.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="eva d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/eva.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="critdmg d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/critdmg.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+              <div class="armor d-flex align-items-center">
+                <img src="{% static 'girlsfrontline/sim/armor.png' %}" class="img-fluid mx-1"></img>
+                <span>-</span>
+              </div>
+            </div>
+            <div class="col ml-1">
+              <button id="fairy-skill-control" type="button" class="btn btn-sm btn-default" hidden>Skill
+                Control</button>
+            </div>
+          </div>
+          <div>
+            <a href="#fairy-select" id="add-fairy" data-toggle="modal" class="add-doll"><img
+                src="{% static 'girlsfrontline/sim/adddoll.png' %}" class="img-fluid mt-2"></img></a>
+            <a href="#" id="remove-fairy" class="remove-doll"><img
+                src="{% static 'girlsfrontline/sim/removedoll.png' %}" class="img-fluid mt-2"></img></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="doll-select" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-secondary text-light">
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div>
+              <div class="form-group row">
+                <label for="doll-filter" class="col-sm-2 col-form-label">Search:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="doll-filter" placeholder="Filter by T-Doll name">
+                </div>
+              </div>
+            </div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="hg-tab" data-toggle="tab" href="#hg" role="tab" aria-controls="hg"
+                  aria-selected="true">
+                  <img src="{% static 'girlsfrontline/sim/HG.png' %}" class="img-fluid img-nav"></img>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="rf-tab" data-toggle="tab" href="#rf" role="tab" aria-controls="rf"
+                  aria-selected="false">
+                  <img src="{% static 'girlsfrontline/sim/RF.png' %}" class="img-fluid img-nav"></img>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="smg-tab" data-toggle="tab" href="#smg" role="tab" aria-controls="smg"
+                  aria-selected="false">
+                  <img src="{% static 'girlsfrontline/sim/SMG.png' %}" class="img-fluid img-nav"></img>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="ar-tab" data-toggle="tab" href="#ar" role="tab" aria-controls="ar"
+                  aria-selected="false">
+                  <img src="{% static 'girlsfrontline/sim/AR.png' %}" class="img-fluid img-nav"></img>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="sg-tab" data-toggle="tab" href="#sg" role="tab" aria-controls="sg"
+                  aria-selected="false">
+                  <img src="{% static 'girlsfrontline/sim/SG.png' %}" class="img-fluid img-nav"></img>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="mg-tab" data-toggle="tab" href="#mg" role="tab" aria-controls="mg"
+                  aria-selected="false">
+                  <img src="{% static 'girlsfrontline/sim/MG.png' %}" class="img-fluid img-nav"></img>
+                </a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="hg" role="tabpanel" aria-labelledby="hg-tab">
+                <div id="doll-list-1">
+                  <div class="card-body">
+                    <div class="flex-row mb-3 stars5">
+                    </div>
+                    <div class="flex-row mb-3 stars4">
+                    </div>
+                    <div class="flex-row mb-3 stars3">
+                    </div>
+                    <div class="flex-row mb-3 stars2">
+                    </div>
+                    <div class="flex-row mb-3 stars1">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="rf" role="tabpanel" aria-labelledby="rf-tab">
+                <div id="doll-list-3">
+                  <div class="card-body">
+                    <div class="flex-row mb-3 stars5">
+                    </div>
+                    <div class="flex-row mb-3 stars4">
+                    </div>
+                    <div class="flex-row mb-3 stars3">
+                    </div>
+                    <div class="flex-row mb-3 stars2">
+                    </div>
+                    <div class="flex-row mb-3 stars1">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="smg" role="tabpanel" aria-labelledby="smg-tab">
+                <div id="doll-list-2">
+                  <div class="card-body">
+                    <div class="flex-row mb-3 stars5">
+                    </div>
+                    <div class="flex-row mb-3 stars4">
+                    </div>
+                    <div class="flex-row mb-3 stars3">
+                    </div>
+                    <div class="flex-row mb-3 stars2">
+                    </div>
+                    <div class="flex-row mb-3 stars1">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="ar" role="tabpanel" aria-labelledby="ar-tab">
+                <div id="doll-list-4">
+                  <div class="card-body">
+                    <div class="flex-row mb-3 stars5">
+                    </div>
+                    <div class="flex-row mb-3 stars4">
+                    </div>
+                    <div class="flex-row mb-3 stars3">
+                    </div>
+                    <div class="flex-row mb-3 stars2">
+                    </div>
+                    <div class="flex-row mb-3 stars1">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="mg" role="tabpanel" aria-labelledby="mg-tab">
+                <div id="doll-list-6">
+                  <div class="card-body">
+                    <div class="flex-row mb-3 stars5">
+                    </div>
+                    <div class="flex-row mb-3 stars4">
+                    </div>
+                    <div class="flex-row mb-3 stars3">
+                    </div>
+                    <div class="flex-row mb-3 stars2">
+                    </div>
+                    <div class="flex-row mb-3 stars1">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="sg" role="tabpanel" aria-labelledby="sg-tab">
+                <div id="doll-list-5">
+                  <div class="card-body">
+                    <div class="flex-row mb-3 stars5">
+                    </div>
+                    <div class="flex-row mb-3 stars4">
+                    </div>
+                    <div class="flex-row mb-3 stars3">
+                    </div>
+                    <div class="flex-row mb-3 stars2">
+                    </div>
+                    <div class="flex-row mb-3 stars1">
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div id="teams-modal" class="modal fade" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content bg-secondary text-light">
-      <div class="modal-body">
-        <div id="teams-modal-body" class="container-fluid">
+  <div id="equip-select" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-secondary text-light">
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="flex-row mb-3 stars5">
+            </div>
+            <div class="flex-row mb-3 stars4">
+            </div>
+            <div class="flex-row mb-3 stars3">
+            </div>
+            <div class="flex-row mb-3 stars2">
+            </div>
+            <button id="remove-equip" type="button" class="btn bg-light">Remove</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<script src="{% static 'girlsfrontline/js/sim.js' %}"></script>
+  <div id="fairy-select" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-secondary text-light">
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="accordion">
+              <div class="card bg-secondary text-light">
+                <div class="card-header">
+                  <a class="btn" data-toggle="collapse" data-target="#combatfairy-list">
+                    <img src="{% static 'girlsfrontline/sim/combat.png' %}" class="img-fluid"></img>
+                  </a>
+                </div>
+                <div id="combatfairy-list" class="collapse">
+                  <div class="card-body">
+                    <div class="flex-row mb-3 combat">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card bg-secondary text-light">
+                <div class="card-header">
+                  <a class="btn" data-toggle="collapse" data-target="#tacticalfairy-list">
+                    <img src="{% static 'girlsfrontline/sim/tactical.png' %}" class="img-fluid"></img>
+                  </a>
+                </div>
+                <div id="tacticalfairy-list" class="collapse">
+                  <div class="card-body">
+                    <div class="flex-row mb-3 tactical">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="damage-graph-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-secondary text-light">
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div id="damage-graph">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="skill-control-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-secondary text-light">
+        <div class="modal-body">
+          <div id="skill-control-body" class="container-fluid">
+          </div>
+          <button id="skill-control-apply" type="button" class="btn bg-light">Apply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="help-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-secondary text-light">
+        <div class="modal-body">
+          <div id="help-modal-body" class="container-fluid">
+            <h6>Help:</h6>
+            <p>
+              On mobile, you can tap on a doll to move her around.
+              <br>
+              モバイルでは、人形をタップすれば動かすことができます。
+              <br>
+              Passive skills cannot be toggled off.
+              <br>
+              パッシブスキルの効果を未表示にすることはできません。
+              <br>
+              The total damage number should only be used to compare teams. In a real battle, the actual damage will
+              vary because of RNG
+              <br>
+              最大ダメージはあくまで参考までに、実践ではRNGのせいで変わる場合が多い。
+              <br>
+              To simulate a fairy with no talent, use the golden talent since it has no effect on stats.
+              <br>
+              天賦を使いたくない場合は「Golden」を使ってください。「Golden」の天賦にステタスバフがいない
+            </p>
+            <hr>
+            <h6>Created by:</h6>
+            <p>
+              If you find any bugs or have any questions about how the sim works, please contact me on twitter:
+              <br>
+              バグ発見また質問の場合は、ツイッターまでご連絡いただければと思います。
+            </p>
+            <h5><a class="text-black-50" href="https://twitter.com/dobturtle">@dobturtle</a></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="battle-control-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-secondary text-light">
+        <div class="modal-body">
+          <div id="battle-control-body" class="container-fluid">
+            <div class="row no-gutters mt-2">
+              <div class="col-auto mx-auto">
+                <label for="enemy-eva">Enemy Evasion:</label>
+                <input id="enemy-eva" type="number" value="15">
+                <br>
+                <label for="enemy-armor">Enemy Armor:</label>
+                <input id="enemy-armor" type="number" value="0">
+                <br>
+                <label for="enemy-count">Enemy Count:</label>
+                <input id="enemy-count" type="number" value="3">
+              </div>
+              <div class="col-auto mx-auto">
+                <label for="walk-time">Walk Time:</label>
+                <input id="walk-time" type="number" value="0">
+                <br>
+                <label for="battle-length" data-toggle="tooltip" data-placement="top"
+                  data-original-title="Minimum 20 seconds">Battle Length:</label>
+                <input id="battle-length" type="number" value="20">
+                <br>
+                <label for="fortress-node-toggle" data-toggle="tooltip" data-placement="top"
+                  data-original-title="Toggle use of fortress node, a buff from the construction fairy">Fortress
+                  Node:</label>
+                <input id="fortress-node-toggle" type="checkbox">
+                <select id="fortress-node-level-select">
+                  <option>10</option>
+                  <option>9</option>
+                  <option>8</option>
+                  <option>7</option>
+                  <option>6</option>
+                  <option>5</option>
+                  <option>4</option>
+                  <option>3</option>
+                  <option>2</option>
+                  <option>1</option>
+                </select>
+              </div>
+              <div class="col-auto mx-auto">
+                <label for="buffed-stats-toggle" data-toggle="tooltip" data-placement="top"
+                  data-original-title="Toggle showing skill buffs in stats">Show Buffed Stats</label>
+                <input id="buffed-stats-toggle" type="checkbox" checked>
+                <br>
+                <div class="btn-group mx-auto">
+                  <button id="day-btn" type="button" class="btn btn-success"><img
+                      src="{% static 'girlsfrontline/sim/day.png' %}" class="img-fluid"></img></button>
+                  <button id="night-btn" type="button" class="btn"><img
+                      src="{% static 'girlsfrontline/sim/night.png' %}" class="img-fluid"></img></button>
+                </div>
+                <br>
+                <button id="boss-toggle" type="button" class="btn mx-auto mt-2" data-toggle="tooltip"
+                  data-placement="top"
+                  data-original-title="Changes number of enemies per enemy group from 5 to 1 and allows skill effects that require a boss">Boss</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="teams-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-secondary text-light">
+        <div class="modal-body">
+          <div id="teams-modal-body" class="container-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{% static 'girlsfrontline/js/sim.js' %}"></script>
 </main>
 {% endblock %}

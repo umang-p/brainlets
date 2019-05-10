@@ -131,3 +131,15 @@ input[type="number"] {
 .saved-team-row {
   height: 75px;
 }
+
+.nav-item {
+  width: 120px
+}
+
+.img-nav {
+  filter: invert(100%);
+}
+
+.active .img-nav {
+  filter: invert(0%)
+}
