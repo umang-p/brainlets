@@ -1083,8 +1083,17 @@ function changeDoll(event) {
   echelon[index].type = selectedDoll.type;
   echelon[index].tiles = selectedDoll.tiles;
   echelon[index].tooltip_tiles = selectedDoll.tooltip_tiles;
-  var doll_types = ['All','HG','SMG','RF','AR','MG','SG']
-  echelon[index].tooltip_tiles += '<br>Affects: ' + doll_types[echelon[index].tiles.target_type];
+  var doll_types = ['All','HG','SMG','RF','AR','MG','SG'];
+  var tileTargetTypes;
+  if($.isArray(echelon[index].tiles.target_type)) {
+    tileTargetTypes = doll_types[echelon[index].tiles.target_type[0]];
+    for(var j = 1; j < echelon[index].tiles.target_type.length; j++) {
+      tileTargetTypes += ', ' + doll_types[echelon[index].tiles.target_type[j]];
+    }
+  } else {
+    tileTargetTypes = doll_types[echelon[index].tiles.target_type];
+  }
+  echelon[index].tooltip_tiles += '<br>Affects: ' + tileTargetTypes;
 
   echelon[index].skill = $.extend(true, {},selectedDoll.skill);
   echelon[index].tooltip_skill1 = selectedDoll.tooltip_skill1;
@@ -2297,6 +2306,44 @@ function preBattleSkillChanges(doll) {
       doll.battle.skill.effects[0].stat.fp = 4;
     }
   }
+
+  //Chauchat
+  if(doll.id == 282) {
+    var buff = {
+      type:"buff",
+      target:"self",
+      name:"chauchat",
+      duration:-1,
+      stackable:true,
+      stacks:1,
+      max_stacks:4
+    };
+    doll.battle.buffs.push(buff);
+  }
+
+  //mg36
+  if(doll.id == 283) {
+    var targetSquares = doll.tiles.target.split(",");
+    targetSquares = targetSquares.map(targetSquare => parseInt(targetSquare));
+    targetSquares = targetSquares.map(targetSquare => targetSquare + doll.pos);
+    var validSquares = [12,13,14,22,23,24,32,33,34];
+    $.each(targetSquares, (index, targetSquare) => {
+      if($.inArray(targetSquare, validSquares) != -1) {
+        var dollOnTile = echelon.find(d => d.pos == targetSquare);
+        if(dollOnTile !== undefined && dollOnTile.id != -1) {
+          if(dollOnTile.type == 4) {
+            doll.battle.skill.effects[1].stacks++;
+          }
+          if(dollOnTile.type == 2) {
+            doll.battle.skill.effects[2].stacks++;
+          }
+          if(dollOnTile.type == 6) {
+            doll.battle.skill.effects[3].rounds++;
+          }
+        }
+      }
+    });
+  }
 }
 
 function initDollsForBattle() {
@@ -2911,7 +2958,7 @@ function simulateBattle() {
                 }
                 if('multiplier' in reloadBuff) {
                   if('stackable' in reloadBuff) {
-                    reloadTimer.timeLeft *= $.isArray(reloadBuff.multiplier) ? ((reloadBuff.multiplier[reloadBuff.level-1] * reloadBuff.stacks) / 100) + 1 : (reloadBuff.multiplier * reloadBuff.stacks / 100) + 1;
+                    reloadTimer.timeLeft *= $.isArray(reloadBuff.multiplier) ? Math.pow((reloadBuff.multiplier[reloadBuff.level-1] / 100 + 1), reloadBuff.stacks): Math.pow(reloadBuff.multiplier / 100 + 1, reloadBuff.stacks);
                   } else {
                     reloadTimer.timeLeft *= $.isArray(reloadBuff.multiplier) ? ((reloadBuff.multiplier[reloadBuff.level-1]) / 100) + 1 : (reloadBuff.multiplier / 100) + 1;
                   }
@@ -3986,6 +4033,34 @@ function modifySkill(doll, effect, enemy, currentTime) {
           }
           doll.battle.action_queue.push(chargedshot);
         }
+      }
+    }
+  }
+
+  //chauchat
+  if(doll.id == 282) {
+    if(effect.modifySkill == 'consumeStack') {
+      var buff = doll.battle.buffs.find(b => b.name == 'chauchat');
+      if(buff == undefined) {
+        return;
+      }
+
+      var reloadBuff = {
+        type:"buff",
+        target:"self",
+        name:"reloadBuff",
+        duration:-1,
+        uses:1,
+        stackable:true,
+        max_stacks:2,
+        stacks:1,
+        multiplier:[-10,-11,-12,-13,-14,-16,-17,-18,-19,-20],
+        level:doll.skilllevel
+      };
+
+      if(buff.stacks > 0) { //add a check for existing reloadbuff if stacks can't be wasted. needs ingame testing
+        buff.stacks--;
+        activateBuff(doll, $.extend({}, reloadBuff), enemy);
       }
     }
   }
