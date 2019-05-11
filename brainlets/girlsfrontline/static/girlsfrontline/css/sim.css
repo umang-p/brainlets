@@ -133,7 +133,7 @@ input[type="number"] {
 }
 
 .nav-item {
-  width: 120px
+  width: calc(100%/6);
 }
 
 .img-nav {
