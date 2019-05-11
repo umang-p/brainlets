@@ -88,6 +88,33 @@ const FAIRY_GROWTH_FACTORS = {
 
 const FAIRY_RARITY_SCALARS = [0.4,0.5,0.6,0.8,1];
 
+function getTDollIdFromName (name) {
+  let match = dollData.find(obj => {
+    return obj.name == name
+  })
+  return match.id
+}
+
+const LIST_DPS_SMG = [
+  "Vector",
+  "MP40",
+  "SR-3MP",
+  "KLIN",
+  "Skorpion",
+  "Micro Uzi",
+  "Z-62",
+  "M12",
+  "PPSh-41",
+  "PPS-43",
+  "PP-2000",
+  "STEN MkⅡ", // lol
+  "EVO 3",
+  "PP-19",
+  "StenMKIIMod",
+  "M3"
+];
+let LIST_DPS_SMG_ID;
+
 const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   52:[24,66,28], //M16
   54:[4,8,24], //SOP
@@ -211,6 +238,8 @@ $(function () {
     url: '/static/girlsfrontline/dolls.json',
     success: function(data, status, xhr) {
       dollData = data;
+      // Populate DPS SMG List
+      LIST_DPS_SMG_ID = LIST_DPS_SMG.reduce((map, name) => (map[getTDollIdFromName(name)] = name, map), {})
     },
     error: function(xhr, status, err) {
       console.log(status);
@@ -1188,9 +1217,11 @@ function setDefaultEquips(dollIndex) {
       }
       break;
     case 2: //smg
-      doll.equip1 = 28; //T-exo
+      doll.equip1 = doll.id in LIST_DPS_SMG_ID ? 35 : 28; 
+                    //T-exo, or X-exo if considered DPS      
       doll.equip2 = 45; //hp ammo
-      doll.equip3 = 39; //suppressor (no point using peq on main tank)
+      doll.equip3 = doll.id in LIST_DPS_SMG_ID ? 8 : 39; 
+                    //Suppressor, or EOT if considered DPS
       break;
     case 3: //rf
       doll.equip1 = 20; //ap ammo
