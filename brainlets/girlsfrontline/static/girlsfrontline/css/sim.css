@@ -94,6 +94,16 @@
   width: 1000px;
   max-width: 1000px;
 }
+
+#doll-select .modal-dialog,
+#doll-select .modal-content {
+    /* 90% of window height, fixed so tabbing doesn't resize modal and move tabs */
+    height: 90%;
+}
+#doll-select .modal-body {
+    max-height: 100%;
+    overflow-y: scroll;
+}
 #doll-select button {
   min-width: 80px;
 }
