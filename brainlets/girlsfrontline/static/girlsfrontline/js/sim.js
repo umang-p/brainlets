@@ -88,6 +88,33 @@ const FAIRY_GROWTH_FACTORS = {
 
 const FAIRY_RARITY_SCALARS = [0.4,0.5,0.6,0.8,1];
 
+function getTDollIdFromName (name) {
+  let match = dollData.find(obj => {
+    return obj.name == name
+  })
+  return match.id
+}
+
+const LIST_DPS_SMG = [
+  "Vector",
+  "MP40",
+  "SR-3MP",
+  "KLIN",
+  "Skorpion",
+  "Micro Uzi",
+  "Z-62",
+  "M12",
+  "PPSh-41",
+  "PPS-43",
+  "PP-2000",
+  "STEN MkⅡ", // lol
+  "EVO 3",
+  "PP-19",
+  "StenMKIIMod",
+  "M3"
+];
+let LIST_DPS_SMG_ID;
+
 const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   52:[24,66,28], //M16
   54:[4,8,24], //SOP
@@ -133,6 +160,18 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   // 120:[20,98,41], //MG4
   // 7:[99,45,35], //Stechkin
 };
+
+// Night equips, mostly to give ARs PEQs instead of special equipment
+const SPECIAL_DEFAULT_EQUIPS_NIGHT = { //numbers indicate ID of the equipment
+  54:[4,16,24], //SOP
+  55:[4,16,59], //STAR
+  56:[16,24,35], //AK-47
+  259:[16,24,70], //M4A1 mod3
+  260:[4,16,24], //SOP mod3
+  261:[4,16,59], //STAR mod3
+  262:[90,24,35], //G3 mod3
+  263:[16,24,35], //G36 mod3
+}
 
 const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
   133:[-1,5,-1], //6P62
@@ -199,6 +238,8 @@ $(function () {
     url: '/static/girlsfrontline/dolls.json',
     success: function(data, status, xhr) {
       dollData = data;
+      // Populate DPS SMG List
+      LIST_DPS_SMG_ID = LIST_DPS_SMG.reduce((map, name) => (map[getTDollIdFromName(name)] = name, map), {})
     },
     error: function(xhr, status, err) {
       console.log(status);
@@ -1185,9 +1226,11 @@ function setDefaultEquips(dollIndex) {
       }
       break;
     case 2: //smg
-      doll.equip1 = 28; //T-exo
+      doll.equip1 = doll.id in LIST_DPS_SMG_ID ? 35 : 28; 
+                    //T-exo, or X-exo if considered DPS      
       doll.equip2 = 45; //hp ammo
-      doll.equip3 = 39; //suppressor (no point using peq on main tank)
+      doll.equip3 = doll.id in LIST_DPS_SMG_ID ? 8 : 39; 
+                    //Suppressor, or EOT if considered DPS
       break;
     case 3: //rf
       doll.equip1 = 20; //ap ammo
@@ -1218,9 +1261,15 @@ function setDefaultEquips(dollIndex) {
   }
 
   if(doll.id in SPECIAL_DEFAULT_EQUIPS) {
-    doll.equip1 = SPECIAL_DEFAULT_EQUIPS[doll.id][0];
-    doll.equip2 = SPECIAL_DEFAULT_EQUIPS[doll.id][1];
-    doll.equip3 = SPECIAL_DEFAULT_EQUIPS[doll.id][2];
+    if(isNight && (doll.id in SPECIAL_DEFAULT_EQUIPS_NIGHT)) {
+      doll.equip1 = SPECIAL_DEFAULT_EQUIPS_NIGHT[doll.id][0];
+      doll.equip2 = SPECIAL_DEFAULT_EQUIPS_NIGHT[doll.id][1];
+      doll.equip3 = SPECIAL_DEFAULT_EQUIPS_NIGHT[doll.id][2];
+    } else {
+      doll.equip1 = SPECIAL_DEFAULT_EQUIPS[doll.id][0];
+      doll.equip2 = SPECIAL_DEFAULT_EQUIPS[doll.id][1];
+      doll.equip3 = SPECIAL_DEFAULT_EQUIPS[doll.id][2];
+    }
   }
 }
 
