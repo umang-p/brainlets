@@ -134,7 +134,7 @@ input[type="number"] {
 
 .saved-team-col {
   width: 75px;
-  background-color: rgb(185,185,185)
+  background-color: rgb(185,185,185);
 }
 
 .saved-team-row {
@@ -150,5 +150,10 @@ input[type="number"] {
 }
 
 .active .img-nav {
-  filter: invert(0%)
+  filter: invert(0%);
+}
+
+#doll-list-6, #doll-list-5, #doll-list-4, #doll-list-3, #doll-list-2, #doll-list-1 {
+  height: 70vh;
+  overflow-y: auto;
 }
