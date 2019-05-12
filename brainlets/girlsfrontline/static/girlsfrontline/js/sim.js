@@ -2885,7 +2885,7 @@ function simulateBattle() {
 
             if('aoe' in attackBuff) {
               var damage = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.battle.armor));
-              damage *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
+              // damage *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
               if('aoe_multiplier' in attackBuff) {
                 damage *= $.isArray(attackBuff.aoe_multiplier) ? attackBuff.aoe_multiplier[attackBuff.level-1] : attackBuff.aoe_multiplier;
               }

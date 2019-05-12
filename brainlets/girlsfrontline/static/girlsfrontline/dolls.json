@@ -18192,5 +18192,139 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 284,
+    "name": "EM-2",
+    "rarity": 4,
+    "type": 4,
+    "mod": false,
+    "hp": 108,
+    "fp": 126,
+    "acc": 120,
+    "eva": 120,
+    "rof": 92,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 115,
+    "construct_time": 12900,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "X布",
+    "voice": "",
+    "tooltip_skill1": "Initial CD: 6s, CD: 16s<br>Fire 3 special shots at random enemies, dealing 3.5x damage per shot. Each shot can crit, doesn't miss, and doesn't ignore armor",
+		"skill": {
+			"icd":6,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "duration":-1,
+          "attacksLeft":3,
+          "canCrit":true,
+          "sureHit":true,
+          "multiplier":[2,2.18,2.36,2.53,2.71,2.89,3.07,3.24,3.42,3.5]
+        }
+      ]
+		},
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +20%, Accuracy +55%",
+    "tiles": {
+      "self": 23,
+      "target": "11,-9",
+      "target_type": 2,
+      "effect": {
+        "fp": 20,
+        "acc": 55,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
+  },
+  {
+    "id": 285,
+    "name": "QBU-88",
+    "rarity": 5,
+    "type": 3,
+    "mod": false,
+    "hp": 95,
+    "fp": 109,
+    "acc": 120,
+    "eva": 111,
+    "rof": 118,
+    "crit": 40,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 133,
+    "construct_time": 17280,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "薯子Imoko",
+    "voice": "",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Active: After aiming for 1.5 seconds, deal 5x damage to the enemy with the highest hp and 1.5x damage to enemies within a radius of 1.5 units to that enemy.<br>Passive: Every 3rd shot on the same target deals 1.5x damage to enemies in a radius of 1.5 units",
+		"skill": {
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"chargedshot",
+          "delay":1.5,
+          "multiplier":[3,3.22,3.44,3.67,3.89,4.11,4.33,4.56,4.78,5],
+          "busylinks":5
+        },
+        {
+          "type":"grenade",
+          "busylinks":0,
+          "delay":1.5,
+          "radius":1.5,
+          "multiplier":1.5
+        }
+      ]
+		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"everyXhits",
+        "hits":3,
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"normalAttackBuff",
+            "attacksLeft":1,
+            "duration":-1,
+            "aoe":true,
+            "aoe_multiplier":1.5,
+            "aoe_radius":1.5
+          }
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Skill Cooldown -18%",
+    "tiles": {
+      "self": 32,
+      "target": "1,-9,-19,-20",
+      "target_type": 1,
+      "effect": {
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
+      }
+    }
   }
 ]
