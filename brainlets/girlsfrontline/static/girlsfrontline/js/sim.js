@@ -111,7 +111,11 @@ const LIST_DPS_SMG = [
   "EVO 3",
   "PP-19",
   "StenMKIIMod",
-  "M3"
+  "M3",
+  "SCW",
+  "X95",
+  "Honey Badger",
+  "PM-9"
 ];
 let LIST_DPS_SMG_ID;
 
@@ -1226,10 +1230,10 @@ function setDefaultEquips(dollIndex) {
       }
       break;
     case 2: //smg
-      doll.equip1 = doll.id in LIST_DPS_SMG_ID ? 35 : 28; 
-                    //T-exo, or X-exo if considered DPS      
+      doll.equip1 = doll.id in LIST_DPS_SMG_ID ? 35 : 28;
+                    //T-exo, or X-exo if considered DPS
       doll.equip2 = 45; //hp ammo
-      doll.equip3 = doll.id in LIST_DPS_SMG_ID ? 8 : 39; 
+      doll.equip3 = doll.id in LIST_DPS_SMG_ID ? 8 : 39;
                     //Suppressor, or EOT if considered DPS
       break;
     case 3: //rf
