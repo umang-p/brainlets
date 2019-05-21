@@ -10432,7 +10432,7 @@
     "growth_rating": 105,
     "construct_time": 7800,
     "en_craftable": false,
-		"en_released":false,
+		"en_released":true,
     "artist": "废人",
     "voice": "Kibune Sachiho",
     "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Increase self evasion by 120% for 5 seconds",
