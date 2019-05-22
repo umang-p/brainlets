@@ -3063,13 +3063,29 @@ function simulateBattle() {
             }
           }
 
-          dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level - 1] : doll.battle.fp * action.multiplier;
-          //grenades ignore Armor
-          //grenades cant miss
-          //grenades cant crit, except kiana
-          if ('sureCrit' in action) {
-            dmg *= (1 + (doll.battle.critdmg / 100));
+          var sureHit = 'sureHit' in action ? action.sureHit : true;
+          var canCrit = 'canCrit' in action ? action.canCrit : false;
+          var ignoreArmor = 'ignoreArmor' in action ? action.ignoreArmor : true;
+
+          if (!('multiplier' in action)) {
+            dmg = doll.battle.fp;
+          } else {
+            dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level - 1] : doll.battle.fp * action.multiplier;
           }
+          if (!ignoreArmor) {
+            dmg = Math.max(1, dmg + Math.min(2, doll.battle.ap - enemy.battle.armor));
+          }
+          if (!sureHit) {
+            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
+          }
+          if (canCrit) {
+            if ('sureCrit' in action) {
+              dmg *= (1 + (doll.battle.critdmg / 100));
+            } else {
+              dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
+            }
+          }
+
           dmg *= enemy.battle.vulnerability;
           var hits = Math.min(action.radius * 1.5, enemy.count); //num enemy echelons hit
 
