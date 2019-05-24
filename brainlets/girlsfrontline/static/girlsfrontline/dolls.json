@@ -18407,5 +18407,134 @@
         ]
       }
     }
+  },
+  {
+    "id": 287,
+    "name": "HK33",
+    "rarity": 3,
+    "type": 4,
+    "mod": false,
+    "hp": 95,
+    "fp": 112,
+    "acc": 130,
+    "eva": 118,
+    "rof": 110,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 112,
+    "construct_time": 0,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "FKEY",
+    "voice": "",
+    "tooltip_skill1": "Initial CD: 4s, CD: 16s<br>Increase self rate of fire by 60% for 10 seconds",
+		"skill": {
+			"icd":4,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[35,38,41,43,46,49,52,54,57,60]
+          },
+          "duration":[6,6.4,6.8,7.2,7.6,8,8.4,8.8,9.4,10]
+        }
+      ]
+		},
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +10%, Evasion +10%",
+    "tiles": {
+      "self": 23,
+      "target": "11,-9",
+      "target_type": 2,
+      "effect": {
+        "fp": 10,
+        "acc": 0,
+        "eva": 10,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
+  },
+  {
+    "id": 288,
+    "name": "R93",
+    "rarity": 5,
+    "type": 3,
+    "mod": false,
+    "hp": 92,
+    "fp": 114,
+    "acc": 132,
+    "eva": 92,
+    "rof": 110,
+    "crit": 40,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 135,
+    "construct_time": 0,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "ASK",
+    "voice": "",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Passive: Consecutive shots on the same enemy increase self rate of fire by 10% for 3 seconds, stacking up to 3 times. Stacks reset upon changing targets.<br>Active: Increase self damage by 40% for 5 seconds, mark a target and attack only that target for 3 seconds, and do not reset passive stacks when changing targets",
+		"skill": {
+			"icd":6,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[20,22,24,27,29,31,33,36,38,40]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
+		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"normalAttack",
+        "effects":[
+          {
+            "type":"buff",
+            "name":"r93passive",
+            "target":"self",
+            "stat":{
+              "rof":[5,6,6,7,7,8,8,9,9,10]
+            },
+            "duration":3,
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":3,
+            "refreshduration":false
+          }
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Skill Cooldown -18%",
+    "tiles": {
+      "self": 23,
+      "target": "1,-9,11",
+      "target_type": 1,
+      "effect": {
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
+      }
+    }
   }
 ]
