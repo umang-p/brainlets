@@ -10,6 +10,8 @@
 
 {% block main %}
 <main class="container-fluid clearfix">
+  <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed&display=swap" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Homenaje' rel='stylesheet'>
   <div id="sim-controls" class="float-left mr-4 ml-2">
     <div class="row no-gutters">
       <p class="h6 col-auto">
@@ -1604,148 +1606,242 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content bg-secondary text-light">
         <div class="modal-body">
-          <div class="container-fluid">
+          <!-- Loading spinner, shown only once on first init -->
+          <div id="doll-select-modal-spinner" class="text-center align-middle">
+              <div class="lds-hourglass"></div>
+              <span class="pl-2 d-inline-block align-bottom" style="padding-bottom: 13px;">Performing one-time initialization of T-Doll data...</span>
+          </div>
+          <div id="doll-select-modal-container" class="container-fluid" hidden>
             <div>
               <div class="form-group row">
-                <label for="doll-filter" class="col-sm-2 col-form-label">Search:</label>
-                <div class="col-sm-10">
+                <label for="doll-filter" class="col-2 col-form-label">Search:</label>
+                <div class="col-6">
                   <input type="text" class="form-control" id="doll-filter" placeholder="Filter by T-Doll name">
                 </div>
+                <div class="col-2 col-form-label">
+                  Fancy View
+                </div>
+                <div class="col-2">
+                  <label class="switch toggle_fancy_view">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
               </div>
-            </div>
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="hg-tab" data-toggle="tab" href="#hg" role="tab" aria-controls="hg"
-                  aria-selected="true">
-                  <img src="{% static 'girlsfrontline/sim/HG.png' %}" class="img-fluid img-nav"></img>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="rf-tab" data-toggle="tab" href="#rf" role="tab" aria-controls="rf"
-                  aria-selected="false">
-                  <img src="{% static 'girlsfrontline/sim/RF.png' %}" class="img-fluid img-nav"></img>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="smg-tab" data-toggle="tab" href="#smg" role="tab" aria-controls="smg"
-                  aria-selected="false">
-                  <img src="{% static 'girlsfrontline/sim/SMG.png' %}" class="img-fluid img-nav"></img>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="ar-tab" data-toggle="tab" href="#ar" role="tab" aria-controls="ar"
-                  aria-selected="false">
-                  <img src="{% static 'girlsfrontline/sim/AR.png' %}" class="img-fluid img-nav"></img>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="sg-tab" data-toggle="tab" href="#sg" role="tab" aria-controls="sg"
-                  aria-selected="false">
-                  <img src="{% static 'girlsfrontline/sim/SG.png' %}" class="img-fluid img-nav"></img>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="mg-tab" data-toggle="tab" href="#mg" role="tab" aria-controls="mg"
-                  aria-selected="false">
-                  <img src="{% static 'girlsfrontline/sim/MG.png' %}" class="img-fluid img-nav"></img>
-                </a>
-              </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="hg" role="tabpanel" aria-labelledby="hg-tab">
-                <div id="doll-list-1">
-                  <div class="card-body">
-                    <div class="flex-row mb-3 stars5">
+              <div id="doll-list-filter" hidden>
+                <div class="card-body">
+                  <div class="flex-row mb-3 stars5">
+                  </div>
+                  <div class="flex-row mb-3 stars4">
+                  </div>
+                  <div class="flex-row mb-3 stars3">
+                  </div>
+                  <div class="flex-row mb-3 stars2">
+                  </div>
+                  <div class="flex-row mb-3 stars1">
+                  </div>
+                </div>
+              </div>
+              <ul class="nav nav-tabs" id="doll-list-tabs" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="hg-tab" data-toggle="tab" href="#hg" role="tab" aria-controls="hg"
+                    aria-selected="true">
+                    <img src="{% static 'girlsfrontline/sim/HG.png' %}" class="img-fluid img-nav"></img>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="rf-tab" data-toggle="tab" href="#rf" role="tab" aria-controls="rf"
+                    aria-selected="false">
+                    <img src="{% static 'girlsfrontline/sim/RF.png' %}" class="img-fluid img-nav"></img>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="smg-tab" data-toggle="tab" href="#smg" role="tab" aria-controls="smg"
+                    aria-selected="false">
+                    <img src="{% static 'girlsfrontline/sim/SMG.png' %}" class="img-fluid img-nav"></img>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="ar-tab" data-toggle="tab" href="#ar" role="tab" aria-controls="ar"
+                    aria-selected="false">
+                    <img src="{% static 'girlsfrontline/sim/AR.png' %}" class="img-fluid img-nav"></img>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="sg-tab" data-toggle="tab" href="#sg" role="tab" aria-controls="sg"
+                    aria-selected="false">
+                    <img src="{% static 'girlsfrontline/sim/SG.png' %}" class="img-fluid img-nav"></img>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="mg-tab" data-toggle="tab" href="#mg" role="tab" aria-controls="mg"
+                    aria-selected="false">
+                    <img src="{% static 'girlsfrontline/sim/MG.png' %}" class="img-fluid img-nav"></img>
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content" id="doll-list-tab-content">
+                <div class="tab-pane fade show active" id="hg" role="tabpanel" aria-labelledby="hg-tab">
+                  <div id="doll-list-1">
+                    <div class="card-body">
+                      <div class="flex-row mb-3 stars5">
+                      </div>
+                      <div class="flex-row mb-3 stars4">
+                      </div>
+                      <div class="flex-row mb-3 stars3">
+                      </div>
+                      <div class="flex-row mb-3 stars2">
+                      </div>
+                      <div class="flex-row mb-3 stars1">
+                      </div>
                     </div>
-                    <div class="flex-row mb-3 stars4">
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="rf" role="tabpanel" aria-labelledby="rf-tab">
+                  <div id="doll-list-3">
+                    <div class="card-body">
+                      <div class="flex-row mb-3 stars5">
+                      </div>
+                      <div class="flex-row mb-3 stars4">
+                      </div>
+                      <div class="flex-row mb-3 stars3">
+                      </div>
+                      <div class="flex-row mb-3 stars2">
+                      </div>
+                      <div class="flex-row mb-3 stars1">
+                      </div>
                     </div>
-                    <div class="flex-row mb-3 stars3">
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="smg" role="tabpanel" aria-labelledby="smg-tab">
+                  <div id="doll-list-2">
+                    <div class="card-body">
+                      <div class="flex-row mb-3 stars5">
+                      </div>
+                      <div class="flex-row mb-3 stars4">
+                      </div>
+                      <div class="flex-row mb-3 stars3">
+                      </div>
+                      <div class="flex-row mb-3 stars2">
+                      </div>
+                      <div class="flex-row mb-3 stars1">
+                      </div>
                     </div>
-                    <div class="flex-row mb-3 stars2">
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="ar" role="tabpanel" aria-labelledby="ar-tab">
+                  <div id="doll-list-4">
+                    <div class="card-body">
+                      <div class="flex-row mb-3 stars5">
+                      </div>
+                      <div class="flex-row mb-3 stars4">
+                      </div>
+                      <div class="flex-row mb-3 stars3">
+                      </div>
+                      <div class="flex-row mb-3 stars2">
+                      </div>
+                      <div class="flex-row mb-3 stars1">
+                      </div>
                     </div>
-                    <div class="flex-row mb-3 stars1">
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="mg" role="tabpanel" aria-labelledby="mg-tab">
+                  <div id="doll-list-5">
+                    <div class="card-body">
+                      <div class="flex-row mb-3 stars5">
+                      </div>
+                      <div class="flex-row mb-3 stars4">
+                      </div>
+                      <div class="flex-row mb-3 stars3">
+                      </div>
+                      <div class="flex-row mb-3 stars2">
+                      </div>
+                      <div class="flex-row mb-3 stars1">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="sg" role="tabpanel" aria-labelledby="sg-tab">
+                  <div id="doll-list-6">
+                    <div class="card-body">
+                      <div class="flex-row mb-3 stars5">
+                      </div>
+                      <div class="flex-row mb-3 stars4">
+                      </div>
+                      <div class="flex-row mb-3 stars3">
+                      </div>
+                      <div class="flex-row mb-3 stars2">
+                      </div>
+                      <div class="flex-row mb-3 stars1">
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="rf" role="tabpanel" aria-labelledby="rf-tab">
-                <div id="doll-list-3">
-                  <div class="card-body">
-                    <div class="flex-row mb-3 stars5">
-                    </div>
-                    <div class="flex-row mb-3 stars4">
-                    </div>
-                    <div class="flex-row mb-3 stars3">
-                    </div>
-                    <div class="flex-row mb-3 stars2">
-                    </div>
-                    <div class="flex-row mb-3 stars1">
-                    </div>
-                  </div>
+              <div class="form-group row">
+                <div class="col-1 small ">
+                  FP
+                  <br />
+                  <label class="switch-small toggle-filter">
+                    <input type="checkbox" data-filter-attribute="fp">
+                    <span class="slider-small round"></span>
+                  </label>
                 </div>
-              </div>
-              <div class="tab-pane fade" id="smg" role="tabpanel" aria-labelledby="smg-tab">
-                <div id="doll-list-2">
-                  <div class="card-body">
-                    <div class="flex-row mb-3 stars5">
-                    </div>
-                    <div class="flex-row mb-3 stars4">
-                    </div>
-                    <div class="flex-row mb-3 stars3">
-                    </div>
-                    <div class="flex-row mb-3 stars2">
-                    </div>
-                    <div class="flex-row mb-3 stars1">
-                    </div>
-                  </div>
+                <div class="col-1 small">
+                  RoF
+                  <br />
+                  <label class="switch-small toggle-filter">
+                    <input type="checkbox" data-filter-attribute="rof">
+                    <span class="slider-small round"></span>
+                  </label>
                 </div>
-              </div>
-              <div class="tab-pane fade" id="ar" role="tabpanel" aria-labelledby="ar-tab">
-                <div id="doll-list-4">
-                  <div class="card-body">
-                    <div class="flex-row mb-3 stars5">
-                    </div>
-                    <div class="flex-row mb-3 stars4">
-                    </div>
-                    <div class="flex-row mb-3 stars3">
-                    </div>
-                    <div class="flex-row mb-3 stars2">
-                    </div>
-                    <div class="flex-row mb-3 stars1">
-                    </div>
-                  </div>
+                <div class="col-1 small">
+                  Eva
+                  <br />
+                  <label class="switch-small toggle-filter">
+                    <input type="checkbox" data-filter-attribute="eva">
+                    <span class="slider-small round"></span>
+                  </label>
                 </div>
-              </div>
-              <div class="tab-pane fade" id="mg" role="tabpanel" aria-labelledby="mg-tab">
-                <div id="doll-list-5">
-                  <div class="card-body">
-                    <div class="flex-row mb-3 stars5">
-                    </div>
-                    <div class="flex-row mb-3 stars4">
-                    </div>
-                    <div class="flex-row mb-3 stars3">
-                    </div>
-                    <div class="flex-row mb-3 stars2">
-                    </div>
-                    <div class="flex-row mb-3 stars1">
-                    </div>
-                  </div>
+                <div class="col-1 small">
+                  Acc
+                  <br />
+                  <label class="switch-small toggle-filter">
+                    <input type="checkbox" data-filter-attribute="acc">
+                    <span class="slider-small round"></span>
+                  </label>
                 </div>
-              </div>
-              <div class="tab-pane fade" id="sg" role="tabpanel" aria-labelledby="sg-tab">
-                <div id="doll-list-6">
-                  <div class="card-body">
-                    <div class="flex-row mb-3 stars5">
-                    </div>
-                    <div class="flex-row mb-3 stars4">
-                    </div>
-                    <div class="flex-row mb-3 stars3">
-                    </div>
-                    <div class="flex-row mb-3 stars2">
-                    </div>
-                    <div class="flex-row mb-3 stars1">
-                    </div>
-                  </div>
+                <div class="col-1 small">
+                  Crit
+                  <br />
+                  <label class="switch-small toggle-filter">
+                    <input type="checkbox" data-filter-attribute="crit">
+                    <span class="slider-small round"></span>
+                  </label>
+                </div>
+                <div class="col-1 small">
+                  Armor
+                  <br />
+                  <label class="switch-small toggle-filter">
+                    <input type="checkbox" data-filter-attribute="armor">
+                    <span class="slider-small round"></span>
+                  </label>
+                </div>
+                <div class="col-1 small">
+                  CD
+                  <br />
+                  <label class="switch-small toggle-filter">
+                    <input type="checkbox" data-filter-attribute="skillcd">
+                    <span class="slider-small round"></span>
+                  </label>
+                </div>
+                <div class="col-5 small">
+                  Show only released on EN
+                  <br />
+                  <label class="switch-small toggle-en-only">
+                    <input type="checkbox">
+                    <span class="slider-small round"></span>
+                  </label>
                 </div>
               </div>
             </div>

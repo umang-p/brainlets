@@ -13,6 +13,213 @@
 .tilegrid-col {
   height: 12px;
 }
+
+/*****
+ * BEGIN CSS for Slider "checkbox" */
+ .switch {
+  position: relative;
+  display: inline-block;
+  width: 68px;
+  height: 38px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #20c997;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #20c997;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(30px);
+  -ms-transform: translateX(30px);
+  transform: translateX(30px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 38px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/**
+ * Half-size version of slider
+ **/
+.switch-small {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 19px;
+}
+
+/* Hide default HTML checkbox */
+.switch-small input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider-small {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider-small:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider-small {
+  background-color: #20c997;
+}
+
+input:focus + .slider-small {
+  box-shadow: 0 0 1px #20c997;
+}
+
+input:checked + .slider-small:before {
+  -webkit-transform: translateX(15px);
+  -ms-transform: translateX(15px);
+  transform: translateX(15px);
+}
+
+/* Rounded sliders */
+.slider-small.round {
+  border-radius: 19px;
+}
+
+.slider-small.round:before {
+  border-radius: 50%;
+}
+/* END CSS for Slider "checkbox"
+ *****/
+
+.aura_container .tilegrid-row {
+  width: 37px;
+}
+
+.aura_container_caption {
+  float:right;
+  position:absolute;
+  right:6px;
+  top:24px;
+}
+
+/* White border and black background for buff icon */
+.aura_container_img {
+  width: 14px;
+  background-color: black;
+  border-style: solid; 
+  border-width: 1px;
+  border-color: rgba(255,255,255,0.5);
+}
+
+.aura_container_caption div {
+  height: 14px;
+}
+
+/* White border for text */
+.aura_container_caption span {
+  padding-left: 2px;
+  font-family: Oswald, sans-serif;
+  font-size: 8pt;
+  font-weight: bold;
+  text-shadow: 
+  -1px -1px 0px rgba(255,255,255,0.5),
+   0px -1px 0px rgba(255,255,255,0.5),
+   1px -1px 0px rgba(255,255,255,0.5),
+  -1px  0px 0px rgba(255,255,255,0.5),
+   1px  0px 0px rgba(255,255,255,0.5),
+  -1px  1px 0px rgba(255,255,255,0.5),
+   0px  1px 0px rgba(255,255,255,0.5),
+   1px  1px 0px rgba(255,255,255,0.5);
+}
+
+.aura_container .tilegrid-row-center .tilegrid-col {
+  height: 11px;
+}
+
+.aura_container .tilegrid-col {
+  width: 11px;
+  height: 13px;
+}
+
+/* CSS styling for fancy T-Doll select inline tilebuff display */
+.aura_container_small {
+    float:right;
+    position:absolute;
+    width:19px;
+    height:19px;
+    right:6px;
+    top:6px;
+}
+
+.aura_container_small .tilegrid-row {
+  width: 19px;
+}
+
+.aura_container_small .tilegrid-row-center .tilegrid-col {
+  display: block;
+  width: 5px;
+  height: 5px;
+}
+.aura_container_small .tilegrid-col {
+  display: block;
+  width: 5px;
+  height: 7px;
+}
+
 .tilegrid-target {
   background-color: rgb(0,255,252);
 }
@@ -31,6 +238,9 @@
 .fp img, .armor img, .rof img, .eva img, .acc img, .crit img, .skillcd img, .critdmg img, .rounds img, .ap img, .hp img{
   height: 20px;
   width: 20px;
+}
+.waste {
+  color: FIREBRICK;
 }
 #enemy-eva, #enemy-armor, #enemy-count, #walk-time, #battle-length {
   width: 50px;
@@ -52,6 +262,10 @@
 .add-doll img, .remove-doll img {
   width: 50px;
 }
+.img-tooltip-chibi {
+  width: 120px;
+  height: 120px;
+}
 #equip-select img {
   height: 45px;
   width: 45px;
@@ -72,14 +286,48 @@
 .stars1 button, img.stars1 {
   background-color: rgb(222, 182, 255);
 }
-.tooltip-inner {
-  max-width: 450px;
-  background-color: white;
-  color: black;
+.tooltip {
+  --bg-color: #f8f9fa;
 }
 .tooltip.show {
   opacity: 1;
 }
+.tooltip.show:hover {
+  opacity: 0.9; /* Let users see what's behind the tooltip when they are mousing over */
+}
+.tooltip-inner {
+  max-width: 450px;
+  background-color: var(--bg-color);
+  color: #343a40;
+  cursor: pointer; /* Applies only to doll select modal tooltip since others can't be moused over */
+}
+
+/* CSS Overrides for tooltip arrow */
+.bs-tooltip-top .arrow::before {
+  border-top-color: var(--bg-color);
+}
+.bs-tooltip-top-left .arrow::before {
+  border-top-color: var(--bg-color);
+}
+.bs-tooltip-top-right .arrow::before {
+  border-top-color:var(--bg-color);
+}
+.bs-tooltip-right .arrow::before {
+  border-right-color: var(--bg-color);
+}
+.bs-tooltip-left .arrow::before {
+  border-left-color: var(--bg-color);
+}
+.bs-tooltip-bottom .arrow::before {
+  border-bottom-color: var(--bg-color);
+}
+.bs-tooltip-bottom-left .arrow::before {
+  border-bottom-color: var(--bg-color);
+}
+.bs-tooltip-bottom-right .arrow::before {
+  border-bottom-color: var(--bg-color);
+}
+
 #pos12 img, #pos13 img, #pos14 img, #pos22 img, #pos23 img, #pos24 img, #pos32 img, #pos33 img, #pos34 img, .dragging * {
   pointer-events: none;
 }
@@ -148,4 +396,113 @@ input[type="number"] {
 #doll-list-6, #doll-list-5, #doll-list-4, #doll-list-3, #doll-list-2, #doll-list-1 {
   height: 70vh;
   overflow-y: auto;
+}
+
+/* If viewport wider than 1000 pixels, limit to standard bootstrap modal-lg width;
+   min-width 1001 to allow smooth transition on resize */
+@media (min-width: 1001px) {
+  .modal-lg {
+    max-width: 800px;
+  }
+}
+
+/* If viewport narrower than 1000 pixels, make modal up to 80% 
+   of viewport size or 576 pixels, whichever is larger.
+   
+   Allows 5 columns in doll select on wide screens, 4 on narrow */
+@media (max-width: 1000px) {
+  .modal-lg {
+    min-width: 576px;
+    max-width: 80vw;
+  }
+}
+
+.doll_portrait_button {
+  border: 0px;
+  width: 129px;
+  height: 85px;
+  position: relative;
+  background-image: url("/static/girlsfrontline/sim/dolls/icon/spritesheet.png"); 
+  background-repeat: no-repeat;
+}
+
+.doll_portrait_caption {
+  background-color: rgba(52,58,64,0.7);
+  color: white;
+  font-family: 'Roboto Condensed', sans-serif;
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  left: 0%;
+}
+
+/* 38px to fit shotgun HP values */
+.doll_tooltip_stat_container_left {
+  display: inline-block;
+  width: 38px;
+  text-align: left;
+}
+
+/* 45px to fit '150%' */
+.doll_tooltip_stat_container_right {
+  display: inline-block;
+  width: 45px;
+  text-align: left;
+}
+
+.doll_tooltip_header {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 12pt;
+}
+
+/* Align text to stat icons */
+.doll_tooltip_stat_caption {
+    display: inline-block;
+  vertical-align: middle;
+  padding-left: 2px;
+
+  position: relative;
+  bottom: -1px;
+
+  font-family: 'Oswald', sans-serif;
+  font-size: 8pt;
+}
+
+.doll_portrait_tile_buff {
+  font-family: 'Oswald', sans-serif;
+}
+
+
+/* Loading spinner */
+.lds-hourglass {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.lds-hourglass:after {
+  content: "IOP";
+  font-family: 'Homenaje', sans-serif;
+  font-size: 20pt;
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-hourglass 2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
 }

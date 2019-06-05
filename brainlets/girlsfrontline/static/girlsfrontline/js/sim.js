@@ -4,6 +4,7 @@ var isNight;
 var isBoss;
 var equipData;
 var dollData;
+let dollDataMap;                // Mapping of ID to T-Doll data, preferred over dollData[doll.id - 1]
 var fairyData;
 var talentData;
 var enemyEva;
@@ -17,8 +18,13 @@ var useFortressNode;
 var fortressNodeLevel;
 var savedTeamList;
 var savedTeamCount;
+var isViewFancyPreference;      // Client-side preference for "Fancy View" | LocalStorage['preference-view-fancy']
+var isEnOnlyPreference;         // Client-side preference for "Show EN Only" | LocalStorage['preference-en-only']
 var selectedDoll = undefined;
 var graphColors = ['#7CB5EC', '#434348', '#90ED7D', '#F7A35C', '#8085E9', '#F15C80'];
+let buttonsWithOpenTooltips = [], mousedOverTooltip = null;
+let selectModalInitialized = false;   // Set to true after doll select modal initialized
+let allowDollSelectTooltip = false;   // Bugfix for mouseover tooltips
 
 const VALID_EQUIPS = [[[4, 13], [6], [10, 12]], //hg
 [[10, 12], [6], [1, 2, 3, 4, 13]],//smg
@@ -88,6 +94,7 @@ const FAIRY_GROWTH_FACTORS = {
 
 const FAIRY_RARITY_SCALARS = [0.4, 0.5, 0.6, 0.8, 1];
 
+// NEED TO DEPRECATE SOON! USE API NAME MOVING FORWARD
 function getTDollIdFromName(name) {
   let match = dollData.find(obj => {
     return obj.name == name
@@ -141,9 +148,6 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   268: [73, 45, 39], //IDW mod3
   269: [28, 45, 74], //Type64 mod3
   258: [20, 75, 57], //FN-49 mod3
-  // 44:[20,76,57], //Kar98k
-  // 63:[77,24,35], //416
-  // 83:[20,8,78], //MG3
   41: [20, 4, 79], //PTRD
   256: [20, 80, 65], //Mosin-Nagant mod3
   38: [20, 4, 65], //Mosin-Nagant
@@ -152,18 +156,24 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   257: [20, 4, 84], //SV-98 mod3
   249: [85, 45, 35], //CLEAR
   250: [86, 45, 35], //FAIL
-  // 66:[87,24,35], //FAMAS
   251: [88, 45, 35], //SAA mod3
   266: [20, 89, 41], //Bren mod3
   262: [90, 24, 35], //G3 mod3
-  // 60:[4,24,93], //G41
   254: [28, 45, 94], //STEN mod3
   255: [20, 95, 57], //M14 mod3
   263: [96, 24, 35], //G36 mod3
   265: [20, 97, 41], //LWMMG mod3
-  // 120:[20,98,41], //MG4
-  // 7:[99,45,35], //Stechkin
 };
+
+const SPECIAL_DEFAULT_EQUIPS_UNRELEASED = {
+  44:[20,76,57],  //Kar98k
+  63:[77,24,35],  //416
+  83:[20,8,78],   //MG3
+  66:[87,24,35],  //FAMAS
+  60:[4,24,93],   //G41
+  120:[20,98,41], //MG4
+  7:[99,45,35],   //Stechkin
+}
 
 // Night equips, mostly to give ARs PEQs instead of special equipment
 const SPECIAL_DEFAULT_EQUIPS_NIGHT = { //numbers indicate ID of the equipment
@@ -175,6 +185,9 @@ const SPECIAL_DEFAULT_EQUIPS_NIGHT = { //numbers indicate ID of the equipment
   261: [4, 16, 59], //STAR mod3
   262: [90, 24, 35], //G3 mod3
   263: [16, 24, 35], //G36 mod3
+}
+
+const SPECIAL_DEFAULT_EQUIPS_NIGHT_UNRELEASED = { //numbers indicate ID of the equipment
 }
 
 const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
@@ -222,6 +235,20 @@ const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
   7: [57, -1, -1], //Stechkin
 };
 
+let getPreference = function(preferenceName, defaultValue=true) {
+  let flag = localStorage.getItem(`preference-${preferenceName}`);
+  if (flag == undefined) {
+    // Default to true
+    return defaultValue;
+  } else {
+    return JSON.parse(flag);
+  }
+}
+
+let setPreference = function(preferenceName, value) {
+  localStorage.setItem(`preference-${preferenceName}`, value);
+}
+
 $(function () {
   $.ajax({
     async: false,
@@ -242,6 +269,11 @@ $(function () {
     url: '/static/girlsfrontline/dolls.json',
     success: function (data, status, xhr) {
       dollData = data;
+      // map T-Doll data to dollDataMap by ID
+      dollDataMap = dollData.reduce(function (map, doll) {
+        map[doll.id] = doll;
+        return map;
+      }, {});
       // Populate DPS SMG List
       LIST_DPS_SMG_ID = LIST_DPS_SMG.reduce((map, name) => (map[getTDollIdFromName(name)] = name, map), {})
     },
@@ -302,6 +334,11 @@ $(function () {
 
   $('#save-btn').click(saveTeam);
   $('#load-btn').click(selectTeam);
+
+  // Load user preferences
+  isViewFancyPreference = getPreference('view-fancy', true);
+  isEnOnlyPreference = getPreference('en-only', false);
+
   savedTeamCount = localStorage.getItem('savedTeamCount') !== null ? localStorage.savedTeamCount : 0;
   savedTeamList = [];
   if (savedTeamCount != 0) {
@@ -320,7 +357,8 @@ $(function () {
   generateTeamsModal();
 
   initEquipSelectModal();
-  initDollSelectModal();
+  // Defer until first time user clicks add T-Doll button
+  // initDollSelectModal();
   $('#doll-filter').on('input', changeDollSelectFilter);
   initFairySelectModal();
   initTalentSelect();
@@ -373,7 +411,13 @@ $(function () {
 
   $('#damage-graph-btn').click(showDamageGraph);
 
+  // Enable every tooltip except those in doll select modal
   $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
+
+  // Hide tooltip when user switches between tabs
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    hideOpenTooltips();
+  });
 });
 
 function initEchelon() {
@@ -423,11 +467,45 @@ function createDummyFairy() {
 }
 
 function initDollSelectModal() {
+  let sheets = document.styleSheets;
+  let sheetToModify = sheets[0];
+  const SPRITE_WIDTH = 129;
+  const SPRITE_HEIGHT = 85;
   var doll_types = ['All', 'HG', 'SMG', 'RF', 'AR', 'MG', 'SG'];
   for (var i = 0; i < dollData.length; i++) {
     var doll = dollData[i];
+
     var tilegrid = getTileGridHTML(doll);
-    $('#doll-list-' + doll.type + ' .stars' + doll.rarity).append('<button type="button" class="btn mb-1 mr-1" data-id="' + doll.id + '" data-toggle="tooltip" data-placement="top" data-html="true" data-original-title="">' + doll.name + '</button>');
+
+    let buttonFancy = `<button type="button" class="btn mb-1 mr-1 doll_portrait_button img_${doll.api_name}" data-id="${doll.id}" data-toggle="tooltip-doll-select" data-placement="top" data-html="true" data-original-title=""></button>`;
+    let buttonBasic = `<button type="button" class="btn mb-1 mr-1 doll_simple_button" data-id="${doll.id}" data-toggle="tooltip-doll-select" data-placement="top" data-html="true" data-original-title="">${doll.name}</button>`
+
+    // Append buttons to nav tabs
+    $(`#doll-list-${doll.type} .stars${doll.rarity}`)
+      .append(buttonFancy)
+      .append(buttonBasic);
+
+    // Append buttons to search filter div
+    $(`#doll-list-filter .stars${doll.rarity}`)
+      .append(buttonFancy)
+      .append(buttonBasic);
+
+    /******
+     * Add CSS for hover. Spritesheet is 40 rows by x columns. 
+     *   Sprites are two 129x85 images placed horizontally adjacent to each other.
+     *   Left image : normal, right image : damaged
+     * 
+     * Spritesheet visualization:
+     *   row/col                 ### ID (as per dolls.json)
+     *   1/1 1/3 1/5 1/7 1/9 ... ### 1   41  81  121 161 201 ...
+     *   2/1 2/3 2/5 2/7 2/9 ... ### 2   42  82  122 162 202 ...
+     *   3/1 3/3 3/5 3/7 3/9 ... ### 3   43  83  123 163 203 ...
+     *   4/1 4/3 4/5 4/7 4/9 ... ### 4   44  84  124 164 204 ...  
+     *   ... ... ... ... ... ... ### ... ... ... ... ... ... ... 
+     */
+    sheetToModify.insertRule(`.btn.img_${doll.api_name} { background-position: ${-1 * (2 * doll.spritesheet_col - 2) * SPRITE_WIDTH}px ${-1 * (doll.spritesheet_row - 1) * SPRITE_HEIGHT}px; }`);
+    sheetToModify.insertRule(`.btn.img_${doll.api_name}:hover { background-position: ${-1 * (2 * doll.spritesheet_col - 1) * SPRITE_WIDTH}px ${-1 * (doll.spritesheet_row - 1) * SPRITE_HEIGHT}px; }`);
+
     var tileTargetTypes;
     if ($.isArray(doll.tiles.target_type)) {
       tileTargetTypes = doll_types[doll.tiles.target_type[0]];
@@ -437,9 +515,273 @@ function initDollSelectModal() {
     } else {
       tileTargetTypes = doll_types[doll.tiles.target_type];
     }
-    var btnTooltip = doll.tooltip_tiles + ' Affects: ' + tileTargetTypes + tilegrid + '<br>' + doll.tooltip_skill1 + '<br>' + doll.tooltip_skill2;
-    $('#doll-select button[data-id=' + doll.id + ']').attr('data-original-title', btnTooltip);
+
+
+    // Calculate max level stats
+    let level = doll.mod ? 120 : 100;
+    let dolldummy = {};
+    let dollTypeScalars = TYPE_SCALARS[doll.type - 1];
+
+    let basicFactors = level > 100 ? GROWTH_FACTORS.mod.basic : GROWTH_FACTORS.normal.basic;
+    let growFactors = level > 100 ? GROWTH_FACTORS.mod.grow : GROWTH_FACTORS.normal.grow;
+
+    dolldummy.hp = Math.ceil((basicFactors.hp[0] + ((level - 1) * basicFactors.hp[1])) * dollTypeScalars.hp * doll.hp / 100);
+
+    dolldummy.fp = Math.ceil(basicFactors.fp[0] * dollTypeScalars.fp * doll.fp / 100);
+    dolldummy.fp += Math.ceil((growFactors.fp[1] + ((level - 1) * growFactors.fp[0])) * dollTypeScalars.fp * doll.fp * doll.growth_rating / 100 / 100);
+
+    dolldummy.acc = Math.ceil(basicFactors.acc[0] * dollTypeScalars.acc * doll.acc / 100);
+    dolldummy.acc += Math.ceil((growFactors.acc[1] + ((level - 1) * growFactors.acc[0])) * dollTypeScalars.acc * doll.acc * doll.growth_rating / 100 / 100);
+
+    dolldummy.eva = Math.ceil(basicFactors.eva[0] * dollTypeScalars.eva * doll.eva / 100);
+    dolldummy.eva += Math.ceil((growFactors.eva[1] + ((level - 1) * growFactors.eva[0])) * dollTypeScalars.eva * doll.eva * doll.growth_rating / 100 / 100);
+
+    dolldummy.rof = Math.ceil(basicFactors.rof[0] * dollTypeScalars.rof * doll.rof / 100);
+    dolldummy.rof += Math.ceil((growFactors.rof[1] + ((level - 1) * growFactors.rof[0])) * dollTypeScalars.rof * doll.rof * doll.growth_rating / 100 / 100);
+
+    dolldummy.armor = Math.ceil((basicFactors.armor[0] + ((level - 1) * basicFactors.armor[1])) * dollTypeScalars.armor * doll.armor / 100);
+
+    dolldummy.crit = doll.crit;
+    dolldummy.critdmg = doll.critdmg;
+    dolldummy.ap = doll.ap;
+    dolldummy.rounds = doll.rounds;
+
+    // Add hover
+
+    // Render skill 2 if unit has it
+    let optional_skill2 = doll.tooltip_skill2 ?
+      `<hr>
+  <div class="row">
+  <div class="col-2 pl-3 pr-1"><div class="float-right"><img src="/static/girlsfrontline/sim/dolls/icon/skillicon/${doll.icon_name_skill2 ? doll.icon_name_skill2 : 'variablebuff'}.png" class="img-fluid" /></div></div>
+    <div class="col-10 pl-1 pr-3 text-left small"><b>${doll.name_skill2}</b><br />${doll.tooltip_skill2 ? doll.tooltip_skill2 : 'N/A'}</div>
+  </div>` : '';
+
+    // Render voodoo link if unit is craftable in EN
+    let optional_voodoo = doll.en_craftable ? ` &middot; <a href="https://gf-db.github.io/gfdb/gfdb.html?type=tdoll&id=${doll.id_index}&sort.tdoll=[{%22sort_column%22:%22mean%20%%22,%22dir%22:1}]" target="_blank">Voodoo</a>`
+      : '';
+
+    //       <a href="https://gfl.matsuda.tips/search?q=${encodeURI(doll.name)}" target="_blank">Matsuda</a> &middot; 
+    let btnTooltip =
+      `<div class="row">
+  <div class="col-3 px-2">
+    <div><img src="/static/girlsfrontline/sim/dolls/${doll.id}.png" class="img-tooltip-chibi"/></div>
+      <div class="">
+        <div class="doll_tooltip_stat_container_left"><img class="aura_container_img" src="/static/girlsfrontline/sim/hp.png" /><span class="doll_tooltip_stat_caption">${dolldummy.hp * 5}</span></div>
+        <div class="doll_tooltip_stat_container_right"><img class="aura_container_img" src="/static/girlsfrontline/sim/crit.png" /><span class="doll_tooltip_stat_caption">${dolldummy.crit}%</span></div>
+      </div>
+      <div class="">
+        <div class="doll_tooltip_stat_container_left"><img class="aura_container_img" src="/static/girlsfrontline/sim/fp.png" /><span class="doll_tooltip_stat_caption">${dolldummy.fp}</span></div>
+        <div class="doll_tooltip_stat_container_right"><img class="aura_container_img" src="/static/girlsfrontline/sim/critdmg.png" /><span class="doll_tooltip_stat_caption">${dolldummy.critdmg + 100}%</span></div>
+      </div>
+      <div class="">
+        <div class="doll_tooltip_stat_container_left"><img class="aura_container_img" src="/static/girlsfrontline/sim/acc.png" /><span class="doll_tooltip_stat_caption">${dolldummy.acc}</span></div>
+        <div class="doll_tooltip_stat_container_right"><img class="aura_container_img" src="/static/girlsfrontline/sim/rounds.png" /><span class="doll_tooltip_stat_caption">${dolldummy.rounds == 0 ? '-' : dolldummy.rounds}</span></div>
+      </div>
+      <div class="">
+        <div class="doll_tooltip_stat_container_left"><img class="aura_container_img" src="/static/girlsfrontline/sim/eva.png" /><span class="doll_tooltip_stat_caption">${dolldummy.eva}</span></div>
+        <div class="doll_tooltip_stat_container_right"><img class="aura_container_img" src="/static/girlsfrontline/sim/armor.png" /><span class="doll_tooltip_stat_caption">${dolldummy.armor == 0 ? '-' : dolldummy.armor}</span></div>
+      </div>
+      <div class="">
+        <div class="doll_tooltip_stat_container_left"><img class="aura_container_img" src="/static/girlsfrontline/sim/rof.png" /><span class="doll_tooltip_stat_caption">${dolldummy.rof}</span></div>
+        <div class="doll_tooltip_stat_container_right"><img class="aura_container_img" src="/static/girlsfrontline/sim/ap.png" /><span class="doll_tooltip_stat_caption">${dolldummy.ap}</span></div>
+      </div>
+  </div>
+  <div class="col-9">
+    <p class="doll_tooltip_header">
+      ${doll.aliases[0]} &middot; 
+      <a href="https://en.gfwiki.com/wiki/${doll.name.replace(" ", "_")}" target="_blank">Wiki</a>
+      ${optional_voodoo}
+    </p>
+    <hr>
+    <div class="row">
+      <div class="col-2 px-1"><div class="float-right">${tilegrid}</div></div>
+      <div class="col-10 pl-1 pr-3 text-left small">Affects: ${tileTargetTypes}<br />${doll.tooltip_tiles}</div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-2 pl-3 px-1"><div class="float-right"><img src="/static/girlsfrontline/sim/dolls/icon/skillicon/${doll.icon_name_skill1 ? doll.icon_name_skill1 : 'variablebuff'}.png" class="img-fluid" /></div></div>
+      <div class="col-10 pl-1 pr-3 text-left small"><b>${doll.name_skill1}</b><br />${doll.tooltip_skill1}</div>
+    </div>
+    ${optional_skill2}
+  </div>
+</div>`;
+
+    $('#doll-select button[data-id=' + doll.id + ']')
+      .attr('data-original-title', btnTooltip);
+
+    // Add fancy view button properties
+    $('#doll-select button[data-id=' + doll.id + '].doll_portrait_button')
+      .append(tilegrid)
+      .append($(`<span class="doll_portrait_caption">${doll.name}</span>`));
+
+    // Add tile buff amounts
+    let tileBuffContainer = $('<div>').addClass('aura_container_caption');
+
+    for (let tileEffect in doll.tiles.effect) {
+      let tileEffectAmount = typeof doll.tiles.effect[tileEffect] == 'object' ? doll.tiles.effect[tileEffect][1] : doll.tiles.effect[tileEffect];
+      if (tileEffectAmount != 0) {
+        tileBuffContainer.append(
+          $('<div>').append($('<img>').prop('src', `/static/girlsfrontline/sim/${tileEffect}.png`).addClass('aura_container_img')).append(
+            $('<span>').html(`${tileEffectAmount}%`)))
+      }
+    }
+
+    $('#doll-select button[data-id=' + doll.id + '] .aura_container')
+      .after(tileBuffContainer);
+
+    // Make inline tile buff smaller
+    $('#doll-select button[data-id=' + doll.id + '] div.aura_container')
+      .removeClass('aura_container').addClass('aura_container_small');
   }
+
+  // Init EN Filter
+  let filterEnOnly = $('.switch-small.toggle-en-only input');
+  filterEnOnly.prop('checked', false);
+  filterEnOnly.change(function () {
+    isEnOnlyPreference = this.checked;
+    setPreference('en-only', isEnOnlyPreference);
+    refilterVisibleButtons();
+  });
+
+  // Set switch state based on user setting
+  filterEnOnly.prop('checked', isEnOnlyPreference != false ? true : false);
+
+  // Init filter toggles
+  let filterSwitches = $('.switch-small.toggle-filter input');
+  filterSwitches.prop('checked', false);
+  filterSwitches.change(function () {
+    refilterVisibleButtons();
+  });
+
+  // Add listener to handle user clicking "Fancy View" switch
+  let fancyViewSwitch = $('.switch.toggle_fancy_view input');
+  fancyViewSwitch.change(function () {
+    isViewFancyPreference = this.checked;
+    setPreference('view-fancy', isViewFancyPreference);
+    filterVisibleButtons();
+    refilterVisibleButtons();
+  });
+
+  // Set switch state based on user setting
+  fancyViewSwitch.prop('checked', isViewFancyPreference != false ? true : false);
+
+  // Manual tooltip so user can hover over both the button and the tooltip
+  $('[data-toggle="tooltip-doll-select"]').tooltip({ trigger: 'manual' })
+    .on('mouseenter touchend', function () {
+      if (!allowDollSelectTooltip) { return; }
+
+      // Mobile workaround for touch events
+      if ($('.tooltip').length == 1 && $(this).is(buttonsWithOpenTooltips[0])) {
+        // Allow click event to propagate so user can select T-Doll
+      } else {
+        // Disable the click event
+        event.preventDefault();
+      }
+
+      // Hide all other open tooltips
+      hideOpenTooltips();
+      buttonsWithOpenTooltips.push(this);
+
+      $(this).tooltip('show');
+      $('.tooltip')
+        .on('mouseenter', function () {
+          // Track last button moused over
+          mousedOverTooltip = this;
+        }).on('mouseleave', function () {
+          // Hide this tooltip when user mouses out of it
+          hideOpenTooltips();
+        }).on('click', function () {
+          // Hide this tooltip when user clicks it
+          hideOpenTooltips();
+        });
+    }).on('mouseleave', function () {
+      // .setTimeout needed because tooltip mouseenter fires after button mouseleave
+      window.setTimeout(function () {
+        if ($('.tooltip').length == 1 && !$('.tooltip').is($(mousedOverTooltip))) {
+          $(this).tooltip('hide');
+        }
+      }, 1);
+    });
+
+  // Hide buttons not matching user setting
+  filterVisibleButtons();
+  refilterVisibleButtons();
+
+  // Hide loading spinner and message
+  selectModalInitialized = true;
+  $('#doll-select-modal-spinner').prop('hidden', true);
+  $('#doll-select-modal-container').prop('hidden', false);
+}
+
+// Hide all currently open tooltips
+function hideOpenTooltips() {
+  for (let button of buttonsWithOpenTooltips) {
+    $(button).tooltip('hide');
+  }
+  buttonsWithOpenTooltips = [];
+}
+
+// Show/hide T-Doll buttons based on en-released status
+function showBasedOnEnToggle() {
+  let showEnOnly = $('.switch-small.toggle-en-only input').prop('checked');
+  if (!showEnOnly) {
+    $.each($('#doll-select button.should-be-visible'), (index, button) => {
+      $(button).prop('hidden', false);
+    });
+  } else {
+    $.each($('#doll-select button.should-be-visible'), (index, button) => {
+      let dollId = $(button).data('id');
+      let doll = dollDataMap[dollId];
+
+      $(button).prop('hidden', !(doll.en_released));
+    });
+  }
+}
+
+// Show/hide T-Doll buttons based on tile buff
+function hideBasedOnFilters() {
+  let checkedSwitches = $('.switch-small.toggle-filter input:checked');
+  if (checkedSwitches.length == 0) {
+    // No filters selected, do nothing since already all shown
+  } else {
+    $.each($('#doll-select button.should-be-visible'), (index, button) => {
+      let dollId = $(button).data('id');
+      let doll = dollDataMap[dollId];
+      let matchCount = 0;
+
+      $.each(checkedSwitches, (index2, checkbox) => {
+        let filterAttribute = $(checkbox).data('filter-attribute');
+        let tileBuffAttr = doll.tiles.effect[filterAttribute];
+
+        console.log(`${doll.name} ${tileBuffAttr} ${tileBuffAttr == [0, 0]} ${tileBuffAttr == 0}`)
+        if (!(tileBuffAttr == 0 || (tileBuffAttr[0] == 0 && tileBuffAttr[1] == 0))) {
+          matchCount = matchCount + 1;
+        }
+      });
+
+      if (matchCount != checkedSwitches.length) {
+        $(button).prop('hidden', true);
+      }
+    });
+  }
+}
+
+// Filter fancy/normal T-Doll buttons based on setting
+function filterVisibleButtons() {
+  if (isViewFancyPreference) {
+    $('#doll-select button.doll_portrait_button').show().addClass('should-be-visible');
+    $('#doll-select button.doll_simple_button').hide().removeClass('should-be-visible');
+  } else {
+    $('#doll-select button.doll_portrait_button').hide().removeClass('should-be-visible');
+    $('#doll-select button.doll_simple_button').show().addClass('should-be-visible');
+  }
+}
+
+// Filter T-Doll buttons based on tile buff toggles and EN release status
+function refilterVisibleButtons() {
+  hideOpenTooltips();
+  showBasedOnEnToggle();
+  hideBasedOnFilters();
 }
 
 function getTileGridHTML(doll) {
@@ -457,13 +799,13 @@ function getTileGridHTML(doll) {
     }
   });
 
-  var htmlstring = '<div>';
+  var htmlstring = '<div class=\"aura_container\">';
   htmlstring += '<div class=\"tilegrid-row mx-auto row no-gutters\">';
   htmlstring += '<div class=\"tile12 tilegrid-col ' + tileType[0] + ' col border border-dark\"></div>';
   htmlstring += '<div class=\"tile13 tilegrid-col ' + tileType[1] + ' col border-top border-bottom border-dark\"></div>';
   htmlstring += '<div class=\"tile14 tilegrid-col ' + tileType[2] + ' col border border-dark\"></div>';
   htmlstring += '</div>';
-  htmlstring += '<div class=\"tilegrid-row mx-auto row no-gutters\">';
+  htmlstring += '<div class=\"tilegrid-row mx-auto row tilegrid-row-center no-gutters\">';
   htmlstring += '<div class=\"tile22 tilegrid-col ' + tileType[3] + ' col border-left border-right border-dark\"></div>';
   htmlstring += '<div class=\"tile23 tilegrid-col ' + tileType[4] + ' col\"></div>';
   htmlstring += '<div class=\"tile24 tilegrid-col ' + tileType[5] + ' col border-left border-right border-dark\"></div>';
@@ -1047,35 +1389,122 @@ function removeEquipment(event) {
 
 function selectDoll(event) {
   event.preventDefault();
-  $('#doll-select button').off('click');
-  $('#doll-select button').click(event.data, changeDoll);
-
   // $('#doll-select button').prop('disabled', false);
   // for(var i = 0; i < echelon.length; i++) {
   //   $('#doll-select button[data-id='+echelon[i].id+']').prop('disabled', true);
   // }
 
-  $('#doll-select').modal('show');
+  if (!selectModalInitialized) {
+    allowDollSelectTooltip = true;
+    $('#doll-select').modal('show');
+
+    /****
+     * 500ms delay needed to make bootstrap fade in animation for modal play.
+     * While JS engine is busy, page doesn't rerender except for CSS3 animations!
+     */
+    window.setTimeout(function () {
+      initDollSelectModal();
+      $('#doll-select button').off('click');
+      $('#doll-select button').click(event.data, changeDoll);
+    }, 500);
+  } else {
+    allowDollSelectTooltip = true;
+    $('#doll-select').modal('show');
+    $('#doll-select button').off('click');
+    $('#doll-select button').click(event.data, changeDoll);
+  }
 }
 
 function changeDollSelectFilter(event) {
+  hideOpenTooltips();
   var query = $('#doll-filter').val();
 
-  if (query.length == 0) {
-    $('#doll-select button').prop('hidden', false);
+  // Check if query works regex
+  let searchTokens = [];
+
+  // Replace empty tokens and delete or token from start and end of line
+  let compiledRegexString = query.replace(/\|+/g, '|').replace(/^\||\|$/g, '');
+
+  let regex;
+
+  try {
+    regex = new RegExp(compiledRegexString, "i")
+  } catch (e) {
+    // Invalid regex
     return;
   }
 
-  $.each($('#doll-select button'), (index, button) => {
+  if (query.length == 0) {
+    $('#doll-select #doll-list-filter button').prop('hidden', false);
+    // hide div containing searchable buttons
+    $('#doll-list-filter').prop('hidden', true);
+    // show div containing tabs
+    $('#doll-list-tabs').prop('hidden', false);
+    $('#doll-list-tab-content').prop('hidden', false);
+    return;
+  } else {
+    // show div containing searchable buttons
+    $('#doll-list-filter').prop('hidden', false);
+    // hide div containing tabs
+    $('#doll-list-tabs').prop('hidden', true);
+    $('#doll-list-tab-content').prop('hidden', true);
+  }
+
+  $.each($('#doll-select #doll-list-filter button'), (index, button) => {
+    let dollId = $(button).data('id');
+    let doll = dollDataMap[dollId];
+
+    if (!dollMatchesSearchString(doll, regex)) {
+      $(button).prop('hidden', true);
+    } else {
+      $(button).prop('hidden', false);
+    }
+
+
+    /*
     if ($(button).text().toUpperCase().indexOf(query.toUpperCase()) == -1) {
       $(button).prop('hidden', true);
     } else {
       $(button).prop('hidden', false);
     }
+    */
   });
 }
 
+/***
+ * Performs a deep search on:
+ * - Name
+ * - API Name
+ * - Aliases
+ */
+function dollMatchesSearchString(doll, regex) {
+  // console.log(searchTokens)
+  if (regex.test(doll.name)) {
+    return true;
+  }
+  if (regex.test(doll.api_name)) {
+    return true;
+  }
+  for (let alias of doll.aliases) {
+    if (regex.test(alias)) {
+      return true;
+    }
+  }
+  if (regex.test(doll.name_skill1)) {
+    return true;
+  }
+  return false;
+}
+
 function changeDoll(event) {
+  // Clear search string, since user selected something
+  $('#doll-filter').val('');
+  changeDollSelectFilter();
+
+  // Bug fix for lingering tooltips
+  allowDollSelectTooltip = false;
+  hideOpenTooltips();
+
   $('#doll-select').modal('hide');
 
   var selectedDoll = dollData[$(event.target).attr('data-id') - 1];
@@ -1274,6 +1703,10 @@ function setDefaultEquips(dollIndex) {
       doll.equip2 = SPECIAL_DEFAULT_EQUIPS[doll.id][1];
       doll.equip3 = SPECIAL_DEFAULT_EQUIPS[doll.id][2];
     }
+  } else if (!isEnOnlyPreference && doll.id in SPECIAL_DEFAULT_EQUIPS_UNRELEASED) {
+    doll.equip1 = SPECIAL_DEFAULT_EQUIPS_UNRELEASED[doll.id][0];
+    doll.equip2 = SPECIAL_DEFAULT_EQUIPS_UNRELEASED[doll.id][1];
+    doll.equip3 = SPECIAL_DEFAULT_EQUIPS_UNRELEASED[doll.id][2];
   }
 }
 
@@ -3461,6 +3894,7 @@ function calculateBattleStats(dollIndex) {
   doll.battle.acc = Math.floor(doll.pre_battle.acc * doll.battle.skillbonus.acc);
   doll.battle.eva = Math.floor(doll.pre_battle.eva * doll.battle.skillbonus.eva);
   doll.battle.rof = Math.floor(doll.pre_battle.rof * doll.battle.skillbonus.rof);
+  doll.battle.rof_uncapped = doll.battle.rof;
   doll.battle.crit = doll.pre_battle.crit * doll.battle.skillbonus.crit;
   doll.battle.critdmg = Math.floor(((doll.pre_battle.critdmg + 100) * doll.battle.skillbonus.critdmg) - 100);
   doll.battle.armor = Math.floor(doll.pre_battle.armor * doll.battle.skillbonus.armor);
@@ -3482,6 +3916,9 @@ function calculateBattleStats(dollIndex) {
   } else { //hg,rf,ar,smg
     doll.battle.rof = Math.min(120, Math.max(15,doll.battle.rof));
   }
+
+  // cap RoF properly
+  // doll.battle.rof = getCapRoF(doll, doll.battle.rof);
 
   //track max stats
   doll.battle.maxstats.fp = Math.max(doll.battle.maxstats.fp, doll.battle.fp);
@@ -4114,6 +4551,33 @@ function getUsableSkillEffects(effects) {
   return validEffects;
 }
 
+let getFrames = function (originalRoF) {
+  let frames = 1500 / originalRoF;
+  frames = Number.isInteger(frames) ? frames - 1 : Math.floor(frames)
+  return frames;
+}
+
+let getEffectiveRoF = function (originalRoF) {
+  let frames = getFrames(originalRoF)
+  let effectiveRoF = Math.ceil(1500 / (frames + 1))
+  return effectiveRoF;
+}
+
+let getCapRoF = function (doll, originalRoF) {
+  let capBasedOnType;
+  if (doll.type == 6) { //sg
+    capBasedOnType = 60;
+  } else if (doll.type == 5) { //mg
+    return Math.min(1000, Math.max(1, doll.battle.rof));
+  } else { //hg,rf,ar,smg
+    capBasedOnType = 120;
+    // doll.battle.rof_waste = Math.max(0, doll.battle.rof - cap)
+    // console.log(`${doll.battle.rof} ; ${doll.battle.maxstats.rof} ; ${doll.battle.rof_waste} ; ${doll.battle.maxstats.rof_waste}`)
+  }
+  let cap = Math.min(getEffectiveRoF(capBasedOnType), getEffectiveRoF(originalRoF))
+  return Math.min(cap, Math.max(15, originalRoF));
+}
+
 function determineFinalStats() {
   //this whole mechanism of determining which numbers to show the user if they have enabled showBuffedStats
   //needs to be redone.
@@ -4141,6 +4605,15 @@ function determineFinalStats() {
         doll.battle.finalstats[stat] = Math.floor(doll.battle.minstats[stat]) + '-' + Math.floor(doll.battle.maxstats[stat]);
       }
     });
+
+    // Show overcap RoF/crit
+    doll.battle.finalstats.effective_rof = getCapRoF(doll, doll.battle.maxstats.rof_uncapped);
+
+    let wastedRoF = doll.battle.maxstats.rof_uncapped - doll.battle.finalstats.effective_rof;
+    doll.battle.finalstats.rof_waste = wastedRoF > 0 ? `+${Math.round(wastedRoF)}` : '';
+
+    let wastedCrit = doll.battle.maxstats.crit_uncapped - 100;
+    doll.battle.finalstats.crit_waste = wastedCrit > 0 ? `+${Math.round(wastedCrit)}%` : '';
   }
 }
 
