@@ -150,6 +150,7 @@ input:checked + .slider-small:before {
 }
 
 .aura_container_caption {
+  pointer-events: none;
   float:right;
   position:absolute;
   right:6px;
@@ -197,12 +198,13 @@ input:checked + .slider-small:before {
 
 /* CSS styling for fancy T-Doll select inline tilebuff display */
 .aura_container_small {
-    float:right;
-    position:absolute;
-    width:19px;
-    height:19px;
-    right:6px;
-    top:6px;
+  pointer-events: none;
+  float:right;
+  position:absolute;
+  width:19px;
+  height:19px;
+  right:6px;
+  top:6px;
 }
 
 .aura_container_small .tilegrid-row {
@@ -427,6 +429,7 @@ input[type="number"] {
 }
 
 .doll_portrait_caption {
+  pointer-events: none;
   background-color: rgba(52,58,64,0.7);
   color: white;
   font-family: 'Roboto Condensed', sans-serif;
