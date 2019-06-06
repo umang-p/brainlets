@@ -1576,7 +1576,7 @@ function changeDoll(event) {
   if (selectedDoll.mod) {
     $('#doll' + (index + 1) + ' .doll-level-select').children().prop('disabled', true);
     $('#doll' + (index + 1) + ' .doll-level-select').children().filter(':first').prop('disabled', false);
-    $('#doll' + (index + 1) + ' .doll-level-select').val(115);
+    $('#doll' + (index + 1) + ' .doll-level-select').val(120);
     $('#doll' + (index + 1) + ' .skill2-level-select').val(10);
     echelon[index].tooltip_skill2 = selectedDoll.tooltip_skill2;
     echelon[index].skill2 = $.extend(true, {}, selectedDoll.skill2);
