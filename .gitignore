@@ -3,3 +3,9 @@ __pycache__/
 db.sqlite3
 settings.py
 brainlets/static/
+.gitignore
+brainlets/girlsfrontline/static/girlsfrontline/sim/loading-ump9.gif
+brainlets/girlsfrontline/static/girlsfrontline/sim/loading-ump9-loop.gif
+brainlets/girlsfrontline/static/girlsfrontline/sim/loading-ump9-static.png
+brainlets/girlsfrontline/static/girlsfrontline/sim/dolls/icon/master.psd
+brainlets/girlsfrontline/static/girlsfrontline/sim/dolls/icon/spritesheet.psd

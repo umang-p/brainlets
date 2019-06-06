@@ -504,7 +504,7 @@ function initDollSelectModal() {
      *   ... ... ... ... ... ... ### ... ... ... ... ... ... ... 
      */
     sheetToModify.insertRule(`.btn.img_${doll.api_name} { background-position: ${-1 * (2 * doll.spritesheet_col - 2) * SPRITE_WIDTH}px ${-1 * (doll.spritesheet_row - 1) * SPRITE_HEIGHT}px; }`);
-    sheetToModify.insertRule(`.btn.img_${doll.api_name}:hover { background-position: ${-1 * (2 * doll.spritesheet_col - 1) * SPRITE_WIDTH}px ${-1 * (doll.spritesheet_row - 1) * SPRITE_HEIGHT}px; }`);
+    sheetToModify.insertRule(`.btn.img_${doll.api_name}:hover, .btn.img_${doll.api_name}:focus { background-position: ${-1 * (2 * doll.spritesheet_col - 1) * SPRITE_WIDTH}px ${-1 * (doll.spritesheet_row - 1) * SPRITE_HEIGHT}px; }`);
 
     var tileTargetTypes;
     if ($.isArray(doll.tiles.target_type)) {
@@ -660,6 +660,7 @@ function initDollSelectModal() {
     setPreference('view-fancy', isViewFancyPreference);
     filterVisibleButtons();
     refilterVisibleButtons();
+    changeDollSelectFilter(); // Handle user toggling view while search string not empty
   });
 
   // Set switch state based on user setting
@@ -667,7 +668,7 @@ function initDollSelectModal() {
 
   // Manual tooltip so user can hover over both the button and the tooltip
   $('[data-toggle="tooltip-doll-select"]').tooltip({ trigger: 'manual' })
-    .on('mouseenter touchend', function () {
+    .on('mouseenter touchend focus', function () {
       if (!allowDollSelectTooltip) { return; }
 
       // Mobile workaround for touch events
@@ -684,7 +685,7 @@ function initDollSelectModal() {
 
       $(this).tooltip('show');
       $('.tooltip')
-        .on('mouseenter', function () {
+        .on('mouseenter focus', function () {
           // Track last button moused over
           mousedOverTooltip = this;
         }).on('mouseleave', function () {
@@ -1405,14 +1406,21 @@ function selectDoll(event) {
     window.setTimeout(function () {
       initDollSelectModal();
       $('#doll-select button').off('click');
-      $('#doll-select button').click(event.data, changeDoll);
+      processDollSelectModal(event.data);
     }, 500);
   } else {
     allowDollSelectTooltip = true;
     $('#doll-select').modal('show');
-    $('#doll-select button').off('click');
-    $('#doll-select button').click(event.data, changeDoll);
+    processDollSelectModal(event.data);
   }
+}
+
+function processDollSelectModal(data) {
+  $('#doll-select button').off('click');
+  $('#doll-select button').click(data, changeDoll);
+  window.setTimeout(function () {
+    $('#doll-filter').focus();   // Use this instead of autofocus HTML5 attribute because it doesn't work on modal re-show
+  }, 600); // Apparently 500ms not enough to make it focus consistently
 }
 
 function changeDollSelectFilter(event) {
