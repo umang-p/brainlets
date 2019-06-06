@@ -3339,7 +3339,7 @@
     "acc": 2,
     "eva": 8,
     "movespeed": 0,
-    "rof": -1,
+    "rof": 0,
     "critdmg": 0,
     "crit": 15,
     "ap": 0,
