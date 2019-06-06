@@ -564,7 +564,11 @@ function initDollSelectModal() {
     let btnTooltip =
       `<div class="row">
   <div class="col-3 px-2">
-    <div><img src="/static/girlsfrontline/sim/dolls/${doll.id}.png" class="img-tooltip-chibi"/></div>
+      <div class="chibi-plus-circle float-left">
+        <div class="chibi-plus-bar chibi-plus-horizontal"></div>
+        <div class="chibi-plus-bar chibi-plus-vertical"></div>
+      </div>
+      <div><img src="/static/girlsfrontline/sim/dolls/${doll.id}.png" class="img-tooltip-chibi" data-id="${doll.id}"/></div>
       <div class="">
         <div class="doll_tooltip_stat_container_left"><img class="aura_container_img" src="/static/girlsfrontline/sim/hp.png" /><span class="doll_tooltip_stat_caption">${dolldummy.hp * 5}</span></div>
         <div class="doll_tooltip_stat_container_right"><img class="aura_container_img" src="/static/girlsfrontline/sim/crit.png" /><span class="doll_tooltip_stat_caption">${dolldummy.crit}%</span></div>
@@ -603,6 +607,10 @@ function initDollSelectModal() {
       <div class="col-10 pl-1 pr-3 text-left small"><b>${doll.name_skill1}</b><br />${doll.tooltip_skill1}</div>
     </div>
     ${optional_skill2}
+    <hr />
+    <div class="text-center pb-1">
+      <small>Click to dismiss</small>
+    </div>
   </div>
 </div>`;
 
@@ -684,12 +692,16 @@ function initDollSelectModal() {
       buttonsWithOpenTooltips.push(this);
 
       $(this).tooltip('show');
+      $('.img-tooltip-chibi').on('click', function() {
+         $(`button[data-id="${$(this).data('id')}"]:visible`).click();
+      })
       $('.tooltip')
         .on('mouseenter focus', function () {
           // Track last button moused over
           mousedOverTooltip = this;
         }).on('mouseleave', function () {
           // Hide this tooltip when user mouses out of it
+          mousedOverTooltip = null;
           hideOpenTooltips();
         }).on('click', function () {
           // Hide this tooltip when user clicks it
@@ -697,11 +709,12 @@ function initDollSelectModal() {
         });
     }).on('mouseleave', function () {
       // .setTimeout needed because tooltip mouseenter fires after button mouseleave
+      let _this = this;
       window.setTimeout(function () {
         if ($('.tooltip').length == 1 && !$('.tooltip').is($(mousedOverTooltip))) {
-          $(this).tooltip('hide');
+          $(_this).tooltip('hide');
         }
-      }, 1);
+      }, 100);
     });
 
   // Hide buttons not matching user setting

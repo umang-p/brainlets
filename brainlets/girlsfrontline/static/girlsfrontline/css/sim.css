@@ -265,9 +265,44 @@ input:checked + .slider-small:before {
   width: 50px;
 }
 .img-tooltip-chibi {
+  position: relative;
   width: 120px;
   height: 120px;
+  z-index: 9000;
 }
+
+/* CSS plus icon behind image */
+.chibi-plus-circle {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(125,125,125,0.8);
+  position: relative;
+  top: 2px; 
+  left: 5px;
+  margin-bottom: -32px;
+  z-index: 8000;
+}
+
+.chibi-plus-bar {
+  margin: 0 auto;
+  position: absolute;
+  background-color: #fff;
+}
+.chibi-plus-horizontal {
+  width: 70%;
+  height: 20%;
+  left: 15%;
+  top: 40%;
+
+}
+.chibi-plus-vertical {
+  width: 20%;
+  height: 70%;
+  left: 40%;
+  top: 15%;
+}
+
 #equip-select img {
   height: 45px;
   width: 45px;
