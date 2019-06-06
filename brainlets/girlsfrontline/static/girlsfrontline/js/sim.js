@@ -491,17 +491,17 @@ function initDollSelectModal() {
       .append(buttonBasic);
 
     /******
-     * Add CSS for hover. Spritesheet is 40 rows by x columns. 
+     * Add CSS for hover. Spritesheet is 40 rows by x columns.
      *   Sprites are two 129x85 images placed horizontally adjacent to each other.
      *   Left image : normal, right image : damaged
-     * 
+     *
      * Spritesheet visualization:
      *   row/col                 ### ID (as per dolls.json)
      *   1/1 1/3 1/5 1/7 1/9 ... ### 1   41  81  121 161 201 ...
      *   2/1 2/3 2/5 2/7 2/9 ... ### 2   42  82  122 162 202 ...
      *   3/1 3/3 3/5 3/7 3/9 ... ### 3   43  83  123 163 203 ...
-     *   4/1 4/3 4/5 4/7 4/9 ... ### 4   44  84  124 164 204 ...  
-     *   ... ... ... ... ... ... ### ... ... ... ... ... ... ... 
+     *   4/1 4/3 4/5 4/7 4/9 ... ### 4   44  84  124 164 204 ...
+     *   ... ... ... ... ... ... ### ... ... ... ... ... ... ...
      */
     sheetToModify.insertRule(`.btn.img_${doll.api_name} { background-position: ${-1 * (2 * doll.spritesheet_col - 2) * SPRITE_WIDTH}px ${-1 * (doll.spritesheet_row - 1) * SPRITE_HEIGHT}px; }`);
     sheetToModify.insertRule(`.btn.img_${doll.api_name}:hover, .btn.img_${doll.api_name}:focus { background-position: ${-1 * (2 * doll.spritesheet_col - 1) * SPRITE_WIDTH}px ${-1 * (doll.spritesheet_row - 1) * SPRITE_HEIGHT}px; }`);
@@ -560,7 +560,7 @@ function initDollSelectModal() {
     let optional_voodoo = doll.en_craftable ? ` &middot; <a href="https://gf-db.github.io/gfdb/gfdb.html?type=tdoll&id=${doll.id_index}&sort.tdoll=[{%22sort_column%22:%22mean%20%%22,%22dir%22:1}]" target="_blank">Voodoo</a>`
       : '';
 
-    //       <a href="https://gfl.matsuda.tips/search?q=${encodeURI(doll.name)}" target="_blank">Matsuda</a> &middot; 
+    //       <a href="https://gfl.matsuda.tips/search?q=${encodeURI(doll.name)}" target="_blank">Matsuda</a> &middot;
     let btnTooltip =
       `<div class="row">
   <div class="col-3 px-2">
@@ -592,7 +592,7 @@ function initDollSelectModal() {
   </div>
   <div class="col-9">
     <p class="doll_tooltip_header">
-      ${doll.aliases[0]} &middot; 
+      ${doll.aliases[0]} &middot;
       <a href="https://en.gfwiki.com/wiki/${doll.name.replace(" ", "_")}" target="_blank">Wiki</a>
       ${optional_voodoo}
     </p>
@@ -2993,13 +2993,13 @@ function simulateBattle() {
         if (echelon[i].id != -1) {
           talenteffect.startTime = 1;
           echelon[i].battle.passives.push($.extend(true, {}, talenteffect));
-          if (fairy.talent.id == 17) { //fervor
-            echelon[i].battle.buffs.push($.extend(true, {}, talenteffect.effects[0]))
-          }
         }
       }
+      if (fairy.talent.id == 17) { //fervor
+        activateBuff(fairy, $.extend(true, {}, talenteffect.effects[0]), enemy);
+      }
     } else if (talenteffect.type == 'buff') {
-      $.each(getBuffTargets(undefined, talenteffect, enemy), (i, target) => target.battle.buffs.push($.extend(true, {}, talenteffect)));
+      activateBuff(fairy, $.extend(true, {}, talenteffect), enemy);
     }
   }
 
@@ -4004,7 +4004,7 @@ function activateBuff(doll, buff, enemy) {
     } else {
       target.battle.buffs.push($.extend({}, buff));
     }
-    if ('stat' in buff && doll != target) {
+    if ('stat' in buff && doll.name != 'Python') {
       var triggerChance = 'stackChance' in buff ? buff.stackChance : undefined;
       if ('fp' in buff.stat) {
         triggerPassive('receivefp', target, enemy, triggerChance);
