@@ -2997,7 +2997,19 @@ function simulateBattle() {
         }
       }
       if (fairy.talent.id == 17) { //fervor
-        activateBuff(fairy, $.extend(true, {}, talenteffect.effects[0]), enemy);
+        initialFervorStack = {
+          type:"buff",
+          target:"all",
+          stat:{
+            fp:10
+          },
+          duration:-1,
+          name:"fairytalent",
+          stackable:true,
+          stacks:1,
+          max_stacks:3
+        }
+        activateBuff(fairy, initialFervorStack, enemy);
       }
     } else if (talenteffect.type == 'buff') {
       activateBuff(fairy, $.extend(true, {}, talenteffect), enemy);
