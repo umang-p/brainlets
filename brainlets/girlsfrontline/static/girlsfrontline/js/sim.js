@@ -122,7 +122,8 @@ const LIST_DPS_SMG = [
   "SCW",
   "X95",
   "Honey Badger",
-  "PM-9"
+  "PM-9",
+  "Micro UziMod"
 ];
 let LIST_DPS_SMG_ID;
 
@@ -163,6 +164,9 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   255: [20, 95, 57], //M14 mod3
   263: [96, 24, 35], //G36 mod3
   265: [20, 97, 41], //LWMMG mod3
+  289: [4, 100, 35], //AS Val mod3
+  290: [4, 101, 35], //StG44 mod3
+  //her molotov is better with EOT instead of her unique equip 291: [35, 45, 102], //Micro Uzi mod3
 };
 
 const SPECIAL_DEFAULT_EQUIPS_UNRELEASED = {
@@ -185,6 +189,8 @@ const SPECIAL_DEFAULT_EQUIPS_NIGHT = { //numbers indicate ID of the equipment
   261: [4, 16, 59], //STAR mod3
   262: [90, 24, 35], //G3 mod3
   263: [16, 24, 35], //G36 mod3
+  289: [16, 100, 35], //AS Val mod3
+  290: [16, 101, 35], //StG44 mod3
 }
 
 const SPECIAL_DEFAULT_EQUIPS_NIGHT_UNRELEASED = { //numbers indicate ID of the equipment
@@ -233,6 +239,9 @@ const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
   265: [-1, 55, -1], //LWMMG mod3
   120: [-1, 56, -1], //MG4
   7: [57, -1, -1], //Stechkin
+  289: [-1, 58, -1], //AS Val mod3
+  290: [-1, 59, -1], //StG44 mod3
+  291: [-1, -1, 60], //Micro Uzi mod3
 };
 
 let getPreference = function(preferenceName, defaultValue=true) {
@@ -2802,6 +2811,19 @@ function preBattleSkillChanges(doll) {
         }
       }
     });
+  }
+
+  //stg44 mod3
+  if (doll.id == 290) {
+    var grenadeDamageBonus = [1.10,1.11,1.12,1.13,1.14,1.16,1.17,1.18,1.19,1.20];
+    doll.battle.skill.effects[0].multiplier[doll.skilllevel - 1] *= grenadeDamageBonus[doll.skill2level - 1];
+    doll.battle.skill.effects[1].multiplier[doll.skilllevel - 1] *= grenadeDamageBonus[doll.skill2level - 1];
+    doll.battle.skill.effects[2].multiplier[doll.skilllevel - 1] *= grenadeDamageBonus[doll.skill2level - 1];
+  }
+
+  //micro uzi mod3
+  if (doll.id == 291) {
+    doll.battle.skill2.effects[0].after.duration = doll.battle.skill2.effects[0].after.duration[doll.skilllevel - 1];
   }
 }
 

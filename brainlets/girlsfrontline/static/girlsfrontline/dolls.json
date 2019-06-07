@@ -20592,5 +20592,273 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 289,
+    "id_index": 60,
+    "aliases": ["Avtomat Special'nyj Val","Automatic Special Val"],
+    "api_name": "asvalmod",
+    "spritesheet_row": 10,
+    "spritesheet_col": 8,
+    "name": "AS ValMod",
+    "rarity": 5,
+    "type": 4,
+    "mod": true,
+    "hp": 120,
+    "fp": 95,
+    "acc": 125,
+    "eva": 125,
+    "rof": 115,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 110,
+    "construct_time": 12600,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "防弹乳牛",
+    "voice": "Uesaka Sumire",
+    "name_skill1": "Damage Focus N",
+    "icon_name_skill1": "nightpowbuffself",
+    "tooltip_skill1": "Initial CD: 5s, CD: 16s<br>Increase self damage by 200% (70% during daytime) for 6 seconds",
+		"skill": {
+			"icd":5,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[120,129,138,147,156,164,173,182,191,200]
+          },
+          "duration":[3.5,3.8,4.1,4.3,4.6,4.9,5.2,5.4,5.7,6],
+          "requirements":{
+            "night":true
+          }
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[40,43,47,50,53,57,60,63,67,70]
+          },
+          "duration":[3.5,3.8,4.1,4.3,4.6,4.9,5.2,5.4,5.7,6],
+          "requirements":{
+            "night":false
+          }
+        }
+      ]
+		},
+    "name_skill2": "Belief",
+    "icon_name_skill2": "belief",
+    "tooltip_skill2": "Passive: Upon receiving any damage buff, including fairy skills/talents, gain perfect accuracy for 3 seconds",
+    "skill2": {
+			"icd":-1,
+			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+			"effects": []
+		},
+    "passives":[
+      {
+        "type":"passive",
+        "skill2passive":true,
+        "trigger":"receivefp",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"normalAttackBuff",
+            "duration":[1.5,1.7,1.8,2,2.2,2.3,2.5,2.7,2.8,3],
+            "sureHit":true
+          }
+        ]
+      }
+    ],
+    "tooltip_tiles": "Rate of fire +15%, Damage +25%",
+    "tiles": {
+      "self": 23,
+      "target": "-10,1",
+      "target_type": 2,
+      "effect": {
+        "fp": 25,
+        "acc": 0,
+        "eva": 0,
+        "rof": 15,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
+  },
+  {
+    "id": 290,
+    "id_index": 61,
+    "aliases": ["Sturmgewehr 44"],
+    "api_name": "stg44mod",
+    "spritesheet_row": 11,
+    "spritesheet_col": 8,
+    "name": "StG44Mod",
+    "rarity": 4,
+    "type": 4,
+    "mod": true,
+    "hp": 115,
+    "fp": 125,
+    "acc": 115,
+    "eva": 85,
+    "rof": 97,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 120,
+    "construct_time": 10800,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "八才",
+    "voice": "Ai Kayano",
+    "name_skill1": "High-explosive Grenade",
+    "icon_name_skill1": "riflegrenade",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Launch a grenade that deals 5x/2x/1x damage to enemies within a 1/2.5/4 unit radius",
+		"skill": {
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "delay":1.5,
+          "multiplier":[2,2.1,2.7,3,3.3,3.7,4,4.3,4.7,5],
+          "radius":1,
+          "busylinks":1
+        },
+        {
+          "type":"grenade",
+          "delay":1.5,
+          "multiplier":[0.8,0.8,1.1,1.2,1.3,1.5,1.6,1.7,1.9,2],
+          "radius":2.5,
+          "busylinks":0
+        },
+        {
+          "type":"grenade",
+          "delay":1.5,
+          "multiplier":[0.4,0.5,0.5,0.6,0.7,0.7,0.8,0.9,0.9,1],
+          "radius":4,
+          "busylinks":0
+        }
+      ]
+		},
+    "tooltip_skill2": "Passive: Increases base grenade damage by 20% and causes grenade to explode 3 times, dealing multiple hits to enemies standing in overlapping areas. (i.e. enemies in a 1 unit radius get hit 3 times)",
+    "name_skill2": "Firestorm",
+    "icon_name_skill2": "firestorm",
+    "skill2": {
+			"icd":-1,
+			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+			"effects": []
+		},
+    "tooltip_tiles": "Accuracy +60%, Evasion +20%",
+    "tiles": {
+      "self": 23,
+      "target": "1,10,-10",
+      "target_type": [2,4],
+      "effect": {
+        "fp": 0,
+        "acc": 60,
+        "eva": 20,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
+  },
+  {
+    "id": 291,
+    "id_index": 32,
+    "aliases": ["Micro Uzi"],
+    "api_name": "microuzimod",
+    "spritesheet_row": 9,
+    "spritesheet_col": 8,
+    "name": "Micro UziMod",
+    "rarity": 4,
+    "type": 2,
+    "mod": true,
+    "hp": 98,
+    "fp": 93,
+    "acc": 95,
+    "eva": 125,
+    "rof": 130,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 115,
+    "construct_time": 6000,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "死盖",
+    "voice": "Saori Onishi",
+    "name_skill1": "Incendiary Grenade",
+    "icon_name_skill1": "napalm",
+    "tooltip_skill1": "Initial CD: 3s, CD: 16s<br>Launch an incendiary grenade that deals 6.5x damage to enemies within a 1.5 unit radius and leaves a DoT that deals 1x damage every 0.33 seconds for 5 seconds in a 1.5 unit radius",
+		"skill": {
+			"icd":3,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "multiplier":[3.2,3.6,3.9,4.3,4.7,5,5.4,5.8,6.1,6.5],
+          "delay":1.5,
+          "radius":1.5,
+          "busylinks":1,
+          "after":{
+            "type":"grenadedot",
+            "multiplier":[0.5,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1],
+            "duration":[2,2.4,2.7,3,3.4,3.7,4,4.3,4.7,5.0],
+            "radius":1.5,
+            "tick":10
+          }
+        }
+      ]
+		},
+    "tooltip_skill2": "Passive: Incendiary Grenade marks enemies with a burn, dealing an extra 0.8x damage every 1.5 seconds as well as causing burned enemies to spread the burn mark in a 1 unit radius around them, lasting until the original incendiary effect ends",
+    "name_skill2": "Chain Ignition",
+    "icon_name_skill2": "chainignition",
+    "skill2": {
+      "icd":3,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "multiplier":0,
+          "delay":1.5,
+          "radius":1.5,
+          "busylinks":0,
+          "after":{
+            "type":"grenadedot",
+            "multiplier":[0.4,0.44,0.49,0.53,0.58,0.62,0.67,0.71,0.76,0.8],
+            "duration":[2,2.4,2.7,3,3.4,3.7,4,4.3,4.7,5.0],
+            "radius":1.9,
+            "tick":45
+          }
+        }
+      ]
+    },
+    "tooltip_tiles": "Damage +18%, Accuracy +15%",
+    "tiles": {
+      "self": 23,
+      "target": "10,-10,-1",
+      "target_type": 4,
+      "effect": {
+        "fp": 18,
+        "acc": 15,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]
