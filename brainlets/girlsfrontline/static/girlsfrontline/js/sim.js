@@ -676,7 +676,7 @@ function initDollSelectModal() {
 
   // Manual tooltip so user can hover over both the button and the tooltip
   $('[data-toggle="tooltip-doll-select"]').tooltip({ trigger: 'manual' })
-    .on('mouseenter touchend focus', function () {
+    .on('mouseenter touchend focus', function (event) {
       if (!allowDollSelectTooltip) { return; }
 
       // Mobile workaround for touch events
