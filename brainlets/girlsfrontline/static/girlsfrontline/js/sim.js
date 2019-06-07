@@ -503,8 +503,8 @@ function initDollSelectModal() {
      *   4/1 4/3 4/5 4/7 4/9 ... ### 4   44  84  124 164 204 ...
      *   ... ... ... ... ... ... ### ... ... ... ... ... ... ...
      */
-    sheetToModify.insertRule(`.btn.img_${doll.api_name} { background-position: ${-1 * (2 * doll.spritesheet_col - 2) * SPRITE_WIDTH}px ${-1 * (doll.spritesheet_row - 1) * SPRITE_HEIGHT}px; }`);
-    sheetToModify.insertRule(`.btn.img_${doll.api_name}:hover, .btn.img_${doll.api_name}:focus { background-position: ${-1 * (2 * doll.spritesheet_col - 1) * SPRITE_WIDTH}px ${-1 * (doll.spritesheet_row - 1) * SPRITE_HEIGHT}px; }`);
+    sheetToModify.insertRule(`.btn.img_${doll.api_name} { background-position: ${-1 * (2 * doll.spritesheet_col - 2) * SPRITE_WIDTH}px ${-1 * (doll.spritesheet_row - 1) * SPRITE_HEIGHT}px; }`, 0);
+    sheetToModify.insertRule(`.btn.img_${doll.api_name}:hover, .btn.img_${doll.api_name}:focus { background-position: ${-1 * (2 * doll.spritesheet_col - 1) * SPRITE_WIDTH}px ${-1 * (doll.spritesheet_row - 1) * SPRITE_HEIGHT}px; }`, 0);
 
     var tileTargetTypes;
     if ($.isArray(doll.tiles.target_type)) {
