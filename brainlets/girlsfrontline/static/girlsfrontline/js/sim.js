@@ -19,6 +19,7 @@ var fortressNodeLevel;
 var savedTeamList;
 var savedTeamCount;
 var isViewFancyPreference;      // Client-side preference for "Fancy View" | LocalStorage['preference-view-fancy']
+var isTooltipClickablePreference; //Client-side preference for "Clickable Tooltip" | LocalStorage['preference-tooltip-clickable']
 var isEnOnlyPreference;         // Client-side preference for "Show EN Only" | LocalStorage['preference-en-only']
 var selectedDoll = undefined;
 var graphColors = ['#7CB5EC', '#434348', '#90ED7D', '#F7A35C', '#8085E9', '#F15C80'];
@@ -346,6 +347,7 @@ $(function () {
 
   // Load user preferences
   isViewFancyPreference = getPreference('view-fancy', true);
+  isTooltipClickablePreference = getPreference('tooltip-clickable', false);
   isEnOnlyPreference = getPreference('en-only', false);
 
   savedTeamCount = localStorage.getItem('savedTeamCount') !== null ? localStorage.savedTeamCount : 0;
@@ -671,7 +673,7 @@ function initDollSelectModal() {
   });
 
   // Add listener to handle user clicking "Fancy View" switch
-  let fancyViewSwitch = $('.switch.toggle_fancy_view input');
+  let fancyViewSwitch = $('.switch-small.toggle_fancy_view input');
   fancyViewSwitch.change(function () {
     isViewFancyPreference = this.checked;
     setPreference('view-fancy', isViewFancyPreference);
@@ -682,6 +684,17 @@ function initDollSelectModal() {
 
   // Set switch state based on user setting
   fancyViewSwitch.prop('checked', isViewFancyPreference != false ? true : false);
+
+  // Add listener to handle user clicking "Clickable Tooltip" switch
+  let clickableTooltipSwitch = $('.switch-small.toggle_clickable_tooltip input');
+  clickableTooltipSwitch.change(function () {
+    isTooltipClickablePreference = this.checked;
+    setPreference('tooltip-clickable', isTooltipClickablePreference);
+    hideOpenTooltips();
+  });
+
+  // Set switch state based on user setting
+  clickableTooltipSwitch.prop('checked', isTooltipClickablePreference);
 
   // Manual tooltip so user can hover over both the button and the tooltip
   $('[data-toggle="tooltip-doll-select"]').tooltip({ trigger: 'manual', boundary: 'window' })
@@ -720,15 +733,20 @@ function initDollSelectModal() {
           // Hide this tooltip when user clicks it
           hideOpenTooltips();
         });
-    }).on('mouseleave', function () {
-      // .setTimeout needed because tooltip mouseenter fires after button mouseleave
-      let _this = this;
-      window.setTimeout(function () {
-        if ($('.tooltip').length == 1 && !$('.tooltip').is($(mousedOverTooltip))) {
+      }).on('mouseleave', function () {
+        // .setTimeout needed because tooltip mouseenter fires after button mouseleave
+        let _this = this;
+        isTooltipClickablePreference = getPreference('tooltip-clickable', false);
+        if (isTooltipClickablePreference) {
+          window.setTimeout(function () {
+            if ($('.tooltip').length == 1 && !$('.tooltip').is($(mousedOverTooltip))) {
+              $(_this).tooltip('hide');
+            }
+          }, 100);
+        } else {
           $(_this).tooltip('hide');
         }
-      }, 100);
-    });
+      });
 
   // Hide buttons not matching user setting
   filterVisibleButtons();
