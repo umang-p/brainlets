@@ -684,7 +684,7 @@ function initDollSelectModal() {
   fancyViewSwitch.prop('checked', isViewFancyPreference != false ? true : false);
 
   // Manual tooltip so user can hover over both the button and the tooltip
-  $('[data-toggle="tooltip-doll-select"]').tooltip({ trigger: 'manual' })
+  $('[data-toggle="tooltip-doll-select"]').tooltip({ trigger: 'manual', boundary: 'window' })
     .on('mouseenter touchend focus', function (event) {
       if (!allowDollSelectTooltip) { return; }
 
@@ -703,7 +703,11 @@ function initDollSelectModal() {
       $(this).tooltip('show');
       $('.img-tooltip-chibi').on('click', function() {
          $(`button[data-id="${$(this).data('id')}"]:visible`).click();
-      })
+      }).hover(function() {
+        $('.chibi-plus-circle').addClass('chibi-plus-circle-hover');
+      }, function() {
+        $('.chibi-plus-circle').removeClass('chibi-plus-circle-hover');
+      });
       $('.tooltip')
         .on('mouseenter focus', function () {
           // Track last button moused over

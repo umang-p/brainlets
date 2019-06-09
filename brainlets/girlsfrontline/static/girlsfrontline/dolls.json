@@ -8969,7 +8969,7 @@
     "growth_rating": 110,
     "construct_time": 8400,
     "en_craftable": false,
-		"en_released":false,
+		"en_released": true,
     "artist": "八才",
     "voice": "Serizawa Yuu",
     "name_skill1": "Hand Grenade",

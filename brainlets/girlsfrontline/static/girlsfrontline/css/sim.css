@@ -264,6 +264,7 @@ input:checked + .slider-small:before {
 .add-doll img, .remove-doll img {
   width: 50px;
 }
+
 .img-tooltip-chibi {
   position: relative;
   width: 120px;
@@ -282,6 +283,11 @@ input:checked + .slider-small:before {
   left: 5px;
   margin-bottom: -32px;
   z-index: 8000;
+}
+
+/* CSS class dynamically added/removed with j-query */
+.chibi-plus-circle.chibi-plus-circle-hover {
+  background-color: rgba(0,163,255,0.8);
 }
 
 .chibi-plus-bar {
