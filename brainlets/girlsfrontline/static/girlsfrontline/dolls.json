@@ -12393,7 +12393,7 @@
     "growth_rating": 115,
     "construct_time": 13200,
     "en_craftable": false,
-		"en_released":false,
+		"en_released":true,
     "artist": "百足",
     "voice": "Ami Nanase",
     "name_skill1": "Thermal development",
