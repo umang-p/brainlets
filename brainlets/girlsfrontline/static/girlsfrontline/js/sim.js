@@ -2916,6 +2916,8 @@ function initDollsForBattle() {
       armor: doll.pre_battle.armor,
       ap: doll.pre_battle.ap
     };
+    doll.battle.skilldamage = 0;
+
     if ('passives' in doll) {
       doll.battle.passives = JSON.parse(JSON.stringify(doll.passives));
       $.each(doll.battle.passives, (index, passive) => {
@@ -3634,6 +3636,7 @@ function simulateBattle() {
             }
           }
 
+          doll.battle.skilldamage += Math.round(dmg);
 
           if (currentFrame <= 30 * 8 + 1) {
             totaldamage8s += dmg;
@@ -3665,6 +3668,8 @@ function simulateBattle() {
           if (action.timeLeft != 0) {
             doll.battle.action_queue.push(action);
           }
+
+          doll.battle.skilldamage += Math.round(dmg);
 
           if (currentFrame <= 30 * 8 + 1) {
             totaldamage8s += dmg;
@@ -3752,6 +3757,8 @@ function simulateBattle() {
           if ('modifySkill' in action) {
             modifySkill(doll, action, enemy, currentFrame);
           }
+
+          doll.battle.skilldamage += Math.round(dmg);
 
           if (currentFrame <= 30 * 8 + 1) {
             totaldamage8s += dmg;
@@ -3896,6 +3903,11 @@ function simulateBattle() {
     }
     echelon[i].totaldmg = graphData.y[i].data[currentFrame - 1];
     $('#doll' + (i + 1) + '-dmg').text(echelon[i].totaldmg);
+    if (echelon[i].battle.skilldamage != 0) {
+      $('#doll' + (i + 1) + '-dmg').attr('data-original-title', `Skill Damage:${echelon[i].battle.skilldamage}`);
+    } else {
+      $('#doll' + (i + 1) + '-dmg').attr('data-original-title', '');
+    }
   }
 
   if (fairy.id != -1) {
