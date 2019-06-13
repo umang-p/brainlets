@@ -457,7 +457,7 @@
     "critdmg": 58,
     "growth_rating": 320,
     "construct_time": 18600,
-    "en_released":false,
+    "en_released":true,
     "en_craftable":false,
     "tooltip_aura":"Damage +20%, Crit Dmg +25%, Accuracy +62%, Evasion +50%, Armor +12%",
     "tooltip_skill":"Inspiration from fate will fill you with determination",
@@ -687,12 +687,12 @@
     "id": 27,
     "name": "Nian",
     "type": 1,
-    "fp": 105,
+    "fp": 110,
     "acc": 0,
     "eva": 31,
     "armor": 125,
     "critdmg": 80,
-    "growth_rating": 207,
+    "growth_rating": 205,
     "construct_time": 18600,
     "en_released":false,
     "en_craftable":false,
@@ -708,6 +708,55 @@
           "damage":[10,15,20,25,25,30,35,40,45,50],
           "timeLeft":150,
           "tick":30
+        }
+      ]
+    }
+  },
+  {
+    "id": 28,
+    "name": "Anna Graem",
+    "type": 1,
+    "fp": 185,
+    "acc": 65,
+    "eva": 180,
+    "armor": 80,
+    "critdmg": 0,
+    "growth_rating": 80,
+    "construct_time": 0,
+    "en_released":false,
+    "en_craftable":false,
+    "tooltip_aura":"Damage +25%, Accuracy +30%, Evasion +65%, Armor +8%",
+    "tooltip_skill":"Increase evasion of allies in the front column by 30% while decreasing their damage by 20%. Increase damage of all other allies by 20% but decrease evasion by 30%. Lasts 20 seconds.",
+    "skill":{
+      "icd":0,
+      "cd":-1,
+      "effects":[
+        {
+          "type":"buff",
+          "target":"frontrow",
+          "stat":{
+            "eva":[10,12,14,16,18,20,22,24,27,30],
+            "fp":[-10,-11,-12,-13,-14,-16,-17,-18,-19,-20]
+          },
+          "duration":20
+        },
+        {
+          "type":"buff",
+          "target":"middlerow",
+          "stat":{
+            "eva":[-10,-12,-14,-16,-18,-20,-22,-24,-27,-30],
+            "fp":[10,11,12,13,14,16,17,18,19,20]
+          },
+          "duration":20
+        },
+        {
+          "type":"buff",
+          "target":"backrow",
+          "stat":{
+            "eva":[-10,-12,-14,-16,-18,-20,-22,-24,-27,-30],
+            "fp":[10,11,12,13,14,16,17,18,19,20]
+          },
+          "duration":20
         }
       ]
     }

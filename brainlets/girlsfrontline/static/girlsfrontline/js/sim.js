@@ -4218,6 +4218,21 @@ function getBuffTargets(doll, buff, enemy) {
     }
   }
 
+  if (buff.target == 'frontrow') {
+    var dollInFront = echelon.find(d => d.pos == 14);
+    if (dollInFront !== undefined && dollInFront.id != -1) {
+      targets.push(dollInFront);
+    }
+    dollInFront = echelon.find(d => d.pos == 24);
+    if (dollInFront !== undefined && dollInFront.id != -1) {
+      targets.push(dollInFront);
+    }
+    dollInFront = echelon.find(d => d.pos == 34);
+    if (dollInFront !== undefined && dollInFront.id != -1) {
+      targets.push(dollInFront);
+    }
+  }
+
   if (buff.target == 'middlerow') {
     var dollInMiddle = echelon.find(d => d.pos == 13);
     if (dollInMiddle !== undefined && dollInMiddle.id != -1) {
