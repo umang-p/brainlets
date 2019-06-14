@@ -3904,7 +3904,7 @@ function simulateBattle() {
     echelon[i].totaldmg = graphData.y[i].data[currentFrame - 1];
     $('#doll' + (i + 1) + '-dmg').text(echelon[i].totaldmg);
     if (echelon[i].battle.skilldamage != 0) {
-      $('#doll' + (i + 1) + '-dmg').attr('data-original-title', `Skill Damage:${echelon[i].battle.skilldamage}`);
+      $('#doll' + (i + 1) + '-dmg').attr('data-original-title', `<b>${dollDataMap[echelon[i].id].name_skill1}:</b> ${echelon[i].battle.skilldamage}`);
     } else {
       $('#doll' + (i + 1) + '-dmg').attr('data-original-title', '');
     }

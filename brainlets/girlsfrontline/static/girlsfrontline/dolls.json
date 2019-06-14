@@ -6837,7 +6837,7 @@
   {
     "id": 100,
     "id_index": 105,
-    "aliases": ["OTs-12 Tiss"],
+    "aliases": ["Obrazets TsKIB-12 Tiss"],
     "api_name": "ots12",
     "spritesheet_row": 20,
     "spritesheet_col": 3,
@@ -7825,7 +7825,7 @@
   {
     "id": 114,
     "id_index": 119,
-    "aliases": ["OTs-14 Groza"],
+    "aliases": ["Obrazets TsKIB-14 Groza"],
     "api_name": "ots14",
     "spritesheet_row": 34,
     "spritesheet_col": 3,
@@ -9582,7 +9582,7 @@
   {
     "id": 140,
     "id_index": 145,
-    "aliases": ["OTs-44"],
+    "aliases": ["Obrazets TsKIB-44"],
     "api_name": "oc44",
     "spritesheet_row": 20,
     "spritesheet_col": 4,
@@ -13935,7 +13935,7 @@
   {
     "id": 204,
     "id_index": 209,
-    "aliases": ["OTs-39"],
+    "aliases": ["Obrazets TsKIB-39"],
     "api_name": "ots39",
     "spritesheet_row": 4,
     "spritesheet_col": 6,
@@ -14754,10 +14754,10 @@
     "growth_rating": 132,
     "construct_time": 15600,
     "en_craftable": false,
-		"en_released":false,
+		"en_released": true,
     "artist": "洲川Terras",
     "voice": "Aimi",
-    "name_skill1": "Maple and Firefly",
+    "name_skill1": "Maple Firefly",
     "icon_name_skill1": "aimattackdistancetarge",
     "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>Active: Attack the marked enemy for 4.5x damage (can crit). Passive: After skill cooldown, mark an enemy to hit, changing the enemy marked every 1 second",
 		"skill": {
@@ -15703,7 +15703,7 @@
 		"en_released": true,
     "artist": "反骨Max",
     "voice": "",
-    "name_skill1": "Terror Grenades",
+    "name_skill1": "Terror Grenade",
     "icon_name_skill1": "k11grenade",
     "tooltip_skill1": "Initial CD: 6s, CD: 16s<br>Launch a grenade based on the number on dummy links, dealing 4x damage to enemies within a radius of 1 unit. Enemies are hit by a grenade are marked for 3 seconds. If K11's grenades hit a marked enemy, they take an additional 2x damage",
 		"skill": {
@@ -16093,7 +16093,7 @@
 		"en_released": true,
     "artist": "Parsley",
     "voice": "",
-    "name_skill1": "Future Warning",
+    "name_skill1": "Forewarning",
     "icon_name_skill1": "64shiki",
     "tooltip_skill1": "Initial CD: 5s, CD: 16s<br>Gain different effects based on the number of enemies when the skill is activated. If more than 5 enemies exist, increase self rate of fire and accuracy by 80% for 3 seconds, otherwise increase self damage by 90% for 3 seconds. After 3 seconds, if more than 2 enemies are left, grant a 25HP shield to allies on her tiles, otherwise increase damage for self and allies on tiles by 55% for 5 seconds",
 		"skill": {
