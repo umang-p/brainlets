@@ -1,3 +1,5 @@
+import damageUtils from './damage-utils.js';
+
 var echelon;
 var fairy;
 var isNight;
@@ -3592,11 +3594,7 @@ function simulateBattle() {
             dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
           }
           if (canCrit) {
-            if ('sureCrit' in action) {
-              dmg *= (1 + (doll.battle.critdmg / 100));
-            } else {
-              dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
-            }
+            dmg *= damageUtils.getExpectedCritDamageMultiplier(doll, action);
           }
 
           dmg *= enemy.battle.vulnerability;
@@ -3728,7 +3726,7 @@ function simulateBattle() {
             dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
           }
           if (canCrit) {
-            dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
+            dmg *= damageUtils.getExpectedCritDamageMultiplier(doll, action);
           }
           dmg *= enemy.battle.vulnerability;
           dmg *= doll.battle.busylinks;
@@ -3787,7 +3785,7 @@ function simulateBattle() {
             dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
           }
           if (canCrit) {
-            dmg *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
+            dmg *= damageUtils.getExpectedCritDamageMultiplier(doll, action);
           }
           if ('fixedDamage' in action) {
             dmg = $.isArray(action.fixedDamage) ? action.fixedDamage[action.level - 1] : action.fixedDamage;

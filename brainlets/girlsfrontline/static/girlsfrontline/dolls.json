@@ -16733,11 +16733,15 @@
       "effects": [
         {
           "type":"chargedshot",
+          "canCrit": true,
+          "sureCrit":true,
           "delay":1,
           "multiplier":[4,4.4,4.9,5.3,5.8,6.2,6.7,7.1,7.6,8],
           "busylinks":1,
           "after":{
             "type":"grenade",
+            "canCrit": true,
+            "sureCrit":true,
             "busylinks":1,
             "multiplier":[6,6.7,7.3,8,8.7,9.3,10,10.7,11.3,12],
             "radius":1.5,
