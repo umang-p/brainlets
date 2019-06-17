@@ -3045,7 +3045,7 @@ function simulateBattle() {
         }
       }
       if (fairy.talent.id == 17) { //fervor
-        initialFervorStack = {
+        let initialFervorStack = {
           type:"buff",
           target:"all",
           stat:{
@@ -5069,7 +5069,7 @@ const SKILL_CONTROL_HTML = {
   },
   228: function (doll) {
     //spr a3g
-    htmlstring = '<p>Check the box if you want the marked target to die while the mark is active (rate of fire buff), uncheck to leave it alive while mark expires (no effect)</p>';
+    var htmlstring = '<p>Check the box if you want the marked target to die while the mark is active (rate of fire buff), uncheck to leave it alive while mark expires (no effect)</p>';
     htmlstring += '<input type="checkbox" class="spra3g-skill">Marked target dies with mark active</input>';
     return htmlstring;
   },
@@ -5081,7 +5081,7 @@ const SKILL_CONTROL_HTML = {
   },
   259: function (doll) {
     //m4a1 mod3
-    htmlstring = '<p>Check the box to have the sim assume only 3 or less dolls are on the field, uncheck otherwise, then hit apply.</p>';
+    var htmlstring = '<p>Check the box to have the sim assume only 3 or less dolls are on the field, uncheck otherwise, then hit apply.</p>';
     htmlstring += '<input type="checkbox" class="m4mod3-skill">3 or less dolls on field when skill activates</input>';
     return htmlstring;
   },
@@ -5230,7 +5230,7 @@ function moveDoll(event) {
   var gridSquares = [12, 13, 14, 22, 23, 24, 32, 33, 34];
 
   if (selectedDoll == undefined) {
-    for (i = 0; i < gridSquares.length; i++) {
+    for (let i = 0; i < gridSquares.length; i++) {
       $('#pos' + gridSquares[i]).addClass('bg-primary');
     }
     $(event.target).removeClass('bg-primary');
@@ -5238,7 +5238,7 @@ function moveDoll(event) {
     selectedDoll = $(event.target);
     return;
   } else {
-    for (i = 0; i < gridSquares.length; i++) {
+    for (let i = 0; i < gridSquares.length; i++) {
       $('#pos' + gridSquares[i]).removeClass('bg-primary');
     }
 
