@@ -20864,5 +20864,425 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 292,
+    "id_index": 1022,
+    "aliases": ["Dana Zane"],
+    "api_name": "dana",
+    "spritesheet_row": 17,
+    "spritesheet_col": 8,
+    "name": "Dana",
+    "rarity": 1,
+    "type": 6,
+    "mod": false,
+    "hp": 122,
+    "fp": 126,
+    "acc": 124,
+    "eva": 105,
+    "rof": 100,
+    "crit": 40,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 1,
+    "armor": 120,
+    "growth_rating": 108,
+    "construct_time": 0,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "DOGALA",
+    "voice": "",
+    "name_skill1": "Red Geyser",
+    "icon_name_skill1": "dana",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>skill description",
+		"skill": {
+			"icd":6,
+			"cd":[],
+      "effects": [
+
+      ]
+		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"normalAttack",
+        "effects":[
+
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +15%, Accuracy +15%",
+    "tiles": {
+      "self": 24,
+      "target": "-2,-12,8",
+      "target_type": 5,
+      "effect": {
+        "fp": 15,
+        "acc": 15,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
+  },
+  {
+    "id": 293,
+    "id_index": 1021,
+    "aliases": ["Alma Armas"],
+    "api_name": "alma",
+    "spritesheet_row": 16,
+    "spritesheet_col": 8,
+    "name": "Alma",
+    "rarity": 1,
+    "type": 5,
+    "mod": false,
+    "hp": 118,
+    "fp": 110,
+    "acc": 122,
+    "eva": 90,
+    "rof": 120,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 9,
+    "armor": 0,
+    "growth_rating": 120,
+    "construct_time": 0,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "洲川Terras",
+    "voice": "",
+    "name_skill1": "Love & Dreams",
+    "icon_name_skill1": "alma",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>skill description",
+		"skill": {
+			"icd":6,
+			"cd":[],
+      "effects": [
+
+      ]
+		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"normalAttack",
+        "effects":[
+
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +15%, Armor +15%",
+    "tiles": {
+      "self": 22,
+      "target": "-8,2",
+      "target_type": 6,
+      "effect": {
+        "fp": 15,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 15
+      }
+    }
+  },
+  {
+    "id": 294,
+    "id_index": 1020,
+    "aliases": ["Stella Hoshi"],
+    "api_name": "stella",
+    "spritesheet_row": 15,
+    "spritesheet_col": 8,
+    "name": "Stella",
+    "rarity": 1,
+    "type": 3,
+    "mod": false,
+    "hp": 102,
+    "fp": 102,
+    "acc": 117,
+    "eva": 100,
+    "rof": 100,
+    "crit": 40,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 130,
+    "construct_time": 0,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "暖森",
+    "voice": "",
+    "name_skill1": "Puppet Mask",
+    "icon_name_skill1": "stella",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>skill description",
+		"skill": {
+			"icd":6,
+			"cd":[],
+      "effects": [
+
+      ]
+		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"normalAttack",
+        "effects":[
+
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Skill Cooldown -18%",
+    "tiles": {
+      "self": 23,
+      "target": "11,-9",
+      "target_type": 1,
+      "effect": {
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 18,
+        "armor": 0
+      }
+    }
+  },
+  {
+    "id": 295,
+    "id_index": 1018,
+    "aliases": ["Sei P Asagiri"],
+    "api_name": "sei",
+    "spritesheet_row": 13,
+    "spritesheet_col": 8,
+    "name": "Sei",
+    "rarity": 1,
+    "type": 1,
+    "mod": false,
+    "hp": 128,
+    "fp": 109,
+    "acc": 120,
+    "eva": 105,
+    "rof": 100,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 117,
+    "construct_time": 0,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "NIN",
+    "voice": "",
+    "name_skill1": "White Knight's Shield",
+    "icon_name_skill1": "sei",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>skill description",
+		"skill": {
+			"icd":6,
+			"cd":[],
+      "effects": [
+
+      ]
+		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"normalAttack",
+        "effects":[
+
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +30%, Evasion +20%",
+    "tiles": {
+      "self": 23,
+      "target": "1,10,-10,-11,9",
+      "target_type": 0,
+      "effect": {
+        "fp": [
+          15,
+          30
+        ],
+        "acc": [
+          0,
+          0
+        ],
+        "eva": [
+          10,
+          20
+        ],
+        "rof": [
+          0,
+          0
+        ],
+        "crit": [
+          0,
+          0
+        ],
+        "skillcd": [
+          0,
+          0
+        ],
+        "armor": [
+          0,
+          0
+        ]
+      }
+    }
+  },
+  {
+    "id": 296,
+    "id_index": 1017,
+    "aliases": ["Julianne Natalie Stingray"],
+    "api_name": "jill",
+    "spritesheet_row": 12,
+    "spritesheet_col": 8,
+    "name": "Jill",
+    "rarity": 1,
+    "type": 1,
+    "mod": false,
+    "hp": 120,
+    "fp": 103,
+    "acc": 100,
+    "eva": 120,
+    "rof": 100,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 130,
+    "construct_time": 0,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "小吃",
+    "voice": "",
+    "name_skill1": "Mixing Time",
+    "icon_name_skill1": "jill",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>skill description",
+		"skill": {
+			"icd":6,
+			"cd":[],
+      "effects": [
+
+      ]
+		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"normalAttack",
+        "effects":[
+
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +40%, Accuracy +40%",
+    "tiles": {
+      "self": 23,
+      "target": "1,-1,10,-10,11,-11,9,-9",
+      "target_type": 0,
+      "effect": {
+        "fp": [
+          20,
+          40
+        ],
+        "acc": [
+          20,
+          40
+        ],
+        "eva": [
+          0,
+          0
+        ],
+        "rof": [
+          0,
+          0
+        ],
+        "crit": [
+          0,
+          0
+        ],
+        "skillcd": [
+          0,
+          0
+        ],
+        "armor": [
+          0,
+          0
+        ]
+      }
+    }
+  },
+  {
+    "id": 297,
+    "id_index": 1019,
+    "aliases": ["Dorothy Haze"],
+    "api_name": "dorothy",
+    "spritesheet_row": 14,
+    "spritesheet_col": 8,
+    "name": "Dorothy",
+    "rarity": 1,
+    "type": 2,
+    "mod": false,
+    "hp": 100,
+    "fp": 96,
+    "acc": 105,
+    "eva": 125,
+    "rof": 95,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 128,
+    "construct_time": 0,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "废人",
+    "voice": "",
+    "name_skill1": "Secret Modification",
+    "icon_name_skill1": "dorothy",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>skill description",
+		"skill": {
+			"icd":6,
+			"cd":[],
+      "effects": [
+
+      ]
+		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"normalAttack",
+        "effects":[
+
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +15%, Accuracy +25%",
+    "tiles": {
+      "self": 23,
+      "target": "-11,9",
+      "target_type": [3,4],
+      "effect": {
+        "fp": 15,
+        "acc": 25,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]

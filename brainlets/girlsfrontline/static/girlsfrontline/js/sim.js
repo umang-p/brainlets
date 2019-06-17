@@ -170,6 +170,11 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   289: [4, 100, 35], //AS Val mod3
   290: [4, 101, 35], //StG44 mod3
   //her molotov is better with EOT instead of her unique equip 291: [35, 45, 102], //Micro Uzi mod3
+  292: [111, 49, 12], //Dana
+  294: [20, 4, 112], //Stella
+  295: [39, 45, 113], //Sei
+  // 296: [], //Jill
+  297: [28, 114, 39], //Dorothy
 };
 
 const SPECIAL_DEFAULT_EQUIPS_UNRELEASED = {
@@ -245,6 +250,11 @@ const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
   289: [-1, 58, -1], //AS Val mod3
   290: [-1, 59, -1], //StG44 mod3
   291: [-1, -1, 60], //Micro Uzi mod3
+  296: [[61, 64, 65], [62, 63, 66], [68, 67]], //Jill
+  292: [69, -1, -1], //Dana
+  294: [-1, -1, 70], //Stella
+  295: [-1, -1, 71], //Sei
+  297: [-1, 72, -1], //Dorothy
 };
 
 let getPreference = function(preferenceName, defaultValue=true) {
