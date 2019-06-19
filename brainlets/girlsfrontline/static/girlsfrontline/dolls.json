@@ -20894,23 +20894,24 @@
     "voice": "",
     "name_skill1": "Red Geyser",
     "icon_name_skill1": "dana",
-    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>skill description",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Jump up and smash the ground causing an explosion that deals 0.6x damage in a radius of 2 units. Skill damage increases by 1% for every 1 armor Dana has. Passive: Normal attack is an exploding rocket fist that deals 1.8x damage to 1 enemy with a 10% knockback chance.",
 		"skill": {
-			"icd":6,
-			"cd":[],
+			"icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
       "effects": [
-
+        {
+          "type":"modifySkill",
+          "modifySkill":"buffSkillDamage"
+        },
+        {
+          "type":"grenade",
+          "busylinks":1,
+          "multiplier":[0.3,0.33,0.37,0.4,0.43,0.47,0.5,0.53,0.57,0.6],
+          "radius":2,
+          "delay":1.5
+        }
       ]
 		},
-    "passives":[
-      {
-        "type":"passive",
-        "trigger":"normalAttack",
-        "effects":[
-
-        ]
-      }
-    ],
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +15%",
     "tiles": {
@@ -20949,6 +20950,7 @@
     "ap": 15,
     "rounds": 9,
     "armor": 0,
+    "frames_per_attack": 10,
     "growth_rating": 120,
     "construct_time": 0,
     "en_craftable": false,
@@ -20957,23 +20959,24 @@
     "voice": "",
     "name_skill1": "Love & Dreams",
     "icon_name_skill1": "alma",
-    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>skill description",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Summon an extra 2 drones to attack with 40% damage each. Lasts 4 seconds.",
 		"skill": {
-			"icd":6,
-			"cd":[],
+			"icd":8,
+			"cd":[18,18,18,18,18,18,18,18,18,18],
       "effects": [
-
+        {
+          "type":"passive",
+          "trigger":"afterAttack",
+          "duration":[2,2.2,2.4,2.7,2.9,3.1,3.3,3.6,3.8,4],
+          "effects":[
+            {
+              "multiplier":[0.2,0.22,0.24,0.27,0.29,0.31,0.33,0.36,0.38,0.40],
+              "hitCount": 2
+            }
+          ]
+        }
       ]
 		},
-    "passives":[
-      {
-        "type":"passive",
-        "trigger":"normalAttack",
-        "effects":[
-
-        ]
-      }
-    ],
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Armor +15%",
     "tiles": {

@@ -2861,6 +2861,19 @@ function preBattleSkillChanges(doll) {
   if (doll.id == 291) {
     doll.battle.skill2.effects[0].after.duration = doll.battle.skill2.effects[0].after.duration[doll.skilllevel - 1];
   }
+
+  //dana
+  if (doll.id == 292) {
+    doll.battle.targets = 1;
+    let normalAttack = {
+      type:"buff",
+      name:"normalAttackBuff",
+      duration: -1,
+      multiplier:[1.2,1.27,1.33,1.4,1.47,1.53,1.6,1.67,1.73,1.8],
+      level: doll.skilllevel
+    };
+    doll.battle.buffs.push($.extend(true, {}, normalAttack));
+  }
 }
 
 function initDollsForBattle() {
@@ -3445,15 +3458,28 @@ function simulateBattle() {
             var sureCrit = 'sureCrit' in extraAttack ? extraAttack.sureCrit : false;
             var sureHit = 'sureHit' in extraAttack ? extraAttack.sureHit : false;
 
-            var extradmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.battle.armor));
+            let extraAttackFP = doll.battle.fp;
+            if ('multiplier' in extraAttack) {
+              extraAttackFP *= $.isArray(extraAttack.multiplier) ? extraAttack.multiplier[extraAttack.level - 1] : extraAttack.multiplier;
+            }
+            var extradmg = Math.max(1, extraAttackFP + Math.min(2, doll.battle.ap - enemy.battle.armor));
+
+            /* pretty sure the multiplier for all skills are applied to fp directly
             if ('multiplier' in extraAttack) {
               extradmg *= $.isArray(extraAttack.multiplier) ? extraAttack.multiplier[extraAttack.level - 1] : extraAttack.multiplier;
             }
+            */
+
             extradmg *= !sureHit ? (doll.battle.acc / (doll.battle.acc + enemy.battle.eva)) : 1;
             if (canCrit) {
               extradmg *= sureCrit ? (1 + (doll.battle.critdmg / 100)) : 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
             }
-            dmg *= enemy.battle.vulnerability;
+
+            if ('hitCount' in extraAttack) {
+              extradmg *= $.isArray(extraAttack.hitCount) ? extraAttack.hitCount[extraAttack.level - 1] : extraAttack.hitCount;
+            }
+
+            extradmg *= enemy.battle.vulnerability;
             extradmg *= doll.links - doll.battle.busylinks;
             extradmg *= 'extraAttackChance' in extraAttack ? extraAttack.extraAttackChance[extraAttack.level - 1] / 100 : 1
           }
@@ -4634,6 +4660,13 @@ function modifySkill(doll, effect, enemy, currentTime) {
         buff.stacks--;
         activateBuff(doll, $.extend({}, reloadBuff), enemy);
       }
+    }
+  }
+
+  //dana
+  if (doll.id == 292) {
+    if (effect.modifySkill == 'buffSkillDamage') {
+      doll.battle.effect_queue[0].multiplier[doll.battle.effect_queue[0].level - 1] *= (1 + doll.battle.armor / 100);
     }
   }
 }
