@@ -3874,5 +3874,39 @@
     "construct_time": 0,
     "name": "MIRD5-Class Ammo",
     "tooltip": "Damage +15-22, Armor Penetration -7"
+  },
+  {
+    "id": 115,
+    "type": 73,
+    "rarity": 5,
+    "fp": 4,
+    "acc": 0,
+    "eva": -2,
+    "movespeed": 0,
+    "rof": 0,
+    "critdmg": 0,
+    "crit": 0,
+    "ap": -7,
+    "armor": 0,
+    "nightview": 0,
+    "rounds": 4,
+    "level_bonus": {
+      "fp": 500,
+      "acc": 0,
+      "eva": 0,
+      "movespeed": 0,
+      "rof": 0,
+      "critdmg": 0,
+      "crit": 0,
+      "ap": 0,
+      "armor": 0,
+      "nightview": 0,
+      "rounds": 500
+    },
+    "en_craftable": false,
+    "en_released": false,
+    "construct_time": 0,
+    "name": "Artifical Hands",
+    "tooltip": "Damage +4-6, Rounds +4-6, Evasion -2"
   }
 ]

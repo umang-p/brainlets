@@ -175,6 +175,7 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   295: [39, 45, 113], //Sei
   // 296: [], //Jill
   297: [28, 114, 39], //Dorothy
+  293: [20, 8, 115], //Alma
 };
 
 const SPECIAL_DEFAULT_EQUIPS_UNRELEASED = {
@@ -255,6 +256,7 @@ const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
   294: [-1, -1, 70], //Stella
   295: [-1, -1, 71], //Sei
   297: [-1, 72, -1], //Dorothy
+  293: [-1, -1, 73], //Alma
 };
 
 let getPreference = function(preferenceName, defaultValue=true) {
