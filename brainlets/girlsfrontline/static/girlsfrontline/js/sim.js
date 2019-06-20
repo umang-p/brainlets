@@ -3405,10 +3405,16 @@ function simulateBattle() {
               dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
             }
             if (canCrit) {
-              dmg *= sureCrit ? (1 + (doll.battle.critdmg / 100)) : 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
+              let critdmg = doll.battle.critdmg;
+              if('extraCritDamage' in attackBuff) {
+                critdmg += $.isArray(attackBuff.extraCritDamage) ? attackBuff.extraCritDamage[attackBuff.level - 1] : attackBuff.extraCritDamage;
+              }
+              dmg *= sureCrit ? (1 + (critdmg / 100)) : (1 + critdmg / 100) * (doll.battle.crit / 100) + (1 - doll.battle.crit / 100);
             }
             dmg *= enemy.battle.vulnerability;
             dmg *= doll.links - doll.battle.busylinks;
+
+            //maybe this needs to be applied directly to fp rather than after armor/acc/crit calculations
             if ('multiplier' in attackBuff) {
               dmg *= $.isArray(attackBuff.multiplier) ? attackBuff.multiplier[attackBuff.level - 1] : attackBuff.multiplier;
             }
@@ -3542,7 +3548,7 @@ function simulateBattle() {
             }
           }
 
-          // TODO: add check for reloadtimer. if exists, do not add normalattacktimer
+          // TODO: add check for reloadtimer. if exists, do not add normalattacktimer <- why???
           var normalAttackTimer = {
             type: 'normalAttack',
             timeLeft: 0
@@ -4353,12 +4359,13 @@ function addStack(target, effect, enemy) {
   $.each(target.battle.passives.filter(passive => 'hasStacks' == passive.trigger), (index, passiveskill) => {
     var b = target.battle.buffs.find(buf => buf.name == passiveskill.name);
     if (b != undefined) {
+      let stacksNeeded = $.isArray(passiveskill.stacksRequired) ? passiveskill.stacksRequired[passiveskill.level -1] : passiveskill.stacksRequired;
       if ('stackChance' in b) {
         var expectedstacks = $.isArray(b.stackChance) ? b.stacks * b.stackChance[b.level - 1] / 100 : b.stacks * b.stackChance / 100;
-        if (expectedstacks >= passiveskill.stacksRequired) {
+        if (expectedstacks >= stacksNeeded) {
           triggerPassive('hasStacks', target, enemy);
         }
-      } else if (b.stacks >= passiveskill.stacksRequired) {
+      } else if (b.stacks >= stacksNeeded) {
         triggerPassive('hasStacks', target, enemy);
       }
     }
@@ -4368,12 +4375,13 @@ function addStack(target, effect, enemy) {
   $.each(target.battle.passives.filter(passive => 'notHasStacks' == passive.trigger), (index, passiveskill) => {
     var b = target.battle.buffs.find(buf => buf.name == passiveskill.name);
     if (b != undefined) {
+      let stacksNeeded = $.isArray(passiveskill.stacksRequired) ? passiveskill.stacksRequired[passiveskill.level -1] : passiveskill.stacksRequired;
       if ('stackChance' in b) {
         var expectedstacks = $.isArray(b.stackChance) ? b.stacks * b.stackChance[b.level - 1] / 100 : b.stacks * b.stackChance / 100;
-        if (expectedstacks <= passiveskill.stacksRequired) {
+        if (expectedstacks <= stacksNeeded) {
           triggerPassive('notHasStacks', target, enemy);
         }
-      } else if (b.stacks <= passiveskill.stacksRequired) {
+      } else if (b.stacks <= stacksNeeded) {
         triggerPassive('notHasStacks', target, enemy);
       }
     }

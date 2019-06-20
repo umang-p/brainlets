@@ -21023,12 +21023,19 @@
     "voice": "",
     "name_skill1": "Puppet Mask",
     "icon_name_skill1": "stella",
-    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>skill description",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Active: Increase self damage by 50% for 5 seconds.<br>Passive: After attacking 16 times, the next attack by her dolls will have +50% crit damage and target the furthest enemy.<br>Passive: Give Sei 10% cooldown reduction (does not affect initial cooldown)",
 		"skill": {
 			"icd":6,
-			"cd":[],
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
       "effects": [
-
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[30,32,34,37,39,41,43,46,48,50]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
       ]
 		},
     "passives":[
@@ -21036,7 +21043,42 @@
         "type":"passive",
         "trigger":"normalAttack",
         "effects":[
-
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"stella",
+            "duration":-1,
+            "stackable":true,
+            "max_stacks":99,
+            "stacks":2,
+            "stacksToAdd":2
+          }
+        ]
+      },
+      {
+        "type":"passive",
+        "trigger":"hasStacks",
+        "name":"stella",
+        "stacksRequired":[20,20,19,19,18,18,17,17,16,16],
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"stella",
+            "duration":-1,
+            "stackable":true,
+            "max_stacks":99,
+            "stacks":0,
+            "stacksToAdd":-16
+          },
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"normalAttackBuff",
+            "attacksLeft":1,
+            "duration":-1,
+            "extraCritDamage":50
+          }
         ]
       }
     ],
@@ -21086,12 +21128,11 @@
     "voice": "",
     "name_skill1": "White Knight's Shield",
     "icon_name_skill1": "sei",
-    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>skill description",
+    "tooltip_skill1": "Initial CD: 6s, CD: 10s<br>Active: Grant a 32 base hp shield to all ally SG, SMG, HG units that lasts for 5 seconds. Shield hp ranges from 0.8 to 1.8x the base value depending on enemy hp.<br>Passive: Sei's attacks count for Stella's passive.",
 		"skill": {
 			"icd":6,
-			"cd":[],
+			"cd":[15,14.4,13.9,13.3,12.8,12.2,11.7,11.1,10.6,10],
       "effects": [
-
       ]
 		},
     "passives":[
@@ -21099,7 +21140,17 @@
         "type":"passive",
         "trigger":"normalAttack",
         "effects":[
-
+          {
+            "type":"buff",
+            "target":"doll",
+            "dollid":294,
+            "name":"stella",
+            "duration":-1,
+            "stackable":true,
+            "max_stacks":99,
+            "stacks":2,
+            "stacksToAdd":1
+          }
         ]
       }
     ],
