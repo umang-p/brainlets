@@ -7423,7 +7423,7 @@
     "growth_rating": 115,
     "construct_time": 2100,
     "en_craftable": false,
-		"en_released":false,
+		"en_released":true,
     "artist": "能登ツグミ",
     "voice": "Minami Tanaka",
     "name_skill1": "Fire Command",
