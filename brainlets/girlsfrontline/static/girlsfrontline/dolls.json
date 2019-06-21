@@ -21378,5 +21378,63 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 298,
+    "id_index": 267,
+    "aliases": ["MP.41 Schmeisser"],
+    "api_name": "mp41",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "MP41",
+    "rarity": 3,
+    "type": 2,
+    "mod": false,
+    "hp": 110,
+    "fp": 105,
+    "acc": 100,
+    "eva": 90,
+    "rof": 95,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 120,
+    "construct_time": 0,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "狂気の君",
+    "voice": "",
+    "name_skill1": "Smoke Grenade",
+    "icon_name_skill1": "moke",
+    "tooltip_skill1": "Initial CD: 1s, CD: 16s<br>Launch a smoke grenade that decreases enemy rate of fire by 36% and movement speed by 50% within a radius of 2.5 units for 4 seconds",
+		"skill": {
+			"icd":1,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"smoke",
+          "busylinks":1,
+          "delay":1.5
+        }
+      ]
+		},
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +12%, Evasion +10%",
+    "tiles": {
+      "self": 23,
+      "target": "-1,9",
+      "target_type": 4,
+      "effect": {
+        "fp": 12,
+        "acc": 0,
+        "eva": 10,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]
