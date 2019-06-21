@@ -21305,23 +21305,63 @@
     "voice": "",
     "name_skill1": "Secret Modification",
     "icon_name_skill1": "dorothy",
-    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>skill description",
+    "tooltip_skill1": "Initial CD: 2s, CD: 1s<br>Activate the skill to switch between MIRD113 and Nano-Camouflage. By default, Dorothy will use Nano-Camouflage if she is in the middle column, MIRD113 otherwise.<br>MIRD113: Increase self damage by 100% and increase evasion by 80% for allies in her column while decreasing their accuracy by 40%. This effect does not trigger Python's passive.<br>Nano-Camouflage: Increase self evasion by 100% and increase accuracy by 80% for allies in her column while decreasing their evasion by 40%. This effect does not trigger Python's passive.",
 		"skill": {
-			"icd":6,
-			"cd":[],
+			"icd":1,
+			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
       "effects": [
-
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":-1,
+          "after":[
+            {
+              "type":"buff",
+              "target":"self",
+              "stat":{
+                "eva":[50,56,61,67,72,78,83,89,94,100]
+              },
+              "duration":-1
+            },
+            {
+              "type":"buff",
+              "target":"column",
+              "stat":{
+                "eva":[-60,-58,-56,-53,-51,-49,-47,-44,-42,-40],
+                "acc":[50,53,57,60,63,67,70,73,77,80]
+              },
+              "duration":-1,
+              "triggerPythonPassive":false
+            }
+          ]
+        },
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":-1,
+          "after":[
+            {
+              "type":"buff",
+              "target":"self",
+              "stat":{
+                "fp":[50,56,61,67,72,78,83,89,94,100]
+              },
+              "duration":-1
+            },
+            {
+              "type":"buff",
+              "target":"column",
+              "stat":{
+                "acc":[-60,-58,-56,-53,-51,-49,-47,-44,-42,-40],
+                "eva":[50,53,57,60,63,67,70,73,77,80]
+              },
+              "duration":-1,
+              "triggerPythonPassive":false
+            }
+          ]
+        }
       ]
 		},
-    "passives":[
-      {
-        "type":"passive",
-        "trigger":"normalAttack",
-        "effects":[
-
-        ]
-      }
-    ],
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +25%",
     "tiles": {

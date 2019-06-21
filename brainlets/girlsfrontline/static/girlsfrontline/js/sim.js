@@ -2874,6 +2874,15 @@ function preBattleSkillChanges(doll) {
     };
     doll.battle.buffs.push($.extend(true, {}, normalAttack));
   }
+
+  //dorothy
+  if (doll.id == 297) {
+    if (doll.pos == 13 || doll.pos == 23 || doll.pos == 33) {
+      doll.battle.skill.effects[0].delay = 0;
+    } else {
+      doll.battle.skill.effects[1].delay = 0;
+    }
+  }
 }
 
 function initDollsForBattle() {
@@ -4115,7 +4124,7 @@ function activateBuff(doll, buff, enemy) {
     } else {
       target.battle.buffs.push($.extend({}, buff));
     }
-    if ('stat' in buff && doll.name != 'Python') {
+    if ('stat' in buff && doll.name != 'Python' && !('triggerPythonPassive' in buff)) {
       var triggerChance = 'stackChance' in buff ? buff.stackChance : undefined;
       if ('fp' in buff.stat) {
         triggerPassive('receivefp', target, enemy, triggerChance);
