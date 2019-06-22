@@ -2883,6 +2883,41 @@ function preBattleSkillChanges(doll) {
       doll.battle.skill.effects[1].delay = 0;
     }
   }
+
+  //jill
+  if (doll.id == 296) {
+    doll.battle.timers.find(timer => timer.type == 'normalAttack').timeLeft = -1;
+
+    let cooldownBonus = doll.battle.fp > 30 ? 30 : doll.battle.fp;
+    let skillcdBuff = {
+      type:"buff",
+      target:"self",
+      level:doll.skilllevel,
+      stat:{
+        skillcd:cooldownBonus
+      },
+      duration:-1
+    };
+    doll.battle.buffs.push(skillcdBuff);
+
+    if (doll.equip1 == 106 && doll.equip2 == 105 && doll.equip3 == 109) {
+      doll.battle.skill.effects.find(e => e.name == 'bigbeer').delay = 3;
+    } else if (doll.equip1 == 103 && doll.equip2 == 104 && doll.equip3 == 110) {
+      doll.battle.skill.effects.find(e => e.name == 'brandtini').delay = 3;
+    } else if (doll.equip1 == 103 && doll.equip2 == 105 && doll.equip3 == 109) {
+      doll.battle.skill.effects.find(e => e.name == 'pianowoman').delay = 3;
+    } else if (doll.equip1 == 103 && doll.equip2 == 104 && doll.equip3 == 109) {
+      doll.battle.skill.effects.find(e => e.name == 'moonblast').delay = 3;
+    } else if (doll.equip1 == 106 && doll.equip2 == 105 && doll.equip3 == 110) {
+      doll.battle.skill.effects.find(e => e.name == 'bleedingjane').delay = 3;
+    } else if (doll.equip1 == 107 && doll.equip2 == 108 && doll.equip3 == 109) {
+      doll.battle.skill.effects.find(e => e.name == 'fringeweaver').delay = 3;
+    } else {
+      doll.battle.skill.effects.find(e => e.name == 'sugarrush').delay = 3;
+    }
+
+
+  }
 }
 
 function initDollsForBattle() {
@@ -2910,6 +2945,7 @@ function initDollsForBattle() {
     doll.battle.currentRounds = doll.battle.rounds;
     doll.battle.armor = doll.pre_battle.armor;
     doll.battle.ap = doll.pre_battle.ap;
+    doll.battle.skillcd = doll.pre_battle.skillcd;
     if (doll.type == 6) {
       doll.battle.targets = doll.targets;
     }
@@ -2928,7 +2964,8 @@ function initDollsForBattle() {
       critdmg: 1,
       rounds: 0,
       armor: 1,
-      ap: 1
+      ap: 1,
+      skillcd: 0
     };
     doll.battle.maxstats = {
       fp: doll.pre_battle.fp,
@@ -3147,8 +3184,15 @@ function simulateBattle() {
         if ('timeLeft' in buff) {
           if (buff.timeLeft == 0) {
             if ('after' in buff) {
-              buff.after.level = buff.level
-              doll.battle.effect_queue.push($.extend({}, buff.after));
+              if ($.isArray(buff.after)) {
+                $.each(buff.after, (index, effect) => {
+                  effect.level = buff.level;
+                  doll.battle.effect_queue.push($.extend(true, {}, effect));
+                });
+              } else {
+                buff.after.level = buff.level;
+                doll.battle.effect_queue.push($.extend(true, {}, buff.after));
+              }
             }
             return false;
           }
@@ -3228,7 +3272,7 @@ function simulateBattle() {
                   doll.battle.effect_queue.push($.extend({}, effect));
                 }
               });
-              timer.timeLeft = Math.round(doll.battle.skill.cd[doll.skilllevel - 1] * 30 * (1 - doll.pre_battle.skillcd / 100));
+              timer.timeLeft = Math.round(doll.battle.skill.cd[doll.skilllevel - 1] * 30 * (1 - doll.battle.skillcd / 100));
             }
           } else if (timer.type == 'skill2') {
             if (reloading && doll.battle.timers.find(timer => timer.type == 'reload').timeLeft != 0) {
@@ -3247,7 +3291,7 @@ function simulateBattle() {
                   doll.battle.effect_queue.push($.extend({}, effect));
                 }
               });
-              timer.timeLeft = Math.round(doll.battle.skill2.cd[doll.skill2level - 1] * 30 * (1 - doll.pre_battle.skillcd / 100));
+              timer.timeLeft = Math.round(doll.battle.skill2.cd[doll.skill2level - 1] * 30 * (1 - doll.battle.skillcd / 100));
             }
           } else {
             doll.battle.effect_queue.push($.extend({}, timer));
@@ -3267,8 +3311,15 @@ function simulateBattle() {
         if ('timeLeft' in buff) {
           if (buff.timeLeft == 0) {
             if ('after' in buff) {
-              buff.after.level = buff.level
-              doll.battle.effect_queue.push($.extend({}, buff.after));
+              if ($.isArray(buff.after)) {
+                $.each(buff.after, (index, effect) => {
+                  effect.level = buff.level;
+                  doll.battle.effect_queue.push($.extend(true, {}, effect));
+                });
+              } else {
+                buff.after.level = buff.level;
+                doll.battle.effect_queue.push($.extend(true, {}, buff.after));
+              }
             }
             return false;
           }
@@ -3984,7 +4035,8 @@ function calculateSkillBonus(dollIndex) {
     critdmg: 1,
     rounds: 0,
     armor: 1,
-    ap: 1
+    ap: 1,
+    skillcd: 0
   };
 
   $.each(doll.battle.buffs, (index, buff) => {
@@ -3992,9 +4044,9 @@ function calculateSkillBonus(dollIndex) {
       $.each(buff.stat, (stat, amount) => {
         var bonus = 1;
         if ('stackable' in buff) {
-          if (stat == 'rounds') {
+          if (stat == 'rounds' || stat == 'skillcd') {
             bonus = $.isArray(amount) ? amount[buff.level - 1] * buff.stacks : amount * buff.stacks;
-            doll.battle.skillbonus.rounds += bonus;
+            doll.battle.skillbonus[stat] += bonus;
           } else {
             if ('stackChance' in buff) {
               for (var i = 0; i < buff.stacks; i++) {
@@ -4012,8 +4064,8 @@ function calculateSkillBonus(dollIndex) {
             }
           }
         } else {
-          if (stat == 'rounds') {
-            doll.battle.skillbonus.rounds += $.isArray(amount) ? amount[buff.level - 1] : amount;
+          if (stat == 'rounds' || stat == 'skillcd') {
+            doll.battle.skillbonus[stat] += $.isArray(amount) ? amount[buff.level - 1] : amount;
           } else {
             if ('stackChance' in buff) {
               bonus = $.isArray(buff.stackChance) ? buff.stackChance[buff.level - 1] / 100 : buff.stackChance / 100;
@@ -4041,6 +4093,7 @@ function calculateBattleStats(dollIndex) {
   doll.battle.armor = Math.floor(doll.pre_battle.armor * doll.battle.skillbonus.armor);
   doll.battle.rounds = Math.floor(doll.pre_battle.rounds + doll.battle.skillbonus.rounds);
   doll.battle.ap = Math.floor(doll.pre_battle.ap * doll.battle.skillbonus.ap);
+  doll.battle.skillcd = doll.pre_battle.skillcd + doll.battle.skillbonus.skillcd;
 
   //cap stats
   doll.battle.fp = Math.max(0, doll.battle.fp);
@@ -4398,7 +4451,7 @@ function addStack(target, effect, enemy) {
 }
 
 function addPassive(doll, passive, enemy, currentTime) {
-  var passiveskill = $.extend({}, passive);
+  var passiveskill = $.extend(true, {}, passive);
 
   if (!('level' in passiveskill)) {
     passiveskill.level = doll.skilllevel;
@@ -4411,7 +4464,12 @@ function addPassive(doll, passive, enemy, currentTime) {
     passiveskill.startTime = currentTime;
   }
 
-  doll.battle.passives.push(passiveskill);
+  if ('target' in passiveskill) {
+    let targets = getBuffTargets(doll, passiveskill, enemy);
+    $.each(targets, (index, target) => target.battle.passives.push($.extend(true, {}, passiveskill)));
+  } else {
+    doll.battle.passives.push(passiveskill);
+  }
 }
 
 function removeBuff(doll, buff, enemy) {
@@ -4684,6 +4742,60 @@ function modifySkill(doll, effect, enemy, currentTime) {
   if (doll.id == 292) {
     if (effect.modifySkill == 'buffSkillDamage') {
       doll.battle.effect_queue[0].multiplier[doll.battle.effect_queue[0].level - 1] *= (1 + doll.battle.armor / 100);
+    }
+  }
+
+  if (doll.id == 296) {
+    if (effect.modifySkill == 'danafavorite') {
+      let dana = echelon.find(d => d.id == 292);
+      if(dana !== undefined) {
+        let armorBuff = {
+          type:"buff",
+          target:"self",
+          stat:{
+            armor:50
+          },
+          level:doll.skilllevel,
+          duration:[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+        };
+        dana.battle.buffs.push(armorBuff);
+      }
+    }
+
+    if (effect.modifySkill == 'almafavorite') {
+      let alma = echelon.find(d => d.id == 293);
+      if(alma !== undefined) {
+        alma.battle.skill.effects[0].duration = alma.battle.skill.effects[0].duration.map(time => time + 1);
+      }
+    }
+
+    if (effect.modifySkill == 'dorothyfavorite') {
+      let dorothy = echelon.find(d => d.id == 297);
+      if(dorothy !== undefined) {
+        dorothy.battle.skill.effects[0].after[1].stat.eva = dorothy.battle.skill.effects[0].after[1].stat.eva.map(x => x / 2);
+        dorothy.battle.skill.effects[1].after[1].stat.acc = dorothy.battle.skill.effects[0].after[1].stat.acc.map(x => x / 2)
+      }
+    }
+
+    if (effect.modifySkill == 'stellafavorite') {
+      let stella = echelon.find(d => d.id == 294);
+      if(stella !== undefined) {
+        stella.battle.passives.find(p => p.name == 'stella').stacksRequired = 10;
+      }
+    }
+  }
+
+  //no doll id check to have this work on any doll
+  if (effect.modifySkill == 'bleedingjane') {
+    for (let i = 0; i < 5; i++) {
+      if (echelon[i].id == doll.id) {
+        calculateSkillBonus(i);
+        let extraCrit = doll.pre_battle.crit * doll.battle.skillbonus.crit - 100;
+        if (extraCrit > 0) {
+          let bleedingjaneBuff = doll.battle.buffs.find(b => b.name == 'bleedingjane');
+          bleedingjaneBuff.stat.critdmg = 0.6 * extraCrit;
+        }
+      }
     }
   }
 }

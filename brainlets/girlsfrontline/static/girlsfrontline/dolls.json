@@ -20894,7 +20894,7 @@
     "voice": "",
     "name_skill1": "Red Geyser",
     "icon_name_skill1": "dana",
-    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Jump up and smash the ground causing an explosion that deals 0.6x damage in a radius of 2 units. Skill damage increases by 1% for every 1 armor Dana has. Passive: Normal attack is an exploding rocket fist that deals 1.8x damage to 1 enemy with a 10% knockback chance.",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Jump up and smash the ground causing an explosion that deals 0.6x damage in a radius of 2 units. Skill damage increases by 1% for every 1 armor Dana has. Passive: Normal attack is an exploding rocket fist that deals 1.8x damage to 1 enemy with a 10% knockback chance.<br>Favorite Drink: Big Beer: Dana gains 0.5 armor for every 1 armor she has",
 		"skill": {
 			"icd":8,
 			"cd":[18,18,18,18,18,18,18,18,18,18],
@@ -20959,7 +20959,7 @@
     "voice": "",
     "name_skill1": "Love & Dreams",
     "icon_name_skill1": "alma",
-    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Summon an extra 2 drones to attack with 40% damage each. Lasts 4 seconds.",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Summon an extra 2 drones to attack with 40% damage each. Lasts 4 seconds.<br>Favorite Drink: Brandtini: Increase duration of extra drones by 1 second",
 		"skill": {
 			"icd":8,
 			"cd":[18,18,18,18,18,18,18,18,18,18],
@@ -21023,7 +21023,7 @@
     "voice": "",
     "name_skill1": "Puppet Mask",
     "icon_name_skill1": "stella",
-    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Active: Increase self damage by 50% for 5 seconds.<br>Passive: After attacking 16 times, the next attack by her dolls will have +50% crit damage and target the furthest enemy.<br>Passive: Give Sei 10% cooldown reduction (does not affect initial cooldown)",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Active: Increase self damage by 50% for 5 seconds.<br>Passive: After attacking 16 times, the next attack by her dolls will have +50% crit damage and target the furthest enemy.<br>Passive: Give Sei 10% cooldown reduction (does not affect initial cooldown)<br>Favorite drink: Bleeding Jane: Stella's passive will activate at 10 stacks instead",
 		"skill": {
 			"icd":6,
 			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
@@ -21128,7 +21128,7 @@
     "voice": "",
     "name_skill1": "White Knight's Shield",
     "icon_name_skill1": "sei",
-    "tooltip_skill1": "Initial CD: 6s, CD: 10s<br>Active: Grant a 32 base hp shield to all ally SG, SMG, HG units that lasts for 5 seconds. Shield hp ranges from 0.8 to 1.8x the base value depending on enemy hp.<br>Passive: Sei's attacks count for Stella's passive.",
+    "tooltip_skill1": "Initial CD: 6s, CD: 10s<br>Active: Grant a 32 base hp shield to all ally SG, SMG, HG units that lasts for 5 seconds. Shield hp ranges from 0.8 to 1.8x the base value depending on enemy hp.<br>Passive: Sei's attacks count for Stella's passive.<br>Favorite Drink: Moonblast: Shield HP is doubled.",
 		"skill": {
 			"icd":6,
 			"cd":[15,14.4,13.9,13.3,12.8,12.2,11.7,11.1,10.6,10],
@@ -21221,12 +21221,217 @@
     "voice": "",
     "name_skill1": "Mixing Time",
     "icon_name_skill1": "jill",
-    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>skill description",
+    "tooltip_skill1": "Initial CD: 6s, CD: 16s<br>Spend 3 seconds mixing a drink. The drink that is made depends on her equipment. Each drink provides different buffs.<br>Passive: Jill cannot attack. For every 1 point of damage she has, decrease Jill's skill cooldown by 1% (up to 30%). Does not affect initial cooldown.<br>Big Beer (Flanergide, Bronson Extract, Karmotrine): Increase all SG armor by 20%, damage by 30%, and accuracy by 30% for 8s.<br>Brandtini (Adelhyde, Adelhyde, Powdered Delta): Increase MG damage and accuracy by 25% for 8s.<br>Piano Woman (Adelhyde, Bronson Extract, Karmotrine): Increase evasion by 60% for dolls in the front column, while increase damage by 20% for all other dolls. Lasts 8s.<br>Moonblast (Adelhyde, Adelhyde, Karmotrine): Increase all allies' rate of fire by 22% for 8s.<br>Bleeding Jane (Flanergide, Bronson Extract, Powdered Delta): Increase AR/RF crit chance by 25% for 8s. 60% of the critical chance above 100% becomes extra crit damage instead.<br>Fringe Weaver (Karmotrine, Karmotrine, Karmotrine): Increase all allies' damage by 35% for 5s. After the buff wears off, decrease all allies' damage and accuracy by 15% for 3s.<br>Sugar Rush (Any combination not listed already): Increase all allies' damage by 18% for 8s.",
 		"skill": {
 			"icd":6,
-			"cd":[],
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
       "effects": [
-
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":-1,
+          "name":"bigbeer",
+          "after":[
+            {
+              "type":"buff",
+              "target":"sg",
+              "stat":{
+                "armor":[10,11,12,13,14,16,17,18,19,20],
+                "fp":[15,17,18,20,22,23,25,27,28,30],
+                "acc":[15,17,18,20,22,23,25,27,28,30]
+              },
+              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+            },
+            {
+              "type":"modifySkill",
+              "modifySkill":"danafavorite"
+            }
+          ]
+        },
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":-1,
+          "name":"brandtini",
+          "after":[
+            {
+              "type":"buff",
+              "target":"mg",
+              "stat":{
+                "fp":[10,12,13,15,17,18,20,22,23,25],
+                "acc":[10,12,13,15,17,18,20,22,23,25]
+              },
+              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+            },
+            {
+              "type":"modifySkill",
+              "modifySkill":"almafavorite"
+            }
+          ]
+        },
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":-1,
+          "name":"pianowoman",
+          "after":[
+            {
+              "type":"buff",
+              "target":"frontrow",
+              "stat":{
+                "eva":[35,38,41,43,46,49,52,54,57,60]
+              },
+              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+            },
+            {
+              "type":"buff",
+              "target":"middlerow",
+              "stat":{
+                "fp":[10,11,12,13,14,16,17,18,19,20]
+              },
+              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+            },
+            {
+              "type":"buff",
+              "target":"backrow",
+              "stat":{
+                "fp":[10,11,12,13,14,16,17,18,19,20]
+              },
+              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+            },
+            {
+              "type":"modifySkill",
+              "modifySkill":"dorothyfavorite"
+            }
+          ]
+        },
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":-1,
+          "name":"moonblast",
+          "after":[
+            {
+              "type":"buff",
+              "target":"all",
+              "stat":{
+                "rof":[10,11,13,14,15,17,18,19,21,22]
+              },
+              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+            }
+          ]
+        },
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":-1,
+          "name":"bleedingjane",
+          "after":[
+            {
+              "type":"passive",
+              "target":"rf",
+              "trigger":"receivecrit",
+              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8],
+              "effects":[
+                {
+                  "type":"modifySkill",
+                  "modifySkill":"bleedingjane"
+                }
+              ]
+            },
+            {
+              "type":"passive",
+              "target":"ar",
+              "trigger":"receivecrit",
+              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8],
+              "effects":[
+                {
+                  "type":"modifySkill",
+                  "modifySkill":"bleedingjane"
+                }
+              ]
+            },
+            {
+              "type":"buff",
+              "target":"rf",
+              "name":"bleedingjane",
+              "stat":{
+                "critdmg":0
+              },
+              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+            },
+            {
+              "type":"buff",
+              "target":"ar",
+              "name":"bleedingjane",
+              "stat":{
+                "critdmg":0
+              },
+              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+            },
+            {
+              "type":"buff",
+              "target":"rf",
+              "stat":{
+                "crit":[10,12,13,15,17,18,20,22,23,25]
+              },
+              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+            },
+            {
+              "type":"buff",
+              "target":"ar",
+              "stat":{
+                "crit":[10,12,13,15,17,18,20,22,23,25]
+              },
+              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+            },
+            {
+              "type":"modifySkill",
+              "modifySkill":"stellafavorite"
+            }
+          ]
+        },
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":-1,
+          "name":"fringeweaver",
+          "after":[
+            {
+              "type":"buff",
+              "target":"all",
+              "stat":{
+                "fp":[15,17,19,22,24,26,28,31,33,35]
+              },
+              "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5],
+              "after":{
+                "type":"buff",
+                "target":"self",
+                "stat":{
+                  "fp":[-20,-19,-19,-18,-18,-17,-17,-16,-16,-15],
+                  "acc":[-20,-19,-19,-18,-18,-17,-17,-16,-16,-15]
+                },
+                "duration":3
+              }
+            }
+          ]
+        },
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":-1,
+          "name":"sugarrush",
+          "after":[
+            {
+              "type":"buff",
+              "target":"all",
+              "stat":{
+                "fp":[10,11,12,13,14,14,15,16,17,18]
+              },
+              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+            }
+          ]
+        }
       ]
 		},
     "passives":[
@@ -21305,7 +21510,7 @@
     "voice": "",
     "name_skill1": "Secret Modification",
     "icon_name_skill1": "dorothy",
-    "tooltip_skill1": "Initial CD: 2s, CD: 1s<br>Activate the skill to switch between MIRD113 and Nano-Camouflage. By default, Dorothy will use Nano-Camouflage if she is in the middle column, MIRD113 otherwise.<br>MIRD113: Increase self damage by 100% and increase evasion by 80% for allies in her column while decreasing their accuracy by 40%. This effect does not trigger Python's passive.<br>Nano-Camouflage: Increase self evasion by 100% and increase accuracy by 80% for allies in her column while decreasing their evasion by 40%. This effect does not trigger Python's passive.",
+    "tooltip_skill1": "Initial CD: 2s, CD: 1s<br>Activate the skill to switch between MIRD113 and Nano-Camouflage. By default, Dorothy will use Nano-Camouflage if she is in the middle column, MIRD113 otherwise.<br>MIRD113: Increase self damage by 100% and increase evasion by 80% for allies in her column while decreasing their accuracy by 40%. This effect does not trigger Python's passive.<br>Nano-Camouflage: Increase self evasion by 100% and increase accuracy by 80% for allies in her column while decreasing their evasion by 40%. This effect does not trigger Python's passive.<br>Favorite drink: Piano Woman: Reduces the debuffs caused by her skill by 50%",
 		"skill": {
 			"icd":1,
 			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
