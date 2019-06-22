@@ -173,7 +173,7 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   292: [111, 49, 12], //Dana
   294: [20, 4, 112], //Stella
   295: [39, 45, 113], //Sei
-  // 296: [], //Jill
+  296: [107, 108, 109], //Jill
   297: [28, 114, 39], //Dorothy
   293: [20, 8, 115], //Alma
 };
