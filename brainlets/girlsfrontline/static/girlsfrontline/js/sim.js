@@ -2915,6 +2915,7 @@ function preBattleSkillChanges(doll) {
           duration:-1
         };
         dana.battle.buffs.push(armorBuff);
+      }
     } else if (doll.equip1 == 103 && doll.equip2 == 104 && doll.equip3 == 110) {
       doll.battle.skill.effects.find(e => e.name == 'brandtini').delay = 3;
     } else if (doll.equip1 == 103 && doll.equip2 == 105 && doll.equip3 == 109) {
