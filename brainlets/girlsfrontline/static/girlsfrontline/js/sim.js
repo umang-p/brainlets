@@ -2902,20 +2902,6 @@ function preBattleSkillChanges(doll) {
 
     if (doll.equip1 == 106 && doll.equip2 == 105 && doll.equip3 == 109) {
       doll.battle.skill.effects.find(e => e.name == 'bigbeer').delay = 3;
-
-      let dana = echelon.find(d => d.id == 292);
-      if(dana !== undefined) {
-        let armorBuff = {
-          type:"buff",
-          target:"self",
-          stat:{
-            armor:50
-          },
-          level:doll.skilllevel,
-          duration:-1
-        };
-        dana.battle.buffs.push(armorBuff);
-      }
     } else if (doll.equip1 == 103 && doll.equip2 == 104 && doll.equip3 == 110) {
       doll.battle.skill.effects.find(e => e.name == 'brandtini').delay = 3;
     } else if (doll.equip1 == 103 && doll.equip2 == 105 && doll.equip3 == 109) {
@@ -4759,7 +4745,24 @@ function modifySkill(doll, effect, enemy, currentTime) {
     }
   }
 
+  //jill
   if (doll.id == 296) {
+    if (effect.modifySkill == 'danafavorite') {
+      let dana = echelon.find(d => d.id == 292);
+      if(dana !== undefined) {
+        let armorBuff = {
+          type:"buff",
+          target:"self",
+          stat:{
+            armor:50
+          },
+          level:doll.skilllevel,
+          duration:[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+        };
+        activateBuff(dana, armorBuff, null);
+      }
+    }
+
     if (effect.modifySkill == 'almafavorite') {
       let alma = echelon.find(d => d.id == 293);
       if(alma !== undefined) {
