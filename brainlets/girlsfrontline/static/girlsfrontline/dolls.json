@@ -20894,7 +20894,7 @@
     "voice": "",
     "name_skill1": "Red Geyser",
     "icon_name_skill1": "dana",
-    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Jump up and smash the ground causing an explosion that deals 0.6x damage in a radius of 2 units. Skill damage increases by 1% for every 1 armor Dana has. Passive: Normal attack is an exploding rocket fist that deals 1.8x damage to 1 enemy with a 10% knockback chance.<br>Favorite Drink: Big Beer: Dana gains 0.5 armor for every 1 armor she has",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Jump up and smash the ground causing an explosion that deals 0.6x damage in a radius of 2 units. Skill damage increases by 1% for every 1 armor Dana has. Passive: Normal attack is an exploding rocket fist that deals 1.8x damage to 1 enemy with a 10% knockback chance.<br>Favorite Drink: Big Beer: Dana gains 0.5 shield for every 1 armor she has",
 		"skill": {
 			"icd":8,
 			"cd":[18,18,18,18,18,18,18,18,18,18],
