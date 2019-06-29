@@ -9,3 +9,8 @@ brainlets/girlsfrontline/static/girlsfrontline/sim/loading-ump9-loop.gif
 brainlets/girlsfrontline/static/girlsfrontline/sim/loading-ump9-static.png
 brainlets/girlsfrontline/static/girlsfrontline/sim/dolls/icon/master.psd
 brainlets/girlsfrontline/static/girlsfrontline/sim/dolls/icon/spritesheet.psd
+node_modules
+.eslintrc.js
+lintSingle.js
+package.json
+package-lock.json
