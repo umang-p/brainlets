@@ -3153,7 +3153,7 @@ function simulateBattle() {
               if ('aoe_multiplier' in attackBuff) {
                 damage *= $.isArray(attackBuff.aoe_multiplier) ? attackBuff.aoe_multiplier[attackBuff.level - 1] : attackBuff.aoe_multiplier;
               }
-              damage *= Math.min(attackBuff.aoe_radius * 1.5, enemy.count);
+              damage *= damageUtils.getNumEnemyLinksHit(attackBuff.aoe_radius, enemy.count, isBoss);
 
               dmg += damage;
             }
@@ -3360,22 +3360,21 @@ function simulateBattle() {
           }
 
           dmg *= enemy.battle.vulnerability;
-          let hits = Math.min(action.radius * 1.5, enemy.count); //num enemy echelons hit
 
-          if (hits >= 3) {
+          dmg *= damageUtils.getNumEnemyLinksHit(action.radius, enemy.count, isBoss);
+
+          if (enemy.count >= 3) {
             triggerPassive('hit3ormore', doll, enemy);
           } else {
             triggerPassive('hitlessthanthree', doll, enemy);
           }
 
-          if (!isBoss) {
-            dmg *= hits * 5; //5 enemies per enemy echelon
-          }
-
+          // maybe a custom skill control for choosing how many nades overlap
+          // would be better
           if (doll.id == 229) {
             //k11
             if (isBoss) {
-              dmg *= 1.5;
+              dmg *= 2;
               dmg *= doll.links;
             } else {
               dmg *= doll.links;
@@ -3416,13 +3415,12 @@ function simulateBattle() {
             //grenades cant miss
             //grenades cant crit
             dmg *= enemy.battle.vulnerability;
-            let hits = Math.min(action.radius * 1.5, enemy.count); //num enemy echelons hit
+
             if ('fixedDamage' in action) {
               dmg = $.isArray(action.fixedDamage) ? action.fixedDamage[action.level - 1] : action.fixedDamage;
             }
-            if (!isBoss) {
-              dmg *= hits * 5; //5 enemies per enemy echelon
-            }
+
+            dmg *= damageUtils.getNumEnemyLinksHit(action.radius, enemy.count, isBoss);
           }
 
           if (action.timeLeft != 0) {
@@ -3604,14 +3602,7 @@ function simulateBattle() {
           dmg = $.isArray(action.damage) ? action.damage[action.level - 1] : action.damage;
           dmg *= enemy.battle.vulnerability;
 
-          let hits = Math.min(action.radius * 1.5, enemy.count);
-          if (action.radius == 0) {
-            hits = enemy.count;
-          }
-
-          if (!isBoss) {
-            dmg *= hits * 5; //5 enemies per enemy echelon
-          }
+          dmg *= damageUtils.getNumEnemyLinksHit(action.radius, enemy.count, isBoss);
 
           if (currentFrame <= 30 * 8 + 1) {
             totaldamage8s += dmg;
@@ -3629,10 +3620,7 @@ function simulateBattle() {
             dmg = $.isArray(action.damage) ? action.damage[action.level - 1] : action.damage;
             dmg *= enemy.battle.vulnerability;
 
-            let hits = Math.min(action.radius * 1.5, enemy.count);
-            if (!isBoss) {
-              dmg *= hits * 5; //5 enemies per enemy echelon
-            }
+            dmg *= damageUtils.getNumEnemyLinksHit(action.radius, enemy.count, isBoss);
           }
 
           if (action.timeLeft != 0) {
