@@ -3186,7 +3186,7 @@ function simulateBattle() {
             if ('multiplier' in extraAttack) {
               extraAttackFP *= $.isArray(extraAttack.multiplier) ? extraAttack.multiplier[extraAttack.level - 1] : extraAttack.multiplier;
             }
-            let extradmg = Math.max(1, extraAttackFP + Math.min(2, doll.battle.ap - enemy.battle.armor));
+            extradmg = Math.max(1, extraAttackFP + Math.min(2, doll.battle.ap - enemy.battle.armor));
 
             /* pretty sure the multiplier for all skills are applied to fp directly
             if ('multiplier' in extraAttack) {
