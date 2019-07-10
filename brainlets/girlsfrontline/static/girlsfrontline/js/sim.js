@@ -2623,6 +2623,11 @@ function preBattleSkillChanges(doll) {
       doll.battle.skill.effects.find(e => e.name == 'brandtini').delay = 3;
     } else if (doll.equip1 == 103 && doll.equip2 == 105 && doll.equip3 == 109) {
       doll.battle.skill.effects.find(e => e.name == 'pianowoman').delay = 3;
+      let dorothy = echelon.find(d => d.id == 297);
+      if (dorothy !== undefined) {
+        dorothy.battle.skill.effects[0].after[1].stat.eva = dorothy.battle.skill.effects[0].after[1].stat.eva.map(x => x / 2);
+        dorothy.battle.skill.effects[1].after[1].stat.acc = dorothy.battle.skill.effects[0].after[1].stat.acc.map(x => x / 2);
+      }
     } else if (doll.equip1 == 103 && doll.equip2 == 104 && doll.equip3 == 109) {
       doll.battle.skill.effects.find(e => e.name == 'moonblast').delay = 3;
     } else if (doll.equip1 == 106 && doll.equip2 == 105 && doll.equip3 == 110) {
@@ -4481,14 +4486,6 @@ function modifySkill(doll, effect, enemy, currentTime) {
       let alma = echelon.find(d => d.id == 293);
       if (alma !== undefined) {
         alma.battle.skill.effects[0].duration = alma.battle.skill.effects[0].duration.map(time => time + 1);
-      }
-    }
-
-    if (effect.modifySkill == 'dorothyfavorite') {
-      let dorothy = echelon.find(d => d.id == 297);
-      if (dorothy !== undefined) {
-        dorothy.battle.skill.effects[0].after[1].stat.eva = dorothy.battle.skill.effects[0].after[1].stat.eva.map(x => x / 2);
-        dorothy.battle.skill.effects[1].after[1].stat.acc = dorothy.battle.skill.effects[0].after[1].stat.acc.map(x => x / 2);
       }
     }
 
