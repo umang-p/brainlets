@@ -516,6 +516,38 @@ input[type="number"] {
   font-family: 'Oswald', sans-serif;
 }
 
+.has_tooltip {
+  text-underline-position: under;
+  text-decoration: underline rgb(164, 170, 175) dashed;
+}
+
+svg path {
+  fill: inherit;
+}
+
+.favorite-icon {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+	height: 28px;
+	margin: auto;
+  width: 28px;
+  padding: 2px;
+  opacity: 0.3;
+}
+
+.favorite-icon:hover, .favorite-icon.favorited {
+  opacity: 1;
+}
+
+.favorite-icon use, .favorite-icon.favorited:hover use {
+  fill: #9b9b9b;
+}
+
+.favorite-icon.favorited use, .favorite-icon:hover use {
+  fill: #e9ba26;
+}
 
 /* Loading spinner */
 .lds-hourglass {

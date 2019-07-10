@@ -64,7 +64,7 @@ $(function () {
   });
 
   dollUtils.init();
-  
+
   $.ajax({
     async: false,
     dataType: 'json',
@@ -205,10 +205,10 @@ $(function () {
 
 function initEchelon() {
   echelon = [createDummyDoll(12),
-    createDummyDoll(22),
-    createDummyDoll(32),
-    createDummyDoll(13),
-    createDummyDoll(23)];
+  createDummyDoll(22),
+  createDummyDoll(32),
+  createDummyDoll(13),
+  createDummyDoll(23)];
   fairy = createDummyFairy();
 }
 
@@ -255,6 +255,7 @@ function initDollSelectModal() {
   const SPRITE_WIDTH = 129;
   const SPRITE_HEIGHT = 85;
   let doll_types = ['All', 'HG', 'SMG', 'RF', 'AR', 'MG', 'SG'];
+  let favorites = new Set(uiUtils.getPreference('favorites', [], 'data'));
   for (let i = 0; i < dollData.length; i++) {
     let doll = dollData[i];
 
@@ -378,7 +379,8 @@ function initDollSelectModal() {
     // Add fancy view button properties
     $('#doll-select button[data-id=' + doll.id + '].doll_portrait_button')
       .append(tilegrid)
-      .append($(`<span class="doll_portrait_caption">${doll.name}</span>`));
+      .append($(`<span class="doll_portrait_caption">${doll.name}</span>`))
+      .append(`<svg class="favorite-icon${favorites.has(doll.api_name) ? ' favorited' : ''}" data-api-name=${doll.api_name}><use xlink:href="#star"></svg>`);
 
     // Add tile buff amounts
     let tileBuffContainer = $('<div>').addClass('aura_container_caption');
@@ -440,6 +442,20 @@ function initDollSelectModal() {
     hideOpenTooltips();
   });
 
+  // Favorite icon click interaction
+  $('.favorite-icon').on('click', function () {
+    let icon = $(this);
+    console.log(icon);
+    let apiName = icon.data('apiName');
+    if (!icon.hasClass('favorited')) {
+      uiUtils.addToFavorites(apiName);
+    } else {
+      uiUtils.removeFromFavorites(apiName);
+    }
+    uiUtils.sortFavorites();
+    return false;
+  });
+
   // Set switch state based on user setting
   clickableTooltipSwitch.prop('checked', isTooltipClickablePreference);
 
@@ -498,6 +514,7 @@ function initDollSelectModal() {
   // Hide buttons not matching user setting
   filterVisibleButtons();
   refilterVisibleButtons();
+  uiUtils.sortFavorites();
 
   // Hide loading spinner and message
   selectModalInitialized = true;
@@ -964,6 +981,7 @@ function loadTeam(event) {
     $('#pos' + echelon[i].pos).attr('data-index', i);
   }
 
+  calculatePreBattleStatsAllDolls();
   simulateBattle();
   updateUIAllDolls();
   updateUIForFairy();
@@ -1767,6 +1785,42 @@ function updateUIForDoll(index) {
       $('#doll' + (index + 1) + ' .eva span').text(doll.battle.finalstats.eva);
       $('#doll' + (index + 1) + ' .rof span').text(doll.battle.finalstats.rof);
       $('#doll' + (index + 1) + ' .crit span').text(doll.battle.finalstats.crit + '%');
+
+      // Show tooltips for rof and crit
+      let [hasRofWaste, hasCritWaste] = [doll.battle.finalstats.rof_waste > 0, doll.battle.finalstats.crit_waste > 0];
+      let rofWasteString = hasRofWaste ? `+${doll.battle.finalstats.rof_waste}` : '';
+      let critWasteString = hasCritWaste ? `+${(doll.battle.finalstats.crit_waste).toFixed(2)}%` : '';
+
+      if (hasRofWaste) {
+        $('#doll' + (index + 1) + ' .rof span').addClass('has_tooltip');
+      } else {
+        $('#doll' + (index + 1) + ' .rof span').removeClass('has_tooltip');
+      }
+
+      if (hasCritWaste) {
+        $('#doll' + (index + 1) + ' .crit span').addClass('has_tooltip');
+      } else {
+        $('#doll' + (index + 1) + ' .crit span').removeClass('has_tooltip');
+      }
+
+
+      $('#doll' + (index + 1) + ' .rof span').attr('data-original-title',
+        `
+        Rate of Fire: ${doll.battle.finalstats.effective_rof + doll.battle.finalstats.rof_waste} (${doll.battle.finalstats.effective_rof}<span class="text-danger">${rofWasteString}</span>)
+        <br />
+        Effective RoF: ${doll.battle.finalstats.effective_rof}
+        <br />
+        Frames per attack: ${getFrames(doll.battle.finalstats.effective_rof)}
+        <br />
+        Attacks per second: ${(30 / getFrames(doll.battle.finalstats.effective_rof)).toFixed(2)}
+        `
+      );
+      $('#doll' + (index + 1) + ' .crit span').attr('data-original-title',
+        `
+         Crit Chance: ${(doll.battle.finalstats.effective_crit + doll.battle.finalstats.crit_waste).toFixed(0)}% (${(doll.battle.finalstats.effective_crit).toFixed(0)}<span class="text-danger">${critWasteString}</span>)
+        `
+      );
+
       $('#doll' + (index + 1) + ' .critdmg span').text((doll.battle.finalstats.critdmg + 100) + '%');
       if (doll.battle.finalstats.rounds != 0) {
         $('#doll' + (index + 1) + ' .rounds span').text(doll.battle.finalstats.rounds);
@@ -2058,21 +2112,28 @@ function calculatePreBattleStatsForDoll(dollIndex) {
   //cap stats & apply night acc penalty
   doll.pre_battle.fp = Math.max(0, doll.pre_battle.fp);
   doll.pre_battle.eva = Math.max(0, doll.pre_battle.eva);
-  doll.pre_battle.crit = Math.max(0, Math.min(100, doll.pre_battle.crit));
   doll.pre_battle.critdmg = Math.max(0, doll.pre_battle.critdmg);
   doll.pre_battle.ap = Math.max(0, doll.pre_battle.ap);
   doll.pre_battle.armor = Math.max(0, doll.pre_battle.armor);
   doll.pre_battle.acc = Math.max(1, doll.pre_battle.acc);
-  if (doll.type == 6) { //sg
-    doll.pre_battle.rof = Math.min(60, Math.max(15, doll.pre_battle.rof));
-  } else if (doll.type == 5) { //mg
-    doll.pre_battle.rof = Math.min(1000, Math.max(1, doll.pre_battle.rof));
-  } else { //hg,rf,ar,smg
-    doll.pre_battle.rof = Math.min(120, Math.max(15, doll.pre_battle.rof));
-  }
+
+  // Should not be necessary to cap RoF pre-battle if it's capped during calculations
+  // 
+  // if (doll.type == 6) { //sg
+  //   doll.pre_battle.rof = Math.min(60, Math.max(15, doll.pre_battle.rof));
+  // } else if (doll.type == 5) { //mg
+  //   doll.pre_battle.rof = Math.min(1000, Math.max(1, doll.pre_battle.rof));
+  // } else { //hg,rf,ar,smg
+  //   doll.pre_battle.rof = Math.min(120, Math.max(15, doll.pre_battle.rof));
+  // }
+
   if (isNight) {
     doll.pre_battle.acc = Math.floor(doll.pre_battle.acc * (1 - (.9 - .9 * doll.pre_battle.nightview / 100)));
   }
+
+  doll.pre_battle_capped = JSON.parse(JSON.stringify(doll.pre_battle));
+  doll.pre_battle_capped.crit = getCapCrit(doll, doll.pre_battle_capped.crit);
+  doll.pre_battle_capped.rof = getCapRoF(doll, doll.pre_battle_capped.rof);
 }
 
 function calculatePreBattleStatsAllDolls() {
@@ -2627,8 +2688,10 @@ function initDollsForBattle() {
       fp: doll.pre_battle.fp,
       acc: doll.pre_battle.acc,
       eva: doll.pre_battle.eva,
-      rof: doll.pre_battle.rof,
-      crit: doll.pre_battle.crit,
+      rof: getCapRoF(doll, doll.pre_battle.rof),
+      rof_uncapped: doll.pre_battle.rof,
+      crit: getCapCrit(doll, doll.pre_battle.crit),
+      crit_uncapped: doll.pre_battle.crit,
       critdmg: doll.pre_battle.critdmg,
       rounds: doll.pre_battle.rounds,
       armor: doll.pre_battle.armor,
@@ -2638,8 +2701,10 @@ function initDollsForBattle() {
       fp: doll.pre_battle.fp,
       acc: doll.pre_battle.acc,
       eva: doll.pre_battle.eva,
-      rof: doll.pre_battle.rof,
-      crit: doll.pre_battle.crit,
+      rof: getCapRoF(doll, doll.pre_battle.rof),
+      rof_uncapped: doll.pre_battle.rof,
+      crit: getCapCrit(doll, doll.pre_battle.crit),
+      crit_uncapped: doll.pre_battle.crit,
       critdmg: doll.pre_battle.critdmg,
       rounds: doll.pre_battle.rounds,
       armor: doll.pre_battle.armor,
@@ -3732,6 +3797,7 @@ function calculateBattleStats(dollIndex) {
   doll.battle.rof = Math.floor(doll.pre_battle.rof * doll.battle.skillbonus.rof);
   doll.battle.rof_uncapped = doll.battle.rof;
   doll.battle.crit = doll.pre_battle.crit * doll.battle.skillbonus.crit;
+  doll.battle.crit_uncapped = doll.battle.crit;
   doll.battle.critdmg = Math.floor(((doll.pre_battle.critdmg + 100) * doll.battle.skillbonus.critdmg) - 100);
   doll.battle.armor = Math.floor(doll.pre_battle.armor * doll.battle.skillbonus.armor);
   doll.battle.rounds = Math.floor(doll.pre_battle.rounds + doll.battle.skillbonus.rounds);
@@ -3741,28 +3807,30 @@ function calculateBattleStats(dollIndex) {
   //cap stats
   doll.battle.fp = Math.max(0, doll.battle.fp);
   doll.battle.eva = Math.max(0, doll.battle.eva);
-  doll.battle.crit = Math.max(0, Math.min(100, doll.battle.crit));
+  doll.battle.crit = getCapCrit(doll, doll.battle.crit);
   doll.battle.critdmg = Math.max(0, doll.battle.critdmg);
   doll.battle.ap = Math.max(0, doll.battle.ap);
   doll.battle.armor = Math.max(0, doll.battle.armor);
   doll.battle.acc = Math.max(1, doll.battle.acc);
-  if (doll.type == 6) { //sg
-    doll.battle.rof = Math.min(60, Math.max(15, doll.battle.rof));
-  } else if (doll.type == 5) { //mg
-    doll.battle.rof = Math.min(1000, Math.max(1, doll.battle.rof));
-  } else { //hg,rf,ar,smg
-    doll.battle.rof = Math.min(120, Math.max(15, doll.battle.rof));
-  }
+  // if (doll.type == 6) { //sg
+  //   doll.battle.rof = Math.min(60, Math.max(15, doll.battle.rof));
+  // } else if (doll.type == 5) { //mg
+  //   doll.battle.rof = Math.min(1000, Math.max(1, doll.battle.rof));
+  // } else { //hg,rf,ar,smg
+  //   doll.battle.rof = Math.min(120, Math.max(15, doll.battle.rof));
+  // }
 
   // cap RoF properly
-  // doll.battle.rof = getCapRoF(doll, doll.battle.rof);
+  doll.battle.rof = getCapRoF(doll, doll.battle.rof);
 
   //track max stats
   doll.battle.maxstats.fp = Math.max(doll.battle.maxstats.fp, doll.battle.fp);
   doll.battle.maxstats.acc = Math.max(doll.battle.maxstats.acc, doll.battle.acc);
   doll.battle.maxstats.eva = Math.max(doll.battle.maxstats.eva, doll.battle.eva);
   doll.battle.maxstats.rof = Math.max(doll.battle.maxstats.rof, doll.battle.rof);
+  doll.battle.maxstats.rof_uncapped = Math.max(doll.battle.maxstats.rof_uncapped, doll.battle.rof_uncapped);
   doll.battle.maxstats.crit = Math.max(doll.battle.maxstats.crit, doll.battle.crit);
+  doll.battle.maxstats.crit_uncapped = Math.max(doll.battle.maxstats.crit_uncapped, doll.battle.crit_uncapped);
   doll.battle.maxstats.critdmg = Math.max(doll.battle.maxstats.critdmg, doll.battle.critdmg);
   doll.battle.maxstats.rounds = Math.max(doll.battle.currentRounds, Math.max(doll.battle.maxstats.rounds, doll.battle.rounds));
   doll.battle.maxstats.armor = Math.max(doll.battle.maxstats.armor, doll.battle.armor);
@@ -3773,7 +3841,9 @@ function calculateBattleStats(dollIndex) {
   doll.battle.minstats.acc = Math.min(doll.battle.minstats.acc, doll.battle.acc);
   doll.battle.minstats.eva = Math.min(doll.battle.minstats.eva, doll.battle.eva);
   doll.battle.minstats.rof = Math.min(doll.battle.minstats.rof, doll.battle.rof);
+  doll.battle.minstats.rof_uncapped = Math.min(doll.battle.minstats.rof_uncapped, doll.battle.rof_uncapped);
   doll.battle.minstats.crit = Math.min(doll.battle.minstats.crit, doll.battle.crit);
+  doll.battle.minstats.crit_uncapped = Math.min(doll.battle.minstats.crit_uncapped, doll.battle.crit_uncapped);
   doll.battle.minstats.critdmg = Math.min(doll.battle.minstats.critdmg, doll.battle.critdmg);
   doll.battle.minstats.rounds = Math.min(doll.battle.minstats.rounds, doll.battle.rounds);
   doll.battle.minstats.armor = Math.min(doll.battle.minstats.armor, doll.battle.armor);
@@ -4481,23 +4551,28 @@ let getFrames = function (originalRoF) {
 
 let getEffectiveRoF = function (originalRoF) {
   let frames = getFrames(originalRoF);
-  let effectiveRoF = Math.ceil(1500 / (frames + 1));
+  let effectiveRoF = Math.ceil(1500 / Math.ceil(frames + 1));
   return effectiveRoF;
 };
 
 let getCapRoF = function (doll, originalRoF) {
+  originalRoF = Math.floor(originalRoF);
   let capBasedOnType;
   if (doll.type == 6) { //sg
     capBasedOnType = 60;
   } else if (doll.type == 5) { //mg
-    return Math.min(1000, Math.max(1, doll.battle.rof));
+    return Math.floor(Math.min(1000, Math.max(1, doll.battle.rof)));
   } else { //hg,rf,ar,smg
     capBasedOnType = 120;
     // doll.battle.rof_waste = Math.max(0, doll.battle.rof - cap)
     // console.log(`${doll.battle.rof} ; ${doll.battle.maxstats.rof} ; ${doll.battle.rof_waste} ; ${doll.battle.maxstats.rof_waste}`)
   }
   let cap = Math.min(getEffectiveRoF(capBasedOnType), getEffectiveRoF(originalRoF));
-  return Math.min(cap, Math.max(15, originalRoF));
+  return Math.floor(Math.min(cap, Math.max(15, originalRoF)));
+};
+
+let getCapCrit = function (doll, originalCrit) {
+  return Math.min(100, Math.max(0, originalCrit));
 };
 
 function determineFinalStats() {
@@ -4523,19 +4598,20 @@ function determineFinalStats() {
       }
 
       //if stat went both up and down in battle, just show both min and max
-      if (doll.battle.maxstats[stat] != Math.floor(doll.pre_battle[stat]) && doll.battle.minstats[stat] != Math.floor(doll.pre_battle[stat])) {
+      if (doll.battle.maxstats[stat] != Math.floor(doll.pre_battle_capped[stat]) && doll.battle.minstats[stat] != Math.floor(doll.pre_battle_capped[stat])) {
         doll.battle.finalstats[stat] = Math.floor(doll.battle.minstats[stat]) + '-' + Math.floor(doll.battle.maxstats[stat]);
       }
     });
 
     // Show overcap RoF/crit
     doll.battle.finalstats.effective_rof = getCapRoF(doll, doll.battle.maxstats.rof_uncapped);
+    doll.battle.finalstats.effective_crit = getCapCrit(doll, doll.battle.maxstats.crit_uncapped);
 
     let wastedRoF = doll.battle.maxstats.rof_uncapped - doll.battle.finalstats.effective_rof;
-    doll.battle.finalstats.rof_waste = wastedRoF > 0 ? `+${Math.round(wastedRoF)}` : '';
+    doll.battle.finalstats.rof_waste = wastedRoF;
 
-    let wastedCrit = doll.battle.maxstats.crit_uncapped - 100;
-    doll.battle.finalstats.crit_waste = wastedCrit > 0 ? `+${Math.round(wastedCrit)}%` : '';
+    let wastedCrit = Math.max(0, doll.battle.maxstats.crit_uncapped - 100);
+    doll.battle.finalstats.crit_waste = wastedCrit;
   }
 }
 
