@@ -2272,7 +2272,7 @@
       "rounds": 0
     },
     "en_craftable": false,
-    "en_released": false,
+    "en_released": true,
     "construct_time": 0,
     "name": "UMP UX Exoskeleton",
     "tooltip": "Evasion +25-35, Crit Damage +15-25%"
@@ -2306,7 +2306,7 @@
       "rounds": 0
     },
     "en_craftable": false,
-    "en_released": false,
+    "en_released": true,
     "construct_time": 0,
     "name": "PKN03M Night Vision Scope",
     "tooltip": "Night Vision +100%, Damage +5-8"
@@ -2646,7 +2646,7 @@
       "rounds": 500
     },
     "en_craftable": false,
-    "en_released": false,
+    "en_released": true,
     "construct_time": 0,
     "name": "Infinite Ammo Box",
     "tooltip": "Damage -25, Accuracy -10, Evasion -2, Rounds +20-30"
