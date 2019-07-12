@@ -355,12 +355,12 @@ function initDollSelectModal() {
       <a href="https://en.gfwiki.com/wiki/${doll.name.replace(' ', '_')}" target="_blank">Wiki</a>
       ${optional_voodoo}
     </p>
-    <hr>
+    ${`<div class="hr-sect">${doll.construct_time_formatted}</div>`}
     <div class="row">
       <div class="col-2 px-1"><div class="float-right">${tilegrid}</div></div>
       <div class="col-10 pl-1 pr-3 text-left small">Affects: ${tileTargetTypes}<br />${doll.tooltip_tiles}</div>
     </div>
-    <hr>
+    ${`<div class="hr-sect">Art: ${doll.artist} | Voice:&nbsp;<a href="https://myanimelist.net/search/all?q=${encodeURI(doll.voice)}"> ${doll.voice} </a></div>`}
     <div class="row">
       <div class="col-2 pl-3 px-1"><div class="float-right"><img src="/static/girlsfrontline/sim/dolls/icon/skillicon/${doll.icon_name_skill1 ? doll.icon_name_skill1 : 'letiablebuff'}.png" class="img-fluid" /></div></div>
       <div class="col-10 pl-1 pr-3 text-left small"><b>${doll.name_skill1}</b><br />${doll.tooltip_skill1}</div>
@@ -383,7 +383,7 @@ function initDollSelectModal() {
       .append(`<svg class="favorite-icon${favorites.has(doll.api_name) ? ' favorited' : ''}" data-api-name=${doll.api_name}><use xlink:href="#star"></svg>`);
 
     // Add tile buff amounts
-    let tileBuffContainer = $('<div>').addClass('aura_container_caption');
+    let tileBuffContainer = $('<div>').addClass('aura_container_caption stroke-1px');
 
     for (let tileEffect in doll.tiles.effect) {
       let tileEffectAmount = typeof doll.tiles.effect[tileEffect] == 'object' ? doll.tiles.effect[tileEffect][1] : doll.tiles.effect[tileEffect];
@@ -1311,6 +1311,9 @@ function dollMatchesSearchString(doll, regex) {
   if (regex.test(doll.name_skill1)) {
     return true;
   }
+  if (regex.test(doll.construct_time_formatted) || regex.test(doll.construct_time_index)) {
+    return true;
+  }
   return false;
 }
 
@@ -1879,7 +1882,7 @@ function updateUIForDoll(index) {
   let tile_bonuses = ['fp', 'acc', 'eva', 'rof', 'crit', 'skillcd', 'armor'];
   for (let i = 0; i < tile_bonuses.length; i++) {
     if (doll.tile_bonus[tile_bonuses[i]] > 0) {
-      $('#pos' + doll.pos + ' .' + tile_bonuses[i] + ' small').text(doll.tile_bonus[tile_bonuses[i]] + '%');
+      $('#pos' + doll.pos + ' .' + tile_bonuses[i] + ' span').text(doll.tile_bonus[tile_bonuses[i]] + '%');
       $('#pos' + doll.pos + ' .' + tile_bonuses[i]).prop('hidden', false);
     } else {
       $('#pos' + doll.pos + ' .' + tile_bonuses[i]).prop('hidden', true);
@@ -2594,7 +2597,7 @@ function preBattleSkillChanges(doll) {
 
   //dorothy
   if (doll.id == 297) {
-    if (doll.pos == 13 || doll.pos == 23 || doll.pos == 33) {
+    if (doll.pos == 22 || doll.pos == 23 || doll.pos == 24) {
       doll.battle.skill.effects[0].delay = 0;
     } else {
       doll.battle.skill.effects[1].delay = 0;

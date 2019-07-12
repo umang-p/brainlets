@@ -2,7 +2,7 @@
   width: 570px;
 }
 .formation-row {
-  height: 160px;
+  height: 190px;
 }
 .tilegrid {
   right: 0;
@@ -176,6 +176,9 @@ input:checked + .slider-small:before {
   font-family: Oswald, sans-serif;
   font-size: 8pt;
   font-weight: bold;
+}
+
+.stroke-1px {
   text-shadow: 
   -1px -1px 0px rgba(255,255,255,0.5),
    0px -1px 0px rgba(255,255,255,0.5),
@@ -232,15 +235,32 @@ input:checked + .slider-small:before {
   background-color: rgb(107,105,107);
 }
 .tilebuff-row {
-  bottom: 0;
+  left: 4px;
+  bottom: 4px;
 }
 .tilebuff-row img {
   background-color: black;
 }
+.tilebuff-row div span {
+  font-family: Oswald;
+  font-size: 18px;
+  color: black;
+  font-weight: 100;
+  text-align: left;
+  vertical-align: middle;    
+}
+
 .fp img, .armor img, .rof img, .eva img, .acc img, .crit img, .skillcd img, .critdmg img, .rounds img, .ap img, .hp img{
   height: 20px;
   width: 20px;
 }
+
+.tilebuff-row img {
+  height: 27px;
+  width: 27px;
+  border: 1px solid white;
+}
+
 .waste {
   color: FIREBRICK;
 }
@@ -373,10 +393,15 @@ input:checked + .slider-small:before {
 
 #pos12 img, #pos13 img, #pos14 img, #pos22 img, #pos23 img, #pos24 img, #pos32 img, #pos33 img, #pos34 img, .dragging * {
   pointer-events: none;
+  top: 15px;
+  left: 15px;
 }
+
 #pos12, #pos13, #pos14, #pos22, #pos23, #pos24, #pos32, #pos33, #pos34 {
   cursor: move;
-  background-color: rgb(185,185,185);
+  /* background-color: rgb(185,185,185); */
+  width: 190px;
+  height: 190px;
 }
 .table td {
   padding: 0px;
@@ -460,6 +485,14 @@ input[type="number"] {
   }
 }
 
+.formation-3x3-container {
+  background-image: url(/static/girlsfrontline/sim/background.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 570px;
+  height: 570px;
+}
+
 .doll_portrait_button {
   border: 0px;
   width: 129px;
@@ -497,6 +530,7 @@ input[type="number"] {
 .doll_tooltip_header {
   font-family: 'Segoe UI', 'Roboto', sans-serif;
   font-size: 12pt;
+  margin-bottom: 0px;
 }
 
 /* Align text to stat icons */
@@ -514,6 +548,36 @@ input[type="number"] {
 
 .doll_portrait_tile_buff {
   font-family: 'Oswald', sans-serif;
+}
+
+.hr-sect {
+	display: flex;
+	flex-basis: 100%;
+	align-items: center;
+	color: rgba(0, 0, 0, 0.55);
+	margin: 8px 0px;
+}
+
+.hr-sect::before {
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.1);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+  margin: 0px;
+  margin-right: 8px;
+}
+
+.hr-sect::after {
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.1);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+	margin: 0px;
+  margin-left: 8px;
 }
 
 .has_tooltip {

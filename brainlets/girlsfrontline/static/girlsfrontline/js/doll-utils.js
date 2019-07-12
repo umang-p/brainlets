@@ -166,7 +166,7 @@ export const VALID_EQUIPS = [
   [[1, 2, 3, 4, 13], [8], [10, 12]], //ar
   [[5], [1, 2, 3], [14]],            //mg
   [[11], [7, 9], [1, 2, 3, 4]]       //sg
-]; 
+];
 
 export const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
   133: [-1, 5, -1], //6P62
@@ -305,6 +305,21 @@ export default class dollUtils {
       success: function (data, status, xhr) {
         dollData.push(...data);
 
+        dollData.forEach(doll => {
+          if (doll.uncraftable) {
+            doll.construct_time_formatted = 'Uncraftable';
+            doll.construct_time_index = 'uncraftable';
+          } else {
+            if (doll.construct_time !== null) {
+              doll.construct_time_formatted = `${('00' + Math.floor(doll.construct_time / 3600)).slice(-2)}:${('00' + Math.floor((doll.construct_time % 3600) / 60)).slice(-2)}:00`;
+              doll.construct_time_index = `${('00' + Math.floor(doll.construct_time / 3600)).slice(-2)}${('00' + Math.floor((doll.construct_time % 3600) / 60)).slice(-2)}`;
+            } else {
+              doll.construct_time_formatted = '';
+              doll.construct_time_index = '';
+            }
+          }
+        });
+
         // map T-Doll data to dollDataMap
         dollData.reduce(function (map, doll) {
           map[doll.id] = doll;
@@ -337,45 +352,45 @@ export default class dollUtils {
    */
   static setDefaultEquips(doll, isNight, useUnreleasedEquips = true) {
     switch (doll.type) {
-    case 1: //hg
-      doll.equip1 = 39; //suppressor
-      doll.equip2 = 45; //hp ammo
-      doll.equip3 = 35; //X-exo
-      if (isNight) {
-        doll.equip1 = 16; //PEQ
-      }
-      break;
-    case 2: //smg
-      doll.equip1 = doll.id in LIST_DPS_SMG_ID ? 35 : 28; //T-exo, or X-exo if considered DPS
-      doll.equip2 = 45; //hp ammo
-      doll.equip3 = doll.id in LIST_DPS_SMG_ID ? 8 : 39; //Suppressor, or EOT if considered DPS
-      break;
-    case 3: //rf
-      doll.equip1 = 20; //ap ammo
-      doll.equip2 = 4;  //scope
-      doll.equip3 = 57; //cape
-      break;
-    case 4: //ar
-      doll.equip1 = 4;  //scope
-      doll.equip2 = 24; //hv ammo
-      doll.equip3 = 35; //X-exo
-      if (isNight) {
-        doll.equip1 = 16; //PEQ
-      }
-      break;
-    case 5: //mg
-      doll.equip1 = 20; //ap ammo
-      doll.equip2 = 4;  //scope
-      doll.equip3 = 41; //ammo box
-      break;
-    case 6: //sg
-      doll.equip1 = 31; //armor
-      doll.equip2 = 49; //buckshot
-      doll.equip3 = 12; //red dot sight
-      if (isNight) {
-        doll.equip3 = 16; //PEQ
-      }
-      break;
+      case 1: //hg
+        doll.equip1 = 39; //suppressor
+        doll.equip2 = 45; //hp ammo
+        doll.equip3 = 35; //X-exo
+        if (isNight) {
+          doll.equip1 = 16; //PEQ
+        }
+        break;
+      case 2: //smg
+        doll.equip1 = doll.id in LIST_DPS_SMG_ID ? 35 : 28; //T-exo, or X-exo if considered DPS
+        doll.equip2 = 45; //hp ammo
+        doll.equip3 = doll.id in LIST_DPS_SMG_ID ? 8 : 39; //Suppressor, or EOT if considered DPS
+        break;
+      case 3: //rf
+        doll.equip1 = 20; //ap ammo
+        doll.equip2 = 4;  //scope
+        doll.equip3 = 57; //cape
+        break;
+      case 4: //ar
+        doll.equip1 = 4;  //scope
+        doll.equip2 = 24; //hv ammo
+        doll.equip3 = 35; //X-exo
+        if (isNight) {
+          doll.equip1 = 16; //PEQ
+        }
+        break;
+      case 5: //mg
+        doll.equip1 = 20; //ap ammo
+        doll.equip2 = 4;  //scope
+        doll.equip3 = 41; //ammo box
+        break;
+      case 6: //sg
+        doll.equip1 = 31; //armor
+        doll.equip2 = 49; //buckshot
+        doll.equip3 = 12; //red dot sight
+        if (isNight) {
+          doll.equip3 = 16; //PEQ
+        }
+        break;
     }
 
     if (doll.id in SPECIAL_DEFAULT_EQUIPS) {
