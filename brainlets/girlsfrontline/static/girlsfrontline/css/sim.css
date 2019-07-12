@@ -219,6 +219,7 @@ input:checked + .slider-small:before {
   width: 5px;
   height: 5px;
 }
+
 .aura_container_small .tilegrid-col {
   display: block;
   width: 5px;
@@ -228,19 +229,25 @@ input:checked + .slider-small:before {
 .tilegrid-target {
   background-color: rgb(0,255,252);
 }
+
 .tilegrid-self {
   background-color: rgb(255,255,255);
 }
+
 .tilegrid-neutral {
   background-color: rgb(107,105,107);
 }
+
+.tilebuff-row > * {
+  pointer-events: none;
+}
+
 .tilebuff-row {
+  pointer-events: none;
   left: 4px;
   bottom: 4px;
 }
-.tilebuff-row img {
-  background-color: black;
-}
+
 .tilebuff-row div span {
   font-family: Oswald;
   font-size: 18px;
@@ -259,6 +266,7 @@ input:checked + .slider-small:before {
   height: 27px;
   width: 27px;
   border: 1px solid white;
+  background-color: black;
 }
 
 .waste {
@@ -391,10 +399,14 @@ input:checked + .slider-small:before {
   border-bottom-color: var(--bg-color);
 }
 
-#pos12 img, #pos13 img, #pos14 img, #pos22 img, #pos23 img, #pos24 img, #pos32 img, #pos33 img, #pos34 img, .dragging * {
+#pos12 img, #pos13 img, #pos14 img, #pos22 img, #pos23 img, #pos24 img, #pos32 img, #pos33 img, #pos34 img {
   pointer-events: none;
   top: 15px;
   left: 15px;
+}
+
+.dragging * {
+  pointer-events: none;
 }
 
 #pos12, #pos13, #pos14, #pos22, #pos23, #pos24, #pos32, #pos33, #pos34 {
