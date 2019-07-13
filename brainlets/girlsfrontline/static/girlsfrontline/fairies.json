@@ -726,14 +726,14 @@
     "en_released":false,
     "en_craftable":false,
     "tooltip_aura":"Damage +25%, Accuracy +30%, Evasion +65%, Armor +8%",
-    "tooltip_skill":"Increase evasion of allies in the front column by 30% while decreasing their damage by 20%. Increase damage of all other allies by 20% but decrease evasion by 30%. Lasts 20 seconds.",
+    "tooltip_skill":"Increase evasion of allies on the frontline by 30% while decreasing their damage by 20%. Increase damage of all other allies by 20% but decrease evasion by 30%. Lasts 20 seconds.",
     "skill":{
       "icd":0,
       "cd":-1,
       "effects":[
         {
           "type":"buff",
-          "target":"frontrow",
+          "target":"frontline",
           "stat":{
             "eva":[10,12,14,16,18,20,22,24,27,30],
             "fp":[-10,-11,-12,-13,-14,-16,-17,-18,-19,-20]
@@ -742,16 +742,7 @@
         },
         {
           "type":"buff",
-          "target":"middlerow",
-          "stat":{
-            "eva":[-10,-12,-14,-16,-18,-20,-22,-24,-27,-30],
-            "fp":[10,11,12,13,14,16,17,18,19,20]
-          },
-          "duration":20
-        },
-        {
-          "type":"buff",
-          "target":"backrow",
+          "target":"rearline",
           "stat":{
             "eva":[-10,-12,-14,-16,-18,-20,-22,-24,-27,-30],
             "fp":[10,11,12,13,14,16,17,18,19,20]

@@ -4088,6 +4088,33 @@ function getBuffTargets(doll, buff, enemy) {
     }
   }
 
+  if (buff.target == 'frontline') {
+    let frontColumnDolls = echelon.filter(d => d.id != -1 && (d.pos == 14 || d.pos == 24 || d.pos == 34));
+    let middleColumnDolls = echelon.filter(d => d.id != -1 && (d.pos == 13 || d.pos == 23 || d.pos == 33));
+    let backColumnDolls = echelon.filter(d => d.id != -1 && (d.pos == 12 || d.pos == 22 || d.pos == 32));
+
+    if (frontColumnDolls.length > 0) {
+      targets.push(...frontColumnDolls);
+    } else if (middleColumnDolls.length > 0) {
+      targets.push(...middleColumnDolls);
+    } else if (backColumnDolls.length > 0) {
+      targets.push(...backColumnDolls);
+    }
+  }
+
+  if (buff.target == 'rearline') {
+    let frontColumnDolls = echelon.filter(d => d.id != -1 && (d.pos == 14 || d.pos == 24 || d.pos == 34));
+    let middleColumnDolls = echelon.filter(d => d.id != -1 && (d.pos == 13 || d.pos == 23 || d.pos == 33));
+    let backColumnDolls = echelon.filter(d => d.id != -1 && (d.pos == 12 || d.pos == 22 || d.pos == 32));
+
+    if (frontColumnDolls.length > 0) {
+      targets.push(...middleColumnDolls);
+      targets.push(...backColumnDolls);
+    } else if (middleColumnDolls.length > 0) {
+      targets.push(...backColumnDolls);
+    }
+  }
+
   if (buff.target == 'doll') {
     let t = echelon.find(doll => doll.id == buff.dollid);
     if (t !== undefined) {
