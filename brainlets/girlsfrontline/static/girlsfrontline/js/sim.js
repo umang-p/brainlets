@@ -2979,7 +2979,8 @@ function simulateBattle() {
             timer.timeLeft--;
           }
         } else {
-          timer.timeLeft--;
+          if (timer.timeLeft > 0)
+            timer.timeLeft--;
         }
       });
 
@@ -4523,6 +4524,23 @@ function modifySkill(doll, effect, enemy, currentTime) {
       let stella = echelon.find(d => d.id == 294);
       if (stella !== undefined) {
         stella.battle.passives.find(p => p.name == 'stella').stacksRequired = 10;
+      }
+    }
+  }
+
+  //ads
+  if (doll.id == 301) {
+    if (effect.modifySkill == 'increaseStackChance') {
+      let corrosionBuff = doll.battle.buffs.find(b => b.name == 'corrosion');
+      if (corrosionBuff !== undefined) {
+        corrosionBuff.stackChance = 100;
+      }
+    }
+
+    if (effect.modifySkill == 'decreaseStackChance') {
+      let corrosionBuff = doll.battle.buffs.find(b => b.name == 'corrosion');
+      if (corrosionBuff !== undefined) {
+        corrosionBuff.stackChance = [20,22,24,26,30,32,34,36,38,40];
       }
     }
   }

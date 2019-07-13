@@ -15268,7 +15268,7 @@
   {
     "id": 222,
     "id_index": 229,
-    "aliases": ["Remington Model 870"],
+    "aliases": ["Remington Model 870", "DEBIRU"],
     "api_name": "m870p",
     "spritesheet_row": 22,
     "spritesheet_col": 6,
@@ -21741,6 +21741,309 @@
         "fp": 12,
         "acc": 0,
         "eva": 10,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
+  },
+  {
+    "id": 299,
+    "id_index": 270,
+    "aliases": ["Type 4 Rifle"],
+    "api_name": "4type",
+    "spritesheet_row": 21,
+    "spritesheet_col": 8,
+    "name": "Type 4",
+    "rarity": 4,
+    "type": 3,
+    "mod": false,
+    "hp": 95,
+    "fp": 103,
+    "acc": 111,
+    "eva": 108,
+    "rof": 112,
+    "crit": 40,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 121,
+    "construct_time": 14640,
+    "uncraftable": false,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "藤ちょこ",
+    "voice": "TBD",
+    "name_skill1": "Dead Line Strike",
+    "icon_name_skill1": "4type",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Active: Increase self rate of fire by 55% for 5 seconds.<br>Passive: Every 3rd shot cannot miss and has a piercing effect, dealing 1x damage to the target and all enemies it passes through.",
+		"skill": {
+			"icd":6,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[25,28,32,35,38,42,45,48,52,55]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
+		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"everyXhits",
+        "hits":3,
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"normalAttackBuff",
+            "attacksLeft":1,
+            "duration":-1,
+            "multiplier":1,
+            "sureHit":true,
+            "aoe":true,
+            "aoe_multiplier":1,
+            "aoe_radius":-1
+          }
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Skill Cooldown -15%",
+    "tiles": {
+      "self": 23,
+      "target": "1,11,-10,-9",
+      "target_type": 1,
+      "effect": {
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 15,
+        "armor": 0
+      }
+    }
+  },
+  {
+    "id": 300,
+    "id_index": 269,
+    "aliases": ["Heckler & Koch P30"],
+    "api_name": "p30",
+    "spritesheet_row": 22,
+    "spritesheet_col": 8,
+    "name": "P30",
+    "rarity": 4,
+    "type": 1,
+    "mod": false,
+    "hp": 105,
+    "fp": 115,
+    "acc": 125,
+    "eva": 115,
+    "rof": 101,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 119,
+    "construct_time": 3000,
+    "uncraftable": false,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "litsvn",
+    "voice": "TBD",
+    "name_skill1": "Eye for an Eye",
+    "icon_name_skill1": "p30",
+    "tooltip_skill1": "Initial CD: 3s, CD: 3s<br>Activate to switch between [In the Midst of Revenge (Default)] and [Determination to Pursue] passives.<br>In the Midst of Revenge: Increase all allies' rate of fire by 10%<br>Determination to Pursue: Increase all allies' movement speed by 60%",
+		"skill": {
+			"icd":0,
+			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"all",
+          "stat":{
+            "rof":[5,6,6,7,7,8,8,9,9,10]
+          },
+          "duration":-1
+        }
+      ]
+		},
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +18%, Accuracy +60%",
+    "tiles": {
+      "self": 13,
+      "target": "1,-1,11,9",
+      "target_type": 0,
+      "effect": {
+        "fp": [
+          9,
+          18
+        ],
+        "acc": [
+          30,
+          60
+        ],
+        "eva": [
+          0,
+          0
+        ],
+        "rof": [
+          0,
+          0
+        ],
+        "crit": [
+          0,
+          0
+        ],
+        "skillcd": [
+          0,
+          0
+        ],
+        "armor": [
+          0,
+          0
+        ]
+      }
+    }
+  },
+  {
+    "id": 301,
+    "id_index": 214,
+    "aliases": ["ADS amphibious rifle"],
+    "api_name": "adsgun",
+    "spritesheet_row": 20,
+    "spritesheet_col": 8,
+    "name": "ADS",
+    "rarity": 5,
+    "type": 4,
+    "mod": false,
+    "hp": 110,
+    "fp": 100,
+    "acc": 115,
+    "eva": 95,
+    "rof": 111,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 138,
+    "construct_time": 14100,
+    "uncraftable": false,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "小吃",
+    "voice": "TBD",
+    "name_skill1": "Storm Surge",
+    "icon_name_skill1": "stormsurge",
+    "tooltip_skill1": "Initial CD: 5s, CD: 16s<br>Active: Launch a grenade that applies 5 stacks of [Corrosion] to the target, and 3 stacks to other enemies within a radius of 2.5 units of the target. Chance of applying [Corrosion] on normal attacks increases to 100% for 5 seconds.<br>Passive: Normal attacks have a 40% chance of applying 1 stack of [Corrosion] on the target. Upon receiving 5 stacks of [Corrosion], the enemy explodes for 6x damage and is stunned for 2.4 seconds and all stacks of [Corrosion] are removed.<br>[Corrosion]: Decrease target's rate of fire and movement speed by 6% for 5 seconds",
+		"skill": {
+			"icd":5,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"modifySkill",
+          "modifySkill":"increaseStackChance"
+        },
+        {
+          "type":"smoke",
+          "busylinks":1,
+          "delay":1.5,
+          "after":[
+            {
+              "type":"buff",
+              "target":"self",
+              "name":"corrosion",
+              "duration":-1,
+              "stackable":true,
+              "max_stacks":99,
+              "stacks":1,
+              "stacksToAdd":5
+            }
+          ]
+        },
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5],
+          "after":[
+            {
+              "type":"modifySkill",
+              "modifySkill":"decreaseStackChance"
+            }
+          ]
+        }
+      ]
+		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"normalAttack",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"corrosion",
+            "duration":-1,
+            "stackable":true,
+            "max_stacks":99,
+            "stacks":1,
+            "stackChance":[20,22,24,26,30,32,34,36,38,40]
+          }
+        ]
+      },
+      {
+        "type":"passive",
+        "trigger":"hasStacks",
+        "name":"corrosion",
+        "stacksRequired":5,
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"corrosion",
+            "duration":-1,
+            "stackable":true,
+            "max_stacks":99,
+            "stacks":1,
+            "stacksToAdd":-5,
+            "stackChance":[20,22,24,26,30,32,34,36,38,40]
+          },
+          {
+            "type":"smoke",
+            "busylinks":0,
+            "delay":0.5,
+            "after":[
+              {
+                "type":"grenade",
+                "multiplier":[3,3.33,3.67,4,4.33,4.67,5,5.33,5.67,6],
+                "radius":1,
+                "busylinks":0,
+                "delay":0.5
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Accuracy +30%, Evasion +18%",
+    "tiles": {
+      "self": 23,
+      "target": "1,11,-9",
+      "target_type": 2,
+      "effect": {
+        "fp": 0,
+        "acc": 30,
+        "eva": 18,
         "rof": 0,
         "crit": 0,
         "skillcd": 0,
