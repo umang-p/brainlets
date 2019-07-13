@@ -4793,8 +4793,8 @@
 		"en_released":true,
     "artist": "spirtie",
     "voice": "Miki Amano",
-    "name_skill1": "",
-    "icon_name_skill1": "",
+    "name_skill1": "Damage Focus",
+    "icon_name_skill1": "powbuffself",
     "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self damage by 55% for 5 seconds",
 		"skill": {
 			"icd":5,
@@ -9401,7 +9401,7 @@
   {
     "id": 137,
     "id_index": 142,
-    "aliases": ["Fabrique Nationale Five-seveN","5-7","57","FN Five-seven"],
+    "aliases": ["Fabrique Nationale Five-seveN","5-7","57","FN Five-seven","hoxy"],
     "api_name": "fn57",
     "spritesheet_row": 17,
     "spritesheet_col": 4,
@@ -12477,7 +12477,7 @@
   {
     "id": 183,
     "id_index": 188,
-    "aliases": ["Semi-Automatic Tactical, 8 shot","fluff8","pizza","pasta"],
+    "aliases": ["Semi-Automatic Tactical, 8 shot","fluff8","pizza","pasta","floof"],
     "api_name": "sat8",
     "spritesheet_row": 23,
     "spritesheet_col": 5,

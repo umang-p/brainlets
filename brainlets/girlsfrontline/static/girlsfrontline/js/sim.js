@@ -205,10 +205,10 @@ $(function () {
 
 function initEchelon() {
   echelon = [createDummyDoll(12),
-  createDummyDoll(22),
-  createDummyDoll(32),
-  createDummyDoll(13),
-  createDummyDoll(23)];
+    createDummyDoll(22),
+    createDummyDoll(32),
+    createDummyDoll(13),
+    createDummyDoll(23)];
   fairy = createDummyFairy();
 }
 
@@ -4540,7 +4540,7 @@ function modifySkill(doll, effect, enemy, currentTime) {
     if (effect.modifySkill == 'decreaseStackChance') {
       let corrosionBuff = doll.battle.buffs.find(b => b.name == 'corrosion');
       if (corrosionBuff !== undefined) {
-        corrosionBuff.stackChance = [20,22,24,26,30,32,34,36,38,40];
+        corrosionBuff.stackChance = [20, 22, 24, 26, 30, 32, 34, 36, 38, 40];
       }
     }
   }
