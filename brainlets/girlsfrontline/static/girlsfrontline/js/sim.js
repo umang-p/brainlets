@@ -205,10 +205,10 @@ $(function () {
 
 function initEchelon() {
   echelon = [createDummyDoll(12),
-    createDummyDoll(22),
-    createDummyDoll(32),
-    createDummyDoll(13),
-    createDummyDoll(23)];
+  createDummyDoll(22),
+  createDummyDoll(32),
+  createDummyDoll(13),
+  createDummyDoll(23)];
   fairy = createDummyFairy();
 }
 
@@ -1546,7 +1546,13 @@ function changeFairy(event) {
     $('.fairy-skill-toggle').prop('checked', false);
     $('.fairy-skill-toggle').prop('disabled', true);
     fairy.useSkill = false;
+  } else if (fairy.id == 11) {
+    // Parachute fairy, disable skill by default
+    $('.fairy-skill-toggle').prop('checked', false);
+    fairy.useSkill = false;
   } else {
+    $('.fairy-skill-toggle').prop('checked', true);
+    fairy.useSkill = true;
     $('.fairy-skill-level-select').prop('disabled', false);
     $('.fairy-skill-toggle').prop('disabled', false);
   }
