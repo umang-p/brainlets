@@ -4903,6 +4903,11 @@ const SKILL_CONTROL = {
     let skillmodifier = [1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3];
 
     doll.skill.effects[0].multiplier = missinghp * skillmodifier[doll.skilllevel - 1] / 100;
+  },
+  200: function (doll) {
+    //an-94
+    let numHits = parseInt($('.an94-skill').val()) || 0;
+    doll.passives[0].hits = numHits;
   }
 };
 
@@ -5050,6 +5055,14 @@ const SKILL_CONTROL_HTML = {
     let htmlstring = '<p>Enter the percentage of hp missing from the enemy (so if the enemy has 10% hp left, you enter 90 here) then hit apply</p><br>';
     htmlstring += '<input type="number" class="x95-skill">% of hp missing from enemy (min: 0, max:99)</input><p></p>';
     return htmlstring;
+  },
+  200: function (doll) {
+    //an94
+    return `<p>Enter how often AN-94's passive should trigger, in number of attacks, then hit apply.
+     For example, entering a value of 2 means every other attack will have an extra hit,
+     entering a value of 3 means every 3rd attack will have an extra hit, and so on.
+     By default, the sim does not trigger her passive.</p><br /><input type="number" class="an94-skill">
+      Number of attacks until passive activation</input><p></p>`;
   }
 };
 

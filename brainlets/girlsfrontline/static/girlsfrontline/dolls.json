@@ -13759,7 +13759,25 @@
         }
       ]
 		},
+    "passives":[
+      {
+        "type":"passive",
+        "trigger":"everyXhits",
+        "hits":-1,
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"normalAttackBuff",
+            "attacksLeft":1,
+            "duration":-1,
+            "hitCount":2
+          }
+        ]
+      }
+    ],
     "tooltip_skill2": "",
+    "skill_control": true,
     "tooltip_tiles": "Accuracy +55%, Evasion +16%",
     "tiles": {
       "self": 13,
