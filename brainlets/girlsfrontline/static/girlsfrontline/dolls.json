@@ -12692,7 +12692,7 @@
     "construct_time": 6900,
     "uncraftable": true,
     "en_craftable": false,
-		"en_released":false,
+		"en_released":true,
     "artist": "猫头神",
     "voice": "Akane Hanazawa",
     "name_skill1": "Incendiary Grenade",
