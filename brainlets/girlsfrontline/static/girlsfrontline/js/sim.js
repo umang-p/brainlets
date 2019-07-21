@@ -953,6 +953,15 @@ function loadTeam(event) {
     }
 
     let dollLevel = team['doll' + (i + 1)].level == 115 ? 120 : team['doll' + (i + 1)].level; //for teams with mod3 dolls saved before mod default level was changed to 120
+
+    if (dollLevel == 120) {
+      $('#doll' + (i + 1) + ' .doll-level-select').children().prop('disabled', true);
+      $('#doll' + (i + 1) + ' .doll-level-select').children().filter(':first').prop('disabled', false);
+    } else {
+      $('#doll' + (i + 1) + ' .doll-level-select').children().prop('disabled', false);
+      $('#doll' + (i + 1) + ' .doll-level-select').children().filter(':first').prop('disabled', true);
+    }
+
     $('#doll' + (i + 1) + ' .doll-level-select').val(dollLevel);
     $('#doll' + (i + 1) + ' .equip1-level-select').val(team['doll' + (i + 1)].equip1level);
     $('#doll' + (i + 1) + ' .equip2-level-select').val(team['doll' + (i + 1)].equip2level);
