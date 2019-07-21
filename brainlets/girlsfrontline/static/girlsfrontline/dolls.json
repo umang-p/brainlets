@@ -22068,5 +22068,67 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 302,
+    "id_index": 268,
+    "aliases": ["Truvelo CMS"],
+    "api_name": "tcms",
+    "spritesheet_row": 19,
+    "spritesheet_col": 8,
+    "name": "T-CMS",
+    "rarity": 3,
+    "type": 3,
+    "mod": false,
+    "hp": 100,
+    "fp": 115,
+    "acc": 119,
+    "eva": 82,
+    "rof": 110,
+    "crit": 40,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 113,
+    "construct_time": 0,
+    "uncraftable": true,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "sola7764",
+    "voice": "TBD",
+    "name_skill1": "Damage Focus",
+    "icon_name_skill1": "powbuffself",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self damage by 60% for 5 seconds",
+		"skill": {
+			"icd":5,
+			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[35,38,41,43,46,49,52,54,57,60]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
+		},
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Skill Cooldown -12%",
+    "tiles": {
+      "self": 23,
+      "target": "11,-9",
+      "target_type": 1,
+      "effect": {
+        "fp": 0,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 12,
+        "armor": 0
+      }
+    }
   }
 ]
