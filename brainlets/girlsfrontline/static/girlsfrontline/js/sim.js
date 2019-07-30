@@ -3207,7 +3207,13 @@ function simulateBattle() {
             let sureCrit = 'sureCrit' in attackBuff ? attackBuff.sureCrit : false;
             let sureHit = 'sureHit' in attackBuff ? attackBuff.sureHit : false;
 
-            dmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.battle.armor));
+            if ('multiplier' in attackBuff) {
+              let multiplier = $.isArray(attackBuff.multiplier) ? attackBuff.multiplier[attackBuff.level - 1] : attackBuff.multiplier;
+              dmg = Math.max(1, doll.battle.fp * multiplier + Math.min(2, doll.battle.ap - enemy.battle.armor));
+            } else {
+              dmg = Math.max(1, doll.battle.fp + Math.min(2, doll.battle.ap - enemy.battle.armor));
+            }
+
             if (!sureHit) {
               dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
             }
@@ -3221,10 +3227,6 @@ function simulateBattle() {
             dmg *= enemy.battle.vulnerability;
             dmg *= doll.links - doll.battle.busylinks;
 
-            //maybe this needs to be applied directly to fp rather than after armor/acc/crit calculations
-            if ('multiplier' in attackBuff) {
-              dmg *= $.isArray(attackBuff.multiplier) ? attackBuff.multiplier[attackBuff.level - 1] : attackBuff.multiplier;
-            }
             if ('hitCount' in attackBuff) {
               dmg *= $.isArray(attackBuff.hitCount) ? attackBuff.hitCount[attackBuff.level - 1] : attackBuff.hitCount;
             }
