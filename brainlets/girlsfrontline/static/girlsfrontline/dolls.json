@@ -15796,7 +15796,7 @@
     "voice": "TBD",
     "name_skill1": "Terror Grenade",
     "icon_name_skill1": "k11grenade",
-    "tooltip_skill1": "Initial CD: 6s, CD: 16s<br>Launch a grenade based on the number on dummy links, dealing 4x damage to enemies within a radius of 1 unit. Enemies are hit by a grenade are marked for 3 seconds. If K11's grenades hit a marked enemy, they take an additional 2x damage",
+    "tooltip_skill1": "Initial CD: 6s, CD: 16s<br>Launch a grenade based on the number on dummy links, dealing 4x damage to enemies within a radius of 1 unit. Enemies are hit by a grenade are marked for 3 seconds. If K11's grenades hit a marked enemy, they take an additional 2x damage.",
 		"skill": {
 			"icd":6,
 			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],

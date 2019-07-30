@@ -3465,8 +3465,9 @@ function simulateBattle() {
           if (doll.id == 229) {
             //k11
             if (isBoss) {
-              dmg *= 2;
-              dmg *= doll.links;
+              // Overlapping nades deal 6x instead of 4x, 50% boost
+              let additionalDmg = dmg * (doll.links - 1) * 0.5;
+              dmg = dmg * doll.links + additionalDmg;
             } else {
               dmg *= doll.links;
             }
