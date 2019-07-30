@@ -4391,7 +4391,7 @@ function modifySkill(doll, effect, enemy, currentTime) {
         let normalpassive = doll.battle.passives.find(p => p.trigger == 'normalAttack');
         normalpassive.effects[0].stacksToAdd = 1;
         doll.battle.buffs = doll.battle.buffs.filter(b => b.name != 'sitting');
-        doll.battle.buffs = doll.battle.buffs.filter(b => 'attacksOnSingle' in b);
+        doll.battle.buffs = doll.battle.buffs.filter(b => !('attacksOnSingle' in b));
         let feverbuff = {
           type: 'buff',
           target: 'self',
