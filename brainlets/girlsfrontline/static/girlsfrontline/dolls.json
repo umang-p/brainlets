@@ -21403,7 +21403,7 @@
           "after":[
             {
               "type":"buff",
-              "target":"frontrow",
+              "target":"frontline",
               "stat":{
                 "eva":[35,38,41,43,46,49,52,54,57,60]
               },
@@ -21411,15 +21411,7 @@
             },
             {
               "type":"buff",
-              "target":"middlerow",
-              "stat":{
-                "fp":[10,11,12,13,14,16,17,18,19,20]
-              },
-              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
-            },
-            {
-              "type":"buff",
-              "target":"backrow",
+              "target":"rearline",
               "stat":{
                 "fp":[10,11,12,13,14,16,17,18,19,20]
               },
