@@ -2623,13 +2623,13 @@ function preBattleSkillChanges(doll) {
   if (doll.id == 296) {
     doll.battle.timers.find(timer => timer.type == 'normalAttack').timeLeft = -1;
 
-    let cooldownBonus = doll.battle.fp > 30 ? 30 : doll.battle.fp;
+    let cooldownBonus = doll.base.fp > 30 ? 30 : doll.base.fp;
     let skillcdBuff = {
       type: 'buff',
       target: 'self',
       level: doll.skilllevel,
       stat: {
-        skillcd: cooldownBonus
+        skillcd: cooldownBonus * -1
       },
       duration: -1
     };
@@ -2685,7 +2685,7 @@ function initDollsForBattle() {
     doll.battle.currentRounds = doll.battle.rounds;
     doll.battle.armor = doll.pre_battle.armor;
     doll.battle.ap = doll.pre_battle.ap;
-    doll.battle.skillcd = doll.pre_battle.skillcd;
+    doll.battle.skillcd = 1 - doll.pre_battle.skillcd / 100;
     if (doll.type == 6) {
       doll.battle.targets = doll.targets;
     }
@@ -2705,7 +2705,7 @@ function initDollsForBattle() {
       rounds: 0,
       armor: 1,
       ap: 1,
-      skillcd: 0
+      skillcd: 1
     };
     doll.battle.maxstats = {
       fp: doll.pre_battle.fp,
@@ -3019,7 +3019,7 @@ function simulateBattle() {
                   doll.battle.effect_queue.push($.extend({}, effect));
                 }
               });
-              timer.timeLeft = Math.round(doll.battle.skill.cd[doll.skilllevel - 1] * 30 * (1 - doll.battle.skillcd / 100));
+              timer.timeLeft = Math.round(doll.battle.skill.cd[doll.skilllevel - 1] * 30 * doll.battle.skillcd);
             }
           } else if (timer.type == 'skill2') {
             if (reloading && doll.battle.timers.find(timer => timer.type == 'reload').timeLeft != 0) {
@@ -3038,7 +3038,7 @@ function simulateBattle() {
                   doll.battle.effect_queue.push($.extend({}, effect));
                 }
               });
-              timer.timeLeft = Math.round(doll.battle.skill2.cd[doll.skill2level - 1] * 30 * (1 - doll.battle.skillcd / 100));
+              timer.timeLeft = Math.round(doll.battle.skill2.cd[doll.skill2level - 1] * 30 * doll.battle.skillcd);
             }
           } else {
             doll.battle.effect_queue.push($.extend({}, timer));
@@ -3771,7 +3771,7 @@ function calculateSkillBonus(dollIndex) {
     rounds: 0,
     armor: 1,
     ap: 1,
-    skillcd: 0
+    skillcd: 1
   };
 
   $.each(doll.battle.buffs, (index, buff) => {
@@ -3779,7 +3779,7 @@ function calculateSkillBonus(dollIndex) {
       $.each(buff.stat, (stat, amount) => {
         let bonus = 1;
         if ('stackable' in buff) {
-          if (stat == 'rounds' || stat == 'skillcd') {
+          if (stat == 'rounds') {
             bonus = $.isArray(amount) ? amount[buff.level - 1] * buff.stacks : amount * buff.stacks;
             doll.battle.skillbonus[stat] += bonus;
           } else {
@@ -3799,7 +3799,7 @@ function calculateSkillBonus(dollIndex) {
             }
           }
         } else {
-          if (stat == 'rounds' || stat == 'skillcd') {
+          if (stat == 'rounds') {
             doll.battle.skillbonus[stat] += $.isArray(amount) ? amount[buff.level - 1] : amount;
           } else {
             if ('stackChance' in buff) {
@@ -3829,7 +3829,7 @@ function calculateBattleStats(dollIndex) {
   doll.battle.armor = Math.floor(doll.pre_battle.armor * doll.battle.skillbonus.armor);
   doll.battle.rounds = Math.floor(doll.pre_battle.rounds + doll.battle.skillbonus.rounds);
   doll.battle.ap = Math.floor(doll.pre_battle.ap * doll.battle.skillbonus.ap);
-  doll.battle.skillcd = doll.pre_battle.skillcd + doll.battle.skillbonus.skillcd;
+  doll.battle.skillcd = (1 - doll.pre_battle.skillcd / 100) * doll.battle.skillbonus.skillcd;
 
   //cap stats
   doll.battle.fp = Math.max(0, doll.battle.fp);
