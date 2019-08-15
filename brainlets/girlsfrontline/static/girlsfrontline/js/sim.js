@@ -3912,10 +3912,10 @@ function activateBuff(doll, buff, enemy) {
       if (target.battle.buffs.find(b => b.name == buff.name) !== undefined) {
         addStack(target, buff, enemy);
       } else {
-        target.battle.buffs.push($.extend({}, buff));
+        target.battle.buffs.push($.extend(true, {}, buff));
       }
     } else {
-      target.battle.buffs.push($.extend({}, buff));
+      target.battle.buffs.push($.extend(true, {}, buff));
     }
     if ('stat' in buff && doll.name != 'Python' && !('triggerPythonPassive' in buff)) {
       let triggerChance = 'stackChance' in buff ? buff.stackChance : undefined;
@@ -4235,7 +4235,7 @@ function addPassive(doll, passive, enemy, currentTime) {
     let targets = getBuffTargets(doll, passiveskill, enemy);
     $.each(targets, (index, target) => target.battle.passives.push($.extend(true, {}, passiveskill)));
   } else {
-    doll.battle.passives.push(passiveskill);
+    doll.battle.passives.push($.extend(true, {}, passiveskill));
   }
 }
 
@@ -4566,8 +4566,7 @@ function modifySkill(doll, effect, enemy, currentTime) {
   //no doll id check to have this work on any doll
   if (effect.modifySkill == 'bleedingjane') {
     for (let i = 0; i < 5; i++) {
-      if (echelon[i].id == doll.id) {
-        calculateSkillBonus(i);
+      if (echelon[i].pos === doll.pos) {
         let extraCrit = doll.pre_battle.crit * doll.battle.skillbonus.crit - 100;
         if (extraCrit > 0) {
           let bleedingjaneBuff = doll.battle.buffs.find(b => b.name == 'bleedingjane');
