@@ -342,6 +342,11 @@ input:checked + .slider-small:before {
   width: 45px;
   pointer-events: none;
 }
+
+.stars6 button, img.stars6 {
+  background-color: rgb(254, 67, 0);
+}
+
 .stars5 button, img.stars5 {
   background-color: rgb(255, 219, 0);
 }
