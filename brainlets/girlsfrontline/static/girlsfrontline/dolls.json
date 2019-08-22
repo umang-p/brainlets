@@ -13456,7 +13456,7 @@
     "construct_time": 15600,
     "uncraftable": true,
     "en_craftable": false,
-		"en_released":false,
+		"en_released": true,
     "artist": "荒境TS",
     "voice": "Izumi Chiba",
     "name_skill1": "Interdiction Shot",
