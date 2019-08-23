@@ -53,7 +53,7 @@ GROWTH_FACTORS = {
 
 GUN_TYPES = { 'hg':1, 'smg':2, 'rf':3, 'ar':4, 'mg':5, 'sg':6}
 
-TILE_POSITIONS = { 1:12, 2:13, 3:14, 4:22, 5:23, 6:27, 7:32, 8:33, 9:34}
+TILE_POSITIONS = { 1:32, 2:33, 3:34, 4:22, 5:23, 6:24, 7:12, 8:13, 9:14}
 
 def calculate_base_stats(level, type, doll_stat_data):
     doll_type_scalars = TYPE_SCALARS[type - 1]
