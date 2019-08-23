@@ -1,4 +1,11 @@
 import math, json
+from functools import reduce
+
+'''
+tiles, stats, and skill are the most tedious parts of adding new dolls
+this quick and dirty script should help out with tiles/stats.
+skills should be done manually to ensure accuracy
+'''
 
 TYPE_SCALARS = [
   { 'hp': 0.6, 'fp': 0.6, 'rof': 0.8, 'acc': 1.2, 'eva': 1.8, 'armor': 0 }, #hg
@@ -45,6 +52,8 @@ GROWTH_FACTORS = {
 }
 
 GUN_TYPES = { 'hg':1, 'smg':2, 'rf':3, 'ar':4, 'mg':5, 'sg':6}
+
+TILE_POSITIONS = { 1:12, 2:13, 3:14, 4:22, 5:23, 6:27, 7:32, 8:33, 9:34}
 
 def calculate_base_stats(level, type, doll_stat_data):
     doll_type_scalars = TYPE_SCALARS[type - 1]
@@ -136,8 +145,25 @@ def main():
     min_level = 1
     max_level = 120 if digimind else 100
 
-
     data = calculate_stat_data(type, min_stats, max_stats, min_level, max_level)
+
+    print('tile info:')
+    tile_data = {}
+    tile_data['tiles'] = {}
+    tile_data['tiles']['self'] = TILE_POSITIONS[int(input('position doll stands on (1-9):'))]
+    tile_data['tiles']['target'] = reduce((lambda a,b: a + ',' + b), map((lambda x: str(TILE_POSITIONS[int(x)] - tile_data['tiles']['self'])), input('positions affect by doll (1-9)').split(' ')))
+    tile_data['tiles']['target_type'] = list(map((lambda x: GUN_TYPES[x]), input('types of dolls affected by tiles (hg,ar,rf,smg,sg,mg):').split(' ')))
+    print('tile effects:')
+    tile_data['tiles']['effect'] = {}
+    tile_data['tiles']['effect']['fp'] = int(input('fp:')) if type != 1 else list(map((lambda x: int(x)), input('fp:').split(' ')))
+    tile_data['tiles']['effect']['acc'] = int(input('acc:')) if type != 1 else list(map((lambda x: int(x)), input('acc:').split(' ')))
+    tile_data['tiles']['effect']['eva'] = int(input('eva:')) if type != 1 else list(map((lambda x: int(x)), input('eva:').split(' ')))
+    tile_data['tiles']['effect']['rof'] = int(input('rof:')) if type != 1 else list(map((lambda x: int(x)), input('rof:').split(' ')))
+    tile_data['tiles']['effect']['crit'] = int(input('crit:')) if type != 1 else list(map((lambda x: int(x)), input('crit:').split(' ')))
+    tile_data['tiles']['effect']['skillcd'] = int(input('skillcd:')) if type != 1 else list(map((lambda x: int(x)), input('skillcd:').split(' ')))
+    tile_data['tiles']['effect']['armor'] = int(input('armor:')) if type != 1 else list(map((lambda x: int(x)), input('armor:').split(' ')))
+
+    print(json.dumps(tile_data, indent=2))
     print('stat_data:'+json.dumps(data, indent=2))
     print('calculated min stats:'+json.dumps(calculate_base_stats(min_level, type, data), indent=2))
     print('actual min stats:'+json.dumps(min_stats, indent=2))
