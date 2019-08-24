@@ -4919,6 +4919,17 @@ const SKILL_CONTROL = {
     //an-94
     let numHits = parseInt($('.an94-skill').val()) || 0;
     doll.passives[0].hits = numHits;
+  },
+  303: function (doll) {
+    //416 mod3
+    let targetDies = $('.416mod-skill').prop('checked');
+    if (targetDies) {
+      doll.skill2.effects[0].delay = 1.5;
+      doll.skill2.effects[1].delay = -1;
+    } else {
+      doll.skill2.effects[0].delay = -1;
+      doll.skill2.effects[1].delay = 1.5;
+    }
   }
 };
 
@@ -5074,6 +5085,12 @@ const SKILL_CONTROL_HTML = {
      entering a value of 3 means every 3rd attack will have an extra hit, and so on.
      By default, the sim does not trigger her passive.</p><br /><input type="number" class="an94-skill">
       Number of attacks until passive activation</input><p></p>`;
+  },
+  303: function (doll) {
+    //416 mod3
+    return `<p>Check the box if 416's grenade should kill the target (extra damage in a 4 unit radius) [default],
+     uncheck it if the grenade's target should live (extra damage taken by target + DoT effect)</p><br />
+     <input type="checkbox" class="416mod-skill" checked>Grenade kills the main target<p></p>`;
   }
 };
 

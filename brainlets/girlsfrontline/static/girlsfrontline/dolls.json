@@ -22168,5 +22168,103 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 303,
+    "id_index": 65,
+    "aliases": ["Heckler & Koch HK416 Mod","HKM4 Mod"],
+    "api_name": "hk416mod",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "416Mod",
+    "rarity": 6,
+    "type": 4,
+    "mod": true,
+    "hp": 110,
+    "fp": 113,
+    "acc": 111,
+    "eva": 101,
+    "rof": 114,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 126,
+    "construct_time": 14100,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "NIXOO",
+    "voice": "Ai Nonaka",
+    "name_skill1": "Anti-Personnel Grenade",
+    "icon_name_skill1": "riflegrenade",
+    "tooltip_skill1": "Initial CD: 6s, CD: 16s<br>Launch a grenade that deals 16x damage to enemies within a 1.5 unit radius",
+		"skill": {
+			"icd":6,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "radius":1.5,
+          "delay":1.5,
+          "busylinks":1,
+          "multiplier":[6.5,7.56,8.61,9.67,10.72,11.78,12.83,13.89,14.94,16]
+        }
+      ]
+		},
+    "skill_control":true,
+    "name_skill2": "Parasitic Grenade",
+    "icon_name_skill2": "parasiticgrenade",
+    "tooltip_skill2": "Passive: If the grenade kills the main target, deal 3.5x damage to enemies within a 4 unit radius. If the grenade does not kill the main target, deal 0.6x damage every 0.33 seconds and increase damage taken by the target by 20% for 3 seconds",
+    "skill2": {
+      "icd":6,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "radius":4,
+          "delay":1.5,
+          "busylinks":0,
+          "multiplier":[1.5,1.72,1.94,2.17,2.39,2.61,2.83,3.06,3.28,3.5]
+        },
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":-1,
+          "after":[
+            {
+              "type":"buff",
+              "target":"enemy",
+              "stat":{
+                "vulnerability":[10,11,12,13,14,16,17,18,19,20]
+              },
+              "duration":3
+            },
+            {
+              "type":"grenadedot",
+              "multiplier":[0.3,0.33,0.37,0.4,0.43,0.47,0.5,0.53,0.57,0.6],
+              "radius":1,
+              "duration":3,
+              "tick":10
+            }
+          ]
+        }
+      ]
+		},
+    "tooltip_tiles": "Damage +45%",
+    "tiles": {
+      "self": 23,
+      "target": "1,-9",
+      "target_type": 2,
+      "effect": {
+        "fp": 45,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]

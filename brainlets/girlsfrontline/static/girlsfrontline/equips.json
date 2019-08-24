@@ -3908,5 +3908,39 @@
     "construct_time": 0,
     "name": "Artifical Hands",
     "tooltip": "Damage +4-6, Rounds +4-6, Evasion -2"
+  },
+  {
+    "id": 116,
+    "type": 74,
+    "rarity": 5,
+    "fp": 0,
+    "acc": 0,
+    "eva": 12,
+    "movespeed": 0,
+    "rof": 0,
+    "critdmg": 8,
+    "crit": 0,
+    "ap": 0,
+    "armor": 0,
+    "nightview": 0,
+    "rounds": 0,
+    "level_bonus": {
+      "fp": 0,
+      "acc": 0,
+      "eva": 700,
+      "movespeed": 0,
+      "rof": 0,
+      "critdmg": 250,
+      "crit": 0,
+      "ap": 0,
+      "armor": 0,
+      "nightview": 0,
+      "rounds": 0
+    },
+    "en_craftable": false,
+    "en_released": false,
+    "construct_time": 0,
+    "name": "Tactical Headband",
+    "tooltip": "Evasion +12-20, Crit Damage +8-10"
   }
 ]
