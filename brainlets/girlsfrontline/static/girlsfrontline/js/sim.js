@@ -2655,8 +2655,12 @@ function preBattleSkillChanges(doll) {
     } else {
       doll.battle.skill.effects.find(e => e.name == 'sugarrush').delay = 3;
     }
+  }
 
-
+  if (doll.id == 304) {
+    let numStacks = enemyCount > 3 ? 3 : enemyCount;
+    doll.battle.skill.effects[0].after[0].stacks = numStacks;
+    doll.battle.skill.effects[0].after[0].level = doll.skill2level;
   }
 }
 
@@ -2931,11 +2935,13 @@ function simulateBattle() {
             if ('after' in buff) {
               if ($.isArray(buff.after)) {
                 $.each(buff.after, (index, effect) => {
-                  effect.level = buff.level;
+                  if (!('level' in effect))
+                    effect.level = buff.level;
                   doll.battle.effect_queue.push($.extend(true, {}, effect));
                 });
               } else {
-                buff.after.level = buff.level;
+                if (!('level' in buff.after))
+                  buff.after.level = buff.level;
                 doll.battle.effect_queue.push($.extend(true, {}, buff.after));
               }
             }
@@ -3060,11 +3066,13 @@ function simulateBattle() {
             if ('after' in buff) {
               if ($.isArray(buff.after)) {
                 $.each(buff.after, (index, effect) => {
-                  effect.level = buff.level;
+                  if (!('level' in effect))
+                    effect.level = buff.level;
                   doll.battle.effect_queue.push($.extend(true, {}, effect));
                 });
               } else {
-                buff.after.level = buff.level;
+                if (!('level' in buff.after))
+                  buff.after.level = buff.level;
                 doll.battle.effect_queue.push($.extend(true, {}, buff.after));
               }
             }

@@ -22266,5 +22266,84 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 304,
+    "id_index": 26,
+    "aliases": ["Heckler & Koch MP5 Mod"],
+    "api_name": "mp5mod",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "Gr MP5Mod",
+    "rarity": 5,
+    "type": 2,
+    "mod": true,
+    "hp": 100,
+    "fp": 119,
+    "acc": 110,
+    "eva": 113,
+    "rof": 115,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 106,
+    "construct_time": 8400,
+    "en_craftable": true,
+		"en_released": false,
+    "artist": "Saru",
+    "voice": "Naomi Mukaiyama",
+    "name_skill1": "Force Shield",
+    "icon_name_skill1": "invincible",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Evade all incoming attacks for 4 seconds",
+		"skill": {
+			"icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "duration":[2,2.2,2.4,2.7,2.9,3.1,3.3,3.6,3.8,4],
+          "after": [
+            {
+              "type":"buff",
+              "target":"self",
+              "stat":{
+                "eva":[10,11,12,13,14,16,17,18,19,20]
+              },
+              "name":"mp5mod",
+              "stackable":true,
+              "stacks":3,
+              "max_stacks":3,
+              "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+            }
+          ]
+        }
+      ]
+		},
+    "name_skill2": "Immaterial Defense",
+    "icon_name_skill2": "immaterialdefense",
+    "tooltip_skill2": "Passive: When skill1 expires, increase self evasion by 20% for 8 seconds for each enemy group present, stacking up to 3 times.",
+    "skill2": {
+      "icd":8,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": []
+		},
+    "tooltip_tiles": "Accuracy +45%, Crit Rate +20%",
+    "tiles": {
+      "self": 23,
+      "target": "9,-11",
+      "target_type": [4, 3],
+      "effect": {
+        "fp": 0,
+        "acc": 45,
+        "eva": 0,
+        "rof": 0,
+        "crit": 20,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]

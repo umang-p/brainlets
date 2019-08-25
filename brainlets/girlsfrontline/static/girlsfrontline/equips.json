@@ -3942,5 +3942,39 @@
     "construct_time": 0,
     "name": "Tactical Headband",
     "tooltip": "Evasion +12-20, Crit Damage +8-10"
+  },
+  {
+    "id": 117,
+    "type": 75,
+    "rarity": 5,
+    "fp": 7,
+    "acc": 11,
+    "eva": 0,
+    "movespeed": 0,
+    "rof": -4,
+    "critdmg": 0,
+    "crit": 0,
+    "ap": 0,
+    "armor": 0,
+    "nightview": 0,
+    "rounds": 0,
+    "level_bonus": {
+      "fp": 450,
+      "acc": 400,
+      "eva": 0,
+      "movespeed": 0,
+      "rof": 0,
+      "critdmg": 0,
+      "crit": 0,
+      "ap": 0,
+      "armor": 0,
+      "nightview": 0,
+      "rounds": 0
+    },
+    "en_craftable": false,
+    "en_released": false,
+    "construct_time": 0,
+    "name": "LED Tactical Flashlight",
+    "tooltip": "Damage +7-10, Accuracy +11-15, Rate of fire -4"
   }
 ]
