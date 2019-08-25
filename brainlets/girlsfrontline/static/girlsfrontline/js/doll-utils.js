@@ -133,6 +133,7 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   83: [20, 8, 78],   //MG3
   303: [77, 24, 116], //416 mod3
   304: [61, 45, 117], //MP5 mod3
+  305: [67, 45, 118], //UMP9 mod3
 };
 
 const SPECIAL_DEFAULT_EQUIPS_UNRELEASED = {
@@ -224,6 +225,7 @@ export const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
   293: [-1, -1, 73], //Alma
   303: [35, -1, 74], //416 mod3
   304: [19, -1, 75], //MP5 mod3
+  305: [25, -1, 76], //UMP9 mod3
 };
 
 export default class dollUtils {

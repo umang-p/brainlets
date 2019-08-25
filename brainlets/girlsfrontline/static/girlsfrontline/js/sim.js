@@ -3550,11 +3550,13 @@ function simulateBattle() {
           if ('after' in action) {
             if ($.isArray(action.after)) {
               $.each(action.after, (index, effect) => {
-                effect.level = action.level;
+                if (!('level' in effect))
+                  effect.level = action.level;
                 doll.battle.effect_queue.push(effect);
               });
             } else {
-              action.after.level = action.level;
+              if (!('level' in action.after))
+                action.after.level = action.level;
               doll.battle.effect_queue.push(action.after);
             }
           }
@@ -4938,6 +4940,17 @@ const SKILL_CONTROL = {
       doll.skill2.effects[0].delay = -1;
       doll.skill2.effects[1].delay = 1.5;
     }
+  },
+  305: function (doll) {
+    //UMP9 mod3
+    let targetStunned = $('.UMP9mod-skill').prop('checked');
+    if (targetStunned) {
+      doll.skill2.effects[0].delay = 1.5;
+      doll.skill2.effects[1].delay = -1;
+    } else {
+      doll.skill2.effects[0].delay = -1;
+      doll.skill2.effects[1].delay = 1.5;
+    }
   }
 };
 
@@ -5099,6 +5112,12 @@ const SKILL_CONTROL_HTML = {
     return `<p>Check the box if 416's grenade should kill the target (extra damage in a 4 unit radius) [default],
      uncheck it if the grenade's target should live (extra damage taken by target + DoT effect)</p><br />
      <input type="checkbox" class="416mod-skill" checked>Grenade kills the main target<p></p>`;
+  },
+  305: function (doll) {
+    //UMP9 mod3
+    return `<p>Check the box if UMP9's stun grenade should stun the target (damage buff for same column) [default],
+     uncheck it if the target should not be stunned (evasion buff + shield for same column)</p><br />
+     <input type="checkbox" class="UMP9mod-skill" checked>Stun grenade stuns the main target<p></p>`;
   }
 };
 

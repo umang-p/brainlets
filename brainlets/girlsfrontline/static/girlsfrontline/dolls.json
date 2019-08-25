@@ -22290,7 +22290,7 @@
     "armor": 0,
     "growth_rating": 106,
     "construct_time": 8400,
-    "en_craftable": true,
+    "en_craftable": false,
 		"en_released": false,
     "artist": "Saru",
     "voice": "Naomi Mukaiyama",
@@ -22341,6 +22341,97 @@
         "eva": 0,
         "rof": 0,
         "crit": 20,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
+  },
+  {
+    "id": 305,
+    "id_index": 101,
+    "aliases": ["Universale Maschinenpistole 9mm Parabellum Mod","Heckler & Koch UMP9 Mod","family"],
+    "api_name": "ump9mod",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "UMP9Mod",
+    "rarity": 5,
+    "type": 2,
+    "mod": true,
+    "hp": 100,
+    "fp": 105,
+    "acc": 134,
+    "eva": 129,
+    "rof": 110,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 111,
+    "construct_time": 8100,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "ZAGALA",
+    "voice": "Mamiko Noto",
+    "name_skill1": "Stun Grenade",
+    "icon_name_skill1": "flashbomb",
+    "tooltip_skill1": "Initial CD: 5s, CD: 16s<br>Launch a stun grenade that stuns enemies within a radius of 2.5 units for 4.5 seconds",
+		"skill": {
+			"icd":5,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": []
+		},
+    "skill_control": true,
+    "name_skill2": "Snow Owl's Roar",
+    "icon_name_skill2": "snowowlsroar",
+    "tooltip_skill2": "Passive: If the main target of the stun grenade is stunned, increase damage of allies in the same column by 50% for 5 seconds. If the main target cannot be stunned or is already dead, increase evasion by 25% and apply a 25 hp shield to all allies in the same column for 5 seconds.",
+    "skill2": {
+      "icd":5,
+			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"stun",
+          "busylinks":1,
+          "delay":1.5,
+          "after":[
+            {
+              "type":"buff",
+              "target":"column",
+              "stat":{
+                "fp":[25,28,31,33,36,39,42,44,47,50]
+              },
+              "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+            }
+          ]
+        },
+        {
+          "type":"stun",
+          "busylinks":1,
+          "delay":-1,
+          "after":[
+            {
+              "type":"buff",
+              "target":"column",
+              "stat":{
+                "eva":[15,16,17,18,19,21,22,23,24,25]
+              },
+              "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+            }
+          ]
+        }
+      ]
+		},
+    "tooltip_tiles": "Accuracy +30%, Rate of fire +15%",
+    "tiles": {
+      "self": 23,
+      "target": "9,-1,-11",
+      "target_type": 4,
+      "effect": {
+        "fp": 0,
+        "acc": 30,
+        "eva": 0,
+        "rof": 15,
+        "crit": 0,
         "skillcd": 0,
         "armor": 0
       }
