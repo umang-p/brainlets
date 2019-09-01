@@ -2657,10 +2657,16 @@ function preBattleSkillChanges(doll) {
     }
   }
 
+  //mp5mod
   if (doll.id == 304) {
     let numStacks = enemyCount > 3 ? 3 : enemyCount;
     doll.battle.skill.effects[0].after[0].stacks = numStacks;
     doll.battle.skill.effects[0].after[0].level = doll.skill2level;
+  }
+
+  //ssg3000
+  if (doll.id == 307) {
+    doll.battle.skill.numShots = 0;
   }
 }
 
@@ -4569,6 +4575,43 @@ function modifySkill(doll, effect, enemy, currentTime) {
       let corrosionBuff = doll.battle.buffs.find(b => b.name == 'corrosion');
       if (corrosionBuff !== undefined) {
         corrosionBuff.stackChance = [20, 22, 24, 26, 30, 32, 34, 36, 38, 40];
+      }
+    }
+  }
+
+  //ssg3000
+  if (doll.id == 307) {
+    if (effect.modifySkill == 'resetShotCount') {
+      doll.battle.skill.numShots = 0;
+    }
+    if (effect.modifySkill == 'addChargedShot') {
+      doll.battle.skill.numShots++;
+      let hasSniperMode = doll.battle.buffs.find(b => b.name == 'ssg3000') !== undefined ? true : false;
+      if (hasSniperMode) {
+        let chargedshot = {
+          type: 'chargedshot',
+          delay: [2.5, 2.4, 2.3, 2.2, 2.1, 1.9, 1.8, 1.7, 1.6, 1.5],
+          busylinks: 5,
+          canCrit: true,
+          ignoreArmor: false,
+          sureHit: true,
+          multiplier: [1.2, 1.27, 1.33, 1.4, 1.47, 1.53, 1.6, 1.67, 1.73, 1.8],
+          modifySkill: 'addChargedShot',
+          level: doll.skilllevel
+        };
+
+        if (doll.battle.skill.numShots < 7) {
+          if ('delay' in chargedshot) {
+            chargedshot.timeLeft = $.isArray(chargedshot.delay) ? Math.round(chargedshot.delay[chargedshot.level - 1] * 30) : Math.round(chargedshot.delay * 30) + 1;
+            if (doll.pre_battle.skillcd > 0) {
+              chargedshot.timeLeft = Math.floor((1 - doll.pre_battle.skillcd / 100) * chargedshot.timeLeft);
+            }
+          }
+          if ('busylinks' in chargedshot) {
+            doll.battle.busylinks += Math.min(chargedshot.busylinks, doll.links);
+          }
+          doll.battle.action_queue.push(chargedshot);
+        }
       }
     }
   }
