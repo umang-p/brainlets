@@ -1763,6 +1763,7 @@ function updateUIForDoll(index) {
     $('#pos' + doll.pos + ' .tilegrid').prop('hidden', true);
     $('#doll' + (index + 1) + ' .skill-label').attr('data-original-title', '-');
     $('#doll' + (index + 1) + ' .skill2').css('visibility', 'hidden');
+    $('#doll' + (index + 1) + ' .skill-control').css('visibility', 'hidden');
     $('#doll' + (index + 1) + ' .skill-toggle').prop('checked', true);
     $('#doll' + (index + 1) + ' .skill-level-select').val(10);
     $('#doll' + (index + 1) + '-name').text('-');
@@ -3220,6 +3221,7 @@ function simulateBattle() {
             let canCrit = 'canCrit' in attackBuff ? attackBuff.canCrit : true;
             let sureCrit = 'sureCrit' in attackBuff ? attackBuff.sureCrit : false;
             let sureHit = 'sureHit' in attackBuff ? attackBuff.sureHit : false;
+            let piercing = 'piercing' in attackBuff ? attackBuff.piercing : false;
 
             if ('multiplier' in attackBuff) {
               let multiplier = $.isArray(attackBuff.multiplier) ? attackBuff.multiplier[attackBuff.level - 1] : attackBuff.multiplier;
@@ -3261,6 +3263,13 @@ function simulateBattle() {
               damage *= damageUtils.getNumEnemyLinksHit(attackBuff.aoe_radius, enemy.count, isBoss);
 
               dmg += damage;
+            }
+
+            if (piercing) {
+              //temporary solution: hit half of the enemies on the field, not including the target
+              //need to decide on how to determine number of enemies hit by a piercing attack
+              let piercedamage = dmg * (enemy.count - 1) / 2;
+              dmg += piercedamage;
             }
 
             if ('modifySkill' in attackBuff) {
@@ -4994,6 +5003,17 @@ const SKILL_CONTROL = {
       doll.skill2.effects[0].delay = -1;
       doll.skill2.effects[1].delay = 1.5;
     }
+  },
+  308: function (doll) {
+    //Kord
+    let isPenetrationMode = $('.kord-skill').prop('checked');
+    if (isPenetrationMode) {
+      doll.skill.effects[0].target = "self";
+      doll.skill.effects[1].target = "none";
+    } else {
+      doll.skill.effects[0].target = "none";
+      doll.skill.effects[1].target = "self";
+    }
   }
 };
 
@@ -5161,6 +5181,12 @@ const SKILL_CONTROL_HTML = {
     return `<p>Check the box if UMP9's stun grenade should stun the target (damage buff for same column) [default],
      uncheck it if the target should not be stunned (evasion buff + shield for same column)</p><br />
      <input type="checkbox" class="UMP9mod-skill" checked>Stun grenade stuns the main target<p></p>`;
+  },
+  308: function (doll) {
+    //kord
+    return `<p>Check the box if Kord should be in Penetration mode (damage/armor penetration debuff) [default],
+     uncheck it if she should be in Assault mode (damage/accuracy buff). Click apply to save.</p><br />
+     <input type="checkbox" class="kord-skill" checked>Penetration mode<p></p>`;
   }
 };
 

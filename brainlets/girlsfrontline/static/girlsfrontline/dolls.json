@@ -22578,5 +22578,81 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 308,
+    "id_index": 276,
+    "aliases": ["Kord-12.7mm Heavy MG"],
+    "api_name": "kord",
+    "spritesheet_row": 31,
+    "spritesheet_col": 8,
+    "name": "Kord",
+    "rarity": 5,
+    "type": 5,
+    "mod": false,
+    "hp": 120,
+    "fp": 139,
+    "acc": 90,
+    "eva": 85,
+    "rof": 105,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 9,
+    "frames_per_attack":10,
+    "armor": 0,
+    "growth_rating": 112,
+    "construct_time": 0,
+    "uncraftable": true,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "时辰",
+    "voice": "TBD",
+    "name_skill1": "High Pressure Assault",
+    "icon_name_skill1": "kord",
+    "tooltip_skill1": "Initial CD: 0s, CD: 3s<br>Activate to switch between penetration and assault mode. Penetration (default mode): Decrease self damage by 30% and armor penetration by 50%, but attacks pierce enemies. Assault: Increase self damage and accuracy by 20%",
+		"skill": {
+			"icd":0,
+			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "stat":{
+            "fp":[-45,-43,-42,-40,-38,-37,-35,-33,-32,-30],
+            "ap":-50
+          },
+          "piercing":true,
+          "duration":-1
+        },
+        {
+          "type":"buff",
+          "target":"none",
+          "stat":{
+            "fp":[10,11,12,13,14,16,17,18,19,20],
+            "acc":[10,11,12,13,14,16,17,18,19,20]
+          },
+          "duration":-1
+        }
+      ]
+		},
+    "skill_control":true,
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +15%, Armor +15%",
+    "tiles": {
+      "self": 22,
+      "target": "2,-8",
+      "target_type": 6,
+      "effect": {
+        "fp": 15,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 15
+      }
+    }
   }
 ]
