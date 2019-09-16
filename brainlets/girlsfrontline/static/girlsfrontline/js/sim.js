@@ -2669,6 +2669,38 @@ function preBattleSkillChanges(doll) {
   if (doll.id == 307) {
     doll.battle.skill.numShots = 0;
   }
+
+  //acr
+  if (doll.id == 309) {
+    let singleBuff = {
+      type:"buff",
+      target:"self",
+      stat:{
+        fp:[5,6,6,7,7,8,8,9,9,10]
+      },
+      name:"acrSingleDebuffBuff",
+      stackable: true,
+      stacks: 0,
+      max_stacks: 1,
+      level: doll.skilllevel,
+      duration:-1
+    };
+    let multiBuff = {
+      type:"buff",
+      target:"self",
+      stat:{
+        fp:[3,3,3,4,4,4,4,5,5,5]
+      },
+      stackable: true,
+      stacks: 0,
+      max_stacks: 8,
+      name:"acrMultipleDebuffBuff",
+      level: doll.skilllevel,
+      duration:-1
+    };
+    doll.battle.buffs.push(singleBuff);
+    doll.battle.buffs.push(multiBuff);
+  }
 }
 
 function initDollsForBattle() {
@@ -2805,6 +2837,15 @@ function initEnemyForBattle() {
     count: enemyCount,
     eva: enemyEva,
     armor: enemyArmor,
+    fp: 0,
+    acc: 0,
+    rof: 0,
+    crit: 0,
+    critdmg: 0,
+    rounds: 0,
+    ap: 0,
+    movespeed: 0,
+    skillcd: 0,
     vulnerability: 1,
     battle: {
       eva: enemyEva,
@@ -2815,7 +2856,8 @@ function initEnemyForBattle() {
         armor: 1,
         vulnerability: 1,
       },
-      buffs: []
+      buffs: [],
+      passives:[]
     }
   };
 
@@ -4621,6 +4663,86 @@ function modifySkill(doll, effect, enemy, currentTime) {
           }
           doll.battle.action_queue.push(chargedshot);
         }
+      }
+    }
+  }
+
+  //acr
+  if (doll.id == 309) {
+    if (effect.modifySkill == 'checkEnemyDebuffs') {
+      let debuffCount = 0;
+
+      let fpdebuff = false, accdebuff = false, evadebuff = false, rofdebuff = false;
+      let armordebuff = false, movespeeddebuff = false, burning = false, stunned = false;
+      $.each(enemy.battle.buffs, (index, enemyBuff) => {
+        if ('stat' in enemyBuff) {
+          if ('fp' in enemyBuff.stat) {
+            let buffAmount = $.isArray(enemyBuff.stat.fp) ? enemyBuff.stat.fp[enemyBuff.level - 1] : enemyBuff.stat.fp;
+            if (buffAmount < 0)
+              fpdebuff = true;
+          }
+          if ('acc' in enemyBuff.stat) {
+            let buffAmount = $.isArray(enemyBuff.stat.acc) ? enemyBuff.stat.acc[enemyBuff.level - 1] : enemyBuff.stat.acc;
+            if (buffAmount < 0)
+              accdebuff = true;
+          }
+          if ('eva' in enemyBuff.stat) {
+            let buffAmount = $.isArray(enemyBuff.stat.eva) ? enemyBuff.stat.eva[enemyBuff.level - 1] : enemyBuff.stat.eva;
+            if (buffAmount < 0)
+              evadebuff = true;
+          }
+          if ('rof' in enemyBuff.stat) {
+            let buffAmount = $.isArray(enemyBuff.stat.rof) ? enemyBuff.stat.rof[enemyBuff.level - 1] : enemyBuff.stat.rof;
+            if (buffAmount < 0)
+              rofdebuff = true;
+          }
+          if ('armor' in enemyBuff.stat) {
+            let buffAmount = $.isArray(enemyBuff.stat.armor) ? enemyBuff.stat.armor[enemyBuff.level - 1] : enemyBuff.stat.armor;
+            if (buffAmount < 0)
+              armordebuff = true;
+          }
+          if ('movespeed' in enemyBuff.stat) {
+            let buffAmount = $.isArray(enemyBuff.stat.movespeed) ? enemyBuff.stat.movespeed[enemyBuff.level - 1] : enemyBuff.stat.movespeed;
+            if (buffAmount < 0)
+              movespeeddebuff = true;
+          }
+        }
+
+        if ('stun' in enemyBuff && enemyBuff.stun)
+          stunned = true;
+      });
+
+      $.each(echelon, (index, d) => {
+        if (d.id != -1) {
+          if (d.battle.action_queue.find(action => action.type == 'grenadedot')) {
+            burning = true;
+          }
+        }
+      });
+
+      if (fpdebuff)
+        debuffCount++;
+      if (accdebuff)
+        debuffCount++;
+      if (evadebuff)
+        debuffCount++;
+      if (rofdebuff)
+        debuffCount++;
+      if (armordebuff)
+        debuffCount++;
+      if (movespeeddebuff)
+        debuffCount++;
+      if (burning)
+        debuffCount++;
+      if (stunned)
+        debuffCount++;
+
+      if (debuffCount > 0) {
+        doll.battle.buffs.find(b => b.name == 'acrSingleDebuffBuff').stacks = 1;
+        doll.battle.buffs.find(b => b.name == 'acrMultipleDebuffBuff').stacks = debuffCount - 1;
+      } else {
+        doll.battle.buffs.find(b => b.name == 'acrSingleDebuffBuff').stacks = 0;
+        doll.battle.buffs.find(b => b.name == 'acrMultipleDebuffBuff').stacks = 0;
       }
     }
   }
