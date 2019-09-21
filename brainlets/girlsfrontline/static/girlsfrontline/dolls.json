@@ -23117,5 +23117,116 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 310,
+    "id_index": 275,
+    "aliases": ["M1895 Colt–Browning machine gun"],
+    "api_name": "m1895cb",
+    "spritesheet_row": 30,
+    "spritesheet_col": 8,
+    "name": "M1895 CB",
+    "rarity": 4,
+    "type": 5,
+    "mod": false,
+    "hp": 115,
+    "fp": 115,
+    "acc": 105,
+    "eva": 95,
+    "rof": 125,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 10,
+    "frames_per_attack":10,
+    "armor": 0,
+    "growth_rating": 112,
+    "construct_time": 0,
+    "uncraftable": true,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "钟式机动红领巾",
+    "voice": "TBD",
+    "name_skill1": "Preparedness",
+    "icon_name_skill1": "m1895cb",
+    "tooltip_skill1": "Initial CD: 3s, CD: 5s<br>Active: Toggle reserve ammo shooting mode. Use 1 reserve ammo per attack, increasing self damage by 20% and decreasing self accuracy by 15% for 5 seconds. Accuracy reduction stacks up to 10 times. Normal ammo will be used up before starting to use reserve ammo.<br>Passive: Start the battle with 30 reserve ammo, gaining 1 reserve ammo every 3 seconds while not reloading (up to a max of 30 reserve ammo).",
+		"skill": {
+			"icd":3,
+			"cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      "effects": [
+        {
+          "type":"passive",
+          "name":"m1895cb_lastShot",
+          "trigger":"lastShot",
+          "effects":[
+            {
+              "type":"modifySkill",
+              "modifySkill":"useReserveAmmo"
+            }
+          ]
+        }
+      ]
+		},
+    "passives":[
+      {
+        "type":"passive",
+        "name":"m1895cb_ammoGain",
+        "trigger":"time",
+        "interval":3,
+        "effects":[
+          {
+            "type":"modifySkill",
+            "modifySkill":"gainReserveAmmo"
+          }
+        ]
+      },
+      {
+        "type":"passive",
+        "name":"m1895cb_onReload",
+        "trigger":"reload",
+        "effects":[
+          {
+            "type":"passive",
+            "name":"m1895cb_ammoGain",
+            "trigger":"time",
+            "interval":3,
+            "effects":[
+              {
+                "type":"modifySkill",
+                "modifySkill":"gainReserveAmmo"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type":"passive",
+        "name":"m1895cb_onReloadStart",
+        "trigger":"reloadStart",
+        "effects":[
+          {
+            "type":"removePassive",
+            "target":"self",
+            "name":"m1895cb_ammoGain"
+          }
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Accuracy +10%, Armor +12%",
+    "tiles": {
+      "self": 22,
+      "target": "2,12",
+      "target_type": 6,
+      "effect": {
+        "fp": 0,
+        "acc": 10,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 12
+      }
+    }
   }
 ]

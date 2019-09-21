@@ -2701,6 +2701,12 @@ function preBattleSkillChanges(doll) {
     doll.battle.buffs.push(singleBuff);
     doll.battle.buffs.push(multiBuff);
   }
+
+  //m1895cb
+  if (doll.id == 310) {
+    doll.battle.reserveAmmo = 30;
+    doll.battle.reserveAmmoMode = false;
+  }
 }
 
 function initDollsForBattle() {
@@ -3416,6 +3422,7 @@ function simulateBattle() {
               }
               if (reloadTimer.timeLeft != 0) {
                 doll.battle.timers.push(reloadTimer);
+                triggerPassive('reloadStart', doll, enemy);
               } else {
                 doll.battle.currentRounds += doll.battle.rounds;
               }
@@ -4743,6 +4750,130 @@ function modifySkill(doll, effect, enemy, currentTime) {
       } else {
         doll.battle.buffs.find(b => b.name == 'acrSingleDebuffBuff').stacks = 0;
         doll.battle.buffs.find(b => b.name == 'acrMultipleDebuffBuff').stacks = 0;
+      }
+    }
+  }
+
+  //m1895cb
+  if (doll.id == 310) {
+    if (effect.modifySkill == 'gainReserveAmmo') {
+      if (doll.battle.reserveAmmoMode) {
+        doll.battle.buffs.find(b => b.name == 'normalAttackBuff').attacksLeft++;
+        doll.battle.currentRounds++;
+      } else {
+        doll.battle.reserveAmmo = doll.battle.reserveAmmo > 30 ? 30 : doll.battle.reserveAmmo++;
+      }
+    }
+
+    if (effect.modifySkill == 'useReserveAmmo') {
+      if (doll.battle.reserveAmmoMode) {
+        let fpBuff = {
+          type:"buff",
+          target:"self",
+          stat:{
+            fp:[10,11,12,13,14,16,17,18,19,20]
+          },
+          level: doll.skilllevel,
+          name:"m1895cb_fp",
+          stackable:true,
+          stacks:1,
+          max_stacks:1,
+          duration:5
+        };
+        let accBuff = {
+          type:"buff",
+          target:"self",
+          stat:{
+            acc:[-25,-24,-23,-22,-21,-19,-18,-17,-16,-15]
+          },
+          level: doll.skilllevel,
+          name:"m1895cb_acc",
+          stackable:true,
+          stacks:1,
+          max_stacks:10,
+          duration:5
+        };
+
+        activateBuff(doll, fpBuff, enemy);
+        activateBuff(doll, accBuff, enemy);
+
+        if (doll.battle.buffs.find(b => b.name == 'normalAttackBuff').attacksLeft == 1) {
+          let lastShotPassive = {
+            type:"passive",
+            name:"m1895cb_lastShot",
+            trigger:"lastShot",
+            effects:[
+              {
+                type:"modifySkill",
+                modifySkill:"useReserveAmmo"
+              }
+            ]
+          };
+          let delayBuff = {
+            type:"stun",
+            busylinks:0,
+            delay:0.5,
+            after:[
+              lastShotPassive
+            ],
+            timeLeft: doll.frames_per_attack + 2
+          };
+          doll.battle.action_queue.push(delayBuff);
+          doll.battle.reserveAmmoMode = false;
+        }
+      } else {
+        if (doll.battle.passives.find(p => p.name == 'm1895cb_lastShot')) {
+          let removePassiveEffect = {
+            type:"removePassive",
+            target:"self",
+            name:"m1895cb_lastShot"
+          };
+          removePassive(doll, removePassiveEffect, enemy);
+
+          let normalAttackBuff = {
+            type:"buff",
+            target:"self",
+            name:"normalAttackBuff",
+            modifySkill:"useReserveAmmo",
+            attacksLeft:doll.battle.reserveAmmo
+          };
+          doll.battle.buffs.push(normalAttackBuff);
+        } else {
+          doll.battle.currentRounds += doll.battle.reserveAmmo;
+          doll.battle.reserveAmmo = 0;
+
+          let fpBuff = {
+            type:"buff",
+            target:"self",
+            stat:{
+              fp:[10,11,12,13,14,16,17,18,19,20]
+            },
+            level: doll.skilllevel,
+            name:"m1895cb_fp",
+            stackable:true,
+            stacks:1,
+            max_stacks:1,
+            duration:5
+          };
+          let accBuff = {
+            type:"buff",
+            target:"self",
+            stat:{
+              acc:[-25,-24,-23,-22,-21,-19,-18,-17,-16,-15]
+            },
+            level: doll.skilllevel,
+            name:"m1895cb_acc",
+            stackable:true,
+            stacks:1,
+            max_stacks:10,
+            duration:5
+          };
+
+          activateBuff(doll, fpBuff, enemy);
+          activateBuff(doll, accBuff, enemy);
+
+          doll.battle.reserveAmmoMode = true;
+        }
       }
     }
   }
