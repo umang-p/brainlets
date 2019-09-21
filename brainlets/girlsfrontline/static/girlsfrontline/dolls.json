@@ -12233,7 +12233,7 @@
     "construct_time": 13800,
     "uncraftable": true,
     "en_craftable": false,
-		"en_released":false,
+		"en_released":true,
     "artist": "zui",
     "voice": "Kotomi Aihara",
     "name_skill1": "Assault Focus",
