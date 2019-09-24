@@ -4878,6 +4878,21 @@ function modifySkill(doll, effect, enemy, currentTime) {
     }
   }
 
+  //desert Eagle
+  if (doll.id == 312) {
+    if (effect.modifySkill == 'stackMultiplier') {
+      let attackbuff = doll.battle.buffs.find(b => b.name == 'normalAttackBuff');
+      if (attackbuff) {
+        console.log(currentTime);
+        console.log(attackbuff.multiplier);
+        if (attackbuff.multiplier == 1.6)
+          attackbuff.multiplier = 2.56;
+        else if (attackbuff.multiplier == 2.56)
+          attackbuff.multiplier = 4.096;
+      }
+    }
+  }
+
   //no doll id check to have this work on any doll
   if (effect.modifySkill == 'bleedingjane') {
     for (let i = 0; i < 5; i++) {

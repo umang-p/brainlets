@@ -23311,5 +23311,105 @@
         ]
       }
     }
+  },
+  {
+    "id": 312,
+    "id_index": 272,
+    "aliases": ["Desert Eagle", "deagle"],
+    "api_name": "deserteagle",
+    "spritesheet_row": 27,
+    "spritesheet_col": 8,
+    "name": "Desert Eagle",
+    "rarity": 5,
+    "type": 1,
+    "mod": false,
+    "hp": 110,
+    "fp": 136,
+    "acc": 101,
+    "eva": 79,
+    "rof": 98,
+    "crit": 40,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 135,
+    "construct_time": 0,
+    "uncraftable": false,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "Anmi",
+    "voice": "TBD",
+    "name_skill1": "Deterrent Mark",
+    "icon_name_skill1": "deagle",
+    "tooltip_skill1": "Initial CD: 6s, CD: 12s<br>Active: Increase self rate of fire by 40% for 8 seconds, mark the three enemies with the highest combined hp+shield value, increasing their damage taken by 10% for 12 seconds, and focus on attacking the marked enemies, dealing 0.6x extra damage per shot, stacking up to 3 times. Passive: Attacks penetrate hp shields, dealing an equivalent amount of damage to the shield as well.",
+		"skill": {
+			"icd":6,
+			"cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[15,18,21,23,26,29,32,34,37,40]
+          },
+          "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+        },
+        {
+          "type":"buff",
+          "target":"enemy",
+          "stat":{
+            "vulnerability":10
+          },
+          "duration":[6,6.7,7.3,8,8.7,9.3,10,10.7,11.3,12]
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "duration":[6,6.7,7.3,8,8.7,9.3,10,10.7,11.3,12],
+          "canCrit":false,
+          "multiplier":1.6,
+          "modifySkill":"stackMultiplier"
+        }
+      ]
+		},
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +30%, Crit Rate +20%",
+    "tiles": {
+      "self": 12,
+      "target": "2,1,11,10,20",
+      "target_type": 0,
+      "effect": {
+        "fp": [
+          15,
+          30
+        ],
+        "acc": [
+          0,
+          0
+        ],
+        "eva": [
+          0,
+          0
+        ],
+        "rof": [
+          0,
+          0
+        ],
+        "crit": [
+          10,
+          20
+        ],
+        "skillcd": [
+          0,
+          0
+        ],
+        "armor": [
+          0,
+          0
+        ]
+      }
+    }
   }
 ]
