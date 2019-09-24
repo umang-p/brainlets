@@ -23055,7 +23055,7 @@
     "voice": "TBD",
     "name_skill1": "Shadow Strangling Tune",
     "icon_name_skill1": "acr",
-    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Active: Increase self rate of fire by 50% for 5 seconds. While skill is active, decrease damage of the target by 20% for 3 seconds, stacking up to 5 times.<br>Passive: Increase self damage when attacking enemies that are under the effects of: -dmg, -rof, -acc, -eva, -armor, -move speed, burning, stunned. When the enemy has 1 type of debuff, increase ACR's damage by 10%. For each additional type of debuff, increase damage by an additional 5%.",
 		"skill": {
 			"icd":6,
 			"cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
@@ -23226,6 +23226,89 @@
         "crit": 0,
         "skillcd": 0,
         "armor": 12
+      }
+    }
+  },
+  {
+    "id": 311,
+    "id_index": 277,
+    "aliases": ["Heckler & Koch VP70"],
+    "api_name": "vp70",
+    "spritesheet_row": 32,
+    "spritesheet_col": 8,
+    "name": "VP70",
+    "rarity": 3,
+    "type": 1,
+    "mod": false,
+    "hp": 100,
+    "fp": 105,
+    "acc": 101,
+    "eva": 95,
+    "rof": 109,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 127,
+    "construct_time": 0,
+    "uncraftable": true,
+    "en_craftable": false,
+		"en_released":false,
+    "artist": "原子Dan",
+    "voice": "TBD",
+    "name_skill1": "Firepower Suppression",
+    "icon_name_skill1": "powdebuff",
+    "tooltip_skill1": "Initial CD: 6s, CD: 12s<br>Decrease all enemies' damage by 25% for 8 seconds",
+		"skill": {
+			"icd":6,
+			"cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"enemy",
+          "stat":{
+            "fp":[-15,-16,-17,-18,-19,-21,-22,-23,-24,-25]
+          },
+          "duration":[5,6,6,6,7,7,7,8,8,8]
+        }
+      ]
+		},
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Rate of fire +20%, Accuracy +50%",
+    "tiles": {
+      "self": 23,
+      "target": "9,10,-11,-10",
+      "target_type": 0,
+      "effect": {
+        "fp": [
+          0,
+          0
+        ],
+        "acc": [
+          25,
+          50
+        ],
+        "eva": [
+          0,
+          0
+        ],
+        "rof": [
+          10,
+          20
+        ],
+        "crit": [
+          0,
+          0
+        ],
+        "skillcd": [
+          0,
+          0
+        ],
+        "armor": [
+          0,
+          0
+        ]
       }
     }
   }

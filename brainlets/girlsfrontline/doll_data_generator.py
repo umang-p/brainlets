@@ -51,7 +51,7 @@ GROWTH_FACTORS = {
   }
 }
 
-GUN_TYPES = { 'hg':1, 'smg':2, 'rf':3, 'ar':4, 'mg':5, 'sg':6}
+GUN_TYPES = { 'all':0, 'hg':1, 'smg':2, 'rf':3, 'ar':4, 'mg':5, 'sg':6}
 
 TILE_POSITIONS = { 1:32, 2:33, 3:34, 4:22, 5:23, 6:24, 7:12, 8:13, 9:14}
 
@@ -152,7 +152,7 @@ def main():
     tile_data['tiles'] = {}
     tile_data['tiles']['self'] = TILE_POSITIONS[int(input('position doll stands on (1-9):'))]
     tile_data['tiles']['target'] = reduce((lambda a,b: a + ',' + b), map((lambda x: str(TILE_POSITIONS[int(x)] - tile_data['tiles']['self'])), input('positions affect by doll (1-9)').split(' ')))
-    tile_data['tiles']['target_type'] = list(map((lambda x: GUN_TYPES[x]), input('types of dolls affected by tiles (hg,ar,rf,smg,sg,mg):').split(' ')))
+    tile_data['tiles']['target_type'] = list(map((lambda x: GUN_TYPES[x]), input('types of dolls affected by tiles (all,hg,ar,rf,smg,sg,mg):').split(' ')))
     print('tile effects:')
     tile_data['tiles']['effect'] = {}
     tile_data['tiles']['effect']['fp'] = int(input('fp:')) if type != 1 else list(map((lambda x: int(x)), input('fp:').split(' ')))
