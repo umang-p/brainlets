@@ -1360,7 +1360,6 @@ function changeDoll(event) {
 
   echelon[index].skill = $.extend(true, {}, selectedDoll.skill);
   echelon[index].tooltip_skill1 = selectedDoll.tooltip_skill1;
-  echelon[index].links = getNumLinks(index);
 
   if ('frames_per_attack' in selectedDoll) {
     echelon[index].frames_per_attack = selectedDoll.frames_per_attack;
@@ -1402,6 +1401,8 @@ function changeDoll(event) {
   $('#doll' + (index + 1) + ' .skill-toggle').prop('checked', true);
   echelon[index].useSkill = true;
   echelon[index].skilllevel = 10;
+
+  echelon[index].links = getNumLinks(index);
 
   calculateBaseStats(index);
   setDefaultEquips(index);
