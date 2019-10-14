@@ -483,6 +483,15 @@ input[type="number"] {
   overflow-y: auto;
 }
 
+/* Limit size of doll select column */
+#doll1, #doll2, #doll3, #doll4, #doll5 {
+  max-width: 180px;
+}
+
+#doll1-name, #doll2-name, #doll3-name, #doll4-name {
+  max-width: 90px;
+}
+
 /* If viewport wider than 1000 pixels, limit to standard bootstrap modal-lg width;
    min-width 1001 to allow smooth transition on resize */
 @media (min-width: 1001px) {
