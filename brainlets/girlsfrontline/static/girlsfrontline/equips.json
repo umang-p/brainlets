@@ -4248,5 +4248,39 @@
     "construct_time": 0,
     "name": "No32 MLI",
     "tooltip": "Rate of fire +2-4, Crit Rate +24-48"
+  },
+  {
+    "id": 126,
+    "type": 84,
+    "rarity": 5,
+    "fp": 3,
+    "acc": 0,
+    "eva": 0,
+    "movespeed": 0,
+    "rof": 0,
+    "critdmg": 0,
+    "crit": 24,
+    "ap": 0,
+    "armor": 0,
+    "nightview": 0,
+    "rounds": 0,
+    "level_bonus": {
+      "fp": 700,
+      "acc": 0,
+      "eva": 0,
+      "movespeed": 0,
+      "rof": 0,
+      "critdmg": 0,
+      "crit": 1000,
+      "ap": 0,
+      "armor": 0,
+      "nightview": 0,
+      "rounds": 0
+    },
+    "en_craftable": false,
+    "en_released": true,
+    "construct_time": 0,
+    "name": "Advanced Infantry Sight",
+    "tooltip": "Damage +3-5, Crit Rate +24-48"
   }
 ]
