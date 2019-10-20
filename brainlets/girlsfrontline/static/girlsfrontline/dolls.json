@@ -18673,6 +18673,8 @@
           "aoe":true,
           "aoe_multiplier":1,
           "aoe_radius":2.5,
+          "aoe_sureHit": false,
+          "aoe_canCrit": true,
           "duration":[6,6.4,6.8,7.2,7.6,8,8.4,8.8,9.4,10]
         },
         {

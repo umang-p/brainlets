@@ -3309,6 +3309,24 @@ function simulateBattle() {
               if ('aoe_multiplier' in attackBuff) {
                 damage *= $.isArray(attackBuff.aoe_multiplier) ? attackBuff.aoe_multiplier[attackBuff.level - 1] : attackBuff.aoe_multiplier;
               }
+
+              let aoe_sureHit = 'aoe_sureHit' in attackBuff ? attackBuff.aoe_sureHit : true;
+              let aoe_canCrit = 'aoe_canCrit' in attackBuff ? attackBuff.aoe_canCrit : false;
+              let aoe_sureCrit = 'aoe_sureCrit' in attackBuff ? attackBuff.aoe_sureCrit : false;
+
+              if (!aoe_sureHit) {
+                damage *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
+              }
+
+              if (aoe_canCrit) {
+                if (aoe_sureCrit) {
+                  damage *= 1 + (doll.battle.critdmg / 100);
+                } else {
+                  damage *= 1 + (doll.battle.critdmg * (doll.battle.crit / 100) / 100);
+                }
+              }
+
+
               damage *= damageUtils.getNumEnemyLinksHit(attackBuff.aoe_radius, enemy.count, isBoss);
 
               dmg += damage;
