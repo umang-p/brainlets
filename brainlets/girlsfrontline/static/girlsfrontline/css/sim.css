@@ -436,11 +436,11 @@ input:checked + .slider-small:before {
 }
 
 .doll-level-label, .skill-label, .skill2-label {
-  width: 41px;
+  width: 35pt;
 }
 
 .fairy-level-label, .fairy-skill-label, .fairy-talent-label, .fairy-rarity-label {
-  width: 45px;
+  width: 45pt;
 }
 
 #fairy-img {
@@ -483,13 +483,19 @@ input[type="number"] {
   overflow-y: auto;
 }
 
-/* Limit size of doll select column */
-#doll1, #doll2, #doll3, #doll4, #doll5 {
-  max-width: 180px;
+/* Allow labels to overflow, limit their size */
+.card-body .row.no-gutters.mb-3 div div span {
+  max-width: 30pt;
+  white-space: nowrap;
 }
 
-#doll1-name, #doll2-name, #doll3-name, #doll4-name {
-  max-width: 90px;
+/* Limit size of doll select column */
+#doll1, #doll2, #doll3, #doll4, #doll5 {
+  max-width: 160pt;
+}
+
+#doll1-name, #doll2-name, #doll3-name, #doll4-name, #doll4-name {
+  max-width: 80pt;
 }
 
 /* If viewport wider than 1000 pixels, limit to standard bootstrap modal-lg width;
