@@ -4956,7 +4956,7 @@ function getUsableSkillEffects(effects) {
 
 let getFrames = function (originalRoF) {
   let frames = 1500 / originalRoF;
-  frames = Number.isInteger(frames) ? frames - 1 : Math.floor(frames);
+  frames = Math.floor(frames);
   return frames;
 };
 
