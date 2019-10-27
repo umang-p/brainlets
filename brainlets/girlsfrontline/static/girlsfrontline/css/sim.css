@@ -295,6 +295,7 @@ input:checked + .slider-small:before {
 
 .img-tooltip-chibi {
   position: relative;
+  object-fit: cover;
   width: 120px;
   height: 120px;
   z-index: 9000;

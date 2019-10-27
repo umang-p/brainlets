@@ -20,7 +20,15 @@ function calculateBatteries() {
   var totalComfort = 0;
 
   for(var i = 0; i < numDorms; i++) {
-      totalComfort += parseInt($(comfortFields[i]).val()) || 0;
+    let comfort = parseInt($(comfortFields[i]).val());
+    if (comfort > 21000) {
+      $(comfortFields[i]).val(21000);
+    } else if (comfort < 0) {
+      $(comfortFields[i]).val(0);
+    }
+    comfort = parseInt($(comfortFields[i]).val());
+
+    totalComfort += comfort || 0;
   }
 
   var minBatteries = [50, 85, 95, 99, 101, 102, 102.5, 103, 103.5];

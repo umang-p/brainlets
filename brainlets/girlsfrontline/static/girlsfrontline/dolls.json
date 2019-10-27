@@ -6909,7 +6909,7 @@
   {
     "id": 99,
     "id_index": 104,
-    "aliases": ["Heckler & Koch G36C"],
+    "aliases": ["Heckler & Koch G36C", "gomimushi"],
     "api_name": "g36c",
     "spritesheet_row": 19,
     "spritesheet_col": 3,
@@ -7028,7 +7028,7 @@
   {
     "id": 101,
     "id_index": 106,
-    "aliases": ["Fabrique Nationale Fusil Automatique Léger"],
+    "aliases": ["Fabrique Nationale Fusil Automatique Léger", "120 yen"],
     "api_name": "fnfal",
     "spritesheet_row": 21,
     "spritesheet_col": 3,
@@ -13050,7 +13050,7 @@
   {
     "id": 189,
     "id_index": 194,
-    "aliases": ["Daewoo Precision Industries K2"],
+    "aliases": ["Daewoo Precision Industries K2","ketsu"],
     "api_name": "k2",
     "spritesheet_row": 29,
     "spritesheet_col": 5,
@@ -13265,7 +13265,7 @@
   {
     "id": 192,
     "id_index": 197,
-    "aliases": ["Fucile Modello M1891 Carcano Infantry Rifle","strawberry", "pinkcano"],
+    "aliases": ["Fucile Modello M1891 Carcano Infantry Rifle","strawberry","tomato","pinkcano"],
     "api_name": "carcano1891",
     "spritesheet_row": 32,
     "spritesheet_col": 5,
@@ -13349,7 +13349,7 @@
   {
     "id": 193,
     "id_index": 198,
-    "aliases": ["Fucile Corto Modello 1891/38 Carcano Infantry rifle","grape","purplecano","cino"],
+    "aliases": ["Fucile Corto Modello 1891/38 Carcano Infantry rifle","grape","eggplant","purplecano","cino"],
     "api_name": "carcano1938",
     "spritesheet_row": 33,
     "spritesheet_col": 5,
@@ -14495,7 +14495,7 @@
   {
     "id": 208,
     "id_index": 213,
-    "aliases": ["Saab Bofors Dynamics Carl Bertil Johansson - Modular System"],
+    "aliases": ["Saab Bofors Dynamics Carl Bertil Johansson - Modular System", "CMS"],
     "api_name": "cbjms",
     "spritesheet_row": 8,
     "spritesheet_col": 6,
