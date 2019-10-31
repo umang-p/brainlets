@@ -751,5 +751,34 @@
         }
       ]
     }
+  },
+  {
+    "id": 29,
+    "name": "Barrier Fairy",
+    "type": 1,
+    "fp": 0,
+    "acc": 145,
+    "eva": 80,
+    "armor": 220,
+    "critdmg": 0,
+    "growth_rating": 95,
+    "construct_time": 15300,
+    "en_released":false,
+    "en_craftable":false,
+    "tooltip_aura":"Accuracy +72%, Evasion +32%, Armor +22%",
+    "tooltip_skill":"Grant a shield to all allies with armor. Shield can absorb damage equal to 150% of the unit's armor.",
+    "skill":{
+      "icd":0,
+      "cd":-1,
+      "effects":[
+        {
+          "type":"buff",
+          "target":"armored",
+          "stat":{
+          },
+          "duration":-1
+        }
+      ]
+    }
   }
 ]
