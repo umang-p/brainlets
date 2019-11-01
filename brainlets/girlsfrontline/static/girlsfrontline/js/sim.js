@@ -1808,7 +1808,7 @@ function updateUIForDoll(index) {
 
       // Show tooltips for rof and crit
       let [hasRofWaste, hasCritWaste] = [doll.battle.finalstats.rof_waste > 0, doll.battle.finalstats.crit_waste > 0];
-      let rofWasteString = hasRofWaste ? `+${doll.battle.finalstats.rof_waste}` : '';
+      let rofWasteString = hasRofWaste ? `+${doll.battle.finalstats.rof_waste.toFixed(0)}` : '';
       let critWasteString = hasCritWaste ? `+${(doll.battle.finalstats.crit_waste).toFixed(2)}%` : '';
 
       if (hasRofWaste) {
@@ -1826,7 +1826,7 @@ function updateUIForDoll(index) {
 
       $('#doll' + (index + 1) + ' .rof span').attr('data-original-title',
         `
-        Rate of Fire: ${doll.battle.finalstats.effective_rof + doll.battle.finalstats.rof_waste} (${doll.battle.finalstats.effective_rof}<span class="text-danger">${rofWasteString}</span>)
+        Rate of Fire: ${(doll.battle.finalstats.effective_rof + doll.battle.finalstats.rof_waste).toFixed(0)} (${doll.battle.finalstats.effective_rof}<span class="text-danger">${rofWasteString}</span>)
         <br />
         Effective RoF: ${doll.battle.finalstats.effective_rof}
         <br />
@@ -4962,7 +4962,7 @@ let getFrames = function (originalRoF) {
 
 let getEffectiveRoF = function (originalRoF) {
   let frames = getFrames(originalRoF);
-  let effectiveRoF = Math.ceil(1500 / Math.ceil(frames + 1));
+  let effectiveRoF = Math.ceil(1500 / (frames + 0.9999));
   return effectiveRoF;
 };
 
