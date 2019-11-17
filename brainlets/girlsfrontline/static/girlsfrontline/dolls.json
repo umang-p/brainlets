@@ -22089,6 +22089,7 @@
         }
       ]
 		},
+    "skill_control": true,
     "tooltip_skill2": "",
     "tooltip_tiles": "Damage +15%, Accuracy +25%",
     "tiles": {

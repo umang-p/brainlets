@@ -2616,8 +2616,12 @@ function preBattleSkillChanges(doll) {
   if (doll.id == 297) {
     if (doll.pos == 22 || doll.pos == 23 || doll.pos == 24) {
       doll.battle.skill.effects[0].delay = 0;
+      doll.battle.skill.effects[0].after[0].duration = doll.battle.skill.effects[1].delay;
+      doll.battle.skill.effects[0].after[1].duration = doll.battle.skill.effects[1].delay;
     } else {
       doll.battle.skill.effects[1].delay = 0;
+      doll.battle.skill.effects[1].after[0].duration = doll.battle.skill.effects[0].delay;
+      doll.battle.skill.effects[1].after[1].duration = doll.battle.skill.effects[0].delay;
     }
   }
 
@@ -5301,6 +5305,18 @@ const SKILL_CONTROL = {
       doll.skill.effects[0].target = "none";
       doll.skill.effects[1].target = "self";
     }
+  },
+  297: function (doll) {
+    //Dorothy
+    doll.skill = $.extend(true, {}, dollData[doll.id - 1].skill);
+    let switchTime = Math.max(0, parseInt($('.dorothy-skill').val()) || 0);
+    if (switchTime == 0) {
+      return;
+    } else {
+      switchTime = Math.max(2, switchTime);
+      doll.skill.effects[0].delay = switchTime;
+      doll.skill.effects[1].delay = switchTime;
+    }
   }
 };
 
@@ -5474,6 +5490,12 @@ const SKILL_CONTROL_HTML = {
     return `<p>Check the box if Kord should be in Penetration mode (damage/armor penetration debuff) [default],
      uncheck it if she should be in Assault mode (damage/accuracy buff). Click apply to save.</p><br />
      <input type="checkbox" class="kord-skill" checked>Penetration mode<p></p>`;
+  },
+  297: function (doll) {
+    //dorothy
+    return `<p>Enter the number of seconds after which you would like dorothy to switch between Nano-Camouflage mode and MIRD113 mode.
+     This will happen only once. Her starting mode is determined by the row she is in. Enter 0 to never switch (default).</p><br />
+     <input type="number" class="dorothy-skill">Number of seconds into battle she should switch modes (min 2 because of initial cooldown)</input><br><p></p>`;
   }
 };
 
