@@ -136,11 +136,11 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   305: [67, 45, 118], //UMP9 mod3
   124: [126, 24, 35], //Type95
   125: [126, 24, 35], //Type97
+  44: [20, 76, 57],  //Kar98k
+  63: [77, 24, 35],  //416
 };
 
 const SPECIAL_DEFAULT_EQUIPS_UNRELEASED = {
-  44: [20, 76, 57],  //Kar98k
-  63: [77, 24, 35],  //416
   66: [87, 24, 35],  //FAMAS
   60: [4, 24, 93],   //G41
   120: [20, 98, 41], //MG4

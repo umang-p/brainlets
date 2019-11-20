@@ -2578,7 +2578,7 @@
       "rounds": 0
     },
     "en_craftable": false,
-    "en_released": false,
+    "en_released": true,
     "construct_time": 0,
     "name": "PM 5-25X56",
     "tooltip": "Crit Damage +10-20, Crit Rate +24-48"
@@ -2612,7 +2612,7 @@
       "rounds": 0
     },
     "en_craftable": false,
-    "en_released": false,
+    "en_released": true,
     "construct_time": 0,
     "name": "EOT XPS3",
     "tooltip": "Damage +6-8, Crit Rate +15-25, Accuracy +10-14"
