@@ -811,5 +811,41 @@
         }
       ]
     }
+  },
+  {
+    "id": 31,
+    "name": "Combo Fairy",
+    "type": 2,
+    "fp": 220,
+    "acc": 188,
+    "eva": 0,
+    "armor": 0,
+    "critdmg": 80,
+    "growth_rating": 80,
+    "construct_time": 18900,
+    "en_released": false,
+    "en_craftable":false,
+    "tooltip_aura":"Damage +30%, Crit Dmg +15%, Accuracy +85%",
+    "special_control":true,
+    "tooltip_skill":"Gain 1 stack of [Combo] before every battle in the current turn, stacking up to 3 times. [Combo]: At the start of battle, increase all allies' damage by 15% and accuracy by 30% for 20 seconds",
+    "skill":{
+      "icd":0,
+      "cd":-1,
+      "effects":[
+        {
+          "type":"buff",
+          "target":"all",
+          "stat":{
+            "fp":15,
+            "acc":30
+          },
+          "name":"combo",
+          "stackable": true,
+          "stacks": 1,
+          "max_stacks": 3,
+          "duration":20
+        }
+      ]
+    }
   }
 ]

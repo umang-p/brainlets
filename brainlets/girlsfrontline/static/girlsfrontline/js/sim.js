@@ -5572,6 +5572,14 @@ const FAIRY_SKILL_CONTROL_HTML = {
     htmlstring += '<input type="radio" name="effect" value="4">Evasion buff</input><br>';
     htmlstring += '<input type="radio" name="effect" value="5">Damage debuff</input><br>';
     return htmlstring;
+  },
+  31: function () {
+    return `Select the number of [Combo] stacks to use, then hit apply.
+      <div class="combo-fairy">
+        <input type="radio" name="combo-fairy" value ="1" checked>1 stack of [Combo]</input><br />
+        <input type="radio" name="combo-fairy" value ="2">2 stacks of [Combo]</input><br />
+        <input type="radio" name="combo-fairy" value ="3">3 stacks of [Combo]</input><br />
+      </div>`;
   }
 };
 
@@ -5591,6 +5599,12 @@ const FAIRY_SKILL_CONTROL = {
     } else if (bufftype == 5) {
       fairy.skill.effects[0].stat.fp = [-15, -14, -13, -12, -11, -10, -8, -5, 0, 0];
     }
+  },
+  31: function () {
+    fairy.skill = $.extend(true, {}, fairyData[fairy.id - 1].skill);
+
+    let numStacks = parseInt($('#skill-control-body .combo-fairy input:checked').val());
+    fairy.skill.effects[0].stacks = numStacks;
   }
 };
 
