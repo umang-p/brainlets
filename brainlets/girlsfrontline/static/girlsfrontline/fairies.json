@@ -847,5 +847,36 @@
         }
       ]
     }
+  },
+  {
+    "id": 32,
+    "name": "Twin Fairy",
+    "type": 1,
+    "fp": 110,
+    "acc": 110,
+    "eva": 110,
+    "armor": 105,
+    "critdmg": 0,
+    "growth_rating": 115,
+    "construct_time": 16800,
+    "en_released": false,
+    "en_craftable":false,
+    "tooltip_aura":"Damage +18%, Accuracy +60%, Evasion +48%, Armor + 12%",
+    "tooltip_skill":"In the next battle, summon 2 symbiotic fairy clones with 750 hp. Shield fairy clone has 20 armor and deals 150 damage every 2 seconds to enemies within a 2 unit radius of the closest enemy. Missile fairy clone has 30 evasion and deals 450 damage every 2 seconds to the furthest enemy.",
+    "skill":{
+      "icd":2,
+      "cd":2,
+      "effects":[
+        {
+          "type":"grenade",
+          "damage":[42,54,66,78,90,102,114,126,138,150],
+          "radius":2
+        },
+        {
+          "type":"chargedshot",
+          "damage":[126,162,198,234,270,306,342,378,414,450]
+        }
+      ]
+    }
   }
 ]
