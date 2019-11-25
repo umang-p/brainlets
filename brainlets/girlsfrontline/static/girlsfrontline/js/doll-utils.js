@@ -138,6 +138,12 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   125: [126, 24, 35], //Type97
   44: [20, 76, 57],  //Kar98k
   63: [77, 24, 35],  //416
+  10: [119, 45, 35], //ppk
+  71: [120, 24, 35], //sig510
+  153: [31, 121, 12], //ks23
+  50: [20, 122, 57], //bm59
+  17: [28, 45, 123], //m3
+  105: [20, 124, 41], //fg42
 };
 
 const SPECIAL_DEFAULT_EQUIPS_UNRELEASED = {
@@ -145,13 +151,11 @@ const SPECIAL_DEFAULT_EQUIPS_UNRELEASED = {
   60: [4, 24, 93],   //G41
   120: [20, 98, 41], //MG4
   7: [99, 45, 35],   //Stechkin
-  10: [119, 45, 35], //ppk
-  71: [120, 24, 35], //sig510
-  153: [31, 121, 12], //ks23
-  50: [20, 122, 57], //bm59
-  17: [28, 45, 123], //m3
-  105: [20, 124, 41], //fg42
   48: [20, 125, 57], //lee enfield
+  18: [35, 45, 127], //ingram
+  69: [4, 24, 128], //tar21
+  3: [129, 45, 35], //m9
+  79: [20, 4, 130], //rpd
 };
 
 // Night equips, mostly to give ARs PEQs instead of special equipment
@@ -244,6 +248,10 @@ export const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
   48: [-1, 83, -1], //lee enfield
   124: [84, -1, -1], //type95
   125: [84, -1, -1], //type97
+  18: [-1, -1, 85], //ingram
+  69: [-1, -1, 86], //tar21
+  3: [87, -1, -1], //m9
+  79: [-1, -1, 88], //rpd
 };
 
 export default class dollUtils {
