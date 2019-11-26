@@ -1,22 +1,26 @@
 #sim-controls {
   width: 570px;
 }
+
 .formation-row {
   height: 190px;
 }
+
 .tilegrid {
   right: 0;
 }
+
 .tilegrid-row {
   width: 36px;
 }
+
 .tilegrid-col {
   height: 12px;
 }
 
 /*****
  * BEGIN CSS for Slider "checkbox" */
- .switch {
+.switch {
   position: relative;
   display: inline-block;
   width: 68px;
@@ -161,7 +165,7 @@ input:checked + .slider-small:before {
 .aura_container_img {
   width: 14px;
   background-color: black;
-  border-style: solid; 
+  border-style: solid;
   border-width: 1px;
   border-color: rgba(255,255,255,0.5);
 }
@@ -179,7 +183,7 @@ input:checked + .slider-small:before {
 }
 
 .stroke-1px {
-  text-shadow: 
+  text-shadow:
   -1px -1px 0px rgba(255,255,255,0.5),
    0px -1px 0px rgba(255,255,255,0.5),
    1px -1px 0px rgba(255,255,255,0.5),
@@ -254,7 +258,7 @@ input:checked + .slider-small:before {
   color: black;
   font-weight: 100;
   text-align: left;
-  vertical-align: middle;    
+  vertical-align: middle;
 }
 
 .fp img, .armor img, .rof img, .eva img, .acc img, .crit img, .skillcd img, .critdmg img, .rounds img, .ap img, .hp img{
@@ -272,23 +276,28 @@ input:checked + .slider-small:before {
 .waste {
   color: FIREBRICK;
 }
+
 #enemy-eva, #enemy-armor, #enemy-count, #walk-time, #battle-length {
   width: 50px;
 }
+
 #day-btn img, #night-btn img {
   height: 23px;
   width: 23px;
   pointer-events: none;
 }
+
 .affection img {
   height: 40px;
   width: 40px;
   cursor: pointer;
 }
+
 .equip1, .equip2, .equip3 {
   height: 64px;
   width: 64px;
 }
+
 .add-doll img, .remove-doll img {
   width: 50px;
 }
@@ -308,7 +317,7 @@ input:checked + .slider-small:before {
   height: 32px;
   background-color: rgba(125,125,125,0.8);
   position: relative;
-  top: 2px; 
+  top: 2px;
   left: 5px;
   margin-bottom: -32px;
   z-index: 8000;
@@ -324,13 +333,14 @@ input:checked + .slider-small:before {
   position: absolute;
   background-color: #fff;
 }
+
 .chibi-plus-horizontal {
   width: 70%;
   height: 20%;
   left: 15%;
   top: 40%;
-
 }
+
 .chibi-plus-vertical {
   width: 20%;
   height: 70%;
@@ -351,27 +361,35 @@ input:checked + .slider-small:before {
 .stars5 button, img.stars5 {
   background-color: rgb(255, 219, 0);
 }
+
 .stars4 button, img.stars4 {
   background-color: rgb(137, 191, 23);
 }
+
 .stars3 button, img.stars3 {
   background-color: rgb(90, 182, 222);
 }
+
 .stars2 button, img.stars2 {
   background-color: rgb(222, 223, 222);
 }
+
 .stars1 button, img.stars1 {
   background-color: rgb(222, 182, 255);
 }
+
 .tooltip {
   --bg-color: #f8f9fa;
 }
+
 .tooltip.show {
   opacity: 1;
 }
+
 .tooltip.show:hover {
   opacity: 0.9; /* Let users see what's behind the tooltip when they are mousing over */
 }
+
 .tooltip-inner {
   max-width: 450px;
   background-color: var(--bg-color);
@@ -383,24 +401,31 @@ input:checked + .slider-small:before {
 .bs-tooltip-top .arrow::before {
   border-top-color: var(--bg-color);
 }
+
 .bs-tooltip-top-left .arrow::before {
   border-top-color: var(--bg-color);
 }
+
 .bs-tooltip-top-right .arrow::before {
   border-top-color:var(--bg-color);
 }
+
 .bs-tooltip-right .arrow::before {
   border-right-color: var(--bg-color);
 }
+
 .bs-tooltip-left .arrow::before {
   border-left-color: var(--bg-color);
 }
+
 .bs-tooltip-bottom .arrow::before {
   border-bottom-color: var(--bg-color);
 }
+
 .bs-tooltip-bottom-left .arrow::before {
   border-bottom-color: var(--bg-color);
 }
+
 .bs-tooltip-bottom-right .arrow::before {
   border-bottom-color: var(--bg-color);
 }
@@ -421,9 +446,11 @@ input:checked + .slider-small:before {
   width: 190px;
   height: 190px;
 }
+
 .table td {
   padding: 0px;
 }
+
 #damage-graph-modal .modal-dialog {
   width: 1000px;
   max-width: 1000px;
@@ -432,6 +459,7 @@ input:checked + .slider-small:before {
 #doll-select button {
   min-width: 80px;
 }
+
 .skill2, .skill-control  {
   visibility: hidden;
 }
@@ -507,9 +535,9 @@ input[type="number"] {
   }
 }
 
-/* If viewport narrower than 1000 pixels, make modal up to 80% 
+/* If viewport narrower than 1000 pixels, make modal up to 80%
    of viewport size or 576 pixels, whichever is larger.
-   
+
    Allows 5 columns in doll select on wide screens, 4 on narrow */
 @media (max-width: 1000px) {
   .modal-lg {
@@ -531,7 +559,7 @@ input[type="number"] {
   width: 129px;
   height: 85px;
   position: relative;
-  background-image: url("/static/girlsfrontline/sim/dolls/icon/spritesheet.png"); 
+  background-image: url("/static/girlsfrontline/sim/dolls/icon/spritesheet.png");
   background-repeat: no-repeat;
 }
 
@@ -568,13 +596,11 @@ input[type="number"] {
 
 /* Align text to stat icons */
 .doll_tooltip_stat_caption {
-    display: inline-block;
+  display: inline-block;
   vertical-align: middle;
   padding-left: 2px;
-
   position: relative;
   bottom: -1px;
-
   font-family: 'Oswald', sans-serif;
   font-size: 8pt;
 }
@@ -584,32 +610,32 @@ input[type="number"] {
 }
 
 .hr-sect {
-	display: flex;
-	flex-basis: 100%;
-	align-items: center;
-	color: rgba(0, 0, 0, 0.55);
-	margin: 8px 0px;
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.55);
+  margin: 8px 0px;
 }
 
 .hr-sect::before {
-	content: "";
-	flex-grow: 1;
-	background: rgba(0, 0, 0, 0.1);
-	height: 1px;
-	font-size: 0px;
-	line-height: 0px;
+  content: "";
+  flex-grow: 1;
+  background: rgba(0, 0, 0, 0.1);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
   margin: 0px;
   margin-right: 8px;
 }
 
 .hr-sect::after {
-	content: "";
-	flex-grow: 1;
-	background: rgba(0, 0, 0, 0.1);
-	height: 1px;
-	font-size: 0px;
-	line-height: 0px;
-	margin: 0px;
+  content: "";
+  flex-grow: 1;
+  background: rgba(0, 0, 0, 0.1);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+  margin: 0px;
   margin-left: 8px;
 }
 
@@ -627,8 +653,8 @@ input[type="number"] {
   position: absolute;
   top: 0px;
   left: 0px;
-	height: 28px;
-	margin: auto;
+  height: 28px;
+  margin: auto;
   width: 28px;
   padding: 2px;
   opacity: 0.3;
@@ -653,6 +679,7 @@ input[type="number"] {
   width: 50px;
   height: 50px;
 }
+
 .lds-hourglass:after {
   content: "IOP";
   font-family: 'Homenaje', sans-serif;
@@ -666,6 +693,7 @@ input[type="number"] {
   border-color: #fff transparent #fff transparent;
   animation: lds-hourglass 2s infinite;
 }
+
 @keyframes lds-hourglass {
   0% {
     transform: rotate(0);

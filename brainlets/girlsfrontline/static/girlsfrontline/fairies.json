@@ -16,7 +16,7 @@
     "tooltip_skill":"Increase echelon damage by 20% and rate of fire by 10% for 20 seconds in the next battle",
     "skill":{
       "icd":0,
-			"cd":-1,
+      "cd":-1,
       "effects": [
         {
           "type":"buff",
@@ -47,7 +47,7 @@
     "tooltip_skill":"Increases echelon accuracy by 50% and crit rate by 25% for 20 seconds in the next battle",
     "skill":{
       "icd":0,
-			"cd":-1,
+      "cd":-1,
       "effects": [
         {
           "type":"buff",

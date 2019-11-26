@@ -1,40 +1,40 @@
 <!doctype html>
 <html>
-	<head>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-		  gtag('config', 'UA-');
-		</script>
-		{% load static %}
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="stylesheet" href="{% static 'girlsfrontline/css/bootstrap.min.css' %}">
-		<script src="{% static 'girlsfrontline/js/jquery-3.3.1.min.js' %}"></script>
-		<script src="{% static 'girlsfrontline/js/popper.min.js' %}"></script>
-		<script src="{% static 'girlsfrontline/js/bootstrap.min.js' %}"></script>
+      gtag('config', 'UA-');
+    </script>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'girlsfrontline/css/bootstrap.min.css' %}">
+    <script src="{% static 'girlsfrontline/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'girlsfrontline/js/popper.min.js' %}"></script>
+    <script src="{% static 'girlsfrontline/js/bootstrap.min.js' %}"></script>
 
-		<title>{% block title %}brainlets.moe{% endblock %}</title>
-		{% block head %}
-		{% endblock %}
-	</head>
+    <title>{% block title %}brainlets.moe{% endblock %}</title>
+    {% block head %}
+    {% endblock %}
+  </head>
 
-	<body class="bg-secondary text-light">
+  <body class="bg-secondary text-light">
     <nav class="container navbar navbar-expand-sm navbar-dark bg-secondary mb-3">
       <a class="navbar-brand" href="{% url 'index' %}">brainlets.moe</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-    		<span class="navbar-toggler-icon"></span>
-  		</button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="navbar-nav navbar-collapse collapse">
         <a class="nav-link" href="{% url 'girlsfrontline:home' %}">Home</a>
         <a class="nav-link" href="{% url 'girlsfrontline:batterycalculator' %}">Battery Calculator</a>
-				<a class="nav-link" href="{% url 'girlsfrontline:equiptimers' %}">Equip Timers</a>
-				<a class="nav-link" href="{% url 'girlsfrontline:dolltimers' %}">Doll Timers</a>
-				<a class="nav-link" href="{% url 'girlsfrontline:sim' %}">Damage Sim</a>
+        <a class="nav-link" href="{% url 'girlsfrontline:equiptimers' %}">Equip Timers</a>
+        <a class="nav-link" href="{% url 'girlsfrontline:dolltimers' %}">Doll Timers</a>
+        <a class="nav-link" href="{% url 'girlsfrontline:sim' %}">Damage Sim</a>
       </div>
     </nav>
     {% block main %}
@@ -42,5 +42,5 @@
     <footer class="container mt-3">
       <p class="font-weight-light text-center"><small>Girls' Frontline is Copyright SUNBORN Network Technology Co., Ltd. All images and names owned and trademarked by SUNBORN Network Technology Co., Ltd. are property of SUNBORN Network Technology Co., Ltd.</small></p>
     </footer>
-	</body>
+  </body>
 </html>

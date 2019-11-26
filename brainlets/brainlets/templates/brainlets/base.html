@@ -1,42 +1,42 @@
 <!doctype html>
 <html>
-	<head>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-		  gtag('config', 'UA-');
-		</script>
+      gtag('config', 'UA-');
+    </script>
 
-		{% load static %}
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="stylesheet" href="{% static 'brainlets/css/bootstrap.min.css' %}">
-		<script src="{% static 'brainlets/js/jquery-3.3.1.min.js' %}"></script>
-		<script src="{% static 'brainlets/js/popper.min.js' %}"></script>
-		<script src="{% static 'brainlets/js/bootstrap.min.js' %}"></script>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'brainlets/css/bootstrap.min.css' %}">
+    <script src="{% static 'brainlets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'brainlets/js/popper.min.js' %}"></script>
+    <script src="{% static 'brainlets/js/bootstrap.min.js' %}"></script>
 
-		<title>{% block title %}brainlets.moe{% endblock %}</title>
-	</head>
+    <title>{% block title %}brainlets.moe{% endblock %}</title>
+  </head>
 
-	<body class="bg-light text-dark">
+  <body class="bg-light text-dark">
     <nav class="container navbar navbar-expand-sm navbar-light bg-light mb-3">
       <a class="navbar-brand" href="{% url 'index' %}">brainlets.moe</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-    		<span class="navbar-toggler-icon"></span>
-  		</button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse navbar-nav">
-      	<a class="nav-link" href="{% url 'index' %}">Home</a>
-      	<a class="nav-link" href="{% url 'girlsfrontline:home' %}">Girls' Frontline</a>
-      	<a class="nav-link" href="{% url 'about' %}">About</a>
+        <a class="nav-link" href="{% url 'index' %}">Home</a>
+        <a class="nav-link" href="{% url 'girlsfrontline:home' %}">Girls' Frontline</a>
+        <a class="nav-link" href="{% url 'about' %}">About</a>
       </div>
     </nav>
     <main class="container">
       {% block main %}
       {% endblock %}
     </main>
-	</body>
+  </body>
 </html>
