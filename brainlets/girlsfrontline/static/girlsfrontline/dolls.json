@@ -10994,26 +10994,17 @@
     "voice": "Manami Numakura",
     "name_skill1": "Lost Paradise",
     "icon_name_skill1": "shield",
-    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>Deploys two damage reduction shields randomly to any doll in the same column (can apply twice to the same doll) that reduce damage received by 80% while increased that doll's damage by 30% per shield. Shields last 8 seconds",
+    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>Places two shields that reduce damage taken by 30% to random allies in FP-6's column for 8 seconds (can apply twice to the same doll), and deals 80% of FP-6's Damage to nearby enemies as well as knock them back.",
 		"skill": {
 			"icd":10,
 			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
       "effects": [
         {
-          "type":"buff",
-          "target":"self",
-          "stat":{
-            "fp":[15,17,19,21,22,24,26,27,28,30]
-          },
-          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.5,7.7,8]
-        },
-        {
-          "type":"buff",
-          "target":"self",
-          "stat":{
-            "fp":[15,17,19,21,22,24,26,27,28,30]
-          },
-          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.5,7.7,8]
+          "type":"grenade",
+          "delay":0,
+          "busylinks":0,
+          "multiplier":[0.4,0.44,0.49,0.53,0.58,0.62,0.67,0.71,0.76,0.8],
+          "radius":2.5
         }
       ]
 		},
@@ -15500,7 +15491,7 @@
     "voice": "TBD",
     "name_skill1": "Highway to Hell",
     "icon_name_skill1": "invincible",
-    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>Gain a shield that negates up to 1000 damage for 6 seconds. Shield HP decays by 100 every second",
+    "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>Grants a shield with a Defense Value [DV] of 1000 points, reducing incoming damage by 10% per 100 DV for 6 seconds. DV decays by 100 points (-10% damage reduction) per second.",
 		"skill": {
 			"icd":10,
 			"cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
@@ -23356,8 +23347,8 @@
     "id_index": 278,
     "aliases": ["Crye Precision SIX12"],
     "api_name": "six12",
-    "spritesheet_row": 0,
-    "spritesheet_col": 0,
+    "spritesheet_row": 33,
+    "spritesheet_col": 8,
     "name": "Six12",
     "rarity": 3,
     "type": 6,
