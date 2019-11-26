@@ -25,5 +25,4 @@ urlpatterns = [
     path('about/', views.about, name='about'),
 	path('gf/', include('girlsfrontline.urls')),
     path('gfl/', include('girlsfrontline.urls')),
-    path('ffxiv/', include('finalfantasyxiv.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
