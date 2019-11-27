@@ -23399,5 +23399,68 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 314,
+    "id_index": 279,
+    "aliases": ["Indian Small Arms System Assault Rifle"],
+    "api_name": "insas",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "INSAS",
+    "rarity": 3,
+    "type": 4,
+    "mod": false,
+    "hp": 100,
+    "fp": 107,
+    "acc": 123,
+    "eva": 106,
+    "rof": 105,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 120,
+    "construct_time": 0,
+    "uncraftable":true,
+    "en_craftable": false,
+    "en_released":false,
+    "artist": "kieed",
+    "voice": "TBD",
+    "name_skill1": "Raid Focus",
+    "icon_name_skill1": "powbuffself",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self damage by 35% and accuracy by 100% for 5 seconds.",
+    "skill": {
+      "icd":5,
+      "cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[15,17,19,22,24,26,28,31,33,35],
+            "acc":[50,56,61,67,72,78,83,89,94,100]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
+    },
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +10%, Evasion +10%",
+    "tiles": {
+      "self": 23,
+      "target": "1,-9",
+      "target_type": 2,
+      "effect": {
+        "fp": 10,
+        "acc": 0,
+        "eva": 10,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]
