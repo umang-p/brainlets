@@ -23523,5 +23523,100 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 316,
+    "id_index": 282,
+    "aliases": ["Standard Manufacturing DP-12"],
+    "api_name": "dp12",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "DP-12",
+    "rarity": 5,
+    "type": 6,
+    "mod": false,
+    "hp": 115,
+    "fp": 99,
+    "acc": 100,
+    "eva": 100,
+    "rof": 112,
+    "crit": 40,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 5,
+    "armor": 128,
+    "growth_rating": 112,
+    "construct_time": 29580,
+    "en_craftable": false,
+    "en_released":false,
+    "artist": "Pandea work",
+    "voice": "TBD",
+    "name_skill1": "Enigmatic Ballad",
+    "icon_name_skill1": "enigmaticballad",
+    "tooltip_skill1": "Initial CD: 3s, CD: 16s<br>Active: Perform a rapid reload, gaining 3 extra ammo. Extra ammo is used up first and deals 1x damage twice.<br>Passive: Upon reloading, grant a 40 hp shield to self that lasts 5 seconds. Additionally, reduce damage taken by self and the doll behind her by 25% for 5 seconds.",
+    "skill": {
+      "icd":3,
+      "cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"loadRounds",
+          "target":"self",
+          "rounds":3
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "multiplier":[0.6,0.64,0.69,0.73,0.78,0.82,0.87,0.91,0.96,1],
+          "hitCount": 2,
+          "attacksLeft": 3
+        }
+      ]
+    },
+    "passives": [
+      {
+        "type":"passive",
+        "trigger":"reload",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "stat":{
+              "vulnerability":[-15,-16,-17,-18,-19,-21,-22,-23,-24,-25]
+            },
+            "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+          },
+          {
+            "type":"buff",
+            "target":"behind",
+            "stat":{
+              "vulnerability":[-15,-16,-17,-18,-19,-21,-22,-23,-24,-25]
+            },
+            "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+          },
+          {
+            "type":"buff",
+            "target":"self",
+            "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+          }
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +15%, Accuracy +15%",
+    "tiles": {
+      "self": 24,
+      "target": "-12,-2",
+      "target_type": [5, 3],
+      "effect": {
+        "fp": 15,
+        "acc": 15,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]

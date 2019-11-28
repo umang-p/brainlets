@@ -4223,6 +4223,13 @@ function getBuffTargets(doll, buff, enemy) {
     }
   }
 
+  if (buff.target == 'behind') {
+    let dollBehind = echelon.find(d => d.pos == doll.pos - 1);
+    if (dollBehind !== undefined && dollBehind.id != -1) {
+      targets.push(dollBehind);
+    }
+  }
+
   if (buff.target == 'frontrow') {
     let dollInFront = echelon.find(d => d.pos == 14);
     if (dollInFront !== undefined && dollInFront.id != -1) {
