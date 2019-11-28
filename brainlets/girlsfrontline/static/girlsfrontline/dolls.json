@@ -23462,5 +23462,66 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 315,
+    "id_index": 283,
+    "aliases": ["Winchester Liberator"],
+    "api_name": "liberator",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "Liberator",
+    "rarity": 4,
+    "type": 6,
+    "mod": false,
+    "hp": 105,
+    "fp": 108,
+    "acc": 80,
+    "eva": 106,
+    "rof": 106,
+    "crit": 40,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 4,
+    "armor": 117,
+    "growth_rating": 126,
+    "construct_time": 27900,
+    "en_craftable": false,
+    "en_released":false,
+    "artist": "人造天使lili",
+    "voice": "TBD",
+    "name_skill1": "Punitive Impact",
+    "icon_name_skill1": "punitiveimpact",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>For the next 8 seconds, each attack deals 4 individual attacks at 0.5x damage each.",
+    "skill": {
+      "icd":8,
+      "cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"normalAttackBuff",
+          "multiplier":[0.3,0.32,0.34,0.37,0.39,0.41,0.43,0.46,0.48,0.5],
+          "hitCount": 4,
+          "duration":[6,6.2,6.4,6.7,6.9,7.1,7.3,7.6,7.8,8]
+        }
+      ]
+    },
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +10%, Accuracy +25%",
+    "tiles": {
+      "self": 14,
+      "target": "18,-2",
+      "target_type": 5,
+      "effect": {
+        "fp": 10,
+        "acc": 25,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]
