@@ -8449,7 +8449,7 @@
     "armor": 0,
     "growth_rating": 125,
     "construct_time": 3900,
-    "en_craftable": false,
+    "en_craftable": true,
     "en_released":true,
     "artist": "音符",
     "voice": "Shiki Aoki",
