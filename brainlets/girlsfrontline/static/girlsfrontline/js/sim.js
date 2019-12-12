@@ -4119,7 +4119,7 @@ function triggerPassive(trigger, doll, enemy, triggerChance = undefined) {
           target.battle.currentRounds += $.isArray(effect.rounds) ? effect.rounds[effect.level - 1] : effect.rounds;
         });
       } else {
-        doll.battle.effect_queue.push($.extend({}, effect));
+        doll.battle.effect_queue.push($.extend(true, {}, effect));
       }
     });
   });
@@ -4990,7 +4990,8 @@ function modifySkill(doll, effect, enemy, currentTime) {
   //no doll id check to have this work on any doll
   if (effect.modifySkill == 'bleedingjane') {
     for (let i = 0; i < 5; i++) {
-      if (echelon[i].pos === doll.pos) {
+      if (echelon[i].pos == doll.pos) {
+        calculateSkillBonus(i);
         let extraCrit = doll.pre_battle.crit * doll.battle.skillbonus.crit - 100;
         if (extraCrit > 0) {
           let bleedingjaneBuff = doll.battle.buffs.find(b => b.name == 'bleedingjane');
