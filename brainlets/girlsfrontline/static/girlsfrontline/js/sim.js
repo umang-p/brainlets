@@ -1202,7 +1202,9 @@ function removeEquipment(event) {
   calculateEquipBonus(dollIndex);
   calculatePreBattleStatsForDoll(dollIndex);
   simulateBattle();
-  updateUIForDoll(dollIndex);
+  //can't update just this doll anymore
+  //because of jill,stechkin,etc where equips affect stats of other dolls
+  updateUIAllDolls();
 }
 
 
