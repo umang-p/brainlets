@@ -79,7 +79,7 @@ const LIST_DPS_SMG_ID = {};
 
 export const dollData = [];
 
-/** 
+/**
  * Mapping of ID to T-Doll data, preferred over dollData[doll.id - 1]
  */
 export const dollDataMap = {};
@@ -144,6 +144,8 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   50: [20, 122, 57], //bm59
   17: [28, 45, 123], //m3
   105: [20, 124, 41], //fg42
+  167: [131, 24, 35], //rfb
+  221: [28, 45, 132], //type100
 };
 
 const SPECIAL_DEFAULT_EQUIPS_UNRELEASED = {
@@ -252,6 +254,8 @@ export const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
   69: [-1, -1, 86], //tar21
   3: [87, -1, -1], //m9
   79: [-1, -1, 88], //rpd
+  167: [89, -1, -1], //rfb
+  221: [-1, -1, 90], //type100
 };
 
 export default class dollUtils {
@@ -265,15 +269,15 @@ export default class dollUtils {
   /**
    * Returns object containing stats of the given T-Doll
    * at the provided level.
-   * 
+   *
    * @static
-   * 
+   *
    * @param {Object} dollData - Object with T-Doll data
    * @param {number} level - Level to get the stats for the T-Doll
-   * 
-   * @returns {Object} New object containing attributes 
+   *
+   * @returns {Object} New object containing attributes
    *   <code>[hp, fp, acc, eva, rof, armor, crit, critdmg, ap, rounds]</code>
-   *   for the T-Doll at the specified level. 
+   *   for the T-Doll at the specified level.
    */
   static getStatsAtLevel(dollData, level) {
     let dolldummy = {};
@@ -307,11 +311,11 @@ export default class dollUtils {
   }
 
   /**
-   * Given the API name of a T-Doll, return its ID. 
-   * 
+   * Given the API name of a T-Doll, return its ID.
+   *
    * @static
-   * @param {string} name - API name of a T-Doll, e.g. "vz61" for Skorpion; 
-   *   see dolls.json for details. 
+   * @param {string} name - API name of a T-Doll, e.g. "vz61" for Skorpion;
+   *   see dolls.json for details.
    * @returns {number} ID of the T-Doll with the specified API name
    * @memberof dollUtils
    */
@@ -323,8 +327,8 @@ export default class dollUtils {
   }
 
   /**
-   * Loads dolls.json and populates constants. 
-   * 
+   * Loads dolls.json and populates constants.
+   *
    * @static
    * @memberof dollUtils
    */
@@ -373,12 +377,12 @@ export default class dollUtils {
   }
 
   /**
-   * Given a doll object, set its equips to the recommended default equipment. 
+   * Given a doll object, set its equips to the recommended default equipment.
    *
    * @static
-   * 
+   *
    * @param {Object} doll - Doll object, which will be modified by this method
-   * @param {boolean} isNight - If set to true, units will default to using optimized night battle equipment. 
+   * @param {boolean} isNight - If set to true, units will default to using optimized night battle equipment.
    * @param {boolean} [useUnreleasedEquips=true] - If set to true, will use default equips that are not released on EN yet
    * @memberof dollUtils
    */
