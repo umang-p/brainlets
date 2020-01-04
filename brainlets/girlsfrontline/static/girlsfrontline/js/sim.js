@@ -2141,7 +2141,7 @@ function calculatePreBattleStatsForDoll(dollIndex) {
   doll.pre_battle.acc = Math.max(1, doll.pre_battle.acc);
 
   // Should not be necessary to cap RoF pre-battle if it's capped during calculations
-  // 
+  //
   // if (doll.type == 6) { //sg
   //   doll.pre_battle.rof = Math.min(60, Math.max(15, doll.pre_battle.rof));
   // } else if (doll.type == 5) { //mg
@@ -5101,6 +5101,9 @@ function determineFinalStats() {
 
     let wastedCrit = Math.max(0, doll.battle.maxstats.crit_uncapped - 100);
     doll.battle.finalstats.crit_waste = wastedCrit;
+
+    if (doll.pre_battle.rounds == 0)
+      doll.battle.finalstats.rounds = 0;
   }
 }
 

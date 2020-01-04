@@ -23741,5 +23741,111 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 319,
+    "id_index": 12,
+    "aliases": ["Mauser Construktion 96 Mod"],
+    "api_name": "c96mod",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "C96Mod",
+    "rarity": 4,
+    "type": 1,
+    "mod": true,
+    "hp": 125,
+    "fp": 115,
+    "acc": 104,
+    "eva": 96,
+    "rof": 120,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 113,
+    "construct_time": 1800,
+    "en_craftable": false,
+    "en_released": false,
+    "artist": "林檎愛す",
+    "voice": "Ayaka Itatani",
+    "name_skill1": "Flare",
+    "icon_name_skill1": "flare",
+    "tooltip_skill1": "Initial CD: 3s, CD: 16s<br>Increase all allies' accuracy by 120% during night only for 15 seconds",
+    "skill": {
+      "icd":3,
+      "cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"all",
+          "stat":{
+            "acc":[60,67,73,80,87,93,100,107,113,120]
+          },
+          "duration":[8,9,10,11,12,12,13,13,14,15],
+          "requirements":{
+            "night":true
+          }
+        }
+      ]
+    },
+    "name_skill2": "Night Sky Pursuer",
+    "icon_name_skill2": "nightskypursuer",
+    "tooltip_skill2": "Passive: When flare is activated, grant all allies +2 ammo to their current clip and increase all allies' crit damage by 20% for 8 seconds",
+    "skill2": {
+      "icd":3,
+      "cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"loadRounds",
+          "target":"all",
+          "rounds":[1,1,1,1,1,2,2,2,2,2]
+        },
+        {
+          "type":"buff",
+          "target":"all",
+          "stat":{
+            "critdmg":[10,11,12,13,14,16,17,18,19,20]
+          },
+          "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+        }
+      ]
+    },
+    "tooltip_tiles": "Accuracy +80%, Evasion +40%",
+    "tiles": {
+      "self": 23,
+      "target": "1,9,-11",
+      "target_type": 0,
+      "effect": {
+        "fp": [
+          0,
+          0
+        ],
+        "acc": [
+          40,
+          80
+        ],
+        "eva": [
+          20,
+          40
+        ],
+        "rof": [
+          0,
+          0
+        ],
+        "crit": [
+          0,
+          0
+        ],
+        "skillcd": [
+          0,
+          0
+        ],
+        "armor": [
+          0,
+          0
+        ]
+      }
+    }
   }
 ]
