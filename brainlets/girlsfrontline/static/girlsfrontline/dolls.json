@@ -23680,5 +23680,66 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 318,
+    "id_index": 288,
+    "aliases": ["Vektor CR-21"],
+    "api_name": "cr21",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "CR-21",
+    "rarity": 4,
+    "type": 4,
+    "mod": false,
+    "hp": 100,
+    "fp": 107,
+    "acc": 126,
+    "eva": 103,
+    "rof": 121,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 117,
+    "construct_time": 12900,
+    "en_craftable": false,
+    "en_released":false,
+    "artist": "K箱",
+    "voice": "Machida Kayu",
+    "name_skill1": "Muscle Pump",
+    "icon_name_skill1": "musclepump",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self damage by 60% and target enemies with the highest damage for 5 seconds.",
+    "skill": {
+      "icd":5,
+      "cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[30,33,37,40,43,47,50,53,57,60]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
+    },
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Accuracy +50%, Evasion +12%",
+    "tiles": {
+      "self": 23,
+      "target": "1,-9",
+      "target_type": 2,
+      "effect": {
+        "fp": 0,
+        "acc": 50,
+        "eva": 12,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]
