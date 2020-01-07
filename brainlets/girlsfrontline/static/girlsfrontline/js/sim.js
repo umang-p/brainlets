@@ -5296,7 +5296,6 @@ const SKILL_CONTROL = {
     if (lessthan3) {
       doll.skill.effects[1].target = 'self';
       doll.skill.effects[2].target = 'self';
-      doll.skill.effects[3].target = 'enemy';
     }
   },
   256: function (doll) {

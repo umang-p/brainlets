@@ -18606,7 +18606,7 @@
         },
         {
           "type":"buff",
-          "target":"none",
+          "target":"enemy",
           "name":"avenger",
           "duration":-1
         }
@@ -18614,7 +18614,7 @@
     },
     "name_skill2": "Avenger's Mark",
     "icon_name_skill2": "m4_nightmare",
-    "tooltip_skill2": "Passive: When skill1 activates, if there are 3 dolls or less on the field, decrease rate of fire by 70% and each attack will deal 600% and 100% damage to a 2.5 unit radius from the target. Also applies the avenger's mark debuff on the enemy",
+    "tooltip_skill2": "Passive: When skill1 activates, mark the current target with [Seal of the Avenger]. Additionally, if there are 3 or less dolls on the field, decrease self rate of fire by 70% and each attack will deal 600% damage to the target and 100% splash damage to enemies within a 2.5 unit radius from the target.",
     "skill2": {
       "icd":-1,
       "cd":[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -18710,7 +18710,7 @@
     },
     "name_skill2": "Frenzied Circus",
     "icon_name_skill2": "splitgrenade",
-    "tooltip_skill2": "Passive: After the grenade detonates, it splits into 3 smaller grenades dealing 1.9x damage to enemies within a 1 unit radius. If the enemy is marked by Avenger's Mark, the smaller grenades will deal an additional 0.25x damage",
+    "tooltip_skill2": "Passive: After the grenade detonates, it splits into 3 smaller grenades dealing 1.9x damage to enemies within a 1 unit radius. If the enemy is marked by [Seal of the Avenger], the smaller grenades will deal an additional 0.25x damage",
     "skill2": {
       "icd":0,
       "cd":[],
@@ -18780,7 +18780,7 @@
     },
     "name_skill2": "Crime and Punishment",
     "icon_name_skill2": "ar15_shot",
-    "tooltip_skill2": "Passive: When skill1 is activated, pull out secondary weapon and attack simultaneously, dealing 10% of the primary weapon's damage (20% if avenger's mark is on the enemy)",
+    "tooltip_skill2": "Passive: When skill1 is activated, pull out secondary weapon and attack simultaneously, dealing 10% of the primary weapon's damage (20% if [Seal of the Avenger] is on the enemy)",
     "skill2": {
       "icd":4,
       "cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
