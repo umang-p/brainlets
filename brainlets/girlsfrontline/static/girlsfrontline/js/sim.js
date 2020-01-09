@@ -2715,6 +2715,14 @@ function preBattleSkillChanges(doll) {
     doll.battle.reserveAmmo = 30;
     doll.battle.reserveAmmoMode = false;
   }
+
+  if (doll.id == 320) {
+    //mat49
+    let fpstacks = enemyCount > 3 ? 0 : 4 - enemyCount;
+    let evastacks = enemyCount == 1 ? 0 : Math.min(6, enemyCount - 1);
+    doll.battle.skill.effects[0].stacks = evastacks;
+    doll.battle.skill.effects[1].stacks = fpstacks;
+  }
 }
 
 function initDollsForBattle() {

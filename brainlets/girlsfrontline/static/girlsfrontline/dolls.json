@@ -23847,5 +23847,83 @@
         ]
       }
     }
+  },
+  {
+    "id": 320,
+    "id_index": 280,
+    "aliases": ["Pistolet-Mitrailleur de 9 mm modèle 1949"],
+    "api_name": "mat49",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "MAT-49",
+    "rarity": 4,
+    "type": 2,
+    "mod": false,
+    "hp": 105,
+    "fp": 105,
+    "acc": 103,
+    "eva": 111,
+    "rof": 101,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 119,
+    "construct_time": 0,
+    "uncraftable": true,
+    "en_craftable": false,
+    "en_released":false,
+    "artist": "hanasa",
+    "voice": "TBD",
+    "name_skill1": "Last Minute Preparations",
+    "icon_name_skill1": "dodgebuffself",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Gain self buffs based on the number of enemies remaining. With only 1 group of enemies left, increase self damage by 45% for 5 seconds (with 3 stacks). For each additional enemy, remove 1 damage buff and add 1 evasion buff, increasing self evasion by 30% for 5 seconds. Evasion buff can stack up to 6 times",
+    "skill": {
+      "icd":6,
+      "cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "eva":[12,14,16,18,20,22,24,26,28,30]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5],
+          "stackable":true,
+          "name":"mat49eva",
+          "stacks":2,
+          "max_stacks":6
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[25,27,29,32,34,36,38,41,43,45]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5],
+          "stackable":true,
+          "name":"js9fp",
+          "stacks":1,
+          "max_stacks":3
+        }
+      ]
+    },
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +20%, Crit Rate +20%",
+    "tiles": {
+      "self": 33,
+      "target": "-1,-21",
+      "target_type": 4,
+      "effect": {
+        "fp": 20,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 20,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]
