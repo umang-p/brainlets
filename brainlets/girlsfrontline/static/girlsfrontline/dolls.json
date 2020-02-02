@@ -23988,5 +23988,65 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 322,
+    "id_index": 295,
+    "aliases": ["Cháng Fēng chōng fēng qiāng"],
+    "api_name": "cf05",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "CF05",
+    "rarity": 4,
+    "type": 2,
+    "mod": false,
+    "hp": 107,
+    "fp": 98,
+    "acc": 104,
+    "eva": 121,
+    "rof": 112,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 107,
+    "construct_time": 0,
+    "uncraftable": true,
+    "en_craftable": false,
+    "en_released":false,
+    "artist": "Lucient",
+    "voice": "TBD",
+    "name_skill1": "Butter Cream",
+    "icon_name_skill1": "buttercream",
+    "tooltip_skill1": "Initial CD: 5s, CD: 16s<br>Reduce damage taken per hit by 15 for 6 seconds",
+    "skill": {
+      "icd":5,
+      "cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "buttercream":[5,6,7,8,9,10,11,12,13,15],
+          "duration":[4,4.2,4.4,4.7,4.9,5.1,5.3,5.6,5.8,6]
+        }
+      ]
+    },
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +20%, Accuracy +25%",
+    "tiles": {
+      "self": 13,
+      "target": "-1,9,19",
+      "target_type": 4,
+      "effect": {
+        "fp": 20,
+        "acc": 25,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]
