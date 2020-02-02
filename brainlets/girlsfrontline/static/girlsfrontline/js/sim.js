@@ -2723,6 +2723,21 @@ function preBattleSkillChanges(doll) {
     doll.battle.skill.effects[0].stacks = evastacks;
     doll.battle.skill.effects[1].stacks = fpstacks;
   }
+
+  if (doll.id == 323) {
+    //sl8
+    let dollTypesOnTiles = [];
+    let sl8Tiles = [-20,-10,-9,-8];
+    $.each(sl8Tiles, (index, tile) => {
+      let d = echelon.find(d => d.pos == doll.pos + tile);
+      if (d != undefined && d.id != -1) {
+        dollTypesOnTiles.push(d.type);
+      }
+    });
+    let uniqueTypesOnTiles = [...new Set(dollTypesOnTiles)];
+    let fpstacks = uniqueTypesOnTiles.length > 3 ? 3 : uniqueTypesOnTiles.length;
+    doll.battle.skill.effects[1].stacks = fpstacks;
+  }
 }
 
 function initDollsForBattle() {

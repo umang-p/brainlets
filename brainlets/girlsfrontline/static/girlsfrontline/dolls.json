@@ -24048,5 +24048,79 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 323,
+    "id_index": 296,
+    "aliases": ["Heckler & Koch SL8"],
+    "api_name": "sl8",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "SL8",
+    "rarity": 5,
+    "type": 3,
+    "mod": false,
+    "hp": 96,
+    "fp": 105,
+    "acc": 109,
+    "eva": 106,
+    "rof": 116,
+    "crit": 40,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 130,
+    "construct_time": 0,
+    "uncraftable": true,
+    "en_craftable": false,
+    "en_released":false,
+    "artist": "薯子Imoko",
+    "voice": "TBD",
+    "name_skill1": "Distant Waves",
+    "icon_name_skill1": "distantwaves",
+    "tooltip_skill1": "Initial CD: 5s, CD: 8s<br>Increase self rate of fire by 60% for 5 seconds. On skill activation, increase self damage by 5% per different doll class on her tiles. Max 3 stacks.",
+    "skill": {
+      "icd":5,
+      "cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "rof":[35,38,41,43,46,49,52,54,57,60]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5],
+          "stackable":true,
+          "name":"distantwaves",
+          "stacks":0,
+          "max_stacks":3
+        }
+      ]
+    },
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +10%, Evasion +18%",
+    "tiles": {
+      "self": 32,
+      "target": "-20,-10,-9,-8",
+      "target_type": 0,
+      "effect": {
+        "fp": 10,
+        "acc": 0,
+        "eva": 18,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]
