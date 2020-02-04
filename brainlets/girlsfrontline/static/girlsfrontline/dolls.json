@@ -24246,5 +24246,77 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 326,
+    "id_index": 286,
+    "aliases": ["Knights Armament Company PDW"],
+    "api_name": "kacpdw",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "KAC-PDW",
+    "rarity": 4,
+    "type": 2,
+    "mod": false,
+    "hp": 102,
+    "fp": 126,
+    "acc": 115,
+    "eva": 117,
+    "rof": 104,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 107,
+    "construct_time": 8400,
+    "en_craftable": false,
+    "en_released":false,
+    "artist": "山药",
+    "voice": "TBD",
+    "name_skill1": "D-Fense",
+    "icon_name_skill1": "dfense",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Remove all debuffs from self and gain a force shield for 1 second. When shield expires, increase self evasion by 60% for 5 seconds",
+    "skill": {
+      "icd":6,
+      "cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"modifySkill",
+          "modifySkill":"clearDebuffs"
+        },
+        {
+          "type":"smoke",
+          "busylinks":0,
+          "delay":1,
+          "after":[
+            {
+              "type":"buff",
+              "target":"self",
+              "stat":{
+                "eva":[30,33,37,40,43,47,50,53,57,60]
+              },
+              "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+            }
+          ]
+        }
+      ]
+    },
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +15%, Accuracy +30%",
+    "tiles": {
+      "self": 23,
+      "target": "-1,-11",
+      "target_type": 4,
+      "effect": {
+        "fp": 15,
+        "acc": 30,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]

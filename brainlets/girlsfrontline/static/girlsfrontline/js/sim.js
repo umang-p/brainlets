@@ -5002,13 +5002,28 @@ function modifySkill(doll, effect, enemy, currentTime) {
     if (effect.modifySkill == 'stackMultiplier') {
       let attackbuff = doll.battle.buffs.find(b => b.name == 'normalAttackBuff');
       if (attackbuff) {
-        console.log(currentTime);
-        console.log(attackbuff.multiplier);
         if (attackbuff.multiplier == 1.6)
           attackbuff.multiplier = 2.56;
         else if (attackbuff.multiplier == 2.56)
           attackbuff.multiplier = 4.096;
       }
+    }
+  }
+
+  //kacpdw
+  if (doll.id == 326) {
+    if (effect.modifySkill == 'clearDebuffs') {
+      $.each(doll.battle.buffs, (i, buff) => {
+        if ('stat' in buff) {
+          $.each(buff.stat, (stat, amount) => {
+            if ($.isArray(amount)) {
+              amount[buff.level - 1] = amount[buff.level - 1] < 0 ? 0 : amount[buff.level - 1];
+            } else {
+              amount = amount < 0 ? 0 : amount;
+            }
+          });
+        }
+      });
     }
   }
 
