@@ -24184,5 +24184,67 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 325,
+    "id_index": 289,
+    "aliases": ["R5 Remington Gas Piston"],
+    "api_name": "r5",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "R5",
+    "rarity": 5,
+    "type": 4,
+    "mod": false,
+    "hp": 112,
+    "fp": 119,
+    "acc": 126,
+    "eva": 101,
+    "rof": 112,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 122,
+    "construct_time": 0,
+    "uncraftable": true,
+    "en_craftable": false,
+    "en_released":false,
+    "artist": "音符",
+    "voice": "TBD",
+    "name_skill1": "Damage Focus T",
+    "icon_name_skill1": "powbuffself",
+    "tooltip_skill1": "Initial CD: 4s, CD: 16s<br>Increase self damage by 75% for 10 seconds",
+    "skill": {
+      "icd":4,
+      "cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[45,48,52,55,58,62,65,68,72,75]
+          },
+          "duration":[6,6.4,6.8,7.2,7.6,8,8.4,8.8,9.4,10]
+        }
+      ]
+    },
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Rate of fire +12%, Evasion +15%",
+    "tiles": {
+      "self": 23,
+      "target": "-9,11",
+      "target_type": 2,
+      "effect": {
+        "fp": 0,
+        "acc": 0,
+        "eva": 15,
+        "rof": 12,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]
