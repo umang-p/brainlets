@@ -16176,7 +16176,7 @@
     "construct_time": 12000,
     "uncraftable": true,
     "en_craftable": false,
-    "en_released":false,
+    "en_released": true,
     "artist": "迷肘",
     "voice": "TBD",
     "name_skill1": "Elimination Focus",
