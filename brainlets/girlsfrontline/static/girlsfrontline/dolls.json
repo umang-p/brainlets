@@ -24122,5 +24122,67 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 324,
+    "id_index": 291,
+    "aliases": ["Danuvia 43M"],
+    "api_name": "43m",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "43M",
+    "rarity": 3,
+    "type": 2,
+    "mod": false,
+    "hp": 105,
+    "fp": 105,
+    "acc": 92,
+    "eva": 82,
+    "rof": 110,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 122,
+    "construct_time": 0,
+    "uncraftable": true,
+    "en_craftable": false,
+    "en_released":false,
+    "artist": "TAMAXI",
+    "voice": "TBD",
+    "name_skill1": "Cover Focus",
+    "icon_name_skill1": "dodgebuffself",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Increase self evasion by 120% for 5 seconds",
+    "skill": {
+      "icd":6,
+      "cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "eva":[65,71,77,83,89,96,102,108,114,120]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
+    },
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +12%, Evasion +10%",
+    "tiles": {
+      "self": 23,
+      "target": "9,-11",
+      "target_type": 4,
+      "effect": {
+        "fp": 12,
+        "acc": 0,
+        "eva": 10,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]
