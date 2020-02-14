@@ -24318,5 +24318,94 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 327,
+    "id_index": 292,
+    "aliases": ["Ruchnoy Pulemyot Kalashnikova 2016"],
+    "api_name": "rpk16",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "RPK-16",
+    "rarity": 5,
+    "type": 5,
+    "mod": false,
+    "hp": 100,
+    "fp": 94,
+    "acc": 127,
+    "eva": 124,
+    "rof": 114,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 10,
+    "armor": 0,
+    "growth_rating": 140,
+    "construct_time": 22560,
+    "en_craftable": false,
+    "en_released":false,
+    "artist": "多元菌",
+    "voice": "TBD",
+    "name_skill1": "Cunning Silver Fox",
+    "icon_name_skill1": "cunningsilverfox",
+    "tooltip_skill1": "Initial CD: 8s, CD: 18s<br>Passive: When out of ammo, enter AR mode, reducing self rate of fire by 40% while increasing self accuracy by 100% and movement speed by 150%. <br>Active: Reload and switch back to MG mode. Reloading takes 1 second and clears all buffs from AR Mode while increasing self damage by 40% for 5 seconds",
+    "skill": {
+      "icd":8,
+      "cd":[18,18,18,18,18,18,18,18,18,18],
+      "effects": [
+        {
+          "type":"removeBuff",
+          "target":"self",
+          "name":"ARmode"
+        },
+        {
+          "type":"modifySkill",
+          "modifySkill":"switchtoMGmode"
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[20,22,24,27,29,31,33,36,38,40]
+          },
+          "duration":[3,3.2,3.4,3.7,3.9,4.1,4.3,4.6,4.8,5]
+        }
+      ]
+    },
+    "passives": [
+      {
+        "type":"passive",
+        "trigger":"outOfAmmo",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"ARmode",
+            "stat":{
+              "rof":-40,
+              "acc":[50,56,61,67,72,78,83,89,94,100],
+              "movespeed":150
+            },
+            "duration":-1
+          }
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +12%, Armor +18%",
+    "tiles": {
+      "self": 12,
+      "target": "10,11,12,2,20",
+      "target_type": [2, 4, 6],
+      "effect": {
+        "fp": 12,
+        "acc": 0,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 18
+      }
+    }
   }
 ]

@@ -3454,8 +3454,11 @@ function simulateBattle() {
             if (doll.battle.currentRounds == 1) {
               triggerPassive('lastShot', doll, enemy);
             }
-
             if (doll.battle.currentRounds == 0) {
+              triggerPassive('outOfAmmo', doll, enemy);
+            }
+
+            if (doll.battle.currentRounds == 0 && doll.battle.buffs.find(buff => buff.name == 'ARmode') == undefined) {
               let reloadTimer = {
                 type: 'reload',
                 timeLeft: 0
@@ -3512,6 +3515,9 @@ function simulateBattle() {
             timeLeft: 0
           };
           normalAttackTimer.timeLeft = 'frames_per_attack' in doll.battle ? doll.battle.frames_per_attack : Math.floor(50 * 30 / doll.battle.rof);
+          if (doll.battle.buffs.find(buff => buff.name == 'ARmode') !== undefined) {
+            normalAttackTimer.timeLeft = Math.floor(50 * 30 / doll.battle.rof);
+          }
           if (doll.battle.buffs.find(buff => buff.name == 'sweep') !== undefined) {
             normalAttackTimer.timeLeft = 10;
           }
@@ -5024,6 +5030,18 @@ function modifySkill(doll, effect, enemy, currentTime) {
           });
         }
       });
+    }
+  }
+
+  //rpk16
+  if (doll.id == 327) {
+    if (effect.modifySkill == 'switchtoMGmode') {
+      let reloadTimer = {
+        type: 'reload',
+        timeLeft: 30
+      };
+      doll.battle.timers.push(reloadTimer);
+      doll.battle.currentRounds = 0;
     }
   }
 
