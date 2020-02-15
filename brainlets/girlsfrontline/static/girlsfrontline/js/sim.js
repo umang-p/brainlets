@@ -2738,6 +2738,21 @@ function preBattleSkillChanges(doll) {
     let fpstacks = uniqueTypesOnTiles.length > 3 ? 3 : uniqueTypesOnTiles.length;
     doll.battle.skill.effects[1].stacks = fpstacks;
   }
+
+  if (doll.id == 328) {
+    for (let i = 0; i < 5; i++) {
+      if (echelon[i].id == -1) {
+        continue;
+      }
+      if (echelon[i].pos != doll.pos) {
+        doll.battle.skill.effects[0].target = 'none';
+      } else {
+        doll.battle.skill.effects[1].target = 'none';
+        doll.battle.skill.effects[2].modifySkill = 'none';
+      }
+      break;
+    }
+  }
 }
 
 function initDollsForBattle() {
@@ -4167,6 +4182,17 @@ function getBuffTargets(doll, buff, enemy) {
     }
   }
 
+  if (buff.target == 'leader') {
+    for (let i = 0; i < 5; i++) {
+      if (echelon[i].id == -1) {
+        continue;
+      } else {
+        targets.push(echelon[i]);
+        break;
+      }
+    }
+  }
+
   if (buff.target == 'enemy') {
     targets.push(enemy);
   }
@@ -5042,6 +5068,27 @@ function modifySkill(doll, effect, enemy, currentTime) {
       };
       doll.battle.timers.push(reloadTimer);
       doll.battle.currentRounds = 0;
+    }
+  }
+
+  //webley
+  if (doll.id == 328) {
+    if (effect.modifySkill == 'reduceLeaderCD') {
+      let leader = undefined;
+      for (let i = 0; i < 5; i++) {
+        if (echelon[i].id == -1) {
+          continue;
+        } else {
+          leader = echelon[i];
+          break;
+        }
+      }
+      let leaderSkillTimer = leader.battle.timers.find(t => t.type == 'skill');
+      if (leaderSkillTimer !== undefined) {
+        let cdReduction = [15,16,17,18,19,21,22,23,24,25];
+        let cdr = 1 - (cdReduction[doll.skilllevel - 1] / 100);
+        leaderSkillTimer.timeLeft = Math.ceil(leaderSkillTimer.timeLeft * cdr);
+      }
     }
   }
 

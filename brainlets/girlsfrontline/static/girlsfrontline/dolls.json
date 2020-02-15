@@ -24407,5 +24407,101 @@
         "armor": 18
       }
     }
+  },
+  {
+    "id": 328,
+    "id_index": 294,
+    "aliases": ["Webley 'WG' Army Model"],
+    "api_name": "webley",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "Webley",
+    "rarity": 5,
+    "type": 1,
+    "mod": false,
+    "hp": 130,
+    "fp": 94,
+    "acc": 117,
+    "eva": 96,
+    "rof": 101,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 137,
+    "construct_time": 0,
+    "en_craftable": false,
+    "en_released":false,
+    "uncraftable":true,
+    "artist": "Silverwing",
+    "voice": "TBD",
+    "name_skill1": "Consecutive Order",
+    "icon_name_skill1": "consecutiveorder",
+    "tooltip_skill1": "Initial CD: 6s, CD: 12s<br>If Webley is the echelon leader, increase all allies' damage by 25% for 8 seconds. If another doll is the leader, increase that doll's damage and rate of fire by 22% for 8 seconds and reduce that doll's current remaining skill cooldown by 25%",
+    "skill": {
+      "icd":6,
+      "cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"all",
+          "stat":{
+            "fp":[15,16,17,18,19,21,22,23,24,25]
+          },
+          "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+        },
+        {
+          "type":"buff",
+          "target":"leader",
+          "stat":{
+            "fp":[10,11,13,14,15,17,18,19,21,22],
+            "rof":[10,11,13,14,15,17,18,19,21,22]
+          },
+          "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+        },
+        {
+          "type":"modifySkill",
+          "modifySkill":"reduceLeaderCD"
+        }
+      ]
+    },
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +16%, Rate of Fire +20%",
+    "tiles": {
+      "self": 33,
+      "target": "-1,-11,-21,-10,1",
+      "target_type": 0,
+      "effect": {
+        "fp": [
+          8,
+          16
+        ],
+        "acc": [
+          0,
+          0
+        ],
+        "eva": [
+          0,
+          0
+        ],
+        "rof": [
+          10,
+          20
+        ],
+        "crit": [
+          0,
+          0
+        ],
+        "skillcd": [
+          0,
+          0
+        ],
+        "armor": [
+          0,
+          0
+        ]
+      }
+    }
   }
 ]
