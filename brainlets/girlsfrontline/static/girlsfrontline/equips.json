@@ -4486,5 +4486,39 @@
     "construct_time": 0,
     "name": "Type 100 Folding Stock",
     "tooltip": "Crit Rate +15-20, Evasion +15-25"
+  },
+  {
+    "id": 133,
+    "type": 91,
+    "rarity": 5,
+    "fp": 11,
+    "acc": 14,
+    "eva": 0,
+    "movespeed": 0,
+    "rof": -4,
+    "critdmg": 0,
+    "crit": 0,
+    "ap": 0,
+    "armor": 0,
+    "nightview": 0,
+    "rounds": 0,
+    "level_bonus": {
+      "fp": 0,
+      "acc": 0,
+      "eva": 0,
+      "movespeed": 0,
+      "rof": 0,
+      "critdmg": 0,
+      "crit": 0,
+      "ap": 0,
+      "armor": 0,
+      "nightview": 0,
+      "rounds": 0
+    },
+    "en_craftable": false,
+    "en_released": false,
+    "construct_time": 0,
+    "name": "DO Reflex Optic",
+    "tooltip": "Damage +11, Accuracy +14, Rate of fire -4"
   }
 ]

@@ -24503,5 +24503,96 @@
         ]
       }
     }
+  },
+  {
+    "id": 329,
+    "id_index": 31,
+    "aliases": ["Moschetto Automatico Beretta Modello 1938","Beretta Automatic Musket Model 1938"],
+    "api_name": "mab38mod",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "M38Mod",
+    "rarity": 4,
+    "type": 2,
+    "mod": true,
+    "hp": 120,
+    "fp": 125,
+    "acc": 95,
+    "eva": 94,
+    "rof": 100,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 110,
+    "construct_time": 5400,
+    "en_craftable": false,
+    "en_released": false,
+    "artist": "ALLENES",
+    "voice": "Haruka Takahashi",
+    "name_skill1": "Stun Grenade",
+    "icon_name_skill1": "flashbomb",
+    "tooltip_skill1": "Initial CD: 5s, CD: 16s<br>Launch a stun grenade that stuns enemies within a radius of 2.5 units for 4 seconds",
+    "skill": {
+      "icd":5,
+      "cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"stun",
+          "busylinks":1,
+          "delay":1.5,
+          "after":[
+            {
+              "type":"buff",
+              "target":"enemy",
+              "stun":true,
+              "duration":[2.2,2.4,2.6,2.8,3,3.2,3.4,3.6,3.8,4]
+            }
+          ],
+          "requirements":{
+            "boss":false
+          }
+        }
+      ]
+    },
+    "name_skill2": "Scarlet Flame Pursuit",
+    "icon_name_skill2": "napalm",
+    "tooltip_skill2": "Passive: Along with the stun grenade, launch an incendiary grenade that deals 2.8x damage to enemies within a 2.5 unit radius and leaves a DoT that deals 0.6x damage every 0.33 seconds for 4 seconds in a 2.5 unit radius",
+    "skill2": {
+      "icd":5,
+      "cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
+      "effects": [
+        {
+          "type":"grenade",
+          "busylinks":0,
+          "multiplier":[1.4,1.56,1.71,1.87,2.02,2.18,2.33,2.49,2.64,2.8],
+          "radius":2.5,
+          "delay":1.5,
+          "after":{
+            "type":"grenadedot",
+            "multiplier":[0.3,0.33,0.37,0.4,0.43,0.47,0.5,0.53,0.57,0.6],
+            "radius":2.5,
+            "duration":[2,2.2,2.4,2.7,2.9,3.1,3.3,3.6,3.8,4],
+            "tick":10
+          }
+        }
+      ]
+    },
+    "tooltip_tiles": "Damage +8%, Rate of fire +10%",
+    "tiles": {
+      "self": 23,
+      "target": "-11,9",
+      "target_type": [4, 3],
+      "effect": {
+        "fp": 8,
+        "acc": 0,
+        "eva": 0,
+        "rof": 10,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]

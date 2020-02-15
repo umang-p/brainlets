@@ -72,7 +72,8 @@ const LIST_DPS_SMG = [
   'x95',
   'pdw', // Honey Badger
   'pm9',
-  'microuzimod'
+  'microuzimod',
+  'mab38mod'
 ];
 
 const LIST_DPS_SMG_ID = {};
@@ -147,6 +148,7 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   167: [131, 24, 35], //rfb
   221: [28, 45, 132], //type100
   66: [87, 24, 35],  //FAMAS
+  329: [35, 45, 133], //mab38mod
 };
 
 const SPECIAL_DEFAULT_EQUIPS_UNRELEASED = {
@@ -256,6 +258,7 @@ export const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
   79: [-1, -1, 88], //rpd
   167: [89, -1, -1], //rfb
   221: [-1, -1, 90], //type100
+  329: [-1, -1, 91], //mab38mod
 };
 
 export default class dollUtils {
