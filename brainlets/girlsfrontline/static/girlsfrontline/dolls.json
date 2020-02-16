@@ -664,7 +664,7 @@
           "stat":{
             "rof":[12,13,14,15,16,17,18,19,20,22]
           },
-          "duration":[5,6,6,6,7,7,7,8,8,8]
+          "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
         }
       ]
     },
@@ -24592,6 +24592,114 @@
         "crit": 0,
         "skillcd": 0,
         "armor": 0
+      }
+    }
+  },
+  {
+    "id": 330,
+    "id_index": 7,
+    "aliases": ["Avtomaticheskiy Pistolet Stechkina"],
+    "api_name": "apsmod",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "StechkinMod",
+    "rarity": 5,
+    "type": 1,
+    "mod": true,
+    "hp": 125,
+    "fp": 115,
+    "acc": 105,
+    "eva": 95,
+    "rof": 125,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 110,
+    "construct_time": 3300,
+    "en_craftable": false,
+    "en_released": false,
+    "artist": "春_日",
+    "voice": "Eri Kitamura",
+    "name_skill1": "Assault Command",
+    "icon_name_skill1": "ratebuff",
+    "tooltip_skill1": "Initial CD: 6s, CD:12s<br>Increase all allies' rate of fire by 25% for 8 seconds. When 'Stechkin Exclusive Stock is equipped, adds bonus effect to skill: Increase all allies' damage by 4%",
+    "skill": {
+      "icd":6,
+      "cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"all",
+          "stat":{
+            "rof":[12,13,14,15,16,17,18,19,20,22]
+          },
+          "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+        }
+      ]
+    },
+    "name_skill2": "Percussion",
+    "icon_name_skill2": "percussion",
+    "tooltip_skill2": "Passive: When skill1 activates, increase self damage by 25% and crit rate by 100% for 8 seconds. While active, target enemies with the lowest hp and reduce the evasion of enemies with less than 30% hp left by 50% for 8 seconds",
+    "skill2": {
+      "icd":6,
+      "cd":[15,14.7,14.3,14,13.7,13.3,13,12.7,12.3,12],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[15,16,17,18,19,21,22,23,24,25],
+            "crit":[50,56,61,67,72,78,83,89,94,100]
+          },
+          "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+        },
+        {
+          "type":"buff",
+          "target":"enemy",
+          "stat":{
+            "eva":[-20,-23,-27,-30,-33,-37,-40,-43,-47,-50]
+          },
+          "duration":[5,5.3,5.7,6,6.3,6.7,7,7.3,7.7,8]
+        }
+      ]
+    },
+    "skill_control":true,
+    "tooltip_tiles": "Damage +16%, Rate of fire +24%",
+    "tiles": {
+      "self": 23,
+      "target": "10,-10,-9,11",
+      "target_type": 0,
+      "effect": {
+        "fp": [
+          8,
+          16
+        ],
+        "acc": [
+          0,
+          0
+        ],
+        "eva": [
+          0,
+          0
+        ],
+        "rof": [
+          12,
+          24
+        ],
+        "crit": [
+          0,
+          0
+        ],
+        "skillcd": [
+          0,
+          0
+        ],
+        "armor": [
+          0,
+          0
+        ]
       }
     }
   }

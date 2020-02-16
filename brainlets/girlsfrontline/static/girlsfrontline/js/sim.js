@@ -2739,6 +2739,7 @@ function preBattleSkillChanges(doll) {
     doll.battle.skill.effects[1].stacks = fpstacks;
   }
 
+  //webley
   if (doll.id == 328) {
     for (let i = 0; i < 5; i++) {
       if (echelon[i].id == -1) {
@@ -2751,6 +2752,14 @@ function preBattleSkillChanges(doll) {
         doll.battle.skill.effects[2].modifySkill = 'none';
       }
       break;
+    }
+  }
+
+  //stechkinmod
+  if (doll.id == 330) {
+    //StechkinMod
+    if (doll.equip1 == 99) {
+      doll.battle.skill.effects[0].stat.fp = 4;
     }
   }
 }
@@ -5496,6 +5505,15 @@ const SKILL_CONTROL = {
       doll.skill.effects[0].delay = switchTime;
       doll.skill.effects[1].delay = switchTime;
     }
+  },
+  330: function (doll) {
+    //stechkinmod
+    let useEnemyDebuff = $('.stechkinmod-skill').prop('checked');
+    if (useEnemyDebuff) {
+      doll.skill2.effects[1].target = 'enemy';
+    } else {
+      doll.skill2.effects[1].target = 'none';
+    }
   }
 };
 
@@ -5675,6 +5693,13 @@ const SKILL_CONTROL_HTML = {
     return `<p>Enter the number of seconds after which you would like dorothy to switch between Nano-Camouflage mode and MIRD113 mode.
      This will happen only once. Her starting mode is determined by the row she is in. Enter 0 to never switch (default).</p><br />
      <input type="number" class="dorothy-skill">Number of seconds into battle she should switch modes (min 2 because of initial cooldown)</input><br><p></p>`;
+  },
+  330: function (doll) {
+    //stechkinmod
+    return `<p>Stechkin's 2nd skill can give an evasion debuff to enemies with less than 30% hp.
+    Check the box if you want the sim to apply this debuff to enemies (default), or uncheck it to have the sim not use the debuff.
+    Click apply to save.</p><br />
+    <input type="checkbox" class="stechkinmod-skill" checked>Apply evasion debuff to enemies<p></p>`;
   }
 };
 

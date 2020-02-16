@@ -149,6 +149,7 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   221: [28, 45, 132], //type100
   66: [87, 24, 35],  //FAMAS
   329: [35, 45, 133], //mab38mod
+  330: [99, 45, 134],   //StechkinMod
 };
 
 const SPECIAL_DEFAULT_EQUIPS_UNRELEASED = {
@@ -259,6 +260,7 @@ export const SPECIAL_VALID_EQUIPS = { //numbers indicate TYPE of the equipment
   167: [89, -1, -1], //rfb
   221: [-1, -1, 90], //type100
   329: [-1, -1, 91], //mab38mod
+  330: [57, -1, 92],   //StechkinMod
 };
 
 export default class dollUtils {

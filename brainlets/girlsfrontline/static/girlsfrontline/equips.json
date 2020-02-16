@@ -4520,5 +4520,39 @@
     "construct_time": 0,
     "name": "DO Reflex Optic",
     "tooltip": "Damage +11, Accuracy +14, Rate of fire -4"
+  },
+  {
+    "id": 134,
+    "type": 92,
+    "rarity": 5,
+    "fp": 0,
+    "acc": 0,
+    "eva": 12,
+    "movespeed": 0,
+    "rof": 0,
+    "critdmg": 0,
+    "crit": 15,
+    "ap": 0,
+    "armor": 0,
+    "nightview": 0,
+    "rounds": 0,
+    "level_bonus": {
+      "fp": 0,
+      "acc": 0,
+      "eva": 700,
+      "movespeed": 0,
+      "rof": 0,
+      "critdmg": 0,
+      "crit": 350,
+      "ap": 0,
+      "armor": 0,
+      "nightview": 0,
+      "rounds": 0
+    },
+    "en_craftable": false,
+    "en_released": false,
+    "construct_time": 0,
+    "name": "Tactial Ahoge",
+    "tooltip": "Evasion +12-20, Crit Rate +15-20"
   }
 ]
