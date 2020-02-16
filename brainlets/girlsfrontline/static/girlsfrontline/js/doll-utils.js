@@ -150,10 +150,10 @@ const SPECIAL_DEFAULT_EQUIPS = { //numbers indicate ID of the equipment
   66: [87, 24, 35],  //FAMAS
   329: [35, 45, 133], //mab38mod
   330: [99, 45, 134],   //StechkinMod
+  60: [4, 24, 93],   //G41
 };
 
 const SPECIAL_DEFAULT_EQUIPS_UNRELEASED = {
-  60: [4, 24, 93],   //G41
   120: [20, 98, 41], //MG4
   7: [99, 45, 35],   //Stechkin
   48: [20, 125, 57], //lee enfield

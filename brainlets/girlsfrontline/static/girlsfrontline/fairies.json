@@ -500,7 +500,7 @@
   },
   {
     "id": 20,
-    "name": "Firework Fairy",
+    "name": "Fireworks Fairy",
     "type": 1,
     "fp": 115,
     "acc": 82,
@@ -509,7 +509,7 @@
     "critdmg": 0,
     "growth_rating": 260,
     "construct_time": 18600,
-    "en_released":false,
+    "en_released": true,
     "en_craftable":false,
     "tooltip_aura":"Crit Dmg +32%, Accuracy +75%, Evasion +32%, Armor +8%",
     "tooltip_skill":"Increase echelon accuracy by 80% for 10 seconds in the next battle",
