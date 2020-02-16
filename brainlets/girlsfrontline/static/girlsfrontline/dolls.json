@@ -24702,5 +24702,109 @@
         ]
       }
     }
+  },
+  {
+    "id": 331,
+    "id_index": 287,
+    "aliases": ["SIG 556"],
+    "api_name": "sig556",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "SIG-556",
+    "rarity": 5,
+    "type": 4,
+    "mod": false,
+    "hp": 110,
+    "fp": 113,
+    "acc": 112,
+    "eva": 109,
+    "rof": 114,
+    "crit": 5,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 117,
+    "construct_time": 14160,
+    "en_craftable": false,
+    "en_released":false,
+    "artist": "水熊",
+    "voice": "TBD",
+    "name_skill1": "Battlefield Wave",
+    "icon_name_skill1": "battlefieldwave",
+    "tooltip_skill1": "Initial CD: 5s, CD: 4s<br>Activate to switch between active and inactive effect. Active: Increase self rate of fire to max and increase damage by 50%. Each attack adds 1 stack of Overload.<br>Inactive: Each attack removes 1 stack of Overload.<br>Passive:When number of Overload stacks reaches 12, clear all stacks and stun self for 2 seconds.",
+    "skill": {
+      "icd":5,
+      "cd":[4,4,4,4,4,4,4,4,4,4],
+      "effects": [
+        {
+          "type":"modifySkill",
+          "modifySkill":"toggleSkill"
+        }
+      ]
+    },
+    "passives": [
+      {
+        "type":"passive",
+        "trigger":"normalAttack",
+        "name":"battlefieldwave",
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"overload",
+            "stackable": true,
+            "max_stacks":12,
+            "stacks":0,
+            "stacksToAdd":-1,
+            "duration":-1
+          }
+        ]
+      },
+      {
+        "type":"passive",
+        "trigger":"hasStacks",
+        "name":"overload",
+        "stacksRequired":12,
+        "effects":[
+          {
+            "type":"buff",
+            "target":"self",
+            "stun":true,
+            "duration":2
+          },
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"overload",
+            "stackable": true,
+            "max_stacks":12,
+            "stacks":0,
+            "stacksToAdd":-12,
+            "duration":-1
+          },
+          {
+            "type":"modifySkill",
+            "modifySkill":"toggleSkill"
+          }
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Evasion +15%, Rate of fire +12%",
+    "tiles": {
+      "self": 23,
+      "target": "1,-9",
+      "target_type": 2,
+      "effect": {
+        "fp": 0,
+        "acc": 0,
+        "eva": 15,
+        "rof": 12,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]

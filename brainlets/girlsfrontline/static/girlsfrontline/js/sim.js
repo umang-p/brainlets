@@ -3111,7 +3111,8 @@ function simulateBattle() {
       $.each(doll.battle.timers, (index, timer) => {
         if (timer.type == 'normalAttack') {
           let reloading = doll.battle.timers.find(timer => timer.type == 'reload') === undefined ? false : true;
-          if (doll.links - doll.battle.busylinks > 0 && !reloading) {
+          let stunned = doll.battle.buffs.find(b => 'stun' in b) === undefined ? false : true;
+          if (doll.links - doll.battle.busylinks > 0 && !reloading && !stunned) {
             timer.timeLeft--;
           }
         } else {
@@ -3123,8 +3124,9 @@ function simulateBattle() {
       $.each(doll.battle.timers, (index, timer) => {
         if (timer.timeLeft == 0) {
           let reloading = doll.battle.timers.find(timer => timer.type == 'reload') === undefined ? false : true;
+          let stunned = doll.battle.buffs.find(b => 'stun' in b) === undefined ? false : true;
           if (timer.type == 'skill') {
-            if (reloading && doll.battle.timers.find(timer => timer.type == 'reload').timeLeft != 0) {
+            if (stunned || (reloading && doll.battle.timers.find(timer => timer.type == 'reload').timeLeft != 0)) {
               timer.timeLeft++;
             } else {
               $.each(doll.battle.skill.effects, (index, effect) => {
@@ -3143,7 +3145,7 @@ function simulateBattle() {
               timer.timeLeft = Math.round(doll.battle.skill.cd[doll.skilllevel - 1] * 30 * doll.battle.skillcd);
             }
           } else if (timer.type == 'skill2') {
-            if (reloading && doll.battle.timers.find(timer => timer.type == 'reload').timeLeft != 0) {
+            if (stunned || (reloading && doll.battle.timers.find(timer => timer.type == 'reload').timeLeft != 0)) {
               timer.timeLeft++;
             } else {
               $.each(doll.battle.skill2.effects, (index, effect) => {
@@ -5097,6 +5099,31 @@ function modifySkill(doll, effect, enemy, currentTime) {
         let cdReduction = [15,16,17,18,19,21,22,23,24,25];
         let cdr = 1 - (cdReduction[doll.skilllevel - 1] / 100);
         leaderSkillTimer.timeLeft = Math.ceil(leaderSkillTimer.timeLeft * cdr);
+      }
+    }
+  }
+
+  //sig556
+  if (doll.id == 331) {
+    if (effect.modifySkill == 'toggleSkill') {
+      let isActive = doll.battle.buffs.find(b => b.name == 'sweep') !== undefined;
+
+      if (isActive) {
+        doll.battle.buffs = doll.battle.buffs.filter(b => b.name != 'sweep');
+        doll.battle.passives[0].effects[0].stacksToAdd = -1;
+      } else {
+        let skillBuff = {
+          type:"buff",
+          target:"self",
+          name:"sweep",
+          stat:{
+            fp:[25,28,31,33,36,39,42,44,47,50]
+          },
+          duration:-1,
+          level: doll.skilllevel
+        };
+        doll.battle.buffs.push(skillBuff);
+        doll.battle.passives[0].effects[0].stacksToAdd = 1;
       }
     }
   }
