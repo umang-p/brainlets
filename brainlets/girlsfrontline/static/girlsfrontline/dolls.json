@@ -24806,5 +24806,164 @@
         "armor": 0
       }
     }
+  },
+  {
+    "id": 332,
+    "id_index": 293,
+    "aliases": ["Avtomat Kalashnikova (Automatic Kalashnikov) 2015"],
+    "api_name": "ak15",
+    "spritesheet_row": 0,
+    "spritesheet_col": 0,
+    "name": "AK-15",
+    "rarity": 5,
+    "type": 4,
+    "mod": false,
+    "hp": 100,
+    "fp": 115,
+    "acc": 109,
+    "eva": 107,
+    "rof": 109,
+    "crit": 20,
+    "critdmg": 50,
+    "ap": 15,
+    "rounds": 0,
+    "armor": 0,
+    "growth_rating": 138,
+    "construct_time": 15300,
+    "en_craftable": false,
+    "en_released":false,
+    "artist": "多元菌",
+    "voice": "TBD",
+    "name_skill1": "White Mastiff's Eye",
+    "icon_name_skill1": "whitemastiffseye",
+    "tooltip_skill1": "Initial CD: 6s, CD: 8s<br>Active: Apply [Monitoring] to all enemies for up to 6 seconds. When attacking an enemy with [Monitoring], increase self damage, accuracy, and crit rate by 40%. When being attacked by an enemy with [Monitoring], increase self evasion by 40%. When [Monitoring] is applied, gain 1 stack of [Overload] per enemy affected. Additionally, gain 5 stacks of [Overload] every 2 seconds while [Monitoring] is active. Upon reaching 24 stacks of [Overload], clear all stacks of [Overload], remove [Monitoring] from all enemies, and decrease self rate of fire and accuracy by 20% for 5 seconds. Skill cannot be activated while this debuff is active.<br>Passive: Each attack has a 15% chance of triggering [Anger]. [Anger]: Increase self damage by 40% for 3 seconds.",
+    "skill": {
+      "icd":6,
+      "cd":[10,9.8,9.6,9.3,9.1,8.9,8.7,8.4,8.2,8],
+      "effects": [
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"Monitoring",
+          "stat":{
+            "fp":[20,22,24,27,29,31,33,36,38,40],
+            "acc":[20,22,24,27,29,31,33,36,38,40],
+            "crit":[20,22,24,27,29,31,33,36,38,40],
+            "eva":[20,22,24,27,29,31,33,36,38,40]
+          },
+          "duration":6,
+          "after": [
+            {
+              "type":"removePassive",
+              "target":"self",
+              "name":"overloadpassive"
+            }
+          ]
+        },
+        {
+          "type":"buff",
+          "target":"self",
+          "name":"overload",
+          "stackable": true,
+          "max_stacks":99,
+          "stacks":0,
+          "stacksToAdd":1,
+          "duration":-1
+        },
+        {
+          "type":"passive",
+          "trigger":"time",
+          "interval":2,
+          "name":"overloadpassive",
+          "effects":[
+            {
+              "type":"buff",
+              "target":"self",
+              "name":"overload",
+              "stackable": true,
+              "max_stacks":99,
+              "stacks":0,
+              "stacksToAdd":5,
+              "duration":-1
+            }
+          ]
+        }
+      ]
+    },
+    "passives": [
+      {
+        "type":"passive",
+        "trigger":"normalAttack",
+        "effects":[
+          {
+            "type":"buff",
+            "name":"anger",
+            "target":"self",
+            "stat":{
+              "fp":[20,22,24,27,29,31,33,36,38,40]
+            },
+            "duration":3,
+            "stackable":true,
+            "stacks":1,
+            "max_stacks":1,
+            "stackChance":15
+          }
+        ]
+      },
+      {
+        "type":"passive",
+        "trigger":"hasStacks",
+        "name":"overload",
+        "stacksRequired":[18,18,18,20,20,20,22,22,22,24],
+        "effects":[
+          {
+            "type":"removeBuff",
+            "target":"self",
+            "name":"Monitoring"
+          },
+          {
+            "type":"removePassive",
+            "target":"self",
+            "name":"overloadpassive"
+          },
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"overload",
+            "stackable": true,
+            "max_stacks":99,
+            "stacks":0,
+            "stacksToAdd":-99,
+            "duration":-1
+          },
+          {
+            "type":"buff",
+            "target":"self",
+            "name":"cooldown",
+            "stat":{
+              "rof":-20,
+              "acc":-20
+            },
+            "duration":5
+          }
+        ]
+      }
+    ],
+    "tooltip_skill2": "",
+    "tooltip_tiles": "Damage +25%, Accuracy +65%",
+    "tiles": {
+      "self": 23,
+      "target": "1,-9,11",
+      "target_type": 2,
+      "effect": {
+        "fp": 25,
+        "acc": 65,
+        "eva": 0,
+        "rof": 0,
+        "crit": 0,
+        "skillcd": 0,
+        "armor": 0
+      }
+    }
   }
 ]

@@ -2762,6 +2762,11 @@ function preBattleSkillChanges(doll) {
       doll.battle.skill.effects[0].stat.fp = 4;
     }
   }
+
+  if (doll.id == 332) {
+    doll.battle.skill.effects[1].stacks = enemyCount;
+    doll.battle.skill.effects[1].stacksToAdd = enemyCount;
+  }
 }
 
 function initDollsForBattle() {
