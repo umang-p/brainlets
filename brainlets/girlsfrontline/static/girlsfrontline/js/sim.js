@@ -4524,12 +4524,14 @@ function modifySkill(doll, effect, enemy, currentTime) {
     //m82a1
     if (effect.modifySkill == 'usedSkill') {
       doll.battle.skillUseCount++;
-    }
-    if (doll.battle.skillUseCount == 2) {
-      doll.battle.skill.effects[0].multiplier = doll.battle.skill.effects[0].multiplier.map(mult => mult * 2);
-    }
-    if (doll.battle.skillUseCount >= 3) {
-      doll.battle.skill.effects = [];
+
+      if (doll.battle.skillUseCount == 2) {
+        doll.battle.skill.effects[0].multiplier = doll.battle.skill.effects[0].multiplier.map(mult => mult * 2);
+      }
+
+      if (doll.battle.skillUseCount >= 3) {
+        doll.battle.skill.effects = [];
+      }
     }
   }
 
