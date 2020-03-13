@@ -15346,7 +15346,7 @@
     "voice": "TBD",
     "name_skill1": "Anti-Personnel Grenade N",
     "icon_name_skill1": "riflegrenadenight",
-    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Launch a grenade that deals 10x damage to enemies within a 1.5 unit radius. If night, also increase self damage and accuracy by 50% for 10 seconds",
+    "tooltip_skill1": "Initial CD: 8s, CD: 16s<br>Launch a grenade that deals 10x damage to enemies within a 1.5 unit radius. If nighttime, also increase self damage and accuracy by 50% for 10 seconds upon skill activation.",
     "skill": {
       "icd":8,
       "cd":[20,19.6,19.1,18.7,18.2,17.8,17.3,16.9,16.4,16],
@@ -15356,28 +15356,18 @@
           "multiplier":[4,4.7,5.3,6,6.7,7.3,8,8.7,9.3,10],
           "radius":1.5,
           "delay":1.5,
-          "busylinks":1,
-          "requirements":{
-            "night":false
-          }
+          "busylinks":1
         },
         {
-          "type":"grenade",
-          "multiplier":[4,4.7,5.3,6,6.7,7.3,8,8.7,9.3,10],
-          "radius":1.5,
-          "delay":1.5,
-          "busylinks":1,
-          "requirements":{
-            "night":true
+          "type":"buff",
+          "target":"self",
+          "stat":{
+            "fp":[20,23,27,30,33,37,40,43,47,50],
+            "acc":[20,23,27,30,33,37,40,43,47,50]
           },
-          "after":{
-            "type":"buff",
-            "target":"self",
-            "stat":{
-              "fp":[20,23,27,30,33,37,40,43,47,50],
-              "acc":[20,23,27,30,33,37,40,43,47,50]
-            },
-            "duration":[6,6.4,6.8,7.2,7.6,8,8.4,8.8,9.4,10]
+          "duration":[6,6.4,6.8,7.2,7.6,8,8.4,8.8,9.4,10],
+          "requirements": {
+            "night":true
           }
         }
       ]
