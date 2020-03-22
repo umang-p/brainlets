@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+    brainlets:
+        image: brainlets:latest
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args: 
+                PRODUCTION_SECRET: development
+                # Workaround for https://devops.stackexchange.com/questions/537/why-is-one-not-allowed-to-use-a-boolean-in-a-docker-compose-yml
+                PRINT_DEBUG: "False"
+        container_name: brainlets
+        restart: unless-stopped
+        ports: 
+            - "8000:8000"
