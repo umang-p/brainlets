@@ -21,6 +21,21 @@ To get started:
 6. Use `python manage.py collectstatic` (`manage.py` is found in `brainlets/`)
 6. Use `python manage.py runserver` to start the dev server (defaults to `127.0.0.1:8000`)
 
+## Local deployment via Docker
+
+The build instructions inside the project's Dockerfile make it fit for deployment on your local machine.
+If you intend to serve the project on a publicly accessible server, you should at least set up a reverse proxy,
+e.g. [nginx](https://gunicorn.org/index.html#deployment) or [traefik](https://containo.us/traefik/).
+
+1. Install Docker.
+    * Most unixoids will have a `docker.io` and `docker-compose` package hosted in one of their repositories. See also [here](https://docs.docker.com/engine/install/linux-postinstall/). To get the guaranteed latest version of compose, see [here](https://docs.docker.com/compose/install/).
+    * [Windows Installer](https://hub.docker.com/editions/community/docker-ce-desktop-windows/). Note the system requirements, and the alternative Docker Toolbox download for systems unsupported by Docker Desktop.
+    * [OSX installer](https://hub.docker.com/editions/community/docker-ce-desktop-mac/). Note the system requirements, and the alternative Docker Toolbox download for systems unsupported by Docker Desktop.
+2. Open a command line interface and navigate to the root of this project, containing the `docker-compose.yml` and `Dockerfile` files.
+3. Run `docker-compose up` to start the service, and navigate to `http://localhost:8000`.
+    * `docker-compose up -d` will run the service in the background.
+    * The service debug flag is enabled and service and static files are served on a bare gunicorn process, do **NOT** expose the process to the internet.
+
 ## License
 
 This project is under the [GNU General Public License v3](https://github.com/umang-p/brainlets/blob/master/LICENSE.txt).
